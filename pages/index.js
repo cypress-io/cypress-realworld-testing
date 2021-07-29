@@ -3,9 +3,10 @@ import matter from 'gray-matter'
 import Head from 'next/head'
 import Link from 'next/link'
 import path from 'path'
-import { contentFilePaths, CONTENT_PATH } from '../utils/mdxUtils'
+import { contentFilePaths, CONTENT_PATH, tutorialFilePaths, TUTORIAL_PATH } from '../utils/mdxUtils'
 
-export default function Home({ content }) {
+export default function Home({ content, tutorial }) {
+  console.log('tutorial', tutorial)
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -16,6 +17,19 @@ export default function Home({ content }) {
       <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
         <ul>
           {content.map((lesson) => (
+            <li key={lesson.filePath}>
+              <Link
+                as={`/content/${lesson.filePath.replace(/\.mdx?$/, '')}`}
+                href={`/content/[slug]`}
+              >
+                <a>{lesson.data.title}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <br />
+        <ul>
+          {tutorial.map((lesson) => (
             <li key={lesson.filePath}>
               <Link
                 as={`/content/${lesson.filePath.replace(/\.mdx?$/, '')}`}
@@ -55,5 +69,17 @@ export function getStaticProps() {
     }
   })
 
-  return { props: { content } }
+  const tutorial = tutorialFilePaths.map((filePath) => {
+    const source = fs.readFileSync(path.join(TUTORIAL_PATH, filePath))
+    const { content, data } = matter(source)
+
+    return {
+      content,
+      data,
+      filePath,
+    }
+  })
+
+
+  return { props: { content, tutorial } }
 }
