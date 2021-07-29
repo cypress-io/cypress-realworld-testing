@@ -3,11 +3,13 @@ import matter from 'gray-matter'
 import Head from 'next/head'
 import Link from 'next/link'
 import path from 'path'
+import Layout from '../components/Layout'
 import { contentFilePaths, CONTENT_PATH, tutorialFilePaths, TUTORIAL_PATH } from '../utils/mdxUtils'
 
 export default function Home({ content, tutorial }) {
   console.log('tutorial', tutorial)
   return (
+    <Layout>
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
         <title>Real World Testing with Cypress</title>
@@ -54,6 +56,7 @@ export default function Home({ content, tutorial }) {
         </a>
       </footer>
     </div>
+    </Layout>
   )
 }
 
