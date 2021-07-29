@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
+    "gray-matter": "^4.0.3",
     "next-mdx-remote": "^3.0.4",
     "next-remote-watch": "1.0.0",
     "postcss": "^8.3.5",
