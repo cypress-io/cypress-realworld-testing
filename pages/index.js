@@ -4,10 +4,9 @@ import Head from 'next/head'
 import Link from 'next/link'
 import path from 'path'
 import Layout from '../components/Layout'
-import { contentFilePaths, CONTENT_PATH, tutorialFilePaths, TUTORIAL_PATH } from '../utils/mdxUtils'
+import { allContentFilePaths, CONTENT_PATH  } from '../utils/mdxUtils'
 
-export default function Home({ content, tutorial }) {
-  console.log('tutorial', tutorial)
+export default function Home({ content }) {
   return (
     <Layout>
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
@@ -21,21 +20,8 @@ export default function Home({ content, tutorial }) {
           {content.map((lesson) => (
             <li key={lesson.filePath}>
               <Link
-                as={`/content/${lesson.filePath.replace(/\.mdx?$/, '')}`}
-                href={`/content/[slug]`}
-              >
-                <a>{lesson.data.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <br />
-        <ul>
-          {tutorial.map((lesson) => (
-            <li key={lesson.filePath}>
-              <Link
-                as={`/content/${lesson.filePath.replace(/\.mdx?$/, '')}`}
-                href={`/content/[slug]`}
+                as={`/${lesson.filePath.replace(/\.mdx?$/, '')}`}
+                href={`/[section]/[slug]`}
               >
                 <a>{lesson.data.title}</a>
               </Link>
@@ -61,7 +47,7 @@ export default function Home({ content, tutorial }) {
 }
 
 export function getStaticProps() {
-  const content = contentFilePaths.map((filePath) => {
+  const content = allContentFilePaths.map((filePath) => {
     const source = fs.readFileSync(path.join(CONTENT_PATH, filePath))
     const { content, data } = matter(source)
 
@@ -72,17 +58,5 @@ export function getStaticProps() {
     }
   })
 
-  const tutorial = tutorialFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(TUTORIAL_PATH, filePath))
-    const { content, data } = matter(source)
-
-    return {
-      content,
-      data,
-      filePath,
-    }
-  })
-
-
-  return { props: { content, tutorial } }
+  return { props: { content } }
 }
