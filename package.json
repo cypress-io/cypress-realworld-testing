@@ -1,24 +1,38 @@
 {
   "private": true,
   "scripts": {
+    "build": "next build",
     "dev": "next dev",
     "dev:watch": "next-remote-watch ./content",
-    "build": "next build",
+    "lint": "next lint",
     "start": "next start"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.3",
+    "@tailwindcss/aspect-ratio": "^0.2.1",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "gray-matter": "^4.0.3",
+    "husky": "^7.0.1",
     "next-mdx-remote": "^3.0.4",
     "next-remote-watch": "1.0.0",
     "postcss": "^8.3.5",
+    "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1",
     "tailwindcss": "^2.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run lint"
+    }
   }
 }
