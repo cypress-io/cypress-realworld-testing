@@ -12,7 +12,7 @@ export default function SectionCard(props) {
                     <div className="aspect-w-3 aspect-h-2 sm:aspect-w-3 sm:aspect-h-4">
                       <Image
                         className="object-cover shadow-lg rounded-lg"
-                        src="https://source.unsplash.com/random"
+                        src="https://source.unsplash.com/1600x900/?testing"
                         alt=""
                         layout="fill"
                       />
