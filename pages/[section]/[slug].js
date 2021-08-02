@@ -1,12 +1,12 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
+import fs from "fs"
+import matter from "gray-matter"
+import { MDXRemote } from "next-mdx-remote"
+import { serialize } from "next-mdx-remote/serialize"
 //import dynamic from 'next/dynamic'
-import Head from 'next/head'
-import Link from 'next/link'
-import path from 'path'
-import { CONTENT_PATH, allContentFilePaths } from '../../utils/mdxUtils'
+import Head from "next/head"
+import Link from "next/link"
+import path from "path"
+import { CONTENT_PATH, allContentFilePaths } from "../../utils/mdxUtils"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -46,7 +46,10 @@ export default function ContentPage({ source, frontMatter }) {
 
 export const getStaticProps = async ({ params }) => {
   console.log(params)
-  const contentFilePath = path.join(CONTENT_PATH, `${params.section}/${params.slug}.mdx`)
+  const contentFilePath = path.join(
+    CONTENT_PATH,
+    `${params.section}/${params.slug}.mdx`
+  )
   const source = fs.readFileSync(contentFilePath)
 
   const { content, data } = matter(source)
@@ -70,16 +73,16 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
   const allpaths = allContentFilePaths
-  console.log('all', allpaths)
+  console.log("all", allpaths)
   const paths = allContentFilePaths
     // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ''))
+    .map((path) => path.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js
     .map((filePath) => {
-      const [section, slug] = filePath.split('/');
-      return { params: { slug, section } };
+      const [section, slug] = filePath.split("/")
+      return { params: { slug, section } }
     })
-    console.log('paths', paths)
+  console.log("paths", paths)
 
   return {
     paths,
