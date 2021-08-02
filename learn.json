@@ -3,7 +3,8 @@
     "title": "Testing Foundations",
     "slug": "testing-foundations",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "children": [{
+    "children": [
+      {
         "title": "Intro",
         "slug": "intro",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -40,11 +41,13 @@
     "title": "Cypress Fundamentals",
     "slug": "cypress-fundamentals",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "children": [{
+    "children": [
+      {
         "title": "Intro",
         "slug": "intro",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      }, {
+      },
+      {
         "title": "Cypress Runs in the Browser",
         "slug": "cypress-runs-in-the-browser",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -81,11 +84,13 @@
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "children": [{
+    "children": [
+      {
         "title": "Intro",
         "slug": "intro",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      }, {
+      },
+      {
         "title": "TodoMVC App Install & Overview",
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -127,11 +132,13 @@
     "title": "Real World Examples",
     "slug": "real-world-examples",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "children": [{
+    "children": [
+      {
         "title": "Intro",
         "slug": "intro",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      }, {
+      },
+      {
         "title": "Real World App Overview",
         "slug": "real-world-app-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
