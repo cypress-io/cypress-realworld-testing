@@ -36,10 +36,14 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
+  const sections = Object.keys(learnJson);
+  const paths = sections.map((section) => {
+    const {title, children} = learnJson[section];
+    return { params: { section: section, lessons: children , title } };
+  })
+
   return {
-    paths: [
-      { params: { section: 'testing-your-first-application', lessons: [], title: "Testing Your First App" } },
-    ],
+    paths,
     fallback: true,
   }
 }
