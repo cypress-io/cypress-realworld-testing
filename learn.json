@@ -43,33 +43,33 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "children": [
       {
-        "title": "Intro",
-        "slug": "intro",
+        "title": "Testing is a Mindset",
+        "slug": "testing-is-a-mindset",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "What is Testing?",
-        "slug": "what-is-testing",
+        "title": "Knowing What to Test",
+        "slug": "knowing-what-to-test",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Manual vs Automated",
+        "slug": "manual-vs-automated",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Who should be responsible for testing?",
+        "slug": "who-should-be-responsible-for-testing",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "How to Write a Test",
+        "slug": "how-to-write-a-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "The Testing Pyramid",
         "slug": "the-testing-pyramid",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Thinking Test First",
-        "slug": "thinking-test-first",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "What do tests look like?",
-        "slug": "what-do-tests-look-like",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Testing FAQ's",
-        "slug": "testing-faqs",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
