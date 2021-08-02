@@ -5,6 +5,7 @@
     "dev": "next dev",
     "dev:watch": "next-remote-watch ./content",
     "lint": "next lint",
+    "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
     "start": "next start"
   },
   "dependencies": {
