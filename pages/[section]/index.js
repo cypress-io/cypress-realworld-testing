@@ -1,38 +1,30 @@
-import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Layout from '../../components/Layout'
-import SectionHero from "../../components/SectionHero"
-import SectionCard from "../../components/SectionCard"
+import Link from 'next/link'
 import learnJson from "../../learn.json"
 
 export default function SectionPage({ section, title, lessons }) {
   const router = useRouter()
-  
+  //const { section } = router.query
+
   return (
-    <Layout>
-      <Head>
-        <title>Testing Your First Application</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      
-      <SectionHero />
-      
-      <main>
-        {/* {lessons.map((lesson) => (
-          <div key={lesson.slug}>
-            <Link
-              as={`/${lesson.filePath.replace(/\.mdx?$/, '')}`}
-              href={`/[section]/[slug]`}
-            >
-              <a>{lesson.data.title}</a>
-            </Link>
-            <SectionCard lesson={ lesson } />
-          </div>
-        ))} */}
-        
-      </main>
-    </Layout>
+    <>
+      <span>{router.query.section}</span>
+      <br />
+      <span>{section}</span>
+      <span>{title}</span>
+      <ul>
+          {lessons.map((lesson) => (
+            <li key={lesson.slug}>
+              <Link
+                as={`/${section}/${lesson.slug}`}
+                href={`/[section]/[slug]`}
+              >
+                <a>{lesson.title}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+    </>
   )
 }
 
