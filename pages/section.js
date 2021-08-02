@@ -6,6 +6,7 @@ import path from 'path'
 import Layout from '../components/Layout'
 import { allContentFilePaths, CONTENT_PATH } from '../utils/mdxUtils'
 import SectionHero from "../components/SectionHero"
+import SectionCard from "../components/SectionCard"
 
 export default function Home({ content }) {
   return (
@@ -17,29 +18,20 @@ export default function Home({ content }) {
       
       <SectionHero />
       
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      
-        
-        
-      
-
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <ul>
-          {content.map((lesson) => (
-            <li key={lesson.filePath}>
-              <Link
-                as={`/${lesson.filePath.replace(/\.mdx?$/, '')}`}
-                href={`/[section]/[slug]`}
-              >
-                <a>{lesson.data.title}</a>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <main className="">
+        {content.map((lesson) => (
+          
+          <section key={lesson.filePath}>
+            {/* <Link
+              as={`/${lesson.filePath.replace(/\.mdx?$/, '')}`}
+              href={`/[section]/[slug]`}
+            >
+              <a>{lesson.data.title}</a>
+            </Link> */}
+            <SectionCard title={lesson.data.title }/>
+          </section>
+        ))}
       </main>
-
-      
-    </div>
     </Layout>
   )
 }

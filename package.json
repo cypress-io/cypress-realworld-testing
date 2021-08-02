@@ -10,6 +10,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.3",
+    "@tailwindcss/aspect-ratio": "^0.2.1",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
