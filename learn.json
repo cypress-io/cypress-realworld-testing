@@ -44,7 +44,7 @@
         "title": "Intro",
         "slug": "intro",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },{
+      }, {
         "title": "Cypress Runs in the Browser",
         "slug": "cypress-runs-in-the-browser",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -85,7 +85,7 @@
         "title": "Intro",
         "slug": "intro",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },{
+      }, {
         "title": "TodoMVC App Install & Overview",
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -131,7 +131,7 @@
         "title": "Intro",
         "slug": "intro",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },{
+      }, {
         "title": "Real World App Overview",
         "slug": "real-world-app-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
