@@ -6,7 +6,7 @@ import SectionHero from "../../components/SectionHero"
 import SectionCard from "../../components/SectionCard"
 import learnJson from "../../learn.json"
 
-export default function SectionPage({ section, title, lessons }) {
+export default function SectionPage({ section, title, lessons, description }) {
   const router = useRouter()
 
   return (
@@ -16,7 +16,7 @@ export default function SectionPage({ section, title, lessons }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SectionHero />
+      <SectionHero title={title} description={description}/>
 
       <main>
         {lessons.map((lesson) => (
@@ -30,9 +30,9 @@ export default function SectionPage({ section, title, lessons }) {
 }
 
 export async function getStaticProps({ params }) {
-  const { title, children } = learnJson[params.section]
+  const { title, children, description } = learnJson[params.section]
   return {
-    props: { section: params.section, lessons: children, title },
+    props: { section: params.section, lessons: children, title, description },
   }
 }
 
