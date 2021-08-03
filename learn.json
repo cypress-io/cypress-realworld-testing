@@ -119,11 +119,6 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "children": [
       {
-        "title": "Intro",
-        "slug": "intro",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
         "title": "Real World App Overview",
         "slug": "real-world-app-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -131,6 +126,71 @@
       {
         "title": "Unauthenticated Users",
         "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Login Errors",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Invalid Users",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Sign-up, Login, Create Bank Account and Logout",
+        "slug": "sign-up-login-and-logout",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "User Settings Overview & Setup",
+        "slug": "user-settings-overview-setup",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "User Setting Form Errors",
+        "slug": "user-setting-form-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Updating User Settings",
+        "slug": "updating-user-settings",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Bank Accounts Overview & Setup",
+        "slug": "bank-accounts-overview-setup",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Creating a New Bank Account",
+        "slug": "creating-a-new-bank-account",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Users without Bank Accounts",
+        "slug": "users-without-bank-accounts",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "New Transaction Overview & Setup",
+        "slug": "new-transaction-overview-setup",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Submitting a payment to another user",
+        "slug": "submitting-a-payment-to-another-user",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Verifying the deposit of a payment",
+        "slug": "verifying-the-deposit-of-a-payment",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Searching by attributes",
+        "slug": "searching-by-attributes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
