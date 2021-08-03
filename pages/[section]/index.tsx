@@ -19,13 +19,8 @@ export default function SectionPage({ section, title, lessons, description }) {
 
       <SectionHero title={title} description={description} />
 
-      <main>
-        {/* {lessons.map((lesson) => ( */}
-        {/* <div key={lesson.slug}> */}
-        {/* <SectionCard lesson={lesson} /> */}
+      <main className="mx-auto py-12 px-4 max-w-7xl">
         <SectionSteps lessons={lessons} />
-        {/* </div> */}
-        {/* ))} */}
       </main>
     </Layout>
   )

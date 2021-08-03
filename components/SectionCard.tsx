@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function SectionCard(props) {
   return (
     <div className="bg-white">
-      <div className="relative card-container border-2 rounded mx-auto  py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-12 lg:my-12">
+      <div className="relative card-container border-2 rounded mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-12 lg:my-12 lg:ml-8">
         <button
           type="button"
           className="absolute -top-4 -left-6 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-green-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
