@@ -1,95 +1,9 @@
 {
-  "testing-foundations": {
-    "title": "Testing Foundations",
-    "slug": "testing-foundations",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "children": [
-      {
-        "title": "Intro",
-        "slug": "intro",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "What is Testing?",
-        "slug": "what-is-testing",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "The Testing Pyramid",
-        "slug": "the-testing-pyramid",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Thinking Test First",
-        "slug": "thinking-test-first",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "What do tests look like?",
-        "slug": "what-do-tests-look-like",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Testing FAQ's",
-        "slug": "testing-faqs",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      }
-    ]
-  },
-
-  "cypress-fundamentals": {
-    "title": "Cypress Fundamentals",
-    "slug": "cypress-fundamentals",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "children": [
-      {
-        "title": "Intro",
-        "slug": "intro",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Cypress Runs in the Browser",
-        "slug": "cypress-runs-in-the-browser",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Understanding the Asynchronous Nature of Cypress",
-        "slug": "understanding-the-asynchronous-nature-of-cypress",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Aliases",
-        "slug": "aliases",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Waiting & Retry-ability",
-        "slug": "waiting-and-retry-ability",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Chaining Commands Together",
-        "slug": "chaining-commands-together",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Best Practices",
-        "slug": "best-practices",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      }
-    ]
-  },
-
   "testing-your-first-application": {
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "children": [
-      {
-        "title": "Intro",
-        "slug": "intro",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
       {
         "title": "TodoMVC App Install & Overview",
         "slug": "todomvc-app-install-and-overview",
@@ -119,10 +33,81 @@
         "title": "Negative Tests",
         "slug": "negative-tests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+
+  "testing-foundations": {
+    "title": "Testing Foundations",
+    "slug": "testing-foundations",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "children": [
+      {
+        "title": "Testing is a Mindset",
+        "slug": "testing-is-a-mindset",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Wrap Up",
-        "slug": "wrap-up",
+        "title": "Knowing What to Test",
+        "slug": "knowing-what-to-test",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Manual vs Automated",
+        "slug": "manual-vs-automated",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Who should be responsible for testing?",
+        "slug": "who-should-be-responsible-for-testing",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "How to Write a Test",
+        "slug": "how-to-write-a-test",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "The Testing Pyramid",
+        "slug": "the-testing-pyramid",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+
+  "cypress-fundamentals": {
+    "title": "Cypress Fundamentals",
+    "slug": "cypress-fundamentals",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "children": [
+      {
+        "title": "Cypress Runs in the Browser",
+        "slug": "cypress-runs-in-the-browser",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Command Chaining",
+        "slug": "command-chaining",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Understanding the Asynchronous Nature of Cypress",
+        "slug": "understanding-the-asynchronous-nature-of-cypress",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Aliases",
+        "slug": "aliases",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Waiting & Retry-ability",
+        "slug": "waiting-and-retry-ability",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Cypress Best Practices",
+        "slug": "cypress-best-practices",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -134,11 +119,6 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "children": [
       {
-        "title": "Intro",
-        "slug": "intro",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
         "title": "Real World App Overview",
         "slug": "real-world-app-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -146,6 +126,71 @@
       {
         "title": "Unauthenticated Users",
         "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Login Errors",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Invalid Users",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Sign-up, Login, Create Bank Account and Logout",
+        "slug": "sign-up-login-and-logout",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "User Settings Overview & Setup",
+        "slug": "user-settings-overview-setup",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "User Setting Form Errors",
+        "slug": "user-setting-form-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Updating User Settings",
+        "slug": "updating-user-settings",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Bank Accounts Overview & Setup",
+        "slug": "bank-accounts-overview-setup",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Creating a New Bank Account",
+        "slug": "creating-a-new-bank-account",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Users without Bank Accounts",
+        "slug": "users-without-bank-accounts",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "New Transaction Overview & Setup",
+        "slug": "new-transaction-overview-setup",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Submitting a payment to another user",
+        "slug": "submitting-a-payment-to-another-user",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Verifying the deposit of a payment",
+        "slug": "verifying-the-deposit-of-a-payment",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Searching by attributes",
+        "slug": "searching-by-attributes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
