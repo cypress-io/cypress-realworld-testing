@@ -6,6 +6,8 @@
     "dev:watch": "next-remote-watch ./content",
     "lint": "next lint",
     "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
+    "update-slugs": "ts-node scripts/updateSlugs.ts",
+    "generate-content": "ts-node scripts/generateContentFiles.ts",
     "start": "next start"
   },
   "dependencies": {
