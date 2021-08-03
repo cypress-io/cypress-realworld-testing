@@ -81,13 +81,13 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "children": [
       {
-        "title": "Intro",
-        "slug": "intro",
+        "title": "Cypress Runs in the Browser",
+        "slug": "cypress-runs-in-the-browser",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Cypress Runs in the Browser",
-        "slug": "cypress-runs-in-the-browser",
+        "title": "Command Chaining",
+        "slug": "command-chaining",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
@@ -106,13 +106,8 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Chaining Commands Together",
-        "slug": "chaining-commands-together",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Best Practices",
-        "slug": "best-practices",
+        "title": "Cypress Best Practices",
+        "slug": "cypress-best-practices",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
