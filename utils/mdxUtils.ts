@@ -1,6 +1,7 @@
 import fs from "fs"
 import path from "path"
 import glob from "glob"
+import toc from "markdown-toc"
 
 export const CONTENT_PATH = path.join(process.cwd(), "content")
 
@@ -13,3 +14,5 @@ export const allContentFilePaths = glob
   .sync("content/**/*")
   .filter((path) => /\.mdx?$/.test(path))
   .map((path) => path.replace(/^content\//, ""))
+
+export const getToCForMarkdown = (markdown) => toc(markdown).json
