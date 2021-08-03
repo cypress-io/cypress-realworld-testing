@@ -17,6 +17,7 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@types/react": "^17.0.15",
     "autoprefixer": "^10.2.6",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.0.1",
@@ -29,7 +30,9 @@
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
     "pretty-quick": "^3.1.1",
-    "tailwindcss": "^2.2.4"
+    "tailwindcss": "^2.2.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
   },
   "husky": {
     "hooks": {
