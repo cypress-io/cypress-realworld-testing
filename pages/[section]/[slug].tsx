@@ -7,7 +7,11 @@ import Head from "next/head"
 import Link from "next/link"
 import path from "path"
 import Layout from "../../components/Layout"
-import { CONTENT_PATH, allContentFilePaths } from "../../utils/mdxUtils"
+import {
+  CONTENT_PATH,
+  allContentFilePaths,
+  getToCForMarkdown,
+} from "../../utils/mdxUtils"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -22,7 +26,7 @@ const components = {
   Head,
 }
 
-export default function ContentPage({ source, frontMatter }) {
+export default function ContentPage({ source, frontMatter, toc }) {
   return (
     <Layout>
       <Head>
@@ -35,6 +39,15 @@ export default function ContentPage({ source, frontMatter }) {
           <p className="description">{frontMatter.description}</p>
         )}
       </div>
+
+      <h2>ToC</h2>
+      <ul>
+        {toc.map((item) => (
+          <li key={item.slug}>
+            Header: {item.content}, Slug: {item.slug}, Level: {item.lvl}
+          </li>
+        ))}
+      </ul>
 
       <main>
         <MDXRemote {...source} components={components} />
@@ -53,6 +66,8 @@ export const getStaticProps = async ({ params }) => {
 
   const { content, data } = matter(source)
 
+  const toc = getToCForMarkdown(content)
+
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
@@ -66,6 +81,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       source: mdxSource,
       frontMatter: data,
+      toc,
     },
   }
 }

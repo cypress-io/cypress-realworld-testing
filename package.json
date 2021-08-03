@@ -27,6 +27,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "gray-matter": "^4.0.3",
     "husky": "^7.0.1",
+    "markdown-toc": "^1.2.0",
     "next-mdx-remote": "^3.0.4",
     "next-remote-watch": "1.0.0",
     "postcss": "^8.3.5",
