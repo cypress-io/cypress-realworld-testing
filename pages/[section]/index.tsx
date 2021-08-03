@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import Layout from "../../components/Layout"
 import SectionHero from "../../components/SectionHero"
 import SectionCard from "../../components/SectionCard"
+import SectionSteps from "../../components/SectionSteps"
 import learnJson from "../../learn.json"
 
 export default function SectionPage({ section, title, lessons, description }) {
@@ -16,14 +17,15 @@ export default function SectionPage({ section, title, lessons, description }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SectionHero title={title} description={description}/>
+      <SectionHero title={title} description={description} />
 
       <main>
-        {lessons.map((lesson) => (
-          <div key={lesson.slug}>
-            <SectionCard lesson={lesson} />
-          </div>
-        ))}
+        {/* {lessons.map((lesson) => ( */}
+        {/* <div key={lesson.slug}> */}
+        {/* <SectionCard lesson={lesson} /> */}
+        <SectionSteps lessons={lessons} />
+        {/* </div> */}
+        {/* ))} */}
       </main>
     </Layout>
   )

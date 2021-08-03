@@ -7,32 +7,38 @@
       {
         "title": "TodoMVC App Install & Overview",
         "slug": "todomvc-app-install-and-overview",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "status": "Completed"
       },
       {
         "title": "Installing Cypress & writing our first test",
         "slug": "installing-cypress-and-writing-our-first-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "status": "Completed"
       },
       {
         "title": "Multiple Todos & Before Each",
         "slug": "multiple-todos-and-before-each",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "status": "Current"
       },
       {
         "title": "How to Use Cypress Commands",
         "slug": "how-to-use-cypress-commands",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "status": "Upcoming"
       },
       {
         "title": "Cypress Log, Snapshot & Aliases",
         "slug": "cypress-log-snapshot-and-aliases",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "status": "Upcoming"
       },
       {
         "title": "Negative Tests",
         "slug": "negative-tests",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "status": "Upcoming"
       }
     ]
   },
