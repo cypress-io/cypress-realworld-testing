@@ -6,12 +6,12 @@
     "children": [{
         "title": "TodoMVC App Install & Overview",
         "slug": "todomvc-app-install-and-overview",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Installing a Todo App is really difficult"
       },
       {
         "title": "Installing Cypress & writing our first test",
         "slug": "installing-cypress-and-writing-our-first-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Learn how to install Cypress and write your first test"
       },
       {
         "title": "Multiple Todos & Before Each",
