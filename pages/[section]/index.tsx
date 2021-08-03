@@ -3,17 +3,24 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import Layout from "../../components/Layout"
 import SectionHero from "../../components/SectionHero"
-import SectionCard from "../../components/SectionCard"
 import SectionSteps from "../../components/SectionSteps"
+import SectionFooter from "../../components/SectionFooter"
 import learnJson from "../../learn.json"
 
-export default function SectionPage({ section, title, lessons, description }) {
+export default function SectionPage({
+  section,
+  title,
+  lessons,
+  description,
+  nextSection,
+}) {
   const router = useRouter()
+  console.log(nextSection)
 
   return (
     <Layout>
       <Head>
-        <title>Testing Your First Application</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -22,14 +29,26 @@ export default function SectionPage({ section, title, lessons, description }) {
       <main className="mx-auto py-12 px-4 max-w-7xl">
         <SectionSteps lessons={lessons} />
       </main>
+
+      <SectionFooter nextSection={nextSection} />
     </Layout>
   )
 }
 
 export async function getStaticProps({ params }) {
   const { title, children, description } = learnJson[params.section]
+  // TODO: Clean this up
+  const sections = Object.keys(learnJson)
+  const nextSectionIndex = sections.indexOf(params.section) + 1
+  const nextSection = learnJson[sections[nextSectionIndex]]
   return {
-    props: { section: params.section, lessons: children, title, description },
+    props: {
+      section: params.section,
+      lessons: children,
+      title,
+      description,
+      nextSection,
+    },
   }
 }
 

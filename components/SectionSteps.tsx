@@ -33,7 +33,7 @@ export default function SectionSteps(props) {
       <ol className="overflow-hidden">
         {props.lessons.map((lesson, index) => (
           <li
-            key={lesson.name}
+            key={lesson.title}
             className={classNames(
               index !== steps.length - 1 ? "pb-10" : "",
               "relative"
