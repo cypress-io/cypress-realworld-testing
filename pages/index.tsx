@@ -4,11 +4,14 @@ import Head from "next/head"
 import Link from "next/link"
 import path from "path"
 import Layout from "../components/Layout"
+import HomeHero from "../components/Home/HomeHero"
 import { allContentFilePaths, CONTENT_PATH } from "../utils/mdxUtils"
 
 export default function Home({ content }) {
   return (
     <Layout>
+      <HomeHero />
+
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <Head>
           <title>Real World Testing with Cypress</title>
