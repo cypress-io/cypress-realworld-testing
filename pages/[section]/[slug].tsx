@@ -1,6 +1,6 @@
 import fs from "fs"
 import matter from "gray-matter"
-import { MDXRemote } from "next-mdx-remote"
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 //import dynamic from 'next/dynamic'
 import Head from "next/head"
@@ -8,6 +8,7 @@ import Link from "next/link"
 import path from "path"
 import Layout from "../../components/Layout"
 import LessonSideNav from "../../components/LessonSidenav"
+import { LessonTableOfContents } from "../../types/common"
 import {
   CONTENT_PATH,
   allContentFilePaths,
@@ -27,7 +28,15 @@ const components = {
   Head,
 }
 
-export default function ContentPage({ source, frontMatter, toc }) {
+type Props = {
+  source: MDXRemoteSerializeResult<Record<string, unknown>>
+  frontMatter: {
+    [key: string]: any
+  }
+  toc: LessonTableOfContents[]
+}
+
+export default function ContentPage({ source, frontMatter, toc }: Props) {
   return (
     <Layout>
       <Head>
@@ -59,7 +68,7 @@ export const getStaticProps = async ({ params }) => {
 
   const { content, data } = matter(source)
 
-  const toc = getToCForMarkdown(content)
+  const toc: LessonTableOfContents[] = getToCForMarkdown(content)
 
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins

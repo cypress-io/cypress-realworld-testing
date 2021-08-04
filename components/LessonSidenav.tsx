@@ -1,8 +1,14 @@
+import { LessonTableOfContents } from "../types/common"
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSideNav({ navigation }) {
+type Props = {
+  navigation: LessonTableOfContents[]
+}
+
+export default function LessonSideNav({ navigation }: Props) {
   return (
     <nav className="space-y-1" aria-label="Sidebar">
       {navigation.map((item) => (
