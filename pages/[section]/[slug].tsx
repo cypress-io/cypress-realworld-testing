@@ -7,6 +7,7 @@ import Head from "next/head"
 import Link from "next/link"
 import path from "path"
 import Layout from "../../components/Layout"
+import LessonSideNav from "../../components/LessonSidenav"
 import {
   CONTENT_PATH,
   allContentFilePaths,
@@ -40,16 +41,8 @@ export default function ContentPage({ source, frontMatter, toc }) {
         )}
       </div>
 
-      <h2>ToC</h2>
-      <ul>
-        {toc.map((item) => (
-          <li key={item.slug}>
-            Header: {item.content}, Slug: {item.slug}, Level: {item.lvl}
-          </li>
-        ))}
-      </ul>
-
-      <main>
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <LessonSideNav navigation={toc} />
         <MDXRemote {...source} components={components} />
       </main>
     </Layout>
