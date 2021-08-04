@@ -1,6 +1,5 @@
 import Head from "next/head"
 import Link from "next/link"
-import { useRouter } from "next/router"
 import Layout from "../../components/Layout"
 import SectionHero from "../../components/SectionHero"
 import SectionSteps from "../../components/SectionSteps"
@@ -14,9 +13,6 @@ export default function SectionPage({
   description,
   nextSection,
 }) {
-  const router = useRouter()
-  console.log(nextSection)
-
   return (
     <Layout>
       <Head>
@@ -30,17 +26,25 @@ export default function SectionPage({
         <SectionSteps lessons={lessons} />
       </main>
 
-      <SectionFooter nextSection={nextSection} />
+      {nextSection && <SectionFooter nextSection={nextSection} />}
+
+      {/* <SectionFooter nextSection={nextSection} /> */}
     </Layout>
   )
 }
 
 export async function getStaticProps({ params }) {
   const { title, children, description } = learnJson[params.section]
-  // TODO: Clean this up
   const sections = Object.keys(learnJson)
   const nextSectionIndex = sections.indexOf(params.section) + 1
-  const nextSection = learnJson[sections[nextSectionIndex]]
+  let nextSection
+
+  if (nextSectionIndex < sections.length) {
+    nextSection = learnJson[sections[nextSectionIndex]]
+  } else {
+    nextSection = null
+  }
+
   return {
     props: {
       section: params.section,
