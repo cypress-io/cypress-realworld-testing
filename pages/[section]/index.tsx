@@ -27,8 +27,6 @@ export default function SectionPage({
       </main>
 
       {nextSection && <SectionFooter nextSection={nextSection} />}
-
-      {/* <SectionFooter nextSection={nextSection} /> */}
     </Layout>
   )
 }
