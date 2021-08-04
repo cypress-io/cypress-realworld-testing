@@ -42,7 +42,6 @@
       }
     ]
   },
-
   "testing-foundations": {
     "title": "Testing Foundations",
     "slug": "testing-foundations",
@@ -80,7 +79,6 @@
       }
     ]
   },
-
   "cypress-fundamentals": {
     "title": "Cypress Fundamentals",
     "slug": "cypress-fundamentals",
@@ -118,7 +116,6 @@
       }
     ]
   },
-
   "real-world-examples": {
     "title": "Real World Examples",
     "slug": "real-world-examples",
@@ -146,12 +143,12 @@
       },
       {
         "title": "Sign-up, Login, Create Bank Account and Logout",
-        "slug": "sign-up-login-and-logout",
+        "slug": "sign-up-login-create-bank-account-and-logout",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "User Settings Overview & Setup",
-        "slug": "user-settings-overview-setup",
+        "slug": "user-settings-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
@@ -166,7 +163,7 @@
       },
       {
         "title": "Bank Accounts Overview & Setup",
-        "slug": "bank-accounts-overview-setup",
+        "slug": "bank-accounts-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
@@ -181,7 +178,7 @@
       },
       {
         "title": "New Transaction Overview & Setup",
-        "slug": "new-transaction-overview-setup",
+        "slug": "new-transaction-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {

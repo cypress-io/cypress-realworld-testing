@@ -6,6 +6,8 @@
     "dev:watch": "next-remote-watch ./content",
     "lint": "next lint",
     "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
+    "update-slugs": "ts-node scripts/updateSlugs.ts",
+    "generate-content": "ts-node scripts/generateContentFiles.ts",
     "start": "next start"
   },
   "dependencies": {
@@ -25,11 +27,13 @@
     "eslint-plugin-prettier": "^3.4.0",
     "gray-matter": "^4.0.3",
     "husky": "^7.0.1",
+    "markdown-toc": "^1.2.0",
     "next-mdx-remote": "^3.0.4",
     "next-remote-watch": "1.0.0",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
     "pretty-quick": "^3.1.1",
+    "slugify": "^1.6.0",
     "tailwindcss": "^2.2.4",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"

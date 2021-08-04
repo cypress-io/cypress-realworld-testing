@@ -1,13 +1,22 @@
-const path = require("path")
-const fs = require("fs")
-const learnJson = require("../learn.json")
+import path from "path"
+import fs from "fs"
+import learnJson from "../learn.json"
 
 const sections = Object.keys(learnJson)
 
 sections.map((section) => {
   const { children } = learnJson[section]
   children.map((lesson) => {
-    const fileData = `---\ntitle: ${lesson.title}\n---\n\n${lesson.title}`
+    const fileData = `---
+title: ${lesson.title}
+---
+# ${lesson.title}
+
+## SubHeader
+${lesson.description}
+
+## Another SubHeader
+${lesson.description}`
 
     fs.writeFile(
       path.join(process.cwd(), `/content/${section}/${lesson.slug}.mdx`),
