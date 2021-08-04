@@ -1,17 +1,3 @@
-import {
-  BookmarkAltIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  CursorClickIcon,
-  MenuIcon,
-  PhoneIcon,
-  PlayIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
-  XIcon,
-} from "@heroicons/react/outline"
 import Image from "next/image"
 
 export default function SectionHero(props) {
@@ -32,7 +18,7 @@ export default function SectionHero(props) {
                 type="button"
                 className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Subscribe to Updates
+                Start Lesson
               </button>
               <button
                 type="button"
