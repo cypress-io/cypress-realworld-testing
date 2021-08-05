@@ -11,21 +11,13 @@
         "status": "Completed",
         "challenges": [
           {
-            "type": "quiz",
+            "challengeType": "multiple-choice",
             "question": "What is the command to run Cypress in open mode?",
-            "answers": [
-              {
-                "answer": "yarn run bob",
-                "correct": false
-              },
-              {
-                "answer": "yarn run cypress:open",
-                "correct": true
-              }
-            ]
+            "correctAnswerIndex": 1,
+            "choices": ["yarn run bob", "yarn run cypress:open"]
           },
           {
-            "type": "freeform",
+            "challengeType": "freeform",
             "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
             "answer": "cy.get('.new-todo').should('exist')",
             "hint": "Use the cy.get and should commands"
