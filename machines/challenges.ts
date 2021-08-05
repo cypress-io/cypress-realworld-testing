@@ -1,33 +1,25 @@
-import { createMachine } from "xstate"
+import { assign, createMachine } from "xstate"
 import { find } from "lodash/fp"
+import learnJson from "../learn.json"
 
-/*
-const challengeMachine = createMachine({
-  id: "challenge",
-  initial: "pending",
-  context: {
-    results: [
-      {
-        id: "testing-your-first-application/todomvc-app-install-and-overview",
-        answeredCorrectly: true,
-        skipped: false,
-      },
-    ],
-  },
-  states: {
-    pending: {
-      on: {
-        SUBMIT_ANSWER: "validating",
-      },
-    },
-    validating: {
-      on: { target: "answeredCorrectly", cond: "validateAnswer" },
-    },
-  },
-})
-*/
+interface ChallengeAnswer {
+  id: string
+  answeredCorrectly?: boolean
+  skipped?: boolean
+}
+interface EventPayload {
+  type: string
+  id: string
+  challengeIndex: number
+}
 
-const learnJson = {}
+interface MultipleChoicePayload extends EventPayload {
+  userAnswerIndex: number
+}
+
+interface FreeFormPayload extends EventPayload {
+  userAnswer: string
+}
 
 const validateAnswer = (context, event) => {
   const { sectionSlug, lessonSlug } = event.id.split("/")
@@ -44,20 +36,52 @@ const validateAnswer = (context, event) => {
   return false
 }
 
-interface EventPayload {
-  type: string
-  id: string
-  challengeIndex: number
-}
+const challengeMachine = createMachine(
+  {
+    id: "challenge",
+    initial: "pending",
+    context: {
+      challengeAnswers: [] as ChallengeAnswer[],
+    },
+    states: {
+      pending: {
+        on: {
+          SUBMIT_ANSWER: "validating",
+        },
+      },
+      validating: {
+        on: {
+          "": [
+            {
+              target: "answeredCorrectly",
+              cond: validateAnswer,
+            },
+            { target: "invalid" },
+          ],
+        },
+      },
+      answeredCorrectly: {
+        entry: "saveChallengeAnswer",
+      },
+      invalid: {},
+    },
+  },
+  {
+    actions: {
+      saveChallengeAnswer: assign((ctx: any, event: any) => ({
+        challengeAnswers: ctx.challengeAnswers.push({
+          id: event.id,
+          answeredCorrectly: true,
+        }),
+      })),
+    },
+    guards: {
+      validateAnswer,
+    },
+  }
+)
 
-interface MultipleChoicePayload extends EventPayload {
-  userAnswerIndex: number
-}
-
-interface FreeFormPayload extends EventPayload {
-  userAnswer: string
-}
-
+// Examples
 const mcEvent: MultipleChoicePayload = {
   type: "SUBMIT_ANSWER",
   id: "testing-your-first-application/todomvc-app-install-and-overview",
@@ -72,40 +96,8 @@ const ffEvent: FreeFormPayload = {
   userAnswer: "cy.get('.new-todo').should('exist')",
 }
 
-const challengeMachine = createMachine({
-  id: "challenge",
-  initial: "pending",
-  context: {
-    results: [
-      {
-        id: "testing-your-first-application/todomvc-app-install-and-overview",
-        type: "",
-        answeredCorrectly: true,
-        skipped: false,
-      },
-    ],
-  },
-  states: {
-    pending: {
-      on: {
-        SUBMIT_ANSWER: "validating",
-      },
-    },
-    validating: {
-      on: {
-        "": [
-          {
-            target: "answeredCorrectly",
-            cond: validateAnswer,
-          },
-          { target: "invalid" },
-        ],
-      },
-    },
-    answeredCorrectly: {},
-    invalid: {},
-  },
-  guards: {
-    validateAnswer,
-  },
-})
+const challengeAnswer: ChallengeAnswer = {
+  id: "testing-your-first-application/todomvc-app-install-and-overview",
+  answeredCorrectly: true,
+  skipped: false,
+}
