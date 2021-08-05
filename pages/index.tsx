@@ -1,5 +1,7 @@
 // import fs from "fs"
 // import matter from "gray-matter"
+import React from "react"
+import Slider from "react-slick"
 import Head from "next/head"
 // import Link from "next/link"
 // import path from "path"
@@ -10,6 +12,13 @@ import HomeCard from "../components/Home/HomeCard"
 import learnJson from "../learn.json"
 
 export default function Home({ content, sections }) {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+  }
   return (
     <Layout>
       <HomeHero />
@@ -47,11 +56,13 @@ export default function Home({ content, sections }) {
                 {content[section].description}
               </p>
 
-              {content[section].children.map((lesson) => (
-                <div key={lesson.title}>
-                  <HomeCard lesson={lesson} />
-                </div>
-              ))}
+              <Slider {...settings}>
+                {content[section].children.map((lesson) => (
+                  <div key={lesson.title}>
+                    <HomeCard lesson={lesson} />
+                  </div>
+                ))}
+              </Slider>
             </div>
           ))}
         </main>
