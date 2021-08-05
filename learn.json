@@ -8,7 +8,29 @@
         "title": "TodoMVC App Install & Overview",
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Completed"
+        "status": "Completed",
+        "challenges": [
+          {
+            "type": "quiz",
+            "question": "What is the command to run Cypress in open mode?",
+            "answers": [
+              {
+                "answer": "yarn run bob",
+                "correct": false
+              },
+              {
+                "answer": "yarn run cypress:open",
+                "correct": true
+              }
+            ]
+          },
+          {
+            "type": "freeform",
+            "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
+            "answer": "cy.get('.new-todo').should('exist')",
+            "hint": "Use the cy.get and should commands"
+          }
+        ]
       },
       {
         "title": "Installing Cypress & writing our first test",
