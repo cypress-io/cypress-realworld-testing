@@ -9,7 +9,7 @@
     "update-slugs": "ts-node scripts/updateSlugs.ts",
     "generate-content": "ts-node scripts/generateContentFiles.ts",
     "start": "next start",
-    "test": "mocha"
+    "test": "mocha -r ts-node/register 'tests/**/*.ts'"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
@@ -22,7 +22,9 @@
     "xstate": "^4.23.1"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.21",
     "@types/lodash": "^4.14.172",
+    "@types/mocha": "^9.0.0",
     "@types/react": "^17.0.15",
     "autoprefixer": "^10.2.6",
     "chai": "^4.3.4",
