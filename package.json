@@ -8,7 +8,8 @@
     "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
     "update-slugs": "ts-node scripts/updateSlugs.ts",
     "generate-content": "ts-node scripts/generateContentFiles.ts",
-    "start": "next start"
+    "start": "next start",
+    "test": "mocha"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
