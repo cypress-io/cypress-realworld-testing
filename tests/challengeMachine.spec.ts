@@ -33,7 +33,7 @@ describe("challenge machine", () => {
 
     challengeService.start()
   })
-  it("can validate a correct answer", () => {
+  it("can validate a correct multiple choice answer", () => {
     expect(challengeService.state.value).to.equal("pending")
 
     challengeService.send({
