@@ -26,17 +26,17 @@ export const challengeMachine = createMachine(
         on: {
           SUBMIT_ANSWER: [
             {
-              target: "answeredCorrectly",
+              target: "correct",
               cond: "validateAnswer",
             },
-            { target: "invalid" },
+            { target: "incorrect" },
           ],
         },
       },
-      answeredCorrectly: {
+      correct: {
         entry: "saveChallengeAnswer",
       },
-      invalid: {},
+      incorrect: {},
     },
   },
   {
@@ -56,7 +56,7 @@ export const challengeMachine = createMachine(
         if (challenge.challengeType === "multiple-choice") {
           return challenge.correctAnswerIndex === event.userAnswerIndex
         }
-        
+
         if (challenge.challengeType === "freeform") {
           return challenge.answer === event.userAnswer
         }

@@ -51,37 +51,33 @@ describe("challenge machine", () => {
   it("can validate a correct multiple choice answer", () => {
     challengeService.send(mcCorrectAnswerEvent)
 
-    expect(challengeService.state.value).to.equal("answeredCorrectly")
+    expect(challengeService.state.value).to.equal("correct")
     expect(challengeService.state.context.id).to.equal(mcCorrectAnswerEvent.id)
   })
 
   it("can validate an incorrect multiple choice answer", () => {
     challengeService.send(mcInCorrectAnswerEvent)
-
-    expect(challengeService.state.value).to.equal("invalid")
+    expect(challengeService.state.value).to.equal("incorrect")
   })
   it("can validate a correct freeform answer", () => {
     challengeService.send(ffCorrectAnswerEvent)
-
-    expect(challengeService.state.value).to.equal("answeredCorrectly")
+    expect(challengeService.state.value).to.equal("correct")
   })
 
   it("can validate an incorrect freeform answer", () => {
     challengeService.send(ffInCorrectAnswerEvent)
-
-    expect(challengeService.state.value).to.equal("invalid")
+    expect(challengeService.state.value).to.equal("incorrect")
   })
-  
+
   it("can save the correct answer", () => {
-    expect(challengeService.state.context).to.be.empty;
+    expect(challengeService.state.context).to.be.empty
     challengeService.send(mcCorrectAnswerEvent)
-    // console.log(challengeService.state.context)
     expect(challengeService.state.context).to.not.be.empty
   })
-  
+
   it("does not save an incorrect answer", () => {
-    expect(challengeService.state.context).to.be.empty;
+    expect(challengeService.state.context).to.be.empty
     challengeService.send(ffInCorrectAnswerEvent)
-    expect(challengeService.state.context).to.be.empty;
+    expect(challengeService.state.context).to.be.empty
   })
 })
