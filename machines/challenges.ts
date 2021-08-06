@@ -1,22 +1,6 @@
-import { assign, createMachine, forwardTo } from "xstate"
+import { assign, createMachine } from "xstate"
 import { find } from "lodash/fp"
 import learnJson from "../learn.json"
-
-const validateAnswer = (context, event) => {
-  console.log(event)
-  const { sectionSlug, lessonSlug } = event.id.split("/")
-  const lessons = learnJson[sectionSlug].children
-  const lesson = find({ slug: lessonSlug }, lessons)
-  const challenge = lesson[event.challengeIndex]
-
-  if (challenge.challengeType === "multiple-choice") {
-    return event.correctAnswerIndex === event.userAnswerIndex
-  }
-
-  //const userAnswer = normalizeData(event.userAnswer)
-
-  return false
-}
 
 /*
 export const progressMachine = createMachine({
@@ -41,20 +25,16 @@ export const challengeMachine = createMachine(
     states: {
       pending: {
         on: {
-          SUBMIT_ANSWER: "validating",
-        },
-      },
-      validating: {
-        on: {
-          "*": [
+          SUBMIT_ANSWER: [
             {
               target: "answeredCorrectly",
-              cond: validateAnswer,
+              cond: "validateAnswer",
             },
             { target: "invalid" },
           ],
         },
       },
+      validating: {},
       answeredCorrectly: {
         entry: "saveChallengeAnswer",
       },
@@ -71,7 +51,21 @@ export const challengeMachine = createMachine(
       })),
     },
     guards: {
-      validateAnswer,
+      validateAnswer: (context, event) => {
+        console.log("EVENT", event)
+        /*const { sectionSlug, lessonSlug } = event.id.split("/")
+        const lessons = learnJson[sectionSlug].children
+        const lesson = find({ slug: lessonSlug }, lessons)
+        const challenge = lesson[event.challengeIndex]
+
+        if (challenge.challengeType === "multiple-choice") {
+          return event.correctAnswerIndex === event.userAnswerIndex
+        }*/
+
+        //const userAnswer = normalizeData(event.userAnswer)
+
+        return false
+      },
     },
   }
 )
