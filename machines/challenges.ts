@@ -46,7 +46,7 @@ export const challengeMachine = createMachine(
       },
       validating: {
         on: {
-          "": [
+          SUBMIT_ANSWER: [
             {
               target: "answeredCorrectly",
               cond: validateAnswer,
