@@ -36,7 +36,7 @@ const validateAnswer = (context, event) => {
   return false
 }
 
-const challengeMachine = createMachine(
+export const challengeMachine = createMachine(
   {
     id: "challenge",
     initial: "pending",
