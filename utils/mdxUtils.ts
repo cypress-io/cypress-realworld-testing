@@ -2,6 +2,7 @@ import fs from "fs"
 import path from "path"
 import glob from "glob"
 import toc from "markdown-toc"
+import { LessonTableOfContents } from "../types/common"
 
 export const CONTENT_PATH = path.join(process.cwd(), "content")
 
@@ -15,4 +16,5 @@ export const allContentFilePaths = glob
   .filter((path) => /\.mdx?$/.test(path))
   .map((path) => path.replace(/^content\//, ""))
 
-export const getToCForMarkdown = (markdown) => toc(markdown).json
+export const getToCForMarkdown = (markdown): LessonTableOfContents[] =>
+  toc(markdown).json
