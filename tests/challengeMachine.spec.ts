@@ -1,7 +1,7 @@
 import { expect } from "chai"
 import { ChallengeAnswer, FreeFormPayload, MultipleChoicePayload } from "common"
 import { interpret } from "xstate"
-import { challengeMachine } from "../machines/challenges"
+import { challengeMachine } from "../machines/challengesMachine"
 
 const mcCorrectAnswerEvent: MultipleChoicePayload = {
   type: "SUBMIT_ANSWER",
