@@ -56,6 +56,10 @@ export const challengeMachine = createMachine(
         if (challenge.challengeType === "multiple-choice") {
           return challenge.correctAnswerIndex === event.userAnswerIndex
         }
+        
+        if (challenge.challengeType === "freeform") {
+          return challenge.answer === event.userAnswer
+        }
 
         //const userAnswer = normalizeData(event.userAnswer)
 
