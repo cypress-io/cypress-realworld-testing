@@ -9,7 +9,7 @@
     "update-slugs": "ts-node scripts/updateSlugs.ts",
     "generate-content": "ts-node scripts/generateContentFiles.ts",
     "start": "next start",
-    "test": "mocha -r ts-node/register 'tests/**/*.ts'"
+    "test": "mocha -r ts-node/register -r tsconfig-paths/register 'tests/**/*.ts'"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
@@ -47,6 +47,7 @@
     "slugify": "^1.6.0",
     "tailwindcss": "^2.2.4",
     "ts-node": "^10.1.0",
+    "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.5",
     "url-loader": "^4.1.1"
   },
