@@ -17,11 +17,18 @@ const mcInCorrectAnswerEvent: MultipleChoicePayload = {
   userAnswerIndex: 0,
 }
 
-const ffEvent: FreeFormPayload = {
+const ffCorrectAnswerEvent: FreeFormPayload = {
   type: "SUBMIT_ANSWER",
   id: "testing-your-first-application/todomvc-app-install-and-overview",
   challengeIndex: 1,
   userAnswer: "cy.get('.new-todo').should('exist')",
+}
+
+const ffInCorrectAnswerEvent: FreeFormPayload = {
+  type: "SUBMIT_ANSWER",
+  id: "testing-your-first-application/todomvc-app-install-and-overview",
+  challengeIndex: 1,
+  userAnswer: "cy.get('.new-todo')",
 }
 
 const challengeAnswer: ChallengeAnswer = {
@@ -45,10 +52,22 @@ describe("challenge machine", () => {
     challengeService.send(mcCorrectAnswerEvent)
 
     expect(challengeService.state.value).to.equal("answeredCorrectly")
+    expect(challengeService.state.context.id).to.equal(mcCorrectAnswerEvent.id)
   })
 
   it("can validate an incorrect multiple choice answer", () => {
     challengeService.send(mcInCorrectAnswerEvent)
+
+    expect(challengeService.state.value).to.equal("invalid")
+  })
+  it("can validate a correct freeform answer", () => {
+    challengeService.send(ffCorrectAnswerEvent)
+
+    expect(challengeService.state.value).to.equal("answeredCorrectly")
+  })
+
+  it("can validate an incorrect freeform answer", () => {
+    challengeService.send(ffInCorrectAnswerEvent)
 
     expect(challengeService.state.value).to.equal("invalid")
   })

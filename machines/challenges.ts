@@ -20,9 +20,7 @@ export const challengeMachine = createMachine(
   {
     id: "challenge",
     initial: "pending",
-    context: {
-      challengeAnswers: [] as ChallengeAnswer[],
-    },
+    context: {} as ChallengeAnswer,
     states: {
       pending: {
         on: {
@@ -35,7 +33,6 @@ export const challengeMachine = createMachine(
           ],
         },
       },
-      validating: {},
       answeredCorrectly: {
         entry: "saveChallengeAnswer",
       },
@@ -45,10 +42,8 @@ export const challengeMachine = createMachine(
   {
     actions: {
       saveChallengeAnswer: assign((ctx: any, event: any) => ({
-        challengeAnswers: ctx.challengeAnswers.push({
-          id: event.id,
-          answeredCorrectly: true,
-        }),
+        id: event.id,
+        answeredCorrectly: true,
       })),
     },
     guards: {
