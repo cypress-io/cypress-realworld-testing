@@ -71,4 +71,17 @@ describe("challenge machine", () => {
 
     expect(challengeService.state.value).to.equal("invalid")
   })
+  
+  it("can save the correct answer", () => {
+    expect(challengeService.state.context).to.be.empty;
+    challengeService.send(mcCorrectAnswerEvent)
+    // console.log(challengeService.state.context)
+    expect(challengeService.state.context).to.not.be.empty
+  })
+  
+  it("does not save an incorrect answer", () => {
+    expect(challengeService.state.context).to.be.empty;
+    challengeService.send(ffInCorrectAnswerEvent)
+    expect(challengeService.state.context).to.be.empty;
+  })
 })

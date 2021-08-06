@@ -56,10 +56,10 @@ export const challengeMachine = createMachine(
         if (challenge.challengeType === "multiple-choice") {
           return challenge.correctAnswerIndex === event.userAnswerIndex
         }
-
-        //const userAnswer = normalizeData(event.userAnswer)
-
-        return false
+        
+        if (challenge.challengeType === "freeform") {
+          return challenge.answer === event.userAnswer
+        }
       },
     },
   }
