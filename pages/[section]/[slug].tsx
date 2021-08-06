@@ -1,12 +1,14 @@
 import fs from "fs"
 import matter from "gray-matter"
-import { MDXRemote } from "next-mdx-remote"
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 //import dynamic from 'next/dynamic'
 import Head from "next/head"
 import Link from "next/link"
 import path from "path"
 import Layout from "../../components/Layout"
+import LessonSideNav from "../../components/LessonSidenav"
+import { LessonTableOfContents } from "../../types/common"
 import {
   CONTENT_PATH,
   allContentFilePaths,
@@ -26,7 +28,15 @@ const components = {
   Head,
 }
 
-export default function ContentPage({ source, frontMatter, toc }) {
+type Props = {
+  source: MDXRemoteSerializeResult<Record<string, unknown>>
+  frontMatter: {
+    [key: string]: any
+  }
+  toc: LessonTableOfContents[]
+}
+
+export default function ContentPage({ source, frontMatter, toc }: Props) {
   return (
     <Layout>
       <Head>
@@ -40,24 +50,25 @@ export default function ContentPage({ source, frontMatter, toc }) {
         )}
       </div>
 
-      <h2>ToC</h2>
-      <ul>
-        {toc.map((item) => (
-          <li key={item.slug}>
-            Header: {item.content}, Slug: {item.slug}, Level: {item.lvl}
-          </li>
-        ))}
-      </ul>
+      <main className="w-full max-w-7xl mx-auto">
+        <div className="lg:flex">
+          <div className="fixed z-40 inset-0 flex-none h-full bg-black bg-opacity-25 w-full lg:bg-white lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-60 xl:w-72 lg:block hidden">
+            <LessonSideNav navigation={toc} />
+          </div>
 
-      <main>
-        <MDXRemote {...source} components={components} />
+          <div
+            id="content-wrapper"
+            className="min-w-0 w-full flex-auto lg:static lg:max-h-full lg:overflow-visible"
+          >
+            <MDXRemote {...source} components={components} />
+          </div>
+        </div>
       </main>
     </Layout>
   )
 }
 
 export const getStaticProps = async ({ params }) => {
-  console.log(params)
   const contentFilePath = path.join(
     CONTENT_PATH,
     `${params.section}/${params.slug}.mdx`
@@ -66,7 +77,7 @@ export const getStaticProps = async ({ params }) => {
 
   const { content, data } = matter(source)
 
-  const toc = getToCForMarkdown(content)
+  const toc: LessonTableOfContents[] = getToCForMarkdown(content)
 
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
@@ -87,8 +98,6 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const allpaths = allContentFilePaths
-  console.log("all", allpaths)
   const paths = allContentFilePaths
     // Remove file extensions for page paths
     .map((path) => path.replace(/\.mdx?$/, ""))
@@ -97,7 +106,6 @@ export const getStaticPaths = async () => {
       const [section, slug] = filePath.split("/")
       return { params: { slug, section } }
     })
-  console.log("paths", paths)
 
   return {
     paths,
