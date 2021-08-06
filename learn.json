@@ -3,6 +3,7 @@
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "status": "Completed",
     "children": [
       {
         "title": "TodoMVC App Install & Overview",
@@ -60,6 +61,7 @@
     "title": "Testing Foundations",
     "slug": "testing-foundations",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "status": "Current",
     "children": [
       {
         "title": "Testing is a Mindset",
@@ -97,6 +99,7 @@
     "title": "Cypress Fundamentals",
     "slug": "cypress-fundamentals",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "status": "Upcoming",
     "children": [
       {
         "title": "Cypress Runs in the Browser",
@@ -134,6 +137,7 @@
     "title": "Real World Examples",
     "slug": "real-world-examples",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "status": "Upcoming",
     "children": [
       {
         "title": "Real World App Overview",
