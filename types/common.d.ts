@@ -1,25 +1,25 @@
-type LessonTableOfContents = {
+export type LessonTableOfContents = {
   content: string
   slug: string
   lvl: number
   current?: boolean
 }
 
-interface ChallengeAnswer {
+export interface ChallengeAnswer {
   id: string
   answeredCorrectly?: boolean
   skipped?: boolean
 }
-interface EventPayload {
+export interface EventPayload {
   type: string
   id: string
   challengeIndex: number
 }
 
-interface MultipleChoicePayload extends EventPayload {
+export interface MultipleChoicePayload extends EventPayload {
   userAnswerIndex: number
 }
 
-interface FreeFormPayload extends EventPayload {
+export interface FreeFormPayload extends EventPayload {
   userAnswer: string
 }
