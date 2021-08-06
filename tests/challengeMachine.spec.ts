@@ -25,13 +25,15 @@ const challengeAnswer: ChallengeAnswer = {
 */
 
 describe("challenge machine", () => {
-  it("init the machine", () => {
-    const challengeService = interpret(challengeMachine).onTransition((state) =>
+  let challengeService
+  beforeEach(() => {
+    challengeService = interpret(challengeMachine).onTransition((state) =>
       console.log(state.value)
     )
 
     challengeService.start()
-
+  })
+  it("can validate a correct answer", () => {
     expect(challengeService.state.value).to.equal("pending")
 
     challengeService.send({

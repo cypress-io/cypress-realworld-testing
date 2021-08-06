@@ -52,15 +52,14 @@ export const challengeMachine = createMachine(
     },
     guards: {
       validateAnswer: (context, event) => {
-        console.log("EVENT", event)
-        /*const { sectionSlug, lessonSlug } = event.id.split("/")
+        const [sectionSlug, lessonSlug] = event.id.split("/")
         const lessons = learnJson[sectionSlug].children
         const lesson = find({ slug: lessonSlug }, lessons)
-        const challenge = lesson[event.challengeIndex]
+        const challenge = lesson.challenges[event.challengeIndex]
 
         if (challenge.challengeType === "multiple-choice") {
-          return event.correctAnswerIndex === event.userAnswerIndex
-        }*/
+          return challenge.correctAnswerIndex === event.userAnswerIndex
+        }
 
         //const userAnswer = normalizeData(event.userAnswer)
 
