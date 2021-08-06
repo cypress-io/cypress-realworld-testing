@@ -1,6 +1,7 @@
 import { assign, createMachine } from "xstate"
 import { find } from "lodash/fp"
 import learnJson from "../learn.json"
+import { ChallengeAnswer } from "common"
 
 /*
 export const progressMachine = createMachine({
@@ -20,7 +21,7 @@ export const challengeMachine = createMachine(
     id: "challenge",
     initial: "pending",
     context: {
-      challengeAnswers: [], // as ChallengeAnswer[],
+      challengeAnswers: [] as ChallengeAnswer[],
     },
     states: {
       pending: {
