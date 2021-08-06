@@ -51,7 +51,6 @@ type Props = {
 
 export default function LessonPage({
   source,
-  frontMatter,
   toc,
   lessonData,
   sectionLessons,
