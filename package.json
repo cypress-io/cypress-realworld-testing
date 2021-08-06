@@ -16,9 +16,11 @@
     "@heroicons/react": "^1.0.3",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@xstate/react": "^1.5.1",
+    "@zeit/next-css": "^1.0.1",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-slick": "^0.28.1",
     "xstate": "^4.23.1"
   },
   "devDependencies": {
@@ -45,7 +47,8 @@
     "slugify": "^1.6.0",
     "tailwindcss": "^2.2.4",
     "ts-node": "^10.1.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "url-loader": "^4.1.1"
   },
   "husky": {
     "hooks": {

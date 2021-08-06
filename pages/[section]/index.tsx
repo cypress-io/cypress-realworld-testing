@@ -1,9 +1,9 @@
 import Head from "next/head"
 import Link from "next/link"
 import Layout from "../../components/Layout"
-import SectionHero from "../../components/SectionHero"
-import SectionSteps from "../../components/SectionSteps"
-import SectionFooter from "../../components/SectionFooter"
+import SectionHero from "../../components/Section/SectionHero"
+import SectionSteps from "../../components/Section/SectionSteps"
+import SectionFooter from "../../components/Section/SectionFooter"
 import learnJson from "../../learn.json"
 
 export default function SectionPage({
