@@ -60,10 +60,6 @@ export const challengeMachine = createMachine(
         if (challenge.challengeType === "freeform") {
           return challenge.answer === event.userAnswer
         }
-
-        //const userAnswer = normalizeData(event.userAnswer)
-
-        return false
       },
     },
   }
