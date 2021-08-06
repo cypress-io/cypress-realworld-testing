@@ -2,25 +2,6 @@ import { assign, createMachine } from "xstate"
 import { find } from "lodash/fp"
 import learnJson from "../learn.json"
 
-interface ChallengeAnswer {
-  id: string
-  answeredCorrectly?: boolean
-  skipped?: boolean
-}
-interface EventPayload {
-  type: string
-  id: string
-  challengeIndex: number
-}
-
-interface MultipleChoicePayload extends EventPayload {
-  userAnswerIndex: number
-}
-
-interface FreeFormPayload extends EventPayload {
-  userAnswer: string
-}
-
 const validateAnswer = (context, event) => {
   const { sectionSlug, lessonSlug } = event.id.split("/")
   const lessons = learnJson[sectionSlug].children
@@ -35,6 +16,19 @@ const validateAnswer = (context, event) => {
 
   return false
 }
+
+/*
+export const progressMachine = createMachine({
+  id: "progress",
+  initial: "pending",
+  context: {
+    stepsCompleted: [
+        'testing-your-first-application/todomvc-app-install-and-overview'
+    ],
+    challengeAnswers: [] as ChallengeAnswer[],
+  },
+})
+*/
 
 export const challengeMachine = createMachine(
   {
@@ -80,24 +74,3 @@ export const challengeMachine = createMachine(
     },
   }
 )
-
-// Examples
-const mcEvent: MultipleChoicePayload = {
-  type: "SUBMIT_ANSWER",
-  id: "testing-your-first-application/todomvc-app-install-and-overview",
-  challengeIndex: 0,
-  userAnswerIndex: 1,
-}
-
-const ffEvent: FreeFormPayload = {
-  type: "SUBMIT_ANSWER",
-  id: "testing-your-first-application/todomvc-app-install-and-overview",
-  challengeIndex: 1,
-  userAnswer: "cy.get('.new-todo').should('exist')",
-}
-
-const challengeAnswer: ChallengeAnswer = {
-  id: "testing-your-first-application/todomvc-app-install-and-overview",
-  answeredCorrectly: true,
-  skipped: false,
-}

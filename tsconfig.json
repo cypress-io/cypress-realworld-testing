@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*.d.ts"]
+    },
     "target": "es5",
     "lib": [
       "dom",
