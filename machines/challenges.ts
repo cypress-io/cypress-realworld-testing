@@ -1,4 +1,4 @@
-import { assign, createMachine } from "xstate"
+import { assign, createMachine, forwardTo } from "xstate"
 import { find } from "lodash/fp"
 import learnJson from "../learn.json"
 
@@ -46,7 +46,7 @@ export const challengeMachine = createMachine(
       },
       validating: {
         on: {
-          SUBMIT_ANSWER: [
+          "*": [
             {
               target: "answeredCorrectly",
               cond: validateAnswer,
