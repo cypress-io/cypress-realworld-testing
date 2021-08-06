@@ -3,6 +3,7 @@ import { find } from "lodash/fp"
 import learnJson from "../learn.json"
 
 const validateAnswer = (context, event) => {
+  console.log(event)
   const { sectionSlug, lessonSlug } = event.id.split("/")
   const lessons = learnJson[sectionSlug].children
   const lesson = find({ slug: lessonSlug }, lessons)
@@ -35,7 +36,7 @@ export const challengeMachine = createMachine(
     id: "challenge",
     initial: "pending",
     context: {
-      challengeAnswers: [] as ChallengeAnswer[],
+      challengeAnswers: [], // as ChallengeAnswer[],
     },
     states: {
       pending: {
