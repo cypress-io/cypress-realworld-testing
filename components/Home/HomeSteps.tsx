@@ -9,12 +9,37 @@ function classNames(...classes) {
 }
 
 export default function HomeSteps(props) {
-  const settings = {
-    dots: true,
-    infinite: true,
+  var settings = {
+    dots: false,
+    infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   }
 
   return (
@@ -44,7 +69,7 @@ export default function HomeSteps(props) {
                     />
                   </span>
                 </span>
-                <div key={props.content[section].title} className="my-12">
+                <div key={props.content[section].title} className="my-12 mx-24">
                   <div className="section-title flex items-center">
                     <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                       {props.content[section].title}
@@ -80,7 +105,7 @@ export default function HomeSteps(props) {
                     <span className="h-2.5 w-2.5 bg-indigo-600 rounded-full" />
                   </span>
                 </span>
-                <div key={props.content[section].title} className="my-12">
+                <div key={props.content[section].title} className="my-12 mx-24">
                   <div className="section-title flex items-center">
                     <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                       {props.content[section].title}
@@ -116,7 +141,7 @@ export default function HomeSteps(props) {
                     <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />
                   </span>
                 </span>
-                <div key={props.content[section].title} className="my-12">
+                <div key={props.content[section].title} className="my-12 mx-24">
                   <div className="section-title flex items-center">
                     <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                       {props.content[section].title}
