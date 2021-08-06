@@ -18,7 +18,7 @@ export default function HomeSteps(props) {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1600,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -69,7 +69,10 @@ export default function HomeSteps(props) {
                     />
                   </span>
                 </span>
-                <div key={props.content[section].title} className="my-12 mx-24">
+                <div
+                  key={props.content[section].title}
+                  className="my-12 lg:mx-24"
+                >
                   <div className="section-title flex items-center">
                     <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                       {props.content[section].title}
@@ -105,7 +108,10 @@ export default function HomeSteps(props) {
                     <span className="h-2.5 w-2.5 bg-indigo-600 rounded-full" />
                   </span>
                 </span>
-                <div key={props.content[section].title} className="my-12 mx-24">
+                <div
+                  key={props.content[section].title}
+                  className="my-12 lg:mx-24"
+                >
                   <div className="section-title flex items-center">
                     <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                       {props.content[section].title}
@@ -141,7 +147,10 @@ export default function HomeSteps(props) {
                     <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />
                   </span>
                 </span>
-                <div key={props.content[section].title} className="my-12 mx-24">
+                <div
+                  key={props.content[section].title}
+                  className="my-12 lg:mx-24"
+                >
                   <div className="section-title flex items-center">
                     <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                       {props.content[section].title}
