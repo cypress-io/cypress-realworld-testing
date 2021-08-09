@@ -8,12 +8,15 @@ import Link from "next/link"
 import path from "path"
 import Layout from "../../components/Layout"
 import LessonSideNav from "../../components/LessonSidenav"
+import LessonHero from "../../components/Lesson/LessonHero"
 import { LessonTableOfContents } from "../../types/common"
 import {
   CONTENT_PATH,
   allContentFilePaths,
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
+import { find } from "lodash/fp"
+import learnJson from "../../learn.json"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -34,15 +37,24 @@ type Props = {
     [key: string]: any
   }
   toc: LessonTableOfContents[]
+  lessonData: {}
 }
 
-export default function ContentPage({ source, frontMatter, toc }: Props) {
+export default function ContentPage({
+  source,
+  frontMatter,
+  toc,
+  lessonData,
+}: Props) {
   return (
     <Layout>
       <Head>
         <title>{frontMatter.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <LessonHero lessonData={lessonData} />
+
       <div className="content-title">
         <h1>{frontMatter.title}</h1>
         {frontMatter.description && (
@@ -88,11 +100,19 @@ export const getStaticProps = async ({ params }) => {
     scope: data,
   })
 
+  const lessonData = find(
+    { slug: params.slug },
+    learnJson[params.section].children
+  )
+
+  console.log(lessonData)
+
   return {
     props: {
       source: mdxSource,
       frontMatter: data,
       toc,
+      lessonData,
     },
   }
 }
