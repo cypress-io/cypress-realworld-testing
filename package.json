@@ -1,5 +1,6 @@
 {
   "private": true,
+  "license": "",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
