@@ -1,4 +1,4 @@
-import { LessonTableOfContents } from "../types/common"
+import { LessonTableOfContents } from "../../types/common"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")

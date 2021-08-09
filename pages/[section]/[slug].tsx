@@ -7,8 +7,9 @@ import Head from "next/head"
 import Link from "next/link"
 import path from "path"
 import Layout from "../../components/Layout"
-import LessonSideNav from "../../components/LessonSidenav"
+import LessonToc from "../../components/Lesson/LessonToc"
 import LessonHero from "../../components/Lesson/LessonHero"
+import LessonLayout from "../../components/Lesson/LessonLayout"
 import { LessonTableOfContents } from "../../types/common"
 import {
   CONTENT_PATH,
@@ -37,10 +38,16 @@ type Props = {
     [key: string]: any
   }
   toc: LessonTableOfContents[]
-  lessonData: {}
+  lessonData: {
+    title: string
+    slug: string
+    description: string
+    status: string
+    challenges: object[]
+  }
 }
 
-export default function ContentPage({
+export default function LessonPage({
   source,
   frontMatter,
   toc,
@@ -49,33 +56,13 @@ export default function ContentPage({
   return (
     <Layout>
       <Head>
-        <title>{frontMatter.title}</title>
+        <title>{lessonData.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <LessonHero lessonData={lessonData} />
 
-      <div className="content-title">
-        <h1>{frontMatter.title}</h1>
-        {frontMatter.description && (
-          <p className="description">{frontMatter.description}</p>
-        )}
-      </div>
-
-      <main className="w-full max-w-7xl mx-auto">
-        <div className="lg:flex">
-          <div className="fixed z-40 inset-0 flex-none h-full bg-black bg-opacity-25 w-full lg:bg-white lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-60 xl:w-72 lg:block hidden">
-            <LessonSideNav navigation={toc} />
-          </div>
-
-          <div
-            id="content-wrapper"
-            className="min-w-0 w-full flex-auto lg:static lg:max-h-full lg:overflow-visible"
-          >
-            <MDXRemote {...source} components={components} />
-          </div>
-        </div>
-      </main>
+      <LessonLayout toc={toc} source={source} components={components} />
     </Layout>
   )
 }
@@ -104,8 +91,6 @@ export const getStaticProps = async ({ params }) => {
     { slug: params.slug },
     learnJson[params.section].children
   )
-
-  console.log(lessonData)
 
   return {
     props: {
