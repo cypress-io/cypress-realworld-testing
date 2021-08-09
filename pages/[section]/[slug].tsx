@@ -6,7 +6,6 @@ import { serialize } from "next-mdx-remote/serialize"
 import Head from "next/head"
 import Link from "next/link"
 import path from "path"
-import remarkSlug from "remark-slug"
 import Layout from "../../components/Layout"
 import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
@@ -88,7 +87,7 @@ export const getStaticProps = async ({ params }) => {
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
-      remarkPlugins: [remarkSlug],
+      remarkPlugins: [],
       rehypePlugins: [],
     },
     scope: data,
