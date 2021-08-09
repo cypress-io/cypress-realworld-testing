@@ -1,4 +1,5 @@
 import LessonToc from "../../components/Lesson/LessonToc"
+import LessonSteps from "../../components/Lesson/LessonSteps"
 import { MDXRemote } from "next-mdx-remote"
 
 function classNames(...classes) {
@@ -20,10 +21,14 @@ export default function LessonLayout(props) {
             </nav>
           </div>
           <main className="lg:col-span-9 xl:col-span-6">
+            Content:
             <MDXRemote {...props.source} components={props.components} />
           </main>
           <aside className="hidden xl:block xl:col-span-4">
-            <div className="sticky top-6 space-y-4">Right Sidebar</div>
+            <div className="sticky top-6 space-y-4">
+              Progress:
+              <LessonSteps sectionLessons={props.sectionLessons} />
+            </div>
           </aside>
         </div>
       </div>

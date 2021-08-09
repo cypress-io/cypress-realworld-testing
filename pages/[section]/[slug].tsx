@@ -45,6 +45,7 @@ type Props = {
     status: string
     challenges: object[]
   }
+  sectionLessons: []
 }
 
 export default function LessonPage({
@@ -52,6 +53,7 @@ export default function LessonPage({
   frontMatter,
   toc,
   lessonData,
+  sectionLessons,
 }: Props) {
   return (
     <Layout>
@@ -62,7 +64,12 @@ export default function LessonPage({
 
       <LessonHero lessonData={lessonData} />
 
-      <LessonLayout toc={toc} source={source} components={components} />
+      <LessonLayout
+        toc={toc}
+        source={source}
+        components={components}
+        sectionLessons={sectionLessons}
+      />
     </Layout>
   )
 }
@@ -92,12 +99,15 @@ export const getStaticProps = async ({ params }) => {
     learnJson[params.section].children
   )
 
+  const sectionLessons = learnJson[params.section].children
+
   return {
     props: {
       source: mdxSource,
       frontMatter: data,
       toc,
       lessonData,
+      sectionLessons,
     },
   }
 }
