@@ -14,7 +14,7 @@ export default function LessonSideNav({ navigation }: Props) {
       {navigation.map((item) => (
         <a
           key={item.slug}
-          href={item.slug}
+          href={`#${item.slug}`}
           className={classNames(
             item.current
               ? "bg-gray-100 text-gray-900"
