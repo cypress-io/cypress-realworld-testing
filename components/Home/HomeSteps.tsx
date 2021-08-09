@@ -74,9 +74,11 @@ export default function HomeSteps(props) {
                   className="my-12 lg:mx-24"
                 >
                   <div className="section-title flex items-center">
-                    <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                      {props.content[section].title}
-                    </h1>
+                    <a href={section}>
+                      <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                        {props.content[section].title}
+                      </h1>
+                    </a>
                     <span className="ml-8">
                       {props.content[section].children.length} Lessons
                     </span>
@@ -113,9 +115,11 @@ export default function HomeSteps(props) {
                   className="my-12 lg:mx-24"
                 >
                   <div className="section-title flex items-center">
-                    <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                      {props.content[section].title}
-                    </h1>
+                    <a href={section}>
+                      <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                        {props.content[section].title}
+                      </h1>
+                    </a>
                     <span className="ml-8">
                       {props.content[section].children.length} Lessons
                     </span>
@@ -152,9 +156,11 @@ export default function HomeSteps(props) {
                   className="my-12 lg:mx-24"
                 >
                   <div className="section-title flex items-center">
-                    <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                      {props.content[section].title}
-                    </h1>
+                    <a href={section}>
+                      <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                        {props.content[section].title}
+                      </h1>
+                    </a>
                     <span className="ml-8">
                       {props.content[section].children.length} Lessons
                     </span>
