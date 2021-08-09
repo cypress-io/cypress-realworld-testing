@@ -16,6 +16,7 @@
     "@heroicons/react": "^1.0.3",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
+    "@tailwindcss/typography": "^0.4.1",
     "@xstate/react": "^1.5.1",
     "@zeit/next-css": "^1.0.1",
     "next": "latest",

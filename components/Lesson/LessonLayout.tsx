@@ -19,7 +19,7 @@ export default function LessonLayout(props) {
               <LessonToc navigation={props.toc} />
             </nav>
           </div>
-          <main className="lesson-content lg:col-span-9 xl:col-span-6">
+          <main className="lesson-content prose lg:prose-xl lg:col-span-9 xl:col-span-6">
             <MDXRemote {...props.source} components={props.components} />
           </main>
           <aside className="hidden xl:block xl:col-span-4">
