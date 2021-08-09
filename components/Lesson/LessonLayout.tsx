@@ -8,7 +8,7 @@ function classNames(...classes) {
 
 export default function LessonLayout(props) {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen">
       <div className="py-6">
         <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="hidden lg:block lg:col-span-3 xl:col-span-2">
@@ -16,17 +16,14 @@ export default function LessonLayout(props) {
               aria-label="Sidebar"
               className="sticky top-6 divide-y divide-gray-300"
             >
-              Table of Contents:
               <LessonToc navigation={props.toc} />
             </nav>
           </div>
-          <main className="lg:col-span-9 xl:col-span-6">
-            Content:
+          <main className="lesson-content lg:col-span-9 xl:col-span-6">
             <MDXRemote {...props.source} components={props.components} />
           </main>
           <aside className="hidden xl:block xl:col-span-4">
             <div className="sticky top-6 space-y-4">
-              Progress:
               <LessonSteps sectionLessons={props.sectionLessons} />
             </div>
           </aside>
