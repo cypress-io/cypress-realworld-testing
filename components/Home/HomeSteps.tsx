@@ -89,7 +89,7 @@ export default function HomeSteps(props) {
                   <Slider {...settings}>
                     {props.content[section].children.map((lesson) => (
                       <div key={lesson.title}>
-                        <HomeCard lesson={lesson} />
+                        <HomeCard lesson={lesson} section={section} />
                       </div>
                     ))}
                   </Slider>
@@ -128,7 +128,7 @@ export default function HomeSteps(props) {
                   <Slider {...settings}>
                     {props.content[section].children.map((lesson) => (
                       <div key={lesson.title}>
-                        <HomeCard lesson={lesson} />
+                        <HomeCard lesson={lesson} section={section} />
                       </div>
                     ))}
                   </Slider>
@@ -167,7 +167,7 @@ export default function HomeSteps(props) {
                   <Slider {...settings}>
                     {props.content[section].children.map((lesson) => (
                       <div key={lesson.title}>
-                        <HomeCard lesson={lesson} />
+                        <HomeCard lesson={lesson} section={section} />
                       </div>
                     ))}
                   </Slider>

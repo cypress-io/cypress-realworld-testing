@@ -15,7 +15,10 @@ export default function HomeCard(props) {
           >
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
               <div className="flex-1">
-                <a href="#" className="block mt-2">
+                <a
+                  href={`${props.section}/${props.lesson.slug}`}
+                  className="block mt-2"
+                >
                   <p className="text-xl font-semibold text-gray-900">
                     {props.lesson.title}
                   </p>
@@ -25,12 +28,12 @@ export default function HomeCard(props) {
                 </a>
               </div>
               <div className="mt-10 flex justify-center">
-                <button
-                  type="button"
+                <a
+                  href={`${props.section}/${props.lesson.slug}`}
                   className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Start Lesson
-                </button>
+                </a>
               </div>
             </div>
           </div>
