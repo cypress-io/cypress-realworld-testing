@@ -1,27 +1,5 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from "@heroicons/react/solid"
 import SectionCard from "./SectionCard"
-
-const steps = [
-  {
-    name: "Create account",
-    description: "Vitae sed mi luctus laoreet.",
-    href: "#",
-    status: "complete",
-  },
-  {
-    name: "Profile information",
-    description: "Cursus semper viverra facilisis et et some more.",
-    href: "#",
-    status: "current",
-  },
-  {
-    name: "Business information",
-    description: "Penatibus eu quis ante.",
-    href: "#",
-    status: "upcoming",
-  },
-]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -35,7 +13,7 @@ export default function SectionSteps(props) {
           <li
             key={lesson.title}
             className={classNames(
-              index !== steps.length - 1 ? "pb-10" : "",
+              index !== props.lessons.length - 1 ? "pb-10" : "",
               "relative"
             )}
           >
@@ -59,14 +37,6 @@ export default function SectionSteps(props) {
                       />
                     </span>
                   </span>
-                  {/* <span className="ml-4 min-w-0 flex flex-col">
-                    <span className="text-xs font-semibold tracking-wide uppercase">
-                      {lesson.name}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      {lesson.description}
-                    </span>
-                  </span> */}
                   <SectionCard lesson={lesson} />
                 </a>
               </>
@@ -88,14 +58,6 @@ export default function SectionSteps(props) {
                       <span className="h-2.5 w-2.5 bg-indigo-600 rounded-full" />
                     </span>
                   </span>
-                  {/* <span className="ml-4 min-w-0 flex flex-col">
-                    <span className="text-xs font-semibold tracking-wide uppercase text-indigo-600">
-                      {lesson.name}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      {lesson.description}
-                    </span>
-                  </span> */}
                   <SectionCard lesson={lesson} />
                 </a>
               </>
@@ -116,14 +78,6 @@ export default function SectionSteps(props) {
                       <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />
                     </span>
                   </span>
-                  {/* <span className="ml-4 min-w-0 flex flex-col">
-                    <span className="text-xs font-semibold tracking-wide uppercase text-gray-500">
-                      {lesson.name}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      {lesson.description}
-                    </span>
-                  </span> */}
                   <SectionCard lesson={lesson} />
                 </a>
               </>
