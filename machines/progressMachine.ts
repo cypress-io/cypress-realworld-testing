@@ -50,7 +50,8 @@ export const progressMachine = createMachine(
       },
       ready: {
         on: {
-          SUBMIT_ANSWER: { actions: "saveProgress", target: "inProgress" },
+          GO_TO_NEXT_CHAPTER: { actions: "saveProgress", target: "inProgress" },
+          SUBMIT_ANSWER: { target: "inProgress" },
           SKIP_ANSWER: "",
           DISABLE_CHALLENGES: "",
         },
