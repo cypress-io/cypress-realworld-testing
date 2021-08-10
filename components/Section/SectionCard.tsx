@@ -27,7 +27,9 @@ export default function SectionCard(props) {
                   <div className="sm:col-span-2">
                     <div className="space-y-4">
                       <div className="text-lg leading-6 font-medium space-y-1">
-                        <h3>{props.lesson.title}</h3>
+                        <a href={`${props.section}/${props.lesson.slug}`}>
+                          <h3>{props.lesson.title}</h3>
+                        </a>
                       </div>
                       <div className="text-lg">
                         <p className="text-gray-500">
@@ -38,12 +40,12 @@ export default function SectionCard(props) {
 
                     {/* Buttons */}
                     <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-                      <button
-                        type="button"
+                      <a
+                        href={`${props.section}/${props.lesson.slug}`}
                         className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
                         Start Lesson
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>

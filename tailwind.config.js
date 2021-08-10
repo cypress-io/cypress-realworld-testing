@@ -14,5 +14,12 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    // https://github.com/tailwindlabs/tailwindcss-aspect-ratio
+    require("@tailwindcss/aspect-ratio"),
+    // https://github.com/tailwindlabs/tailwindcss-forms
+    require('@tailwindcss/forms'),
+    // https://github.com/tailwindlabs/tailwindcss-typography
+    require('@tailwindcss/typography'),
+  ],
 }

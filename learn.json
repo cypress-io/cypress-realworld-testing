@@ -6,19 +6,33 @@
     "status": "Completed",
     "children": [
       {
-        "title": "TodoMVC App Install & Overview",
+        "title": "TodoMVC App Install and Overview",
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Completed"
+        "status": "Completed",
+        "challenges": [
+          {
+            "challengeType": "multiple-choice",
+            "question": "What is the command to run Cypress in open mode?",
+            "correctAnswerIndex": 1,
+            "choices": ["yarn run bob", "yarn run cypress:open"]
+          },
+          {
+            "challengeType": "freeform",
+            "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
+            "answer": "cy.get('.new-todo').should('exist')",
+            "hint": "Use the cy.get and should commands"
+          }
+        ]
       },
       {
-        "title": "Installing Cypress & writing our first test",
+        "title": "Installing Cypress and writing our first test",
         "slug": "installing-cypress-and-writing-our-first-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "status": "Completed"
       },
       {
-        "title": "Multiple Todos & Before Each",
+        "title": "Multiple Todos and Before Each",
         "slug": "multiple-todos-and-before-each",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "status": "Current"
@@ -30,7 +44,7 @@
         "status": "Upcoming"
       },
       {
-        "title": "Cypress Log, Snapshot & Aliases",
+        "title": "Cypress Log, Snapshot and Aliases",
         "slug": "cypress-log-snapshot-and-aliases",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "status": "Upcoming"
@@ -108,7 +122,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Waiting & Retry-ability",
+        "title": "Waiting and Retry-ability",
         "slug": "waiting-and-retry-ability",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
@@ -151,7 +165,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "User Settings Overview & Setup",
+        "title": "User Settings Overview and Setup",
         "slug": "user-settings-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
@@ -166,7 +180,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Bank Accounts Overview & Setup",
+        "title": "Bank Accounts Overview and Setup",
         "slug": "bank-accounts-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
@@ -181,7 +195,7 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "New Transaction Overview & Setup",
+        "title": "New Transaction Overview and Setup",
         "slug": "new-transaction-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },

@@ -1,4 +1,4 @@
-import { LessonTableOfContents } from "../types/common"
+import { LessonTableOfContents } from "../../types/common"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -14,7 +14,7 @@ export default function LessonSideNav({ navigation }: Props) {
       {navigation.map((item) => (
         <a
           key={item.slug}
-          href={item.slug}
+          href={`#${item.slug}`}
           className={classNames(
             item.current
               ? "bg-gray-100 text-gray-900"

@@ -23,7 +23,7 @@ export default function SectionPage({
       <SectionHero title={title} description={description} />
 
       <main className="mx-auto py-12 px-4 max-w-7xl">
-        <SectionSteps lessons={lessons} />
+        <SectionSteps lessons={lessons} section={section} />
       </main>
 
       {nextSection && <SectionFooter nextSection={nextSection} />}
