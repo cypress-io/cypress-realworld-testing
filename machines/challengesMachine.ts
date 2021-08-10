@@ -3,19 +3,6 @@ import { find } from "lodash/fp"
 import learnJson from "../learn.json"
 import { ChallengeAnswer } from "common"
 
-/*
-export const progressMachine = createMachine({
-  id: "progress",
-  initial: "pending",
-  context: {
-    stepsCompleted: [
-        'testing-your-first-application/todomvc-app-install-and-overview'
-    ],
-    challengeAnswers: [] as ChallengeAnswer[],
-  },
-})
-*/
-
 export const challengeMachine = createMachine(
   {
     id: "challenge",

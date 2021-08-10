@@ -23,3 +23,9 @@ export interface MultipleChoicePayload extends EventPayload {
 export interface FreeFormPayload extends EventPayload {
   userAnswer: string
 }
+export interface ProgressContext {
+  sectionsCompleted: string[]
+  stepsCompleted: string[]
+  challengeAnswers: ChallengeAnswer[]
+  disableChallenges: boolean
+}

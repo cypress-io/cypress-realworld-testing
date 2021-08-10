@@ -1,7 +1,7 @@
 import { expect } from "chai"
 import { ChallengeAnswer, FreeFormPayload, MultipleChoicePayload } from "common"
 import { interpret } from "xstate"
-import { challengeMachine } from "../machines/challenges"
+import { challengeMachine } from "../machines/challengesMachine"
 
 const mcCorrectAnswerEvent: MultipleChoicePayload = {
   type: "SUBMIT_ANSWER",
@@ -51,7 +51,7 @@ describe("challenge machine", () => {
   it("can validate a correct multiple choice answer", () => {
     challengeService.send(mcCorrectAnswerEvent)
 
-    expect(challengeService.state.value).to.equal("correct")
+    expect(challengeService.state.matches("correct")).to.be.true
     expect(challengeService.state.context.id).to.equal(mcCorrectAnswerEvent.id)
   })
 
@@ -61,12 +61,12 @@ describe("challenge machine", () => {
   })
   it("can validate a correct freeform answer", () => {
     challengeService.send(ffCorrectAnswerEvent)
-    expect(challengeService.state.value).to.equal("correct")
+    expect(challengeService.state.matches("correct")).to.be.true
   })
 
   it("can validate an incorrect freeform answer", () => {
     challengeService.send(ffInCorrectAnswerEvent)
-    expect(challengeService.state.value).to.equal("incorrect")
+    expect(challengeService.state.matches("incorrect")).to.be.true
   })
 
   it("can save the correct answer", () => {
