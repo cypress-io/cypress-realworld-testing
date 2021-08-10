@@ -2,6 +2,8 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "build:profile": "next build --profile",
+    "build:debug": "next build --debug",
     "dev": "next dev",
     "dev:watch": "next-remote-watch ./content",
     "lint": "next lint",
