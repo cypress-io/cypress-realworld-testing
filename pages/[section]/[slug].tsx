@@ -1,6 +1,6 @@
 import fs from "fs"
 import matter from "gray-matter"
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote"
+import { MDXRemoteSerializeResult } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 //import dynamic from 'next/dynamic'
 import Head from "next/head"
@@ -16,6 +16,7 @@ import {
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
 import { find, findIndex } from "lodash/fp"
+import rehypeSlug from "rehype-slug"
 import learnJson from "../../learn.json"
 
 // Custom components/renderers to pass to MDX.
@@ -88,7 +89,8 @@ export const getStaticProps = async ({ params }) => {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
       remarkPlugins: [],
-      rehypePlugins: [],
+      // @ts-ignore
+      rehypePlugins: [rehypeSlug],
     },
     scope: data,
   })
