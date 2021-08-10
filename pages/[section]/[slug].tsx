@@ -106,9 +106,6 @@ export const getStaticProps = async ({ params }) => {
     nextLesson = null
   }
 
-  console.log(params.section)
-  console.log(nextLesson)
-
   return {
     props: {
       source: mdxSource,
