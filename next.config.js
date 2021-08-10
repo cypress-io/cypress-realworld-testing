@@ -1,6 +1,12 @@
-const withCSS = require('@zeit/next-css')
+const withCSS = require("@zeit/next-css")
+const withTM = require("next-transpile-modules")([
+  "rehype-slug",
+  "hast-util-has-property",
+  "hast-util-heading-rank",
+  "hast-util-to-string",
+])
 
-module.exports = {
+module.exports = withTM({
   images: {
     domains: ["images.unsplash.com", "source.unsplash.com"],
   },
@@ -8,13 +14,13 @@ module.exports = {
     config.module.rules.push({
       test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
       use: {
-        loader: 'url-loader',
+        loader: "url-loader",
         options: {
           limit: 100000,
-          name: '[name].[ext]'
-        }
-      }
+          name: "[name].[ext]",
+        },
+      },
     })
     return config
-  }
-}
+  },
+})
