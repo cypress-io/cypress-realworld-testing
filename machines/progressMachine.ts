@@ -1,5 +1,6 @@
-import { createMachine } from "xstate"
+import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
+import { concat } from "lodash"
 //const LOCAL_STORAGE_ITEM = "progressState"
 
 // complete challenge
@@ -16,10 +17,7 @@ function isLessonCompleted(lesson) {
 
 const defaultContext: ProgressContext = {
   sectionsCompleted: ["testing-your-first-application"],
-  stepsCompleted: [
-    "testing-your-first-application/todomvc-app-install-and-overview",
-    "testing-your-first-application/installing-cypress-and-writing-our-first-test",
-  ],
+  stepsCompleted: [],
   challengeAnswers: [],
   disableChallenges: false,
 }
@@ -50,7 +48,7 @@ export const progressMachine = createMachine(
       },
       ready: {
         on: {
-          GO_TO_NEXT_CHAPTER: { actions: "saveProgress", target: "inProgress" },
+          GO_TO_NEXT_LESSON: { actions: ["saveProgress"], target: "inProgress" },
           SUBMIT_ANSWER: { target: "inProgress" },
           SKIP_ANSWER: "",
           DISABLE_CHALLENGES: "",
@@ -58,7 +56,7 @@ export const progressMachine = createMachine(
       },
       inProgress: {
         on: {
-          SUBMIT_ANSWER: { actions: "saveProgress" },
+          SUBMIT_ANSWER: { actions: ["saveAnswer"] },
           SKIP_ANSWER: "",
           DISABLE_CHALLENGES: "",
         },
@@ -72,7 +70,9 @@ export const progressMachine = createMachine(
   },
   {
     actions: {
-      saveProgress: () => console.log("save progress@@@@"),
+      saveProgress: assign((context: any, event: any) => ({
+        stepsCompleted: concat(context.sectionsCompleted, event.path)
+      })),
     },
   }
 )
