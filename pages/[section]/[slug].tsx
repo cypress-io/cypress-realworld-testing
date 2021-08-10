@@ -15,7 +15,7 @@ import {
   allContentFilePaths,
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
-import { find } from "lodash/fp"
+import { find, findIndex } from "lodash/fp"
 import learnJson from "../../learn.json"
 
 // Custom components/renderers to pass to MDX.
@@ -45,6 +45,7 @@ type Props = {
     challenges: object[]
   }
   sectionLessons: []
+  nextLesson: string
 }
 
 export default function LessonPage({
@@ -53,6 +54,7 @@ export default function LessonPage({
   toc,
   lessonData,
   sectionLessons,
+  nextLesson,
 }: Props) {
   return (
     <Layout>
@@ -68,6 +70,7 @@ export default function LessonPage({
         source={source}
         components={components}
         sectionLessons={sectionLessons}
+        nextLesson={nextLesson}
       />
     </Layout>
   )
@@ -79,11 +82,8 @@ export const getStaticProps = async ({ params }) => {
     `${params.section}/${params.slug}.mdx`
   )
   const source = fs.readFileSync(contentFilePath)
-
   const { content, data } = matter(source)
-
   const toc: LessonTableOfContents[] = getToCForMarkdown(content)
-
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
@@ -92,13 +92,22 @@ export const getStaticProps = async ({ params }) => {
     },
     scope: data,
   })
-
   const lessonData = find(
     { slug: params.slug },
     learnJson[params.section].children
   )
-
   const sectionLessons = learnJson[params.section].children
+  const nextLessonIndex = findIndex({ slug: params.slug }, sectionLessons) + 1
+  let nextLesson
+
+  if (nextLessonIndex < sectionLessons.length) {
+    nextLesson = sectionLessons[nextLessonIndex].slug
+  } else {
+    nextLesson = null
+  }
+
+  console.log(params.section)
+  console.log(nextLesson)
 
   return {
     props: {
@@ -107,6 +116,7 @@ export const getStaticProps = async ({ params }) => {
       toc,
       lessonData,
       sectionLessons,
+      nextLesson,
     },
   }
 }
