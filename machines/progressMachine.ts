@@ -29,13 +29,14 @@ const defaultContext: ProgressContext = {
 // progressService.state.matches("inProgress")
 // iterate over sections and lessons to determine current lesson
 
-export const progressMachine = createMachine({
-  id: "progress",
-  initial: "loading",
-  context: defaultContext,
-  states: {
-    loading: {
-      /*entry: assign({
+export const progressMachine = createMachine(
+  {
+    id: "progress",
+    initial: "loading",
+    context: defaultContext,
+    states: {
+      loading: {
+        /*entry: assign({
         todos: (context) => {
           // "Rehydrate" persisted todos
           return context.todos.map((todo) => ({
@@ -44,26 +45,32 @@ export const progressMachine = createMachine({
           }));
         }
       }),*/
-      always: "ready",
-    },
-    ready: {
-      on: {
-        SUBMIT_ANSWER: "saveProgress",
-        SKIP_ANSWER: "",
-        DISABLE_CHALLENGES: "",
+        always: "ready",
       },
-    },
-    inProgress: {
-      on: {
-        SUBMIT_ANSWER: "saveProgress",
-        SKIP_ANSWER: "",
-        DISABLE_CHALLENGES: "",
+      ready: {
+        on: {
+          SUBMIT_ANSWER: { actions: "saveProgress", target: "inProgress" },
+          SKIP_ANSWER: "",
+          DISABLE_CHALLENGES: "",
+        },
       },
-    },
-    completed: {
-      on: {
-        CLEAR_All_PROGRESS: "",
+      inProgress: {
+        on: {
+          SUBMIT_ANSWER: { actions: "saveProgress" },
+          SKIP_ANSWER: "",
+          DISABLE_CHALLENGES: "",
+        },
+      },
+      completed: {
+        on: {
+          CLEAR_All_PROGRESS: "",
+        },
       },
     },
   },
-})
+  {
+    actions: {
+      saveProgress: () => console.log("save progress@@@@"),
+    },
+  }
+)
