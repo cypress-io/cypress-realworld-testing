@@ -1,10 +1,23 @@
 import Head from "next/head"
+import { useMachine } from "@xstate/react"
 import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeSteps from "../components/Home/HomeSteps"
 import learnJson from "../learn.json"
+import { progressMachine } from "../machines/progressMachine"
+import { useEffect } from "react"
 
 export default function Home({ content, sections }) {
+  const [progressState, progressSend, progressService] =
+    useMachine(progressMachine)
+
+  const stateValue = progressState.value
+  console.log("PS", progressState.value)
+
+  useEffect(() => {
+    progressSend("SUBMIT_ANSWER")
+  }, [progressSend, stateValue])
+
   return (
     <Layout>
       <HomeHero />
