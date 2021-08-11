@@ -42,7 +42,7 @@ export const progressMachine = createMachine(
           SUBMIT_ANSWER: {
             actions: ["validateAndLogAnswer"],
           },
-          DISABLE_CHALLENGES: "",
+          DISABLE_CHALLENGES: { actions: ["disableChallenges"] },
         },
       },
       completed: {
@@ -77,6 +77,9 @@ export const progressMachine = createMachine(
           }
         }
       }),
+      disableChallenges: assign((context: any, event: any) => ({
+        disableChallenges: true,
+      })),
     },
   }
 )

@@ -79,4 +79,10 @@ describe("progress machine", () => {
       answerEvent.id
     )
   })
+
+  it("can disable all challenges", () => {
+    progressService.send("DISABLE_CHALLENGES")
+
+    expect(progressService.state.context.disableChallenges).to.be.true
+  })
 })
