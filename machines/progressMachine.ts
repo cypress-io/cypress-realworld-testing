@@ -35,7 +35,7 @@ export const progressMachine = createMachine(
     states: {
       started: {
         on: {
-          GO_TO_NEXT_LESSON: {
+          SKIP_ANSWER: {
             actions: ["saveProgress"],
           },
           SUBMIT_ANSWER: {
@@ -55,6 +55,7 @@ export const progressMachine = createMachine(
     actions: {
       saveProgress: assign((context: any, event: any) => ({
         lessonsCompleted: concat(context.lessonsCompleted, event.path),
+        lessonsSkipped: concat(context.lessonsCompleted, event.path),
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
         const [sectionSlug, lessonSlug] = event.id.split("/")

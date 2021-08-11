@@ -16,7 +16,7 @@ describe("progress machine", () => {
   })
 
   it("can save the progress", () => {
-    progressService.send("GO_TO_NEXT_LESSON", {
+    progressService.send("SKIP_ANSWER", {
       path: "testing-your-first-application/todomvc-app-install-and-overview",
     })
     expect(progressService.state.context.lessonsCompleted).to.include(

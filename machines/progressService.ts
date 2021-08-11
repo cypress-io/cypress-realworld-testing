@@ -16,7 +16,7 @@ if (stateDefinition) {
   resolvedState = progressMachine.resolveState(previousState)
 }
 
-export const progressService = interpret(progressMachine)
+export const progressService = interpret(progressMachine, { devTools: true })
   .onTransition((state) => {
     if (state.changed) {
       typeof window !== "undefined" &&
