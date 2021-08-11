@@ -14,8 +14,10 @@ describe("progress machine", () => {
     expect(progressService.state.value).to.equal("ready")
   })
 
-  it("can validate an incorrect multiple choice answer", () => {
-    progressService.send("SUBMIT_ANSWER")
-    expect(progressService.state.value).to.equal("inProgress")
+  it("can save the progress", () => {
+    progressService.send("GO_TO_NEXT_LESSON", {
+      path: "testing-your-first-application/todomvc-app-install-and-overview"
+    })
+    expect(progressService.state.context.stepsCompleted).to.include("testing-your-first-application/todomvc-app-install-and-overview")
   })
 })
