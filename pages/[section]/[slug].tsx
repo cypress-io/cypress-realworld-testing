@@ -75,7 +75,10 @@ export default function LessonPage({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LessonHero lessonData={lessonData} />
-      <LessonChallenge />
+      <LessonChallenge
+        progressState={progressState}
+        progressSend={progressSend}
+      />
       RESULTS: {isLessonComplete ? "COMPLETE" : "NOT"}
       <br />
       <div className="flex justify-center mx-auto">
