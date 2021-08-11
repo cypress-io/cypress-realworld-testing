@@ -2,7 +2,6 @@ import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
 import { concat, find } from "lodash/fp"
 import learnJson from "../learn.json"
-//const LOCAL_STORAGE_ITEM = "progressState"
 
 // complete challenge
 // skip challenge
@@ -17,7 +16,7 @@ function isLessonCompleted(lesson) {
 }
 
 const defaultContext: ProgressContext = {
-  sectionsCompleted: ["testing-your-first-application"],
+  sectionsCompleted: [],
   lessonsCompleted: [],
   disableChallenges: false,
 }
@@ -83,24 +82,3 @@ export const progressMachine = createMachine(
     },
   }
 )
-
-/*
-// @ts-ignore
-const stateDefinition = JSON.parse(localStorage.getItem(LOCAL_STORAGE_ITEM))
-
-let resolvedState
-if (stateDefinition) {
-  const previousState = State.create(stateDefinition)
-
-  // @ts-ignore
-  resolvedState = progressMachine.resolveState(previousState)
-}
-
-export const progressService = interpret(progressMachine)
-  .onTransition((state) => {
-    if (state.changed) {
-      localStorage.setItem(LOCAL_STORAGE_ITEM, JSON.stringify(state))
-    }
-  })
-  .start(resolvedState)
-*/
