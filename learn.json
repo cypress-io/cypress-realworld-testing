@@ -14,8 +14,8 @@
           {
             "challengeType": "multiple-choice",
             "question": "What is the command to run Cypress in open mode?",
-            "correctAnswerIndex": 1,
-            "choices": ["yarn run bob", "yarn run cypress:open"]
+            "answers": ["yarn run bob", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "correctAnswerIndex": 1
           },
           {
             "challengeType": "freeform",

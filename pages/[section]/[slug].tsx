@@ -75,48 +75,16 @@ export default function LessonPage({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LessonHero lessonData={lessonData} />
-      <LessonChallenge
-        progressState={progressState}
-        progressSend={progressSend}
-      />
-      RESULTS: {isLessonComplete ? "COMPLETE" : "NOT"}
-      <br />
-      <div className="flex justify-center mx-auto">
-        <h2>Quiz</h2>
-        <br />
-        <ul>
-          <li
-            onClick={() => {
-              progressSend({
-                type: "SUBMIT_ANSWER",
-                id: "testing-your-first-application/todomvc-app-install-and-overview",
-                challengeIndex: 0,
-                userAnswerIndex: 0,
-              })
-            }}
-          >
-            Item one
-          </li>
-          <li
-            onClick={() => {
-              progressSend({
-                type: "SUBMIT_ANSWER",
-                id: "testing-your-first-application/todomvc-app-install-and-overview",
-                challengeIndex: 0,
-                userAnswerIndex: 1,
-              })
-            }}
-          >
-            Correct
-          </li>
-        </ul>
-      </div>
       <LessonLayout
         toc={toc}
         source={source}
         components={components}
         sectionLessons={sectionLessons}
         nextLesson={nextLesson}
+      />
+      <LessonChallenge
+        progressService={progressService}
+        lessonData={lessonData}
       />
     </Layout>
   )

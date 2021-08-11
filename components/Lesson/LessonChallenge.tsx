@@ -1,10 +1,18 @@
 import { useRouter } from "next/router"
+import { useActor } from "@xstate/react"
 
 export default function LessonChallenge(props) {
   const router = useRouter()
   const { section, slug } = router.query
-  const isLessonComplete =
-    props.progressState.context.lessonsCompleted.includes(`${section}/${slug}`)
+  const [progressState, progressSend] = useActor(props.progressService)
+  // @ts-ignore
+  const isLessonComplete = progressState.context.lessonsCompleted.includes(
+    `${section}/${slug}`
+  )
+
+  const multipleChoiceChallenges = props.lessonData.challenges.find(
+    (challenge) => challenge.challengeType === "multiple-choice"
+  )
 
   return (
     <form className="space-y-8 divide-y divide-gray-200 mb-52">
@@ -19,112 +27,48 @@ export default function LessonChallenge(props) {
                       className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
                       id="label-email"
                     >
-                      Answer Correct: {isLessonComplete ? "TRUE" : "FALSE"}
+                      {multipleChoiceChallenges.question}:
+                      <br />
+                      <br />
+                      {isLessonComplete ? "CORRECT" : "INCORRECT"}
                     </div>
                   </div>
                   <div className="mt-4 sm:mt-0 sm:col-span-2">
                     <div className="max-w-lg space-y-4">
-                      <div className="relative flex items-start">
-                        <div className="flex items-center h-5">
-                          <input
-                            id="comments"
-                            name="comments"
-                            type="checkbox"
-                            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                            onClick={() => {
-                              props.progressSend({
-                                type: "SUBMIT_ANSWER",
-                                id: "testing-your-first-application/todomvc-app-install-and-overview",
-                                challengeIndex: 0,
-                                userAnswerIndex: 1,
-                              })
-                            }}
-                          />
-                        </div>
-                        <div className="ml-3 text-sm">
-                          <label
-                            htmlFor="comments"
-                            className="font-medium text-gray-700"
-                          >
-                            Answer 1
-                          </label>
-                          {/* <p className="text-gray-500">
+                      {/* Answer */}
+
+                      {multipleChoiceChallenges.answers.map((answer, index) => (
+                        <div className="relative flex items-start" key={index}>
+                          <div className="flex items-center h-5">
+                            <input
+                              id="comments"
+                              name="comments"
+                              type="checkbox"
+                              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                              onClick={() => {
+                                progressSend({
+                                  type: "SUBMIT_ANSWER",
+                                  id: `${section}/${slug}`,
+                                  challengeIndex: 0,
+                                  userAnswerIndex: index,
+                                })
+                              }}
+                            />
+                          </div>
+                          <div className="ml-3 text-sm">
+                            <label
+                              htmlFor="comments"
+                              className="font-medium text-gray-700"
+                            >
+                              {answer}
+                            </label>
+                            {/* <p className="text-gray-500">
                             Get notified when someones posts a comment on a
                             posting.
                           </p> */}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="relative flex items-start">
-                          <div className="flex items-center h-5">
-                            <input
-                              id="candidates"
-                              name="candidates"
-                              type="checkbox"
-                              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                            />
-                          </div>
-                          <div className="ml-3 text-sm">
-                            <label
-                              htmlFor="candidates"
-                              className="font-medium text-gray-700"
-                            >
-                              Answer 2
-                            </label>
-                            {/* <p className="text-gray-500">
-                              Get notified when a candidate applies for a job.
-                            </p> */}
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="relative flex items-start">
-                          <div className="flex items-center h-5">
-                            <input
-                              id="offers"
-                              name="offers"
-                              type="checkbox"
-                              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                            />
-                          </div>
-                          <div className="ml-3 text-sm">
-                            <label
-                              htmlFor="offers"
-                              className="font-medium text-gray-700"
-                            >
-                              Answer 3
-                            </label>
-                            {/* <p className="text-gray-500">
-                              Get notified when a candidate accepts or rejects
-                              an offer.
-                            </p> */}
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="relative flex items-start">
-                          <div className="flex items-center h-5">
-                            <input
-                              id="offers"
-                              name="offers"
-                              type="checkbox"
-                              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                            />
-                          </div>
-                          <div className="ml-3 text-sm">
-                            <label
-                              htmlFor="offers"
-                              className="font-medium text-gray-700"
-                            >
-                              Answer 4
-                            </label>
-                            {/* <p className="text-gray-500">
-                              Get notified when a candidate accepts or rejects
-                              an offer.
-                            </p> */}
-                          </div>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
