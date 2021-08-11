@@ -1,6 +1,7 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
-import { concat } from "lodash"
+import { concat, find } from "lodash/fp"
+import learnJson from "../learn.json"
 //const LOCAL_STORAGE_ITEM = "progressState"
 
 // complete challenge
@@ -18,7 +19,6 @@ function isLessonCompleted(lesson) {
 const defaultContext: ProgressContext = {
   sectionsCompleted: ["testing-your-first-application"],
   lessonsCompleted: [],
-  challengeAnswers: [],
   disableChallenges: false,
 }
 
@@ -31,34 +31,17 @@ const defaultContext: ProgressContext = {
 export const progressMachine = createMachine(
   {
     id: "progress",
-    initial: "loading",
+    initial: "inProgress",
     context: defaultContext,
     states: {
-      loading: {
-        /*entry: assign({
-        todos: (context) => {
-          // "Rehydrate" persisted todos
-          return context.todos.map((todo) => ({
-            ...todo,
-            ref: spawn(createTodoMachine(todo))
-          }));
-        }
-      }),*/
-        always: "ready",
-      },
-      ready: {
+      inProgress: {
         on: {
           GO_TO_NEXT_LESSON: {
             actions: ["saveProgress"],
-            target: "inProgress",
           },
-          SUBMIT_ANSWER: { target: "inProgress" },
-          DISABLE_CHALLENGES: "",
-        },
-      },
-      inProgress: {
-        on: {
-          SUBMIT_ANSWER: { actions: ["saveAnswer"] },
+          SUBMIT_ANSWER: {
+            actions: ["validateAndLogAnswer"],
+          },
           DISABLE_CHALLENGES: "",
         },
       },
@@ -72,8 +55,28 @@ export const progressMachine = createMachine(
   {
     actions: {
       saveProgress: assign((context: any, event: any) => ({
-        stepsCompleted: concat(context.sectionsCompleted, event.path),
+        lessonsCompleted: concat(context.lessonsCompleted, event.path),
       })),
+      validateAndLogAnswer: assign((context: any, event: any) => {
+        const [sectionSlug, lessonSlug] = event.id.split("/")
+        const lessons = learnJson[sectionSlug].children
+        const lesson = find({ slug: lessonSlug }, lessons)
+        const challenge = lesson.challenges[event.challengeIndex]
+
+        const isCorrectMultipleChoiceAnswer =
+          challenge.challengeType === "multiple-choice" &&
+          challenge.correctAnswerIndex === event.userAnswerIndex
+
+        const isCorrectFreeFormAnswer =
+          challenge.challengeType === "freeform" &&
+          challenge.answer === event.userAnswer
+
+        if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
+          return {
+            lessonsCompleted: concat(context.lessonsCompleted, event.id),
+          }
+        }
+      }),
     },
   }
 )
