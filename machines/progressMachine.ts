@@ -31,10 +31,10 @@ const defaultContext: ProgressContext = {
 export const progressMachine = createMachine(
   {
     id: "progress",
-    initial: "inProgress",
+    initial: "started",
     context: defaultContext,
     states: {
-      inProgress: {
+      started: {
         on: {
           GO_TO_NEXT_LESSON: {
             actions: ["saveProgress"],
