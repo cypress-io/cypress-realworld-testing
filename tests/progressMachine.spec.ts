@@ -16,8 +16,10 @@ describe("progress machine", () => {
 
   it("can save the progress", () => {
     progressService.send("GO_TO_NEXT_LESSON", {
-      path: "testing-your-first-application/todomvc-app-install-and-overview"
+      path: "testing-your-first-application/todomvc-app-install-and-overview",
     })
-    expect(progressService.state.context.stepsCompleted).to.include("testing-your-first-application/todomvc-app-install-and-overview")
+    expect(progressService.state.context.stepsCompleted).to.include(
+      "testing-your-first-application/todomvc-app-install-and-overview"
+    )
   })
 })

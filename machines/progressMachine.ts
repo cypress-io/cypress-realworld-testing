@@ -17,7 +17,7 @@ function isLessonCompleted(lesson) {
 
 const defaultContext: ProgressContext = {
   sectionsCompleted: ["testing-your-first-application"],
-  stepsCompleted: [],
+  lessonsCompleted: [],
   challengeAnswers: [],
   disableChallenges: false,
 }
@@ -48,16 +48,17 @@ export const progressMachine = createMachine(
       },
       ready: {
         on: {
-          GO_TO_NEXT_LESSON: { actions: ["saveProgress"], target: "inProgress" },
+          GO_TO_NEXT_LESSON: {
+            actions: ["saveProgress"],
+            target: "inProgress",
+          },
           SUBMIT_ANSWER: { target: "inProgress" },
-          SKIP_ANSWER: "",
           DISABLE_CHALLENGES: "",
         },
       },
       inProgress: {
         on: {
           SUBMIT_ANSWER: { actions: ["saveAnswer"] },
-          SKIP_ANSWER: "",
           DISABLE_CHALLENGES: "",
         },
       },
@@ -71,7 +72,7 @@ export const progressMachine = createMachine(
   {
     actions: {
       saveProgress: assign((context: any, event: any) => ({
-        stepsCompleted: concat(context.sectionsCompleted, event.path)
+        stepsCompleted: concat(context.sectionsCompleted, event.path),
       })),
     },
   }
