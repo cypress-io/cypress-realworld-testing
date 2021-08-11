@@ -12,6 +12,7 @@ import { useRouter } from "next/router"
 import Layout from "../../components/Layout"
 import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
+import LessonChallenge from "../../components/Lesson/LessonChallenge"
 import { LessonTableOfContents } from "../../types/common"
 import {
   CONTENT_PATH,
@@ -65,9 +66,7 @@ export default function LessonPage({
 
   const isLessonComplete = progressState.context.lessonsCompleted.includes(
     `${section}/${slug}`
-    //"testing-your-first-application/todomvc-app-install-and-overview"
   )
-  console.log("PS", progressState.value)
 
   return (
     <Layout>
@@ -76,6 +75,7 @@ export default function LessonPage({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LessonHero lessonData={lessonData} />
+      <LessonChallenge />
       RESULTS: {isLessonComplete ? "COMPLETE" : "NOT"}
       <br />
       <div className="flex justify-center mx-auto">
