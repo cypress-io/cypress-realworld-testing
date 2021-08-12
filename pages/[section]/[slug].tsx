@@ -4,16 +4,18 @@ import { useActor } from "@xstate/react"
 import { progressService } from "../../machines/progressService"
 import { MDXRemoteSerializeResult } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
-//import dynamic from 'next/dynamic'
 import Head from "next/head"
-import Link from "next/link"
 import path from "path"
-import { useRouter } from "next/router"
 import Layout from "../../components/Layout"
 import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
-import LessonChallenge from "../../components/Lesson/LessonChallenge"
-import { LessonTableOfContents } from "../../types/common"
+import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
+import FFChallenge from "../../components/Lesson/FreeFormChallenge"
+import {
+  LessonTableOfContents,
+  MultipleChoiceChallenge,
+  FreeFormChallenge,
+} from "../../types/common"
 import {
   CONTENT_PATH,
   allContentFilePaths,
@@ -47,7 +49,7 @@ type Props = {
     slug: string
     description: string
     status: string
-    challenges: object[]
+    challenges: MultipleChoiceChallenge[] | FreeFormChallenge[]
   }
   sectionLessons: []
   nextLesson: string
@@ -60,14 +62,6 @@ export default function LessonPage({
   sectionLessons,
   nextLesson,
 }: Props) {
-  const router = useRouter()
-  const { section, slug } = router.query
-  const [progressState, progressSend] = useActor(progressService)
-
-  const isLessonComplete = progressState.context.lessonsCompleted.includes(
-    `${section}/${slug}`
-  )
-
   return (
     <Layout>
       <Head>
@@ -82,10 +76,19 @@ export default function LessonPage({
         sectionLessons={sectionLessons}
         nextLesson={nextLesson}
       />
-      <LessonChallenge
-        progressService={progressService}
-        lessonData={lessonData}
-      />
+      {lessonData.challenges[0].challengeType === "multiple-choice" && (
+        <MCChallenge
+          progressService={progressService}
+          lessonData={lessonData}
+        />
+      )}
+
+      {lessonData.challenges[0].challengeType === "free-form" && (
+        <FFChallenge
+          progressService={progressService}
+          lessonData={lessonData}
+        />
+      )}
     </Layout>
   )
 }

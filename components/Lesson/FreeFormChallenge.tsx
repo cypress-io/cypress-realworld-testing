@@ -10,10 +10,6 @@ export default function LessonChallenge(props) {
     `${section}/${slug}`
   )
 
-  const multipleChoiceChallenges = props.lessonData.challenges.find(
-    (challenge) => challenge.challengeType === "multiple-choice"
-  )
-
   return (
     <form className="space-y-8 divide-y divide-gray-200 mb-52">
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
@@ -27,7 +23,7 @@ export default function LessonChallenge(props) {
                       className="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700"
                       id="label-email"
                     >
-                      {multipleChoiceChallenges.question}:
+                      {props.lessonData.challenge.question}:
                       <br />
                       <br />
                       {isLessonComplete ? "CORRECT" : "INCORRECT"}
@@ -37,38 +33,43 @@ export default function LessonChallenge(props) {
                     <div className="max-w-lg space-y-4">
                       {/* Answer */}
 
-                      {multipleChoiceChallenges.answers.map((answer, index) => (
-                        <div className="relative flex items-start" key={index}>
-                          <div className="flex items-center h-5">
-                            <input
-                              id="comments"
-                              name="comments"
-                              type="checkbox"
-                              className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-                              onClick={() => {
-                                progressSend({
-                                  type: "SUBMIT_ANSWER",
-                                  id: `${section}/${slug}`,
-                                  challengeIndex: 0,
-                                  userAnswerIndex: index,
-                                })
-                              }}
-                            />
-                          </div>
-                          <div className="ml-3 text-sm">
-                            <label
-                              htmlFor="comments"
-                              className="font-medium text-gray-700"
-                            >
-                              {answer}
-                            </label>
-                            {/* <p className="text-gray-500">
+                      {props.lessonData.challenge.answers.map(
+                        (answer, index) => (
+                          <div
+                            className="relative flex items-start"
+                            key={index}
+                          >
+                            <div className="flex items-center h-5">
+                              <input
+                                id="comments"
+                                name="comments"
+                                type="checkbox"
+                                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                onClick={() => {
+                                  progressSend({
+                                    type: "SUBMIT_ANSWER",
+                                    id: `${section}/${slug}`,
+                                    challengeIndex: 0,
+                                    userAnswerIndex: index,
+                                  })
+                                }}
+                              />
+                            </div>
+                            <div className="ml-3 text-sm">
+                              <label
+                                htmlFor="comments"
+                                className="font-medium text-gray-700"
+                              >
+                                {answer}
+                              </label>
+                              {/* <p className="text-gray-500">
                             Get notified when someones posts a comment on a
                             posting.
                           </p> */}
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        )
+                      )}
                     </div>
                   </div>
                 </div>

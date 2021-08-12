@@ -16,12 +16,6 @@
             "question": "What is the command to run Cypress in open mode?",
             "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
             "correctAnswerIndex": 1
-          },
-          {
-            "challengeType": "freeform",
-            "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
-            "answer": "cy.get('.new-todo').should('exist')",
-            "hint": "Use the cy.get and should commands"
           }
         ]
       },
@@ -29,7 +23,15 @@
         "title": "Installing Cypress and writing our first test",
         "slug": "installing-cypress-and-writing-our-first-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Completed"
+        "status": "Completed",
+        "challenges": [
+          {
+            "challengeType": "freeform",
+            "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
+            "answer": "cy.get('.new-todo').should('exist')",
+            "hint": "Use the cy.get and should commands"
+          }
+        ]
       },
       {
         "title": "Multiple Todos and Before Each",
