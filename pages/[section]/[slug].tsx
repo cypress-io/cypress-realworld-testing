@@ -83,7 +83,7 @@ export default function LessonPage({
         />
       )}
 
-      {lessonData.challenges[0].challengeType === "free-form" && (
+      {lessonData.challenges[0].challengeType === "freeform" && (
         <FFChallenge
           progressService={progressService}
           lessonData={lessonData}
