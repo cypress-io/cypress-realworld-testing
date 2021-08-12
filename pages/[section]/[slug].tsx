@@ -76,19 +76,21 @@ export default function LessonPage({
         sectionLessons={sectionLessons}
         nextLesson={nextLesson}
       />
-      {lessonData.challenges[0].challengeType === "multiple-choice" && (
-        <MCChallenge
-          progressService={progressService}
-          lessonData={lessonData}
-        />
-      )}
+      {lessonData.challenges &&
+        lessonData.challenges[0].challengeType === "multiple-choice" && (
+          <MCChallenge
+            progressService={progressService}
+            lessonData={lessonData}
+          />
+        )}
 
-      {lessonData.challenges[0].challengeType === "freeform" && (
-        <FFChallenge
-          progressService={progressService}
-          lessonData={lessonData}
-        />
-      )}
+      {lessonData.challenges &&
+        lessonData.challenges[0].challengeType === "freeform" && (
+          <FFChallenge
+            progressService={progressService}
+            lessonData={lessonData}
+          />
+        )}
     </Layout>
   )
 }
@@ -112,9 +114,9 @@ export const getStaticProps = async ({ params }) => {
   })
   const lessonData = find(
     { slug: params.slug },
-    learnJson[params.section].children
+    learnJson[params.section].lessons
   )
-  const sectionLessons = learnJson[params.section].children
+  const sectionLessons = learnJson[params.section].lessons
   const nextLessonIndex = findIndex({ slug: params.slug }, sectionLessons) + 1
   let nextLesson
 
