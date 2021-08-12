@@ -1,12 +1,6 @@
 const withCSS = require("@zeit/next-css")
-const withTM = require("next-transpile-modules")([
-  "rehype-slug",
-  "hast-util-has-property",
-  "hast-util-heading-rank",
-  "hast-util-to-string",
-])
 
-module.exports = withTM({
+module.exports = {
   images: {
     domains: ["images.unsplash.com", "source.unsplash.com"],
   },
@@ -23,4 +17,4 @@ module.exports = withTM({
     })
     return config
   },
-})
+}
