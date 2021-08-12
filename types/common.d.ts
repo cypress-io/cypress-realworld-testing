@@ -25,7 +25,6 @@ export interface FreeFormPayload extends EventPayload {
 }
 export interface ProgressContext {
   sectionsCompleted: string[]
-  stepsCompleted: string[]
-  challengeAnswers: ChallengeAnswer[]
+  lessonsCompleted: string[]
   disableChallenges: boolean
 }

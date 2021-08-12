@@ -1,5 +1,7 @@
-import { createMachine } from "xstate"
+import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
+import { concat, find } from "lodash/fp"
+import learnJson from "../learn.json"
 
 // complete challenge
 // skip challenge
@@ -13,13 +15,13 @@ function isLessonCompleted(lesson) {
   // via _.includes, check that lesson is in state stepsCompleted
 }
 
+function isSectionStarted(lesson) {
+  // via _.includes, check that the section is contained in one of the lessonsCompleted
+}
+
 const defaultContext: ProgressContext = {
-  sectionsCompleted: ["testing-your-first-application"],
-  stepsCompleted: [
-    "testing-your-first-application/todomvc-app-install-and-overview",
-    "testing-your-first-application/installing-cypress-and-writing-our-first-test",
-  ],
-  challengeAnswers: [],
+  sectionsCompleted: [],
+  lessonsCompleted: [],
   disableChallenges: false,
 }
 
@@ -29,41 +31,59 @@ const defaultContext: ProgressContext = {
 // progressService.state.matches("inProgress")
 // iterate over sections and lessons to determine current lesson
 
-export const progressMachine = createMachine({
-  id: "progress",
-  initial: "loading",
-  context: defaultContext,
-  states: {
-    loading: {
-      /*entry: assign({
-        todos: (context) => {
-          // "Rehydrate" persisted todos
-          return context.todos.map((todo) => ({
-            ...todo,
-            ref: spawn(createTodoMachine(todo))
-          }));
-        }
-      }),*/
-      always: "ready",
-    },
-    ready: {
-      on: {
-        SUBMIT_ANSWER: "saveProgress",
-        SKIP_ANSWER: "",
-        DISABLE_CHALLENGES: "",
+export const progressMachine = createMachine(
+  {
+    id: "progress",
+    initial: "started",
+    context: defaultContext,
+    states: {
+      started: {
+        on: {
+          SKIP_ANSWER: {
+            actions: ["saveProgress"],
+          },
+          SUBMIT_ANSWER: {
+            actions: ["validateAndLogAnswer"],
+          },
+          DISABLE_CHALLENGES: { actions: ["disableChallenges"] },
+        },
       },
-    },
-    inProgress: {
-      on: {
-        SUBMIT_ANSWER: "saveProgress",
-        SKIP_ANSWER: "",
-        DISABLE_CHALLENGES: "",
-      },
-    },
-    completed: {
-      on: {
-        CLEAR_All_PROGRESS: "",
+      completed: {
+        on: {
+          CLEAR_All_PROGRESS: "",
+        },
       },
     },
   },
-})
+  {
+    actions: {
+      saveProgress: assign((context: any, event: any) => ({
+        lessonsCompleted: concat(context.lessonsCompleted, event.path),
+        lessonsSkipped: concat(context.lessonsCompleted, event.path),
+      })),
+      validateAndLogAnswer: assign((context: any, event: any) => {
+        const [sectionSlug, lessonSlug] = event.id.split("/")
+        const lessons = learnJson[sectionSlug].children
+        const lesson = find({ slug: lessonSlug }, lessons)
+        const challenge = lesson.challenges[event.challengeIndex]
+
+        const isCorrectMultipleChoiceAnswer =
+          challenge.challengeType === "multiple-choice" &&
+          challenge.correctAnswerIndex === event.userAnswerIndex
+
+        const isCorrectFreeFormAnswer =
+          challenge.challengeType === "freeform" &&
+          challenge.answer === event.userAnswer
+
+        if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
+          return {
+            lessonsCompleted: concat(context.lessonsCompleted, event.id),
+          }
+        }
+      }),
+      disableChallenges: assign((context: any, event: any) => ({
+        disableChallenges: true,
+      })),
+    },
+  }
+)
