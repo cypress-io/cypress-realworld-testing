@@ -5,8 +5,8 @@ import learnJson from "../learn.json"
 const sections = Object.keys(learnJson)
 
 sections.map((section) => {
-  const { children } = learnJson[section]
-  children.map((lesson) => {
+  const { lessons } = learnJson[section]
+  lessons.map((lesson) => {
     const fileData = `---
 title: ${lesson.title}
 ---

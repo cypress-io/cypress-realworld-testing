@@ -63,7 +63,7 @@ export const progressMachine = createMachine(
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
         const [sectionSlug, lessonSlug] = event.id.split("/")
-        const lessons = learnJson[sectionSlug].children
+        const lessons = learnJson[sectionSlug].lessons
         const lesson = find({ slug: lessonSlug }, lessons)
         const challenge = lesson.challenges[event.challengeIndex]
 

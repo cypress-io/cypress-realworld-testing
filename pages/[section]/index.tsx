@@ -32,7 +32,7 @@ export default function SectionPage({
 }
 
 export async function getStaticProps({ params }) {
-  const { title, children, description } = learnJson[params.section]
+  const { title, lessons, description } = learnJson[params.section]
   const sections = Object.keys(learnJson)
   const nextSectionIndex = sections.indexOf(params.section) + 1
   let nextSection
@@ -46,7 +46,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       section: params.section,
-      lessons: children,
+      lessons,
       title,
       description,
       nextSection,
@@ -57,8 +57,8 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const sections = Object.keys(learnJson)
   const paths = sections.map((section) => {
-    const { title, children } = learnJson[section]
-    return { params: { section: section, lessons: children, title } }
+    const { title, lessons } = learnJson[section]
+    return { params: { section, lessons, title } }
   })
 
   return {

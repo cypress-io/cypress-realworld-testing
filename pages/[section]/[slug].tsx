@@ -112,9 +112,9 @@ export const getStaticProps = async ({ params }) => {
   })
   const lessonData = find(
     { slug: params.slug },
-    learnJson[params.section].children
+    learnJson[params.section].lessons
   )
-  const sectionLessons = learnJson[params.section].children
+  const sectionLessons = learnJson[params.section].lessons
   const nextLessonIndex = findIndex({ slug: params.slug }, sectionLessons) + 1
   let nextLesson
 

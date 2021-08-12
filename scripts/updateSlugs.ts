@@ -4,10 +4,10 @@ import slugify from "slugify"
 import learnJson from "../learn.json"
 
 Object.keys(learnJson).forEach((section) => {
-  let { slug, title, children } = learnJson[section]
+  let { slug, title, lessons } = learnJson[section]
   slug = slugify(title, { lower: true })
 
-  children.forEach((lesson) => {
+  lessons.forEach((lesson) => {
     lesson.slug = slugify(lesson.title, { lower: true })
   })
 })

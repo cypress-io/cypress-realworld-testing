@@ -80,7 +80,7 @@ export default function HomeSteps(props) {
                       </h1>
                     </a>
                     <span className="ml-8">
-                      {props.content[section].children.length} Lessons
+                      {props.content[section].lessons.length} Lessons
                     </span>
                   </div>
 
@@ -89,7 +89,7 @@ export default function HomeSteps(props) {
                   </p>
 
                   <Slider {...settings}>
-                    {props.content[section].children.map((lesson) => (
+                    {props.content[section].lessons.map((lesson) => (
                       <div key={lesson.title}>
                         <HomeCard lesson={lesson} section={section} />
                       </div>
@@ -121,7 +121,7 @@ export default function HomeSteps(props) {
                       </h1>
                     </a>
                     <span className="ml-8">
-                      {props.content[section].children.length} Lessons
+                      {props.content[section].lessons.length} Lessons
                     </span>
                   </div>
 
@@ -130,7 +130,7 @@ export default function HomeSteps(props) {
                   </p>
 
                   <Slider {...settings}>
-                    {props.content[section].children.map((lesson) => (
+                    {props.content[section].lessons.map((lesson) => (
                       <div key={lesson.title}>
                         <HomeCard lesson={lesson} section={section} />
                       </div>
@@ -162,7 +162,7 @@ export default function HomeSteps(props) {
                       </h1>
                     </a>
                     <span className="ml-8">
-                      {props.content[section].children.length} Lessons
+                      {props.content[section].lessons.length} Lessons
                     </span>
                   </div>
 
@@ -171,7 +171,7 @@ export default function HomeSteps(props) {
                   </p>
 
                   <Slider {...settings}>
-                    {props.content[section].children.map((lesson) => (
+                    {props.content[section].lessons.map((lesson) => (
                       <div key={lesson.title}>
                         <HomeCard lesson={lesson} section={section} />
                       </div>
