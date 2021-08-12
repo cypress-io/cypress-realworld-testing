@@ -12,7 +12,11 @@
     "generate-content": "ts-node scripts/generateContentFiles.ts",
     "start": "next start",
     "pre-commit": "pretty-quick --staged && npm run lint && yarn test",
-    "test": "mocha -r ts-node/register -r tsconfig-paths/register 'tests/**/*.ts'"
+    "test": "mocha -r ts-node/register -r tsconfig-paths/register 'tests/**/*.ts'",
+    "cypress:open": "cypress open",
+    "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
+    "cypress:run": "cypress run",
+    "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.0",
