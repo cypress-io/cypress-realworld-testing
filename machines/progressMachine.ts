@@ -15,6 +15,10 @@ function isLessonCompleted(lesson) {
   // via _.includes, check that lesson is in state stepsCompleted
 }
 
+function isSectionStarted(lesson) {
+  // via _.includes, check that the section is contained in one of the lessonsCompleted
+}
+
 const defaultContext: ProgressContext = {
   sectionsCompleted: [],
   lessonsCompleted: [],
