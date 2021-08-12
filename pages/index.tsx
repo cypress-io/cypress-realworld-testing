@@ -5,22 +5,9 @@ import HomeHero from "../components/Home/HomeHero"
 import HomeSteps from "../components/Home/HomeSteps"
 import learnJson from "../learn.json"
 import { progressService } from "../machines/progressService"
-import { useEffect } from "react"
 
 export default function Home({ content, sections }) {
   const [progressState, progressSend] = useActor(progressService)
-
-  const stateValue = progressState.value
-  console.log("PS", progressState.value)
-
-  useEffect(() => {
-    progressSend({
-      type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/todomvc-app-install-and-overview",
-      challengeIndex: 0,
-      userAnswerIndex: 0,
-    })
-  }, [progressSend, stateValue])
 
   return (
     <Layout>
