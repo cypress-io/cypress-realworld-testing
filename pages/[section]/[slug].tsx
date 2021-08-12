@@ -76,19 +76,21 @@ export default function LessonPage({
         sectionLessons={sectionLessons}
         nextLesson={nextLesson}
       />
-      {lessonData.challenges[0].challengeType === "multiple-choice" && (
-        <MCChallenge
-          progressService={progressService}
-          lessonData={lessonData}
-        />
-      )}
+      {lessonData.challenges &&
+        lessonData.challenges[0].challengeType === "multiple-choice" && (
+          <MCChallenge
+            progressService={progressService}
+            lessonData={lessonData}
+          />
+        )}
 
-      {lessonData.challenges[0].challengeType === "freeform" && (
-        <FFChallenge
-          progressService={progressService}
-          lessonData={lessonData}
-        />
-      )}
+      {lessonData.challenges &&
+        lessonData.challenges[0].challengeType === "freeform" && (
+          <FFChallenge
+            progressService={progressService}
+            lessonData={lessonData}
+          />
+        )}
     </Layout>
   )
 }
