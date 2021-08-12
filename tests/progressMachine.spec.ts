@@ -55,8 +55,8 @@ describe("progress machine", () => {
   it("can validate a correct freeform answer", () => {
     const answerEvent: FreeFormPayload = {
       type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/todomvc-app-install-and-overview",
-      challengeIndex: 1,
+      id: "testing-your-first-application/installing-cypress-and-writing-our-first-test",
+      challengeIndex: 0,
       userAnswer: "cy.get('.new-todo').should('exist')",
     }
     progressService.send(answerEvent)
@@ -69,8 +69,8 @@ describe("progress machine", () => {
   it("can validate an incorrect freeform answer", () => {
     const answerEvent: FreeFormPayload = {
       type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/todomvc-app-install-and-overview",
-      challengeIndex: 1,
+      id: "testing-your-first-application/installing-cypress-and-writing-our-first-test",
+      challengeIndex: 0,
       userAnswer: "cy.get('.new-todo')",
     }
     progressService.send(answerEvent)

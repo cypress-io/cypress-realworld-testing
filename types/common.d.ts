@@ -28,3 +28,17 @@ export interface ProgressContext {
   lessonsCompleted: string[]
   disableChallenges: boolean
 }
+
+export interface Challenge {
+  challengeType: string
+  question: string
+}
+
+export interface MultipleChoiceChallenge extends Challenge {
+  answers: []
+  correctAnswerIndex: string
+}
+export interface FreeFormChallenge extends Challenge {
+  answer: string
+  hint: string
+}
