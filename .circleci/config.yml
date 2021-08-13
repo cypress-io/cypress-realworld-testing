@@ -9,37 +9,39 @@ executors:
       - image: "cypress/browsers:node14.17.0-chrome88-ff89"
     resource_class: medium+
 
-jobs:
-  # Setup
-  #  1. Install Cypress
-  #  2. Validate types
-  #  3. Run server unit-tests
-  - cypress/install:
-      name: "Setup Linux"
-      yarn: true
-      executor: with-chrome-and-firefox
-      build: "yarn build"
-      post-steps:
-        - run:
-            name: Print machine info ℹ️
-            command: yarn cypress info
-        - run:
-            name: Check Types
-            command: yarn types
-        - run:
-            name: Lint Files
-            command: yarn lint
-        - run:
-            name: Run Unit Tests
-            command: yarn test:unit
+workflows:
+  build-and-test:
+    jobs:
+      # Setup
+      #  1. Install Cypress
+      #  2. Validate types
+      #  3. Run server unit-tests
+      - cypress/install:
+          name: "Setup Linux"
+          yarn: true
+          executor: with-chrome-and-firefox
+          build: "yarn build"
+          post-steps:
+            - run:
+                name: Print machine info ℹ️
+                command: yarn cypress info
+            - run:
+                name: Check Types
+                command: yarn types
+            - run:
+                name: Lint Files
+                command: yarn lint
+            - run:
+                name: Run Unit Tests
+                command: yarn test:unit
 
-  # Run E2E tests in Chrome
-  - cypress/run:
-      name: "UI Tests - Chrome"
-      browser: chrome
-      executor: with-chrome-and-firefox
-      wait-on: "http://localhost:3000"
-      yarn: true
-      start: yarn start
-      requires:
-        - Setup Linux
+      # Run E2E tests in Chrome
+      - cypress/run:
+          name: "UI Tests - Chrome"
+          browser: chrome
+          executor: with-chrome-and-firefox
+          wait-on: "http://localhost:3000"
+          yarn: true
+          start: yarn start
+          requires:
+            - Setup Linux
