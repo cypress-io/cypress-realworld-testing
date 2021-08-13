@@ -13,8 +13,8 @@ export default function LessonChallenge(props) {
   return (
     <>
       <hr className="mb-6" />
-      <div className="py-12 bg-white lg:grid lg:grid-cols-12 lg:gap-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:col-span-9 xl:col-span-7 xl:col-start-3">
+      <div className="py-12 flex">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
             <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
               Unlock the Next Lesson
