@@ -1,8 +1,6 @@
 import LessonToc from "../../components/Lesson/LessonToc"
 import LessonSteps from "../../components/Lesson/LessonSteps"
-import Content from "../../components/Lesson/Content"
 import { MDXRemote } from "next-mdx-remote"
-import styles from "../../styles/lesson-content.module.css"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -15,12 +13,12 @@ export default function LessonLayout(props) {
         <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
           {/* Table of Content */}
           <div className="hidden lg:block lg:col-span-3 xl:col-span-2">
-            <nav
-              aria-label="Sidebar"
-              className="sticky top-6 divide-y divide-gray-300"
-            >
-              <LessonToc navigation={props.toc} />
-            </nav>
+            <div className="sticky top-6">
+              <p className="font-semibold mb-4">ON THIS PAGE</p>
+              <nav aria-label="Sidebar" className="">
+                <LessonToc navigation={props.toc} />
+              </nav>
+            </div>
           </div>
 
           {/* Content */}
@@ -47,6 +45,7 @@ export default function LessonLayout(props) {
           {/* Progress Steps */}
           <aside className="hidden xl:block xl:col-span-3">
             <div className="sticky top-6 space-y-4">
+              <p className="font-semibold mb-6">{props.sectionTitle}</p>
               <LessonSteps sectionLessons={props.sectionLessons} />
             </div>
           </aside>

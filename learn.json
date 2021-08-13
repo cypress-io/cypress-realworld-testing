@@ -10,6 +10,7 @@
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "status": "Completed",
+        "videoURL": null,
         "challenges": [
           {
             "challengeType": "multiple-choice",
