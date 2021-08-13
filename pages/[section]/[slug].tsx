@@ -23,6 +23,7 @@ import {
 } from "../../utils/mdxUtils"
 import { find, findIndex } from "lodash/fp"
 import rehypeSlug from "rehype-slug"
+import rehypePrism from "@mapbox/rehype-prism"
 import learnJson from "../../learn.json"
 
 // Custom components/renderers to pass to MDX.
@@ -108,7 +109,7 @@ export const getStaticProps = async ({ params }) => {
     mdxOptions: {
       remarkPlugins: [],
       // @ts-ignore
-      rehypePlugins: [rehypeSlug],
+      rehypePlugins: [rehypeSlug, rehypePrism],
     },
     scope: data,
   })

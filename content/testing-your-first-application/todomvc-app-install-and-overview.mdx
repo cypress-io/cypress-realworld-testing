@@ -56,3 +56,18 @@ Testing is a mindset, so before we can begin to write tests for our app, we firs
 For example, seeing how this is a todo application, one of the most important features should be the ability to add todos. After all, if a user is not able to add todos then the entire app is useless. Therefore, one of the first things we should test is that a user is able to add todos.
 
 In the next lesson, we will learn how to install Cypress and write our first test that will make sure we can add a todo to the app.
+
+```js
+describe("React TodoMVC", () => {
+  beforeEach(() => {
+    cy.visit("http://127.0.0.1:8888")
+  })
+
+  it("adds a single todo", () => {
+    cy.get(".new-todo").type("Buy Milk{enter}")
+    cy.get(".todo-list li").should("have.length", 1)
+  })
+
+  it("adds three todos", () => {})
+})
+```
