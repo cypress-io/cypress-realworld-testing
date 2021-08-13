@@ -23,7 +23,9 @@ import {
 } from "../../utils/mdxUtils"
 import { find, findIndex } from "lodash/fp"
 import rehypeSlug from "rehype-slug"
+import rehypePrism from "@mapbox/rehype-prism"
 import learnJson from "../../learn.json"
+import { props } from "cypress/types/bluebird"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -49,10 +51,12 @@ type Props = {
     slug: string
     description: string
     status: string
+    videoURL: string
     challenges: MultipleChoiceChallenge[] | FreeFormChallenge[]
   }
   sectionLessons: []
   nextLesson: string
+  sectionTitle: string
 }
 
 export default function LessonPage({
@@ -61,6 +65,7 @@ export default function LessonPage({
   lessonData,
   sectionLessons,
   nextLesson,
+  sectionTitle,
 }: Props) {
   return (
     <Layout>
@@ -68,13 +73,16 @@ export default function LessonPage({
         <title>{lessonData.title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <LessonHero lessonData={lessonData} />
+
+      {lessonData.videoURL && <LessonHero lessonData={lessonData} />}
+
       <LessonLayout
         toc={toc}
         source={source}
         components={components}
         sectionLessons={sectionLessons}
         nextLesson={nextLesson}
+        sectionTitle={sectionTitle}
       />
       {lessonData.challenges &&
         lessonData.challenges[0].challengeType === "multiple-choice" && (
@@ -108,7 +116,7 @@ export const getStaticProps = async ({ params }) => {
     mdxOptions: {
       remarkPlugins: [],
       // @ts-ignore
-      rehypePlugins: [rehypeSlug],
+      rehypePlugins: [rehypeSlug, rehypePrism],
     },
     scope: data,
   })
@@ -116,12 +124,12 @@ export const getStaticProps = async ({ params }) => {
     { slug: params.slug },
     learnJson[params.section].lessons
   )
-  const sectionLessons = learnJson[params.section].lessons
-  const nextLessonIndex = findIndex({ slug: params.slug }, sectionLessons) + 1
+  const { title, lessons } = learnJson[params.section]
+  const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
   let nextLesson
 
-  if (nextLessonIndex < sectionLessons.length) {
-    nextLesson = sectionLessons[nextLessonIndex].slug
+  if (nextLessonIndex < lessons.length) {
+    nextLesson = lessons[nextLessonIndex].slug
   } else {
     nextLesson = null
   }
@@ -132,8 +140,9 @@ export const getStaticProps = async ({ params }) => {
       frontMatter: data,
       toc,
       lessonData,
-      sectionLessons,
+      sectionLessons: lessons,
       nextLesson,
+      sectionTitle: title,
     },
   }
 }

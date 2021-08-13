@@ -2,3 +2,11 @@
 .slick-prev:before {
   color: black;
 }
+
+/* 
+  Lesson Content
+*/
+
+.lesson-content h1 {
+  @apply mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900
+}
