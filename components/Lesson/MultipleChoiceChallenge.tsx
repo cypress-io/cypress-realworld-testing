@@ -1,40 +1,6 @@
 import { useRouter } from "next/router"
 import { useActor } from "@xstate/react"
 
-import {
-  AnnotationIcon,
-  GlobeAltIcon,
-  LightningBoltIcon,
-  ScaleIcon,
-} from "@heroicons/react/outline"
-
-const features = [
-  {
-    name: "Competitive exchange rates",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: GlobeAltIcon,
-  },
-  {
-    name: "No hidden fees",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: ScaleIcon,
-  },
-  {
-    name: "Transfers are instant",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: LightningBoltIcon,
-  },
-  {
-    name: "Mobile notifications",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: AnnotationIcon,
-  },
-]
-
 export default function LessonChallenge(props) {
   const router = useRouter()
   const { section, slug } = router.query
@@ -65,7 +31,7 @@ export default function LessonChallenge(props) {
                 <dt>
                   <div className="absolute flex items-center justify-center h-8 w-8">
                     <input
-                      id={`${answer}-${index}`}
+                      id={`answer-${index}`}
                       name="answer"
                       type="checkbox"
                       className="focus:ring-indigo-500 text-indigo-600 border-gray-300 rounded h-8 w-8"
@@ -80,8 +46,10 @@ export default function LessonChallenge(props) {
                     />
                   </div>
                   <label
-                    htmlFor={`${answer}-${index}`}
-                    className="ml-16 text-lg leading-6 font-medium text-gray-900"
+                    htmlFor={`answer-${index}`}
+                    className={
+                      "ml-16 text-lg leading-6 font-medium text-gray-900"
+                    }
                   >
                     {answer}
                   </label>
