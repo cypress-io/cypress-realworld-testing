@@ -1,5 +1,6 @@
 import LessonToc from "../../components/Lesson/LessonToc"
 import LessonSteps from "../../components/Lesson/LessonSteps"
+import NextLessonBtn from "../../components/Lesson/NextLessonBtn"
 import { MDXRemote } from "next-mdx-remote"
 
 function classNames(...classes) {
@@ -32,14 +33,7 @@ export default function LessonLayout(props) {
             </div>
 
             {/* Next Lesson Button */}
-            {props.nextLesson && (
-              <a
-                href={props.nextLesson}
-                className="mx-auto max-w-xl flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-              >
-                Next Lesson
-              </a>
-            )}
+            {props.nextLesson && <NextLessonBtn path={props.nextLesson} />}
           </main>
 
           {/* Progress Steps */}
