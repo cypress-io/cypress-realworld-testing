@@ -9,33 +9,37 @@ executors:
       - image: "cypress/browsers:node14.17.0-chrome88-ff89"
     resource_class: medium+
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-commands:
-  build:
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - yarn-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn --frozen-lockfile
-      - save_cache:
-          key: yarn-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - node_modules
-      - run:
-          name: Next Build
-          command: yarn build
-
 jobs:
-  build:
-    executor: node-executor
-    working_directory: ~/repo
-    steps:
-      - nuxt-build
-      - persist_to_workspace:
-          root: ~/repo
-          paths:
-            - build/*
-            - node_modules/*
+  # Setup
+  #  1. Install Cypress
+  #  2. Validate types
+  #  3. Run server unit-tests
+  - cypress/install:
+      name: "Setup Linux"
+      yarn: true
+      executor: with-chrome-and-firefox
+      build: "yarn build"
+      post-steps:
+        - run:
+            name: Print machine info ℹ️
+            command: yarn cypress info
+        - run:
+            name: Check Types
+            command: yarn types
+        - run:
+            name: Lint Files
+            command: yarn lint
+        - run:
+            name: Run Unit Tests
+            command: yarn test:unit
+
+  # Run E2E tests in Chrome
+  - cypress/run:
+      name: "UI Tests - Chrome"
+      browser: chrome
+      executor: with-chrome-and-firefox
+      wait-on: "http://localhost:3000"
+      yarn: true
+      start: yarn start
+      requires:
+        - Setup Linux
