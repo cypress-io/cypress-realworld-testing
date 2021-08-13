@@ -7,3 +7,5 @@ describe("RWT Home", function () {
     cy.get("h1").first().should("contain", "Real World Testing with Cypress")
   })
 })
+
+export {}
