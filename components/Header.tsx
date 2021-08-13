@@ -10,18 +10,18 @@ export default function Header() {
       <Popover className="relative bg-white shadow">
         {({ open }) => (
           <>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="max-w-full mx-12 px-4 sm:px-6">
               <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                 <div className="flex justify-start lg:w-0 lg:flex-1">
                   <Link href="/">
-                    <a>Real World Testing</a>
+                    <a className="font-semibold">Real World Testing</a>
                   </Link>
                 </div>
 
-                <div className="md:flex items-center justify-end">
-                  {/* Search */}
+                {/* Search */}
+                <div className="md:flex items-center justify-end w-full max-w-sm">
                   <div className="flex-1 min-w-0">
-                    <div className="max-w-xs w-full mx-auto">
+                    <div className="w-full">
                       <label htmlFor="desktop-search" className="sr-only">
                         Search
                       </label>
