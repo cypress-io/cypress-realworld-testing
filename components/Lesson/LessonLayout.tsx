@@ -35,14 +35,12 @@ export default function LessonLayout(props) {
 
             {/* Next Lesson Button */}
             {props.nextLesson && (
-              <div className="rounded-md shadow">
-                <a
-                  href={props.nextLesson}
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                >
-                  Next Lesson
-                </a>
-              </div>
+              <a
+                href={props.nextLesson}
+                className="mx-auto max-w-xl flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+              >
+                Next Lesson
+              </a>
             )}
           </main>
 
