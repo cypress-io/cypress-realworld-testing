@@ -1,7 +1,9 @@
 import { useRouter } from "next/router"
 import { useActor } from "@xstate/react"
+import { useState } from "react"
 
 export default function LessonChallenge(props) {
+  const [answerIndicies, setAnswerChecked] = useState([])
   const router = useRouter()
   const { section, slug } = router.query
   const [progressState, progressSend] = useActor(props.progressService)
@@ -37,6 +39,7 @@ export default function LessonChallenge(props) {
                         type="checkbox"
                         className="focus:ring-indigo-500 text-indigo-600 border-gray-300 rounded h-8 w-8"
                         onClick={() => {
+                          setAnswerChecked((prev) => [...prev, index])
                           progressSend({
                             type: "SUBMIT_ANSWER",
                             id: `${section}/${slug}`,
@@ -55,12 +58,20 @@ export default function LessonChallenge(props) {
                       {answer}
                     </label>
                   </dt>
-                  <dd className="mt-2 ml-16 text-base text-gray-500">
+                  <dd
+                    className={`${
+                      answerIndicies?.includes(index) ? "" : "hidden"
+                    } mt-2 ml-16 text-base text-gray-500`}
+                  >
                     {/* {feature.description} */}
+                    Details about the answer
                   </dd>
                 </div>
               ))}
             </dl>
+          </div>
+          <div className={isLessonComplete ? "" : "hidden"}>
+            Next Lesson Button
           </div>
         </div>
       </div>
