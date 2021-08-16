@@ -22,7 +22,7 @@ export default function SectionPage({
 
       <SectionHero title={title} description={description} />
 
-      <main className="mx-auto py-12 px-4 max-w-7xl">
+      <main className="mx-auto py-12 px-4 xl:max-w-7xl">
         <SectionSteps lessons={lessons} section={section} />
       </main>
 

@@ -65,7 +65,7 @@ export default function HomeSteps(props) {
               />
             ) : null}
 
-            {/* "Completed" Check Icon */}
+            {/* "Completed" */}
             {props.content[section].status === "Completed" && (
               <span className="h-9 flex items-center">
                 <span className="relative z-10 w-8 h-8 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800">
@@ -77,7 +77,7 @@ export default function HomeSteps(props) {
               </span>
             )}
 
-            {/* "Current" Check Icon */}
+            {/* "Current" */}
             {props.content[section].status === "Current" && (
               <span className="h-9 flex items-center" aria-hidden="true">
                 <span className="relative z-10 w-8 h-8 flex items-center justify-center bg-white border-2 border-indigo-600 rounded-full">
@@ -86,7 +86,7 @@ export default function HomeSteps(props) {
               </span>
             )}
 
-            {/* "Upcoming" Check Icon */}
+            {/* "Upcoming" */}
             {props.content[section].status === "Upcoming" && (
               <span className="h-9 flex items-center" aria-hidden="true">
                 <span className="relative z-10 w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full group-hover:border-gray-400">
