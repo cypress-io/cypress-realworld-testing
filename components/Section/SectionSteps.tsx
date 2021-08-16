@@ -42,7 +42,6 @@ export default function SectionSteps(props) {
                         />
                       </span>
                     </span>
-                    <SectionCard lesson={lesson} section={props.section} />
                   </>
                 )}
 
@@ -54,7 +53,6 @@ export default function SectionSteps(props) {
                         <span className="h-2.5 w-2.5 bg-indigo-600 rounded-full" />
                       </span>
                     </span>
-                    <SectionCard lesson={lesson} section={props.section} />
                   </>
                 )}
 
@@ -66,10 +64,10 @@ export default function SectionSteps(props) {
                         <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />
                       </span>
                     </span>
-                    <SectionCard lesson={lesson} section={props.section} />
                   </>
                 )}
               </div>
+              <SectionCard lesson={lesson} section={props.section} />
             </li>
           ))}
       </ol>
