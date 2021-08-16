@@ -18,18 +18,18 @@ export default function HomeSteps(props) {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1600,
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          initialSlide: 2,
+          initialSlide: 1,
         },
       },
       {
@@ -100,13 +100,13 @@ export default function HomeSteps(props) {
               className="lg:my-12 mx-12 lg:mx-24"
             >
               {/* Section Title */}
-              <div className="section-title ml-8 flex flex-col lg:items-center">
+              <div className="section-title ml-8 flex flex-col xl:flex-row">
                 <a href={section}>
                   <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                     {props.content[section].title}
                   </h1>
                 </a>
-                <span className="mt-4 lg:ml-8">
+                <span className="mt-4 xl:ml-8">
                   {props.content[section].lessons.length} Lessons
                 </span>
               </div>
