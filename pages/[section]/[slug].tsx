@@ -1,16 +1,21 @@
 import fs from "fs"
 import matter from "gray-matter"
-import { useActor } from "@xstate/react"
-import { progressService } from "../../machines/progressService"
 import { MDXRemoteSerializeResult } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 import Head from "next/head"
 import path from "path"
+import { find, findIndex } from "lodash/fp"
+import rehypeSlug from "rehype-slug"
+import rehypePrism from "@mapbox/rehype-prism"
+import { useActor } from "@xstate/react"
+
+import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
 import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
 import FFChallenge from "../../components/Lesson/FreeFormChallenge"
+import NextLessonBtn from "../../components/Lesson/NextLessonBtn"
 import {
   LessonTableOfContents,
   MultipleChoiceChallenge,
@@ -21,11 +26,8 @@ import {
   allContentFilePaths,
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
-import { find, findIndex } from "lodash/fp"
-import rehypeSlug from "rehype-slug"
-import rehypePrism from "@mapbox/rehype-prism"
+import { isLessonCompleted } from "../../utils/machineUtils"
 import learnJson from "../../learn.json"
-import { props } from "cypress/types/bluebird"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -57,6 +59,7 @@ type Props = {
   sectionLessons: []
   nextLesson: string
   sectionTitle: string
+  lessonPath: string
 }
 
 export default function LessonPage({
@@ -66,7 +69,10 @@ export default function LessonPage({
   sectionLessons,
   nextLesson,
   sectionTitle,
+  lessonPath,
 }: Props) {
+  const [progressState] = useActor(progressService)
+
   return (
     <Layout>
       <Head>
@@ -89,6 +95,7 @@ export default function LessonPage({
           <MCChallenge
             progressService={progressService}
             lessonData={lessonData}
+            lessonPath={lessonPath}
           />
         )}
 
@@ -99,6 +106,17 @@ export default function LessonPage({
             lessonData={lessonData}
           />
         )}
+
+      {/* Next Lesson Button */}
+      <div
+        className={`${
+          nextLesson && isLessonCompleted(progressState, lessonPath)
+            ? ""
+            : "hidden"
+        } py-20`}
+      >
+        {nextLesson && <NextLessonBtn path={nextLesson} />}
+      </div>
     </Layout>
   )
 }
@@ -143,6 +161,7 @@ export const getStaticProps = async ({ params }) => {
       sectionLessons: lessons,
       nextLesson,
       sectionTitle: title,
+      lessonPath: `${params.section}/${params.slug}`,
     },
   }
 }

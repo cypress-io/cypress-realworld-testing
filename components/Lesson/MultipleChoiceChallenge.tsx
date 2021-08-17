@@ -2,15 +2,15 @@ import { useRouter } from "next/router"
 import { useActor } from "@xstate/react"
 import { useState } from "react"
 
-export default function LessonChallenge({ progressService, lessonData }) {
+export default function LessonChallenge({
+  progressService,
+  lessonData,
+  lessonPath,
+}) {
   const [answerIndicies, setAnswerChecked] = useState([])
   const router = useRouter()
   const { section, slug } = router.query
-  const [progressState, progressSend] = useActor(progressService)
-  // @ts-ignore
-  const isLessonComplete = progressState.context.lessonsCompleted.includes(
-    `${section}/${slug}`
-  )
+  const [, progressSend] = useActor(progressService)
 
   const isIncorrectAnswer = (index) => {
     return (
@@ -48,7 +48,7 @@ export default function LessonChallenge({ progressService, lessonData }) {
                           setAnswerChecked((prev) => [...prev, index])
                           progressSend({
                             type: "SUBMIT_ANSWER",
-                            id: `${section}/${slug}`,
+                            id: lessonPath,
                             challengeIndex: 0,
                             userAnswerIndex: index,
                           })
@@ -75,11 +75,9 @@ export default function LessonChallenge({ progressService, lessonData }) {
               ))}
             </dl>
           </div>
-          <div className={isLessonComplete ? "" : "hidden"}>
-            Next Lesson Button
-          </div>
         </div>
       </div>
+      <hr />
     </>
   )
 }

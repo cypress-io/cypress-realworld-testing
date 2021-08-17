@@ -31,9 +31,6 @@ export default function LessonLayout(props) {
                 </div>
               </div>
             </div>
-
-            {/* Next Lesson Button */}
-            {props.nextLesson && <NextLessonBtn path={props.nextLesson} />}
           </main>
 
           {/* Progress Steps */}
