@@ -16,7 +16,7 @@ function isLessonCompleted(lesson) {
 }
 
 function isSectionStarted(lesson) {
-  // via _.includes, check that the section is contained in one of the lessonsCompleted
+  // via _.includes, check that the section is contained in one of the lessons
 }
 
 const defaultContext: ProgressContext = {
@@ -58,8 +58,10 @@ export const progressMachine = createMachine(
   {
     actions: {
       saveProgress: assign((context: any, event: any) => ({
-        lessonsCompleted: concat(context.lessonsCompleted, event.path),
-        lessonsSkipped: concat(context.lessonsCompleted, event.path),
+        lessons: concat(context.lessons, {
+          id: event.path,
+          status: "completed"
+        }),
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
         const [sectionSlug, lessonSlug] = event.id.split("/")
@@ -77,7 +79,10 @@ export const progressMachine = createMachine(
 
         if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
           return {
-            lessonsCompleted: concat(context.lessonsCompleted, event.id),
+            lessons: concat(context.lessons, {
+              id: event.id,
+              status: "completed"
+            }),
           }
         }
       }),
