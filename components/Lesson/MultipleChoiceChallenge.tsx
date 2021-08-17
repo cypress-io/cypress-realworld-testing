@@ -12,6 +12,13 @@ export default function LessonChallenge({ progressService, lessonData }) {
     `${section}/${slug}`
   )
 
+  const isIncorrectAnswer = (index) => {
+    return (
+      answerIndicies.includes(index) &&
+      lessonData.challenges[0].correctAnswerIndex !== index
+    )
+  }
+
   return (
     <>
       <hr className="mb-6" />
@@ -24,7 +31,6 @@ export default function LessonChallenge({ progressService, lessonData }) {
             <p className="mt-6 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               {lessonData.challenges[0].question}
             </p>
-            {isLessonComplete ? "CORRECT" : "INCORRECT"}
           </div>
 
           <div className="mt-10">
@@ -52,10 +58,7 @@ export default function LessonChallenge({ progressService, lessonData }) {
                     <label
                       htmlFor={`answer-${index}`}
                       className={`${
-                        answerIndicies?.includes(index) &&
-                        lessonData.challenges[0].correctAnswerIndex !== index
-                          ? "line-through"
-                          : ""
+                        isIncorrectAnswer(index) ? "line-through" : ""
                       } ml-16 text-lg leading-6 font-medium text-gray-900`}
                     >
                       {answer}
@@ -63,13 +66,9 @@ export default function LessonChallenge({ progressService, lessonData }) {
                   </dt>
                   <dd
                     className={`${
-                      answerIndicies?.includes(index) &&
-                      lessonData.challenges[0].correctAnswerIndex !== index
-                        ? ""
-                        : "hidden"
+                      isIncorrectAnswer(index) ? "" : "hidden"
                     } mt-2 ml-16 text-base text-gray-500`}
                   >
-                    {/* {feature.description} */}
                     Details about the answer
                   </dd>
                 </div>
