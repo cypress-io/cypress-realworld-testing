@@ -5,9 +5,15 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ sectionLessons, progressState }) {
+export default function LessonSteps({
+  sectionLessons,
+  progressState,
+  lessonPath,
+}) {
   return (
     <nav aria-label="Progress">
+      {console.log("state: ", progressState.context.lessons)}
+      {console.log("lessonPath: \n", lessonPath)}
       <ol className="overflow-hidden">
         {sectionLessons.map((lesson, index) => (
           <li
