@@ -1,20 +1,18 @@
-import { useRouter } from "next/router"
 import { useActor } from "@xstate/react"
 
-export default function LessonChallenge(props) {
-  const router = useRouter()
-  const { section, slug } = router.query
-  const [progressState, progressSend] = useActor(props.progressService)
-  // @ts-ignore
-  const isLessonComplete = progressState.context.lessonsCompleted.includes(
-    `${section}/${slug}`
-  )
+export default function LessonChallenge({
+  progressService,
+  lessonData,
+  lessonPath,
+  lessonCompleted,
+}) {
+  const [, progressSend] = useActor(progressService)
 
   const handleSubmit = (event) => {
     event.preventDefault()
     progressSend({
       type: "SUBMIT_ANSWER",
-      id: `${section}/${slug}`,
+      id: lessonPath,
       challengeIndex: 0,
       userAnswer: event.target[0].value,
     })
@@ -30,9 +28,8 @@ export default function LessonChallenge(props) {
               Unlock the Next Lesson
             </h2>
             <p className="mt-6 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {props.lessonData.challenges[0].question}
+              {lessonData.challenges[0].question}
             </p>
-            {isLessonComplete ? "CORRECT" : "INCORRECT"}
           </div>
 
           <div className="mt-10 max-w-sm mx-auto">
@@ -48,7 +45,7 @@ export default function LessonChallenge(props) {
                   type="text"
                   name="answer"
                   id="answer"
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className={`shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md`}
                 />
               </div>
               <button
@@ -61,6 +58,7 @@ export default function LessonChallenge(props) {
           </div>
         </div>
       </div>
+      <hr />
     </>
   )
 }

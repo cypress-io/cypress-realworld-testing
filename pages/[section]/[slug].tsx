@@ -104,6 +104,8 @@ export default function LessonPage({
           <FFChallenge
             progressService={progressService}
             lessonData={lessonData}
+            lessonPath={lessonPath}
+            lessonCompleted={isLessonCompleted(progressState, lessonPath)}
           />
         )}
 

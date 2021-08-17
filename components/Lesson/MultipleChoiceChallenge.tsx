@@ -1,4 +1,3 @@
-import { useRouter } from "next/router"
 import { useActor } from "@xstate/react"
 import { useState } from "react"
 
@@ -8,8 +7,6 @@ export default function LessonChallenge({
   lessonPath,
 }) {
   const [answerIndicies, setAnswerChecked] = useState([])
-  const router = useRouter()
-  const { section, slug } = router.query
   const [, progressSend] = useActor(progressService)
 
   const isIncorrectAnswer = (index) => {
