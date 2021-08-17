@@ -59,7 +59,7 @@ export const progressMachine = createMachine(
     actions: {
       saveProgress: assign((context: any, event: any) => ({
         lessons: concat(context.lessons, {
-          id: event.path,
+          id: event.id,
           status: "completed"
         }),
       })),
