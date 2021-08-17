@@ -43,7 +43,11 @@ export default function LessonChallenge({
                         id={`answer-${index}`}
                         name="answer"
                         type="checkbox"
-                        className="focus:ring-indigo-500 text-indigo-600 border-gray-300 rounded h-8 w-8"
+                        className={`${
+                          isIncorrectAnswer(index)
+                            ? "text-gray-300 focus:ring-gray-300"
+                            : ""
+                        } focus:ring-indigo-500 text-indigo-600 border-gray-300 rounded h-8 w-8`}
                         onClick={() => {
                           setAnswerChecked((prev) => [...prev, index])
                           progressSend({
@@ -58,7 +62,9 @@ export default function LessonChallenge({
                     <label
                       htmlFor={`answer-${index}`}
                       className={`${
-                        isIncorrectAnswer(index) ? "line-through" : ""
+                        isIncorrectAnswer(index)
+                          ? "line-through text-gray-300"
+                          : ""
                       } ml-16 text-lg leading-6 font-medium text-gray-900`}
                     >
                       {answer}
