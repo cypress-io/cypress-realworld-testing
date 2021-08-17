@@ -89,6 +89,7 @@ export default function LessonPage({
         sectionLessons={sectionLessons}
         sectionTitle={sectionTitle}
         progressState={progressState}
+        lessonPath={lessonPath}
       />
       {lessonData.challenges &&
         lessonData.challenges[0].challengeType === "multiple-choice" && (
