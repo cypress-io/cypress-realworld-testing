@@ -21,7 +21,7 @@ function isSectionStarted(lesson) {
 
 const defaultContext: ProgressContext = {
   sectionsCompleted: [],
-  lessonsCompleted: [],
+  lessons: [],
   disableChallenges: false,
 }
 
