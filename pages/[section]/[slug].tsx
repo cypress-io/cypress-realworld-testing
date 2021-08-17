@@ -105,7 +105,6 @@ export default function LessonPage({
             progressService={progressService}
             lessonData={lessonData}
             lessonPath={lessonPath}
-            lessonCompleted={isLessonCompleted(progressState, lessonPath)}
           />
         )}
 
