@@ -1,5 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from "@heroicons/react/solid"
+import { isLessonCompleted } from "../../utils/machineUtils"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -14,6 +15,10 @@ export default function LessonSteps({
     <nav aria-label="Progress">
       {console.log("state: ", progressState.context.lessons)}
       {console.log("lessonPath: \n", lessonPath)}
+      {console.log(
+        "isLessonCompleted: ",
+        isLessonCompleted(progressState, lessonPath)
+      )}
       <ol className="overflow-hidden">
         {sectionLessons.map((lesson, index) => (
           <li
