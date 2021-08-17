@@ -27,7 +27,7 @@ export default function Home({ content, sections }) {
           />
         </Head>
 
-        <main className="flex flex-col w-full flex-1 px-20">
+        <main className="flex flex-col w-full flex-1 px-4 lg:px-20">
           <HomeSteps sections={sections} content={content} />
         </main>
       </div>

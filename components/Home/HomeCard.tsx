@@ -1,17 +1,17 @@
 export default function HomeCard(props) {
   return (
     <>
-      <div className="relative max-w-xs mx-auto my-6">
+      <div className="relative max-w-xs mx-auto my-6 mx-4">
         <button
           type="button"
-          className="absolute -top-4 -left-6 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-green-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="absolute -top-4 xl:-left-6 inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-green-700 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           {props.lesson.status}
         </button>
         <div className="max-w-xs">
           <div
             key={props.lesson.title}
-            className="flex flex-col rounded-lg shadow-lg overflow-hidden"
+            className="flex flex-col border-2 rounded-lg overflow-hidden"
           >
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
               <div className="flex-1">

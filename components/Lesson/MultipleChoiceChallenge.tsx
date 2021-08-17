@@ -1,14 +1,20 @@
-import { useRouter } from "next/router"
 import { useActor } from "@xstate/react"
+import { useState } from "react"
 
-export default function LessonChallenge(props) {
-  const router = useRouter()
-  const { section, slug } = router.query
-  const [progressState, progressSend] = useActor(props.progressService)
-  // @ts-ignore
-  const isLessonComplete = progressState.context.lessonsCompleted.includes(
-    `${section}/${slug}`
-  )
+export default function LessonChallenge({
+  progressService,
+  lessonData,
+  lessonPath,
+}) {
+  const [answerIndicies, setAnswerChecked] = useState([])
+  const [, progressSend] = useActor(progressService)
+
+  const isIncorrectAnswer = (index) => {
+    return (
+      answerIndicies.includes(index) &&
+      lessonData.challenges[0].correctAnswerIndex !== index
+    )
+  }
 
   return (
     <>
@@ -20,14 +26,13 @@ export default function LessonChallenge(props) {
               Unlock the Next Lesson
             </h2>
             <p className="mt-6 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {props.lessonData.challenges[0].question}
+              {lessonData.challenges[0].question}
             </p>
-            {isLessonComplete ? "CORRECT" : "INCORRECT"}
           </div>
 
           <div className="mt-10">
             <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-              {props.lessonData.challenges[0].answers.map((answer, index) => (
+              {lessonData.challenges[0].answers.map((answer, index) => (
                 <div key={index} className="relative">
                   <dt>
                     <div className="absolute flex items-center justify-center h-8 w-8">
@@ -35,11 +40,16 @@ export default function LessonChallenge(props) {
                         id={`answer-${index}`}
                         name="answer"
                         type="checkbox"
-                        className="focus:ring-indigo-500 text-indigo-600 border-gray-300 rounded h-8 w-8"
+                        className={`${
+                          isIncorrectAnswer(index)
+                            ? "text-gray-300 focus:ring-gray-300"
+                            : ""
+                        } focus:ring-indigo-500 text-indigo-600 border-gray-300 rounded h-8 w-8`}
                         onClick={() => {
+                          setAnswerChecked((prev) => [...prev, index])
                           progressSend({
                             type: "SUBMIT_ANSWER",
-                            id: `${section}/${slug}`,
+                            id: lessonPath,
                             challengeIndex: 0,
                             userAnswerIndex: index,
                           })
@@ -48,15 +58,21 @@ export default function LessonChallenge(props) {
                     </div>
                     <label
                       htmlFor={`answer-${index}`}
-                      className={
-                        "ml-16 text-lg leading-6 font-medium text-gray-900"
-                      }
+                      className={`${
+                        isIncorrectAnswer(index)
+                          ? "line-through text-gray-300"
+                          : ""
+                      } ml-16 text-lg leading-6 font-medium text-gray-900`}
                     >
                       {answer}
                     </label>
                   </dt>
-                  <dd className="mt-2 ml-16 text-base text-gray-500">
-                    {/* {feature.description} */}
+                  <dd
+                    className={`${
+                      isIncorrectAnswer(index) ? "" : "hidden"
+                    } mt-2 ml-16 text-base text-gray-500`}
+                  >
+                    Details about the answer
                   </dd>
                 </div>
               ))}
@@ -64,6 +80,7 @@ export default function LessonChallenge(props) {
           </div>
         </div>
       </div>
+      <hr />
     </>
   )
 }
