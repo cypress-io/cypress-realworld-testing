@@ -9,7 +9,7 @@
         "title": "TodoMVC App Install and Overview",
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Completed",
+        "status": "completed",
         "videoURL": null,
         "challenges": [
           {
@@ -24,7 +24,7 @@
         "title": "Installing Cypress and writing our first test",
         "slug": "installing-cypress-and-writing-our-first-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Completed",
+        "status": "completed",
         "challenges": [
           {
             "challengeType": "freeform",
@@ -38,7 +38,7 @@
         "title": "Multiple Todos and Before Each",
         "slug": "multiple-todos-and-before-each",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Current",
+        "status": "upcoming",
         "challenges": [
           {
             "challengeType": "multiple-choice",
@@ -52,7 +52,7 @@
         "title": "How to Use Cypress Commands",
         "slug": "how-to-use-cypress-commands",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Upcoming",
+        "status": "upcoming",
         "challenges": [
           {
             "challengeType": "multiple-choice",
@@ -66,7 +66,7 @@
         "title": "Cypress Log, Snapshot and Aliases",
         "slug": "cypress-log-snapshot-and-aliases",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Upcoming",
+        "status": "upcoming",
         "challenges": [
           {
             "challengeType": "multiple-choice",
@@ -80,7 +80,7 @@
         "title": "Negative Tests",
         "slug": "negative-tests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "status": "Upcoming",
+        "status": "upcoming",
         "challenges": [
           {
             "challengeType": "multiple-choice",
