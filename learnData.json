@@ -9,7 +9,7 @@
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
-        "status": "completed",
+        "status": null,
         "challenges": [{
           "challengeType": "multiple-choice",
           "question": "What is the command to run Cypress in open mode?",
@@ -22,7 +22,7 @@
         "slug": "installing-cypress-and-writing-our-first-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
-        "status": "completed",
+        "status": null,
         "challenges": [{
           "challengeType": "freeform",
           "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
@@ -35,7 +35,7 @@
         "slug": "multiple-todos-and-before-each",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
-        "status": "completed",
+        "status": null,
         "challenges": [{
           "challengeType": "multiple-choice",
           "question": "What is the command to run Cypress in open mode?",
@@ -48,7 +48,7 @@
         "slug": "how-to-use-cypress-commands",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
-        "status": "completed",
+        "status": null,
         "challenges": [{
           "challengeType": "multiple-choice",
           "question": "What is the command to run Cypress in open mode?",
@@ -61,7 +61,7 @@
         "slug": "cypress-log-snapshot-and-aliases",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
-        "status": "completed",
+        "status": null,
         "challenges": [{
           "challengeType": "multiple-choice",
           "question": "What is the command to run Cypress in open mode?",
@@ -74,7 +74,7 @@
         "slug": "negative-tests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
-        "status": "completed",
+        "status": null,
         "challenges": [{
           "challengeType": "multiple-choice",
           "question": "What is the command to run Cypress in open mode?",
