@@ -9,7 +9,6 @@ export default function LessonLayout({
   sectionLessons,
   sectionTitle,
   progressState,
-  lessonPath,
   sectionSlug,
 }) {
   return (

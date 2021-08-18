@@ -91,7 +91,6 @@ export default function LessonPage({
         sectionLessons={sectionLessons}
         sectionTitle={sectionTitle}
         progressState={progressState}
-        lessonPath={lessonPath}
         sectionSlug={sectionSlug}
       />
       {lessonData.challenges &&
