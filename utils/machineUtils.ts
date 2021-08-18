@@ -1,11 +1,11 @@
 import { find, findIndex } from "lodash/fp"
 
 export const isLessonCompleted = (progressState, lessonPath) => {
-  const [sectionSlug, lessonSlug] = lessonPath.split("/")
-  const section = find({ slug: sectionSlug }, progressState.context.learnData)
-  const sectionIndex = findIndex({ slug: sectionSlug }, progressState.context.learnData)
-  const { lessons } = section
-  const lessonIndex = findIndex({ slug: lessonSlug }, lessons)
+  const [sectionSlug, lessonSlug] = lessonPath.split("/")  
+  const section = getSection(progressState.context.learnData, sectionSlug)
+  const sectionIndex = getSectionIndex(progressState.context.learnData, sectionSlug)
+  const lessons = getLessons(section)
+  const lessonIndex = getLessonIndex(lessons, lessonSlug)
 
   if (progressState.context.learnData[sectionIndex].lessons[lessonIndex].status === "completed") {
     return true
