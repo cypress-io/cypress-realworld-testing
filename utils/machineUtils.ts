@@ -34,3 +34,7 @@ export const getLessons = (section) => {
 export const getLessonIndex = (lessons, lessonSlug) => {
   return findIndex({ slug: lessonSlug }, lessons)
 }
+
+export const getChallenge = (lesson, challengeIndex) => {
+  return lesson.challenges[challengeIndex]
+}

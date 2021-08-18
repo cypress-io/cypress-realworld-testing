@@ -1,7 +1,7 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
 import { concat, find, findIndex } from "lodash/fp"
-import {getSection, getSectionIndex, findLesson, getLessons, getLessonIndex} from "../utils/machineUtils"
+import {getSection, getSectionIndex, findLesson, getLessons, getLessonIndex, getChallenge} from "../utils/machineUtils"
 import learnJson from "../learnData.json"
 
 // complete challenge
@@ -79,7 +79,7 @@ export const progressMachine = createMachine(
         const lessons = getLessons(section)
         const lesson = findLesson(lessons, lessonSlug)
         const lessonIndex = getLessonIndex(lessons, lessonSlug)
-        const challenge = lesson.challenges[event.challengeIndex]
+        const challenge = getChallenge(lesson, event.challengeIndex)
         
 
         const isCorrectMultipleChoiceAnswer =
