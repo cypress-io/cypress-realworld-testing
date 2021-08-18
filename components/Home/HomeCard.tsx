@@ -15,7 +15,10 @@ export default function HomeCard({ lesson, section }) {
           >
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
               <div className="flex-1">
-                <a href={`${section}/${lesson.slug}`} className="block mt-2">
+                <a
+                  href={`${section.slug}/${lesson.slug}`}
+                  className="block mt-2"
+                >
                   <p className="text-xl font-semibold text-gray-900">
                     {lesson.title}
                   </p>
@@ -26,7 +29,7 @@ export default function HomeCard({ lesson, section }) {
               </div>
               <div className="mt-10 flex justify-center">
                 <a
-                  href={`${section}/${lesson.slug}`}
+                  href={`${section.slug}/${lesson.slug}`}
                   className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Start Lesson

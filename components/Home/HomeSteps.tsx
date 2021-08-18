@@ -101,7 +101,7 @@ export default function HomeSteps({ progressState }) {
             >
               {/* Section Title */}
               <div className="section-title ml-8 flex flex-col xl:flex-row">
-                <a href={section}>
+                <a href={section.slug}>
                   <h1 className="text-4xl tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                     {progressState[index].title}
                   </h1>
