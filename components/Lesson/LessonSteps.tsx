@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from "@heroicons/react/solid"
-import { findIndex } from "lodash/fp"
+import { getSectionIndex } from "../../utils/machineUtils"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -11,9 +11,9 @@ export default function LessonSteps({
   progressState,
   sectionSlug,
 }) {
-  const sectionIndex = findIndex(
-    { slug: sectionSlug },
-    progressState.context.learnData
+  const sectionIndex = getSectionIndex(
+    progressState.context.learnData,
+    sectionSlug
   )
 
   return (

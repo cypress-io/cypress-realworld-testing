@@ -52,7 +52,7 @@ export const progressMachine = createMachine(
             actions: ["saveProgress"],
           },
           SUBMIT_ANSWER: {
-            actions: ["validateAndLogAnswer"],
+            actions: ["validateAndLogAnswer", "isSectionCompleted"],
           },
           DISABLE_CHALLENGES: { actions: ["disableChallenges"] },
         },
@@ -98,6 +98,19 @@ export const progressMachine = createMachine(
           assign({ learnData: (context) => { return context.learnData = learnDataCopy }})
         }
       }),
+      isSectionCompleted: assign((context: any, event: any) => {
+        const learnDataCopy = context.learnData
+        const [sectionSlug] = event.id.split("/")
+        const section = getSection(learnDataCopy, sectionSlug)
+        const sectionIndex = getSectionIndex(context.learnData, sectionSlug)
+        const completedLessons = section.lessons.filter((lesson) => lesson.status === "completed")
+        if (completedLessons.length === section.lessons.length) {
+          learnDataCopy[sectionIndex].status = "completed"
+          // @ts-ignore
+          assign({ learnData: (context) => { return context.learnData = learnDataCopy }})
+        }
+      }),
+      
       disableChallenges: assign((context: any, event: any) => ({
         disableChallenges: true,
       })),

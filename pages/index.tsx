@@ -3,12 +3,9 @@ import { useActor } from "@xstate/react"
 import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeSteps from "../components/Home/HomeSteps"
-import learnJson from "../learn.json"
 import { progressService } from "../machines/progressService"
 
-export default function Home({ content, sections }) {
-  const [progressState, progressSend] = useActor(progressService)
-
+export default function Home({ progressState }) {
   return (
     <Layout>
       <HomeHero />
@@ -28,7 +25,7 @@ export default function Home({ content, sections }) {
         </Head>
 
         <main className="flex flex-col w-full flex-1 px-4 lg:px-20">
-          <HomeSteps sections={sections} content={content} />
+          <HomeSteps progressState={progressState} />
         </main>
       </div>
     </Layout>
@@ -36,11 +33,9 @@ export default function Home({ content, sections }) {
 }
 
 export async function getStaticProps() {
-  const sections = Object.keys(learnJson)
   return {
     props: {
-      content: learnJson,
-      sections,
+      progressState: progressService.state.context.learnData,
     },
   }
 }
