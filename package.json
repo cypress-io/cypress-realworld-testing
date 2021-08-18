@@ -12,7 +12,7 @@
     "update-slugs": "ts-node scripts/updateSlugs.ts",
     "generate-content": "ts-node scripts/generateContentFiles.ts",
     "start": "next start",
-    "pre-commit": "pretty-quick --staged && npm run lint",
+    "pre-commit": "yarn types && pretty-quick --staged && yarn run lint",
     "test:unit": "mocha -r ts-node/register -r tsconfig-paths/register 'tests/**/*.ts'",
     "cypress:open": "cypress open",
     "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
