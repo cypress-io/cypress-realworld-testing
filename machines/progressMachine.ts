@@ -1,6 +1,6 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
-import { concat, find, findIndex } from "lodash/fp"
+import { concat, get } from "lodash/fp"
 import {getSection, getSectionIndex, findLesson, getLessons, getLessonIndex, getChallenge} from "../utils/machineUtils"
 import learnJson from "../learnData.json"
 
@@ -41,12 +41,8 @@ export const progressMachine = createMachine(
     states: {
       started: {
         entry: assign({
-        learnData: (context) => {
-          //@ts-ignore
-          return context.learnData = learnJson
-
-        }
-      }),
+          learnData: learnJson
+        }),
         on: {
           SKIP_ANSWER: {
             actions: ["saveProgress"],
@@ -76,7 +72,7 @@ export const progressMachine = createMachine(
         const [sectionSlug, lessonSlug] = event.id.split("/")
         const section = getSection(context.learnData, sectionSlug)
         const sectionIndex = getSectionIndex(context.learnData, sectionSlug)
-        const lessons = getLessons(section)
+        const lessons = get("lessons", section)
         const lesson = findLesson(lessons, lessonSlug)
         const lessonIndex = getLessonIndex(lessons, lessonSlug)
         const challenge = getChallenge(lesson, event.challengeIndex)
@@ -94,8 +90,7 @@ export const progressMachine = createMachine(
           const learnDataCopy = context.learnData
           learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
           
-        // @ts-ignore
-          assign({ learnData: (context) => { return context.learnData = learnDataCopy }})
+          return { learnData: learnDataCopy }
         }
       }),
       isSectionCompleted: assign((context: any, event: any) => {
@@ -106,8 +101,7 @@ export const progressMachine = createMachine(
         const completedLessons = section.lessons.filter((lesson) => lesson.status === "completed")
         if (completedLessons.length === section.lessons.length) {
           learnDataCopy[sectionIndex].status = "completed"
-          // @ts-ignore
-          assign({ learnData: (context) => { return context.learnData = learnDataCopy }})
+          return { learnData: learnDataCopy }
         }
       }),
       
