@@ -1,7 +1,13 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
 import { concat, get } from "lodash/fp"
-import {getSection, getSectionIndex, findLesson, getLessons, getLessonIndex, getChallenge} from "../utils/machineUtils"
+import {
+  getSection,
+  getSectionIndex,
+  findLesson,
+  getLessonIndex,
+  getChallenge,
+} from "../utils/machineUtils"
 import learnJson from "../learnData.json"
 
 // complete challenge
@@ -41,7 +47,7 @@ export const progressMachine = createMachine(
     states: {
       started: {
         entry: assign({
-          learnData: learnJson
+          learnData: learnJson,
         }),
         on: {
           SKIP_ANSWER: {
@@ -65,7 +71,7 @@ export const progressMachine = createMachine(
       saveProgress: assign((context: any, event: any) => ({
         lessons: concat(context.lessons, {
           id: event.id,
-          status: "completed"
+          status: "completed",
         }),
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
@@ -76,7 +82,6 @@ export const progressMachine = createMachine(
         const lesson = findLesson(lessons, lessonSlug)
         const lessonIndex = getLessonIndex(lessons, lessonSlug)
         const challenge = getChallenge(lesson, event.challengeIndex)
-        
 
         const isCorrectMultipleChoiceAnswer =
           challenge.challengeType === "multiple-choice" &&
@@ -89,7 +94,7 @@ export const progressMachine = createMachine(
         if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
           const learnDataCopy = context.learnData
           learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
-          
+
           return { learnData: learnDataCopy }
         }
       }),
@@ -98,13 +103,15 @@ export const progressMachine = createMachine(
         const [sectionSlug] = event.id.split("/")
         const section = getSection(learnDataCopy, sectionSlug)
         const sectionIndex = getSectionIndex(context.learnData, sectionSlug)
-        const completedLessons = section.lessons.filter((lesson) => lesson.status === "completed")
+        const completedLessons = section.lessons.filter(
+          (lesson) => lesson.status === "completed"
+        )
         if (completedLessons.length === section.lessons.length) {
           learnDataCopy[sectionIndex].status = "completed"
           return { learnData: learnDataCopy }
         }
       }),
-      
+
       disableChallenges: assign((context: any, event: any) => ({
         disableChallenges: true,
       })),
