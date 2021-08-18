@@ -27,7 +27,8 @@ import {
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
 import { isLessonCompleted } from "../../utils/machineUtils"
-import learnJson from "../../learn.json"
+// import learnJson from "../../learnData.json"
+const learnDataState = progressService.state.context.learnData
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -140,11 +141,9 @@ export const getStaticProps = async ({ params }) => {
     },
     scope: data,
   })
-  const lessonData = find(
-    { slug: params.slug },
-    learnJson[params.section].lessons
-  )
-  const { title, lessons } = learnJson[params.section]
+  const section = find({ slug: params.section }, learnDataState)
+  const lessonData = find({ slug: params.slug }, section.lessons)
+  const { title, lessons } = section
   const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
   let nextLesson
 

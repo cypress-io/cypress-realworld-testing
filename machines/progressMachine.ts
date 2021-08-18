@@ -1,7 +1,7 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
-import { concat, find } from "lodash/fp"
-import learnJson from "../learn.json"
+import { concat, find, findIndex } from "lodash/fp"
+import learnJson from "../learnData.json"
 
 // complete challenge
 // skip challenge
@@ -23,6 +23,7 @@ const defaultContext: ProgressContext = {
   sectionsCompleted: [],
   lessons: [],
   disableChallenges: false,
+  learnData: [],
 }
 
 // progressService.state.matches("ready")
@@ -38,6 +39,13 @@ export const progressMachine = createMachine(
     context: defaultContext,
     states: {
       started: {
+        entry: assign({
+        learnData: (context) => {
+          //@ts-ignore
+          return context.learnData = learnJson
+
+        }
+      }),
         on: {
           SKIP_ANSWER: {
             actions: ["saveProgress"],
@@ -65,8 +73,11 @@ export const progressMachine = createMachine(
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
         const [sectionSlug, lessonSlug] = event.id.split("/")
-        const lessons = learnJson[sectionSlug].lessons
+        const section = find({ slug: sectionSlug }, context.learnData)
+        const sectionIndex = findIndex({ slug: sectionSlug }, context.learnData)
+        const { lessons } = section
         const lesson = find({ slug: lessonSlug }, lessons)
+        const lessonIndex = findIndex({ slug: lessonSlug }, lessons)
         const challenge = lesson.challenges[event.challengeIndex]
 
         const isCorrectMultipleChoiceAnswer =
@@ -78,12 +89,11 @@ export const progressMachine = createMachine(
           challenge.answer === event.userAnswer
 
         if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
-          return {
-            lessons: concat(context.lessons, {
-              id: event.id,
-              status: "completed"
-            }),
-          }
+          const learnDataCopy = context.learnData
+          learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
+          
+          // @ts-ignore
+          assign({ learnData: (context) => { return context.learnData = learnDataCopy }})
         }
       }),
       disableChallenges: assign((context: any, event: any) => ({
