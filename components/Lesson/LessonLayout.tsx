@@ -10,6 +10,7 @@ export default function LessonLayout({
   sectionTitle,
   progressState,
   lessonPath,
+  sectionSlug,
 }) {
   return (
     <div className="min-h-screen my-20">
@@ -43,7 +44,7 @@ export default function LessonLayout({
               <LessonSteps
                 sectionLessons={sectionLessons}
                 progressState={progressState}
-                lessonPath={lessonPath}
+                sectionSlug={sectionSlug}
               />
             </div>
           </aside>

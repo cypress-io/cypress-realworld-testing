@@ -71,6 +71,7 @@ export default function LessonPage({
   nextLesson,
   sectionTitle,
   lessonPath,
+  sectionSlug,
 }: Props) {
   const [progressState] = useActor(progressService)
 
@@ -91,6 +92,7 @@ export default function LessonPage({
         sectionTitle={sectionTitle}
         progressState={progressState}
         lessonPath={lessonPath}
+        sectionSlug={sectionSlug}
       />
       {lessonData.challenges &&
         lessonData.challenges[0].challengeType === "multiple-choice" && (
@@ -163,6 +165,7 @@ export const getStaticProps = async ({ params }) => {
       nextLesson,
       sectionTitle: title,
       lessonPath: `${params.section}/${params.slug}`,
+      sectionSlug: params.section,
     },
   }
 }
