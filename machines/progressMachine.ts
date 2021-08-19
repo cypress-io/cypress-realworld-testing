@@ -1,6 +1,6 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
-import { concat, get } from "lodash/fp"
+import { get } from "lodash/fp"
 import {
   getSection,
   getSectionIndex,
@@ -68,12 +68,18 @@ export const progressMachine = createMachine(
   },
   {
     actions: {
-      saveProgress: assign((context: any, event: any) => ({
-        lessons: concat(context.lessons, {
-          id: event.id,
-          status: "completed",
-        }),
-      })),
+      saveProgress: assign((context: any, event: any) => {
+        const [sectionSlug, lessonSlug] = event.id.split("/")
+        const section = getSection(context.learnData, sectionSlug)
+        const sectionIndex = getSectionIndex(context.learnData, sectionSlug)
+        const lessons = get("lessons", section)
+        const lessonIndex = getLessonIndex(lessons, lessonSlug)
+        const learnDataCopy = context.learnData
+        learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
+
+        return { learnData: learnDataCopy }
+      }),
+
       validateAndLogAnswer: assign((context: any, event: any) => {
         const [sectionSlug, lessonSlug] = event.id.split("/")
         const section = getSection(context.learnData, sectionSlug)
@@ -99,6 +105,7 @@ export const progressMachine = createMachine(
           return { learnData: learnDataCopy }
         }
       }),
+
       isSectionCompleted: assign((context: any, event: any) => {
         const learnDataCopy = context.learnData
         const [sectionSlug] = event.id.split("/")

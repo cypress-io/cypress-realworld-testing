@@ -1,7 +1,13 @@
 import { expect } from "chai"
 import { interpret } from "xstate"
 import { progressMachine } from "../machines/progressMachine"
-import { FreeFormPayload, MultipleChoicePayload } from "common"
+import {
+  FreeFormPayload,
+  MultipleChoicePayload,
+  SkipAnswerPayload,
+} from "common"
+import { isLessonCompleted } from "../utils/machineUtils"
+import learnJson from "../learnData.json"
 
 describe("progress machine", () => {
   let progressService
@@ -15,16 +21,18 @@ describe("progress machine", () => {
     expect(progressService.state.value).to.equal("started")
   })
 
-  it("can save the progress", () => {
-    progressService.send("SKIP_ANSWER", {
-      path: "testing-your-first-application/todomvc-app-install-and-overview",
-    })
-    expect(progressService.state.context.lessonsCompleted).to.include(
-      "testing-your-first-application/todomvc-app-install-and-overview"
-    )
+  it("completes the lesson when the challenge is skipped", () => {
+    const skipAnswer: SkipAnswerPayload = {
+      type: "SKIP_ANSWER",
+      id: "testing-your-first-application/todomvc-app-install-and-overview",
+    }
+
+    progressService.send(skipAnswer)
+
+    expect(isLessonCompleted(progressService.state, skipAnswer.id)).to.be.true
   })
 
-  it("can validate a correct multiple choice answer", () => {
+  it("completes the lesson when a multiple choice answer is correct", () => {
     const answerEvent: MultipleChoicePayload = {
       type: "SUBMIT_ANSWER",
       id: "testing-your-first-application/todomvc-app-install-and-overview",
@@ -33,12 +41,10 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.include(
-      answerEvent.id
-    )
+    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.true
   })
 
-  it("can validate an incorrect multiple choice answer", () => {
+  it("does not complete the lesson when a multiple choice answer is incorrect", () => {
     const answerEvent: MultipleChoicePayload = {
       type: "SUBMIT_ANSWER",
       id: "testing-your-first-application/todomvc-app-install-and-overview",
@@ -47,12 +53,10 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.not.include(
-      answerEvent.id
-    )
+    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.false
   })
 
-  it("can validate a correct freeform answer", () => {
+  it("completes the lesson when a freeForm answer is correct", () => {
     const answerEvent: FreeFormPayload = {
       type: "SUBMIT_ANSWER",
       id: "testing-your-first-application/installing-cypress-and-writing-our-first-test",
@@ -61,12 +65,10 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.include(
-      answerEvent.id
-    )
+    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.true
   })
 
-  it("can validate an incorrect freeform answer", () => {
+  it("does not complete the lesson when a freeForm answer is incorrect", () => {
     const answerEvent: FreeFormPayload = {
       type: "SUBMIT_ANSWER",
       id: "testing-your-first-application/installing-cypress-and-writing-our-first-test",
@@ -75,9 +77,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.not.include(
-      answerEvent.id
-    )
+    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.false
   })
 
   it("can disable all challenges", () => {

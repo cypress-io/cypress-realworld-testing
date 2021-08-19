@@ -64,3 +64,8 @@ export interface Section {
   status: string | null
   lessons: object[]
 }
+
+export interface SkipAnswerPayload {
+  type: string
+  id: string
+}
