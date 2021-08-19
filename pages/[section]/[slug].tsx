@@ -61,6 +61,7 @@ type Props = {
   nextLesson: string
   sectionTitle: string
   lessonPath: string
+  sectionSlug: string
 }
 
 export default function LessonPage({
