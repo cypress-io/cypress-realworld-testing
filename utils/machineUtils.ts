@@ -1,24 +1,12 @@
-import { find, findIndex, get } from "lodash/fp"
+import { find, findIndex, get, gte } from "lodash/fp"
 import { Lesson } from "../types/common"
 
 export const isLessonCompleted = (progressState, lessonPath) => {
   const [sectionSlug, lessonSlug] = lessonPath.split("/")
   const section = getSection(progressState.context.learnData, sectionSlug)
-  const sectionIndex = getSectionIndex(
-    progressState.context.learnData,
-    sectionSlug
-  )
   const lessons = get("lessons", section)
-  const lessonIndex = getLessonIndex(lessons, lessonSlug)
 
-  if (
-    progressState.context.learnData[sectionIndex].lessons[lessonIndex]
-      .status === "completed"
-  ) {
-    return true
-  }
-
-  return false
+  return gte(findIndex({ slug: lessonSlug, status: "completed" }, lessons), 0)
 }
 
 export const getSection = (learnData: object[], sectionSlug: string) =>
