@@ -1,54 +1,24 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
-import { get } from "lodash/fp"
 import {
   getSection,
   getSectionIndex,
-  findLesson,
   getLessonIndex,
   getChallenge,
 } from "../utils/machineUtils"
-import learnJson from "../learnData.json"
-
-// complete challenge
-// skip challenge
-// disable all challenges
-
-function sectionCompleted(section) {
-  // filter stepsCompleted from state and compare length to total lessons in learn.json
-}
-
-function isLessonCompleted(lesson) {
-  // via _.includes, check that lesson is in state stepsCompleted
-}
-
-function isSectionStarted(lesson) {
-  // via _.includes, check that the section is contained in one of the lessons
-}
-
-const defaultContext: ProgressContext = {
-  sectionsCompleted: [],
-  lessons: [],
-  disableChallenges: false,
-  learnData: [],
-}
-
-// progressService.state.matches("ready")
-// iterate over navigation, all are "uncompleted"
-
-// progressService.state.matches("inProgress")
-// iterate over sections and lessons to determine current lesson
 
 export const progressMachine = createMachine(
   {
     id: "progress",
     initial: "started",
-    context: defaultContext,
+    context: {
+      sectionsCompleted: [],
+      lessons: [],
+      disableChallenges: false,
+      learnData: [],
+    } as ProgressContext,
     states: {
       started: {
-        entry: assign({
-          learnData: learnJson,
-        }),
         on: {
           SKIP_ANSWER: {
             actions: ["saveProgress"],
