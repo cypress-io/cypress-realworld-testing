@@ -55,3 +55,12 @@ export interface ProgressContext {
   disableChallenges: boolean
   learnData: object[]
 }
+
+export interface Section {
+  id: string
+  title: string
+  slug: string
+  description: string
+  status: string | null
+  lessons: object[]
+}
