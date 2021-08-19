@@ -15,7 +15,7 @@ export const findLesson = (learnData: object[], lessonPath: string) => {
 export const getChallenge = (
   learnData: object[],
   lessonPath: string,
-  challengeIndex: string
+  challengeIndex: number
 ) => {
   const lesson = findLesson(learnData, lessonPath)
   return lesson.challenges[challengeIndex]

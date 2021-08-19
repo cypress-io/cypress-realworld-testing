@@ -19,7 +19,6 @@ describe("progress machine", () => {
 
     progressService.start()
     learnData = progressService.state.context.learnData
-    expect(progressService.state.value).to.equal("started")
   })
 
   it("completes the lesson when the challenge is skipped", () => {
