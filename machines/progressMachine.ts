@@ -81,7 +81,10 @@ export const progressMachine = createMachine(
         const lessons = get("lessons", section)
         const lesson = findLesson(lessons, lessonSlug)
         const lessonIndex = getLessonIndex(lessons, lessonSlug)
+        // @ts-ignore
         const challenge = getChallenge(lesson, event.challengeIndex)
+
+        console.log(lesson)
 
         const isCorrectMultipleChoiceAnswer =
           challenge.challengeType === "multiple-choice" &&
@@ -103,9 +106,11 @@ export const progressMachine = createMachine(
         const [sectionSlug] = event.id.split("/")
         const section = getSection(learnDataCopy, sectionSlug)
         const sectionIndex = getSectionIndex(context.learnData, sectionSlug)
+        // @ts-ignore
         const completedLessons = section.lessons.filter(
           (lesson) => lesson.status === "completed"
         )
+        // @ts-ignore
         if (completedLessons.length === section.lessons.length) {
           learnDataCopy[sectionIndex].status = "completed"
           return { learnData: learnDataCopy }
