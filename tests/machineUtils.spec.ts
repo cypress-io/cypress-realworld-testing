@@ -1,18 +1,13 @@
 import { expect } from "chai"
 import { interpret } from "xstate"
 import { progressMachine } from "../machines/progressMachine"
-import {
-  FreeFormPayload,
-  MultipleChoicePayload,
-  SkipAnswerPayload,
-} from "common"
 import * as machineUtils from "../utils/machineUtils"
 
 const lessonPath =
   "testing-your-first-application/todomvc-app-install-and-overview"
 const [sectionSlug, lessonSlug] = lessonPath.split("/")
 
-describe("progress machine", () => {
+describe("machine utils", () => {
   let progressService
   let learnData
   beforeEach(() => {

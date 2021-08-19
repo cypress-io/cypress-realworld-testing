@@ -72,14 +72,12 @@ export const progressMachine = createMachine(
         const sectionIndex = getSectionIndex(context.learnData, event.id)
         const lessonIndex = getLessonIndex(context.learnData, event.id)
         const learnDataCopy = context.learnData
-
         learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
-        console.log(learnDataCopy[sectionIndex].lessons[lessonIndex].status)
-
         return { learnData: learnDataCopy }
       }),
 
       validateAndLogAnswer: assign((context: any, event: any) => {
+        const learnDataCopy = context.learnData
         const sectionIndex = getSectionIndex(context.learnData, event.id)
         const lessonIndex = getLessonIndex(context.learnData, event.id)
         const challenge = getChallenge(
@@ -87,7 +85,6 @@ export const progressMachine = createMachine(
           event.id,
           event.challengeIndex
         )
-        const learnDataCopy = context.learnData
 
         const isCorrectMultipleChoiceAnswer =
           challenge.challengeType === "multiple-choice" &&
