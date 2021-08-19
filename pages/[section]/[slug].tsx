@@ -115,7 +115,8 @@ export default function LessonPage({
       {/* Next Lesson Button */}
       <div
         className={`${
-          nextLesson && isLessonCompleted(progressState, lessonPath)
+          nextLesson &&
+          isLessonCompleted(progressState.context.learnData, lessonPath)
             ? ""
             : "hidden"
         } py-20`}
