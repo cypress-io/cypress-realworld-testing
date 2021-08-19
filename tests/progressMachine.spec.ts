@@ -7,7 +7,6 @@ import {
   SkipAnswerPayload,
 } from "common"
 import { isLessonCompleted } from "../utils/machineUtils"
-import learnJson from "../learnData.json"
 
 describe("progress machine", () => {
   let progressService
@@ -44,7 +43,9 @@ describe("progress machine", () => {
     expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.true
   })
 
-  it("does not complete the lesson when a multiple choice answer is incorrect", () => {
+  it.only("does not complete the lesson when a multiple choice answer is incorrect", () => {
+    console.log(progressService.state.context.learnData[0].lessons[0])
+
     const answerEvent: MultipleChoicePayload = {
       type: "SUBMIT_ANSWER",
       id: "testing-your-first-application/todomvc-app-install-and-overview",
