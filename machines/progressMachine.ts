@@ -84,8 +84,6 @@ export const progressMachine = createMachine(
         // @ts-ignore
         const challenge = getChallenge(lesson, event.challengeIndex)
 
-        console.log(lesson)
-
         const isCorrectMultipleChoiceAnswer =
           challenge.challengeType === "multiple-choice" &&
           challenge.correctAnswerIndex === event.userAnswerIndex
