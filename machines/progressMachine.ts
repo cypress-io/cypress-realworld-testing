@@ -69,26 +69,24 @@ export const progressMachine = createMachine(
   {
     actions: {
       saveProgress: assign((context: any, event: any) => {
-        const [sectionSlug, lessonSlug] = event.id.split("/")
-        const section = getSection(context.learnData, sectionSlug)
-        const sectionIndex = getSectionIndex(context.learnData, sectionSlug)
-        const lessons = get("lessons", section)
-        const lessonIndex = getLessonIndex(lessons, lessonSlug)
+        const sectionIndex = getSectionIndex(context.learnData, event.id)
+        const lessonIndex = getLessonIndex(context.learnData, event.id)
         const learnDataCopy = context.learnData
+
         learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
+        console.log(learnDataCopy[sectionIndex].lessons[lessonIndex].status)
 
         return { learnData: learnDataCopy }
       }),
 
       validateAndLogAnswer: assign((context: any, event: any) => {
-        const [sectionSlug, lessonSlug] = event.id.split("/")
-        const section = getSection(context.learnData, sectionSlug)
-        const sectionIndex = getSectionIndex(context.learnData, sectionSlug)
-        const lessons = get("lessons", section)
-        const lesson = findLesson(lessons, lessonSlug)
-        const lessonIndex = getLessonIndex(lessons, lessonSlug)
-        // @ts-ignore
-        const challenge = getChallenge(lesson, event.challengeIndex)
+        const sectionIndex = getSectionIndex(context.learnData, event.id)
+        const lessonIndex = getLessonIndex(context.learnData, event.id)
+        const challenge = getChallenge(
+          context.learnData,
+          event.id,
+          event.challengeIndex
+        )
         const learnDataCopy = context.learnData
 
         const isCorrectMultipleChoiceAnswer =
@@ -112,13 +110,13 @@ export const progressMachine = createMachine(
 
       isSectionCompleted: assign((context: any, event: any) => {
         const learnDataCopy = context.learnData
-        const [sectionSlug] = event.id.split("/")
-        const section = getSection(learnDataCopy, sectionSlug)
-        const sectionIndex = getSectionIndex(context.learnData, sectionSlug)
+        const section = getSection(learnDataCopy, event.id)
+        const sectionIndex = getSectionIndex(context.learnData, event.id)
         // @ts-ignore
         const completedLessons = section.lessons.filter(
           (lesson) => lesson.status === "completed"
         )
+
         // @ts-ignore
         if (completedLessons.length === section.lessons.length) {
           learnDataCopy[sectionIndex].status = "completed"

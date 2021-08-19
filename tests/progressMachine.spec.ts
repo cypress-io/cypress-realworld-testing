@@ -10,6 +10,7 @@ import { isLessonCompleted } from "../utils/machineUtils"
 
 describe("progress machine", () => {
   let progressService
+  let learnData
   beforeEach(() => {
     progressService = interpret(progressMachine)
     //.onTransition((state) =>
@@ -17,6 +18,7 @@ describe("progress machine", () => {
     //)
 
     progressService.start()
+    learnData = progressService.state.context.learnData
     expect(progressService.state.value).to.equal("started")
   })
 
@@ -28,7 +30,7 @@ describe("progress machine", () => {
 
     progressService.send(skipAnswer)
 
-    expect(isLessonCompleted(progressService.state, skipAnswer.id)).to.be.true
+    expect(isLessonCompleted(learnData, skipAnswer.id)).to.be.true
   })
 
   it("completes the lesson when a multiple choice answer is correct", () => {
@@ -40,7 +42,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.true
+    expect(isLessonCompleted(learnData, answerEvent.id)).to.be.true
   })
 
   it("does not complete the lesson when a multiple choice answer is incorrect", () => {
@@ -52,7 +54,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.false
+    expect(isLessonCompleted(learnData, answerEvent.id)).to.be.false
   })
 
   it("completes the lesson when a freeForm answer is correct", () => {
@@ -64,7 +66,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.true
+    expect(isLessonCompleted(learnData, answerEvent.id)).to.be.true
   })
 
   it("does not complete the lesson when a freeForm answer is incorrect", () => {
@@ -76,7 +78,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.false
+    expect(isLessonCompleted(learnData, answerEvent.id)).to.be.false
   })
 
   it("can disable all challenges", () => {
