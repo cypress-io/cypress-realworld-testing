@@ -43,9 +43,7 @@ describe("progress machine", () => {
     expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.true
   })
 
-  it.only("does not complete the lesson when a multiple choice answer is incorrect", () => {
-    console.log(progressService.state.context.learnData[0].lessons[0])
-
+  it("does not complete the lesson when a multiple choice answer is incorrect", () => {
     const answerEvent: MultipleChoicePayload = {
       type: "SUBMIT_ANSWER",
       id: "testing-your-first-application/todomvc-app-install-and-overview",

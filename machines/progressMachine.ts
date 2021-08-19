@@ -89,6 +89,7 @@ export const progressMachine = createMachine(
         const lessonIndex = getLessonIndex(lessons, lessonSlug)
         // @ts-ignore
         const challenge = getChallenge(lesson, event.challengeIndex)
+        const learnDataCopy = context.learnData
 
         const isCorrectMultipleChoiceAnswer =
           challenge.challengeType === "multiple-choice" &&
@@ -99,8 +100,11 @@ export const progressMachine = createMachine(
           challenge.answer === event.userAnswer
 
         if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
-          const learnDataCopy = context.learnData
           learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
+
+          return { learnData: learnDataCopy }
+        } else {
+          learnDataCopy[sectionIndex].lessons[lessonIndex].status = null
 
           return { learnData: learnDataCopy }
         }
