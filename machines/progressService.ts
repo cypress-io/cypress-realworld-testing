@@ -1,14 +1,6 @@
 import { interpret, State } from "xstate"
 import { progressMachine } from "./progressMachine"
-import { ProgressContext } from "common"
 const LOCAL_STORAGE_ITEM = "progressState"
-
-const defaultContext: ProgressContext = {
-  sectionsCompleted: [],
-  lessons: [],
-  disableChallenges: false,
-  learnData: [],
-}
 
 // @ts-ignore
 const stateDefinition =
