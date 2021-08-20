@@ -9,14 +9,12 @@ import { find, findIndex } from "lodash/fp"
 import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { useActor } from "@xstate/react"
-
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
 import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
 import FFChallenge from "../../components/Lesson/FreeFormChallenge"
-// import NextLessonBtn from "../../components/Lesson/NextLessonBtn"
 const NextLessonBtn = dynamic(
   () => import("../../components/Lesson/NextLessonBtn"),
   {
@@ -120,7 +118,7 @@ export default function LessonPage({
       {nextLesson && (
         <NextLessonBtn
           path={nextLesson}
-          isCompleted={isLessonCompleted(progressState, lessonPath)}
+          isCompleted={isLessonCompleted(progressService, lessonPath)}
         />
       )}
     </Layout>
