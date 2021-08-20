@@ -19,7 +19,7 @@ describe("progress machine", () => {
     progressService.send("SKIP_ANSWER", {
       path: "testing-your-first-application/todomvc-app-install-and-overview",
     })
-    expect(progressService.state.context.lessonsCompleted).to.include(
+    expect(progressService.state.context.lessons).to.include(
       "testing-your-first-application/todomvc-app-install-and-overview"
     )
   })
@@ -33,9 +33,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.include(
-      answerEvent.id
-    )
+    expect(progressService.state.context.lessons).to.include(answerEvent.id)
   })
 
   it("can validate an incorrect multiple choice answer", () => {
@@ -47,9 +45,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.not.include(
-      answerEvent.id
-    )
+    expect(progressService.state.context.lessons).to.not.include(answerEvent.id)
   })
 
   it("can validate a correct freeform answer", () => {
@@ -61,9 +57,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.include(
-      answerEvent.id
-    )
+    expect(progressService.state.context.lessons).to.include(answerEvent.id)
   })
 
   it("can validate an incorrect freeform answer", () => {
@@ -75,9 +69,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.not.include(
-      answerEvent.id
-    )
+    expect(progressService.state.context.lessons).to.not.include(answerEvent.id)
   })
 
   it("can disable all challenges", () => {

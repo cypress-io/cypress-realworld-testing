@@ -3,6 +3,7 @@ import matter from "gray-matter"
 import { MDXRemoteSerializeResult } from "next-mdx-remote"
 import { serialize } from "next-mdx-remote/serialize"
 import Head from "next/head"
+import dynamic from "next/dynamic"
 import path from "path"
 import { find, findIndex } from "lodash/fp"
 import rehypeSlug from "rehype-slug"
@@ -15,7 +16,13 @@ import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
 import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
 import FFChallenge from "../../components/Lesson/FreeFormChallenge"
-import NextLessonBtn from "../../components/Lesson/NextLessonBtn"
+// import NextLessonBtn from "../../components/Lesson/NextLessonBtn"
+const NextLessonBtn = dynamic(
+  () => import("../../components/Lesson/NextLessonBtn"),
+  {
+    ssr: false,
+  }
+)
 import {
   LessonTableOfContents,
   MultipleChoiceChallenge,
@@ -110,15 +117,12 @@ export default function LessonPage({
         )}
 
       {/* Next Lesson Button */}
-      <div
-        className={`${
-          nextLesson && isLessonCompleted(progressState, lessonPath)
-            ? ""
-            : "hidden"
-        } py-20`}
-      >
-        {nextLesson && <NextLessonBtn path={nextLesson} />}
-      </div>
+      {nextLesson && (
+        <NextLessonBtn
+          path={nextLesson}
+          isCompleted={isLessonCompleted(progressState, lessonPath)}
+        />
+      )}
     </Layout>
   )
 }
