@@ -1,11 +1,13 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
-import {
-  getSection,
-  getSectionIndex,
-  getLessonIndex,
-  getChallenge,
-} from "../utils/machineUtils"
+import { concat, find } from "lodash/fp"
+import learnJson from "../learn.json"
+// import {
+//   getSection,
+//   getSectionIndex,
+//   getLessonIndex,
+//   getChallenge,
+// } from "../utils/machineUtils"
 
 export const progressMachine = createMachine(
   {
@@ -38,23 +40,15 @@ export const progressMachine = createMachine(
   },
   {
     actions: {
-      saveProgress: assign((context: any, event: any) => {
-        const sectionIndex = getSectionIndex(context.learnData, event.id)
-        const lessonIndex = getLessonIndex(context.learnData, event.id)
-        const learnDataCopy = context.learnData
-        learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
-        return { learnData: learnDataCopy }
-      }),
-
+      saveProgress: assign((context: any, event: any) => ({
+        lessonsCompleted: concat(context.lessonsCompleted, event.path),
+        lessonsSkipped: concat(context.lessonsCompleted, event.path),
+      })),
       validateAndLogAnswer: assign((context: any, event: any) => {
-        const learnDataCopy = context.learnData
-        const sectionIndex = getSectionIndex(context.learnData, event.id)
-        const lessonIndex = getLessonIndex(context.learnData, event.id)
-        const challenge = getChallenge(
-          context.learnData,
-          event.id,
-          event.challengeIndex
-        )
+        const [sectionSlug, lessonSlug] = event.id.split("/")
+        const lessons = learnJson[sectionSlug].lessons
+        const lesson = find({ slug: lessonSlug }, lessons)
+        const challenge = lesson.challenges[event.challengeIndex]
 
         const isCorrectMultipleChoiceAnswer =
           challenge.challengeType === "multiple-choice" &&
@@ -65,29 +59,9 @@ export const progressMachine = createMachine(
           challenge.answer === event.userAnswer
 
         if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
-          learnDataCopy[sectionIndex].lessons[lessonIndex].status = "completed"
-
-          return { learnData: learnDataCopy }
-        } else {
-          learnDataCopy[sectionIndex].lessons[lessonIndex].status = null
-
-          return { learnData: learnDataCopy }
-        }
-      }),
-
-      isSectionCompleted: assign((context: any, event: any) => {
-        const learnDataCopy = context.learnData
-        const section = getSection(learnDataCopy, event.id)
-        const sectionIndex = getSectionIndex(context.learnData, event.id)
-        // @ts-ignore
-        const completedLessons = section.lessons.filter(
-          (lesson) => lesson.status === "completed"
-        )
-
-        // @ts-ignore
-        if (completedLessons.length === section.lessons.length) {
-          learnDataCopy[sectionIndex].status = "completed"
-          return { learnData: learnDataCopy }
+          return {
+            lessonsCompleted: concat(context.lessonsCompleted, event.id),
+          }
         }
       }),
 
