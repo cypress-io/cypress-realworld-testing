@@ -4,8 +4,9 @@ import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeSteps from "../components/Home/HomeSteps"
 import { progressService } from "../machines/progressService"
+import learnJson from "../learnData.json"
 
-export default function Home({ progressState }) {
+export default function Home({ progressState, learnJson }) {
   return (
     <Layout>
       <HomeHero />
@@ -25,7 +26,7 @@ export default function Home({ progressState }) {
         </Head>
 
         <main className="flex flex-col w-full flex-1 px-4 lg:px-20">
-          <HomeSteps progressState={progressState} />
+          <HomeSteps progressState={progressState} learnJson={learnJson} />
         </main>
       </div>
     </Layout>
@@ -36,6 +37,7 @@ export async function getStaticProps() {
   return {
     props: {
       progressState: progressService.state.context.learnData,
+      learnJson,
     },
   }
 }

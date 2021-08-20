@@ -27,8 +27,7 @@ import {
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
 import { isLessonCompleted } from "../../utils/machineUtils"
-// import learnJson from "../../learnData.json"
-const learnDataState = progressService.state.context.learnData
+import learnJson from "../../learnData.json"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -93,6 +92,7 @@ export default function LessonPage({
         sectionTitle={sectionTitle}
         progressState={progressState}
         sectionSlug={sectionSlug}
+        learnJson={learnJson}
       />
       {lessonData.challenges &&
         lessonData.challenges[0].challengeType === "multiple-choice" && (
@@ -144,7 +144,7 @@ export const getStaticProps = async ({ params }) => {
     },
     scope: data,
   })
-  const section = find({ slug: params.section }, learnDataState)
+  const section = find({ slug: params.section }, learnJson)
   const lessonData = find({ slug: params.slug }, section.lessons)
   const { title, lessons } = section
   const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
