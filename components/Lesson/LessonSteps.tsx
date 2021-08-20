@@ -12,7 +12,7 @@ export default function LessonSteps({
   progressService,
   lessonPath,
 }) {
-  const [sectionSlug, lessonSlug] = lessonPath.split("/")
+  const [sectionSlug] = lessonPath.split("/")
 
   return (
     <nav aria-label="Progress">
@@ -39,20 +39,6 @@ export default function LessonSteps({
                 aria-hidden="true"
               />
             ) : null}
-
-            {/* {console.log(
-              isLessonCompleted(
-                progressService,
-                `${sectionSlug}/${lesson.slug}`
-              )
-            )}
-
-            {console.log(
-              find(
-                { id: `${sectionSlug}/${lesson.slug}` },
-                progressService.state.context.lessons
-              )
-            )} */}
 
             <a href={lesson.href} className="relative flex items-start group">
               {/* "completed" */}
