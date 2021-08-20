@@ -13,12 +13,6 @@ export default function LessonSteps({
 }) {
   return (
     <nav aria-label="Progress">
-      {console.log("state: ", progressState.context.lessons)}
-      {console.log("lessonPath: \n", lessonPath)}
-      {console.log(
-        "isLessonCompleted: ",
-        isLessonCompleted(progressState, lessonPath)
-      )}
       <ol className="overflow-hidden">
         {sectionLessons.map((lesson, index) => (
           <li
