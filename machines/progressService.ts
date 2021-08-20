@@ -1,15 +1,6 @@
 import { interpret, State } from "xstate"
 import { progressMachine } from "./progressMachine"
-import learnJson from "../learnData.json"
-import { ProgressContext } from "common"
 const LOCAL_STORAGE_ITEM = "progressState"
-
-const defaultContext: ProgressContext = {
-  sectionsCompleted: [],
-  lessons: [],
-  disableChallenges: false,
-  learnData: learnJson,
-}
 
 // @ts-ignore
 const stateDefinition =
@@ -26,7 +17,6 @@ if (stateDefinition) {
 }
 
 export const progressService = interpret(progressMachine, {
-  context: defaultContext,
   devTools: true,
 })
   .onTransition((state) => {
