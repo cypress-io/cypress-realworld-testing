@@ -1,6 +1,7 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
 import { concat, find } from "lodash/fp"
+import { getChallenge } from "../utils/machineUtils"
 import learnJson from "../learn.json"
 
 // complete challenge
@@ -60,14 +61,15 @@ export const progressMachine = createMachine(
       saveProgress: assign((context: any, event: any) => ({
         lessons: concat(context.lessons, {
           id: event.id,
-          status: "completed"
+          status: "completed",
         }),
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
-        const [sectionSlug, lessonSlug] = event.id.split("/")
-        const lessons = learnJson[sectionSlug].lessons
-        const lesson = find({ slug: lessonSlug }, lessons)
-        const challenge = lesson.challenges[event.challengeIndex]
+        const challenge = getChallenge(
+          learnJson,
+          event.id,
+          event.challengeIndex
+        )
 
         const isCorrectMultipleChoiceAnswer =
           challenge.challengeType === "multiple-choice" &&
@@ -81,7 +83,7 @@ export const progressMachine = createMachine(
           return {
             lessons: concat(context.lessons, {
               id: event.id,
-              status: "completed"
+              status: "completed",
             }),
           }
         }

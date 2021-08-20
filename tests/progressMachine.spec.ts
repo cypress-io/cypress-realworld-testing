@@ -24,8 +24,7 @@ describe("progress machine", () => {
 
     progressService.send(skippedAnswerEvent)
 
-    expect(isLessonCompleted(progressService.state, skippedAnswerEvent.id)).to
-      .be.true
+    expect(isLessonCompleted(progressService, skippedAnswerEvent.id)).to.be.true
   })
 
   it("can validate a correct multiple choice answer", () => {
@@ -37,7 +36,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.true
+    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.true
   })
 
   it("can validate an incorrect multiple choice answer", () => {
@@ -49,7 +48,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.false
+    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.false
   })
 
   it("can validate a correct freeform answer", () => {
@@ -61,7 +60,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.true
+    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.true
   })
 
   it("can validate an incorrect freeform answer", () => {
@@ -73,7 +72,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(isLessonCompleted(progressService.state, answerEvent.id)).to.be.false
+    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.false
   })
 
   it("can disable all challenges", () => {
