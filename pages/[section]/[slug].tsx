@@ -93,7 +93,7 @@ export default function LessonPage({
         components={components}
         sectionLessons={sectionLessons}
         sectionTitle={sectionTitle}
-        progressState={progressState}
+        progressService={progressService}
         lessonPath={lessonPath}
       />
       {lessonData.challenges &&

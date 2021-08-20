@@ -1,5 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from "@heroicons/react/solid"
+import { find, findIndex, gte } from "lodash/fp"
+import { isLessonCompleted } from "../../utils/machineUtils"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -7,9 +9,11 @@ function classNames(...classes) {
 
 export default function LessonSteps({
   sectionLessons,
-  progressState,
+  progressService,
   lessonPath,
 }) {
+  const [sectionSlug, lessonSlug] = lessonPath.split("/")
+
   return (
     <nav aria-label="Progress">
       <ol className="overflow-hidden">
@@ -25,7 +29,10 @@ export default function LessonSteps({
             {index !== sectionLessons.length - 1 ? (
               <div
                 className={`-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full ${
-                  lesson.status === "completed"
+                  isLessonCompleted(
+                    progressService,
+                    `${sectionSlug}/${lesson.slug}`
+                  )
                     ? "bg-indigo-600"
                     : "bg-gray-300"
                 }`}
@@ -33,9 +40,27 @@ export default function LessonSteps({
               />
             ) : null}
 
+            {/* {console.log(
+              isLessonCompleted(
+                progressService,
+                `${sectionSlug}/${lesson.slug}`
+              )
+            )}
+
+            {console.log(
+              find(
+                { id: `${sectionSlug}/${lesson.slug}` },
+                progressService.state.context.lessons
+              )
+            )} */}
+
             <a href={lesson.href} className="relative flex items-start group">
               {/* "completed" */}
-              {lesson.status === "completed" && (
+
+              {isLessonCompleted(
+                progressService,
+                `${sectionSlug}/${lesson.slug}`
+              ) && (
                 <span className="h-9 flex items-center">
                   <span className="relative z-10 w-8 h-8 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800">
                     <CheckIcon
@@ -47,7 +72,10 @@ export default function LessonSteps({
               )}
 
               {/* "upcoming" */}
-              {lesson.status !== "completed" && (
+              {!isLessonCompleted(
+                progressService,
+                `${sectionSlug}/${lesson.slug}`
+              ) && (
                 <span className="h-9 flex items-center" aria-hidden="true">
                   <span className="relative z-10 w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full group-hover:border-gray-400">
                     <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />

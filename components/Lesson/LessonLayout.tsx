@@ -1,6 +1,13 @@
 import LessonToc from "../../components/Lesson/LessonToc"
-import LessonSteps from "../../components/Lesson/LessonSteps"
+// import LessonSteps from "../../components/Lesson/LessonSteps"
 import { MDXRemote } from "next-mdx-remote"
+import dynamic from "next/dynamic"
+const LessonSteps = dynamic(
+  () => import("../../components/Lesson/LessonSteps"),
+  {
+    ssr: false,
+  }
+)
 
 export default function LessonLayout({
   toc,
@@ -8,7 +15,7 @@ export default function LessonLayout({
   components,
   sectionLessons,
   sectionTitle,
-  progressState,
+  progressService,
   lessonPath,
 }) {
   return (
@@ -42,7 +49,7 @@ export default function LessonLayout({
               <p className="font-semibold mb-6">{sectionTitle}</p>
               <LessonSteps
                 sectionLessons={sectionLessons}
-                progressState={progressState}
+                progressService={progressService}
                 lessonPath={lessonPath}
               />
             </div>
