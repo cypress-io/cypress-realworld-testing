@@ -1,7 +1,7 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
-import { concat, find } from "lodash/fp"
-import { getChallenge } from "../utils/machineUtils"
+import { concat, uniqBy } from "lodash/fp"
+import { getSection, getChallenge } from "../utils/machineUtils"
 import learnJson from "../learn.json"
 
 // complete challenge
@@ -44,7 +44,7 @@ export const progressMachine = createMachine(
             actions: ["saveProgress"],
           },
           SUBMIT_ANSWER: {
-            actions: ["validateAndLogAnswer"],
+            actions: ["validateAndLogAnswer", "isSectionCompleted"],
           },
           DISABLE_CHALLENGES: { actions: ["disableChallenges"] },
         },
@@ -91,6 +91,21 @@ export const progressMachine = createMachine(
       disableChallenges: assign((context: any, event: any) => ({
         disableChallenges: true,
       })),
+
+      isSectionCompleted: assign((context: any, event: any) => {
+        const section = getSection(learnJson, event.id)
+        const completedLessons = context.lessons.filter(
+          (lesson) => lesson.status === "completed"
+        )
+
+        if (uniqBy("id", completedLessons).length === section.lessons.length) {
+          return {
+            sectionsCompleted: concat(context.sectionsCompleted, {
+              id: event.id,
+            }),
+          }
+        }
+      }),
     },
   }
 )
