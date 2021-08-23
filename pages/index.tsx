@@ -40,7 +40,6 @@ export default function Home({ content, sections }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  console.log(params)
   const sections = Object.keys(learnJson)
   return {
     props: {
