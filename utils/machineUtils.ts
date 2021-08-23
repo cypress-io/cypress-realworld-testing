@@ -42,6 +42,6 @@ export const isLessonCompleted = (progressService, lessonPath) => {
   )
 }
 
-export const isSectionCompleted = (context, sectionSlug) => {
-  return context.includes(sectionSlug)
+export const isSectionCompleted = (sectionsCompleted, sectionSlug) => {
+  return sectionsCompleted.includes(sectionSlug)
 }

@@ -1,6 +1,6 @@
 import { CheckIcon } from "@heroicons/react/solid"
 import SectionCard from "./SectionCard"
-import { isLessonCompleted } from "../../utils/machineUtils"
+import { isSectionCompleted } from "../../utils/machineUtils"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -25,9 +25,9 @@ export default function SectionSteps({ lessons, progressService, lessonPath }) {
               {index !== lessons.length - 1 ? (
                 <div
                   className={`-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full ${
-                    isLessonCompleted(
-                      progressService,
-                      `${sectionSlug}/${lesson.slug}`
+                    isSectionCompleted(
+                      progressService.state.context.sectionsCompleted,
+                      sectionSlug
                     )
                       ? "bg-indigo-600"
                       : "bg-gray-300"
@@ -38,9 +38,9 @@ export default function SectionSteps({ lessons, progressService, lessonPath }) {
 
               <div className="relative flex items-start group">
                 {/* "Completed" */}
-                {isLessonCompleted(
-                  progressService,
-                  `${sectionSlug}/${lesson.slug}`
+                {isSectionCompleted(
+                  progressService.state.context.sectionsCompleted,
+                  sectionSlug
                 ) && (
                   <>
                     <span className="h-9 flex items-center">
@@ -66,9 +66,9 @@ export default function SectionSteps({ lessons, progressService, lessonPath }) {
                 )} */}
 
                 {/* "Upcoming" */}
-                {!isLessonCompleted(
-                  progressService,
-                  `${sectionSlug}/${lesson.slug}`
+                {!isSectionCompleted(
+                  progressService.state.context.sectionsCompleted,
+                  sectionSlug
                 ) && (
                   <>
                     <span className="h-9 flex items-center" aria-hidden="true">
