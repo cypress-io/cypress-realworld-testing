@@ -75,7 +75,10 @@ export default function HomeSteps({ sections, content, progressService }) {
               section
             ) && (
               <span className="h-9 flex items-center">
-                <span className="relative z-10 w-8 h-8 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800">
+                <span
+                  data-test={`section-complete-${index}`}
+                  className="relative z-10 w-8 h-8 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800"
+                >
                   <CheckIcon
                     className="w-5 h-5 text-white"
                     aria-hidden="true"
@@ -99,7 +102,10 @@ export default function HomeSteps({ sections, content, progressService }) {
               section
             ) && (
               <span className="h-9 flex items-center" aria-hidden="true">
-                <span className="relative z-10 w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full group-hover:border-gray-400">
+                <span
+                  data-test={`section-upcoming-${index}`}
+                  className="relative z-10 w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full group-hover:border-gray-400"
+                >
                   <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />
                 </span>
               </span>
@@ -128,12 +134,13 @@ export default function HomeSteps({ sections, content, progressService }) {
 
               {/* Slides */}
               <Slider {...settings}>
-                {content[section].lessons.map((lesson) => (
+                {content[section].lessons.map((lesson, index) => (
                   <div key={lesson.title}>
                     <HomeCard
                       lesson={lesson}
                       section={section}
                       progressService={progressService}
+                      index={index}
                     />
                   </div>
                 ))}

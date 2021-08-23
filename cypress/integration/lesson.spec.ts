@@ -24,10 +24,6 @@ describe("Multiple Choice Challenge", () => {
   it("shows the challenge", () => {
     cy.getBySel("next-lesson-button").should("exist")
   })
-
-  // it("the progress state is preserved upon refresh", () => {})
-
-  // it("displays the complete section button when a section is completed and navigates to the homepage ", () => {})
 })
 
 export {}

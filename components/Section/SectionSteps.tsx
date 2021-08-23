@@ -83,6 +83,7 @@ export default function SectionSteps({ lessons, progressService, lessonPath }) {
                 lesson={lesson}
                 lessonPath={lessonPath}
                 progressService={progressService}
+                index={index}
               />
             </li>
           ))}
