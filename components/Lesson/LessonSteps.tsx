@@ -1,6 +1,4 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from "@heroicons/react/solid"
-import { find, findIndex, gte } from "lodash/fp"
 import { isLessonCompleted } from "../../utils/machineUtils"
 
 function classNames(...classes) {
