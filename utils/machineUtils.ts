@@ -41,3 +41,7 @@ export const isLessonCompleted = (progressService, lessonPath) => {
     0
   )
 }
+
+export const isSectionCompleted = (context, sectionSlug) => {
+  return context.includes(sectionSlug)
+}
