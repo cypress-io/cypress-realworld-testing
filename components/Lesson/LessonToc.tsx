@@ -13,6 +13,7 @@ export default function LessonSideNav({ navigation }: Props) {
     <nav className="space-y-1" aria-label="Sidebar">
       {navigation.map((item) => (
         <a
+          data-test={item.slug}
           key={item.slug}
           href={`#${item.slug}`}
           className={classNames(
