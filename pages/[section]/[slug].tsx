@@ -115,12 +115,11 @@ export default function LessonPage({
         )}
 
       {/* Next Lesson Button */}
-      {nextLesson && (
-        <NextLessonBtn
-          path={nextLesson}
-          isCompleted={isLessonCompleted(progressService, lessonPath)}
-        />
-      )}
+
+      <NextLessonBtn
+        path={nextLesson}
+        isCompleted={isLessonCompleted(progressService, lessonPath)}
+      />
     </Layout>
   )
 }
