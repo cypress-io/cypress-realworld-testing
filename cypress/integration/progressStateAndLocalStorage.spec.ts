@@ -7,8 +7,6 @@ describe("Progress State & Local Storage", () => {
   beforeEach(() => {
     // @ts-ignore
     cy.restoreLocalStorage()
-    // 1280 is the XL breakpoint for Tailwind
-    cy.viewport(1280, 768)
   })
 
   afterEach(() => {
@@ -101,24 +99,18 @@ describe("Progress State & Local Storage", () => {
   it("all of the lesson cards, on the homepage, for the first section have a status of 'Completed'", () => {
     cy.visit("/")
 
-    cy.document().then((doc) => {
-      const cards = doc.querySelector(".slick-track").children
-
-      Array.from(cards).forEach((card, index) => {
-        cy.getBySel(`lesson-card-status-${index}`).contains("Completed")
-      })
-    })
+    cy.getBySelLike("testing-your-first-application-lesson-card-status-").each(
+      (card) => {
+        cy.wrap(card).should("contain.text", "Completed")
+      }
+    )
   })
 
   it("all of the lesson cards on the section page have a status of 'Completed'", () => {
     cy.visit("/testing-your-first-application")
 
-    cy.document().then((doc) => {
-      const cards = doc.querySelectorAll(".section-lesson-card")
-
-      Array.from(cards).forEach((card, index) => {
-        cy.getBySel(`lesson-card-status-${index}`).contains("Completed")
-      })
+    cy.getBySelLike(`lesson-card-status-`).each((card) => {
+      cy.wrap(card).should("contain.text", "Completed")
     })
   })
 })

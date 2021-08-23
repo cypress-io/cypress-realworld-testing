@@ -1,7 +1,5 @@
 describe("Multiple Choice Challenge", () => {
   beforeEach(() => {
-    // 1280 is the XL breakpoint for Tailwind
-    cy.viewport(1280, 768)
     cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
   })
 
