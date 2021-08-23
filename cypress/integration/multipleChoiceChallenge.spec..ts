@@ -11,7 +11,7 @@ describe("Multiple Choice Challenge", () => {
     )
   })
 
-  it.only("it displays the next lesson button when an answer is correct and updates the progress sidebar", () => {
+  it("it displays the next lesson button when an answer is correct and updates the progress sidebar", () => {
     cy.get("#answer-1").click()
     cy.getBySel("next-lesson-button").should("be.visible")
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
