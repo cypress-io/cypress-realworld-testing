@@ -1,23 +1,18 @@
 /* 
   Note: These tests rely upon local storage state from previous tests, 
   so make sure to run all of them at once, ie: don't use `it.only()`
-  
-  These tests are utilizing this package for testing local storage: 
-  https://www.npmjs.com/package/cypress-localstorage-commands
 */
 
 describe("Progress State & Local Storage", () => {
-  before(() => {
-    cy.clearLocalStorageSnapshot()
-  })
-
   beforeEach(() => {
+    // @ts-ignore
     cy.restoreLocalStorage()
     // 1280 is the XL breakpoint for Tailwind
     cy.viewport(1280, 768)
   })
 
   afterEach(() => {
+    // @ts-ignore
     cy.saveLocalStorage()
   })
 
@@ -32,8 +27,6 @@ describe("Progress State & Local Storage", () => {
   })
 
   it("the lesson page displays the complete section button when a section is completed and navigates to the homepage", () => {
-    cy.clearLocalStorageSnapshot()
-
     cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
     cy.get("#answer-1").click()
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
