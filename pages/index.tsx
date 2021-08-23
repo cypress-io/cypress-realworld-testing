@@ -1,14 +1,14 @@
 import Head from "next/head"
-import { useActor } from "@xstate/react"
+import dynamic from "next/dynamic"
 import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
-import HomeSteps from "../components/Home/HomeSteps"
+const HomeSteps = dynamic(() => import("../components/Home/HomeSteps"), {
+  ssr: false,
+})
 import learnJson from "../learn.json"
 import { progressService } from "../machines/progressService"
 
 export default function Home({ content, sections }) {
-  const [progressState, progressSend] = useActor(progressService)
-
   return (
     <Layout>
       <HomeHero />
@@ -28,14 +28,18 @@ export default function Home({ content, sections }) {
         </Head>
 
         <main className="flex flex-col w-full flex-1 px-4 lg:px-20">
-          <HomeSteps sections={sections} content={content} />
+          <HomeSteps
+            sections={sections}
+            content={content}
+            progressService={progressService}
+          />
         </main>
       </div>
     </Layout>
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async ({ params }) => {
   const sections = Object.keys(learnJson)
   return {
     props: {

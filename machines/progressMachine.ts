@@ -1,6 +1,11 @@
 import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
-import { concat, find } from "lodash/fp"
+import { concat } from "lodash/fp"
+import {
+  getSection,
+  getChallenge,
+  isSectionCompleted,
+} from "../utils/machineUtils"
 import learnJson from "../learn.json"
 
 // complete challenge
@@ -16,12 +21,12 @@ function isLessonCompleted(lesson) {
 }
 
 function isSectionStarted(lesson) {
-  // via _.includes, check that the section is contained in one of the lessonsCompleted
+  // via _.includes, check that the section is contained in one of the lessons
 }
 
 const defaultContext: ProgressContext = {
   sectionsCompleted: [],
-  lessonsCompleted: [],
+  lessons: [],
   disableChallenges: false,
 }
 
@@ -43,7 +48,7 @@ export const progressMachine = createMachine(
             actions: ["saveProgress"],
           },
           SUBMIT_ANSWER: {
-            actions: ["validateAndLogAnswer"],
+            actions: ["validateAndLogAnswer", "isSectionCompleted"],
           },
           DISABLE_CHALLENGES: { actions: ["disableChallenges"] },
         },
@@ -58,14 +63,17 @@ export const progressMachine = createMachine(
   {
     actions: {
       saveProgress: assign((context: any, event: any) => ({
-        lessonsCompleted: concat(context.lessonsCompleted, event.path),
-        lessonsSkipped: concat(context.lessonsCompleted, event.path),
+        lessons: concat(context.lessons, {
+          id: event.id,
+          status: "completed",
+        }),
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
-        const [sectionSlug, lessonSlug] = event.id.split("/")
-        const lessons = learnJson[sectionSlug].lessons
-        const lesson = find({ slug: lessonSlug }, lessons)
-        const challenge = lesson.challenges[event.challengeIndex]
+        const challenge = getChallenge(
+          learnJson,
+          event.id,
+          event.challengeIndex
+        )
 
         const isCorrectMultipleChoiceAnswer =
           challenge.challengeType === "multiple-choice" &&
@@ -77,13 +85,33 @@ export const progressMachine = createMachine(
 
         if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
           return {
-            lessonsCompleted: concat(context.lessonsCompleted, event.id),
+            lessons: concat(context.lessons, {
+              id: event.id,
+              status: "completed",
+            }),
           }
         }
       }),
       disableChallenges: assign((context: any, event: any) => ({
         disableChallenges: true,
       })),
+
+      isSectionCompleted: assign((context: any, event: any) => {
+        const [sectionSlug] = event.id.split("/")
+        const section = getSection(learnJson, event.id)
+        const completedLessons = context.lessons.filter(
+          (lesson) => lesson.status === "completed"
+        )
+
+        if (
+          completedLessons.length === section.lessons.length &&
+          !isSectionCompleted(context.sectionsCompleted, sectionSlug)
+        ) {
+          return {
+            sectionsCompleted: concat(context.sectionsCompleted, sectionSlug),
+          }
+        }
+      }),
     },
   }
 )

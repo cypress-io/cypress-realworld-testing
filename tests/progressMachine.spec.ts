@@ -2,6 +2,7 @@ import { expect } from "chai"
 import { interpret } from "xstate"
 import { progressMachine } from "../machines/progressMachine"
 import { FreeFormPayload, MultipleChoicePayload } from "common"
+import { isLessonCompleted } from "../utils/machineUtils"
 
 describe("progress machine", () => {
   let progressService
@@ -16,12 +17,14 @@ describe("progress machine", () => {
   })
 
   it("can save the progress", () => {
-    progressService.send("SKIP_ANSWER", {
-      path: "testing-your-first-application/todomvc-app-install-and-overview",
-    })
-    expect(progressService.state.context.lessonsCompleted).to.include(
-      "testing-your-first-application/todomvc-app-install-and-overview"
-    )
+    const skippedAnswerEvent = {
+      type: "SKIP_ANSWER",
+      id: "testing-your-first-application/todomvc-app-install-and-overview",
+    }
+
+    progressService.send(skippedAnswerEvent)
+
+    expect(isLessonCompleted(progressService, skippedAnswerEvent.id)).to.be.true
   })
 
   it("can validate a correct multiple choice answer", () => {
@@ -33,9 +36,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.include(
-      answerEvent.id
-    )
+    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.true
   })
 
   it("can validate an incorrect multiple choice answer", () => {
@@ -47,9 +48,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.not.include(
-      answerEvent.id
-    )
+    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.false
   })
 
   it("can validate a correct freeform answer", () => {
@@ -61,9 +60,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.include(
-      answerEvent.id
-    )
+    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.true
   })
 
   it("can validate an incorrect freeform answer", () => {
@@ -75,9 +72,7 @@ describe("progress machine", () => {
     }
     progressService.send(answerEvent)
 
-    expect(progressService.state.context.lessonsCompleted).to.not.include(
-      answerEvent.id
-    )
+    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.false
   })
 
   it("can disable all challenges", () => {

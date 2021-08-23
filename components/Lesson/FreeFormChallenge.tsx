@@ -4,7 +4,6 @@ export default function LessonChallenge({
   progressService,
   lessonData,
   lessonPath,
-  lessonCompleted,
 }) {
   const [, progressSend] = useActor(progressService)
 
