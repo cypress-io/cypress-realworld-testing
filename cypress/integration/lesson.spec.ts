@@ -22,7 +22,7 @@ describe("Multiple Choice Challenge", () => {
   })
 
   it("shows the challenge", () => {
-    cy.getBySel("lesson-challenge").should("exist")
+    cy.getBySel("next-lesson-button").should("exist")
   })
 
   // it("the progress state is preserved upon refresh", () => {})

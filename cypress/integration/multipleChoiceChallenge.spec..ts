@@ -18,8 +18,6 @@ describe("Multiple Choice Challenge", () => {
     cy.getBySel("next-lesson-button").should("be.visible")
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
   })
-
-  it("the progress state is preserved upon refresh", () => {})
 })
 
 export {}
