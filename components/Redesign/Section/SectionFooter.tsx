@@ -17,6 +17,9 @@ export default function SectionFooter(props) {
       </div>
       <div className="relative mx-auto max-w-md px-4 py-12 sm:max-w-7xl sm:px-6 sm:py-20 md:py-28 lg:px-8 lg:py-32">
         <div className="md:ml-auto md:w-1/2 md:pl-10">
+          <h2 className="text-base font-semibold tracking-wider text-indigo-600 uppercase">
+            Next Course
+          </h2>
           <p className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
             Testing Foundations
           </p>
@@ -27,14 +30,12 @@ export default function SectionFooter(props) {
             illum odit deserunt sequi et!
           </p>
           <div className="mt-8">
-            <div className="inline-flex rounded-md shadow">
-              <a
-                href="#"
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50"
-              >
-                Start Section
-              </a>
-            </div>
+            <a
+              href="#"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Start Course
+            </a>
           </div>
         </div>
       </div>
