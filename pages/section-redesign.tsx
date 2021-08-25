@@ -2,6 +2,7 @@ import Head from "next/head"
 import Layout from "../components/Redesign/Layout-Redesign"
 import SectionHero from "../components/Redesign/Section/SectionHero"
 import SectionFooter from "../components/Redesign/Section/SectionFooter"
+import SectionContent from "../components/Redesign/Section/SectionContent"
 
 export default function SectionPage({}) {
   return (
@@ -12,9 +13,7 @@ export default function SectionPage({}) {
       </Head>
 
       <SectionHero />
-
-      <main className="mx-auto py-12 px-4 xl:max-w-7xl">Main Content</main>
-
+      <SectionContent />
       <SectionFooter />
     </Layout>
   )
