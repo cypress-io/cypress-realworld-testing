@@ -30,8 +30,8 @@ export default function SectionHero(props) {
         </div>
         <div className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
           <Image
-            className="absolute inset-0 w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1616458964840-5108e4d3adb3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2252&q=80"
+            className="absolute inset-0 w-full h-full object-center"
+            src="https://tailwindui.com/img/component-images/inbox-app-screenshot-1.jpg"
             alt=""
             layout="fill"
           />
