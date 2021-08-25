@@ -14,7 +14,7 @@ export default function SectionPage({}) {
 
       <SectionHero />
       <SectionContent />
-      <SectionFooter />
+      {/* <SectionFooter /> */}
     </Layout>
   )
 }
