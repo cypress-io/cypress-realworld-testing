@@ -8,7 +8,6 @@ import path from "path"
 import { find, findIndex } from "lodash/fp"
 import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
-import { useActor } from "@xstate/react"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import LessonHero from "../../components/Lesson/LessonHero"
@@ -65,6 +64,8 @@ type Props = {
   nextLesson: string
   sectionTitle: string
   lessonPath: string
+  learnJson: object
+  sections: []
 }
 
 export default function LessonPage({
@@ -75,13 +76,11 @@ export default function LessonPage({
   nextLesson,
   sectionTitle,
   lessonPath,
-  content,
+  learnJson,
   sections,
 }: Props) {
-  const [progressState] = useActor(progressService)
-
   return (
-    <Layout content={content} sections={sections}>
+    <Layout content={learnJson} sections={sections}>
       <Head>
         <title>{lessonData.title}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -168,7 +167,7 @@ export const getStaticProps = async ({ params }) => {
       nextLesson,
       sectionTitle: title,
       lessonPath: `${params.section}/${params.slug}`,
-      content: learnJson,
+      learnJson,
       sections,
     },
   }
