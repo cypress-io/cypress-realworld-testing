@@ -1,31 +1,29 @@
 import { CheckIcon } from "@heroicons/react/solid"
-import { isLessonCompleted } from "../../../utils/machineUtils"
+import { isLessonCompleted } from "../../utils/machineUtils"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ lessonPath, lessons, progressService }) {
-  const [sectionSlug] = lessonPath.split("/")
-
+export default function LessonSteps({ section, content, progressService }) {
   return (
-    <nav aria-label="Progress">
+    <nav aria-label="Progress" className="mt-12">
       <ol className="overflow-hidden">
-        {lessons.map((lesson, index) => (
+        {content?.lessons.map((lesson, index) => (
           <li
             key={lesson.title}
             className={classNames(
-              index !== lessons.length - 1 ? "pb-10" : "",
+              index !== content?.lessons.length - 1 ? "pb-10" : "",
               "relative"
             )}
           >
             {/* Solid Line that connects the checkmarks */}
-            {index !== lessons.length - 1 ? (
+            {index !== content?.lessons.length - 1 ? (
               <div
                 className={`-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full ${
                   isLessonCompleted(
                     progressService,
-                    `${sectionSlug}/${lesson.slug}`
+                    `${section}/${lesson.slug}`
                   )
                     ? "bg-indigo-600"
                     : "bg-gray-300"
@@ -34,12 +32,12 @@ export default function LessonSteps({ lessonPath, lessons, progressService }) {
               />
             ) : null}
 
-            <div className="relative flex items-start group">
+            <a href={lesson.href} className="relative flex items-start group">
               {/* "completed" */}
 
               {isLessonCompleted(
                 progressService,
-                `${sectionSlug}/${lesson.slug}`
+                `${section}/${lesson.slug}`
               ) && (
                 <span className="h-9 flex items-center">
                   <span
@@ -57,7 +55,7 @@ export default function LessonSteps({ lessonPath, lessons, progressService }) {
               {/* "upcoming" */}
               {!isLessonCompleted(
                 progressService,
-                `${sectionSlug}/${lesson.slug}`
+                `${section}/${lesson.slug}`
               ) && (
                 <span className="h-9 flex items-center" aria-hidden="true">
                   <span
@@ -72,10 +70,10 @@ export default function LessonSteps({ lessonPath, lessons, progressService }) {
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  <a href={`${sectionSlug}/${lesson.slug}`}>{lesson.title}</a>
+                  {lesson.title}
                 </span>
               </span>
-            </div>
+            </a>
           </li>
         ))}
       </ol>

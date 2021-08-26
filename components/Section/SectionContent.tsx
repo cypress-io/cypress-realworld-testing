@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import { CheckIcon } from "@heroicons/react/outline"
 
-const SectionSteps = dynamic(() => import("../Section/SectionSteps"), {
+const SectionSteps = dynamic(() => import("./SectionSteps"), {
   ssr: false,
 })
 

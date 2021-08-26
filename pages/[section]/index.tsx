@@ -1,8 +1,8 @@
 import Head from "next/head"
 import dynamic from "next/dynamic"
 import Layout from "../../components/Layout"
-import SectionHero from "../../components/Redesign/Section/SectionHero"
-import SectionContent from "../../components/Redesign/Section/SectionContent"
+import SectionHero from "../../components/Section/SectionHero"
+import SectionContent from "../../components/Section/SectionContent"
 // import SectionFooter from "../../components/Section/SectionFooter"
 const SectionSteps = dynamic(
   () => import("../../components/Section/SectionSteps"),
