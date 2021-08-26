@@ -3,72 +3,85 @@
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "lessons": [{
+    "lessons": [
+      {
         "title": "TodoMVC App Install and Overview",
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-          "correctAnswerIndex": 1
-        }]
+        "challenges": [
+          {
+            "challengeType": "multiple-choice",
+            "question": "What is the command to run Cypress in open mode?",
+            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "correctAnswerIndex": 1
+          }
+        ]
       },
       {
         "title": "Installing Cypress and writing our first test",
         "slug": "installing-cypress-and-writing-our-first-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "freeform",
-          "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
-          "answer": "cy.get('.new-todo').should('exist')",
-          "hint": "Use the cy.get and should commands"
-        }]
+        "challenges": [
+          {
+            "challengeType": "freeform",
+            "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
+            "answer": "cy.get('.new-todo').should('exist')",
+            "hint": "Use the cy.get and should commands"
+          }
+        ]
       },
       {
         "title": "Multiple Todos and Before Each",
         "slug": "multiple-todos-and-before-each",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-          "correctAnswerIndex": 1
-        }]
+        "challenges": [
+          {
+            "challengeType": "multiple-choice",
+            "question": "What is the command to run Cypress in open mode?",
+            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "correctAnswerIndex": 1
+          }
+        ]
       },
       {
         "title": "How to Use Cypress Commands",
         "slug": "how-to-use-cypress-commands",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-          "correctAnswerIndex": 1
-        }]
+        "challenges": [
+          {
+            "challengeType": "multiple-choice",
+            "question": "What is the command to run Cypress in open mode?",
+            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "correctAnswerIndex": 1
+          }
+        ]
       },
       {
         "title": "Cypress Log, Snapshot and Aliases",
         "slug": "cypress-log-snapshot-and-aliases",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-          "correctAnswerIndex": 1
-        }]
+        "challenges": [
+          {
+            "challengeType": "multiple-choice",
+            "question": "What is the command to run Cypress in open mode?",
+            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "correctAnswerIndex": 1
+          }
+        ]
       },
       {
         "title": "Negative Tests",
         "slug": "negative-tests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-          "correctAnswerIndex": 1
-        }]
+        "challenges": [
+          {
+            "challengeType": "multiple-choice",
+            "question": "What is the command to run Cypress in open mode?",
+            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "correctAnswerIndex": 1
+          }
+        ]
       }
     ]
   },
@@ -76,7 +89,8 @@
     "title": "Testing Foundations",
     "slug": "testing-foundations",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "lessons": [{
+    "lessons": [
+      {
         "title": "Testing is a Mindset",
         "slug": "testing-is-a-mindset",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -112,7 +126,8 @@
     "title": "Cypress Fundamentals",
     "slug": "cypress-fundamentals",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "lessons": [{
+    "lessons": [
+      {
         "title": "Cypress Runs in the Browser",
         "slug": "cypress-runs-in-the-browser",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -144,56 +159,86 @@
       }
     ]
   },
-  "advanced-cypress-concepts": {
-    "title": "Advanced Cypress Concepts",
-    "slug": "advanced-cypress-concepts",
+  "real-world-examples": {
+    "title": "Real World Examples",
+    "slug": "real-world-examples",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "lessons": [{
-        "title": "Intercepting Network Requests",
+    "lessons": [
+      {
+        "title": "Real World App Overview",
         "slug": "real-world-app-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Building the Right Cypress Commands",
+        "title": "Unauthenticated Users",
         "slug": "unauthenticated-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Database Initialization and Seeding",
+        "title": "Login Errors",
         "slug": "login-errors",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Managing Your CI Pipeline",
+        "title": "Invalid Users",
         "slug": "invalid-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "How to Debug Failing Tests",
+        "title": "Sign-up, Login, Create Bank Account and Logout",
         "slug": "sign-up-login-create-bank-account-and-logout",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Cypress UI Overview",
+        "title": "User Settings Overview and Setup",
         "slug": "user-settings-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "How to Test Various Browsers and Viewports",
+        "title": "User Setting Form Errors",
         "slug": "user-setting-form-errors",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Cypress is Just JavaScript",
+        "title": "Updating User Settings",
         "slug": "updating-user-settings",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Import Cypress Methods",
+        "title": "Bank Accounts Overview and Setup",
         "slug": "bank-accounts-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Creating a New Bank Account",
+        "slug": "creating-a-new-bank-account",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Users without Bank Accounts",
+        "slug": "users-without-bank-accounts",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "New Transaction Overview and Setup",
+        "slug": "new-transaction-overview-and-setup",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Submitting a payment to another user",
+        "slug": "submitting-a-payment-to-another-user",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Verifying the deposit of a payment",
+        "slug": "verifying-the-deposit-of-a-payment",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Searching by attributes",
+        "slug": "searching-by-attributes",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
-
     ]
   }
 }
