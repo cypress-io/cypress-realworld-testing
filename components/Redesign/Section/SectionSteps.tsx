@@ -9,7 +9,7 @@ export default function LessonSteps({ lessonPath, lessons, progressService }) {
   const [sectionSlug] = lessonPath.split("/")
 
   return (
-    <nav aria-label="Progress" className="mt-12">
+    <nav aria-label="Progress">
       <ol className="overflow-hidden">
         {lessons.map((lesson, index) => (
           <li
