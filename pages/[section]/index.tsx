@@ -34,14 +34,6 @@ export default function SectionPage({
         lessonPath={lessonPath}
       />
 
-      {/* <main className="mx-auto py-12 px-4 xl:max-w-7xl">
-        <SectionSteps
-          lessons={lessons}
-          progressService={progressService}
-          lessonPath={lessonPath}
-        />
-      </main> */}
-
       {/* {nextSection && <SectionFooter nextSection={nextSection} />} */}
     </Layout>
   )
