@@ -1,8 +1,12 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { InboxIcon, SparklesIcon } from "@heroicons/react/outline"
-// import LessonSteps from "./LessonSteps"
+import RealWorldSteps from "./RealWorldSteps"
 
-export default function RealWorldExamples() {
+export default function RealWorldExamples({
+  sections,
+  content,
+  progressService,
+}) {
   return (
     <>
       <hr />
@@ -32,88 +36,25 @@ export default function RealWorldExamples() {
         <div className="relative">
           <div className="lg:mx-20 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-7 lg:grid-flow-col-dense lg:gap-8">
             {/* Authentication */}
-            <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-              <div>
-                <div className="mt-6">
-                  <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
-                    Authentication
-                  </h2>
-                  {/* <LessonSteps /> */}
+            {sections.map((section, index) => (
+              <div
+                key={section}
+                className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0"
+              >
+                <div>
+                  <div className="mt-6">
+                    <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
+                      {content[section].title}
+                    </h2>
+                    <RealWorldSteps
+                      section={section}
+                      content={content}
+                      progressService={progressService}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-
-            {/* Bank Accounts */}
-            <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-              <div>
-                <div className="mt-6">
-                  <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
-                    Bank Accounts
-                  </h2>
-                  {/* <LessonSteps /> */}
-                </div>
-              </div>
-            </div>
-
-            {/* New Transactions */}
-            <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-              <div>
-                <div className="mt-6">
-                  <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
-                    New Transactions
-                  </h2>
-                  {/* <LessonSteps /> */}
-                </div>
-              </div>
-            </div>
-
-            {/* Notifications */}
-            <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-              <div>
-                <div className="mt-6">
-                  <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
-                    Notifications
-                  </h2>
-                  {/* <LessonSteps /> */}
-                </div>
-              </div>
-            </div>
-
-            {/* Transaction Feed */}
-            <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-              <div>
-                <div className="mt-6">
-                  <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
-                    Transaction Feed
-                  </h2>
-                  {/* <LessonSteps /> */}
-                </div>
-              </div>
-            </div>
-
-            {/* Transaction View */}
-            <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-              <div>
-                <div className="mt-6">
-                  <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
-                    Transaction View
-                  </h2>
-                  {/* <LessonSteps /> */}
-                </div>
-              </div>
-            </div>
-
-            {/* User Settings */}
-            <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-              <div>
-                <div className="mt-6">
-                  <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
-                    User Settings
-                  </h2>
-                  {/* <LessonSteps /> */}
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
