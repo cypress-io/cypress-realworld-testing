@@ -1,4 +1,8 @@
-import LessonSteps from "./LessonSteps"
+import dynamic from "next/dynamic"
+
+const LessonSteps = dynamic(() => import("./LessonSteps"), {
+  ssr: false,
+})
 
 export default function Courses({ sections, content, progressService }) {
   return (
