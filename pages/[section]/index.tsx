@@ -1,8 +1,9 @@
 import Head from "next/head"
 import dynamic from "next/dynamic"
 import Layout from "../../components/Layout"
-import SectionHero from "../../components/Section/SectionHero"
-import SectionFooter from "../../components/Section/SectionFooter"
+import SectionHero from "../../components/Redesign/Section/SectionHero"
+import SectionContent from "../../components/Redesign/Section/SectionContent"
+// import SectionFooter from "../../components/Section/SectionFooter"
 const SectionSteps = dynamic(
   () => import("../../components/Section/SectionSteps"),
   {
@@ -27,16 +28,17 @@ export default function SectionPage({
       </Head>
 
       <SectionHero title={title} description={description} />
+      <SectionContent />
 
-      <main className="mx-auto py-12 px-4 xl:max-w-7xl">
+      {/* <main className="mx-auto py-12 px-4 xl:max-w-7xl">
         <SectionSteps
           lessons={lessons}
           progressService={progressService}
           lessonPath={lessonPath}
         />
-      </main>
+      </main> */}
 
-      {nextSection && <SectionFooter nextSection={nextSection} />}
+      {/* {nextSection && <SectionFooter nextSection={nextSection} />} */}
     </Layout>
   )
 }
