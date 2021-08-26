@@ -75,11 +75,13 @@ export default function LessonPage({
   nextLesson,
   sectionTitle,
   lessonPath,
+  content,
+  sections,
 }: Props) {
   const [progressState] = useActor(progressService)
 
   return (
-    <Layout>
+    <Layout content={content} sections={sections}>
       <Head>
         <title>{lessonData.title}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -125,6 +127,7 @@ export default function LessonPage({
 }
 
 export const getStaticProps = async ({ params }) => {
+  const sections = Object.keys(learnJson)
   const contentFilePath = path.join(
     CONTENT_PATH,
     `${params.section}/${params.slug}.mdx`
@@ -165,6 +168,8 @@ export const getStaticProps = async ({ params }) => {
       nextLesson,
       sectionTitle: title,
       lessonPath: `${params.section}/${params.slug}`,
+      content: learnJson,
+      sections,
     },
   }
 }
