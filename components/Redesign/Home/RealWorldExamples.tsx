@@ -2,7 +2,7 @@
 import { InboxIcon, SparklesIcon } from "@heroicons/react/outline"
 import LessonSteps from "./LessonSteps"
 
-export default function CoursesSteps() {
+export default function RealWorldExamples() {
   return (
     <>
       <hr />

@@ -21,7 +21,11 @@ export default function Home({ content, sections }) {
 
       <Hero />
       <Features />
-      <Courses />
+      <Courses
+        sections={sections}
+        content={content}
+        progressService={progressService}
+      />
       <RealWorldExamples />
 
       {/* <div className="flex flex-col min-h-screen py-2"> */}
