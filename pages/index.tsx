@@ -9,7 +9,7 @@ import { progressService } from "../machines/progressService"
 
 export default function Home({ content, sections }) {
   return (
-    <Layout>
+    <Layout content={content} sections={sections}>
       <Head>
         <title>Real World Testing with Cypress</title>
         <link rel="icon" href="/favicon.ico" />

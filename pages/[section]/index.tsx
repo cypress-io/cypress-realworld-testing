@@ -19,9 +19,11 @@ export default function SectionPage({
   description,
   nextSection,
   lessonPath,
+  content,
+  sections,
 }) {
   return (
-    <Layout>
+    <Layout content={content} sections={sections}>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -58,6 +60,8 @@ export async function getStaticProps({ params }) {
       description,
       nextSection,
       lessonPath: `${params.section}/${params.slug}`,
+      content: learnJson,
+      sections,
     },
   }
 }
