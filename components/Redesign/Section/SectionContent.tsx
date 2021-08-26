@@ -1,5 +1,9 @@
+import dynamic from "next/dynamic"
 import { CheckIcon } from "@heroicons/react/outline"
-import LessonSteps from "../Home/LessonSteps"
+
+const SectionSteps = dynamic(() => import("../Section/SectionSteps"), {
+  ssr: false,
+})
 
 const stats = [
   { label: "Lessons", value: "7" },
@@ -23,7 +27,11 @@ const features = [
   },
 ]
 
-export default function SectionContent() {
+export default function SectionContent({
+  lessons,
+  progressService,
+  lessonPath,
+}) {
   return (
     <>
       <hr />
@@ -53,7 +61,11 @@ export default function SectionContent() {
                 <h3 className="text-gray-500">Table of Contents</h3>
               </div>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
-                <LessonSteps />
+                <SectionSteps
+                  lessonPath={lessonPath}
+                  lessons={lessons}
+                  progressService={progressService}
+                />
               </div>
             </div>
 

@@ -28,7 +28,11 @@ export default function SectionPage({
       </Head>
 
       <SectionHero title={title} description={description} />
-      <SectionContent />
+      <SectionContent
+        lessons={lessons}
+        progressService={progressService}
+        lessonPath={lessonPath}
+      />
 
       {/* <main className="mx-auto py-12 px-4 xl:max-w-7xl">
         <SectionSteps
