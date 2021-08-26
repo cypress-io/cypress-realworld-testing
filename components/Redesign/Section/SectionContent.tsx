@@ -5,13 +5,6 @@ const SectionSteps = dynamic(() => import("../Section/SectionSteps"), {
   ssr: false,
 })
 
-const stats = [
-  { label: "Lessons", value: "7" },
-  { label: "Total Time", value: "2 Hours" },
-  // { label: "Fun Scale", value: "100" },
-  // { label: "Raised", value: "$25M" },
-]
-
 const features = [
   {
     name: "How to Install Cypress",
@@ -32,6 +25,13 @@ export default function SectionContent({
   progressService,
   lessonPath,
 }) {
+  const stats = [
+    { label: "Lessons", value: lessons.length },
+    { label: "Total Time", value: "2 Hours" },
+    // { label: "Fun Scale", value: "100" },
+    // { label: "Raised", value: "$25M" },
+  ]
+
   return (
     <>
       <hr />
