@@ -1,242 +1,199 @@
 {
-  "testing-your-first-application": {
-    "title": "Testing Your First Application",
-    "slug": "testing-your-first-application",
+  "authentication": {
+    "title": "Authentication",
+    "slug": "authentication",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "lessons": [
       {
-        "title": "TodoMVC App Install and Overview",
+        "title": "Notifications Overview and Setup",
         "slug": "todomvc-app-install-and-overview",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "videoURL": null,
-        "challenges": [
-          {
-            "challengeType": "multiple-choice",
-            "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-            "correctAnswerIndex": 1
-          }
-        ]
-      },
-      {
-        "title": "Installing Cypress and writing our first test",
-        "slug": "installing-cypress-and-writing-our-first-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [
-          {
-            "challengeType": "freeform",
-            "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
-            "answer": "cy.get('.new-todo').should('exist')",
-            "hint": "Use the cy.get and should commands"
-          }
-        ]
-      },
-      {
-        "title": "Multiple Todos and Before Each",
-        "slug": "multiple-todos-and-before-each",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [
-          {
-            "challengeType": "multiple-choice",
-            "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-            "correctAnswerIndex": 1
-          }
-        ]
-      },
-      {
-        "title": "How to Use Cypress Commands",
-        "slug": "how-to-use-cypress-commands",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [
-          {
-            "challengeType": "multiple-choice",
-            "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-            "correctAnswerIndex": 1
-          }
-        ]
-      },
-      {
-        "title": "Cypress Log, Snapshot and Aliases",
-        "slug": "cypress-log-snapshot-and-aliases",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [
-          {
-            "challengeType": "multiple-choice",
-            "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-            "correctAnswerIndex": 1
-          }
-        ]
-      },
-      {
-        "title": "Negative Tests",
-        "slug": "negative-tests",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [
-          {
-            "challengeType": "multiple-choice",
-            "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
-            "correctAnswerIndex": 1
-          }
-        ]
-      }
-    ]
-  },
-  "testing-foundations": {
-    "title": "Testing Foundations",
-    "slug": "testing-foundations",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "lessons": [
-      {
-        "title": "Testing is a Mindset",
-        "slug": "testing-is-a-mindset",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Knowing What to Test",
-        "slug": "knowing-what-to-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Manual vs Automated",
-        "slug": "manual-vs-automated",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Who should be responsible for testing?",
-        "slug": "who-should-be-responsible-for-testing",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "How to Write a Test",
-        "slug": "how-to-write-a-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "The Testing Pyramid",
-        "slug": "the-testing-pyramid",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      }
-    ]
-  },
-  "cypress-fundamentals": {
-    "title": "Cypress Fundamentals",
-    "slug": "cypress-fundamentals",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "lessons": [
-      {
-        "title": "Cypress Runs in the Browser",
-        "slug": "cypress-runs-in-the-browser",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Command Chaining",
-        "slug": "command-chaining",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Understanding the Asynchronous Nature of Cypress",
-        "slug": "understanding-the-asynchronous-nature-of-cypress",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Aliases",
-        "slug": "aliases",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Waiting and Retry-ability",
-        "slug": "waiting-and-retry-ability",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Cypress Best Practices",
-        "slug": "cypress-best-practices",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      }
-    ]
-  },
-  "real-world-examples": {
-    "title": "Real World Examples",
-    "slug": "real-world-examples",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "lessons": [
-      {
-        "title": "Real World App Overview",
-        "slug": "real-world-app-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Unauthenticated Users",
-        "slug": "unauthenticated-users",
+        "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Login Errors",
-        "slug": "login-errors",
+        "slug": "installing-cypress-and-writing-our-first-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Invalid Users",
-        "slug": "invalid-users",
+        "slug": "multiple-todos-and-before-each",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Sign-up, Login, Create Bank Account and Logout",
-        "slug": "sign-up-login-create-bank-account-and-logout",
+        "slug": "how-to-use-cypress-commands",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
+      }
+    ]
+  },
+  "user-settings": {
+    "title": "User Settings",
+    "slug": "user-settings",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
       {
         "title": "User Settings Overview and Setup",
-        "slug": "user-settings-overview-and-setup",
+        "slug": "testing-is-a-mindset",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "User Setting Form Errors",
-        "slug": "user-setting-form-errors",
+        "slug": "knowing-what-to-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Updating User Settings",
-        "slug": "updating-user-settings",
+        "slug": "manual-vs-automated",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
+      }
+    ]
+  },
+  "bank-accounts": {
+    "title": "Bank Accounts",
+    "slug": "bank-accounts",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
       {
         "title": "Bank Accounts Overview and Setup",
-        "slug": "bank-accounts-overview-and-setup",
+        "slug": "cypress-runs-in-the-browser",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Creating a New Bank Account",
-        "slug": "creating-a-new-bank-account",
+        "slug": "command-chaining",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Users without Bank Accounts",
-        "slug": "users-without-bank-accounts",
+        "title": "Users Without Bank Accounts",
+        "slug": "understanding-the-asynchronous-nature-of-cypress",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
+      }
+    ]
+  },
+  "new-transactions": {
+    "title": "New Transactions",
+    "slug": "new-transactions",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
       {
         "title": "New Transaction Overview and Setup",
-        "slug": "new-transaction-overview-and-setup",
+        "slug": "real-world-app-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Submitting a payment to another user",
-        "slug": "submitting-a-payment-to-another-user",
+        "title": "Submitting a Payment to Another User",
+        "slug": "unauthenticated-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Verifying the deposit of a payment",
-        "slug": "verifying-the-deposit-of-a-payment",
+        "title": "Verifying the Deposit of a Payment",
+        "slug": "login-errors",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Searching by attributes",
-        "slug": "searching-by-attributes",
+        "title": "Seaching by Attributes",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "transaction-feeds": {
+    "title": "Transaction Feeds",
+    "slug": "transaction-feeds",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "Transaction Feeds Overview and Setup",
+        "slug": "real-world-app-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "App Layout and Responsiveness",
+        "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Renders Transactions Item Variations in Feed",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Filters Transaction Feeds by Date Range",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Mine Feed Only Shows Personal Transactions",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "notifications": {
+    "title": "Notifications",
+    "slug": "notifications",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "Notifications Overview and Setup",
+        "slug": "real-world-app-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Notifications between different users",
+        "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Renders an Empty Notifications State",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Database Command to Get 3 Users",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "transaction-view": {
+    "title": "Transaction View",
+    "slug": "transaction-view",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "Transaction View Overview and Setup",
+        "slug": "real-world-app-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Authenticated Users with Pending Transactions",
+        "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Transactions Navigation Tabs are Hidden",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Comments on a Transaction",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Rejects a Transaction Request",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Does not Display Accept or Reject Buttons",
+        "slug": "invalid-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
