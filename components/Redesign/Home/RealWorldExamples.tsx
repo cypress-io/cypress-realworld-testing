@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { InboxIcon, SparklesIcon } from "@heroicons/react/outline"
-import LessonSteps from "./LessonSteps"
+// import LessonSteps from "./LessonSteps"
 
 export default function RealWorldExamples() {
   return (
@@ -38,7 +38,7 @@ export default function RealWorldExamples() {
                   <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
                     Authentication
                   </h2>
-                  <LessonSteps />
+                  {/* <LessonSteps /> */}
                 </div>
               </div>
             </div>
@@ -50,7 +50,7 @@ export default function RealWorldExamples() {
                   <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
                     Bank Accounts
                   </h2>
-                  <LessonSteps />
+                  {/* <LessonSteps /> */}
                 </div>
               </div>
             </div>
@@ -62,7 +62,7 @@ export default function RealWorldExamples() {
                   <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
                     New Transactions
                   </h2>
-                  <LessonSteps />
+                  {/* <LessonSteps /> */}
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@ export default function RealWorldExamples() {
                   <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
                     Notifications
                   </h2>
-                  <LessonSteps />
+                  {/* <LessonSteps /> */}
                 </div>
               </div>
             </div>
@@ -86,7 +86,7 @@ export default function RealWorldExamples() {
                   <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
                     Transaction Feed
                   </h2>
-                  <LessonSteps />
+                  {/* <LessonSteps /> */}
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function RealWorldExamples() {
                   <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
                     Transaction View
                   </h2>
-                  <LessonSteps />
+                  {/* <LessonSteps /> */}
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function RealWorldExamples() {
                   <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
                     User Settings
                   </h2>
-                  <LessonSteps />
+                  {/* <LessonSteps /> */}
                 </div>
               </div>
             </div>
