@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import LessonSteps from "./LessonSteps"
 
 export default function Courses({ sections, content, progressService }) {
@@ -18,7 +17,11 @@ export default function Courses({ sections, content, progressService }) {
                       <p className="mt-4 text-lg text-gray-500">
                         {content[section].description}
                       </p>
-                      <LessonSteps />
+                      <LessonSteps
+                        section={section}
+                        content={content[section]}
+                        progressService={progressService}
+                      />
                       <div className="mt-6">
                         <a
                           href="#"
@@ -53,7 +56,11 @@ export default function Courses({ sections, content, progressService }) {
                       <p className="mt-4 text-lg text-gray-500">
                         {content[section].description}
                       </p>
-                      <LessonSteps />
+                      <LessonSteps
+                        section={section}
+                        content={content[section]}
+                        progressService={progressService}
+                      />
                       <div className="mt-6">
                         <a
                           href="#"
