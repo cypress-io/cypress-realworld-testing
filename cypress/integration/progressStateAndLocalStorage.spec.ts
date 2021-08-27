@@ -2,6 +2,8 @@
   Note: These tests rely upon local storage state from previous tests, 
   so make sure to run all of them at once, ie: don't use `it.only()`
 */
+import learnJson from "../../learn.json"
+const { _ } = Cypress
 
 describe("Progress State & Local Storage", () => {
   beforeEach(() => {
@@ -36,7 +38,7 @@ describe("Progress State & Local Storage", () => {
       "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
     )
     cy.get("#answer").type("cy.get('.new-todo').should('exist')")
-    cy.get("button[type='submit']").click()
+    cy.getBySel("free-form-submit").click()
     cy.getBySel("lesson-complete-1").should("have.class", "bg-indigo-600")
     cy.getBySel("next-lesson-button").click()
 
@@ -79,38 +81,26 @@ describe("Progress State & Local Storage", () => {
     cy.location("pathname").should("eq", "/")
   })
 
-  it("the first section on the homepage is complete in the progress steps", () => {
+  it("all of the lesson steps, on the homepage, for the first completed course are filled and completed", () => {
     cy.visit("/")
-    cy.getBySel("section-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("section-upcoming-1").should(
-      "have.class",
-      "bg-white border-2 border-gray-300"
-    )
-    cy.getBySel("section-upcoming-2").should(
-      "have.class",
-      "bg-white border-2 border-gray-300"
-    )
-    cy.getBySel("section-upcoming-3").should(
-      "have.class",
-      "bg-white border-2 border-gray-300"
-    )
-  })
+    const lessons = learnJson["testing-your-first-application"].lessons
+    console.table(lessons)
 
-  it("all of the lesson cards, on the homepage, for the first section have a status of 'Completed'", () => {
-    cy.visit("/")
-
-    cy.getBySelLike("testing-your-first-application-lesson-card-status-").each(
-      (card) => {
-        cy.wrap(card).should("contain.text", "Completed")
-      }
-    )
+    cy.getBySel("course-0").within(($course) => {
+      _.each(lessons, (lesson, index) => {
+        cy.getBySel(`lesson-complete-${index}`).should("exist")
+      })
+    })
   })
 
   it("all of the lesson cards on the section page have a status of 'Completed'", () => {
     cy.visit("/testing-your-first-application")
+    const lessons = learnJson["testing-your-first-application"].lessons
 
-    cy.getBySelLike(`lesson-card-status-`).each((card) => {
-      cy.wrap(card).should("contain.text", "Completed")
+    cy.getBySel("section-steps").within(($course) => {
+      _.each(lessons, (lesson, index) => {
+        cy.getBySel(`lesson-complete-${index}`).should("exist")
+      })
     })
   })
 })

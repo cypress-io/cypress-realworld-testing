@@ -13,7 +13,12 @@
           {
             "challengeType": "multiple-choice",
             "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "answers": [
+              "yarn run cypress:run",
+              "yarn run cypress:open",
+              "yarn run cypress",
+              "yarn run test"
+            ],
             "correctAnswerIndex": 1
           }
         ]
@@ -39,7 +44,12 @@
           {
             "challengeType": "multiple-choice",
             "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "answers": [
+              "yarn run cypress:run",
+              "yarn run cypress:open",
+              "yarn run cypress",
+              "yarn run test"
+            ],
             "correctAnswerIndex": 1
           }
         ]
@@ -52,7 +62,12 @@
           {
             "challengeType": "multiple-choice",
             "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "answers": [
+              "yarn run cypress:run",
+              "yarn run cypress:open",
+              "yarn run cypress",
+              "yarn run test"
+            ],
             "correctAnswerIndex": 1
           }
         ]
@@ -65,7 +80,12 @@
           {
             "challengeType": "multiple-choice",
             "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "answers": [
+              "yarn run cypress:run",
+              "yarn run cypress:open",
+              "yarn run cypress",
+              "yarn run test"
+            ],
             "correctAnswerIndex": 1
           }
         ]
@@ -78,7 +98,12 @@
           {
             "challengeType": "multiple-choice",
             "question": "What is the command to run Cypress in open mode?",
-            "answers": ["yarn run cypress:run", "yarn run cypress:open", "yarn run cypress", "yarn run test"],
+            "answers": [
+              "yarn run cypress:run",
+              "yarn run cypress:open",
+              "yarn run cypress",
+              "yarn run test"
+            ],
             "correctAnswerIndex": 1
           }
         ]
@@ -159,84 +184,54 @@
       }
     ]
   },
-  "real-world-examples": {
-    "title": "Real World Examples",
-    "slug": "real-world-examples",
+  "advanced-cypress-concepts": {
+    "title": "Advanced Cypress Concepts",
+    "slug": "advanced-cypress-concepts",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "lessons": [
       {
-        "title": "Real World App Overview",
-        "slug": "real-world-app-overview",
+        "title": "Intercepting Network Requests",
+        "slug": "intercepting-network-requests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Unauthenticated Users",
-        "slug": "unauthenticated-users",
+        "title": "Building the Right Cypress Commands",
+        "slug": "building-the-right-cypress-commands",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Login Errors",
-        "slug": "login-errors",
+        "title": "Database Initialization and Seeding",
+        "slug": "database-initialization-and-seeding",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Invalid Users",
-        "slug": "invalid-users",
+        "title": "Managing Your CI Pipeline",
+        "slug": "managing-your-ci-pipeline",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Sign-up, Login, Create Bank Account and Logout",
-        "slug": "sign-up-login-create-bank-account-and-logout",
+        "title": "How to Debug Failing Tests",
+        "slug": "how-to-debug-failing-tests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "User Settings Overview and Setup",
-        "slug": "user-settings-overview-and-setup",
+        "title": "Cypress UI Overview",
+        "slug": "cypress-ui-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "User Setting Form Errors",
-        "slug": "user-setting-form-errors",
+        "title": "How to Test Various Browsers and Viewports",
+        "slug": "how-to-test-various-browsers-and-viewports",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Updating User Settings",
-        "slug": "updating-user-settings",
+        "title": "Cypress is Just JavaScript",
+        "slug": "cypress-is-just-javascript",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Bank Accounts Overview and Setup",
-        "slug": "bank-accounts-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Creating a New Bank Account",
-        "slug": "creating-a-new-bank-account",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Users without Bank Accounts",
-        "slug": "users-without-bank-accounts",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "New Transaction Overview and Setup",
-        "slug": "new-transaction-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Submitting a payment to another user",
-        "slug": "submitting-a-payment-to-another-user",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Verifying the deposit of a payment",
-        "slug": "verifying-the-deposit-of-a-payment",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Searching by attributes",
-        "slug": "searching-by-attributes",
+        "title": "Import Cypress Methods",
+        "slug": "import-cypress-methods",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]

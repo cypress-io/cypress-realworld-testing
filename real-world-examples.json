@@ -1,0 +1,201 @@
+{
+  "authentication": {
+    "title": "Authentication",
+    "slug": "authentication",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "Notifications Overview and Setup",
+        "slug": "todomvc-app-install-and-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Unauthenticated Users",
+        "slug": "todomvc-app-install-and-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Login Errors",
+        "slug": "installing-cypress-and-writing-our-first-test",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Invalid Users",
+        "slug": "multiple-todos-and-before-each",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Sign-up, Login, Create Bank Account and Logout",
+        "slug": "how-to-use-cypress-commands",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "user-settings": {
+    "title": "User Settings",
+    "slug": "user-settings",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "User Settings Overview and Setup",
+        "slug": "testing-is-a-mindset",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "User Setting Form Errors",
+        "slug": "knowing-what-to-test",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Updating User Settings",
+        "slug": "manual-vs-automated",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "bank-accounts": {
+    "title": "Bank Accounts",
+    "slug": "bank-accounts",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "Bank Accounts Overview and Setup",
+        "slug": "cypress-runs-in-the-browser",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Creating a New Bank Account",
+        "slug": "command-chaining",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Users Without Bank Accounts",
+        "slug": "understanding-the-asynchronous-nature-of-cypress",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "new-transactions": {
+    "title": "New Transactions",
+    "slug": "new-transactions",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "New Transaction Overview and Setup",
+        "slug": "real-world-app-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Submitting a Payment to Another User",
+        "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Verifying the Deposit of a Payment",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Seaching by Attributes",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "transaction-feeds": {
+    "title": "Transaction Feeds",
+    "slug": "transaction-feeds",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "Transaction Feeds Overview and Setup",
+        "slug": "real-world-app-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "App Layout and Responsiveness",
+        "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Renders Transactions Item Variations in Feed",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Filters Transaction Feeds by Date Range",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Mine Feed Only Shows Personal Transactions",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "notifications": {
+    "title": "Notifications",
+    "slug": "notifications",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "Notifications Overview and Setup",
+        "slug": "real-world-app-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Notifications between different users",
+        "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Renders an Empty Notifications State",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Database Command to Get 3 Users",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  },
+  "transaction-view": {
+    "title": "Transaction View",
+    "slug": "transaction-view",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lessons": [
+      {
+        "title": "Transaction View Overview and Setup",
+        "slug": "real-world-app-overview",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Authenticated Users with Pending Transactions",
+        "slug": "unauthenticated-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Transactions Navigation Tabs are Hidden",
+        "slug": "login-errors",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Comments on a Transaction",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Rejects a Transaction Request",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      },
+      {
+        "title": "Does not Display Accept or Reject Buttons",
+        "slug": "invalid-users",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+      }
+    ]
+  }
+}

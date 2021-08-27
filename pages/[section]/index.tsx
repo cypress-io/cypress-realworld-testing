@@ -2,7 +2,8 @@ import Head from "next/head"
 import dynamic from "next/dynamic"
 import Layout from "../../components/Layout"
 import SectionHero from "../../components/Section/SectionHero"
-import SectionFooter from "../../components/Section/SectionFooter"
+import SectionContent from "../../components/Section/SectionContent"
+// import SectionFooter from "../../components/Section/SectionFooter"
 const SectionSteps = dynamic(
   () => import("../../components/Section/SectionSteps"),
   {
@@ -18,25 +19,24 @@ export default function SectionPage({
   description,
   nextSection,
   lessonPath,
+  content,
+  sections,
 }) {
   return (
-    <Layout>
+    <Layout content={content} sections={sections}>
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <SectionHero title={title} description={description} />
+      <SectionContent
+        lessons={lessons}
+        progressService={progressService}
+        lessonPath={lessonPath}
+      />
 
-      <main className="mx-auto py-12 px-4 xl:max-w-7xl">
-        <SectionSteps
-          lessons={lessons}
-          progressService={progressService}
-          lessonPath={lessonPath}
-        />
-      </main>
-
-      {nextSection && <SectionFooter nextSection={nextSection} />}
+      {/* {nextSection && <SectionFooter nextSection={nextSection} />} */}
     </Layout>
   )
 }
@@ -60,6 +60,8 @@ export async function getStaticProps({ params }) {
       description,
       nextSection,
       lessonPath: `${params.section}/${params.slug}`,
+      content: learnJson,
+      sections,
     },
   }
 }
