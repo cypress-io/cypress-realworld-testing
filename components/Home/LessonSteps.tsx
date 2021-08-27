@@ -11,6 +11,7 @@ export default function LessonSteps({ section, content, progressService }) {
       <ol className="overflow-hidden">
         {content?.lessons.map((lesson, index) => (
           <li
+            data-test={`lesson-${index}`}
             key={lesson.title}
             className={classNames(
               index !== content?.lessons.length - 1 ? "pb-10" : "",

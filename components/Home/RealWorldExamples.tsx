@@ -38,12 +38,16 @@ export default function RealWorldExamples({
             {/* Authentication */}
             {sections.map((section, index) => (
               <div
+                data-test={`real-world-example-${index}`}
                 key={section}
                 className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0"
               >
                 <div>
                   <div className="mt-6">
-                    <h2 className="text-lg font-extrabold tracking-tight text-gray-900">
+                    <h2
+                      data-test={`real-world-title`}
+                      className="text-lg font-extrabold tracking-tight text-gray-900"
+                    >
                       {content[section].title}
                     </h2>
                     <RealWorldSteps

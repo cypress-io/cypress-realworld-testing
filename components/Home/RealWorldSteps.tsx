@@ -11,6 +11,7 @@ export default function RealWorldSteps({ section, content, progressService }) {
       <ol className="overflow-hidden">
         {content[section].lessons.map((lesson, index) => (
           <li
+            data-test={`real-world-lesson-${index}`}
             key={lesson.title}
             className={classNames(
               index !== content[section].lessons.length - 1 ? "pb-10" : "",
