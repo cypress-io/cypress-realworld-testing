@@ -9,10 +9,11 @@ export default function LessonSteps({ lessonPath, lessons, progressService }) {
   const [sectionSlug] = lessonPath.split("/")
 
   return (
-    <nav aria-label="Progress">
+    <nav data-test="section-steps" aria-label="Progress">
       <ol className="overflow-hidden">
         {lessons.map((lesson, index) => (
           <li
+            data-test={`lesson-${index}`}
             key={lesson.title}
             className={classNames(
               index !== lessons.length - 1 ? "pb-10" : "",

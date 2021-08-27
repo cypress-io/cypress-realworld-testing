@@ -2,6 +2,8 @@
   Note: These tests rely upon local storage state from previous tests, 
   so make sure to run all of them at once, ie: don't use `it.only()`
 */
+import learnJson from "../../learn.json"
+const { _ } = Cypress
 
 describe("Progress State & Local Storage", () => {
   beforeEach(() => {
@@ -79,51 +81,25 @@ describe("Progress State & Local Storage", () => {
     cy.location("pathname").should("eq", "/")
   })
 
-  it("the first section on the homepage is complete in the progress steps", () => {
+  it("all of the lesson steps, on the homepage, for the first completed course are filled and completed", () => {
     cy.visit("/")
-    cy.getBySel("section-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("section-upcoming-1").should(
-      "have.class",
-      "bg-white border-2 border-gray-300"
-    )
-    cy.getBySel("section-upcoming-2").should(
-      "have.class",
-      "bg-white border-2 border-gray-300"
-    )
-    cy.getBySel("section-upcoming-3").should(
-      "have.class",
-      "bg-white border-2 border-gray-300"
-    )
-  })
+    const lessons = learnJson["testing-your-first-application"].lessons
+    console.table(lessons)
 
-  it("all of the lesson steps, on the homepage, for the first course are filled and completed", () => {
-    cy.visit("/")
-
-    cy.getBySelLike("testing-your-first-application-lesson-card-status-").each(
-      (card) => {
-        cy.wrap(card).should("contain.text", "Completed")
-      }
-    )
+    cy.getBySel("course-0").within(($course) => {
+      _.each(lessons, (lesson, index) => {
+        cy.getBySel(`lesson-complete-${index}`).should("exist")
+      })
+    })
   })
 
   it("all of the lesson cards on the section page have a status of 'Completed'", () => {
     cy.visit("/testing-your-first-application")
+    const lessons = learnJson["testing-your-first-application"].lessons
 
-    const courses = Object.keys(learnJson)
-
-    _.each(courses, (course, index) => {
-      const title = learnJson[course].title
-      const description = learnJson[course].description
-      const lessons = learnJson[course].lessons
-
-      cy.getBySel(`course-${index}`).within(($course) => {
-        cy.getBySel("course-title").contains(title)
-        cy.getBySel("course-description").contains(description)
-
-        _.each(lessons, (lesson, index) => {
-          const lessonTitle = lessons[index].title
-          cy.getBySel(`lesson-${index}`).contains(lessonTitle)
-        })
+    cy.getBySel("section-steps").within(($course) => {
+      _.each(lessons, (lesson, index) => {
+        cy.getBySel(`lesson-complete-${index}`).should("exist")
       })
     })
   })
