@@ -6,6 +6,7 @@ import Head from "next/head"
 import dynamic from "next/dynamic"
 import path from "path"
 import { find, findIndex } from "lodash/fp"
+import { useActor } from "@xstate/react"
 import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
@@ -79,6 +80,8 @@ export default function LessonPage({
   learnJson,
   sections,
 }: Props) {
+  const [progressState] = useActor(progressService)
+
   return (
     <Layout content={learnJson} sections={sections}>
       <Head>
