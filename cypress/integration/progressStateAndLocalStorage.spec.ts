@@ -36,7 +36,7 @@ describe("Progress State & Local Storage", () => {
       "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
     )
     cy.get("#answer").type("cy.get('.new-todo').should('exist')")
-    cy.get("button[type='submit']").click()
+    cy.getBySel("free-form-submit").click()
     cy.getBySel("lesson-complete-1").should("have.class", "bg-indigo-600")
     cy.getBySel("next-lesson-button").click()
 
@@ -96,7 +96,7 @@ describe("Progress State & Local Storage", () => {
     )
   })
 
-  it("all of the lesson cards, on the homepage, for the first section have a status of 'Completed'", () => {
+  it("all of the lesson steps, on the homepage, for the first course are filled and completed", () => {
     cy.visit("/")
 
     cy.getBySelLike("testing-your-first-application-lesson-card-status-").each(
@@ -109,8 +109,22 @@ describe("Progress State & Local Storage", () => {
   it("all of the lesson cards on the section page have a status of 'Completed'", () => {
     cy.visit("/testing-your-first-application")
 
-    cy.getBySelLike(`lesson-card-status-`).each((card) => {
-      cy.wrap(card).should("contain.text", "Completed")
+    const courses = Object.keys(learnJson)
+
+    _.each(courses, (course, index) => {
+      const title = learnJson[course].title
+      const description = learnJson[course].description
+      const lessons = learnJson[course].lessons
+
+      cy.getBySel(`course-${index}`).within(($course) => {
+        cy.getBySel("course-title").contains(title)
+        cy.getBySel("course-description").contains(description)
+
+        _.each(lessons, (lesson, index) => {
+          const lessonTitle = lessons[index].title
+          cy.getBySel(`lesson-${index}`).contains(lessonTitle)
+        })
+      })
     })
   })
 })
