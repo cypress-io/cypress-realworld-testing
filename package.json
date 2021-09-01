@@ -11,6 +11,7 @@
     "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
     "update-slugs": "ts-node scripts/updateSlugs.ts",
     "generate-content": "ts-node scripts/generateContentFiles.ts",
+    "generate-rwe": "ts-node scripts/generateRealWorldExamples.ts",
     "start": "next start",
     "pre-commit": "yarn types && pretty-quick --staged && yarn run lint",
     "test:unit": "mocha -r ts-node/register -r tsconfig-paths/register 'tests/**/*.ts'",
