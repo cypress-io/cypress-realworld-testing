@@ -9,7 +9,7 @@ export default function Home({ content, sections, rWESections }) {
   return (
     <Layout content={content} sections={sections}>
       <Head>
-        <title>Real World Testing with Cypress</title>
+        <title>Real World Examples</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

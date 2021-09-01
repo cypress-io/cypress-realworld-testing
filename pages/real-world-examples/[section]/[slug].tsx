@@ -9,14 +9,12 @@ import { find, findIndex } from "lodash/fp"
 import { useActor } from "@xstate/react"
 import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
-import { progressService } from "../../machines/progressService"
-import Layout from "../../components/Layout"
-import LessonHero from "../../components/Lesson/LessonHero"
-import LessonLayout from "../../components/Lesson/LessonLayout"
-import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
-import FFChallenge from "../../components/Lesson/FreeFormChallenge"
+import { progressService } from "../../../machines/progressService"
+import Layout from "../../../components/Layout"
+import LessonHero from "../../../components/RealWorldExamples/Lesson/LessonHero"
+import LessonLayout from "../../../components/RealWorldExamples/Lesson/LessonLayout"
 const NextLessonBtn = dynamic(
-  () => import("../../components/Lesson/NextLessonBtn"),
+  () => import("../../../components/RealWorldExamples/Lesson/NextLessonBtn"),
   {
     ssr: false,
   }
@@ -25,14 +23,14 @@ import {
   LessonTableOfContents,
   MultipleChoiceChallenge,
   FreeFormChallenge,
-} from "../../types/common"
+} from "../../../types/common"
 import {
-  CONTENT_PATH,
-  allContentFilePaths,
+  REAL_WORLD_EXAMPLES_PATH,
+  allRealWorldExamplesFilePaths,
   getToCForMarkdown,
-} from "../../utils/mdxUtils"
-import { isLessonCompleted } from "../../utils/machineUtils"
-import learnJson from "../../learn.json"
+} from "../../../utils/mdxUtils"
+import { isLessonCompleted } from "../../../utils/machineUtils"
+import rweJson from "../../../real-world-examples.json"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -65,7 +63,7 @@ type Props = {
   nextLesson: string
   sectionTitle: string
   lessonPath: string
-  learnJson: object
+  rweJson: object
   sections: []
 }
 
@@ -77,14 +75,14 @@ export default function LessonPage({
   nextLesson,
   sectionTitle,
   lessonPath,
-  learnJson,
+  rweJson,
   sections,
 }: Props) {
   // TODO: Figure out a better way to do this. It is necessary for the UI to update when state changes.
   const [progressState] = useActor(progressService)
 
   return (
-    <Layout content={learnJson} sections={sections}>
+    <Layout content={rweJson} sections={sections}>
       <Head>
         <title>{lessonData.title}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -130,9 +128,9 @@ export default function LessonPage({
 }
 
 export const getStaticProps = async ({ params }) => {
-  const sections = Object.keys(learnJson)
+  const sections = Object.keys(rweJson)
   const contentFilePath = path.join(
-    CONTENT_PATH,
+    REAL_WORLD_EXAMPLES_PATH,
     `${params.section}/${params.slug}.mdx`
   )
   const source = fs.readFileSync(contentFilePath)
@@ -149,9 +147,9 @@ export const getStaticProps = async ({ params }) => {
   })
   const lessonData = find(
     { slug: params.slug },
-    learnJson[params.section].lessons
+    rweJson[params.section].lessons
   )
-  const { title, lessons } = learnJson[params.section]
+  const { title, lessons } = rweJson[params.section]
   const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
   let nextLesson
 
@@ -171,14 +169,14 @@ export const getStaticProps = async ({ params }) => {
       nextLesson,
       sectionTitle: title,
       lessonPath: `${params.section}/${params.slug}`,
-      learnJson,
+      rweJson,
       sections,
     },
   }
 }
 
 export const getStaticPaths = async () => {
-  const paths = allContentFilePaths
+  const paths = allRealWorldExamplesFilePaths
     // Remove file extensions for page paths
     .map((path) => path.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js
