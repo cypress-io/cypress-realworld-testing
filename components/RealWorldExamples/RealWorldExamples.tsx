@@ -31,38 +31,6 @@ export default function RealWorldExamples({
           </div>
         </div>
       </div>
-      <div className="relative bg-white pt-16 pb-32 overflow-hidden">
-        <div className="relative">
-          <div className="lg:mx-20 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-7 lg:grid-flow-col-dense lg:gap-8">
-            {/* Authentication */}
-            {sections.map((section, index) => (
-              <div
-                data-test={`real-world-example-${index}`}
-                key={section}
-                className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0"
-              >
-                <div>
-                  <div className="mt-6">
-                    <a href={`real-world-examples/${section}`}>
-                      <h2
-                        data-test={`real-world-title`}
-                        className="text-lg font-extrabold tracking-tight text-gray-900"
-                      >
-                        {content[section].title}
-                      </h2>
-                    </a>
-                    <RealWorldSteps
-                      section={section}
-                      content={content}
-                      progressService={progressService}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </>
   )
 }

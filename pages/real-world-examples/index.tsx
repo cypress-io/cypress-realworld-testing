@@ -1,5 +1,7 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
+import Features from "../../components/RealWorldExamples/Features"
+import Examples from "../../components/RealWorldExamples/Examples"
 import RealWorldExamples from "../../components/RealWorldExamples/RealWorldExamples"
 import { progressService } from "../../machines/progressService"
 import learnJson from "../../learn.json"
@@ -14,6 +16,13 @@ export default function Home({ content, sections, rWESections }) {
       </Head>
 
       <RealWorldExamples
+        sections={rWESections}
+        content={realWorldExamples}
+        progressService={progressService}
+      />
+
+      <Features />
+      <Examples
         sections={rWESections}
         content={realWorldExamples}
         progressService={progressService}

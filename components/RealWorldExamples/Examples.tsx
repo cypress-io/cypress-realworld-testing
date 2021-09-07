@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
 
-const LessonSteps = dynamic(() => import("./LessonSteps"), {
+const LessonSteps = dynamic(() => import("../Home/LessonSteps"), {
   ssr: false,
 })
 
