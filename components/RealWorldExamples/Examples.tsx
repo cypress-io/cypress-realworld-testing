@@ -35,14 +35,14 @@ export default function Examples({ sections, content, progressService }) {
                         content={content[section]}
                         progressService={progressService}
                       />
-                      <div className="mt-6">
+                      {/* <div className="mt-6">
                         <a
                           href={`/real-world-examples/${content[section].slug}`}
                           className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700"
                         >
                           Get started
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -80,14 +80,14 @@ export default function Examples({ sections, content, progressService }) {
                         content={content[section]}
                         progressService={progressService}
                       />
-                      <div className="mt-6">
+                      {/* <div className="mt-6">
                         <a
-                          href={content[section].slug}
+                          href={`/real-world-examples/${content[section].slug}`}
                           className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700"
                         >
                           Get started
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
