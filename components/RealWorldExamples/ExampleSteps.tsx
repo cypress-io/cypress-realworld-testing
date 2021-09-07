@@ -72,7 +72,7 @@ export default function ExampleSteps({ section, content, progressService }) {
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
                   <a
-                    href={`${section}/${lesson.slug}`}
+                    href={`/real-world-examples/${section}/${lesson.slug}`}
                     data-test={`real-world-lesson-${index}`}
                   >
                     {lesson.title}
