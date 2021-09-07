@@ -22,6 +22,7 @@ export default function Home({ content, sections, rWESections }) {
       />
 
       <Features />
+
       <Examples
         sections={rWESections}
         content={realWorldExamples}

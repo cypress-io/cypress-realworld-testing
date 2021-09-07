@@ -7,11 +7,11 @@ const ExampleSteps = dynamic(
   }
 )
 
-export default function Courses({ sections, content, progressService }) {
+export default function Examples({ sections, content, progressService }) {
   return (
     <div className="relative bg-white pt-16 pb-32 overflow-hidden">
       {sections.map((section, index) => (
-        <div key={section} data-test={`course-${index}`}>
+        <div key={section} data-test={`real-world-example-${index}`}>
           {index % 2 === 0 ? (
             <div className="relative">
               <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
@@ -19,13 +19,13 @@ export default function Courses({ sections, content, progressService }) {
                   <div>
                     <div className="mt-6">
                       <h2
-                        data-test={`course-title`}
+                        data-test={`example-title`}
                         className="text-3xl font-extrabold tracking-tight text-gray-900"
                       >
                         {content[section].title}
                       </h2>
                       <p
-                        data-test={`course-description`}
+                        data-test={`example-description`}
                         className="mt-4 text-lg text-gray-500"
                       >
                         {content[section].description}
@@ -64,13 +64,13 @@ export default function Courses({ sections, content, progressService }) {
                   <div>
                     <div className="mt-6">
                       <h2
-                        data-test={`course-title`}
+                        data-test={`example-title`}
                         className="text-3xl font-extrabold tracking-tight text-gray-900"
                       >
                         {content[section].title}
                       </h2>
                       <p
-                        data-test={`course-description`}
+                        data-test={`example-description`}
                         className="mt-4 text-lg text-gray-500"
                       >
                         {content[section].description}

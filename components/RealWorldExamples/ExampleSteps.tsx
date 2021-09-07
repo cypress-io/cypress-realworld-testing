@@ -5,7 +5,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ section, content, progressService }) {
+export default function ExampleSteps({ section, content, progressService }) {
   return (
     <nav aria-label="Progress" className="mt-12">
       <ol className="overflow-hidden">
@@ -71,7 +71,12 @@ export default function LessonSteps({ section, content, progressService }) {
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  <a href={`${section}/${lesson.slug}`}>{lesson.title}</a>
+                  <a
+                    href={`${section}/${lesson.slug}`}
+                    data-test={`real-world-lesson-${index}`}
+                  >
+                    {lesson.title}
+                  </a>
                 </span>
               </span>
             </div>
