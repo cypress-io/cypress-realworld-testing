@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
-import RealWorldExamples from "../../components/Home/RealWorldExamples"
+import RealWorldExamples from "../../components/RealWorldExamples/RealWorldExamples"
 import { progressService } from "../../machines/progressService"
 import learnJson from "../../learn.json"
 import realWorldExamples from "../../real-world-examples.json"

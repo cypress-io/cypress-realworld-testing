@@ -1,5 +1,4 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { InboxIcon, SparklesIcon } from "@heroicons/react/outline"
 import RealWorldSteps from "./RealWorldSteps"
 
 export default function RealWorldExamples({
@@ -44,12 +43,14 @@ export default function RealWorldExamples({
               >
                 <div>
                   <div className="mt-6">
-                    <h2
-                      data-test={`real-world-title`}
-                      className="text-lg font-extrabold tracking-tight text-gray-900"
-                    >
-                      {content[section].title}
-                    </h2>
+                    <a href={`real-world-examples/${section}`}>
+                      <h2
+                        data-test={`real-world-title`}
+                        className="text-lg font-extrabold tracking-tight text-gray-900"
+                      >
+                        {content[section].title}
+                      </h2>
+                    </a>
                     <RealWorldSteps
                       section={section}
                       content={content}
