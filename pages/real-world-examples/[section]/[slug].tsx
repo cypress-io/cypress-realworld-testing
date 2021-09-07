@@ -99,25 +99,6 @@ export default function LessonPage({
         progressService={progressService}
         lessonPath={lessonPath}
       />
-      {lessonData.challenges &&
-        lessonData.challenges[0].challengeType === "multiple-choice" && (
-          <MCChallenge
-            progressService={progressService}
-            lessonData={lessonData}
-            lessonPath={lessonPath}
-          />
-        )}
-
-      {lessonData.challenges &&
-        lessonData.challenges[0].challengeType === "freeform" && (
-          <FFChallenge
-            progressService={progressService}
-            lessonData={lessonData}
-            lessonPath={lessonPath}
-          />
-        )}
-
-      {/* Next Lesson Button */}
 
       <NextLessonBtn
         path={nextLesson}
