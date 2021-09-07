@@ -5,28 +5,28 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "lessons": [
       {
-        "title": "Notifications Overview and Setup",
-        "slug": "todomvc-app-install-and-overview",
+        "title": "Authentication Overview and Setup",
+        "slug": "authentication-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Unauthenticated Users",
-        "slug": "todomvc-app-install-and-overview",
+        "slug": "unauthenticated-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Login Errors",
-        "slug": "installing-cypress-and-writing-our-first-test",
+        "slug": "login-errors",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Invalid Users",
-        "slug": "multiple-todos-and-before-each",
+        "slug": "invalid-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Sign-up, Login, Create Bank Account and Logout",
-        "slug": "how-to-use-cypress-commands",
+        "slug": "sign-up-login-create-bank-account-and-logout",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -38,17 +38,17 @@
     "lessons": [
       {
         "title": "User Settings Overview and Setup",
-        "slug": "testing-is-a-mindset",
+        "slug": "user-settings-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "User Setting Form Errors",
-        "slug": "knowing-what-to-test",
+        "slug": "user-setting-form-errors",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Updating User Settings",
-        "slug": "manual-vs-automated",
+        "slug": "updating-user-settings",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -60,17 +60,17 @@
     "lessons": [
       {
         "title": "Bank Accounts Overview and Setup",
-        "slug": "cypress-runs-in-the-browser",
+        "slug": "bank-accounts-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Creating a New Bank Account",
-        "slug": "command-chaining",
+        "slug": "creating-a-new-bank-account",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Users Without Bank Accounts",
-        "slug": "understanding-the-asynchronous-nature-of-cypress",
+        "slug": "users-without-bank-accounts",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -82,22 +82,22 @@
     "lessons": [
       {
         "title": "New Transaction Overview and Setup",
-        "slug": "real-world-app-overview",
+        "slug": "new-transaction-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Submitting a Payment to Another User",
-        "slug": "unauthenticated-users",
+        "slug": "submitting-a-payment-to-another-user",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Verifying the Deposit of a Payment",
-        "slug": "login-errors",
+        "slug": "verifying-the-deposit-of-a-payment",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Seaching by Attributes",
-        "slug": "invalid-users",
+        "slug": "seaching-by-attributes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -109,27 +109,27 @@
     "lessons": [
       {
         "title": "Transaction Feeds Overview and Setup",
-        "slug": "real-world-app-overview",
+        "slug": "transaction-feeds-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "App Layout and Responsiveness",
-        "slug": "unauthenticated-users",
+        "slug": "app-layout-and-responsiveness",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Renders Transactions Item Variations in Feed",
-        "slug": "login-errors",
+        "slug": "renders-transactions-item-variations-in-feed",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Filters Transaction Feeds by Date Range",
-        "slug": "invalid-users",
+        "slug": "filters-transaction-feeds-by-date-range",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Mine Feed Only Shows Personal Transactions",
-        "slug": "invalid-users",
+        "slug": "mine-feed-only-shows-personal-transactions",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -141,22 +141,22 @@
     "lessons": [
       {
         "title": "Notifications Overview and Setup",
-        "slug": "real-world-app-overview",
+        "slug": "notifications-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Notifications between different users",
-        "slug": "unauthenticated-users",
+        "slug": "notifications-between-different-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Renders an Empty Notifications State",
-        "slug": "login-errors",
+        "slug": "renders-an-empty-notifications-state",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Database Command to Get 3 Users",
-        "slug": "invalid-users",
+        "slug": "database-command-to-get-3-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -168,32 +168,32 @@
     "lessons": [
       {
         "title": "Transaction View Overview and Setup",
-        "slug": "real-world-app-overview",
+        "slug": "transaction-view-overview-and-setup",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Authenticated Users with Pending Transactions",
-        "slug": "unauthenticated-users",
+        "slug": "authenticated-users-with-pending-transactions",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Transactions Navigation Tabs are Hidden",
-        "slug": "login-errors",
+        "slug": "transactions-navigation-tabs-are-hidden",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Comments on a Transaction",
-        "slug": "invalid-users",
+        "slug": "comments-on-a-transaction",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Rejects a Transaction Request",
-        "slug": "invalid-users",
+        "slug": "rejects-a-transaction-request",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Does not Display Accept or Reject Buttons",
-        "slug": "invalid-users",
+        "slug": "does-not-display-accept-or-reject-buttons",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
