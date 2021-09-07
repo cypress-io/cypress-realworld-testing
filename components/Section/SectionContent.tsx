@@ -21,6 +21,7 @@ const features = [
 ]
 
 export default function SectionContent({
+  title,
   lessons,
   progressService,
   lessonPath,
@@ -40,7 +41,7 @@ export default function SectionContent({
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
             <div className="relative z-10">
               <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
-                Testing Your First App
+                {title}
               </h2>
               <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                 Overview
