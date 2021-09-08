@@ -18,7 +18,7 @@ export default function ExampleSteps({ section, content, progressService }) {
             <div className="relative flex items-start group">
               <span className="min-w-0 flex flex-col">
                 <a
-                  href={`/real-world-examples/${section}/${lesson.slug}`}
+                  href={`/real-world-examples/${lesson.slug}`}
                   data-test={`real-world-lesson-${index}`}
                   className="text-xs font-semibold tracking-wide uppercase text-indigo-600"
                 >

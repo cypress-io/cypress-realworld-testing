@@ -30,5 +30,9 @@ export const allRealWorldExamplesFilePaths = glob
   .filter((path) => /\.mdx?$/.test(path))
   .map((path) => path.replace(/^content\/real-world-examples\//, ""))
 
+export const getRealWorldExamplePath = (filePath: string) => {
+  return glob.sync(filePath)
+}
+
 export const getToCForMarkdown = (markdown): LessonTableOfContents[] =>
   toc(markdown).json
