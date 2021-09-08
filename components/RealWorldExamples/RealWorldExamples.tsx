@@ -1,4 +1,5 @@
-import Link from "next/link"
+/* This example requires Tailwind CSS v2.0+ */
+import RealWorldSteps from "./RealWorldSteps"
 
 export default function RealWorldExamples({
   sections,
@@ -15,7 +16,7 @@ export default function RealWorldExamples({
               Serverless
             </h2> */}
             <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-              Over 40+ Real World Examples
+              Real World Examples
             </p>
             <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
               A payment application to demonstrate real-world usage of Cypress
@@ -28,15 +29,6 @@ export default function RealWorldExamples({
               alt=""
             />
           </div>
-        </div>
-      </div>
-      <div className="relative bg-white pt-16 pb-32 overflow-hidden">
-        <div className="max-w-lg mx-auto">
-          <Link href="/real-world-examples">
-            <a className="w-full bg-indigo-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-              See Examples
-            </a>
-          </Link>
         </div>
       </div>
     </>

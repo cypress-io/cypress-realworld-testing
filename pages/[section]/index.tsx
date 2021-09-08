@@ -31,6 +31,7 @@ export default function SectionPage({
 
       <SectionHero title={title} description={description} />
       <SectionContent
+        title={title}
         lessons={lessons}
         progressService={progressService}
         lessonPath={lessonPath}
