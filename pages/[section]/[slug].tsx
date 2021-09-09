@@ -121,8 +121,6 @@ export default function LessonPage({
           />
         )}
 
-      {/* Next Lesson Button */}
-
       <NextLessonBtn
         path={nextLesson}
         isCompleted={isLessonCompleted(progressService, lessonPath)}
