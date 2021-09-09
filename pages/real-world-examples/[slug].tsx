@@ -100,6 +100,7 @@ export default function LessonPage({
         sectionTitle={sectionTitle}
         progressService={progressService}
         lessonPath={lessonPath}
+        lessonData={lessonData}
       />
 
       <NextLessonBtn

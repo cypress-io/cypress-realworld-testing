@@ -15,6 +15,7 @@ import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
 import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
 import FFChallenge from "../../components/Lesson/FreeFormChallenge"
+
 const NextLessonBtn = dynamic(
   () => import("../../components/Lesson/NextLessonBtn"),
   {
@@ -100,6 +101,7 @@ export default function LessonPage({
         sectionTitle={sectionTitle}
         progressService={progressService}
         lessonPath={lessonPath}
+        lessonData={lessonData}
       />
       {lessonData.challenges &&
         lessonData.challenges[0].challengeType === "multiple-choice" && (
