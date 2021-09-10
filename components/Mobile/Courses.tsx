@@ -6,7 +6,7 @@ const LessonSteps = dynamic(() => import("./LessonSteps"), {
 
 export default function Courses({ sections, content, progressService }) {
   return (
-    <div className="relative bg-white pb-32 overflow-hidden">
+    <div className="relative bg-white overflow-hidden">
       {sections.map((section, index) => (
         <div key={section} data-test={`course-${index}`}>
           <div className="relative">
@@ -20,12 +20,6 @@ export default function Courses({ sections, content, progressService }) {
                     >
                       {content[section].title}
                     </h2>
-                    {/* <p
-                        data-test={`course-description`}
-                        className="mt-4 text-lg text-gray-500"
-                      >
-                        {content[section].description}
-                      </p> */}
                     <LessonSteps
                       section={section}
                       content={content[section]}

@@ -7,21 +7,21 @@ function classNames(...classes) {
 
 export default function LessonSteps({ section, content, progressService }) {
   return (
-    <nav aria-label="Progress" className="mt-12">
+    <nav aria-label="Progress" className="mt-4">
       <ol className="overflow-hidden">
         {content?.lessons.map((lesson, index) => (
           <li
             data-test={`lesson-${index}`}
             key={lesson.title}
             className={classNames(
-              index !== content?.lessons.length - 1 ? "pb-10" : "",
+              index !== content?.lessons.length - 1 ? "pb-4" : "",
               "relative"
             )}
           >
             {/* Solid Line that connects the checkmarks */}
             {index !== content?.lessons.length - 1 ? (
               <div
-                className={`-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full ${
+                className={`-ml-px absolute mt-0.5 top-4 left-2 w-0.5 h-full ${
                   isLessonCompleted(
                     progressService,
                     `${section}/${lesson.slug}`
@@ -33,7 +33,7 @@ export default function LessonSteps({ section, content, progressService }) {
               />
             ) : null}
 
-            <div className="relative flex items-start group">
+            <div className="relative flex items-center group">
               {/* "completed" */}
 
               {isLessonCompleted(
@@ -43,7 +43,7 @@ export default function LessonSteps({ section, content, progressService }) {
                 <span className="h-9 flex items-center">
                   <span
                     data-test={`lesson-complete-${index}`}
-                    className="relative z-10 w-8 h-8 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800"
+                    className="relative z-10 w-4 h-4 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800"
                   >
                     <CheckIcon
                       className="w-5 h-5 text-white"
@@ -61,7 +61,7 @@ export default function LessonSteps({ section, content, progressService }) {
                 <span className="h-9 flex items-center" aria-hidden="true">
                   <span
                     data-test={`lesson-upcoming-${index}`}
-                    className="relative z-10 w-8 h-8 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full group-hover:border-gray-400"
+                    className="relative z-10 w-4 h-4 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full group-hover:border-gray-400"
                   >
                     <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />
                   </span>
