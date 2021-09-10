@@ -1,5 +1,8 @@
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
+import Courses from "./Courses"
+import LessonSteps from "./LessonSteps"
+
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
@@ -92,7 +95,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function Header({ content, sections, progressService }) {
+export default function MobileProgressMenu({
+  content,
+  sections,
+  progressService,
+}) {
   return (
     <Popover className="relative bg-white">
       <div

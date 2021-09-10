@@ -16,7 +16,11 @@ export default function SectionPage({
   section,
 }) {
   return (
-    <Layout content={content} sections={sections}>
+    <Layout
+      content={content}
+      sections={sections}
+      progressService={progressService}
+    >
       <Head>
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
