@@ -4,6 +4,8 @@
 */
 import learnJson from "../../learn.json"
 const { _ } = Cypress
+const sectionSlug = "testing-your-first-application"
+const lessons = learnJson[sectionSlug].lessons
 
 describe("Progress State & Local Storage", () => {
   beforeEach(() => {
@@ -17,7 +19,7 @@ describe("Progress State & Local Storage", () => {
   })
 
   it("the progress state on the lesson page is preserved upon refresh", () => {
-    cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
+    cy.visit(`/${sectionSlug}/${lessons[0].slug}`)
     cy.get("#answer-1").click()
     cy.getBySel("next-lesson-button").should("be.visible")
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
@@ -27,52 +29,46 @@ describe("Progress State & Local Storage", () => {
   })
 
   it("the lesson page displays the complete section button when a section is completed and navigates to the homepage", () => {
-    cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
+    cy.visit(`/${sectionSlug}/${learnJson[sectionSlug].lessons[0].slug}`)
     cy.get("#answer-1").click()
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
     cy.getBySel("next-lesson-button").click()
 
-    // Installing Cypress and Writing Our First Test
     cy.location("pathname").should(
       "eq",
-      "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
-    )
-    cy.get("#answer").type("cy.get('.new-todo').should('exist')")
-    cy.getBySel("free-form-submit").click()
-    cy.getBySel("lesson-complete-1").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-
-    // Multiple Todo's and Before Each
-    cy.location("pathname").should(
-      "eq",
-      "/testing-your-first-application/multiple-todos-and-before-each"
+      `/${sectionSlug}/${learnJson[sectionSlug].lessons[1].slug}`
     )
     cy.get("#answer-1").click()
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
     cy.getBySel("next-lesson-button").click()
 
-    // How to Use Cypress Commands
     cy.location("pathname").should(
       "eq",
-      "/testing-your-first-application/how-to-use-cypress-commands"
+      `/${sectionSlug}/${learnJson[sectionSlug].lessons[2].slug}`
     )
     cy.get("#answer-1").click()
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
     cy.getBySel("next-lesson-button").click()
 
-    // Cypress Log, Snapshot & Aliases
     cy.location("pathname").should(
       "eq",
-      "/testing-your-first-application/cypress-log-snapshot-and-aliases"
+      `/${sectionSlug}/${learnJson[sectionSlug].lessons[3].slug}`
     )
     cy.get("#answer-1").click()
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
     cy.getBySel("next-lesson-button").click()
 
-    // Negative Tests
     cy.location("pathname").should(
       "eq",
-      "/testing-your-first-application/negative-tests"
+      `/${sectionSlug}/${learnJson[sectionSlug].lessons[4].slug}`
+    )
+    cy.get("#answer-1").click()
+    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
+    cy.getBySel("next-lesson-button").click()
+
+    cy.location("pathname").should(
+      "eq",
+      `/${sectionSlug}/${learnJson[sectionSlug].lessons[5].slug}`
     )
     cy.get("#answer-1").click()
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
@@ -83,8 +79,6 @@ describe("Progress State & Local Storage", () => {
 
   it("all of the lesson steps, on the homepage, for the first completed course are filled and completed", () => {
     cy.visit("/")
-    const lessons = learnJson["testing-your-first-application"].lessons
-    console.table(lessons)
 
     cy.getBySel("course-0").within(($course) => {
       _.each(lessons, (lesson, index) => {
@@ -95,7 +89,6 @@ describe("Progress State & Local Storage", () => {
 
   it("all of the lesson cards on the section page have a status of 'Completed'", () => {
     cy.visit("/testing-your-first-application")
-    const lessons = learnJson["testing-your-first-application"].lessons
 
     cy.getBySel("section-steps").within(($course) => {
       _.each(lessons, (lesson, index) => {
