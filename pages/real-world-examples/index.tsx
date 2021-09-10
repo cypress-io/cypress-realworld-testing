@@ -9,7 +9,11 @@ import realWorldExamples from "../../real-world-examples.json"
 
 export default function Home({ content, sections, rWESections }) {
   return (
-    <Layout content={content} sections={sections}>
+    <Layout
+      content={content}
+      sections={sections}
+      progressService={progressService}
+    >
       <Head>
         <title>Real World Examples</title>
         <link rel="icon" href="/favicon.ico" />

@@ -85,7 +85,11 @@ export default function LessonPage({
   const [progressState] = useActor(progressService)
 
   return (
-    <Layout content={learnJson} sections={sections}>
+    <Layout
+      content={learnJson}
+      sections={sections}
+      progressService={progressService}
+    >
       <Head>
         <title>{lessonData.title}</title>
         <link rel="icon" href="/favicon.ico" />
