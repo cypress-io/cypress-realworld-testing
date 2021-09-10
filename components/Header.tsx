@@ -96,7 +96,7 @@ function classNames(...classes) {
 export default function Header({ content, sections, progressService }) {
   return (
     <>
-      <Popover className="relative bg-white">
+      <Popover className="relative bg-white hidden lg:block">
         <div
           className="absolute inset-0 shadow z-30 pointer-events-none"
           aria-hidden="true"

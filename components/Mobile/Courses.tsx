@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic"
+import Link from "next/link"
 
 const LessonSteps = dynamic(() => import("./LessonSteps"), {
   ssr: false,
@@ -14,12 +15,14 @@ export default function Courses({ sections, content, progressService }) {
               <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
                 <div>
                   <div className="mt-6">
-                    <h2
-                      data-test={`course-title`}
-                      className="text-base font-extrabold tracking-tight text-gray-900"
-                    >
-                      {content[section].title}
-                    </h2>
+                    <Link href={`/${content[section].slug}`}>
+                      <a
+                        data-test={`course-title`}
+                        className="text-base font-extrabold tracking-tight text-gray-900"
+                      >
+                        {content[section].title}
+                      </a>
+                    </Link>
                     <LessonSteps
                       section={section}
                       content={content[section]}

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import Courses from "./Courses"
@@ -9,10 +10,18 @@ export default function MobileProgressMenu({
   progressService,
 }) {
   return (
-    <Popover className="relative bg-white">
+    <Popover className="relative bg-white md:hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center md:justify-start md:space-x-10">
-          <div className="flex justify-start lg:w-0 lg:flex-1"></div>
+        <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+          <div className="flex justify-start lg:w-0 lg:flex-1">
+            <Link href="/">
+              <img
+                className="h-8 w-auto sm:h-10"
+                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                alt=""
+              />
+            </Link>
+          </div>
           {/* Mobile Hamburger Menu */}
           <div className="md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -72,6 +81,22 @@ export default function MobileProgressMenu({
                   content={content}
                   progressService={progressService}
                 />
+              </div>
+              <hr className="my-8" />
+              <div>
+                <img
+                  src="https://raw.githubusercontent.com/cypress-io/cypress-realworld-app/develop/public/img/rwa-readme-screenshot.png"
+                  alt=""
+                />
+              </div>
+              <div className="relative bg-white pt-16 overflow-hidden">
+                <div className="max-w-lg mx-auto">
+                  <Link href="/real-world-examples">
+                    <a className="w-full bg-indigo-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Real World Examples
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
