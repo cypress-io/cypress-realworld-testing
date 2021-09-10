@@ -1,6 +1,13 @@
 import dynamic from "next/dynamic"
 import { CheckIcon } from "@heroicons/react/outline"
 
+const NextLessonBtn = dynamic(
+  () => import("../../components/Section/NextLessonBtn"),
+  {
+    ssr: false,
+  }
+)
+
 const SectionSteps = dynamic(() => import("./SectionSteps"), {
   ssr: false,
 })
@@ -25,6 +32,7 @@ export default function SectionContent({
   lessons,
   progressService,
   lessonPath,
+  section,
 }) {
   const stats = [
     { label: "Lessons", value: lessons.length },
@@ -120,6 +128,11 @@ export default function SectionContent({
                     ))}
                   </dl>
                 </div>
+                <NextLessonBtn
+                  lessons={lessons}
+                  progressService={progressService}
+                  section={section}
+                />
               </div>
             </div>
           </div>

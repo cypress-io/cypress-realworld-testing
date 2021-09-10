@@ -1,15 +1,8 @@
 import Head from "next/head"
-import dynamic from "next/dynamic"
 import Layout from "../../components/Layout"
 import SectionHero from "../../components/Section/SectionHero"
 import SectionContent from "../../components/Section/SectionContent"
-// import SectionFooter from "../../components/Section/SectionFooter"
-const SectionSteps = dynamic(
-  () => import("../../components/Section/SectionSteps"),
-  {
-    ssr: false,
-  }
-)
+import { isLessonCompleted } from "../../utils/machineUtils"
 import { progressService } from "../../machines/progressService"
 import learnJson from "../../learn.json"
 
@@ -17,10 +10,10 @@ export default function SectionPage({
   title,
   lessons,
   description,
-  nextSection,
   lessonPath,
   content,
   sections,
+  section,
 }) {
   return (
     <Layout content={content} sections={sections}>
@@ -35,9 +28,8 @@ export default function SectionPage({
         lessons={lessons}
         progressService={progressService}
         lessonPath={lessonPath}
+        section={section}
       />
-
-      {/* {nextSection && <SectionFooter nextSection={nextSection} />} */}
     </Layout>
   )
 }
@@ -45,24 +37,16 @@ export default function SectionPage({
 export async function getStaticProps({ params }) {
   const { title, lessons, description } = learnJson[params.section]
   const sections = Object.keys(learnJson)
-  const nextSectionIndex = sections.indexOf(params.section) + 1
-  let nextSection
-
-  if (nextSectionIndex < sections.length) {
-    nextSection = learnJson[sections[nextSectionIndex]]
-  } else {
-    nextSection = null
-  }
 
   return {
     props: {
       lessons,
       title,
       description,
-      nextSection,
       lessonPath: `${params.section}/${params.slug}`,
       content: learnJson,
       sections,
+      section: params.section,
     },
   }
 }
