@@ -20,9 +20,6 @@ export interface MultipleChoicePayload extends EventPayload {
   userAnswerIndex: number
 }
 
-export interface FreeFormPayload extends EventPayload {
-  userAnswer: string
-}
 export interface ProgressContext {
   sectionsCompleted: string[]
   lessons: object[]
@@ -37,8 +34,4 @@ export interface Challenge {
 export interface MultipleChoiceChallenge extends Challenge {
   answers: []
   correctAnswerIndex: string
-}
-export interface FreeFormChallenge extends Challenge {
-  answer: string
-  hint: string
 }

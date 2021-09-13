@@ -1,7 +1,7 @@
 import { expect } from "chai"
 import { interpret } from "xstate"
 import { progressMachine } from "../machines/progressMachine"
-import { FreeFormPayload, MultipleChoicePayload } from "common"
+import { MultipleChoicePayload } from "common"
 import { isLessonCompleted } from "../utils/machineUtils"
 
 describe("progress machine", () => {

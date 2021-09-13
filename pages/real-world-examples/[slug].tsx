@@ -23,7 +23,6 @@ const NextLessonBtn = dynamic(
 import {
   LessonTableOfContents,
   MultipleChoiceChallenge,
-  FreeFormChallenge,
 } from "../../types/common"
 import {
   REAL_WORLD_EXAMPLES_PATH,
@@ -59,7 +58,7 @@ type Props = {
     description: string
     status: string
     videoURL: string
-    challenges: MultipleChoiceChallenge[] | FreeFormChallenge[]
+    challenges: MultipleChoiceChallenge[]
   }
   sectionLessons: []
   nextLesson: string

@@ -79,11 +79,7 @@ export const progressMachine = createMachine(
           challenge.challengeType === "multiple-choice" &&
           challenge.correctAnswerIndex === event.userAnswerIndex
 
-        const isCorrectFreeFormAnswer =
-          challenge.challengeType === "freeform" &&
-          challenge.answer === event.userAnswer
-
-        if (isCorrectMultipleChoiceAnswer || isCorrectFreeFormAnswer) {
+        if (isCorrectMultipleChoiceAnswer) {
           return {
             lessons: concat(context.lessons, {
               id: event.id,
