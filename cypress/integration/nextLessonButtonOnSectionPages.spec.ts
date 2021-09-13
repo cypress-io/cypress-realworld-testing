@@ -5,6 +5,8 @@
 import learnJson from "../../learn.json"
 const { _ } = Cypress
 const sections = Object.keys(learnJson)
+const sectionSlug = "testing-your-first-application"
+const lessons = learnJson[sectionSlug].lessons
 
 describe("Next Lesson Button on Section Pages", () => {
   beforeEach(() => {
@@ -50,50 +52,18 @@ describe("Next Lesson Button on Section Pages", () => {
     })
   })
 
-  it("says 'Course Completed' and links to the home page if all of the lessons have been completed", () => {
-    cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
-    cy.get("#answer-1").click()
-    cy.getBySel("next-lesson-button").click()
+  it.only("says 'Course Completed' and links to the home page if all of the lessons have been completed", () => {
+    cy.visit(`/${sectionSlug}/${learnJson[sectionSlug].lessons[0].slug}`)
 
-    // Installing Cypress and Writing Our First Test
-    cy.location("pathname").should(
-      "eq",
-      "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
-    )
-    cy.get("#answer").type("cy.get('.new-todo').should('exist')")
-    cy.getBySel("free-form-submit").click()
-    cy.getBySel("next-lesson-button").click()
-
-    // Multiple Todo's and Before Each
-    cy.location("pathname").should(
-      "eq",
-      "/testing-your-first-application/multiple-todos-and-before-each"
-    )
-    cy.get("#answer-1").click()
-    cy.getBySel("next-lesson-button").click()
-
-    // How to Use Cypress Commands
-    cy.location("pathname").should(
-      "eq",
-      "/testing-your-first-application/how-to-use-cypress-commands"
-    )
-    cy.get("#answer-1").click()
-    cy.getBySel("next-lesson-button").click()
-
-    // Cypress Log, Snapshot & Aliases
-    cy.location("pathname").should(
-      "eq",
-      "/testing-your-first-application/cypress-log-snapshot-and-aliases"
-    )
-    cy.get("#answer-1").click()
-    cy.getBySel("next-lesson-button").click()
-
-    // Negative Tests
-    cy.location("pathname").should(
-      "eq",
-      "/testing-your-first-application/negative-tests"
-    )
-    cy.get("#answer-1").click()
+    _.each(lessons, (lesson, index) => {
+      cy.location("pathname").should(
+        "eq",
+        `/${sectionSlug}/${learnJson[sectionSlug].lessons[index].slug}`
+      )
+      cy.get("#answer-1").click()
+      cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
+      cy.getBySel("next-lesson-button").click()
+    })
 
     cy.visit("/testing-your-first-application")
 
@@ -105,7 +75,11 @@ describe("Next Lesson Button on Section Pages", () => {
 
       expect(text).to.eq("Course Completed")
       expect(href).to.eq("/")
+
+      cy.wrap($btn).click()
     })
+
+    cy.location("pathname").should("eq", "/")
   })
 })
 

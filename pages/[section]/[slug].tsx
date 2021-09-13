@@ -14,7 +14,6 @@ import Layout from "../../components/Layout"
 import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
 import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
-import FFChallenge from "../../components/Lesson/FreeFormChallenge"
 
 const NextLessonBtn = dynamic(
   () => import("../../components/Lesson/NextLessonBtn"),
@@ -25,7 +24,6 @@ const NextLessonBtn = dynamic(
 import {
   LessonTableOfContents,
   MultipleChoiceChallenge,
-  FreeFormChallenge,
 } from "../../types/common"
 import {
   CONTENT_PATH,
@@ -60,7 +58,7 @@ type Props = {
     description: string
     status: string
     videoURL: string
-    challenges: MultipleChoiceChallenge[] | FreeFormChallenge[]
+    challenges: MultipleChoiceChallenge[]
   }
   sectionLessons: []
   nextLesson: string
@@ -110,15 +108,6 @@ export default function LessonPage({
       {lessonData.challenges &&
         lessonData.challenges[0].challengeType === "multiple-choice" && (
           <MCChallenge
-            progressService={progressService}
-            lessonData={lessonData}
-            lessonPath={lessonPath}
-          />
-        )}
-
-      {lessonData.challenges &&
-        lessonData.challenges[0].challengeType === "freeform" && (
-          <FFChallenge
             progressService={progressService}
             lessonData={lessonData}
             lessonPath={lessonPath}

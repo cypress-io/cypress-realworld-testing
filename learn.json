@@ -5,7 +5,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "lessons": [
       {
-        "title": "TodoMVC App Install and Overview",
+        "title": "TodoMVC App Install & Overview",
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
@@ -29,16 +29,21 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "challenges": [
           {
-            "challengeType": "freeform",
-            "question": "For an element with class 'new-todo', type the Cypress command to get the element and assert that it exists.",
-            "answer": "cy.get('.new-todo').should('exist')",
-            "hint": "Use the cy.get and should commands"
+            "challengeType": "multiple-choice",
+            "question": "What is the command to run Cypress in open mode?",
+            "answers": [
+              "yarn run cypress:run",
+              "yarn run cypress:open",
+              "yarn run cypress",
+              "yarn run test"
+            ],
+            "correctAnswerIndex": 1
           }
         ]
       },
       {
-        "title": "Multiple Todos and Before Each",
-        "slug": "multiple-todos-and-before-each",
+        "title": "Setting up Data Before Each Test",
+        "slug": "setting-up-data-before-each-test",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "challenges": [
           {
@@ -55,7 +60,7 @@
         ]
       },
       {
-        "title": "How to Use Cypress Commands",
+        "title": "How to use Cypress Commands",
         "slug": "how-to-use-cypress-commands",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "challenges": [
@@ -73,8 +78,8 @@
         ]
       },
       {
-        "title": "Cypress Log, Snapshot and Aliases",
-        "slug": "cypress-log-snapshot-and-aliases",
+        "title": "Cypress Command Logs, Snapshots and Aliases",
+        "slug": "cypress-command-logs-snapshots-and-aliases",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "challenges": [
           {
@@ -91,8 +96,8 @@
         ]
       },
       {
-        "title": "Negative Tests",
-        "slug": "negative-tests",
+        "title": "Testing what isn't there",
+        "slug": "testing-what-isnt-there",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "challenges": [
           {
