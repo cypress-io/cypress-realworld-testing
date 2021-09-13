@@ -10,7 +10,7 @@ type Props = {
 
 export default function LessonSideNav({ navigation }: Props) {
   return (
-    <nav className="space-y-1" aria-label="Sidebar">
+    <nav data-test="toc-sidebar" className="space-y-1" aria-label="Sidebar">
       {navigation.map((item) => (
         <a
           data-test={item.slug}

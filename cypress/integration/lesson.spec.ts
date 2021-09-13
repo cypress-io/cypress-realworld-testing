@@ -1,3 +1,5 @@
+const { _ } = Cypress
+
 describe("Multiple Choice Challenge", () => {
   beforeEach(() => {
     cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
@@ -8,22 +10,20 @@ describe("Multiple Choice Challenge", () => {
   })
 
   it("the TOC links to the correct content section when clicked", () => {
-    cy.getBySel("todomvc-app-install-and-overview").click()
-    cy.window()
-      .its("scrollY")
-      .should(
-        "equal",
-        Math.ceil(cy.$$("#todomvc-app-install-and-overview").offset().top)
-      )
+    cy.getBySel("toc-sidebar").within(($toc) => {
+      cy.get("a").each(($link) => {
+        const href = $link.attr("href")
+        cy.wrap($link).click()
 
-    cy.getBySel("another-subheader").click()
-    cy.window()
-      .its("scrollY")
-      .should("equal", Math.ceil(cy.$$("#another-subheader").offset().top))
+        cy.window()
+          .its("scrollY")
+          .should("equal", Math.ceil(cy.$$(`${href}`).offset().top))
+      })
+    })
   })
 
   it("shows the challenge", () => {
-    cy.getBySel("next-lesson-button").should("exist")
+    cy.getBySel("multiple-choice-challenge").should("exist")
   })
 })
 
