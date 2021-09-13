@@ -28,52 +28,19 @@ describe("Progress State & Local Storage", () => {
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
   })
 
-  it("the lesson page displays the complete section button when a section is completed and navigates to the homepage", () => {
+  it("the lesson page displays the complete lesson button when a lesson is completed and navigates to the homepage after the final lesson is completed", () => {
     cy.visit(`/${sectionSlug}/${learnJson[sectionSlug].lessons[0].slug}`)
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
 
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/${learnJson[sectionSlug].lessons[1].slug}`
-    )
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
+    _.each(lessons, (lesson, index) => {
+      cy.location("pathname").should(
+        "eq",
+        `/${sectionSlug}/${learnJson[sectionSlug].lessons[index].slug}`
+      )
+      cy.get("#answer-1").click()
+      cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
+      cy.getBySel("next-lesson-button").click()
+    })
 
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/${learnJson[sectionSlug].lessons[2].slug}`
-    )
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/${learnJson[sectionSlug].lessons[3].slug}`
-    )
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/${learnJson[sectionSlug].lessons[4].slug}`
-    )
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/${learnJson[sectionSlug].lessons[5].slug}`
-    )
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").contains("Complete Section")
-    cy.getBySel("next-lesson-button").click()
     cy.location("pathname").should("eq", "/")
   })
 
