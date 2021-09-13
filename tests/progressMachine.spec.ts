@@ -51,30 +51,6 @@ describe("progress machine", () => {
     expect(isLessonCompleted(progressService, answerEvent.id)).to.be.false
   })
 
-  it("can validate a correct freeform answer", () => {
-    const answerEvent: FreeFormPayload = {
-      type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/installing-cypress-and-writing-our-first-test",
-      challengeIndex: 0,
-      userAnswer: "cy.get('.new-todo').should('exist')",
-    }
-    progressService.send(answerEvent)
-
-    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.true
-  })
-
-  it("can validate an incorrect freeform answer", () => {
-    const answerEvent: FreeFormPayload = {
-      type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/installing-cypress-and-writing-our-first-test",
-      challengeIndex: 0,
-      userAnswer: "cy.get('.new-todo')",
-    }
-    progressService.send(answerEvent)
-
-    expect(isLessonCompleted(progressService, answerEvent.id)).to.be.false
-  })
-
   it("can disable all challenges", () => {
     progressService.send("DISABLE_CHALLENGES")
 
