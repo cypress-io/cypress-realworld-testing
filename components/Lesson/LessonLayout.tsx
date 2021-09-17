@@ -44,7 +44,7 @@ export default function LessonLayout({
             <main className="lesson-content lg:col-span-9 xl:col-span-7">
               <div className="relative pb-16 bg-white overflow-hidden">
                 <div className="relative px-4 sm:px-6 lg:px-8">
-                  <div className="prose prose-indigo prose-lg text-gray-500 mx-auto">
+                  <div className="prose lg:prose-xl text-gray-500 mx-auto">
                     <MDXRemote {...source} components={components} />
                   </div>
                 </div>
