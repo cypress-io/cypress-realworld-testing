@@ -2,7 +2,7 @@
   "testing-your-first-application": {
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "In this course, you will learn how to test a simple TodoMVC app with Cypress.",
     "lessons": [
       {
         "title": "TodoMVC App Install & Overview",
@@ -118,7 +118,7 @@
   "testing-foundations": {
     "title": "Testing Foundations",
     "slug": "testing-foundations",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "In this course, we lay the groundwork for subsequent courses and examples.",
     "lessons": [
       {
         "title": "Testing is a Mindset",
@@ -155,7 +155,7 @@
   "cypress-fundamentals": {
     "title": "Cypress Fundamentals",
     "slug": "cypress-fundamentals",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "In this course, we discuss the aspects of Cypress you must know.",
     "lessons": [
       {
         "title": "Cypress Runs in the Browser",
@@ -192,7 +192,7 @@
   "advanced-cypress-concepts": {
     "title": "Advanced Cypress Concepts",
     "slug": "advanced-cypress-concepts",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "In this course, we discuss some of the more advanced concepts in Cypress that take your tests to the next level.",
     "lessons": [
       {
         "title": "Intercepting Network Requests",
