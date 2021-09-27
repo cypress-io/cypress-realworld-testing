@@ -155,7 +155,7 @@
   "cypress-fundamentals": {
     "title": "Cypress Fundamentals",
     "slug": "cypress-fundamentals",
-    "description": "In this course, we discuss the aspects of Cypress you must know.",
+    "description": "The aspects of Cypress you must know.",
     "lessons": [
       {
         "title": "Cypress Runs in the Browser",
@@ -192,7 +192,7 @@
   "advanced-cypress-concepts": {
     "title": "Advanced Cypress Concepts",
     "slug": "advanced-cypress-concepts",
-    "description": "In this course, we discuss some of the more advanced concepts in Cypress that take your tests to the next level.",
+    "description": "Learn some of the more advanced concepts in Cypress that take your tests to the next level.",
     "lessons": [
       {
         "title": "Intercepting Network Requests",
