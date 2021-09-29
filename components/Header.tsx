@@ -299,7 +299,7 @@ export default function Header({ content, sections, progressService }) {
                             <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
                               <div>
                                 <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
-                                  Updates
+                                  News
                                 </h3>
                                 <ul role="list" className="mt-6 space-y-6">
                                   {updates.map((post) => (
