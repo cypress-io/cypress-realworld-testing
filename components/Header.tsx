@@ -50,11 +50,7 @@ const solutions = [
     icon: ViewGridIcon,
   },
 ]
-const callsToAction = [
-  { name: "Watch Demo", href: "#", icon: PlayIcon },
-  { name: "View All Products", href: "#", icon: CheckCircleIcon },
-  { name: "Contact Sales", href: "#", icon: PhoneIcon },
-]
+
 const company = [
   { name: "About", href: "#", icon: InformationCircleIcon },
   { name: "Customers", href: "#", icon: OfficeBuildingIcon },
@@ -176,7 +172,7 @@ export default function Header({ content, sections, progressService }) {
                                       </p>
                                     </div>
                                     <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
-                                      Learn more{" "}
+                                      Get Started{" "}
                                       <span aria-hidden="true">&rarr;</span>
                                     </p>
                                   </div>
@@ -184,41 +180,11 @@ export default function Header({ content, sections, progressService }) {
                               </a>
                             ))}
                           </div>
-                          <div className="bg-gray-50">
-                            <div className="max-w-7xl mx-auto space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8">
-                              {callsToAction.map((item) => (
-                                <div key={item.name} className="flow-root">
-                                  <a
-                                    href={item.href}
-                                    className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-                                  >
-                                    <item.icon
-                                      className="flex-shrink-0 h-6 w-6 text-gray-400"
-                                      aria-hidden="true"
-                                    />
-                                    <span className="ml-3">{item.name}</span>
-                                  </a>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
                         </Popover.Panel>
                       </Transition>
                     </>
                   )}
                 </Popover>
-                {/* <a
-                href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Pricing
-              </a>
-              <a
-                href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Docs
-              </a> */}
                 <Popover>
                   {({ open }) => (
                     <>
@@ -228,14 +194,14 @@ export default function Header({ content, sections, progressService }) {
                           "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         )}
                       >
-                        <span>Resources</span>
+                        {/* <span>Resources</span>
                         <ChevronDownIcon
                           className={classNames(
                             open ? "text-gray-600" : "text-gray-400",
                             "ml-2 h-5 w-5 group-hover:text-gray-500"
                           )}
                           aria-hidden="true"
-                        />
+                        /> */}
                       </Popover.Button>
 
                       <Transition
