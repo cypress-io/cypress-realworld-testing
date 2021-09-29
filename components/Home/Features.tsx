@@ -12,35 +12,34 @@ const features = [
   {
     name: "Testing Mindset",
     icon: CloudUploadIcon,
-    description: "Learn the mindset necessary when testing applications.",
+    description: "The mindset necessary when testing applications.",
   },
   {
     name: "Knowing What to Test",
     icon: LockClosedIcon,
-    description:
-      "Learn the most important things you should be writing tests for.",
+    description: "Know which parts of your application you should test.",
   },
   {
     name: "How to Debug Failing Tests",
     icon: RefreshIcon,
     description:
-      "Learn various tips, methods and techniques to help you debug your failing tests",
+      "Various tips, methods and techniques to help you debug your failing tests",
   },
   {
     name: "Database Initialization & Seeding",
     icon: ShieldCheckIcon,
-    description: "Learn how to create the data you need for your tests",
+    description: "How to create the data you need for your tests",
   },
   {
     name: "Types of Testing",
     icon: CogIcon,
     description:
-      "Learn the difference between unit, integration and end to end tests",
+      "The difference between unit, integration and end to end tests",
   },
   {
     name: "How to Test",
     icon: ServerIcon,
-    description: "Learn how to tests different apps from simple to complex",
+    description: "How to tests different apps from simple to complex",
   },
 ]
 
