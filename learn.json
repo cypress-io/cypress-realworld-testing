@@ -2,7 +2,7 @@
   "testing-your-first-application": {
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
-    "description": "In this course, you will learn how to test a simple TodoMVC app with Cypress.",
+    "description": "How to test a simple TodoMVC app with Cypress.",
     "lessons": [
       {
         "title": "TodoMVC App Install & Overview",
@@ -118,7 +118,7 @@
   "testing-foundations": {
     "title": "Testing Foundations",
     "slug": "testing-foundations",
-    "description": "In this course, we lay the groundwork for subsequent courses and examples.",
+    "description": "Testing fundamentals.",
     "lessons": [
       {
         "title": "Testing is a Mindset",
@@ -192,7 +192,7 @@
   "advanced-cypress-concepts": {
     "title": "Advanced Cypress Concepts",
     "slug": "advanced-cypress-concepts",
-    "description": "Learn some of the more advanced concepts in Cypress that take your tests to the next level.",
+    "description": "Some of the more advanced concepts in Cypress that take your tests to the next level.",
     "lessons": [
       {
         "title": "Intercepting Network Requests",
