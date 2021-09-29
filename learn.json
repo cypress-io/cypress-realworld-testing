@@ -123,7 +123,12 @@
   "testing-foundations": {
     "title": "Testing Foundations",
     "slug": "testing-foundations",
-    "description": "Testing fundamentals.",
+    "description": "The fundamentals you need write great tests.",
+    "learnFeatures": [
+      "Learn what to test and why",
+      "Arrange, Act, Assert",
+      "The Difference between Unit, Integration & E2E tests"
+    ],
     "lessons": [
       {
         "title": "Testing is a Mindset",
@@ -161,6 +166,11 @@
     "title": "Cypress Fundamentals",
     "slug": "cypress-fundamentals",
     "description": "The aspects of Cypress you must know.",
+    "learnFeatures": [
+      "How to use Aliases",
+      "How to chain methods and assertions together",
+      "How Cypress works 'under the hood'"
+    ],
     "lessons": [
       {
         "title": "Cypress Runs in the Browser",
@@ -198,6 +208,11 @@
     "title": "Advanced Cypress Concepts",
     "slug": "advanced-cypress-concepts",
     "description": "Some of the more advanced concepts in Cypress that take your tests to the next level.",
+    "learnFeatures": [
+      "How to debug test failures",
+      "Database initialization and seeding",
+      "How to test network requests"
+    ],
     "lessons": [
       {
         "title": "Intercepting Network Requests",
@@ -240,8 +255,8 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Import Cypress Methods",
-        "slug": "import-cypress-methods",
+        "title": "Important Cypress Methods",
+        "slug": "important-cypress-methods",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
