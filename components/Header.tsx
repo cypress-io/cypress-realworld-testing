@@ -4,32 +4,31 @@ import MobileProgressMenu from "./Mobile/ProgressMenu"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
-  ChartBarIcon,
-  CheckCircleIcon,
   CursorClickIcon,
-  DesktopComputerIcon,
   GlobeAltIcon,
   InformationCircleIcon,
   MenuIcon,
-  NewspaperIcon,
-  OfficeBuildingIcon,
-  PhoneIcon,
-  PlayIcon,
   ShieldCheckIcon,
-  UserGroupIcon,
-  ViewGridIcon,
   XIcon,
   SearchIcon,
+  ViewGridIcon,
+  ChatAltIcon,
+  FilmIcon,
+  CodeIcon,
+  NewspaperIcon,
+  UserGroupIcon,
+  TemplateIcon,
+  TerminalIcon,
 } from "@heroicons/react/outline"
 import { ChevronDownIcon } from "@heroicons/react/solid"
 
-const solutions = [
+const courses = [
   {
     name: "Testing Your First Application",
     description:
       "Get a better understanding of where your traffic is coming from.",
     href: "#",
-    icon: ChartBarIcon,
+    icon: TerminalIcon,
   },
   {
     name: "Testing Foundations",
@@ -52,18 +51,53 @@ const solutions = [
 ]
 
 const company = [
-  { name: "About", href: "#", icon: InformationCircleIcon },
-  { name: "Customers", href: "#", icon: OfficeBuildingIcon },
-  { name: "Press", href: "#", icon: NewspaperIcon },
-  { name: "Careers", href: "#", icon: BriefcaseIcon },
-  { name: "Privacy", href: "#", icon: ShieldCheckIcon },
+  {
+    name: "Cypress.io",
+    href: "https://www.cypress.io/",
+    icon: InformationCircleIcon,
+  },
+  { name: "Careers", href: "https://www.cypress.io/jobs", icon: BriefcaseIcon },
+  {
+    name: "Blog",
+    href: "https://www.cypress.io/blog/",
+    icon: NewspaperIcon,
+  },
+  {
+    name: "Dashboard",
+    href: "https://www.cypress.io/dashboard",
+    icon: TemplateIcon,
+  },
+  {
+    name: "Support",
+    href: "https://www.cypress.io/support",
+    icon: UserGroupIcon,
+  },
 ]
+
 const resources = [
-  { name: "Community", href: "#", icon: UserGroupIcon },
-  { name: "Partners", href: "#", icon: GlobeAltIcon },
-  { name: "Guides", href: "#", icon: BookmarkAltIcon },
-  { name: "Webinars", href: "#", icon: DesktopComputerIcon },
+  { name: "Docs", href: "https://docs.cypress.io/", icon: BookmarkAltIcon },
+  {
+    name: "Real World App",
+    href: "https://github.com/cypress-io/cypress-realworld-app",
+    icon: GlobeAltIcon,
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/channel/UC-EOsTo2l2x39e4JmSaWNRQ",
+    icon: FilmIcon,
+  },
+  {
+    name: "Discord",
+    href: "https://discord.gg/cMjUZg7",
+    icon: ChatAltIcon,
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/cypress-io/cypress",
+    icon: CodeIcon,
+  },
 ]
+
 const blogPosts = [
   {
     id: 1,
@@ -156,7 +190,7 @@ export default function Header({ content, sections, progressService }) {
                                 <div className="flex md:h-full lg:flex-col">
                                   <div className="flex-shrink-0">
                                     <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                                      <PlayIcon
+                                      <TerminalIcon
                                         className="h-6 w-6"
                                         aria-hidden="true"
                                       />
@@ -194,14 +228,14 @@ export default function Header({ content, sections, progressService }) {
                           "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         )}
                       >
-                        {/* <span>Resources</span>
+                        <span>Resources</span>
                         <ChevronDownIcon
                           className={classNames(
                             open ? "text-gray-600" : "text-gray-400",
                             "ml-2 h-5 w-5 group-hover:text-gray-500"
                           )}
                           aria-hidden="true"
-                        /> */}
+                        />
                       </Popover.Button>
 
                       <Transition
@@ -222,7 +256,7 @@ export default function Header({ content, sections, progressService }) {
                             <nav className="grid gap-y-10 px-4 py-8 bg-white sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
                               <div>
                                 <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
-                                  Company
+                                  Cypress
                                 </h3>
                                 <ul role="list" className="mt-5 space-y-6">
                                   {company.map((item) => (
@@ -378,7 +412,7 @@ export default function Header({ content, sections, progressService }) {
                 <div className="mt-6 sm:mt-8">
                   <nav>
                     <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
-                      {solutions.map((item) => (
+                      {courses.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
