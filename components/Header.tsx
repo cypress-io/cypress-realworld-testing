@@ -98,24 +98,19 @@ const resources = [
   },
 ]
 
-const blogPosts = [
-  {
-    id: 1,
-    name: "Boost your conversion rate",
-    href: "#",
-    preview:
-      "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80",
-  },
+const updates = [
+  // {
+  //   id: 1,
+  //   name: "Changelog",
+  //   href: "#",
+  //   preview:
+  //     "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
+  // },
   {
     id: 2,
-    name: "How to use search engine optimization to drive traffic to your site",
-    href: "#",
-    preview:
-      "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
-    imageUrl:
-      "https://images.unsplash.com/1/apple-gear-looking-pretty.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
+    name: "We're Hiring",
+    href: "https://www.cypress.io/jobs/",
+    preview: "Want to help create something innovative? Join our team!",
   },
 ]
 
@@ -304,21 +299,21 @@ export default function Header({ content, sections, progressService }) {
                             <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
                               <div>
                                 <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
-                                  From the blog
+                                  Updates
                                 </h3>
                                 <ul role="list" className="mt-6 space-y-6">
-                                  {blogPosts.map((post) => (
+                                  {updates.map((post) => (
                                     <li key={post.id} className="flow-root">
                                       <a
                                         href={post.href}
                                         className="-m-3 p-3 flex rounded-lg hover:bg-gray-100"
                                       >
                                         <div className="hidden sm:block flex-shrink-0">
-                                          <img
+                                          {/* <img
                                             className="w-32 h-20 object-cover rounded-md"
                                             src={post.imageUrl}
                                             alt=""
-                                          />
+                                          /> */}
                                         </div>
                                         <div className="w-0 flex-1 sm:ml-8">
                                           <h4 className="text-base font-medium text-gray-900 truncate">
@@ -333,7 +328,7 @@ export default function Header({ content, sections, progressService }) {
                                   ))}
                                 </ul>
                               </div>
-                              <div className="mt-6 text-sm font-medium">
+                              {/* <div className="mt-6 text-sm font-medium">
                                 <a
                                   href="#"
                                   className="text-indigo-600 hover:text-indigo-500"
@@ -342,7 +337,7 @@ export default function Header({ content, sections, progressService }) {
                                   View all posts{" "}
                                   <span aria-hidden="true">&rarr;</span>
                                 </a>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </Popover.Panel>
