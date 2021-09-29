@@ -30,13 +30,14 @@ const features = [
 export default function SectionContent({
   title,
   lessons,
+  learnFeatures,
   progressService,
   lessonPath,
   section,
 }) {
   const stats = [
     { label: "Lessons", value: lessons.length },
-    { label: "Total Time", value: "2 Hours" },
+    // { label: "Total Time", value: "2 Hours" },
     // { label: "Fun Scale", value: "100" },
     // { label: "Raised", value: "$25M" },
   ]
@@ -51,24 +52,6 @@ export default function SectionContent({
               <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
                 {title}
               </h2>
-              <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                Overview
-              </p>
-              <div className="prose prose-indigo text-gray-500 mx-auto mt-12 lg:max-w-none">
-                <p>
-                  Sollicitudin tristique eros erat odio sed vitae, consequat
-                  turpis elementum. Lorem nibh vel, eget pretium arcu vitae.
-                  Eros eu viverra donec ut volutpat donec laoreet quam urna.
-                </p>
-                <ul role="list">
-                  <li>Quis elit egestas venenatis mattis dignissim.</li>
-                  <li>
-                    Cras cras lobortis vitae vivamus ultricies facilisis tempus.
-                  </li>
-                  <li>Orci in sit morbi dignissim metus diam arcu pretium.</li>
-                </ul>
-                <h3 className="text-gray-500">Table of Contents</h3>
-              </div>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
                 <SectionSteps
                   lessonPath={lessonPath}
@@ -90,7 +73,7 @@ export default function SectionContent({
                   {/* Features */}
                   <div className="mt-12">
                     <dl className="">
-                      {features.map((feature) => (
+                      {learnFeatures.map((feature) => (
                         <div key={feature.name} className="relative mb-6">
                           <dt>
                             <CheckIcon
@@ -98,12 +81,9 @@ export default function SectionContent({
                               aria-hidden="true"
                             />
                             <p className="ml-9 text-lg leading-6 font-medium text-indigo-400">
-                              {feature.name}
+                              {feature}
                             </p>
                           </dt>
-                          <dd className="mt-2 ml-9 text-base text-gray-500">
-                            {feature.description}
-                          </dd>
                         </div>
                       ))}
                     </dl>

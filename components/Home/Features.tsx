@@ -9,12 +9,38 @@ import {
 } from "@heroicons/react/outline"
 
 const features = [
-  { name: "Push to Deploy", icon: CloudUploadIcon },
-  { name: "SSL Certificates", icon: LockClosedIcon },
-  { name: "Simple Queues", icon: RefreshIcon },
-  { name: "Advanced Security", icon: ShieldCheckIcon },
-  { name: "Powerful API", icon: CogIcon },
-  { name: "Database Backups", icon: ServerIcon },
+  {
+    name: "Testing Mindset",
+    icon: CloudUploadIcon,
+    description: "The mindset necessary when testing applications.",
+  },
+  {
+    name: "Knowing What to Test",
+    icon: LockClosedIcon,
+    description: "Know which parts of your application you should test.",
+  },
+  {
+    name: "How to Debug Failing Tests",
+    icon: RefreshIcon,
+    description:
+      "Various tips, methods and techniques to help you debug your failing tests",
+  },
+  {
+    name: "Database Initialization & Seeding",
+    icon: ShieldCheckIcon,
+    description: "How to create the data you need for your tests",
+  },
+  {
+    name: "Types of Testing",
+    icon: CogIcon,
+    description:
+      "The difference between unit, integration and end to end tests",
+  },
+  {
+    name: "How to Test",
+    icon: ServerIcon,
+    description: "How to tests different apps from simple to complex",
+  },
 ]
 
 export default function Features() {
@@ -25,12 +51,11 @@ export default function Features() {
           What&apos;s Inside
         </h2>
         <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-          A quick preview of what you’ll learn from our courses
+          A quick preview of what you’ll learn
         </p>
         <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
-          Phasellus lorem quam molestie id quisque diam aenean nulla in.
-          Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend
-          condimentum id viverra nulla.
+          A free and open-source curriculum to learn how testing is done in the
+          real world.
         </p>
         <div className="mt-12">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -50,8 +75,7 @@ export default function Features() {
                       {feature.name}
                     </h3>
                     <p className="mt-5 text-base text-gray-500">
-                      Ac tincidunt sapien vehicula erat auctor pellentesque
-                      rhoncus. Et magna sit morbi lobortis.
+                      {feature.description}
                     </p>
                   </div>
                 </div>

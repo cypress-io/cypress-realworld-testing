@@ -1,11 +1,22 @@
 const navigation = {
   main: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Accessibility", href: "#" },
-    { name: "Partners", href: "#" },
+    { name: "Docs", href: "https://docs.cypress.io/" },
+    {
+      name: "Real World App",
+      href: "https://github.com/cypress-io/cypress-realworld-app",
+    },
+    {
+      name: "YouTube",
+      href: "https://www.youtube.com/channel/UC-EOsTo2l2x39e4JmSaWNRQ",
+    },
+    {
+      name: "Discord",
+      href: "https://discord.gg/cMjUZg7",
+    },
+    {
+      name: "GitHub",
+      href: "https://github.com/cypress-io/cypress",
+    },
   ],
 }
 
@@ -19,9 +30,9 @@ export default function Footer() {
           <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
             Subscribe for updates
           </h3>
-          <p className="mt-2 text-base text-gray-500">
-            The latest news, articles, and resources, sent to your inbox weekly.
-          </p>
+          {/* <p className="mt-2 text-base text-gray-500">
+            The latest updates sent to your inbox.
+          </p> */}
         </div>
         <form className="mt-4 sm:flex sm:max-w-md lg:mt-0">
           <label htmlFor="email-address" className="sr-only">
@@ -64,7 +75,7 @@ export default function Footer() {
           ))}
         </nav>
         <p className="mt-8 text-center text-base text-gray-400">
-          &copy; 2021 Cypress. All rights reserved.
+          &copy; {`${new Date().getFullYear()}`} Cypress. All rights reserved.
         </p>
       </div>
     </footer>

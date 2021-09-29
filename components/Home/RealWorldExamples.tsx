@@ -15,7 +15,7 @@ export default function RealWorldExamples({
               Serverless
             </h2> */}
             <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-              Over 40+ Real World Examples
+              Over 30+ Real World Examples
             </p>
             <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
               A payment application to demonstrate real-world usage of Cypress

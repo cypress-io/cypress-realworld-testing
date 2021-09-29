@@ -4,32 +4,31 @@ import MobileProgressMenu from "./Mobile/ProgressMenu"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
-  ChartBarIcon,
-  CheckCircleIcon,
   CursorClickIcon,
-  DesktopComputerIcon,
   GlobeAltIcon,
   InformationCircleIcon,
   MenuIcon,
-  NewspaperIcon,
-  OfficeBuildingIcon,
-  PhoneIcon,
-  PlayIcon,
   ShieldCheckIcon,
-  UserGroupIcon,
-  ViewGridIcon,
   XIcon,
   SearchIcon,
+  ViewGridIcon,
+  ChatAltIcon,
+  FilmIcon,
+  CodeIcon,
+  NewspaperIcon,
+  UserGroupIcon,
+  TemplateIcon,
+  TerminalIcon,
 } from "@heroicons/react/outline"
 import { ChevronDownIcon } from "@heroicons/react/solid"
 
-const solutions = [
+const courses = [
   {
     name: "Testing Your First Application",
     description:
       "Get a better understanding of where your traffic is coming from.",
     href: "#",
-    icon: ChartBarIcon,
+    icon: TerminalIcon,
   },
   {
     name: "Testing Foundations",
@@ -50,42 +49,68 @@ const solutions = [
     icon: ViewGridIcon,
   },
 ]
-const callsToAction = [
-  { name: "Watch Demo", href: "#", icon: PlayIcon },
-  { name: "View All Products", href: "#", icon: CheckCircleIcon },
-  { name: "Contact Sales", href: "#", icon: PhoneIcon },
-]
+
 const company = [
-  { name: "About", href: "#", icon: InformationCircleIcon },
-  { name: "Customers", href: "#", icon: OfficeBuildingIcon },
-  { name: "Press", href: "#", icon: NewspaperIcon },
-  { name: "Careers", href: "#", icon: BriefcaseIcon },
-  { name: "Privacy", href: "#", icon: ShieldCheckIcon },
-]
-const resources = [
-  { name: "Community", href: "#", icon: UserGroupIcon },
-  { name: "Partners", href: "#", icon: GlobeAltIcon },
-  { name: "Guides", href: "#", icon: BookmarkAltIcon },
-  { name: "Webinars", href: "#", icon: DesktopComputerIcon },
-]
-const blogPosts = [
   {
-    id: 1,
-    name: "Boost your conversion rate",
-    href: "#",
-    preview:
-      "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80",
+    name: "Cypress.io",
+    href: "https://www.cypress.io/",
+    icon: InformationCircleIcon,
+  },
+  { name: "Careers", href: "https://www.cypress.io/jobs", icon: BriefcaseIcon },
+  {
+    name: "Blog",
+    href: "https://www.cypress.io/blog/",
+    icon: NewspaperIcon,
   },
   {
+    name: "Dashboard",
+    href: "https://www.cypress.io/dashboard",
+    icon: TemplateIcon,
+  },
+  {
+    name: "Support",
+    href: "https://www.cypress.io/support",
+    icon: UserGroupIcon,
+  },
+]
+
+const resources = [
+  { name: "Docs", href: "https://docs.cypress.io/", icon: BookmarkAltIcon },
+  {
+    name: "Real World App",
+    href: "https://github.com/cypress-io/cypress-realworld-app",
+    icon: GlobeAltIcon,
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com/channel/UC-EOsTo2l2x39e4JmSaWNRQ",
+    icon: FilmIcon,
+  },
+  {
+    name: "Discord",
+    href: "https://discord.gg/cMjUZg7",
+    icon: ChatAltIcon,
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/cypress-io/cypress",
+    icon: CodeIcon,
+  },
+]
+
+const updates = [
+  // {
+  //   id: 1,
+  //   name: "Changelog",
+  //   href: "#",
+  //   preview:
+  //     "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
+  // },
+  {
     id: 2,
-    name: "How to use search engine optimization to drive traffic to your site",
-    href: "#",
-    preview:
-      "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
-    imageUrl:
-      "https://images.unsplash.com/1/apple-gear-looking-pretty.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
+    name: "We're Hiring",
+    href: "https://www.cypress.io/jobs/",
+    preview: "Want to help create something innovative? Join our team!",
   },
 ]
 
@@ -158,14 +183,14 @@ export default function Header({ content, sections, progressService }) {
                                 className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex md:h-full lg:flex-col">
-                                  <div className="flex-shrink-0">
+                                  {/* <div className="flex-shrink-0">
                                     <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
-                                      <PlayIcon
+                                      <TerminalIcon
                                         className="h-6 w-6"
                                         aria-hidden="true"
                                       />
                                     </span>
-                                  </div>
+                                  </div> */}
                                   <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
                                     <div>
                                       <p className="text-base font-medium text-gray-900">
@@ -176,7 +201,7 @@ export default function Header({ content, sections, progressService }) {
                                       </p>
                                     </div>
                                     <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
-                                      Learn more{" "}
+                                      Get Started{" "}
                                       <span aria-hidden="true">&rarr;</span>
                                     </p>
                                   </div>
@@ -184,41 +209,11 @@ export default function Header({ content, sections, progressService }) {
                               </a>
                             ))}
                           </div>
-                          <div className="bg-gray-50">
-                            <div className="max-w-7xl mx-auto space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8">
-                              {callsToAction.map((item) => (
-                                <div key={item.name} className="flow-root">
-                                  <a
-                                    href={item.href}
-                                    className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-                                  >
-                                    <item.icon
-                                      className="flex-shrink-0 h-6 w-6 text-gray-400"
-                                      aria-hidden="true"
-                                    />
-                                    <span className="ml-3">{item.name}</span>
-                                  </a>
-                                </div>
-                              ))}
-                            </div>
-                          </div>
                         </Popover.Panel>
                       </Transition>
                     </>
                   )}
                 </Popover>
-                {/* <a
-                href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Pricing
-              </a>
-              <a
-                href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Docs
-              </a> */}
                 <Popover>
                   {({ open }) => (
                     <>
@@ -256,7 +251,7 @@ export default function Header({ content, sections, progressService }) {
                             <nav className="grid gap-y-10 px-4 py-8 bg-white sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
                               <div>
                                 <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
-                                  Company
+                                  Cypress
                                 </h3>
                                 <ul role="list" className="mt-5 space-y-6">
                                   {company.map((item) => (
@@ -304,21 +299,21 @@ export default function Header({ content, sections, progressService }) {
                             <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
                               <div>
                                 <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
-                                  From the blog
+                                  News
                                 </h3>
                                 <ul role="list" className="mt-6 space-y-6">
-                                  {blogPosts.map((post) => (
+                                  {updates.map((post) => (
                                     <li key={post.id} className="flow-root">
                                       <a
                                         href={post.href}
                                         className="-m-3 p-3 flex rounded-lg hover:bg-gray-100"
                                       >
                                         <div className="hidden sm:block flex-shrink-0">
-                                          <img
+                                          {/* <img
                                             className="w-32 h-20 object-cover rounded-md"
                                             src={post.imageUrl}
                                             alt=""
-                                          />
+                                          /> */}
                                         </div>
                                         <div className="w-0 flex-1 sm:ml-8">
                                           <h4 className="text-base font-medium text-gray-900 truncate">
@@ -333,7 +328,7 @@ export default function Header({ content, sections, progressService }) {
                                   ))}
                                 </ul>
                               </div>
-                              <div className="mt-6 text-sm font-medium">
+                              {/* <div className="mt-6 text-sm font-medium">
                                 <a
                                   href="#"
                                   className="text-indigo-600 hover:text-indigo-500"
@@ -342,7 +337,7 @@ export default function Header({ content, sections, progressService }) {
                                   View all posts{" "}
                                   <span aria-hidden="true">&rarr;</span>
                                 </a>
-                              </div>
+                              </div> */}
                             </div>
                           </div>
                         </Popover.Panel>
@@ -412,7 +407,7 @@ export default function Header({ content, sections, progressService }) {
                 <div className="mt-6 sm:mt-8">
                   <nav>
                     <div className="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
-                      {solutions.map((item) => (
+                      {courses.map((item) => (
                         <a
                           key={item.name}
                           href={item.href}
