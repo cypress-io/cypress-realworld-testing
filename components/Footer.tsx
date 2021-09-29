@@ -1,11 +1,22 @@
 const navigation = {
   main: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Accessibility", href: "#" },
-    { name: "Partners", href: "#" },
+    { name: "Docs", href: "https://docs.cypress.io/" },
+    {
+      name: "Real World App",
+      href: "https://github.com/cypress-io/cypress-realworld-app",
+    },
+    {
+      name: "YouTube",
+      href: "https://www.youtube.com/channel/UC-EOsTo2l2x39e4JmSaWNRQ",
+    },
+    {
+      name: "Discord",
+      href: "https://discord.gg/cMjUZg7",
+    },
+    {
+      name: "GitHub",
+      href: "https://github.com/cypress-io/cypress",
+    },
   ],
 }
 
