@@ -188,14 +188,14 @@ export default function Header({ content, sections, progressService }) {
                                 className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex md:h-full lg:flex-col">
-                                  <div className="flex-shrink-0">
+                                  {/* <div className="flex-shrink-0">
                                     <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
                                       <TerminalIcon
                                         className="h-6 w-6"
                                         aria-hidden="true"
                                       />
                                     </span>
-                                  </div>
+                                  </div> */}
                                   <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
                                     <div>
                                       <p className="text-base font-medium text-gray-900">
