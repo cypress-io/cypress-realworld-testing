@@ -13,14 +13,14 @@ export default function SectionHero({ title, description }) {
             <p className="mt-3 max-w-md mx-auto text-lg text-purple-200 sm:text-xl md:mt-5 md:max-w-3xl">
               {description}
             </p>
-            <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
+            {/* <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
               <button
                 type="button"
                 className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
               >
                 Get Started
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </main>

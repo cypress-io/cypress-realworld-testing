@@ -3,6 +3,11 @@
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
     "description": "How to test a simple TodoMVC app with Cypress.",
+    "learnFeatures": [
+      "How to write Cypress tests",
+      "How to install and use Cypress",
+      "How to create custom Cypress commands"
+    ],
     "lessons": [
       {
         "title": "TodoMVC App Install & Overview",

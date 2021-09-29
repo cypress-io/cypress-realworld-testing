@@ -10,6 +10,7 @@ export default function SectionPage({
   title,
   lessons,
   description,
+  learnFeatures,
   lessonPath,
   content,
   sections,
@@ -30,6 +31,7 @@ export default function SectionPage({
       <SectionContent
         title={title}
         lessons={lessons}
+        learnFeatures={learnFeatures}
         progressService={progressService}
         lessonPath={lessonPath}
         section={section}
@@ -39,7 +41,8 @@ export default function SectionPage({
 }
 
 export async function getStaticProps({ params }) {
-  const { title, lessons, description } = learnJson[params.section]
+  const { title, lessons, description, learnFeatures } =
+    learnJson[params.section]
   const sections = Object.keys(learnJson)
 
   return {
@@ -47,6 +50,7 @@ export async function getStaticProps({ params }) {
       lessons,
       title,
       description,
+      learnFeatures,
       lessonPath: `${params.section}/${params.slug}`,
       content: learnJson,
       sections,
