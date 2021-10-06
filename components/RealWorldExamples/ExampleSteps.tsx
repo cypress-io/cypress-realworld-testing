@@ -1,4 +1,4 @@
-export default function ExampleSteps({ section, content, progressService }) {
+export default function ExampleSteps({ content }) {
   return (
     <nav aria-label="Progress" className="mt-12">
       <ol className="overflow-hidden">
@@ -18,9 +18,9 @@ export default function ExampleSteps({ section, content, progressService }) {
                   {lesson.title}
                 </a>
 
-                <span className="text-sm text-gray-500">
+                {/* <span className="text-sm text-gray-500">
                   {lesson.description}
-                </span>
+                </span> */}
               </span>
             </div>
           </li>

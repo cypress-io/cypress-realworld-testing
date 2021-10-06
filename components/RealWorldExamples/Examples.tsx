@@ -30,11 +30,7 @@ export default function Examples({ sections, content, progressService }) {
                       >
                         {content[section].description}
                       </p>
-                      <ExampleSteps
-                        section={section}
-                        content={content[section]}
-                        progressService={progressService}
-                      />
+                      <ExampleSteps content={content[section]} />
                     </div>
                   </div>
                 </div>
