@@ -9,12 +9,37 @@ import {
 } from "@heroicons/react/outline"
 
 const features = [
-  { name: "Push to Deploy", icon: CloudUploadIcon },
-  { name: "SSL Certificates", icon: LockClosedIcon },
-  { name: "Simple Queues", icon: RefreshIcon },
-  { name: "Advanced Security", icon: ShieldCheckIcon },
-  { name: "Powerful API", icon: CogIcon },
-  { name: "Database Backups", icon: ServerIcon },
+  {
+    name: "How to Test Authentication",
+    icon: CloudUploadIcon,
+    description: "Learn how to test authentication in multiple ways",
+  },
+  {
+    name: "Custom Cypress Commands",
+    icon: LockClosedIcon,
+    description: "The correct abstractions for reusability in your tests",
+  },
+  {
+    name: "How to Test Mobile and Desktop with a Single Test",
+    icon: RefreshIcon,
+    description: "Execute your test code depending upon viewport size",
+  },
+  {
+    name: "Data Driven Testing",
+    icon: ShieldCheckIcon,
+    description: "Learn how to drive tests with data from an external source",
+  },
+  {
+    name: "How to Create Tests Dynamically",
+    icon: CogIcon,
+    description:
+      "Use loops and libraries like lodash to dynamically generate test cases",
+  },
+  {
+    name: "How to Test GraphQL",
+    icon: ServerIcon,
+    description: "How to test various GraphQl queries and mutations",
+  },
 ]
 
 export default function Features() {
@@ -27,11 +52,11 @@ export default function Features() {
         <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
           A quick preview of what you’ll learn from our examples
         </p>
-        <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
+        {/* <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
           Phasellus lorem quam molestie id quisque diam aenean nulla in.
           Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend
           condimentum id viverra nulla.
-        </p>
+        </p> */}
         <div className="mt-12">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
@@ -50,8 +75,7 @@ export default function Features() {
                       {feature.name}
                     </h3>
                     <p className="mt-5 text-base text-gray-500">
-                      Ac tincidunt sapien vehicula erat auctor pellentesque
-                      rhoncus. Et magna sit morbi lobortis.
+                      {feature.description}
                     </p>
                   </div>
                 </div>
