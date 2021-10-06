@@ -20,7 +20,7 @@ export default function ExampleSteps({ section, content, progressService }) {
                 <a
                   href={`/real-world-examples/${lesson.slug}`}
                   data-test={`real-world-lesson-${index}`}
-                  className="text-xs font-semibold tracking-wide uppercase text-indigo-600"
+                  className="text-xs font-semibold tracking-wide uppercase text-blue-600"
                 >
                   {lesson.title}
                 </a>

@@ -77,10 +77,10 @@ export default function SectionContent({
                         <div key={index} className="relative mb-6">
                           <dt>
                             <CheckIcon
-                              className="absolute h-6 w-6 text-green-500"
+                              className="absolute h-6 w-6 text-blue-500"
                               aria-hidden="true"
                             />
-                            <p className="ml-9 text-lg leading-6 font-medium text-indigo-400">
+                            <p className="ml-9 text-lg leading-6 font-medium text-gray-600">
                               {feature}
                             </p>
                           </dt>

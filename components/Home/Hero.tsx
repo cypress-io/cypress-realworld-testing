@@ -20,7 +20,7 @@ export default function Hero() {
     <div className="">
       <div className="relative overflow-hidden">
         <main>
-          <div className="pt-10 bg-gray-900 sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
+          <div className="pt-10 bg-white sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
             <div className="mx-auto max-w-7xl lg:px-8">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                 <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
@@ -29,12 +29,12 @@ export default function Hero() {
                       data-test="hero-heading"
                       className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl"
                     >
-                      <span className="block">Real World Testing</span>
-                      <span className="block text-indigo-400">
-                        with Cypress
+                      <span className="block text-gray-900">
+                        Real World Testing
                       </span>
+                      <span className="block text-gray-900">with Cypress</span>
                     </h1>
-                    <p className="mt-3 text-base text-gray-300 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                    <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                       Learn from top industry experts and level-up your testing
                       knowledge - for free.
                     </p>
@@ -46,10 +46,10 @@ export default function Hero() {
                           <div key={feature.name} className="relative mb-6">
                             <dt>
                               <CheckIcon
-                                className="absolute h-6 w-6 text-green-500"
+                                className="absolute h-6 w-6 text-blue-500"
                                 aria-hidden="true"
                               />
-                              <p className="ml-9 text-lg leading-6 font-medium text-indigo-400">
+                              <p className="ml-9 text-lg leading-6 font-medium text-gray-500">
                                 {feature.name}
                               </p>
                             </dt>
@@ -75,13 +75,13 @@ export default function Hero() {
                               id="email"
                               type="email"
                               placeholder="Subscribe for Updates"
-                              className="block w-full px-4 py-3 rounded-md border-0 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
+                              className="block w-full px-4 py-3 rounded-md border-2text-base text-gray-900 placeholder-gray-500"
                             />
                           </div>
                           <div className="mt-3 sm:mt-0 sm:ml-3">
                             <button
                               type="submit"
-                              className="block w-full py-3 px-4 rounded-md shadow bg-indigo-500 text-white font-medium hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
+                              className="block w-full py-3 px-4 rounded-md shadow bg-blue-500 text-white font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
                             >
                               Subscribe
                             </button>
