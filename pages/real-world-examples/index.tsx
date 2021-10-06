@@ -19,11 +19,7 @@ export default function Home({ content, sections, rWESections }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero
-        sections={rWESections}
-        content={realWorldExamples}
-        progressService={progressService}
-      />
+      <Hero />
 
       <Features />
 
