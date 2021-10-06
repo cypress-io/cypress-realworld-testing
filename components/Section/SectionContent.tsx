@@ -49,7 +49,7 @@ export default function SectionContent({
         <div className="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
             <div className="relative z-10">
-              <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
+              <h2 className="text-base font-semibold tracking-wide uppercase">
                 {title}
               </h2>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">

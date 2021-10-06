@@ -139,7 +139,7 @@ export default function Header({ content, sections, progressService }) {
               </a>
             </div>
             <div className="md:hidden">
-              <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
@@ -152,7 +152,7 @@ export default function Header({ content, sections, progressService }) {
                       <Popover.Button
                         className={classNames(
                           open ? "text-gray-900" : "text-gray-500",
-                          "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         )}
                       >
                         <span>Courses</span>
@@ -184,7 +184,7 @@ export default function Header({ content, sections, progressService }) {
                               >
                                 <div className="flex md:h-full lg:flex-col">
                                   {/* <div className="flex-shrink-0">
-                                    <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
+                                    <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
                                       <TerminalIcon
                                         className="h-6 w-6"
                                         aria-hidden="true"
@@ -200,7 +200,7 @@ export default function Header({ content, sections, progressService }) {
                                         {content[section].description}
                                       </p>
                                     </div>
-                                    <p className="mt-2 text-sm font-medium text-indigo-600 lg:mt-4">
+                                    <p className="mt-2 text-sm font-medium text-blue-500 lg:mt-4">
                                       Get Started{" "}
                                       <span aria-hidden="true">&rarr;</span>
                                     </p>
@@ -220,7 +220,7 @@ export default function Header({ content, sections, progressService }) {
                       <Popover.Button
                         className={classNames(
                           open ? "text-gray-900" : "text-gray-500",
-                          "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         )}
                       >
                         <span>Resources</span>
@@ -261,7 +261,7 @@ export default function Header({ content, sections, progressService }) {
                                         className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-50"
                                       >
                                         <item.icon
-                                          className="flex-shrink-0 h-6 w-6 text-gray-400"
+                                          className="flex-shrink-0 h-6 w-6 text-blue-500"
                                           aria-hidden="true"
                                         />
                                         <span className="ml-4">
@@ -284,7 +284,7 @@ export default function Header({ content, sections, progressService }) {
                                         className="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-50"
                                       >
                                         <item.icon
-                                          className="flex-shrink-0 h-6 w-6 text-gray-400"
+                                          className="flex-shrink-0 h-6 w-6 text-blue-500"
                                           aria-hidden="true"
                                         />
                                         <span className="ml-4">
@@ -331,7 +331,7 @@ export default function Header({ content, sections, progressService }) {
                               {/* <div className="mt-6 text-sm font-medium">
                                 <a
                                   href="#"
-                                  className="text-indigo-600 hover:text-indigo-500"
+                                  className="text-blue-600 hover:text-blue-500"
                                 >
                                   {" "}
                                   View all posts{" "}
@@ -393,12 +393,12 @@ export default function Header({ content, sections, progressService }) {
                   <div>
                     <img
                       className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                      src="https://tailwindui.com/img/logos/workflow-mark-blue-600.svg"
                       alt="Workflow"
                     />
                   </div>
                   <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                       <span className="sr-only">Close menu</span>
                       <XIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -413,7 +413,7 @@ export default function Header({ content, sections, progressService }) {
                           href={item.href}
                           className="-m-3 flex items-center p-3 rounded-lg hover:bg-gray-50"
                         >
-                          <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
+                          <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
                             <item.icon className="h-6 w-6" aria-hidden="true" />
                           </div>
                           <div className="ml-4 text-base font-medium text-gray-900">
@@ -425,7 +425,7 @@ export default function Header({ content, sections, progressService }) {
                     <div className="mt-8 text-base">
                       <a
                         href="#"
-                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                        className="font-medium text-blue-600 hover:text-blue-500"
                       >
                         {" "}
                         View all products <span aria-hidden="true">&rarr;</span>
@@ -481,16 +481,13 @@ export default function Header({ content, sections, progressService }) {
                 <div className="mt-6">
                   <a
                     href="#"
-                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                    className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
                   >
                     Sign up
                   </a>
                   <p className="mt-6 text-center text-base font-medium text-gray-500">
                     Existing customer?{" "}
-                    <a
-                      href="#"
-                      className="text-indigo-600 hover:text-indigo-500"
-                    >
+                    <a href="#" className="text-blue-600 hover:text-blue-500">
                       Sign in
                     </a>
                   </p>
