@@ -2,7 +2,6 @@ import Head from "next/head"
 import Layout from "../../components/Layout"
 import SectionHero from "../../components/Section/SectionHero"
 import SectionContent from "../../components/Section/SectionContent"
-import { isLessonCompleted } from "../../utils/machineUtils"
 import { progressService } from "../../machines/progressService"
 import learnJson from "../../learn.json"
 
@@ -27,7 +26,11 @@ export default function SectionPage({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SectionHero title={title} description={description} />
+      <SectionHero
+        title={title}
+        description={description}
+        image={content[section].image}
+      />
       <SectionContent
         title={title}
         lessons={lessons}

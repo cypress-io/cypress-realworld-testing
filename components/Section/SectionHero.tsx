@@ -1,29 +1,29 @@
 import Image from "next/image"
 
-export default function SectionHero({ title, description }) {
+export default function SectionHero({ title, description, image }) {
   return (
-    <div className="relative bg-gradient-to-r from-purple-800 to-indigo-700">
-      <main className="lg:relative">
-        <div className="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
-          <div className="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
-            <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-              <span className="block xl:inline">{title}</span>{" "}
-              {/* <span className="block text-indigo-600 xl:inline">online business</span> */}
-            </h1>
-            <p className="mt-3 max-w-md mx-auto text-lg text-purple-200 sm:text-xl md:mt-5 md:max-w-3xl">
-              {description}
-            </p>
-            {/* <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
-              <button
-                type="button"
-                className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
-              >
-                Get Started
-              </button>
-            </div> */}
+    <div className="relative bg-white overflow-hidden">
+      <div className="relative pt-6 pb-16 sm:pb-24 lg:pb-32">
+        <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-32">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-8">
+            <div className="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
+              <h1>
+                <span className="mt-1 block text-4xl tracking-tight font-extrabold sm:text-5xl xl:text-6xl">
+                  <span className="block text-gray-900">{title}</span>
+                </span>
+              </h1>
+              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                {description}
+              </p>
+            </div>
+            <div className="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
+              <div className="relative mx-auto w-full rounded-lg shadow-lg lg:max-w-md">
+                <img className="w-full rounded-lg" src={image} />
+              </div>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
   )
 }
