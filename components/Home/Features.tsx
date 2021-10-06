@@ -1,44 +1,44 @@
 /* This example requires Tailwind CSS v2.0+ */
 import {
-  CloudUploadIcon,
-  CogIcon,
-  LockClosedIcon,
-  RefreshIcon,
-  ServerIcon,
-  ShieldCheckIcon,
+  LightBulbIcon,
+  BeakerIcon,
+  TerminalIcon,
+  DatabaseIcon,
+  CodeIcon,
+  AdjustmentsIcon,
 } from "@heroicons/react/outline"
 
 const features = [
   {
     name: "Testing Mindset",
-    icon: CloudUploadIcon,
+    icon: LightBulbIcon,
     description: "The mindset necessary when testing applications.",
   },
   {
     name: "Knowing What to Test",
-    icon: LockClosedIcon,
+    icon: BeakerIcon,
     description: "Know which parts of your application you should test.",
   },
   {
     name: "How to Debug Failing Tests",
-    icon: RefreshIcon,
+    icon: TerminalIcon,
     description:
       "Various tips, methods and techniques to help you debug your failing tests",
   },
   {
     name: "Database Initialization & Seeding",
-    icon: ShieldCheckIcon,
+    icon: DatabaseIcon,
     description: "How to create the data you need for your tests",
   },
   {
     name: "Types of Testing",
-    icon: CogIcon,
+    icon: CodeIcon,
     description:
       "The difference between unit, integration and end to end tests",
   },
   {
     name: "How to Test",
-    icon: ServerIcon,
+    icon: AdjustmentsIcon,
     description: "How to tests different apps from simple to complex",
   },
 ]

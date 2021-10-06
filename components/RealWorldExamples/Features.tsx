@@ -1,43 +1,43 @@
 /* This example requires Tailwind CSS v2.0+ */
 import {
-  CloudUploadIcon,
+  DesktopComputerIcon,
   CogIcon,
   LockClosedIcon,
-  RefreshIcon,
-  ServerIcon,
-  ShieldCheckIcon,
+  DatabaseIcon,
+  LightningBoltIcon,
+  CodeIcon,
 } from "@heroicons/react/outline"
 
 const features = [
   {
     name: "How to Test Authentication",
-    icon: CloudUploadIcon,
+    icon: LockClosedIcon,
     description: "Learn how to test authentication in multiple ways",
   },
   {
     name: "Custom Cypress Commands",
-    icon: LockClosedIcon,
+    icon: CogIcon,
     description: "The correct abstractions for reusability in your tests",
   },
   {
     name: "How to Test Mobile and Desktop",
-    icon: RefreshIcon,
+    icon: DesktopComputerIcon,
     description: "Execute your test code depending upon viewport size",
   },
   {
     name: "Data Driven Testing",
-    icon: ShieldCheckIcon,
+    icon: DatabaseIcon,
     description: "Learn how to drive tests with data from an external source",
   },
   {
     name: "How to Create Tests Dynamically",
-    icon: CogIcon,
+    icon: CodeIcon,
     description:
       "Use loops and libraries like lodash to dynamically generate test cases",
   },
   {
     name: "How to Test GraphQL",
-    icon: ServerIcon,
+    icon: LightningBoltIcon,
     description: "How to test various GraphQl queries and mutations",
   },
 ]
