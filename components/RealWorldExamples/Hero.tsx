@@ -1,11 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
-import RealWorldSteps from "./RealWorldSteps"
 
-export default function RealWorldExamples({
-  sections,
-  content,
-  progressService,
-}) {
+export default function RealWorldExamplesHero() {
   return (
     <>
       <hr />
