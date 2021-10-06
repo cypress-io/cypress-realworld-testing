@@ -1,10 +1,3 @@
-import { CheckIcon } from "@heroicons/react/solid"
-import { isLessonCompleted } from "../../utils/machineUtils"
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ")
-}
-
 export default function ExampleSteps({ section, content, progressService }) {
   return (
     <nav aria-label="Progress" className="mt-12">
