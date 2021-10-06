@@ -20,7 +20,7 @@ const features = [
     description: "The correct abstractions for reusability in your tests",
   },
   {
-    name: "How to Test Mobile and Desktop with a Single Test",
+    name: "How to Test Mobile and Desktop",
     icon: RefreshIcon,
     description: "Execute your test code depending upon viewport size",
   },
