@@ -73,8 +73,8 @@ export default function SectionContent({
                   {/* Features */}
                   <div className="mt-12">
                     <dl className="">
-                      {learnFeatures.map((feature) => (
-                        <div key={feature.name} className="relative mb-6">
+                      {learnFeatures.map((feature, index) => (
+                        <div key={index} className="relative mb-6">
                           <dt>
                             <CheckIcon
                               className="absolute h-6 w-6 text-green-500"
