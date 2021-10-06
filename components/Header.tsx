@@ -133,8 +133,8 @@ export default function Header({ content, sections, progressService }) {
                 <span className="sr-only">Workflow</span>
                 <img
                   className="h-8 w-auto sm:h-10"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                  alt=""
+                  src="/images/logo/cypress-logo.webp"
+                  alt="Cypress Logo"
                 />
               </a>
             </div>
