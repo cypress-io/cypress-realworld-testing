@@ -18,9 +18,9 @@ export default function ExampleSteps({ content }) {
                   {lesson.title}
                 </a>
 
-                {/* <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-500">
                   {lesson.description}
-                </span> */}
+                </span>
               </span>
             </div>
           </li>
