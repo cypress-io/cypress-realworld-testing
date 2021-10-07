@@ -15,7 +15,7 @@ const features = [
   },
 ]
 
-export default function Hero() {
+export default function HomeHero() {
   return (
     <div className="">
       <div className="relative overflow-hidden">

@@ -4,7 +4,7 @@ const HomeProgress = dynamic(() => import("./HomeProgress"), {
   ssr: false,
 })
 
-export default function Courses({ sections, content, progressService }) {
+export default function HomeCourses({ sections, content, progressService }) {
   return (
     <div className="relative bg-white pt-16 pb-32 overflow-hidden">
       {sections.map((section, index) => (

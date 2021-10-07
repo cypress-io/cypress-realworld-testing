@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function RealWorldExamples({
+export default function HomeRealWorldExamples({
   sections,
   content,
   progressService,

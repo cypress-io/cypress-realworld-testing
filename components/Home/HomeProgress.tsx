@@ -5,7 +5,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ section, content, progressService }) {
+export default function HomeProgress({ section, content, progressService }) {
   return (
     <nav aria-label="Progress" className="mt-12">
       <ol className="overflow-hidden">
