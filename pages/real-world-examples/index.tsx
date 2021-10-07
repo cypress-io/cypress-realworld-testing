@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
-import Features from "../../components/RealWorldExamples/Features"
+import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
 import Examples from "../../components/RealWorldExamples/Examples"
 import RWEHero from "../../components/RealWorldExamples/RWEHero"
 import { progressService } from "../../machines/progressService"
@@ -19,9 +19,9 @@ export default function Home({ content, sections, rWESections }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <RWEHero />
+      <RWEFeatures />
 
-      <Features />
+      <RWEHero />
 
       <Examples
         sections={rWESections}
