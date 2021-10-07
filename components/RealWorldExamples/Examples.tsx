@@ -1,11 +1,8 @@
 import dynamic from "next/dynamic"
 
-const ExampleSteps = dynamic(
-  () => import("../RealWorldExamples/ExampleSteps"),
-  {
-    ssr: false,
-  }
-)
+const RWEProgress = dynamic(() => import("./RWEProgress"), {
+  ssr: false,
+})
 
 export default function Examples({ sections, content, progressService }) {
   return (
@@ -30,7 +27,7 @@ export default function Examples({ sections, content, progressService }) {
                       >
                         {content[section].description}
                       </p>
-                      <ExampleSteps content={content[section]} />
+                      <RWEProgress content={content[section]} />
                     </div>
                   </div>
                 </div>
@@ -62,7 +59,7 @@ export default function Examples({ sections, content, progressService }) {
                       >
                         {content[section].description}
                       </p>
-                      <ExampleSteps content={content[section]} />
+                      <RWEProgress content={content[section]} />
                     </div>
                   </div>
                 </div>
