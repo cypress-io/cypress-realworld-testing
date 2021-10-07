@@ -1,4 +1,4 @@
-export default function ExampleSteps({ content }) {
+export default function RWEProgress({ content }) {
   return (
     <nav aria-label="Progress" className="mt-12">
       <ol className="overflow-hidden">
