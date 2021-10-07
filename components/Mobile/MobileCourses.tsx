@@ -23,7 +23,7 @@ export default function Courses({ sections, content, progressService }) {
                         {content[section].title}
                       </a>
                     </Link>
-                    <LessonSteps
+                    <MobileProgress
                       section={section}
                       content={content[section]}
                       progressService={progressService}
