@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Layout from "../components/Layout"
-import Hero from "../components/Home/Hero"
+import HomeHero from "../components/Home/HomeHero"
 import HomeFeatures from "../components/Home/HomeFeatures"
 import HomeCourses from "../components/Home/HomeCourses"
 import RealWorldExamples from "../components/Home/RealWorldExamples"
@@ -20,7 +20,7 @@ export default function Home({ content, sections, rWESections }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero />
+      <HomeHero />
       <HomeFeatures />
       <HomeCourses
         sections={sections}
