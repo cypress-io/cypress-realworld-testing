@@ -27,11 +27,7 @@ export default function Home({ content, sections, rWESections }) {
         content={content}
         progressService={progressService}
       />
-      <HomeRealWorldExamples
-        sections={rWESections}
-        content={realWorldExamples}
-        progressService={progressService}
-      />
+      <HomeRealWorldExamples />
     </Layout>
   )
 }
