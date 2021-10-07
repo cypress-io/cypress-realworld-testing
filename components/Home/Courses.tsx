@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
 
-const LessonProgress = dynamic(() => import("./LessonProgress"), {
+const HomeProgress = dynamic(() => import("./HomeProgress"), {
   ssr: false,
 })
 
@@ -27,7 +27,7 @@ export default function Courses({ sections, content, progressService }) {
                       >
                         {content[section].description}
                       </p>
-                      <LessonProgress
+                      <HomeProgress
                         section={section}
                         content={content[section]}
                         progressService={progressService}
@@ -71,7 +71,7 @@ export default function Courses({ sections, content, progressService }) {
                       >
                         {content[section].description}
                       </p>
-                      <LessonProgress
+                      <HomeProgress
                         section={section}
                         content={content[section]}
                         progressService={progressService}
