@@ -12,7 +12,7 @@ import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
-import LessonHero from "../../components/RealWorldExamples/Lesson/LessonHero"
+import RWELessonHero from "../../components/RealWorldExamples/Lesson/RWELessonHero"
 import LessonLayout from "../../components/RealWorldExamples/Lesson/LessonLayout"
 const RWENextLessonBtn = dynamic(
   () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
@@ -93,7 +93,7 @@ export default function LessonPage({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {lessonData.videoURL && <LessonHero lessonData={lessonData} />}
+      {lessonData.videoURL && <RWELessonHero lessonData={lessonData} />}
 
       <LessonLayout
         toc={toc}
