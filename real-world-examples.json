@@ -36,22 +36,22 @@
       {
         "title": "Unauthenticated Users",
         "slug": "unauthenticated-users",
-        "description": "tags: critical path, pathname assertion"
+        "description": "Tags: critical path, pathname assertion"
       },
       {
         "title": "Login Errors",
         "slug": "login-errors",
-        "description": "tags: unhappy path, commands, command chaining, forms"
+        "description": "Tags: unhappy path, commands, command chaining, forms"
       },
       {
         "title": "Invalid Users",
         "slug": "invalid-users",
-        "description": "tags: critical path, unhappy path, commands"
+        "description": "Tags: critical path, unhappy path, commands"
       },
       {
         "title": "Sign-up, Login, Create Bank Account and Logout",
         "slug": "sign-up-login-create-bank-account-and-logout",
-        "description": "tags: critical path, user journey, commands, command chaining, forms, network waiting, mobile conditional"
+        "description": "Tags: critical path, user journey, commands, command chaining, forms, network waiting, mobile conditional"
       }
     ]
   },
@@ -69,12 +69,12 @@
       {
         "title": "User Setting Form Errors",
         "slug": "user-setting-form-errors",
-        "description": "tags: critical path, unhappy path, dynamic tests with forEach(), forms"
+        "description": "Tags: critical path, unhappy path, dynamic tests with forEach(), forms"
       },
       {
         "title": "Updating User Settings",
         "slug": "updating-user-settings",
-        "description": "tags: critical path, happy path, forms, network waiting, mobile conditional, cy.intercept() , commands"
+        "description": "Tags: critical path, happy path, forms, network waiting, mobile conditional, cy.intercept() , commands"
       }
     ]
   },
@@ -92,12 +92,12 @@
       {
         "title": "Creating a New Bank Account",
         "slug": "creating-a-new-bank-account",
-        "description": "tags: critical path, happy path, forms, graphql, network waiting, mobile"
+        "description": "Tags: critical path, happy path, forms, graphql, network waiting, mobile"
       },
       {
         "title": "Users Without Bank Accounts",
         "slug": "users-without-bank-accounts",
-        "description": "tags: graphql, network waiting, network override"
+        "description": "Tags: graphql, network waiting, network override"
       }
     ]
   },
@@ -115,17 +115,23 @@
       {
         "title": "Submitting a Payment to Another User",
         "slug": "submitting-a-payment-to-another-user",
-        "description": "tags: happy path, multi step form, network waiting on multiple, format driven assertion, mobile, database/network driven assertions"
+        "description": "Tags: happy path, multi step form, network waiting on multiple, format driven assertion, mobile, database/network driven assertions"
       },
       {
         "title": "Verifying the Deposit of a Payment",
         "slug": "verifying-the-deposit-of-a-payment",
-        "description": "tags: happy path, multi step form, network waiting, complex command, mobile, switching user, database/network driven assertions"
+        "description": "Tags: happy path, multi step form, network waiting, complex command, mobile, switching user, database/network driven assertions"
       },
       {
+<<<<<<< HEAD
         "title": "Searching by Attributes",
         "slug": "searching-by-attributes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+=======
+        "title": "Seaching by Attributes",
+        "slug": "seaching-by-attributes",
+        "description": "Tags: happy path, data driven test, network waiting, form, network driven assertions"
+>>>>>>> dd194d8 (capitalized Tags in rwa examples descriptions)
       }
     ]
   },
@@ -143,22 +149,22 @@
       {
         "title": "App Layout and Responsiveness",
         "slug": "app-layout-and-responsiveness",
-        "description": "tags: happy path, mobile"
+        "description": "Tags: happy path, mobile"
       },
       {
         "title": "Renders Transactions Item Variations in Feed",
         "slug": "renders-transactions-item-variations-in-feed",
-        "description": "tags: happy path, fixture, network data driven test, dynamic driven test, element query, format driven assertion, cy.log, mobile, pagination"
+        "description": "Tags: happy path, fixture, network data driven test, dynamic driven test, element query, format driven assertion, cy.log, mobile, pagination"
       },
       {
         "title": "Filters Transaction Feeds by Date Range",
         "slug": "filters-transaction-feeds-by-date-range",
-        "description": "tags: happy path, dates, 3rd-party widget, network waiting, network data driven test, multiple dynamic driven tests, complex custom command"
+        "description": "Tags: happy path, dates, 3rd-party widget, network waiting, network data driven test, multiple dynamic driven tests, complex custom command"
       },
       {
         "title": "Mine Feed Only Shows Personal Transactions",
         "slug": "mine-feed-only-shows-personal-transactions",
-        "description": "tags: happy path, data driven test, network waiting, network driven assertions"
+        "description": "Tags: happy path, data driven test, network waiting, network driven assertions"
       }
     ]
   },
@@ -174,6 +180,7 @@
         "description": "Understand what is happening beforeEach() test is run"
       },
       {
+<<<<<<< HEAD
         "title": "Renders an Empty Notifications State",
         "slug": "renders-an-empty-notifications-state",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -182,6 +189,16 @@
         "title": "Notifications between several users",
         "slug": "notifications-between-several-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+=======
+        "title": "Notifications between different users",
+        "slug": "notifications-between-different-users",
+        "description": "Tags: happy path, data driven test, network waiting, switching users, commands of commands, command chaining"
+      },
+      {
+        "title": "Renders an Empty Notifications State",
+        "slug": "renders-an-empty-notifications-state",
+        "description": "Tags: unhappy path, inline fixture, mobile"
+>>>>>>> dd194d8 (capitalized Tags in rwa examples descriptions)
       }
     ]
   },
@@ -204,12 +221,12 @@
       {
         "title": "Comments on a Transaction",
         "slug": "comments-on-a-transaction",
-        "description": "tags: unhappy path, network assertion with UI validation"
+        "description": "Tags: unhappy path, network assertion with UI validation"
       },
       {
         "title": "Rejects a Transaction Request",
         "slug": "rejects-a-transaction-request",
-        "description": "tags: unhappy path, network assertion with UI validation"
+        "description": "Tags: unhappy path, network assertion with UI validation"
       },
       {
         "title": "Does not Display Accept or Reject Buttons on Completed Request",
