@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
-import Courses from "./Courses"
+import MobileCourses from "./MobileCourses"
 import { XIcon } from "@heroicons/react/outline"
 
 export default function MobileProgressMenu({
@@ -76,7 +76,7 @@ export default function MobileProgressMenu({
                 </div>
               </div>
               <div className="mt-6">
-                <Courses
+                <MobileCourses
                   sections={sections}
                   content={content}
                   progressService={progressService}
