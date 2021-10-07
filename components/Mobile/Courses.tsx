@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
 
-const LessonSteps = dynamic(() => import("./LessonSteps"), {
+const MobileProgress = dynamic(() => import("./MobileProgress"), {
   ssr: false,
 })
 
