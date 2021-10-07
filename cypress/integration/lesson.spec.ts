@@ -11,6 +11,23 @@ describe("Multiple Choice Challenge", () => {
     cy.getBySel("lesson-hero").should("not.exist")
   })
 
+  it("the TOC links to the correct content section when clicked", () => {
+    cy.getBySel("toc-sidebar").within(() => {
+      cy.get("a").each(($link) => {
+        const href = $link.attr("href")
+        console.log(href)
+        cy.wrap($link).click()
+
+        cy.window().then(($window) => {
+          expect($window.scrollY).to.be.closeTo(
+            Math.ceil(cy.$$(`${href}`).offset().top),
+            5
+          )
+        })
+      })
+    })
+  })
+
   it("shows the challenge", () => {
     cy.getBySel("multiple-choice-challenge").should("exist")
   })
