@@ -14,8 +14,8 @@ import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import LessonHero from "../../components/RealWorldExamples/Lesson/LessonHero"
 import LessonLayout from "../../components/RealWorldExamples/Lesson/LessonLayout"
-const NextLessonBtn = dynamic(
-  () => import("../../components/RealWorldExamples/Lesson/NextLessonBtn"),
+const RWENextLessonBtn = dynamic(
+  () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
   {
     ssr: false,
   }
@@ -106,7 +106,7 @@ export default function LessonPage({
         lessonData={lessonData}
       />
 
-      <NextLessonBtn
+      <RWENextLessonBtn
         path={nextLesson}
         isCompleted={isLessonCompleted(progressService, lessonPath)}
       />
