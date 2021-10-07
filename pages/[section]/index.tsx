@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
-import SectionHero from "../../components/Section/SectionHero"
-import SectionContent from "../../components/Section/SectionContent"
+import SectionHero from "../../components/Course/SectionHero"
+import CourseContent from "../../components/Course/CourseContent"
 import { progressService } from "../../machines/progressService"
 import learnJson from "../../learn.json"
 
@@ -31,7 +31,7 @@ export default function SectionPage({
         description={description}
         image={content[section].image}
       />
-      <SectionContent
+      <CourseContent
         title={title}
         lessons={lessons}
         learnFeatures={learnFeatures}
