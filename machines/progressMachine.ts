@@ -8,33 +8,11 @@ import {
 } from "../utils/machineUtils"
 import learnJson from "../learn.json"
 
-// complete challenge
-// skip challenge
-// disable all challenges
-
-function sectionCompleted(section) {
-  // filter stepsCompleted from state and compare length to total lessons in learn.json
-}
-
-function isLessonCompleted(lesson) {
-  // via _.includes, check that lesson is in state stepsCompleted
-}
-
-function isSectionStarted(lesson) {
-  // via _.includes, check that the section is contained in one of the lessons
-}
-
 const defaultContext: ProgressContext = {
   sectionsCompleted: [],
   lessons: [],
   disableChallenges: false,
 }
-
-// progressService.state.matches("ready")
-// iterate over navigation, all are "uncompleted"
-
-// progressService.state.matches("inProgress")
-// iterate over sections and lessons to determine current lesson
 
 export const progressMachine = createMachine(
   {
