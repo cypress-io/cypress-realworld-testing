@@ -6,14 +6,8 @@ const pages = [
   { name: "Project Nero", href: "#", current: true },
 ]
 
-export default function Breadcrumbs({
-  lessonPath,
-  sectionLessons,
-  sectionTitle,
-  lessonData,
-}) {
-  const [sectionSlug, lessonSlug] = lessonPath.split("/")
-  const lessonTitle = sectionLessons
+export default function Breadcrumbs({ lessonPath, sectionTitle, lessonData }) {
+  const [sectionSlug] = lessonPath.split("/")
 
   return (
     <nav
