@@ -1,11 +1,4 @@
-import { CheckIcon } from "@heroicons/react/solid"
-import { isLessonCompleted } from "../../utils/machineUtils"
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ")
-}
-
-export default function ExampleSteps({ section, content, progressService }) {
+export default function ExampleSteps({ content }) {
   return (
     <nav aria-label="Progress" className="mt-12">
       <ol className="overflow-hidden">
@@ -20,7 +13,7 @@ export default function ExampleSteps({ section, content, progressService }) {
                 <a
                   href={`/real-world-examples/${lesson.slug}`}
                   data-test={`real-world-lesson-${index}`}
-                  className="text-xs font-semibold tracking-wide uppercase text-indigo-600"
+                  className="text-xs font-semibold tracking-wide uppercase text-gray-900"
                 >
                   {lesson.title}
                 </a>

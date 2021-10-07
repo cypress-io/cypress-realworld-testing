@@ -3,6 +3,7 @@
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
     "description": "How to test a simple TodoMVC app with Cypress.",
+    "image": "/images/courses/todo-mvc.png",
     "learnFeatures": [
       "How to write Cypress tests",
       "How to install and use Cypress",
@@ -124,6 +125,7 @@
     "title": "Testing Foundations",
     "slug": "testing-foundations",
     "description": "The fundamentals you need write great tests.",
+    "image": "/images/courses/cypress-features.jpg",
     "learnFeatures": [
       "Learn what to test and why",
       "Arrange, Act, Assert",
@@ -166,6 +168,7 @@
     "title": "Cypress Fundamentals",
     "slug": "cypress-fundamentals",
     "description": "The aspects of Cypress you must know.",
+    "image": "/images/courses/cypress-rwa.png",
     "learnFeatures": [
       "How to use Aliases",
       "How to chain methods and assertions together",
@@ -208,6 +211,7 @@
     "title": "Advanced Cypress Concepts",
     "slug": "advanced-cypress-concepts",
     "description": "Some of the more advanced concepts in Cypress that take your tests to the next level.",
+    "image": "/images/courses/pay-app.png",
     "learnFeatures": [
       "How to debug test failures",
       "Database initialization and seeding",

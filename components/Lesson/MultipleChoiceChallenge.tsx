@@ -22,7 +22,7 @@ export default function LessonChallenge({
       <div data-test="multiple-choice-challenge" className="py-12 flex">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">
+            <h2 className="text-base text-blue-500 font-semibold tracking-wide uppercase">
               Unlock the Next Lesson
             </h2>
             <p className="mt-6 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
