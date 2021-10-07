@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
 import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
-import Examples from "../../components/RealWorldExamples/Examples"
+import RWETests from "../../components/RealWorldExamples/RWETests"
 import RWEHero from "../../components/RealWorldExamples/RWEHero"
 import { progressService } from "../../machines/progressService"
 import learnJson from "../../learn.json"
@@ -23,7 +23,7 @@ export default function Home({ content, sections, rWESections }) {
 
       <RWEHero />
 
-      <Examples
+      <RWETests
         sections={rWESections}
         content={realWorldExamples}
         progressService={progressService}
