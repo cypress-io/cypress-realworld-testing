@@ -13,7 +13,7 @@ import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import RWELessonHero from "../../components/RealWorldExamples/Lesson/RWELessonHero"
-import LessonLayout from "../../components/RealWorldExamples/Lesson/LessonLayout"
+import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELessonLayout"
 const RWENextLessonBtn = dynamic(
   () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
   {
@@ -95,7 +95,7 @@ export default function LessonPage({
 
       {lessonData.videoURL && <RWELessonHero lessonData={lessonData} />}
 
-      <LessonLayout
+      <RWELessonLayout
         toc={toc}
         source={source}
         components={components}
