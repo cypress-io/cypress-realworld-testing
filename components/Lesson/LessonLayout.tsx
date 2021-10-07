@@ -1,5 +1,5 @@
 import LessonToc from "../../components/Lesson/LessonToc"
-import Breadcrumbs from "./Breadcrumbs"
+import LessonBreadcrumbs from "./LessonLessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import dynamic from "next/dynamic"
 const LessonProgress = dynamic(() => import("./LessonProgress"), {
@@ -18,7 +18,7 @@ export default function LessonLayout({
 }) {
   return (
     <>
-      <Breadcrumbs
+      <LessonBreadcrumbs
         lessonPath={lessonPath}
         sectionLessons={sectionLessons}
         sectionTitle={sectionTitle}
