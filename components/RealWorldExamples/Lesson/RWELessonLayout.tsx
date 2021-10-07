@@ -18,12 +18,8 @@ export default function LessonLayout({
 }) {
   return (
     <>
-      <RWELessonBreadcrumbs
-        lessonPath={lessonPath}
-        sectionLessons={sectionLessons}
-        sectionTitle={sectionTitle}
-        lessonData={lessonData}
-      />
+      <RWELessonBreadcrumbs lessonData={lessonData} />
+
       <div className="min-h-screen my-20">
         <div className="py-6">
           <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
