@@ -3,7 +3,7 @@ import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeFeatures from "../components/Home/HomeFeatures"
 import HomeCourses from "../components/Home/HomeCourses"
-import RealWorldExamples from "../components/Home/RealWorldExamples"
+import HomeRealWorldExamples from "../components/Home/HomeRealWorldExamples"
 import learnJson from "../learn.json"
 import realWorldExamples from "../real-world-examples.json"
 import { progressService } from "../machines/progressService"
@@ -27,7 +27,7 @@ export default function Home({ content, sections, rWESections }) {
         content={content}
         progressService={progressService}
       />
-      <RealWorldExamples
+      <HomeRealWorldExamples
         sections={rWESections}
         content={realWorldExamples}
         progressService={progressService}
