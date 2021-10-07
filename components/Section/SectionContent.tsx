@@ -8,7 +8,7 @@ const NextLessonBtn = dynamic(
   }
 )
 
-const SectionSteps = dynamic(() => import("./SectionSteps"), {
+const SectionProgress = dynamic(() => import("./SectionProgress"), {
   ssr: false,
 })
 
@@ -53,7 +53,7 @@ export default function SectionContent({
                 {title}
               </h2>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
-                <SectionSteps
+                <SectionProgress
                   lessonPath={lessonPath}
                   lessons={lessons}
                   progressService={progressService}
