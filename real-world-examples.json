@@ -25,102 +25,102 @@
   "authentication": {
     "title": "Authentication",
     "slug": "authentication",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "Users can signup, login and logout. Errors are displayed and handled correctly.",
     "image": "/images/real-world-examples/auth.png",
     "lessons": [
       {
         "title": "Authentication Overview and Setup",
         "slug": "authentication-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Understand what is happening beforeEach() test is run"
       },
       {
         "title": "Unauthenticated Users",
         "slug": "unauthenticated-users",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: critical path, pathname assertion"
       },
       {
         "title": "Login Errors",
         "slug": "login-errors",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: unhappy path, commands, command chaining, forms"
       },
       {
         "title": "Invalid Users",
         "slug": "invalid-users",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: critical path, unhappy path, commands"
       },
       {
         "title": "Sign-up, Login, Create Bank Account and Logout",
         "slug": "sign-up-login-create-bank-account-and-logout",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: critical path, user journey, commands, command chaining, forms, network waiting, mobile conditional"
       }
     ]
   },
   "user-settings": {
     "title": "User Settings",
     "slug": "user-settings",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "Users can update their account settings. Errors are displayed and handled correctly.",
     "image": "/images/real-world-examples/user-settings.png",
     "lessons": [
       {
         "title": "User Settings Overview and Setup",
         "slug": "user-settings-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Understand what is happening beforeEach() test is run"
       },
       {
         "title": "User Setting Form Errors",
         "slug": "user-setting-form-errors",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: critical path, unhappy path, dynamic tests with forEach(), forms"
       },
       {
         "title": "Updating User Settings",
         "slug": "updating-user-settings",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: critical path, happy path, forms, network waiting, mobile conditional, cy.intercept() , commands"
       }
     ]
   },
   "bank-accounts": {
     "title": "Bank Accounts",
     "slug": "bank-accounts",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "Users can add and remove bank accounts.",
     "image": "/images/real-world-examples/bank-accounts.png",
     "lessons": [
       {
         "title": "Bank Accounts Overview and Setup",
         "slug": "bank-accounts-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Understand what is happening beforeEach() test is run"
       },
       {
         "title": "Creating a New Bank Account",
         "slug": "creating-a-new-bank-account",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: critical path, happy path, forms, graphql, network waiting, mobile"
       },
       {
         "title": "Users Without Bank Accounts",
         "slug": "users-without-bank-accounts",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: graphql, network waiting, network override"
       }
     ]
   },
   "new-transactions": {
     "title": "New Transactions",
     "slug": "new-transactions",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "Users can send and receive payments. Transactions can be filtered and searched.",
     "image": "/images/real-world-examples/new-transactions.png",
     "lessons": [
       {
         "title": "New Transaction Overview and Setup",
         "slug": "new-transaction-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Understand what is happening beforeEach() test is run"
       },
       {
         "title": "Submitting a Payment to Another User",
         "slug": "submitting-a-payment-to-another-user",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: happy path, multi step form, network waiting on multiple, format driven assertion, mobile, database/network driven assertions"
       },
       {
         "title": "Verifying the Deposit of a Payment",
         "slug": "verifying-the-deposit-of-a-payment",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: happy path, multi step form, network waiting, complex command, mobile, switching user, database/network driven assertions"
       },
       {
         "title": "Searching by Attributes",
@@ -132,46 +132,46 @@
   "transaction-feeds": {
     "title": "Transaction Feeds",
     "slug": "transaction-feeds",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "The application UI renders the correct transactions in different states.",
     "image": "/images/real-world-examples/transaction-feeds.png",
     "lessons": [
       {
         "title": "Transaction Feeds Overview and Setup",
         "slug": "transaction-feeds-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Understand what is happening beforeEach() test is run"
       },
       {
         "title": "App Layout and Responsiveness",
         "slug": "app-layout-and-responsiveness",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: happy path, mobile"
       },
       {
         "title": "Renders Transactions Item Variations in Feed",
         "slug": "renders-transactions-item-variations-in-feed",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: happy path, fixture, network data driven test, dynamic driven test, element query, format driven assertion, cy.log, mobile, pagination"
       },
       {
         "title": "Filters Transaction Feeds by Date Range",
         "slug": "filters-transaction-feeds-by-date-range",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: happy path, dates, 3rd-party widget, network waiting, network data driven test, multiple dynamic driven tests, complex custom command"
       },
       {
         "title": "Mine Feed Only Shows Personal Transactions",
         "slug": "mine-feed-only-shows-personal-transactions",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: happy path, data driven test, network waiting, network driven assertions"
       }
     ]
   },
   "notifications": {
     "title": "Notifications",
     "slug": "notifications",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "Notifications and their relationships with users.",
     "image": "/images/real-world-examples/notifications.png",
     "lessons": [
       {
         "title": "Notifications Overview and Setup",
         "slug": "notifications-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Understand what is happening beforeEach() test is run"
       },
       {
         "title": "Renders an Empty Notifications State",
@@ -188,7 +188,7 @@
   "transaction-view": {
     "title": "Transaction View",
     "slug": "transaction-view",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "description": "Transaction details display the correct information in various states.",
     "image": "/images/real-world-examples/transaction-view.png",
     "lessons": [
       {
@@ -204,12 +204,12 @@
       {
         "title": "Comments on a Transaction",
         "slug": "comments-on-a-transaction",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: unhappy path, network assertion with UI validation"
       },
       {
         "title": "Rejects a Transaction Request",
         "slug": "rejects-a-transaction-request",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "tags: unhappy path, network assertion with UI validation"
       },
       {
         "title": "Does not Display Accept or Reject Buttons on Completed Request",
