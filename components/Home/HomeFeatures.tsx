@@ -1,4 +1,3 @@
-/* This example requires Tailwind CSS v2.0+ */
 import {
   LightBulbIcon,
   BeakerIcon,
@@ -53,10 +52,6 @@ export default function HomeFeatures() {
         <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
           A quick preview of what you’ll learn
         </p>
-        {/* <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
-          A free and open-source curriculum to learn how testing is done in the
-          real world.
-        </p> */}
         <div className="mt-12">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
