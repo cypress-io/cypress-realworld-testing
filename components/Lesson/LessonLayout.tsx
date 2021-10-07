@@ -62,6 +62,15 @@ export default function LessonLayout({
           </div>
         </div>
       </div>
+
+      <div id="modal">
+        <div className="modal-content">
+          <span className="close">&times;</span>
+          <img src="" alt="" />
+        </div>
+      </div>
+
+      <Script src="/scripts/modal.js" />
     </>
   )
 }
