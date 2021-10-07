@@ -2,7 +2,7 @@ import Head from "next/head"
 import Layout from "../components/Layout"
 import Hero from "../components/Home/Hero"
 import Features from "../components/Home/Features"
-import Courses from "../components/Home/Courses"
+import HomeCourses from "../components/Home/HomeCourses"
 import RealWorldExamples from "../components/Home/RealWorldExamples"
 import learnJson from "../learn.json"
 import realWorldExamples from "../real-world-examples.json"
@@ -22,7 +22,7 @@ export default function Home({ content, sections, rWESections }) {
 
       <Hero />
       <Features />
-      <Courses
+      <HomeCourses
         sections={sections}
         content={content}
         progressService={progressService}
