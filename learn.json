@@ -11,7 +11,7 @@
     ],
     "lessons": [
       {
-        "title": "TodoMVC App Install & Overview",
+        "title": "TodoMVC App Install and Overview",
         "slug": "todomvc-app-install-and-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "videoURL": null,
@@ -103,7 +103,7 @@
       },
       {
         "title": "Testing what isn't there",
-        "slug": "testing-what-isnt-there",
+        "slug": "testing-what-isn't-there",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         "challenges": [
           {
@@ -129,7 +129,7 @@
     "learnFeatures": [
       "Learn what to test and why",
       "Arrange, Act, Assert",
-      "The Difference between Unit, Integration & E2E tests"
+      "The Difference between Unit, Integration and E2E tests"
     ],
     "lessons": [
       {
@@ -144,7 +144,7 @@
       },
       {
         "title": "Manual vs Automated Testing",
-        "slug": "manual-vs-automated",
+        "slug": "manual-vs-automated-testing",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
@@ -197,17 +197,17 @@
       },
       {
         "title": "Cypress UI Overview",
-        "slug": "cypress-best-practices",
+        "slug": "cypress-ui-overview",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "How to Debug Failing Tests",
-        "slug": "cypress-best-practices",
+        "slug": "how-to-debug-failing-tests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Cypress is just JavaScript",
-        "slug": "cypress-best-practices",
+        "slug": "cypress-is-just-javascript",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -230,7 +230,7 @@
       },
       {
         "title": "Running Cypress in CI",
-        "slug": "managing-your-ci-pipeline",
+        "slug": "running-cypress-in-ci",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
@@ -239,8 +239,8 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Integration & API Tests",
-        "slug": "intercepting-network-requests",
+        "title": "Integration and API Tests",
+        "slug": "integration-and-api-tests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
@@ -250,17 +250,17 @@
       },
       {
         "title": "How to Test Various Browsers and Viewports",
-        "slug": "how-to-debug-failing-tests",
+        "slug": "how-to-test-various-browsers-and-viewports",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Important Cypress Methods You Need to Know",
-        "slug": "cypress-ui-overview",
+        "slug": "important-cypress-methods-you-need-to-know",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Using Data to Build Dynamic Tests",
-        "slug": "how-to-test-various-browsers-and-viewports",
+        "slug": "using-data-to-build-dynamic-tests",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
