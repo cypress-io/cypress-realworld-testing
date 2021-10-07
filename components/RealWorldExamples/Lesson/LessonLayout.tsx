@@ -2,7 +2,7 @@ import LessonToc from "../../Lesson/LessonToc"
 import Breadcrumbs from "./Breadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import dynamic from "next/dynamic"
-const LessonSteps = dynamic(() => import("../../Lesson/LessonSteps"), {
+const LessonProgress = dynamic(() => import("../../Lesson/LessonProgress"), {
   ssr: false,
 })
 
@@ -52,7 +52,7 @@ export default function LessonLayout({
             <aside className="hidden xl:block xl:col-span-3">
               <div className="sticky top-6 space-y-4">
                 <p className="font-semibold mb-6">{sectionTitle}</p>
-                <LessonSteps
+                <LessonProgress
                   sectionLessons={sectionLessons}
                   progressService={progressService}
                   lessonPath={lessonPath}
