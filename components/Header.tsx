@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
-import MobileProgressMenu from "./Mobile/ProgressMenu"
+import MobileNav from "./Mobile/MobileNav"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
@@ -497,7 +497,7 @@ export default function Header({ content, sections, progressService }) {
           </Popover.Panel>
         </Transition>
       </Popover>
-      <MobileProgressMenu
+      <MobileNav
         content={content}
         sections={sections}
         progressService={progressService}
