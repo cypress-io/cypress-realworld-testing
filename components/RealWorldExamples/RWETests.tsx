@@ -4,7 +4,7 @@ const RWEProgress = dynamic(() => import("./RWEProgress"), {
   ssr: false,
 })
 
-export default function Examples({ sections, content, progressService }) {
+export default function RWETests({ sections, content, progressService }) {
   return (
     <div className="relative bg-white py-32 overflow-hidden">
       {sections.map((section, index) => (
