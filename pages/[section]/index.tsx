@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
-import SectionHero from "../../components/Course/SectionHero"
+import CourseHero from "../../components/Course/CourseHero"
 import CourseContent from "../../components/Course/CourseContent"
 import { progressService } from "../../machines/progressService"
 import learnJson from "../../learn.json"
@@ -26,7 +26,7 @@ export default function SectionPage({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SectionHero
+      <CourseHero
         title={title}
         description={description}
         image={content[section].image}

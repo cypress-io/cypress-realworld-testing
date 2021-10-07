@@ -9,7 +9,7 @@ const SectionProgress = dynamic(() => import("./SectionProgress"), {
   ssr: false,
 })
 
-export default function SectionContent({
+export default function CourseContent({
   title,
   lessons,
   learnFeatures,

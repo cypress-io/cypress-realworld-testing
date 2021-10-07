@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-export default function SectionHero({ title, description, image }) {
+export default function CourseHero({ title, description, image }) {
   return (
     <div className="relative bg-white overflow-hidden">
       <div className="relative pt-6 pb-16 sm:pb-24 lg:pb-32">
