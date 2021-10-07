@@ -9,21 +9,6 @@ const SectionProgress = dynamic(() => import("./SectionProgress"), {
   ssr: false,
 })
 
-const features = [
-  {
-    name: "How to Install Cypress",
-    description: "",
-  },
-  {
-    name: "How to Write an E2E Test",
-    description: "",
-  },
-  {
-    name: "The Meaning of Life",
-    description: "",
-  },
-]
-
 export default function SectionContent({
   title,
   lessons,
@@ -32,12 +17,7 @@ export default function SectionContent({
   lessonPath,
   section,
 }) {
-  const stats = [
-    { label: "Lessons", value: lessons.length },
-    // { label: "Total Time", value: "2 Hours" },
-    // { label: "Fun Scale", value: "100" },
-    // { label: "Raised", value: "$25M" },
-  ]
+  const stats = [{ label: "Lessons", value: lessons.length }]
 
   return (
     <>
