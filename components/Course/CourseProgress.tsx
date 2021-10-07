@@ -5,7 +5,11 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ lessonPath, lessons, progressService }) {
+export default function CourseProgress({
+  lessonPath,
+  lessons,
+  progressService,
+}) {
   const [sectionSlug] = lessonPath.split("/")
 
   return (
