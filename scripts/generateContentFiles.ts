@@ -19,7 +19,10 @@ ${lesson.description}
 ${lesson.description}`
 
     fs.writeFile(
-      path.join(process.cwd(), `/content/${section}/${lesson.slug}.mdx`),
+      path.join(
+        process.cwd(),
+        `/content/courses/${section}/${lesson.slug}.mdx`
+      ),
       fileData,
       (err) => {
         if (err) {
