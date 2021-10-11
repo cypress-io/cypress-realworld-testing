@@ -24,34 +24,6 @@ import {
 } from "@heroicons/react/outline"
 import { ChevronDownIcon } from "@heroicons/react/solid"
 
-const courses = [
-  {
-    name: "Testing Your First Application",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
-    href: "#",
-    icon: TerminalIcon,
-  },
-  {
-    name: "Testing Foundations",
-    description: "Speak directly to your customers in a more meaningful way.",
-    href: "#",
-    icon: CursorClickIcon,
-  },
-  {
-    name: "Cypress Fundamentals",
-    description: "Your customers' data will be safe and secure.",
-    href: "#",
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: "Advanced Cypress Concepts",
-    description: "Connect with third-party tools that you're already using.",
-    href: "#",
-    icon: ViewGridIcon,
-  },
-]
-
 const company = [
   {
     name: "Cypress.io",
