@@ -176,14 +176,6 @@ export default function Header({ content, sections, progressService }) {
                                 className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex md:h-full lg:flex-col">
-                                  {/* <div className="flex-shrink-0">
-                                    <span className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-blue-500 text-white sm:h-12 sm:w-12">
-                                      <TerminalIcon
-                                        className="h-6 w-6"
-                                        aria-hidden="true"
-                                      />
-                                    </span>
-                                  </div> */}
                                   <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
                                     <div>
                                       <p className="text-base font-medium text-gray-900">
@@ -301,13 +293,7 @@ export default function Header({ content, sections, progressService }) {
                                         href={post.href}
                                         className="-m-3 p-3 flex rounded-lg hover:bg-gray-100"
                                       >
-                                        <div className="hidden sm:block flex-shrink-0">
-                                          {/* <img
-                                            className="w-32 h-20 object-cover rounded-md"
-                                            src={post.imageUrl}
-                                            alt=""
-                                          /> */}
-                                        </div>
+                                        <div className="hidden sm:block flex-shrink-0"></div>
                                         <div className="w-0 flex-1 sm:ml-8">
                                           <h4 className="text-base font-medium text-gray-900 truncate">
                                             {post.name}
