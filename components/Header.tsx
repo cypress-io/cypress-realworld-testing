@@ -6,21 +6,16 @@ import Image from "next/image"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
-  CursorClickIcon,
   GlobeAltIcon,
   InformationCircleIcon,
   MenuIcon,
-  ShieldCheckIcon,
-  XIcon,
   SearchIcon,
-  ViewGridIcon,
   ChatAltIcon,
   FilmIcon,
   CodeIcon,
   NewspaperIcon,
   UserGroupIcon,
   TemplateIcon,
-  TerminalIcon,
 } from "@heroicons/react/outline"
 import { ChevronDownIcon } from "@heroicons/react/solid"
 
