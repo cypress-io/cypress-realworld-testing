@@ -1,14 +1,14 @@
 # Pages
 
-The application contains the following pages.
+All of the pages in the application and how Next.js uses some of them to generate [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes).
 
 ## index.tsx
 
-This is the index/home page of the app
+This is the index/home page of the app, i.e., `/`
 
 ## \_app.tsx
 
-This page acts like a "layout" page and wraps all of the other pages within the app.
+This page acts like a "layout" page and wraps all of the other pages within the app
 
 ## [section]/
 
