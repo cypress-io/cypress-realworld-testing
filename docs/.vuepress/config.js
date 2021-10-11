@@ -5,8 +5,13 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: "Directory Structure", // required
-        path: "/directory-structure/", // optional, link of the title, which should be an absolute path and must exist
+        title: "Directory Structure",
+        path: "/directory-structure/",
+      },
+      {
+        title: "Pages",
+        path: "/pages/",
+        children: ["#"],
       },
     ],
   },
