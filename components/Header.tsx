@@ -2,6 +2,7 @@ import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import MobileNav from "./Mobile/MobileNav"
 import Link from "next/link"
+import Image from "next/image"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
@@ -126,10 +127,12 @@ export default function Header({ content, sections, progressService }) {
               <Link href="/">
                 <a className="flex">
                   <span className="sr-only">Workflow</span>
-                  <img
+                  <Image
                     className="h-8 w-auto sm:h-10"
                     src="/images/logo/cypress-logo.webp"
                     alt="Cypress Logo"
+                    height={40}
+                    width={120}
                   />
                 </a>
               </Link>
