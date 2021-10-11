@@ -10,9 +10,8 @@
     "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
     "dev": "next dev",
     "dev:watch": "next-remote-watch ./content",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "generate-content": "ts-node scripts/generateContentFiles.ts",
     "generate-rwe-content": "ts-node scripts/generateRealWorldExamples.ts",
     "lint": "next lint",
@@ -69,6 +68,6 @@
     "tsconfig-paths": "^3.10.1",
     "typescript": "^4.3.5",
     "url-loader": "^4.1.1",
-    "vitepress": "^0.20.0"
+    "vuepress": "^1.8.2"
   }
 }
