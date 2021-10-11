@@ -6,14 +6,8 @@ const pages = [
   { name: "Project Nero", href: "#", current: true },
 ]
 
-export default function Breadcrumbs({
-  lessonPath,
-  sectionLessons,
-  sectionTitle,
-  lessonData,
-}) {
-  const [sectionSlug, lessonSlug] = lessonPath.split("/")
-  const lessonTitle = sectionLessons
+export default function Breadcrumbs({ lessonPath, sectionTitle, lessonData }) {
+  const [sectionSlug] = lessonPath.split("/")
 
   return (
     <nav
@@ -51,9 +45,9 @@ export default function Breadcrumbs({
             >
               <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
             </svg>
-            <Link href="/real-world-examples">
+            <Link href={`/${sectionSlug}`}>
               <a className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">
-                Real World Examples
+                {sectionTitle}
               </a>
             </Link>
           </div>

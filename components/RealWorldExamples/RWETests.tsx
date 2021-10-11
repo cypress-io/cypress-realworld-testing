@@ -1,13 +1,10 @@
 import dynamic from "next/dynamic"
 
-const ExampleSteps = dynamic(
-  () => import("../RealWorldExamples/ExampleSteps"),
-  {
-    ssr: false,
-  }
-)
+const RWEProgress = dynamic(() => import("./RWEProgress"), {
+  ssr: false,
+})
 
-export default function Examples({ sections, content, progressService }) {
+export default function RWETests({ sections, content, progressService }) {
   return (
     <div className="relative bg-white py-32 overflow-hidden">
       {sections.map((section, index) => (
@@ -30,7 +27,7 @@ export default function Examples({ sections, content, progressService }) {
                       >
                         {content[section].description}
                       </p>
-                      <ExampleSteps content={content[section]} />
+                      <RWEProgress content={content[section]} />
                     </div>
                   </div>
                 </div>
@@ -62,7 +59,7 @@ export default function Examples({ sections, content, progressService }) {
                       >
                         {content[section].description}
                       </p>
-                      <ExampleSteps content={content[section]} />
+                      <RWEProgress content={content[section]} />
                     </div>
                   </div>
                 </div>

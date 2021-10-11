@@ -6,15 +6,7 @@ const pages = [
   { name: "Project Nero", href: "#", current: true },
 ]
 
-export default function Breadcrumbs({
-  lessonPath,
-  sectionLessons,
-  sectionTitle,
-  lessonData,
-}) {
-  const [sectionSlug, lessonSlug] = lessonPath.split("/")
-  const lessonTitle = sectionLessons
-
+export default function RWELessonBreadcrumbs({ lessonData }) {
   return (
     <nav
       className="bg-white border-b border-gray-200 flex"
@@ -51,9 +43,9 @@ export default function Breadcrumbs({
             >
               <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
             </svg>
-            <Link href={`/${sectionSlug}`}>
+            <Link href="/real-world-examples">
               <a className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">
-                {sectionTitle}
+                Real World Examples
               </a>
             </Link>
           </div>

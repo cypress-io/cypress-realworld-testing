@@ -1,8 +1,8 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
-import Features from "../../components/RealWorldExamples/Features"
-import Examples from "../../components/RealWorldExamples/Examples"
-import Hero from "../../components/RealWorldExamples/Hero"
+import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
+import RWETests from "../../components/RealWorldExamples/RWETests"
+import RWEHero from "../../components/RealWorldExamples/RWEHero"
 import { progressService } from "../../machines/progressService"
 import learnJson from "../../learn.json"
 import realWorldExamples from "../../real-world-examples.json"
@@ -19,11 +19,11 @@ export default function Home({ content, sections, rWESections }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero />
+      <RWEFeatures />
 
-      <Features />
+      <RWEHero />
 
-      <Examples
+      <RWETests
         sections={rWESections}
         content={realWorldExamples}
         progressService={progressService}

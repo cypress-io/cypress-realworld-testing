@@ -5,26 +5,32 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ section, content, progressService }) {
+export default function CourseProgress({
+  lessonPath,
+  lessons,
+  progressService,
+}) {
+  const [sectionSlug] = lessonPath.split("/")
+
   return (
-    <nav aria-label="Progress" className="mt-12">
+    <nav data-test="section-steps" aria-label="Progress">
       <ol className="overflow-hidden">
-        {content?.lessons.map((lesson, index) => (
+        {lessons.map((lesson, index) => (
           <li
             data-test={`lesson-${index}`}
             key={lesson.title}
             className={classNames(
-              index !== content?.lessons.length - 1 ? "pb-10" : "",
+              index !== lessons.length - 1 ? "pb-10" : "",
               "relative"
             )}
           >
             {/* Solid Line that connects the checkmarks */}
-            {index !== content?.lessons.length - 1 ? (
+            {index !== lessons.length - 1 ? (
               <div
                 className={`-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full ${
                   isLessonCompleted(
                     progressService,
-                    `${section}/${lesson.slug}`
+                    `${sectionSlug}/${lesson.slug}`
                   )
                     ? "bg-indigo-600"
                     : "bg-gray-300"
@@ -38,7 +44,7 @@ export default function LessonSteps({ section, content, progressService }) {
 
               {isLessonCompleted(
                 progressService,
-                `${section}/${lesson.slug}`
+                `${sectionSlug}/${lesson.slug}`
               ) && (
                 <span className="h-9 flex items-center">
                   <span
@@ -56,7 +62,7 @@ export default function LessonSteps({ section, content, progressService }) {
               {/* "upcoming" */}
               {!isLessonCompleted(
                 progressService,
-                `${section}/${lesson.slug}`
+                `${sectionSlug}/${lesson.slug}`
               ) && (
                 <span className="h-9 flex items-center" aria-hidden="true">
                   <span
@@ -71,7 +77,7 @@ export default function LessonSteps({ section, content, progressService }) {
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  <a href={`${section}/${lesson.slug}`}>{lesson.title}</a>
+                  <a href={`${sectionSlug}/${lesson.slug}`}>{lesson.title}</a>
                 </span>
               </span>
             </div>

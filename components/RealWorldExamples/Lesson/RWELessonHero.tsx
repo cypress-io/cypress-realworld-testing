@@ -1,4 +1,4 @@
-export default function LessonHero(props) {
+export default function RWELessonHero(props) {
   return (
     <div data-test="lesson-hero" className="relative bg-white overflow-hidden">
       <div className="relative pt-6 pb-16 sm:pb-24 lg:pb-32">

@@ -5,17 +5,16 @@ import { serialize } from "next-mdx-remote/serialize"
 import Head from "next/head"
 import dynamic from "next/dynamic"
 import path from "path"
-import glob from "glob"
-import { find, findIndex } from "lodash/fp"
+import { find } from "lodash/fp"
 import { useActor } from "@xstate/react"
 import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
-import LessonHero from "../../components/RealWorldExamples/Lesson/LessonHero"
-import LessonLayout from "../../components/RealWorldExamples/Lesson/LessonLayout"
-const NextLessonBtn = dynamic(
-  () => import("../../components/RealWorldExamples/Lesson/NextLessonBtn"),
+import RWELessonHero from "../../components/RealWorldExamples/Lesson/RWELessonHero"
+import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELessonLayout"
+const RWENextLessonBtn = dynamic(
+  () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
   {
     ssr: false,
   }
@@ -93,9 +92,9 @@ export default function LessonPage({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {lessonData.videoURL && <LessonHero lessonData={lessonData} />}
+      {lessonData.videoURL && <RWELessonHero lessonData={lessonData} />}
 
-      <LessonLayout
+      <RWELessonLayout
         toc={toc}
         source={source}
         components={components}
@@ -106,7 +105,7 @@ export default function LessonPage({
         lessonData={lessonData}
       />
 
-      <NextLessonBtn
+      <RWENextLessonBtn
         path={nextLesson}
         isCompleted={isLessonCompleted(progressService, lessonPath)}
       />

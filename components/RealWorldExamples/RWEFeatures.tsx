@@ -1,62 +1,56 @@
-/* This example requires Tailwind CSS v2.0+ */
 import {
-  LightBulbIcon,
-  BeakerIcon,
-  TerminalIcon,
+  DesktopComputerIcon,
+  CogIcon,
+  LockClosedIcon,
   DatabaseIcon,
+  LightningBoltIcon,
   CodeIcon,
-  AdjustmentsIcon,
 } from "@heroicons/react/outline"
 
 const features = [
   {
-    name: "Testing Mindset",
-    icon: LightBulbIcon,
-    description: "The mindset necessary when testing applications.",
+    name: "How to Test Authentication",
+    icon: LockClosedIcon,
+    description: "Learn how to test authentication in multiple ways",
   },
   {
-    name: "Knowing What to Test",
-    icon: BeakerIcon,
-    description: "Know which parts of your application you should test.",
+    name: "Custom Cypress Commands",
+    icon: CogIcon,
+    description: "The correct abstractions for reusability in your tests",
   },
   {
-    name: "How to Debug Failing Tests",
-    icon: TerminalIcon,
-    description:
-      "Various tips, methods and techniques to help you debug your failing tests",
+    name: "How to Test Mobile and Desktop",
+    icon: DesktopComputerIcon,
+    description: "Execute your test code depending upon viewport size",
   },
   {
-    name: "Database Initialization & Seeding",
+    name: "Data Driven Testing",
     icon: DatabaseIcon,
-    description: "How to create the data you need for your tests",
+    description: "Learn how to drive tests with data from an external source",
   },
   {
-    name: "Types of Testing",
+    name: "How to Create Tests Dynamically",
     icon: CodeIcon,
     description:
-      "The difference between unit, integration and end to end tests",
+      "Use loops and libraries like lodash to dynamically generate test cases",
   },
   {
-    name: "How to Test",
-    icon: AdjustmentsIcon,
-    description: "How to tests different apps from simple to complex",
+    name: "How to Test GraphQL",
+    icon: LightningBoltIcon,
+    description: "How to test various GraphQl queries and mutations",
   },
 ]
 
-export default function Features() {
+export default function RWEFeatures() {
   return (
-    <div className="features relative bg-white py-16 sm:py-24 lg:py-16">
+    <div className="features relative bg-white py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
         <h2 className="text-base font-semibold tracking-wider text-blue-500 uppercase">
           What&apos;s Inside
         </h2>
         <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-          A quick preview of what you’ll learn
+          A quick preview of what you’ll learn from our examples
         </p>
-        {/* <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
-          A free and open-source curriculum to learn how testing is done in the
-          real world.
-        </p> */}
         <div className="mt-12">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (

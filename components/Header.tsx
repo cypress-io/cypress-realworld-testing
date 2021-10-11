@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
-import MobileProgressMenu from "./Mobile/ProgressMenu"
+import MobileNav from "./Mobile/MobileNav"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
@@ -99,15 +99,8 @@ const resources = [
 ]
 
 const updates = [
-  // {
-  //   id: 1,
-  //   name: "Changelog",
-  //   href: "#",
-  //   preview:
-  //     "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
-  // },
   {
-    id: 2,
+    id: 1,
     name: "We're Hiring",
     href: "https://www.cypress.io/jobs/",
     preview: "Want to help create something innovative? Join our team!",
@@ -328,16 +321,6 @@ export default function Header({ content, sections, progressService }) {
                                   ))}
                                 </ul>
                               </div>
-                              {/* <div className="mt-6 text-sm font-medium">
-                                <a
-                                  href="#"
-                                  className="text-blue-600 hover:text-blue-500"
-                                >
-                                  {" "}
-                                  View all posts{" "}
-                                  <span aria-hidden="true">&rarr;</span>
-                                </a>
-                              </div> */}
                             </div>
                           </div>
                         </Popover.Panel>
@@ -497,7 +480,7 @@ export default function Header({ content, sections, progressService }) {
           </Popover.Panel>
         </Transition>
       </Popover>
-      <MobileProgressMenu
+      <MobileNav
         content={content}
         sections={sections}
         progressService={progressService}

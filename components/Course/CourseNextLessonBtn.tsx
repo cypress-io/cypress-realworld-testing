@@ -1,7 +1,11 @@
 import Link from "next/link"
 import { isLessonCompleted } from "../../utils/machineUtils"
 
-export default function NextLessonBtn({ lessons, progressService, section }) {
+export default function CourseNextLessonBtn({
+  lessons,
+  progressService,
+  section,
+}) {
   const incompleLessons = lessons
     .map((lesson) => {
       if (!isLessonCompleted(progressService, `${section}/${lesson.slug}`)) {

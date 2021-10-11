@@ -1,33 +1,15 @@
 import dynamic from "next/dynamic"
 import { CheckIcon } from "@heroicons/react/outline"
 
-const NextLessonBtn = dynamic(
-  () => import("../../components/Section/NextLessonBtn"),
-  {
-    ssr: false,
-  }
-)
-
-const SectionSteps = dynamic(() => import("./SectionSteps"), {
+const CourseNextLessonBtn = dynamic(() => import("./CourseNextLessonBtn"), {
   ssr: false,
 })
 
-const features = [
-  {
-    name: "How to Install Cypress",
-    description: "",
-  },
-  {
-    name: "How to Write an E2E Test",
-    description: "",
-  },
-  {
-    name: "The Meaning of Life",
-    description: "",
-  },
-]
+const CourseProgress = dynamic(() => import("./CourseProgress"), {
+  ssr: false,
+})
 
-export default function SectionContent({
+export default function CourseContent({
   title,
   lessons,
   learnFeatures,
@@ -35,12 +17,7 @@ export default function SectionContent({
   lessonPath,
   section,
 }) {
-  const stats = [
-    { label: "Lessons", value: lessons.length },
-    // { label: "Total Time", value: "2 Hours" },
-    // { label: "Fun Scale", value: "100" },
-    // { label: "Raised", value: "$25M" },
-  ]
+  const stats = [{ label: "Lessons", value: lessons.length }]
 
   return (
     <>
@@ -53,7 +30,7 @@ export default function SectionContent({
                 {title}
               </h2>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
-                <SectionSteps
+                <CourseProgress
                   lessonPath={lessonPath}
                   lessons={lessons}
                   progressService={progressService}
@@ -108,7 +85,7 @@ export default function SectionContent({
                     ))}
                   </dl>
                 </div>
-                <NextLessonBtn
+                <CourseNextLessonBtn
                   lessons={lessons}
                   progressService={progressService}
                   section={section}

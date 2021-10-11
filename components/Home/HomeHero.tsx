@@ -15,7 +15,7 @@ const features = [
   },
 ]
 
-export default function Hero() {
+export default function HomeHero() {
   return (
     <div className="">
       <div className="relative overflow-hidden">
@@ -87,21 +87,12 @@ export default function Hero() {
                             </button>
                           </div>
                         </div>
-                        {/* <p className="mt-3 text-sm text-gray-300 sm:mt-4">
-                          Start your free 14-day trial, no credit card
-                          necessary. By providing your email, you agree to our{" "}
-                          <a href="#" className="font-medium text-white">
-                            terms or service
-                          </a>
-                          .
-                        </p> */}
                       </form>
                     </div>
                   </div>
                 </div>
                 <div className="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
                   <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-                    {/* Illustration taken from Lucid Illustrations: https://lucid.pixsellz.io/ */}
                     <img
                       className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
                       src="/images/home/hero.png"
@@ -111,8 +102,6 @@ export default function Hero() {
               </div>
             </div>
           </div>
-
-          {/* More main page content here... */}
         </main>
       </div>
     </div>
