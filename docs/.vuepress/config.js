@@ -3,6 +3,13 @@ module.exports = {
   description:
     "Documentation for the Real World Testing with Cypress Next.js app",
   themeConfig: {
+    nav: [
+      { text: "Home", link: "/" },
+      {
+        text: "GitHub Repo",
+        link: "https://github.com/cypress-io/cypress-realworld-testing",
+      },
+    ],
     sidebar: [
       {
         title: "Directory Structure",
