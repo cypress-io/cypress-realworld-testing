@@ -1,10 +1,73 @@
----
-title: TodoMVC App Install and Overview
----
-# TodoMVC App Install and Overview
+# TodoMVC App Install & Overview
 
-## SubHeader
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+Diataxis Type: Tutorial
+Ready for Review: Yes
+Reviewed By: Amir, Ben, Jordan, Kevin, Paul
+Reviewed By Amir: August 11, 2021
+Reviewed By Kevin: July 29, 2021
+Section: Testing Your First App
+Status: Ready to Migrate
+Title Approved: Yes
 
-## Another SubHeader
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+The application we will be writing tests for can be found [here](https://github.com/cypress-io/cypress-realworld-testing-todomvc). The app is a TodoMVC application built with React. Don't worry if you do not know React. You can still follow along even if you have never used React before.
+
+# Install
+
+---
+
+The first thing you should do is fork this repo into your own GitHub account. You can do this by clicking the "fork" button in the upper right-hand corner of the repo. 
+
+![Screen Shot 2021-09-16 at 1.58.28 PM.png](TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-09-16_at_1.58.28_PM.png)
+
+Once the application is forked, you should see it in your own GitHub account. It should look very similar to this, only with your GitHub username.
+
+![Screen Shot 2021-09-16 at 1.58.48 PM.png](TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-09-16_at_1.58.48_PM.png)
+
+Now that we have forked the repo, we need to clone it down to our local machine. To do this, click on the green "Code" button then copy the address, [`https://github.com/YOUR_GITHUB_USERNAME/cypress-example-todomvc`](https://github.com/YOUR_GITHUB_USERNAME/cypress-example-todomvc)
+
+![TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-06-24_at_10.55.46_AM.png](TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-06-24_at_10.55.46_AM.png)
+
+Next, you will need to clone the repo to your local machine via git. 
+
+```bash
+# Your URL will be different and should contain your username
+git clone https://github.com/robertguss/cypress-example-todomvc
+```
+
+Next, you will need to open the repo in your text editor. We will be using [VS Code](https://code.visualstudio.com/), but feel free to use any text editor you like. 
+
+You can install all of the dependencies by typing the following in the terminal. 
+
+```bash
+yarn install
+```
+
+Make sure to be using a version of Node that is `v.14` or higher and use [Yarn package manager](https://yarnpkg.com/). 
+
+![Screen Shot 2021-09-17 at 10.13.32 AM.png](TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-09-17_at_10.13.32_AM.png)
+
+Then to start the app:
+
+```bash
+yarn start
+```
+
+![Screen Shot 2021-09-17 at 10.13.44 AM.png](TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-09-17_at_10.13.44_AM.png)
+
+You can then open your browser to the HTTP server URL shown in the console (e.g. [`http://127.0.0.1:8888`](http://127.0.0.1:8888/)), and you should see the following:
+
+![TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-06-24_at_1.08.11_PM.png](TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-06-24_at_1.08.11_PM.png)
+
+# App Overview
+
+---
+
+![TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-06-24_at_1.14.12_PM.png](TodoMVC%20App%20Install%20&%20Overview%20b85ad28fc9924163877218687931e6b0/Screen_Shot_2021-06-24_at_1.14.12_PM.png)
+
+The app is a basic todo app where you can add todos, complete todos, and filter todos based upon their active or completed state. Take some time to play around with the app to get a sense of the overall functionality.
+
+Testing is a mindset, so before we can begin to write tests for our app, we first need to understand what we need to test and why. To find out what to test, we need to think about the core functionality of the application. Ask yourself the question, "what are some of the most important features of this app?" Start by breaking down the features and functionality of the app into individual pieces. The " why " should become much clearer once you understand some of the core functionality and features. 
+
+For example, since this is a todo application, one of the most important features should be adding todos. If a user is not able to add todos, the entire app is useless. Therefore, one of the first things we should test is that a user can add todos.
+
+In the next lesson, we will learn how to install Cypress and write our first test to make sure we can add a todo to the app.
