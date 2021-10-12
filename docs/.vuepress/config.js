@@ -11,7 +11,10 @@ module.exports = {
       {
         title: "Pages",
         path: "/pages/",
-        children: ["#"],
+      },
+      {
+        title: "Machines",
+        path: "/machines/",
       },
     ],
   },
