@@ -16,6 +16,14 @@ module.exports = {
         title: "Machines",
         path: "/machines/",
       },
+      {
+        title: "Scripts",
+        path: "/scripts/",
+      },
+      {
+        title: "Utils",
+        path: "/utils/",
+      },
     ],
   },
   markdown: {
