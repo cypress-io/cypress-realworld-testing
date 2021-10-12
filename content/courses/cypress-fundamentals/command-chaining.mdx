@@ -1,10 +1,19 @@
----
-title: Command Chaining
----
 # Command Chaining
 
-## SubHeader
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+It's important to understand the mechanism Cypress uses to chain commands together. It manages a Promise chain on your behalf, with each command yielding a 'subject' to the following command until the chain ends or there is an error. The developer should not need to use Promises directly, but understanding how they work is helpful.
 
-## Another SubHeader
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+For example, a chain of Cypress commands looks like this:
+
+```jsx
+cy.get(".todo-list li").find("label").should("contain", "Buy Milk")
+```
+
+In this example, `.get()` will yield the `<li>` subject to `.find()` which will then search for the `<label>` element. Finally, we make an assertion that the `<label>` contains the text "Buy Milk."
+
+However, it is important to note that not all Cypress commands yield a subject that can be chained. For instance, `cy.clearCookies()` yields `null`, which _cannot_ be chained.
+
+Cypress commands like `.get()` and `.contains()` yield DOM elements that can be chained, like in the example above.
+
+When you want to act upon a subject directly from a Cypress command, you need to yield the subject to `.then()`. We cover `.then()` and `.wrap()` in the [Understanding the Asynchronous nature of Cypress](Understanding%20the%20Asynchronous%20nature%20of%20Cypress%20c7f5d33cfa78414783e241d825fc4a0f.md) section.
+
+You can learn more about command chaining from our docs [here](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Chains-of-Commands).

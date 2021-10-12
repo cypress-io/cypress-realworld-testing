@@ -1,10 +1,82 @@
----
-title: Understanding the Asynchronous Nature of Cypress
----
-# Understanding the Asynchronous Nature of Cypress
+# Understanding the Asynchronous nature of Cypress
 
-## SubHeader
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+This is arguably one of the most crucial Cypress concepts that you need to understand. How Cypress handles things asynchronously is often misunderstood by developers and can lead to issues and confusion later on, especially when trying to debug your tests.
 
-## Another SubHeader
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+## Return vs. Yield
+
+Cypress commands DO NOT `return` their subjects. This means you **cannot** do things like this:
+
+```jsx
+// THIS WILL NOT WORK
+const button = cy.get("button")
+
+button.click()
+```
+
+This is one of the primary reasons why we do not recommend using [variables](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Variables) within your tests.
+
+Instead, Cypress commands `yield` their subjects.
+
+Cypress commands are asynchronous and get queued for execution at a later time. While commands are executed, their subjects are `yielded` from one command to the next. This is because a lot of helpful Cypress code runs between each command to ensure everything is in order.
+
+## .then()
+
+So if a command does not `return` a subject but instead `yields` it, how can you interact with the subject directly? You can interact with a subject directly by using [.then()](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Closures).
+
+`.then()` behaves similarly to Promises in JavaScript. However, `.then()` is a Cypress command, **not a Promise**. This means you cannot use things like `async/await` within your Cypress tests.
+
+Whatever is returned from the callback function becomes the new subject and will flow into the following command (except for `undefined`).
+
+```jsx
+cy.get("button").then(($btn) => {
+  const cls = $btn.attr("class")
+
+  // ...
+})
+```
+
+When `undefined` is returned by the callback function, the subject will not be modified and will instead carry over to the next command.
+
+Just like Promises, you can return any compatible "thenable" (anything that has a `.then()` interface), and Cypress will wait for that to resolve before continuing forward through the chain of commands.
+
+If you're familiar with [native Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), the Cypress `.then()` works the same way.
+
+## .wrap()
+
+In our example just above, `$btn` is a jQuery object. This means that if we would like Cypress to perform some action upon it, we first need to use `.wrap()` for Cypress to interact with it.
+
+The example continued...
+
+```jsx
+cy.get("button").then(($btn) => {
+  const cls = $btn.attr("class")
+
+  cy.wrap($btn).click().should("not.have.class", cls)
+})
+```
+
+In this example, we are first getting the `<button>` HTML element. Our subject, which in this case is the `<button>` HTML element is yielded from `cy.get()` to `.then()`. We can then access the subject as the variable`$btn` , but first need to `.wrap()` it to perform whatever operations or assertions we would like on it.
+
+Before our assertion, which in this case is `.should('not.have.class', cls)` we first need Cypress to `.click()` the button. For Cypress to click on our `$btn`, we must first wrap it with `.wrap()` to provide the proper context for Cypress to perform the click.
+
+We _cannot_ do something like this, because `$btn` is a jQuery object.
+
+```jsx
+$btn.click().should("not.have.class", cls) // Does not work
+```
+
+We must use `.wrap()` first, because it provides Cypress the context necessary for interacting with the `$btn`.
+
+```jsx
+cy.wrap($btn).click().should("not.have.class", cls)
+```
+
+To learn more about the asynchronous nature of Cypress, please check the following sections of our docs.
+
+[Commands Are Asynchronous](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Commands-Are-Asynchronous)
+
+[Commands Are Promises](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Commands-Are-Promises)
+
+[Commands Are Not Promises](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Commands-Are-Not-Promises)
+
+[Return Values](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Return-Values)
