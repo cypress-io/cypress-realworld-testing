@@ -18,7 +18,7 @@ You are here. This is where all of the documentation for the app lives.
 
 ### /machines
 
-Contains all of the [X State](https://xstate.js.org/docs/) machines used in the app.
+Contains all of the [XState](https://xstate.js.org/docs/) machines used in the app.
 
 ### /pages
 
