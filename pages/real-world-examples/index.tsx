@@ -19,9 +19,9 @@ export default function Home({ content, sections, rWESections }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <RWEFeatures />
-
       <RWEHero />
+
+      <RWEFeatures />
 
       <RWETests
         sections={rWESections}
