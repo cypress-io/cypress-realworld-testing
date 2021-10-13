@@ -1,11 +1,5 @@
 # Creating a New Bank Account
 
-Diataxis Type: How-To Guide
-Ready for Review: Yes
-Section: Bank Accounts, Real World Examples
-Status: Migrated
-Title Approved: No
-
 Before continuing, make sure you have read the [Bank Accounts Overview & Setup](Bank%20Accounts%20Overview%20&%20Setup%20c40a9fd9fa964f47a726d51989ad5a90.md) lesson first.
 
 ```bash
@@ -49,48 +43,48 @@ Next, we click on the "Bank Accounts" link in the left sidebar, depending upon i
 
 ```jsx
 if (isMobile()) {
-      cy.getBySel("sidenav-toggle").click();
-    }
+  cy.getBySel("sidenav-toggle").click()
+}
 
-    cy.getBySel("sidenav-bankaccounts").click();
+cy.getBySel("sidenav-bankaccounts").click()
 ```
 
-![Creating%20a%20New%20Bank%20Account%20eda1d9d2f93e47c1b698aa9b27a73ab4/Screen_Shot_2021-06-30_at_10.19.19_AM.png](Creating%20a%20New%20Bank%20Account%20eda1d9d2f93e47c1b698aa9b27a73ab4/Screen_Shot_2021-06-30_at_10.19.19_AM.png)
+![](/images/real-world-examples/bank-accounts/creating-a-new-bank-account/Screen_Shot_2021-06-30_at_10.19.19_AM.png)
 
 Next, we will click on the "Create" button and write an assertion that the application has taken us to the correct screen by validating the URL.
 
 ```jsx
-cy.getBySel("bankaccount-new").click();
-cy.location("pathname").should("eq", "/bankaccounts/new");
+cy.getBySel("bankaccount-new").click()
+cy.location("pathname").should("eq", "/bankaccounts/new")
 ```
 
-![Creating%20a%20New%20Bank%20Account%20eda1d9d2f93e47c1b698aa9b27a73ab4/Screen_Shot_2021-06-30_at_10.21.15_AM.png](Creating%20a%20New%20Bank%20Account%20eda1d9d2f93e47c1b698aa9b27a73ab4/Screen_Shot_2021-06-30_at_10.21.15_AM.png)
+![](/images/real-world-examples/bank-accounts/creating-a-new-bank-account/Screen_Shot_2021-06-30_at_10.21.15_AM.png)
 
 Then, we fill out the new bank account form with our bank account information and save it.
 
 ```jsx
 // Create Bank Account Form
-    cy.getBySelLike("bankName-input").type("The Best Bank");
-    cy.getBySelLike("routingNumber-input").type("987654321");
-    cy.getBySelLike("accountNumber-input").type("123456789");
-    cy.getBySelLike("submit").click();
+cy.getBySelLike("bankName-input").type("The Best Bank")
+cy.getBySelLike("routingNumber-input").type("987654321")
+cy.getBySelLike("accountNumber-input").type("123456789")
+cy.getBySelLike("submit").click()
 ```
 
-![Creating%20a%20New%20Bank%20Account%20eda1d9d2f93e47c1b698aa9b27a73ab4/Screen_Shot_2021-06-30_at_10.22.29_AM.png](Creating%20a%20New%20Bank%20Account%20eda1d9d2f93e47c1b698aa9b27a73ab4/Screen_Shot_2021-06-30_at_10.22.29_AM.png)
+![](/images/real-world-examples/bank-accounts/creating-a-new-bank-account/Screen_Shot_2021-06-30_at_10.22.29_AM.png)
 
 We then wait for our GraphQL mutation to create a new bank account.
 
 ```jsx
-cy.wait("@gqlCreateBankAccountMutation");
+cy.wait("@gqlCreateBankAccountMutation")
 ```
 
 Finally, we will write an assertion that ensures that our new bank account is created successfully.
 
 ```jsx
 cy.getBySelLike("bankaccount-list-item")
-      .should("have.length", 2)
-      .eq(1)
-      .should("contain", "The Best Bank");
+  .should("have.length", 2)
+  .eq(1)
+  .should("contain", "The Best Bank")
 ```
 
-![Creating%20a%20New%20Bank%20Account%20eda1d9d2f93e47c1b698aa9b27a73ab4/Screen_Shot_2021-06-30_at_10.25.36_AM.png](Creating%20a%20New%20Bank%20Account%20eda1d9d2f93e47c1b698aa9b27a73ab4/Screen_Shot_2021-06-30_at_10.25.36_AM.png)
+![](/images/real-world-examples/bank-accounts/creating-a-new-bank-account/Screen_Shot_2021-06-30_at_10.25.36_AM.png)

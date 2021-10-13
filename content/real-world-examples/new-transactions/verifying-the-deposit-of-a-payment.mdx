@@ -1,11 +1,5 @@
 # Verifying the deposit of a payment
 
-Diataxis Type: How-To Guide
-Ready for Review: Yes
-Section: New Transactions, Real World Examples
-Status: Migrated
-Title Approved: No
-
 Before continuing, make sure you have read the [New Transaction Overview & Setup](New%20Transaction%20Overview%20&%20Setup%207b6d9e5eb7bd4fc6b712c17a0e1e892b.md) lesson first.
 
 ```jsx
@@ -68,67 +62,67 @@ You can find out more information about the custom Cypress commands used in this
 First, we click on the "New" transaction button.
 
 ```jsx
-cy.getBySel("nav-top-new-transaction").click();
+cy.getBySel("nav-top-new-transaction").click()
 ```
 
-![Screen Shot 2021-09-14 at 4.23.04 PM.png](Verifying%20the%20deposit%20of%20a%20payment%20ba3ea5e3b31048199073d1a0cb6bc58f/Screen_Shot_2021-09-14_at_4.23.04_PM.png)
+![](/images/real-world-examples/new-transactions/verifying-the-deposit-of-a-payment/Screen_Shot_2021-09-14_at_4.23.04_PM.png)
 
 We then create a `transactionPayload` object.
 
 ```jsx
 const transactionPayload = {
-      transactionType: "payment",
-      amount: 25,
-      description: "Indian Food",
-      sender: ctx.user,
-      receiver: ctx.contact,
-    };
+  transactionType: "payment",
+  amount: 25,
+  description: "Indian Food",
+  sender: ctx.user,
+  receiver: ctx.contact,
+}
 ```
 
-Then, we grab the current balance from the UI, only if we are *not* in a mobile viewport and store it inside of the `starteBalance` variable.
+Then, we grab the current balance from the UI, only if we are _not_ in a mobile viewport and store it inside of the `starteBalance` variable.
 
 ```jsx
 // first let's grab the current balance from the UI
-    let startBalance: string;
-    if (!isMobile()) {
-      // only check the balance display in desktop resolution
-      // as it is NOT shown on mobile screen
-      cy.get("[data-test=sidenav-user-balance]")
-        .invoke("text")
-        .then((x) => {
-          startBalance = x; // something like "$1,484.81"
-          expect(startBalance).to.match(/\$\d/);
-        });
-    }
+let startBalance: string
+if (!isMobile()) {
+  // only check the balance display in desktop resolution
+  // as it is NOT shown on mobile screen
+  cy.get("[data-test=sidenav-user-balance]")
+    .invoke("text")
+    .then((x) => {
+      startBalance = x // something like "$1,484.81"
+      expect(startBalance).to.match(/\$\d/)
+    })
+}
 ```
 
 We then create a new transaction using a custom Cypress command `cy.createTransaction()` with the `transactionPayload` object we created earlier.
 
 ```jsx
-cy.createTransaction(transactionPayload);
+cy.createTransaction(transactionPayload)
 ```
 
 We then wait on the `@createTransaction` intercept and assert the "Create Another Transaction" button is visible
 
 ```jsx
-cy.wait("@createTransaction");
-cy.getBySel("new-transaction-create-another-transaction").should("be.visible");
+cy.wait("@createTransaction")
+cy.getBySel("new-transaction-create-another-transaction").should("be.visible")
 ```
 
-![Screen Shot 2021-09-14 at 4.27.36 PM.png](Verifying%20the%20deposit%20of%20a%20payment%20ba3ea5e3b31048199073d1a0cb6bc58f/Screen_Shot_2021-09-14_at_4.27.36_PM.png)
+![](/images/real-world-examples/new-transactions/verifying-the-deposit-of-a-payment/Screen_Shot_2021-09-14_at_4.27.36_PM.png)
 
 We then make sure we are not in a mobile viewport and assert that the user balance has been updated from the transaction we just created.
 
 ```jsx
 if (!isMobile()) {
-      // make sure the new balance is displayed
-      cy.get("[data-test=sidenav-user-balance]").should(($el) => {
-        // here we only make sure the text has changed
-        // we could also convert the balance to actual number
-        // and confirm the new balance is the start balance - amount
-        expect($el.text()).to.not.equal(startBalance);
-      });
-    }
+  // make sure the new balance is displayed
+  cy.get("[data-test=sidenav-user-balance]").should(($el) => {
+    // here we only make sure the text has changed
+    // we could also convert the balance to actual number
+    // and confirm the new balance is the start balance - amount
+    expect($el.text()).to.not.equal(startBalance)
+  })
+}
 ```
 
 We then switch users by using a custom command `cy.switchUserByXstate()`
@@ -149,12 +143,12 @@ If we are in a mobile viewport we click the button to open the sidebar.
 
 ```jsx
 if (isMobile()) {
-      cy.getBySel("sidenav-toggle").click();
-    }
+  cy.getBySel("sidenav-toggle").click()
+}
 ```
 
 Finally, we assert that the user's balance contains the correct amount.
 
 ```jsx
-cy.getBySelLike("user-balance").should("contain", updatedAccountBalance);
+cy.getBySelLike("user-balance").should("contain", updatedAccountBalance)
 ```

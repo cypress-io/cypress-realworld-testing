@@ -1,14 +1,8 @@
 # Bank Accounts Overview & Setup
 
-Diataxis Type: How-To Guide
-Ready for Review: Yes
-Section: Bank Accounts, Real World Examples
-Status: Migrated
-Title Approved: No
-
 In this section, we will be discussing the various tests located within the `cypress/tests/ui/bankaccounts.spec.ts` file.
 
-Let's break down what is happening within the `beforeEach()`  as it is essential to understand what is going on since this hook is running before each test.
+Let's break down what is happening within the `beforeEach()` as it is essential to understand what is going on since this hook is running before each test.
 
 ## beforeEach()
 
@@ -44,7 +38,7 @@ beforeEach(function () {
 
 You can find out more information about the custom Cypress commands used [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
 
-The first thing we are doing is seeding our database using a custom Cypress task. 
+The first thing we are doing is seeding our database using a custom Cypress task.
 
 ```bash
 cy.task("db:seed");
@@ -76,7 +70,7 @@ cy.intercept("POST", apiGraphQL, (req) => {
     });
 ```
 
-Finally, we use a custom Cypress command `cy.database()` to query our database for our users. Then we use another custom Cypress command  `cy.loginByXstate()` to log in to the application using one of the users returned from the `cy.database()`.
+Finally, we use a custom Cypress command `cy.database()` to query our database for our users. Then we use another custom Cypress command `cy.loginByXstate()` to log in to the application using one of the users returned from the `cy.database()`.
 
 You can find out how these custom Commands work in greater detail [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
 

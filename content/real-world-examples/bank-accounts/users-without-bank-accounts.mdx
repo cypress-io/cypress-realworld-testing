@@ -1,11 +1,5 @@
 # Users without Bank Accounts
 
-Diataxis Type: How-To Guide
-Ready for Review: Yes
-Section: Bank Accounts, Real World Examples
-Status: Migrated
-Title Approved: No
-
 Before continuing, make sure you have read the [Bank Accounts Overview & Setup](Bank%20Accounts%20Overview%20&%20Setup%20c40a9fd9fa964f47a726d51989ad5a90.md) lesson first.
 
 ```bash
@@ -41,20 +35,23 @@ First, we wait upon our aliased intercept `@getNotifications`
 cy.wait("@getNotifications");
 ```
 
-Next, we use `cy.intercept` to intercept the `POST` request to our GraphQL endpoint. We then determine if the `POST` request is a GraphQL query to "ListBankAccount." If so, we set the alias to `gqlListBankAccountQuery`. 
+Next, we use `cy.intercept` to intercept the `POST` request to our GraphQL endpoint. We then determine if the `POST` request is a GraphQL query to "ListBankAccount." If so, we set the alias to `gqlListBankAccountQuery`.
 
 Then we clear out any `listBankAccount` items that come back by setting this property on the response to an empty array. This is how we manipulate the response data to ensure we "render an empty bank account list," which is necessary for our test.
 
 ```jsx
 cy.intercept("POST", `${Cypress.env("apiUrl")}/graphql`, (req) => {
-      const { body } = req;
-      if (body.hasOwnProperty("operationName") && body.operationName === "ListBankAccount") {
-        req.alias = "gqlListBankAccountQuery";
-        req.continue((res) => {
-          res.body.data.listBankAccount = [];
-        });
-      }
-    });
+  const { body } = req
+  if (
+    body.hasOwnProperty("operationName") &&
+    body.operationName === "ListBankAccount"
+  ) {
+    req.alias = "gqlListBankAccountQuery"
+    req.continue((res) => {
+      res.body.data.listBankAccount = []
+    })
+  }
+})
 ```
 
 We then `.visit()` the `/bankaccounts` route.
@@ -79,10 +76,10 @@ Next, we assert that the onboarding modal window is visible.
 Finally, we assert that the user's notification count is visible.
 
 ```jsx
-cy.getBySel("bankaccount-list").should("not.exist");
-    cy.getBySel("empty-list-header").should("contain", "No Bank Accounts");
-    cy.getBySel("user-onboarding-dialog").should("be.visible");
-    cy.getBySel("nav-top-notifications-count").should("exist");
+cy.getBySel("bankaccount-list").should("not.exist")
+cy.getBySel("empty-list-header").should("contain", "No Bank Accounts")
+cy.getBySel("user-onboarding-dialog").should("be.visible")
+cy.getBySel("nav-top-notifications-count").should("exist")
 ```
 
-![Users%20without%20Bank%20Accounts%20ef83fa2841d241efbfda7aa1b2bf4b6c/Screen_Shot_2021-06-30_at_1.17.05_PM.png](Users%20without%20Bank%20Accounts%20ef83fa2841d241efbfda7aa1b2bf4b6c/Screen_Shot_2021-06-30_at_1.17.05_PM.png)
+![](/images/real-world-examples/bank-accounts/users-without-bank-accounts/Screen_Shot_2021-06-30_at_1.17.05_PM.png)

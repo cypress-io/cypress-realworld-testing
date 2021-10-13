@@ -1,11 +1,5 @@
 # Searching by attributes
 
-Diataxis Type: How-To Guide
-Ready for Review: Yes
-Section: New Transactions, Real World Examples
-Status: Migrated
-Title Approved: No
-
 Before continuing, make sure you have read the [New Transaction Overview & Setup](New%20Transaction%20Overview%20&%20Setup%207b6d9e5eb7bd4fc6b712c17a0e1e892b.md) lesson first.
 
 ```jsx
@@ -73,13 +67,12 @@ Next we have a `beforeEach()` hook that clicks on the "New" transaction button a
 
 ```jsx
 beforeEach(function () {
-      cy.getBySelLike("new-transaction").click();
-      cy.wait("@allUsers");
-    });
-
+  cy.getBySelLike("new-transaction").click()
+  cy.wait("@allUsers")
+})
 ```
 
-![Screen Shot 2021-09-16 at 8.59.28 AM.png](Searching%20by%20attributes%20a739e15ba4f843a78073cfd219d9ba0b/Screen_Shot_2021-09-16_at_8.59.28_AM.png)
+![](/images/real-world-examples/new-transactions/searching-by-attributes/Screen_Shot_2021-09-16_at_8.59.28_AM.png)
 
 Then, we are looping through the `searchAttrs` array to dynamically create our tests, one for each attribute in the array. Remember that Cypress is just JavaScript, which allows us to dynamically generate our tests instead of manually creating a test for each attribute.
 
@@ -133,11 +126,10 @@ const targetUser = ctx.allUsers![2];
 We then use `cy.log()` to output a custom message to the Cypress Command Log in the test runner. This makes it easy for us to see what is happening in the test runner and is helpful for debugging.
 
 ```jsx
-cy.log(`Searching by **${attr}**`);
-
+cy.log(`Searching by **${attr}**`)
 ```
 
-![Screen Shot 2021-09-16 at 9.01.48 AM.png](Searching%20by%20attributes%20a739e15ba4f843a78073cfd219d9ba0b/Screen_Shot_2021-09-16_at_9.01.48_AM.png)
+![](/images/real-world-examples/new-transactions/searching-by-attributes/Screen_Shot_2021-09-16_at_9.01.48_AM.png)
 
 We then perform a search for the specific attribute.
 
@@ -146,13 +138,12 @@ cy.getBySel("user-list-search-input").type(targetUser[attr] as string, { force: 
 
 ```
 
-![Screen Shot 2021-09-16 at 9.02.29 AM.png](Searching%20by%20attributes%20a739e15ba4f843a78073cfd219d9ba0b/Screen_Shot_2021-09-16_at_9.02.29_AM.png)
+![](/images/real-world-examples/new-transactions/searching-by-attributes/Screen_Shot_2021-09-16_at_9.02.29_AM.png)
 
 Next, we wait upon the `@usersSearch` intercept, which occurs in the `.beforeEach()` at the top of the spec file.
 
 ```jsx
 cy.wait("@usersSearch")
-
 ```
 
 We then grab the `results` from the `response.body` and write an assertion to make sure we have some results, i.e the `results` array should not be empty
@@ -163,7 +154,7 @@ We then grab the `results` from the `response.body` and write an assertion to ma
 
 ```
 
-![Screen Shot 2021-09-16 at 9.03.24 AM.png](Searching%20by%20attributes%20a739e15ba4f843a78073cfd219d9ba0b/Screen_Shot_2021-09-16_at_9.03.24_AM.png)
+![](/images/real-world-examples/new-transactions/searching-by-attributes/Screen_Shot_2021-09-16_at_9.03.24_AM.png)
 
 Then, we get the `.length` of the `results` array and write an assertion to make sure our UI displays the correct number of results returned from our back-end. We also have an assertion that the first item displayed in the search is the attribute we searched for.
 
@@ -179,14 +170,13 @@ Then, we get the `.length` of the `results` array and write an assertion to make
 
 ```
 
-![Screen Shot 2021-09-16 at 9.03.54 AM.png](Searching%20by%20attributes%20a739e15ba4f843a78073cfd219d9ba0b/Screen_Shot_2021-09-16_at_9.03.54_AM.png)
+![](/images/real-world-examples/new-transactions/searching-by-attributes/Screen_Shot_2021-09-16_at_9.03.54_AM.png)
 
 Finally, we make sure that the users list is empty.
 
 ```jsx
-cy.focused().clear();
-        cy.getBySel("users-list").should("be.empty");
-
+cy.focused().clear()
+cy.getBySel("users-list").should("be.empty")
 ```
 
-![Screen Shot 2021-09-16 at 9.04.28 AM.png](Searching%20by%20attributes%20a739e15ba4f843a78073cfd219d9ba0b/Screen_Shot_2021-09-16_at_9.04.28_AM.png)
+![](/images/real-world-examples/new-transactions/searching-by-attributes/Screen_Shot_2021-09-16_at_9.04.28_AM.png)
