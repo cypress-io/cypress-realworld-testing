@@ -1,19 +1,12 @@
 # Important Cypress Methods You Need to Know
 
-Ready for Review: Yes
-Reviewed By: Kevin
-Reviewed By Kevin: September 9, 2021
-Section: Advanced Cypress Concepts
-Status: Migrated
-Title Approved: Yes
+Cypress has a lot of [methods & commands](https://docs.cypress.io/api/table-of-contents). While our documentation covers them in great detail, it can be overwhelming trying to learn them all. This lesson will highlight some of the most important methods that we think you should know. These are not methods you will use all of the time, but simply knowing they exist will be incredibly helpful as you begin to write more complicated tests.
 
-Cypress has a lot of [methods & commands](https://docs.cypress.io/api/table-of-contents). While our documentation covers them in great detail, it can be overwhelming trying to learn them all. This lesson will highlight some of the most important methods that we think you should know. These are not methods you will use all of the time, but simply knowing they exist will be incredibly helpful as you begin to write more complicated tests. 
-
-## [invoke](https://docs.cypress.io/api/commands/invoke)
+## .invoke()
 
 Invoke a function on the previously yielded subject.
 
-[Cypress is just JavaScript](https://www.notion.so/cypress-is-just-javascript-685fed9dbc674ee8b0150d5b67dac0d7), and the `.invoke()` method allows you to call JS functions on JS data types.
+[Cypress is just JavaScript](/cypress-fundamentals/cypress-is-just-javascript), and the `.invoke()` method allows you to call JS functions on JS data types.
 
 In the example below, we are invoking the `Array.slice()` function on the response data returned from the `@publicTransactions` alias so that we only iterate over the first five items returned.
 
@@ -41,20 +34,20 @@ it("first five items belong to contacts in public feed", function () {
 
 Check out our [API docs page](https://docs.cypress.io/api/commands/invoke) for more info on `invoke`
 
-## [its](https://docs.cypress.io/api/commands/its)
+## .its()
 
 Get a property's value on the previously yielded subject.
 
 `.its()` is a handy method when you want to get the property off of something. For example if you want to make an assertion against an array.
 
 ```jsx
-cy.wrap(['Wai Yan', 'Yu']).its(1).should('eq', 'Yu') // true
+cy.wrap(["Wai Yan", "Yu"]).its(1).should("eq", "Yu") // true
 ```
 
 Or maybe you want to get the property from an object and make an assertion.
 
 ```jsx
-cy.wrap({ age: 52 }).its('age').should('eq', 52) // true
+cy.wrap({ age: 52 }).its("age").should("eq", 52) // true
 ```
 
 In the example in the Invoke section above, we are using `.its()` to grab the `results` from the `@publicTransactions` alias, which is an intercepted network request.
@@ -72,24 +65,24 @@ By using `.its()` we can get access to the `results` array which allows us to ca
 
 `.its()` is a very handy method and will become a useful tool in your "Cypress tool belt." You can find out more about it in our [API docs page](https://docs.cypress.io/api/commands/its).
 
-## [request](https://docs.cypress.io/api/commands/request)
+## .request()
 
 Make an HTTP request.
 
 `.request()` is a helpful method anytime you need to make an HTTP request within your tests and perform expectations against it.
 
 ```jsx
-cy.request('POST', 'http://localhost:8888/users/admin', { name: 'Jane' }).then(
+cy.request("POST", "http://localhost:8888/users/admin", { name: "Jane" }).then(
   (response) => {
     // response.body is automatically serialized into JSON
-    expect(response.body).to.have.property('name', 'Jane') // true
+    expect(response.body).to.have.property("name", "Jane") // true
   }
 )
 ```
 
-We make extensive use of `cy.request()` in our [API tests](https://github.com/cypress-io/cypress-realworld-app/tree/develop/cypress/tests/api) within the [Real World App (RWA)](https://github.com/cypress-io/cypress-realworld-app). 
+We make extensive use of `cy.request()` in our [API tests](https://github.com/cypress-io/cypress-realworld-app/tree/develop/cypress/tests/api) within the [Real World App (RWA)](https://github.com/cypress-io/cypress-realworld-app).
 
-## [within](https://docs.cypress.io/api/commands/within)
+## .within()
 
 Scopes all subsequent Cypress commands to within an element. Useful when working within a particular group of elements such as a `<form>`.
 
@@ -97,29 +90,17 @@ When you are working with elements, you need to drill down into its children, gr
 
 ```jsx
 it("all of the lesson cards on the section page have a status of 'Completed'", () => {
-    cy.visit("/testing-your-first-application")
-		const lessons = learnJson["testing-your-first-application"].lessons
+  cy.visit("/testing-your-first-application")
+  const lessons = learnJson["testing-your-first-application"].lessons
 
-    cy.getBySel("section-steps").within(($course) => {
-      _.each(lessons, (lesson, index) => {
-        cy.getBySel(`lesson-complete-${index}`).should("exist")
-      })
+  cy.getBySel("section-steps").within(($course) => {
+    _.each(lessons, (lesson, index) => {
+      cy.getBySel(`lesson-complete-${index}`).should("exist")
     })
   })
+})
 ```
 
-In this example, we are looping through all of the lessons nested within the `section-steps` element. 
+In this example, we are looping through all of the lessons nested within the `section-steps` element.
 
-You can find out more about `.within()` on our [API docs page](https://docs.cypress.io/api/commands/within). 
-
-## Quiz
-
-Which Cypress method gets a property's value on the previously yielded subject.
-
-answer: its
-
-others:
-
-- within
-- request
-- invoke
+You can find out more about `.within()` on our [API docs page](https://docs.cypress.io/api/commands/within).

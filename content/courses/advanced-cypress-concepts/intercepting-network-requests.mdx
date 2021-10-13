@@ -1,17 +1,10 @@
 # Intercepting Network Requests
 
-Ready for Review: Yes
-Reviewed By: Kevin
-Reviewed By Kevin: September 9, 2021
-Section: Advanced Cypress Concepts
-Status: Migrated
-Title Approved: Yes
-
 Knowing how to test network requests and responses is important for every web application. In this lesson you will learn how to use `cy.intercept()` to manipulate and test network requests and responses.
 
 ## Mocking, Spying & Stubbing
 
-If you are unfamiliar with the terminology of Mocking, Spying or Stubbing you can learn more about each in our docs. 
+If you are unfamiliar with the terminology of Mocking, Spying or Stubbing you can learn more about each in our docs.
 
 ### Mocking with Fixtures
 
@@ -38,16 +31,16 @@ The most basic way to intercept a server request is as follows:
 cy.intercept("POST", "/users")
 ```
 
-In this example we are intercepting any `POST` request to the `/users` route. Typically you will also `alias` an intercept to perform additional actions, like waiting, later in your test(s). 
+In this example we are intercepting any `POST` request to the `/users` route. Typically you will also `alias` an intercept to perform additional actions, like waiting, later in your test(s).
 
 We explain how waiting works in the [Waiting & Retry-ability](Waiting%20&%20Retry-ability%20654782dcf1c34be28e8e245ff28a5776.md) lesson.
 
 ```jsx
-cy.intercept("POST", "/users").as("signup");
+cy.intercept("POST", "/users").as("signup")
 
 // ...
 
-cy.wait("@signup");
+cy.wait("@signup")
 ```
 
 ### Overriding an existing intercept
@@ -57,14 +50,14 @@ Sometimes you may need to override and already existing intercept by using a `fi
 ```jsx
 beforeEach(function () {
   // ...
-    
-	cy.intercept("GET", "/transactions/public*").as("publicTransactions");
-    
-	// ...
-});
+
+  cy.intercept("GET", "/transactions/public*").as("publicTransactions")
+
+  // ...
+})
 ```
 
-In this example, we intercept any `GET` request to any route that matches `/transactions/public*`. We are doing this in a `beforeEach`, which means this intercept will run before every test. 
+In this example, we intercept any `GET` request to any route that matches `/transactions/public*`. We are doing this in a `beforeEach`, which means this intercept will run before every test.
 
 Later on, In one of our tests, we use `cy.intercept` to intercept and override this same `GET` and route but using a `fixture` to mock the response.
 
@@ -72,39 +65,39 @@ Later on, In one of our tests, we use `cy.intercept` to intercept and override t
 cy.intercept("GET", "/transactions/public*", {
   // ...
   fixture: "public-transactions.json",
-}).as("mockedPublicTransactions");
+}).as("mockedPublicTransactions")
 ```
 
 So as you can see, we can also intercept other intercepts and then provide mocked data using a `fixture`. We alias this intercept override as `mockedPublicTransactions`.
 
 ### Changing Headers
 
-You can also use `cy.intercept()` to modify headers from a response. 
+You can also use `cy.intercept()` to modify headers from a response.
 
 ```jsx
 cy.intercept("GET", "/transactions/public*", {
   headers: {
     "X-Powered-By": "Express",
     Date: new Date().toString(),
-  }
+  },
 })
 ```
 
-In this example we are dynamically modifying the Date header and also adding a new header `"X-Powered-By": "Express"`. 
+In this example we are dynamically modifying the Date header and also adding a new header `"X-Powered-By": "Express"`.
 
 The original headers from the response will remain intact. These new headers are appended to the original ones.
 
 ### Modifying Response Data
 
-Sometimes you will need to modify a portion of the response data while leaving everything else intact. 
+Sometimes you will need to modify a portion of the response data while leaving everything else intact.
 
 ```jsx
 cy.intercept("POST", "/bankaccounts", (req) => {
-  const { body } = req;
+  const { body } = req
   req.continue((res) => {
-    res.body.data.listBankAccount = [];
-  });
-});
+    res.body.data.listBankAccount = []
+  })
+})
 ```
 
 In this example, we are overriding the `listBankAccount` property and setting it to be an empty array. We need to use `.continue()` to modify the response data. You can learn more about how to use `.continue()` [here](https://docs.cypress.io/api/commands/intercept#Controlling-the-outbound-request-with-req-continue).
@@ -115,12 +108,15 @@ You can also use intercept to inspect a request, in the callback passed to `cy.i
 
 ```jsx
 cy.intercept("POST", apiGraphQL, (req) => {
-  const { body } = req;
+  const { body } = req
 
-  if (body.hasOwnProperty("operationName") && body.operationName === "CreateBankAccount") {
-    req.alias = "gqlCreateBankAccountMutation";
+  if (
+    body.hasOwnProperty("operationName") &&
+    body.operationName === "CreateBankAccount"
+  ) {
+    req.alias = "gqlCreateBankAccountMutation"
   }
-});
+})
 ```
 
 In this example, we are using intercept to inspect a GraphQL query to determine what kind of query it is. If the query is `CreateBankAccount` then we are setting its alias to `gqlCreateBankAccountMutation`
@@ -130,15 +126,3 @@ To learn more check out these resources in our docs:
 - [Network Requests](https://docs.cypress.io/guides/guides/network-requests)
 - [Intercept API docs](https://docs.cypress.io/api/commands/intercept)
 - [Stubs, Spies & Clocks](https://docs.cypress.io/guides/guides/stubs-spies-and-clocks)
-
-## Quiz
-
-How would you wait on the following alias `cy.intercept("POST", "/users").as("signup");`
-
-answer: `cy.wait('@signup')`
-
-others:
-
-- `cy.wait('signup')`
-- `cy.wait('#signup')`
-- `cy.wait('&signup')`
