@@ -145,7 +145,7 @@ export default function Header({ content, sections, progressService }) {
                             {sections.map((section) => (
                               <a
                                 key={content[section].slug}
-                                href={content[section].slug}
+                                href={`/${content[section].slug}`}
                                 className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex md:h-full lg:flex-col">
