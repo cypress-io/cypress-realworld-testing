@@ -2,6 +2,7 @@ import LessonToc from "../../components/Lesson/LessonToc"
 import LessonBreadcrumbs from "./LessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import dynamic from "next/dynamic"
+import Script from "next/script"
 const LessonProgress = dynamic(() => import("./LessonProgress"), {
   ssr: false,
 })
