@@ -105,6 +105,7 @@ export default function LessonPage({
         lessonPath={lessonPath}
         lessonData={lessonData}
       />
+
       {lessonData.challenges &&
         lessonData.challenges[0].challengeType === "multiple-choice" && (
           <MCChallenge
