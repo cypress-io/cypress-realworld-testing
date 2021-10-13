@@ -14,6 +14,11 @@
         "title": "Our Approach to Testing the Real World App",
         "slug": "our-approach-to-testing-the-real-world-app",
         "description": "Our recommended approach to testing web applications"
+      },
+      {
+        "title": "Custom Cypress Commands",
+        "slug": "custom-cypress-commands",
+        "description": "A detailed explanation of all Custom Cypress Commands used in the app"
       }
     ]
   },
