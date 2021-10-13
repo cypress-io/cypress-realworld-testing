@@ -1,4 +1,22 @@
 {
+  "overview": {
+    "title": "Overview",
+    "slug": "overview",
+    "description": "What you need to know to understand the examples below",
+    "image": "/images/real-world-examples/overview.png",
+    "lessons": [
+      {
+        "title": "Cypress Real World App Overview",
+        "slug": "cypress-real-world-app-overview",
+        "description": "A general overview of what the Real World App"
+      },
+      {
+        "title": "Our Approach to Testing the Real World App",
+        "slug": "our-approach-to-testing-the-real-world-app",
+        "description": "Our recommended approach to testing web applications"
+      }
+    ]
+  },
   "authentication": {
     "title": "Authentication",
     "slug": "authentication",
