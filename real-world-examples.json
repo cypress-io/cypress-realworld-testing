@@ -1,4 +1,22 @@
 {
+  "overview": {
+    "title": "Overview",
+    "slug": "overview",
+    "description": "What you need to know to understand the examples below",
+    "image": "/images/real-world-examples/overview.png",
+    "lessons": [
+      {
+        "title": "Cypress Real World App Overview",
+        "slug": "cypress-real-world-app-overview",
+        "description": "A general overview of what the Real World App"
+      },
+      {
+        "title": "Our Approach to Testing the Real World App",
+        "slug": "our-approach-to-testing-the-real-world-app",
+        "description": "Our recommended approach to testing web applications"
+      }
+    ]
+  },
   "authentication": {
     "title": "Authentication",
     "slug": "authentication",
@@ -100,8 +118,8 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Seaching by Attributes",
-        "slug": "seaching-by-attributes",
+        "title": "Searching by Attributes",
+        "slug": "searching-by-attributes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -151,18 +169,13 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Notifications between different users",
-        "slug": "notifications-between-different-users",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
         "title": "Renders an Empty Notifications State",
         "slug": "renders-an-empty-notifications-state",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Database Command to Get 3 Users",
-        "slug": "database-command-to-get-3-users",
+        "title": "Notifications between several users",
+        "slug": "notifications-between-several-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -179,13 +192,8 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Authenticated Users with Pending Transactions",
-        "slug": "authenticated-users-with-pending-transactions",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Transactions Navigation Tabs are Hidden",
-        "slug": "transactions-navigation-tabs-are-hidden",
+        "title": "Transactions Navigation Tabs are Hidden on a Transaction View Page",
+        "slug": "transactions-navigation-tabs-are-hidden-on-a-transaction-view-page",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
@@ -199,8 +207,8 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Does not Display Accept or Reject Buttons",
-        "slug": "does-not-display-accept-or-reject-buttons",
+        "title": "Does not Display Accept or Reject Buttons on Completed Request",
+        "slug": "does-not-display-accept-reject-buttons-on-completed-request",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]

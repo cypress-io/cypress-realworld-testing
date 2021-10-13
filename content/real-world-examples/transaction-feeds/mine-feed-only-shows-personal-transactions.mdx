@@ -1,10 +1,66 @@
----
-title: Mine Feed Only Shows Personal Transactions
----
-# Mine Feed Only Shows Personal Transactions
+# mine feed only shows personal transactions
 
-## SubHeader
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](Transaction%20Feeds%20Overview%20&%20Setup%20375cb80b08844b928872ac8780b9718c.md) lesson first.
 
-## Another SubHeader
-Lorem ipsum dolor sit amet, consectetur adipiscing elit
+```jsx
+it("mine feed only shows personal transactions", function () {
+      cy.database("filter", "contacts", { userId: ctx.user!.id }).then((contacts: Contact[]) => {
+        ctx.contactIds = contacts.map((contact) => contact.contactUserId);
+      });
+
+      cy.getBySelLike(feedViews.personal.tab).click();
+
+      cy.wait("@personalTransactions")
+        .its("response.body.results")
+        .each((transaction: Transaction) => {
+          const transactionParticipants = [transaction.senderId, transaction.receiverId];
+          expect(transactionParticipants).to.include(ctx.user!.id);
+        });
+      cy.getBySel("list-skeleton").should("not.exist");
+      cy.visualSnapshot("Personal Transactions");
+    });
+
+```
+
+You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+
+First, we are using a custom Cypress command `cy.database()` to filter through the `contacts` of the user from the `ctx` object. Remember, the `ctx` object's data is setup in the `beforeEach()` hook at the top of this spec file. We `.map()` over all of the user's contacts and store their `id`'s on the `ctx` object.
+
+```jsx
+cy.database("filter", "contacts", { userId: ctx.user!.id }).then((contacts: Contact[]) => {
+        ctx.contactIds = contacts.map((contact) => contact.contactUserId);
+      });
+
+```
+
+![](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.31.36_AM.png)
+
+Next, we click on the personal feed view tab
+
+```jsx
+cy.getBySelLike(feedViews.personal.tab).click()
+```
+
+![](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.31.55_AM.png)
+
+Then, we wait upon the `@personalTransactions` intercept, grab the `results` from the body of the response and iterate over each transaction. We then make an assertion to make sure the response only returns transactions associated with our user.
+
+```jsx
+cy.wait("@personalTransactions")
+        .its("response.body.results")
+        .each((transaction: Transaction) => {
+          const transactionParticipants = [transaction.senderId, transaction.receiverId];
+          expect(transactionParticipants).to.include(ctx.user!.id);
+        });
+
+```
+
+![](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.32.18_AM.png)
+
+Finally, we make sure that the loading skeleton does not exist in the `DOM`.
+
+```jsx
+cy.getBySel("list-skeleton").should("not.exist")
+```
+
+![](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.32.34_AM.png)
