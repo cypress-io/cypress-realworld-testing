@@ -169,18 +169,13 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Notifications between different users",
-        "slug": "notifications-between-different-users",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
         "title": "Renders an Empty Notifications State",
         "slug": "renders-an-empty-notifications-state",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Database Command to Get 3 Users",
-        "slug": "database-command-to-get-3-users",
+        "title": "Notifications between several users",
+        "slug": "notifications-between-several-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
@@ -197,13 +192,8 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Authenticated Users with Pending Transactions",
-        "slug": "authenticated-users-with-pending-transactions",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-      },
-      {
-        "title": "Transactions Navigation Tabs are Hidden",
-        "slug": "transactions-navigation-tabs-are-hidden",
+        "title": "Transactions Navigation Tabs are Hidden on a Transaction View Page",
+        "slug": "transactions-navigation-tabs-are-hidden-on-a-transaction-view-page",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
@@ -217,8 +207,8 @@
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
-        "title": "Does not Display Accept or Reject Buttons",
-        "slug": "does-not-display-accept-or-reject-buttons",
+        "title": "Does not Display Accept or Reject Buttons on Completed Request",
+        "slug": "does-not-display-accept-reject-buttons-on-completed-request",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
