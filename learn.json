@@ -12,99 +12,32 @@
     "lessons": [{
         "title": "TodoMVC App Install and Overview",
         "slug": "todomvc-app-install-and-overview",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "videoURL": null,
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": [
-            "yarn run cypress:run",
-            "yarn run cypress:open",
-            "yarn run cypress",
-            "yarn run test"
-          ],
-          "correctAnswerIndex": 1
-        }]
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Installing Cypress and writing our first test",
         "slug": "installing-cypress-and-writing-our-first-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": [
-            "yarn run cypress:run",
-            "yarn run cypress:open",
-            "yarn run cypress",
-            "yarn run test"
-          ],
-          "correctAnswerIndex": 1
-        }]
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Setting up Data Before Each Test",
         "slug": "setting-up-data-before-each-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": [
-            "yarn run cypress:run",
-            "yarn run cypress:open",
-            "yarn run cypress",
-            "yarn run test"
-          ],
-          "correctAnswerIndex": 1
-        }]
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "How to use Cypress Commands",
         "slug": "how-to-use-cypress-commands",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": [
-            "yarn run cypress:run",
-            "yarn run cypress:open",
-            "yarn run cypress",
-            "yarn run test"
-          ],
-          "correctAnswerIndex": 1
-        }]
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Cypress Command Logs, Snapshots and Aliases",
         "slug": "cypress-command-logs-snapshots-and-aliases",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": [
-            "yarn run cypress:run",
-            "yarn run cypress:open",
-            "yarn run cypress",
-            "yarn run test"
-          ],
-          "correctAnswerIndex": 1
-        }]
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       },
       {
         "title": "Testing what isn't there",
         "slug": "testing-what-isnt-there",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is the command to run Cypress in open mode?",
-          "answers": [
-            "yarn run cypress:run",
-            "yarn run cypress:open",
-            "yarn run cypress",
-            "yarn run test"
-          ],
-          "correctAnswerIndex": 1
-        }]
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
       }
     ]
   },
