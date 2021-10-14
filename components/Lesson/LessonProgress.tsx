@@ -1,4 +1,5 @@
 import { CheckIcon } from "@heroicons/react/solid"
+import Link from "next/link"
 import { isLessonCompleted } from "../../utils/machineUtils"
 
 function classNames(...classes) {
@@ -38,7 +39,7 @@ export default function LessonSteps({
               />
             ) : null}
 
-            <a href={lesson.href} className="relative flex items-start group">
+            <div className="relative flex items-start group">
               {/* "completed" */}
 
               {isLessonCompleted(
@@ -76,10 +77,12 @@ export default function LessonSteps({
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  {lesson.title}
+                  <Link href={`/${sectionSlug}/${lesson.slug}`}>
+                    <a>{lesson.title}</a>
+                  </Link>
                 </span>
               </span>
-            </a>
+            </div>
           </li>
         ))}
       </ol>
