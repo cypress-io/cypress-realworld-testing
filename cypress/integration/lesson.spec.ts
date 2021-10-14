@@ -1,6 +1,6 @@
 const { _ } = Cypress
 
-describe("Multiple Choice Challenge", () => {
+describe("Lesson Pages", () => {
   beforeEach(() => {
     cy.visit(
       "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
@@ -41,6 +41,28 @@ describe("Multiple Choice Challenge", () => {
     cy.get(".lesson-content img").its(0).click()
     cy.get("#modal .modal-content .close").click()
     cy.get("#modal").should("not.be.visible")
+  })
+
+  context("Lesson Progress Sidebar", () => {
+    it("the lessons in the progress sidebar link to the correct lessons", () => {
+      cy.getBySel("lesson-progress-link-0").click()
+      cy.location("pathname").should(
+        "eq",
+        "/testing-your-first-application/todomvc-app-install-and-overview"
+      )
+
+      cy.getBySel("lesson-progress-link-1").click()
+      cy.location("pathname").should(
+        "eq",
+        "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
+      )
+
+      cy.getBySel("lesson-progress-link-4").click()
+      cy.location("pathname").should(
+        "eq",
+        "/testing-your-first-application/cypress-command-logs-snapshots-and-aliases"
+      )
+    })
   })
 })
 

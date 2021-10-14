@@ -1,7 +1,7 @@
 import realWorldExamples from "../../real-world-examples.json"
 const { _ } = Cypress
 
-describe("RWT Home", function () {
+describe("RWE Landing Page", function () {
   beforeEach(function () {
     cy.visit("/real-world-examples")
   })
@@ -19,6 +19,27 @@ describe("RWT Home", function () {
           cy.getBySel(`real-world-lesson-${index}`).contains(lessonTitle)
         })
       })
+    })
+  })
+
+  context("Example Progress Sidebar", () => {
+    it("the examples in the progress sidebar link to the correct examples", () => {
+      cy.visit("/real-world-examples/authentication-overview-and-setup")
+
+      cy.getBySel("lesson-progress-link-1").click()
+      cy.location("pathname").should(
+        "eq",
+        "/real-world-examples/unauthenticated-users"
+      )
+
+      cy.getBySel("lesson-progress-link-3").click()
+      cy.location("pathname").should("eq", "/real-world-examples/invalid-users")
+
+      cy.getBySel("lesson-progress-link-4").click()
+      cy.location("pathname").should(
+        "eq",
+        "/real-world-examples/sign-up-login-create-bank-account-and-logout"
+      )
     })
   })
 })
