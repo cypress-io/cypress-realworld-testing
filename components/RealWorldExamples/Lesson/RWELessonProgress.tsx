@@ -78,7 +78,9 @@ export default function LessonSteps({
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
                   <Link href={`/real-world-examples/${lesson.slug}`}>
-                    <a>{lesson.title}</a>
+                    <a data-test={`lesson-progress-link-${index}`}>
+                      {lesson.title}
+                    </a>
                   </Link>
                 </span>
               </span>

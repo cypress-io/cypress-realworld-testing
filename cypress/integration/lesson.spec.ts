@@ -44,7 +44,7 @@ describe("Lesson Pages", () => {
   })
 
   context("Lesson Progress Sidebar", () => {
-    it.only("the lessons in the progress sidebar link to the correct lessons", () => {
+    it("the lessons in the progress sidebar link to the correct lessons", () => {
       cy.getBySel("lesson-progress-link-0").click()
       cy.location("pathname").should(
         "eq",
