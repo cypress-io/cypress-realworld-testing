@@ -38,6 +38,7 @@ export default function LessonChallenge({
                     <div className="absolute flex items-center justify-center h-8 w-8">
                       <input
                         id={`answer-${index}`}
+                        data-test={`challenge-answer-${index}`}
                         name="answer"
                         type="checkbox"
                         className={`${

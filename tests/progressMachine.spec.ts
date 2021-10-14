@@ -19,7 +19,7 @@ describe("progress machine", () => {
   it("can save the progress", () => {
     const skippedAnswerEvent = {
       type: "SKIP_ANSWER",
-      id: "testing-your-first-application/todomvc-app-install-and-overview",
+      id: "cypress-fundamentals/cypress-runs-in-the-browser",
     }
 
     progressService.send(skippedAnswerEvent)
@@ -30,9 +30,9 @@ describe("progress machine", () => {
   it("can validate a correct multiple choice answer", () => {
     const answerEvent: MultipleChoicePayload = {
       type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/todomvc-app-install-and-overview",
+      id: "cypress-fundamentals/cypress-runs-in-the-browser",
       challengeIndex: 0,
-      userAnswerIndex: 1,
+      userAnswerIndex: 0,
     }
     progressService.send(answerEvent)
 
@@ -42,9 +42,9 @@ describe("progress machine", () => {
   it("can validate an incorrect multiple choice answer", () => {
     const answerEvent: MultipleChoicePayload = {
       type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/todomvc-app-install-and-overview",
+      id: "cypress-fundamentals/cypress-runs-in-the-browser",
       challengeIndex: 0,
-      userAnswerIndex: 0,
+      userAnswerIndex: 1,
     }
     progressService.send(answerEvent)
 

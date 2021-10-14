@@ -4,11 +4,10 @@
 */
 import learnJson from "../../learn.json"
 const { _ } = Cypress
-const sections = Object.keys(learnJson)
-const sectionSlug = "testing-your-first-application"
+const sectionSlug = "cypress-fundamentals"
 const lessons = learnJson[sectionSlug].lessons
 
-describe("Next Lesson Button on Section Pages", () => {
+describe("Next Lesson Button on Course Pages", () => {
   beforeEach(() => {
     // @ts-ignore
     cy.restoreLocalStorage()
@@ -20,7 +19,7 @@ describe("Next Lesson Button on Section Pages", () => {
   })
 
   it("says 'Start Course' and links to the first lesson if none of the lessons have been completed", () => {
-    cy.visit("/testing-your-first-application")
+    cy.visit(`/${sectionSlug}`)
     cy.getBySel("next-lesson-button").then(($btn) => {
       // @ts-ignore
       const text = $btn.text()
@@ -29,15 +28,16 @@ describe("Next Lesson Button on Section Pages", () => {
 
       expect(text).to.eq("Start Course")
       expect(href).to.eq(
-        `/testing-your-first-application/${learnJson["testing-your-first-application"].lessons[0].slug}`
+        `/${sectionSlug}/${learnJson[`${sectionSlug}`].lessons[0].slug}`
       )
     })
   })
 
   it("says 'Next Lesson' and links to the 2nd lesson if the first lesson has been completed", () => {
-    cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
-    cy.get("#answer-1").click()
-    cy.visit("/testing-your-first-application")
+    cy.visit(`/${sectionSlug}/cypress-runs-in-the-browser`)
+    cy.get("#answer-0").click()
+
+    cy.visit(`/${sectionSlug}`)
 
     cy.getBySel("next-lesson-button").then(($btn) => {
       // @ts-ignore
@@ -47,12 +47,12 @@ describe("Next Lesson Button on Section Pages", () => {
 
       expect(text).to.eq("Next Lesson")
       expect(href).to.eq(
-        `/testing-your-first-application/${learnJson["testing-your-first-application"].lessons[1].slug}`
+        `/${sectionSlug}/${learnJson[`${sectionSlug}`].lessons[1].slug}`
       )
     })
   })
 
-  it.only("says 'Course Completed' and links to the home page if all of the lessons have been completed", () => {
+  it("says 'Course Completed' and links to the home page if all of the lessons have been completed", () => {
     cy.visit(`/${sectionSlug}/${learnJson[sectionSlug].lessons[0].slug}`)
 
     _.each(lessons, (lesson, index) => {
@@ -60,12 +60,14 @@ describe("Next Lesson Button on Section Pages", () => {
         "eq",
         `/${sectionSlug}/${learnJson[sectionSlug].lessons[index].slug}`
       )
-      cy.get("#answer-1").click()
+      cy.getBySel(
+        `"challenge-answer-${lesson["challenges"][0]["correctAnswerIndex"]}"`
+      ).click()
       cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
       cy.getBySel("next-lesson-button").click()
     })
 
-    cy.visit("/testing-your-first-application")
+    cy.visit(`/${sectionSlug}`)
 
     cy.getBySel("next-lesson-button").then(($btn) => {
       // @ts-ignore
