@@ -4,8 +4,7 @@ import { progressMachine } from "../machines/progressMachine"
 import * as machineUtils from "../utils/machineUtils"
 import learnJson from "../learn.json"
 
-const lessonPath =
-  "testing-your-first-application/todomvc-app-install-and-overview"
+const lessonPath = "cypress-fundamentals/cypress-runs-in-the-browser"
 
 const [sectionSlug, lessonSlug] = lessonPath.split("/")
 
@@ -52,9 +51,9 @@ describe("machine utils", () => {
   it("isLessonCompleted() - returns true when a lesson is complete", () => {
     const answerEvent = {
       type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/todomvc-app-install-and-overview",
+      id: "cypress-fundamentals/cypress-runs-in-the-browser",
       challengeIndex: 0,
-      userAnswerIndex: 1,
+      userAnswerIndex: 0,
     }
     progressService.send(answerEvent)
 
@@ -65,9 +64,9 @@ describe("machine utils", () => {
   it("isLessonCompleted() - returns false when a lesson is incomplete", () => {
     const answerEvent = {
       type: "SUBMIT_ANSWER",
-      id: "testing-your-first-application/todomvc-app-install-and-overview",
+      id: "cypress-fundamentals/cypress-runs-in-the-browser",
       challengeIndex: 0,
-      userAnswerIndex: 0,
+      userAnswerIndex: 1,
     }
     progressService.send(answerEvent)
 
