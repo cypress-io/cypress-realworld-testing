@@ -123,15 +123,9 @@
         "description": "Tags: happy path, multi step form, network waiting, complex command, mobile, switching user, database/network driven assertions"
       },
       {
-<<<<<<< HEAD
         "title": "Searching by Attributes",
         "slug": "searching-by-attributes",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-=======
-        "title": "Seaching by Attributes",
-        "slug": "seaching-by-attributes",
-        "description": "Tags: happy path, data driven test, network waiting, form, network driven assertions"
->>>>>>> dd194d8 (capitalized Tags in rwa examples descriptions)
       }
     ]
   },
@@ -180,7 +174,6 @@
         "description": "Understand what is happening beforeEach() test is run"
       },
       {
-<<<<<<< HEAD
         "title": "Renders an Empty Notifications State",
         "slug": "renders-an-empty-notifications-state",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
@@ -189,16 +182,6 @@
         "title": "Notifications between several users",
         "slug": "notifications-between-several-users",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-=======
-        "title": "Notifications between different users",
-        "slug": "notifications-between-different-users",
-        "description": "Tags: happy path, data driven test, network waiting, switching users, commands of commands, command chaining"
-      },
-      {
-        "title": "Renders an Empty Notifications State",
-        "slug": "renders-an-empty-notifications-state",
-        "description": "Tags: unhappy path, inline fixture, mobile"
->>>>>>> dd194d8 (capitalized Tags in rwa examples descriptions)
       }
     ]
   },
