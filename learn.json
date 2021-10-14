@@ -154,37 +154,102 @@
     "lessons": [{
         "title": "Cypress Runs in the Browser",
         "slug": "cypress-runs-in-the-browser",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "If it runs in the browser, Cypress has access to it?",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 0
+        }]
       },
       {
         "title": "Command Chaining",
         "slug": "command-chaining",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "What does Cypress yield to the next command in the chain?",
+          "answers": [
+            "Object",
+            "Variable",
+            "Context",
+            "Subject"
+          ],
+          "correctAnswerIndex": 3
+        }]
       },
       {
         "title": "Understanding the Asynchronous Nature of Cypress",
         "slug": "understanding-the-asynchronous-nature-of-cypress",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "Cypress commands return their subjects?",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 1
+        }]
       },
       {
         "title": "Waiting and Retry-ability",
         "slug": "waiting-and-retry-ability",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "Cypress will automatically wait until an element becomes visible, becomes enabled, or when another element is no longer covering an element.",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 0
+        }]
       },
       {
         "title": "Cypress UI Overview",
         "slug": "cypress-ui-overview",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "The selector playground allows you to copy the cypress command to cy.get() an element in your app",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 0
+        }]
       },
       {
         "title": "How to Debug Failing Tests",
         "slug": "how-to-debug-failing-tests",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "The Cypress Test Runner, ie the UI, will automatically take screenshots and videos of failing tests.",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 1
+        }]
       },
       {
         "title": "Cypress is just JavaScript",
         "slug": "cypress-is-just-javascript",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "Using lots of variables in your tests is a good idea since Cypress is just JavaScript.",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 1
+        }]
       }
     ]
   },
