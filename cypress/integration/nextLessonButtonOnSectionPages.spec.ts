@@ -52,7 +52,7 @@ describe("Next Lesson Button on Course Pages", () => {
     })
   })
 
-  it.only("says 'Course Completed' and links to the home page if all of the lessons have been completed", () => {
+  it("says 'Course Completed' and links to the home page if all of the lessons have been completed", () => {
     cy.visit(`/${sectionSlug}/cypress-runs-in-the-browser`)
 
     cy.get("#answer-0").click()
