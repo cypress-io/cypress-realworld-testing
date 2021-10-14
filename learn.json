@@ -266,42 +266,120 @@
     "lessons": [{
         "title": "Database Initialization and Seeding",
         "slug": "database-initialization-and-seeding",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "The best way to create the data you need for your tests is via the UI.",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 1
+        }]
       },
       {
         "title": "Running Cypress in CI",
         "slug": "running-cypress-in-ci",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "The Cypress dashboard provides automatic parallelization and load balancing for your tests.",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 0
+        }]
       },
       {
         "title": "Intercepting Network Requests",
         "slug": "intercepting-network-requests",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "How would you wait on the following alias cy.intercept('POST', '/users').as('signup');",
+          "answers": [
+            "cy.wait('signup')",
+            "cy.wait('@signup')",
+            "cy.wait('#signup')",
+            "cy.wait('&signup')"
+          ],
+          "correctAnswerIndex": 1
+        }]
       },
       {
         "title": "Integration and API Tests",
         "slug": "integration-and-api-tests",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "Cypress provides a great developer experience for testing API's",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 0
+        }]
       },
       {
         "title": "Building the Right Cypress Commands",
         "slug": "building-the-right-cypress-commands",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "You should be thinking in abstractions before you begin writing your tests",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 1
+        }]
       },
       {
         "title": "How to Test Various Browsers and Viewports",
         "slug": "how-to-test-various-browsers-and-viewports",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "Which browser can Cypress test?",
+          "answers": [
+            "Chrome",
+            "Firefox",
+            "Edge",
+            "All of the above"
+          ],
+          "correctAnswerIndex": 3
+        }]
       },
       {
         "title": "Important Cypress Methods You Need to Know",
         "slug": "important-cypress-methods-you-need-to-know",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "Which Cypress method gets a property's value on the previously yielded subject.",
+          "answers": [
+            "invoke",
+            "within",
+            "its",
+            "request"
+          ],
+          "correctAnswerIndex": 2
+        }]
       },
       {
         "title": "Using Data to Build Dynamic Tests",
         "slug": "using-data-to-build-dynamic-tests",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "It is best to use hard-coded data for your tests.",
+          "answers": [
+            "True",
+            "False"
+          ],
+          "correctAnswerIndex": 1
+        }]
       }
     ]
   }
