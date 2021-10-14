@@ -2,13 +2,7 @@ const { _ } = Cypress
 
 describe("Lesson Pages", () => {
   beforeEach(() => {
-    cy.visit(
-      "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
-    )
-  })
-
-  it("does not display the video hero section", () => {
-    cy.getBySel("lesson-hero").should("not.exist")
+    cy.visit("/cypress-fundamentals/cypress-ui-overview")
   })
 
   it("the TOC links to the correct content section when clicked", () => {
