@@ -39,6 +39,9 @@ describe("Lesson Pages", () => {
 
   context("Lesson Progress Sidebar", () => {
     it("the lessons in the progress sidebar link to the correct lessons", () => {
+      cy.visit(
+        "/testing-your-first-application/todomvc-app-install-and-overview"
+      )
       cy.getBySel("lesson-progress-link-0").click()
       cy.location("pathname").should(
         "eq",
