@@ -28,54 +28,20 @@ describe("Progress State & Local Storage", () => {
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
   })
 
-  it("the lesson page displays the complete lesson button when a lesson is completed and navigates to the homepage after the final lesson is completed", () => {
-    cy.visit(`/${sectionSlug}/cypress-runs-in-the-browser`)
+  it.only("the lesson page displays the complete lesson button when a lesson is completed and navigates to the homepage after the final lesson is completed", () => {
+    cy.visit(`/${sectionSlug}/${learnJson[sectionSlug].lessons[0].slug}`)
 
-    cy.get("#answer-0").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should("eq", `/${sectionSlug}/command-chaining`)
-
-    cy.get("#answer-3").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/understanding-the-asynchronous-nature-of-cypress`
-    )
-
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/waiting-and-retry-ability`
-    )
-
-    cy.get("#answer-0").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should("eq", `/${sectionSlug}/cypress-ui-overview`)
-
-    cy.get("#answer-0").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/how-to-debug-failing-tests`
-    )
-
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/cypress-is-just-javascript`
-    )
-
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
+    _.each(lessons, (lesson, index) => {
+      cy.location("pathname").should(
+        "eq",
+        `/${sectionSlug}/${learnJson[sectionSlug].lessons[index].slug}`
+      )
+      cy.getBySel(
+        `"challenge-answer-${lesson["challenges"][0]["correctAnswerIndex"]}"`
+      ).click()
+      cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
+      cy.getBySel("next-lesson-button").click()
+    })
 
     cy.location("pathname").should("eq", "/")
   })
