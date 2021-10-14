@@ -23,7 +23,7 @@ describe("RWE Landing Page", function () {
   })
 
   context("Example Progress Sidebar", () => {
-    it.only("the examples in the progress sidebar link to the correct examples", () => {
+    it("the examples in the progress sidebar link to the correct examples", () => {
       cy.visit("/real-world-examples/authentication-overview-and-setup")
 
       cy.getBySel("lesson-progress-link-1").click()
