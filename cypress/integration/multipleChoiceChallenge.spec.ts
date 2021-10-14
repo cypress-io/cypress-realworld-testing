@@ -1,6 +1,6 @@
 describe("Multiple Choice Challenge", () => {
   beforeEach(() => {
-    cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
+    cy.visit("/testing-foundations/testing-is-a-mindset")
   })
 
   it("gray's out and strikes through an incorrect answer", () => {
