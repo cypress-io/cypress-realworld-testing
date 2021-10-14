@@ -28,7 +28,7 @@ describe("Progress State & Local Storage", () => {
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
   })
 
-  it.only("the lesson page displays the complete lesson button when a lesson is completed and navigates to the homepage after the final lesson is completed", () => {
+  it("the lesson page displays the complete lesson button when a lesson is completed and navigates to the homepage after the final lesson is completed", () => {
     cy.visit(`/${sectionSlug}/${learnJson[sectionSlug].lessons[0].slug}`)
 
     _.each(lessons, (lesson, index) => {
