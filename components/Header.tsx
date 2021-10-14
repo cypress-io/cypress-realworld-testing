@@ -3,6 +3,7 @@ import { Popover, Transition } from "@headlessui/react"
 import MobileNav from "./Mobile/MobileNav"
 import Link from "next/link"
 import Image from "next/image"
+import learnJson from "../learn.json"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
@@ -81,6 +82,8 @@ function classNames(...classes) {
 }
 
 export default function Header({ content, sections, progressService }) {
+  const learnJsonSections = Object.keys(learnJson)
+
   return (
     <>
       <Popover className="relative bg-white hidden lg:block">
@@ -120,6 +123,7 @@ export default function Header({ content, sections, progressService }) {
                           open ? "text-gray-900" : "text-gray-500",
                           "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                         )}
+                        data-test="courses-dropdown"
                       >
                         <span>Courses</span>
                         <ChevronDownIcon
@@ -141,21 +145,24 @@ export default function Header({ content, sections, progressService }) {
                         leaveTo="opacity-0 -translate-y-1"
                       >
                         <Popover.Panel className="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
-                          <div className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
-                            {sections.map((section) => (
+                          <div
+                            className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
+                            data-test="courses-dropdown-menu"
+                          >
+                            {learnJsonSections.map((section) => (
                               <a
-                                key={content[section].slug}
-                                href={`/${content[section].slug}`}
+                                key={learnJson[section].slug}
+                                href={`/${learnJson[section].slug}`}
                                 className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex md:h-full lg:flex-col">
                                   <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
                                     <div>
                                       <p className="text-base font-medium text-gray-900">
-                                        {content[section].title}
+                                        {learnJson[section].title}
                                       </p>
                                       <p className="mt-1 text-sm text-gray-500">
-                                        {content[section].description}
+                                        {learnJson[section].description}
                                       </p>
                                     </div>
                                     <p className="mt-2 text-sm font-medium text-blue-500 lg:mt-4">
