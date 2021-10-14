@@ -53,53 +53,19 @@ describe("Next Lesson Button on Course Pages", () => {
   })
 
   it("says 'Course Completed' and links to the home page if all of the lessons have been completed", () => {
-    cy.visit(`/${sectionSlug}/cypress-runs-in-the-browser`)
+    cy.visit(`/${sectionSlug}/${learnJson[sectionSlug].lessons[0].slug}`)
 
-    cy.get("#answer-0").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should("eq", `/${sectionSlug}/command-chaining`)
-
-    cy.get("#answer-3").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/understanding-the-asynchronous-nature-of-cypress`
-    )
-
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/waiting-and-retry-ability`
-    )
-
-    cy.get("#answer-0").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should("eq", `/${sectionSlug}/cypress-ui-overview`)
-
-    cy.get("#answer-0").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/how-to-debug-failing-tests`
-    )
-
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
-    cy.location("pathname").should(
-      "eq",
-      `/${sectionSlug}/cypress-is-just-javascript`
-    )
-
-    cy.get("#answer-1").click()
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
-    cy.getBySel("next-lesson-button").click()
+    _.each(lessons, (lesson, index) => {
+      cy.location("pathname").should(
+        "eq",
+        `/${sectionSlug}/${learnJson[sectionSlug].lessons[index].slug}`
+      )
+      cy.getBySel(
+        `"challenge-answer-${lesson["challenges"][0]["correctAnswerIndex"]}"`
+      ).click()
+      cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
+      cy.getBySel("next-lesson-button").click()
+    })
 
     cy.visit(`/${sectionSlug}`)
 
