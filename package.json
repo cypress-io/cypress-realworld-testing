@@ -15,7 +15,7 @@
     "generate-content": "ts-node scripts/generateContentFiles.ts",
     "generate-rwe-content": "ts-node scripts/generateRealWorldExamples.ts",
     "lint": "next lint",
-    "pre-commit": "yarn types && pretty-quick --staged && yarn run lint",
+    "pre-commit": "yarn types && pretty-quick --staged && yarn run lint && yarn run stop-only",
     "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
     "start": "next start",
     "update-rwe-slugs": "ts-node scripts/updateRWESlugs.ts",
