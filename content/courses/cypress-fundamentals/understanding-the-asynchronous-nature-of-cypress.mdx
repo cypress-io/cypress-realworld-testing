@@ -6,7 +6,7 @@ This is arguably one of the most crucial Cypress concepts that you need to under
 
 Cypress commands DO NOT `return` their subjects. This means you **cannot** do things like this:
 
-```jsx
+```js
 // THIS WILL NOT WORK
 const button = cy.get("button")
 
@@ -27,7 +27,7 @@ So if a command does not `return` a subject but instead `yields` it, how can you
 
 Whatever is returned from the callback function becomes the new subject and will flow into the following command (except for `undefined`).
 
-```jsx
+```js
 cy.get("button").then(($btn) => {
   const cls = $btn.attr("class")
 
@@ -47,7 +47,7 @@ In our example just above, `$btn` is a jQuery object. This means that if we woul
 
 The example continued...
 
-```jsx
+```js
 cy.get("button").then(($btn) => {
   const cls = $btn.attr("class")
 
@@ -61,13 +61,13 @@ Before our assertion, which in this case is `.should('not.have.class', cls)` we 
 
 We _cannot_ do something like this, because `$btn` is a jQuery object.
 
-```jsx
+```js
 $btn.click().should("not.have.class", cls) // Does not work
 ```
 
 We must use `.wrap()` first, because it provides Cypress the context necessary for interacting with the `$btn`.
 
-```jsx
+```js
 cy.wrap($btn).click().should("not.have.class", cls)
 ```
 

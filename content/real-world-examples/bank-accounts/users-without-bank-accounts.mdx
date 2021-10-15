@@ -39,7 +39,7 @@ Next, we use `cy.intercept` to intercept the `POST` request to our GraphQL endpo
 
 Then we clear out any `listBankAccount` items that come back by setting this property on the response to an empty array. This is how we manipulate the response data to ensure we "render an empty bank account list," which is necessary for our test.
 
-```jsx
+```js
 cy.intercept("POST", `${Cypress.env("apiUrl")}/graphql`, (req) => {
   const { body } = req
   if (
@@ -75,7 +75,7 @@ Next, we assert that the onboarding modal window is visible.
 
 Finally, we assert that the user's notification count is visible.
 
-```jsx
+```js
 cy.getBySel("bankaccount-list").should("not.exist")
 cy.getBySel("empty-list-header").should("contain", "No Bank Accounts")
 cy.getBySel("user-onboarding-dialog").should("be.visible")

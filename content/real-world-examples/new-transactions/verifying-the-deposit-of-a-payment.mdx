@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [New Transaction Overview & Setup](New%20Transaction%20Overview%20&%20Setup%207b6d9e5eb7bd4fc6b712c17a0e1e892b.md) lesson first.
 
-```jsx
+```js
 it("submits a transaction payment and verifies the deposit for the receiver", function () {
   cy.getBySel("nav-top-new-transaction").click();
 
@@ -61,7 +61,7 @@ You can find out more information about the custom Cypress commands used in this
 
 First, we click on the "New" transaction button.
 
-```jsx
+```js
 cy.getBySel("nav-top-new-transaction").click()
 ```
 
@@ -69,7 +69,7 @@ cy.getBySel("nav-top-new-transaction").click()
 
 We then create a `transactionPayload` object.
 
-```jsx
+```js
 const transactionPayload = {
   transactionType: "payment",
   amount: 25,
@@ -81,7 +81,7 @@ const transactionPayload = {
 
 Then, we grab the current balance from the UI, only if we are _not_ in a mobile viewport and store it inside of the `starteBalance` variable.
 
-```jsx
+```js
 // first let's grab the current balance from the UI
 let startBalance: string
 if (!isMobile()) {
@@ -98,13 +98,13 @@ if (!isMobile()) {
 
 We then create a new transaction using a custom Cypress command `cy.createTransaction()` with the `transactionPayload` object we created earlier.
 
-```jsx
+```js
 cy.createTransaction(transactionPayload)
 ```
 
 We then wait on the `@createTransaction` intercept and assert the "Create Another Transaction" button is visible
 
-```jsx
+```js
 cy.wait("@createTransaction")
 cy.getBySel("new-transaction-create-another-transaction").should("be.visible")
 ```
@@ -113,7 +113,7 @@ cy.getBySel("new-transaction-create-another-transaction").should("be.visible")
 
 We then make sure we are not in a mobile viewport and assert that the user balance has been updated from the transaction we just created.
 
-```jsx
+```js
 if (!isMobile()) {
   // make sure the new balance is displayed
   cy.get("[data-test=sidenav-user-balance]").should(($el) => {
@@ -127,13 +127,13 @@ if (!isMobile()) {
 
 We then switch users by using a custom command `cy.switchUserByXstate()`
 
-```jsx
+```js
 cy.switchUserByXstate(ctx.contact!.username);
 ```
 
 We then use a 3rd party library called [Dinero.js](https://dinerojs.com/) to format the `updatedAccountBalance` properly.
 
-```jsx
+```js
 const updatedAccountBalance = Dinero({
       amount: ctx.contact!.balance + transactionPayload.amount * 100,
     }).toFormat();
@@ -141,7 +141,7 @@ const updatedAccountBalance = Dinero({
 
 If we are in a mobile viewport we click the button to open the sidebar.
 
-```jsx
+```js
 if (isMobile()) {
   cy.getBySel("sidenav-toggle").click()
 }
@@ -149,6 +149,6 @@ if (isMobile()) {
 
 Finally, we assert that the user's balance contains the correct amount.
 
-```jsx
+```js
 cy.getBySelLike("user-balance").should("contain", updatedAccountBalance)
 ```

@@ -26,7 +26,7 @@ You can also select which browser to run via the UI by selecting it in the dropd
 
 You can even do this on a test by test basis by passing an [options object to your tests](https://docs.cypress.io/guides/guides/cross-browser-testing#Running-Specific-Tests-by-Browser).
 
-```jsx
+```js
 // Run the test if Cypress is running
 // using the built-in Electron browser
 it('has access to clipboard', { browser: 'electron' }, () => {
@@ -69,7 +69,7 @@ As you can see, when these commands are executed, we are passing along some cust
 
 We also have a utility function called `isMobile()` which determines if our tests are being run at the mobile viewport. Here is what that function looks like:
 
-```jsx
+```js
 export const isMobile = () => {
   return (
     Cypress.config("viewportWidth") <
@@ -98,7 +98,7 @@ The environment variable `mobileViewportWidthBreakpoint` is located within the `
 
 In our tests, we can use this function to determine if the tests are being executed within our mobile viewport and react accordingly using a conditional.
 
-```jsx
+```js
 it("should remember a user for 30 days after login", function () {
   cy.database("find", "users").then((user: User) => {
     cy.login(user.username, "s3cret", { rememberUser: true })

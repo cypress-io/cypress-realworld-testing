@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [Transaction View Overview & Setup](Transaction%20View%20Overview%20&%20Setup%20de652b8e362149babd9b8a5a787d996e.md) lesson first.
 
-```jsx
+```js
 it("transactions navigation tabs are hidden on a transaction view page", function () {
   cy.getBySelLike("transaction-item").first().click()
   cy.location("pathname").should("include", "/transaction")
@@ -18,7 +18,7 @@ This is a relatively straightforward test in which we are making sure that the t
 
 The first thing we do is click on the first transaction and confirm that the application routes us to that transactions page.
 
-```jsx
+```js
 cy.getBySelLike("transaction-item").first().click()
 cy.location("pathname").should("include", "/transaction")
 ```
@@ -27,7 +27,7 @@ cy.location("pathname").should("include", "/transaction")
 
 Finally, we confirm that the transaction tabs are not in the `DOM` and that the transaction header is visible.
 
-```jsx
+```js
 cy.getBySel("nav-transaction-tabs").should("not.exist")
 cy.getBySel("transaction-detail-header").should("be.visible")
 ```

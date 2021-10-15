@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [Transaction View Overview & Setup](Transaction%20View%20Overview%20&%20Setup%20de652b8e362149babd9b8a5a787d996e.md) lesson first.
 
-```jsx
+```js
 it("does not display accept/reject buttons on completed request", function () {
     cy.database("find", "transactions", {
       receiverId: ctx.authenticatedUser!.id,
@@ -27,7 +27,7 @@ You can find out more information about the custom Cypress commands used in this
 
 The first thing we do is retrieve a "complete" transaction from the database associated with our `authenticatedUser`, which we set up in the `beforeEach()` hook at the top of this spec file. This test is another example of a "Data-Driven Test." Rather than hard-coding this information, we are using real data from our database to drive our test.
 
-```jsx
+```js
 cy.database("find", "transactions", {
       receiverId: ctx.authenticatedUser!.id,
       status: "complete",
@@ -41,14 +41,14 @@ cy.database("find", "transactions", {
 
 Once we locate the transaction, we then navigate the application to the specific transactions screen.
 
-```jsx
+```js
 cy.visit(`/transaction/${transactionRequest!.id}`);
 
 ```
 
 Next, we wait for the `@getNotifications` intercept.
 
-```jsx
+```js
 cy.wait("@getNotifications")
 ```
 
@@ -56,7 +56,7 @@ cy.wait("@getNotifications")
 
 Finally, we confirm that certain elements are visible or not visible.
 
-```jsx
+```js
 cy.getBySel("nav-top-notifications-count").should("be.visible")
 cy.getBySel("transaction-detail-header").should("be.visible")
 cy.getBySel("transaction-accept-request").should("not.exist")

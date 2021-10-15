@@ -4,13 +4,13 @@ When first learning how to write automated tests, it can be easy to get stuck no
 
 In step one, the `Arrange` step, you have to perform some setup for your test. For example, in the case of a Cypress end-to-end test, you need to tell Cypress to open the browser and navigate to the correct URL.
 
-```jsx
+```js
 cy.visit("http://localhost:8888")
 ```
 
 In step two, the `Act` step, you perform some action. For example, in the case of a todo app, you want to test that you can add a single todo.
 
-```jsx
+```js
 cy.get(".new-todo").type("Buy Milk{enter}")
 ```
 
@@ -18,7 +18,7 @@ In this example, we are getting the element with the class of `.new-todo` and th
 
 Finally, in step three, you `Assert`. In this step, you assert that the thing you acted upon in step two did what you expected.
 
-```jsx
+```js
 cy.get(".todo-list li").should("have.length", 1)
 ```
 
@@ -30,7 +30,7 @@ With these three steps in mind, here is what a simple Cypress end-to-end test lo
 
 The following example is from the React TodoMVC app, which we cover in the "Testing your first application" section.
 
-```jsx
+```js
 // app.spec.js
 
 describe("React TodoMVC", () => {

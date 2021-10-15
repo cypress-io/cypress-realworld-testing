@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [Notifications Overview & Setup](Notifications%20Overview%20&%20Setup%206a27a2d9b5434a229982931bf0821066.md) lesson first.
 
-```jsx
+```js
 it("renders an empty notifications state", function () {
   cy.intercept("GET", "/notifications", []).as("notifications")
 
@@ -23,13 +23,13 @@ You can find out more information about the custom Cypress commands used in this
 
 First, we use `cy.intercept()` to intercept any `GET` request to the `/notifications` route. If you look closely, we are also passing in an empty array `[]` as a [3rd argument](https://docs.cypress.io/api/commands/intercept#Arguments) which will set the response data to be this empty array. The reason for this is we are trying to test what happens when a user does not have any notifications. The intercept is aliased to `@notifications`
 
-```jsx
+```js
 cy.intercept("GET", "/notifications", []).as("notifications")
 ```
 
 Then, we use another custom Cypress command `cy.loginByXstate()` to log in as one of the users which we retrieved in the `beforeEach()` hook at the top of this spec file.
 
-```jsx
+```js
 cy.loginByXstate(ctx.userA.username)
 ```
 
@@ -37,7 +37,7 @@ cy.loginByXstate(ctx.userA.username)
 
 If this test is being run in a mobile viewport, we click on the button to toggle the sidebar.
 
-```jsx
+```js
 if (isMobile()) {
   cy.getBySel("sidenav-toggle").click()
 }
@@ -45,7 +45,7 @@ if (isMobile()) {
 
 Next, we click on the "Notifications" button in the sidebar and verify the app has routed us to the notifications screen.
 
-```jsx
+```js
 cy.getBySel("sidenav-notifications").click()
 cy.location("pathname").should("equal", "/notifications")
 ```
@@ -54,7 +54,7 @@ cy.location("pathname").should("equal", "/notifications")
 
 Finally, we verify that there are not any notifications in the `DOM` and that the screen displays the correct text letting the user know there are no notifications.
 
-```jsx
+```js
 cy.getBySel("notification-list").should("not.exist")
 cy.getBySel("empty-list-header").should("contain", "No Notifications")
 ```

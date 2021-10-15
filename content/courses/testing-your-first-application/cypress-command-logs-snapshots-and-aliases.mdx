@@ -6,7 +6,7 @@ To learn how to utilize `Cypress.log()`, we will update our `createDefaultTodos`
 
 Before we do that, let's update our test file to only run our `adds three todos` test. You can easily do this by appending `.only()` to our test, like so:
 
-```jsx
+```js
 it.only("adds three todos", () => {
   cy.createDefaultTodos()
   cy.get(".todo-list li").should("have.length", 3)
@@ -19,7 +19,7 @@ Save the file, and now Cypress is only running this specific test.
 
 We are going to be updating our command by adding the following to it:
 
-```jsx
+```js
 Cypress.log({
   name: "create default todos",
   consoleProps() {
@@ -36,7 +36,7 @@ First, we are passing an object to `Cypress.log()` with a name and `consoleProps
 
 Now let's update our custom command in `cypress/support/commands.js` , with our log.
 
-```jsx
+```js
 Cypress.Commands.add("createDefaultTodos", () => {
   const TODO_ITEM_ONE = "Buy Milk"
   const TODO_ITEM_TWO = "Pay Rent"
@@ -72,7 +72,7 @@ This is a handy way of providing additional information and context for what our
 
 If you look on the left hand side of the runner, within the test body, you will see some output that we don't actually need anymore. For instance, we don't need the runner to log out each time it types a new todo. We are already providing this information in our custom log message. We can prevent this output by passing `{ log: false }` like so:
 
-```jsx
+```js
 cy.get(".new-todo", { log: false })
   .type(`${TODO_ITEM_ONE}{enter}`, { log: false })
   .type(`${TODO_ITEM_TWO}{enter}`, { log: false })
@@ -89,7 +89,7 @@ Save the file, and now the output should be much cleaner.
 
 The first thing we want to do is store our newly created log into a variable.
 
-```jsx
+```js
 let cmd = Cypress.log({
   name: "create default todos",
   consoleProps() {
@@ -102,13 +102,13 @@ let cmd = Cypress.log({
 
 Then, we get all of the `.todo-list` `<li>` elements, which are the three todos. We are also turning off logging for `.get()` in the test runner.
 
-```jsx
+```js
 cy.get(".todo-list li", { log: false })
 ```
 
 `.then()` we are putting those elements into a variable called `$listItems` which we then `.set()` on our `Cypress.log()` . Finally, we use `[.end()](https://docs.cypress.io/api/commands/end)` to let Cypress now that our command is finished.
 
-```jsx
+```js
 .then(function ($listItems) {
       cmd.set({ $el: $listItems }).end()
     })
@@ -116,7 +116,7 @@ cy.get(".todo-list li", { log: false })
 
 The entire command looks like this:
 
-```jsx
+```js
 Cypress.Commands.add("createDefaultTodos", () => {
   const TODO_ITEM_ONE = "Buy Milk"
   const TODO_ITEM_TWO = "Pay Rent"
@@ -146,7 +146,7 @@ Our test should still pass after saving the file, but nothing has changed, as we
 
 We will be updating our test called `adds three todos` like so:
 
-```jsx
+```js
 it.only("adds three todos", () => {
   cy.createDefaultTodos().as("todos")
   cy.get("@todos").should("have.length", 3)
@@ -167,7 +167,7 @@ Before we wrap up this lesson, we would like to introduce you to the `.snapshot(
 
 There isn't any UI on the right-hand side, even though the runner says "DOM Snapshot (pinned)" at the bottom. The reason being is that we have not told Cypress to specifically take a snapshot of the DOM in our custom command. We can easily update our command like so to get what we need.
 
-```jsx
+```js
 cy.get(".todo-list li", { log: false }).then((listItems) => {
   cmd.set({ el: listItems }).snapshot().end()
 })

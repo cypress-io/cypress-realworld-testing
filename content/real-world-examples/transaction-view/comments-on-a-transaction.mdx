@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [Transaction View Overview & Setup](Transaction%20View%20Overview%20&%20Setup%20de652b8e362149babd9b8a5a787d996e.md) lesson first.
 
-```jsx
+```js
 it("comments on a transaction", function () {
   cy.getBySelLike("transaction-item").first().click()
   cy.wait("@getTransaction")
@@ -25,7 +25,7 @@ You can find out more information about the custom Cypress commands used in this
 
 First, we click on the first transaction and wait upon the `@getTransaction` intercept.
 
-```jsx
+```js
 cy.getBySelLike("transaction-item").first().click()
 cy.wait("@getTransaction")
 ```
@@ -34,7 +34,7 @@ cy.wait("@getTransaction")
 
 Next, we loop through the array of comments, typing in each one and ensuring the comment is displayed in the UI.
 
-```jsx
+```js
 const comments = ["Thank you!", "Appreciate it."]
 
 comments.forEach((comment, index) => {
@@ -47,7 +47,7 @@ comments.forEach((comment, index) => {
 
 Finally, we confirm that all of our comments in the `comments` array are displayed within the UI.
 
-```jsx
+```js
 cy.getBySelLike("comments-list")
   .children()
   .should("have.length", comments.length)
