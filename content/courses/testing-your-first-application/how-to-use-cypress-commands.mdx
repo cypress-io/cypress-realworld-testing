@@ -8,13 +8,13 @@ For our specific use case, let's write a custom Cypress command that will create
 
 Open the `cypress/support/commands.js` file and write the following.
 
-```jsx
+```js
 Cypress.Commands.add("createDefaultTodos", () => {})
 ```
 
 Let's first copy the variables from our test file into this new command.
 
-```jsx
+```js
 Cypress.Commands.add("createDefaultTodos", () => {
   const TODO_ITEM_ONE = "Buy Milk"
   const TODO_ITEM_TWO = "Pay Rent"
@@ -24,7 +24,7 @@ Cypress.Commands.add("createDefaultTodos", () => {
 
 Now let's add the ability to create our todos.
 
-```jsx
+```js
 Cypress.Commands.add("createDefaultTodos", () => {
   const TODO_ITEM_ONE = "Buy Milk"
   const TODO_ITEM_TWO = "Pay Rent"
@@ -39,7 +39,7 @@ Cypress.Commands.add("createDefaultTodos", () => {
 
 Now let's update our second test to use this new command.
 
-```jsx
+```js
 it("adds three todos", () => {
   cy.createDefaultTodos()
   cy.get(".todo-list li").should("have.length", 3)
@@ -56,13 +56,13 @@ Now let's write a simple test to ensure each todo is added in the correct order,
 
 First we will create a new `it()` block.
 
-```jsx
+```js
 it("should append new items to the bottom of the list", () => {})
 ```
 
 Next we can use our new `createDefaultTodos()` to add some todo's to the app.
 
-```jsx
+```js
 it("should append new items to the bottom of the list", () => {
   cy.createDefaultTodos()
 })
@@ -72,7 +72,7 @@ it("should append new items to the bottom of the list", () => {
 
 Now let's make some assertions to make sure each todo is in the correct order.
 
-```jsx
+```js
 it("should append new items to the bottom of the list", () => {
   cy.createDefaultTodos()
 
@@ -93,7 +93,7 @@ While we are at it, we can also assert that three todos have been added. However
 
 In our previous tests we are asserting the number of todo's like so:
 
-```jsx
+```js
 cy.get(".todo-list li").should("have.length", 3)
 ```
 
@@ -107,13 +107,13 @@ Let's assert that this text is displaying the correct message and number of todo
 
 After finding the element with our dev tools, we can write the assertion like so:
 
-```jsx
+```js
 cy.get(".todo-count").contains("3 items left")
 ```
 
 So our entire test now looks like this:
 
-```jsx
+```js
 it("should append new items to the bottom of the list", () => {
   cy.createDefaultTodos()
 

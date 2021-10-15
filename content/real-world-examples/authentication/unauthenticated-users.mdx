@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [Authentication Overview & Setup](Authentication%20Overview%20&%20Setup%203f4e2a27b6434a27bdadcd217d85397b.md) lesson first.
 
-```jsx
+```js
 it("should redirect unauthenticated user to signin page", function () {
   cy.visit("/personal")
   cy.location("pathname").should("equal", "/signin")
@@ -11,13 +11,13 @@ it("should redirect unauthenticated user to signin page", function () {
 
 First, we attempt to `.visit()` the URL `/personal`, a protected route that only logged-in users can access.
 
-```jsx
+```js
 cy.visit("/personal")
 ```
 
 Finally, we assert that the application redirects users who are not logged in back to the `/signin` page.
 
-```jsx
+```js
 cy.location("pathname").should("equal", "/signin")
 ```
 

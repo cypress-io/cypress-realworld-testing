@@ -27,7 +27,7 @@ If you are unfamiliar with the terminology of Mocking, Spying or Stubbing you ca
 
 The most basic way to intercept a server request is as follows:
 
-```jsx
+```js
 cy.intercept("POST", "/users")
 ```
 
@@ -35,7 +35,7 @@ In this example we are intercepting any `POST` request to the `/users` route. Ty
 
 We explain how waiting works in the [Waiting & Retry-ability](Waiting%20&%20Retry-ability%20654782dcf1c34be28e8e245ff28a5776.md) lesson.
 
-```jsx
+```js
 cy.intercept("POST", "/users").as("signup")
 
 // ...
@@ -47,7 +47,7 @@ cy.wait("@signup")
 
 Sometimes you may need to override and already existing intercept by using a `fixture` to `mock` the response data. Let's look at an example from the [Real World App](https://github.com/cypress-io/cypress-realworld-app/blob/develop/cypress/tests/ui/transaction-feeds.spec.ts).
 
-```jsx
+```js
 beforeEach(function () {
   // ...
 
@@ -61,7 +61,7 @@ In this example, we intercept any `GET` request to any route that matches `/tran
 
 Later on, In one of our tests, we use `cy.intercept` to intercept and override this same `GET` and route but using a `fixture` to mock the response.
 
-```jsx
+```js
 cy.intercept("GET", "/transactions/public*", {
   // ...
   fixture: "public-transactions.json",
@@ -74,7 +74,7 @@ So as you can see, we can also intercept other intercepts and then provide mocke
 
 You can also use `cy.intercept()` to modify headers from a response.
 
-```jsx
+```js
 cy.intercept("GET", "/transactions/public*", {
   headers: {
     "X-Powered-By": "Express",
@@ -91,7 +91,7 @@ The original headers from the response will remain intact. These new headers are
 
 Sometimes you will need to modify a portion of the response data while leaving everything else intact.
 
-```jsx
+```js
 cy.intercept("POST", "/bankaccounts", (req) => {
   const { body } = req
   req.continue((res) => {
@@ -106,7 +106,7 @@ In this example, we are overriding the `listBankAccount` property and setting it
 
 You can also use intercept to inspect a request, in the callback passed to `cy.intercept`.
 
-```jsx
+```js
 cy.intercept("POST", apiGraphQL, (req) => {
   const { body } = req
 

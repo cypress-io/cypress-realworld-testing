@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](Transaction%20Feeds%20Overview%20&%20Setup%20375cb80b08844b928872ac8780b9718c.md) lesson first.
 
-```jsx
+```js
 describe("app layout and responsiveness", function () {
   it("toggles the navigation drawer", function () {
     cy.wait("@notifications")
@@ -41,7 +41,7 @@ Remember, you do not want to only test for the positive or "happy paths"; you al
 
 The first thing we are doing is waiting on a couple of intercepts that occur in the `.beforeEach()` hook.
 
-```jsx
+```js
 cy.wait("@notifications")
 cy.wait("@publicTransactions")
 ```
@@ -50,7 +50,7 @@ cy.wait("@publicTransactions")
 
 Next, we use our `isMobile()` utility method to determine if this test is being run in a mobile viewport or not.
 
-```jsx
+```js
 if (isMobile()) {
 // ...
 
@@ -58,7 +58,7 @@ if (isMobile()) {
 
 If we are in a mobile viewport, then we verify the certain elements are visible or not visible when we click on various buttons.
 
-```jsx
+```js
 cy.getBySel("sidenav-home").should("not.exist")
 cy.visualSnapshot("Mobile Initial Side Navigation Not Visible")
 cy.getBySel("sidenav-toggle").click()
@@ -75,7 +75,7 @@ cy.visualSnapshot("Mobile Toggle Side Navigation Not Visible")
 
 If we are not in a mobile viewport, then verify that certain elements are visible or not for desktop and greater viewports.
 
-```jsx
+```js
 cy.getBySel("sidenav-home").should("be.visible")
 cy.visualSnapshot("Desktop Side Navigation Visible")
 cy.getBySel("sidenav-toggle").click()

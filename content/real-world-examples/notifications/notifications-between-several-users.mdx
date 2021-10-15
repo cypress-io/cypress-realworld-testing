@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [Notifications Overview & Setup](Notifications%20Overview%20&%20Setup%206a27a2d9b5434a229982931bf0821066.md) lesson first.
 
-```jsx
+```js
 it("User C comments on a transaction between User A and User B; User A and B get notifications that User C commented on their transaction", function () {
   cy.loginByXstate(ctx.userC.username)
 
@@ -49,7 +49,7 @@ You can find out more information about the custom Cypress commands used in this
 
 First, we log in as `userC` from the `ctx` object, which we set up in the `beforeEach()` hook at the top of this spec file.
 
-```jsx
+```js
 cy.loginByXstate(ctx.userC.username)
 ```
 
@@ -57,7 +57,7 @@ cy.loginByXstate(ctx.userC.username)
 
 Next, we us a custom Cypress command `cy.database()` to find transactions between `userB` and `userA`, which again come from the `ctx` object we setup in the `beforeEach()` hook at the top of this spec file. After we find a transaction, we visit that specific transaction page.
 
-```jsx
+```js
 cy.database("find", "transactions", {
   senderId: ctx.userB.id,
   receiverId: ctx.userA.id,
@@ -70,7 +70,7 @@ cy.database("find", "transactions", {
 
 Then, we enter a comment on the transaction page and wait on the `@postComment` intercept. Remember, this intercept happens in the `beforeEach()` at the top of this spec file.
 
-```jsx
+```js
 cy.getBySelLike("comment-input").type("Thank You{enter}")
 
 cy.wait("@postComment")
@@ -80,7 +80,7 @@ cy.wait("@postComment")
 
 Next, we switch users again, this time logging in a `userA`
 
-```jsx
+```js
 cy.switchUserByXstate(ctx.userA.username)
 ```
 
@@ -88,7 +88,7 @@ cy.switchUserByXstate(ctx.userA.username)
 
 Now that we are logged in as `userA` we click on the notifications button to view `userA`'s notifications. We also wait for the `@getNotifications` intercept. Remember, this intercept happens in the `beforeEach()` at the top of this spec file.
 
-```jsx
+```js
 cy.getBySelLike("notifications-link").click()
 
 cy.wait("@getNotifications")
@@ -98,7 +98,7 @@ cy.wait("@getNotifications")
 
 Then, we confirm our user has a total of `9` notifications and that the first notifications contains the first name of `userC` along with the text "commented"
 
-```jsx
+```js
 cy.getBySelLike("notification-list-item")
   .should("have.length", 9)
   .first()
@@ -110,7 +110,7 @@ cy.getBySelLike("notification-list-item")
 
 We switch users yet again, this time logging in as `userB`
 
-```jsx
+```js
 cy.switchUserByXstate(ctx.userB.username)
 ```
 
@@ -118,7 +118,7 @@ cy.switchUserByXstate(ctx.userB.username)
 
 We then perform similar assertions like we just did for `userA`. We want to make sure that `userB` has a total of `9` notifications and that the first notifications contains the first name of `userC` along with the text "commented"
 
-```jsx
+```js
 cy.getBySelLike("notifications-link").click()
 cy.getBySelLike("notification-list-item")
   .should("have.length", 9)

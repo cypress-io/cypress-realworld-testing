@@ -10,7 +10,7 @@ Invoke a function on the previously yielded subject.
 
 In the example below, we are invoking the `Array.slice()` function on the response data returned from the `@publicTransactions` alias so that we only iterate over the first five items returned.
 
-```jsx
+```js
 // transaction-feeds.spec.ts
 it("first five items belong to contacts in public feed", function () {
       cy.database("filter", "contacts", { userId: ctx.user!.id }).then((contacts: Contact[]) => {
@@ -40,19 +40,19 @@ Get a property's value on the previously yielded subject.
 
 `.its()` is a handy method when you want to get the property off of something. For example if you want to make an assertion against an array.
 
-```jsx
+```js
 cy.wrap(["Wai Yan", "Yu"]).its(1).should("eq", "Yu") // true
 ```
 
 Or maybe you want to get the property from an object and make an assertion.
 
-```jsx
+```js
 cy.wrap({ age: 52 }).its("age").should("eq", 52) // true
 ```
 
 In the example in the Invoke section above, we are using `.its()` to grab the `results` from the `@publicTransactions` alias, which is an intercepted network request.
 
-```jsx
+```js
 it("first five items belong to contacts in public feed", function () {
   // ...
 
@@ -71,7 +71,7 @@ Make an HTTP request.
 
 `.request()` is a helpful method anytime you need to make an HTTP request within your tests and perform expectations against it.
 
-```jsx
+```js
 cy.request("POST", "http://localhost:8888/users/admin", { name: "Jane" }).then(
   (response) => {
     // response.body is automatically serialized into JSON
@@ -88,7 +88,7 @@ Scopes all subsequent Cypress commands to within an element. Useful when working
 
 When you are working with elements, you need to drill down into its children, grandchildren, etc. You can use `.within()` to limit the scope of Cypress commands to within a specific element. For example.
 
-```jsx
+```js
 it("all of the lesson cards on the section page have a status of 'Completed'", () => {
   cy.visit("/testing-your-first-application")
   const lessons = learnJson["testing-your-first-application"].lessons

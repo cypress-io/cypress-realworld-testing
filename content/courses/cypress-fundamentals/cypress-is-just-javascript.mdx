@@ -6,7 +6,7 @@ It is important to recognize that Cypress is just JavaScript. For example, here 
 
 By the way, did you know that Cypress natively imports [Lodash](https://lodash.com/)? You can use [Lodash](https://lodash.com/) in your tests by importing it, as you see in the example below.
 
-```jsx
+```js
 const { _ } = Cypress // importing lodash
 
 _.each(feedViews, (feed, feedName) => {
@@ -31,7 +31,7 @@ This example comes from the [Real World App](https://github.com/cypress-io/cypre
 
 Here is another example where we use `[Array.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)` to iterate over an array.
 
-```jsx
+```js
 const people = ["moe", "curly", "larry"]
 // Use method from lodash to get a person to use in a comment
 const transactions = [{ id: 1 }]

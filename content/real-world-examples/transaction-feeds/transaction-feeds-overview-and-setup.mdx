@@ -4,7 +4,7 @@ In this section we will be discussing the various tests located within the `cypr
 
 ## ctx & feedViews Objects
 
-```jsx
+```js
 const ctx: TransactionFeedsCtx = {}
 
 const feedViews = {
@@ -39,7 +39,7 @@ The `feedViews` object contains various information for the different views depe
 
 ## beforeEach()
 
-```jsx
+```js
 beforeEach(function () {
   cy.task("db:seed")
 
@@ -61,13 +61,13 @@ beforeEach(function () {
 
 First, we are using a custom Cypress task to seed our database.
 
-```jsx
+```js
 cy.task("db:seed")
 ```
 
 Next, we use `cy.intercept()` to intercept various requests and alias them using the data within the `feedViews` object.
 
-```jsx
+```js
 cy.intercept("GET", "/notifications").as("notifications")
 cy.intercept("GET", "/transactions*").as(feedViews.personal.routeAlias)
 cy.intercept("GET", "/transactions/public*").as(feedViews.public.routeAlias)
@@ -77,7 +77,7 @@ cy.intercept("GET", "/transactions/contacts*").as(feedViews.contacts.routeAlias)
 Then, we use a custom Cypress command `cy.database()` to retrieve some users from the database. We then use the users returned from the database and add them to our `ctx` object later in our tests.
 Finally, we are using another custom Cypress command `cy.loginByXstate()` to login as one of the users returned from the database.
 
-```jsx
+```js
 cy.database("filter", "users").then((users: User[]) => {
   ctx.user = users[0]
   ctx.allUsers = users

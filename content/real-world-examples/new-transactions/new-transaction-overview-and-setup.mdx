@@ -6,7 +6,7 @@ Let's breakdown what is happening within the `beforeEach()` as it is important t
 
 ## beforeEach()
 
-```jsx
+```js
 describe("New Transaction", function () {
   const ctx: NewTransactionTestCtx = {};
 
@@ -38,13 +38,13 @@ You can find out more information about the custom Cypress commands used [here](
 
 The first thing we are doing is seeding our database using a custom Cypress task.
 
-```jsx
+```js
 cy.task("db:seed")
 ```
 
 Next, we are using `cy.intercept()` to intercept and alias several requests.
 
-```jsx
+```js
 cy.intercept("GET", "/users*").as("allUsers")
 cy.intercept("GET", "/users/search*").as("usersSearch")
 cy.intercept("POST", "/transactions").as("createTransaction")
@@ -56,7 +56,7 @@ cy.intercept("PATCH", "/transactions/*").as("updateTransaction")
 
 Next, we are using a custom Cypress command `cy.database()` to get some users from the database. We then store some of this information in the `ctx` object. Lastly, we log in as one of the users returned from the `cy.database()` command.
 
-```jsx
+```js
 const ctx: NewTransactionTestCtx = {}
 // ...
 

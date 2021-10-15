@@ -63,13 +63,13 @@ Create a new file called `app.spec.js` within the `cypress/integration` director
 
 Inside that file, we will use the `describe()` function to help us organize our tests. Let's use it to create a describe block called "React TodoMVC."
 
-```jsx
+```js
 describe("React TodoMVC", () => {})
 ```
 
 Within that describe block, we will write our tests using the `it()` function. For our first test, let's write a test to assert that we can add a single todo.
 
-```jsx
+```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {})
 })
@@ -89,19 +89,19 @@ Before having Cypress click into the input field, we first need to grab the inpu
 
 If we inspect the element with our browser's dev tools, we will notice that the input field has a class of `new-todo` .
 
-```jsx
+```js
 <input class="new-todo" placeholder="What needs to be done?" data-reactid=".0.0.1">
 ```
 
 Therefore we can `get` this element like so:
 
-```jsx
+```js
 cy.get(".new-todo")
 ```
 
 So our entire test file should now look like this:
 
-```jsx
+```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
     cy.get(".new-todo")
@@ -123,7 +123,7 @@ Cypress is telling us that it is unable to `get` our input element with the clas
 
 We can use the `cy.visit()` method to tell Cypress which URL to visit:
 
-```jsx
+```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
     cy.visit("http://localhost:8888")
@@ -140,7 +140,7 @@ The green checkmark in the Cypress Command Log, on the left side of the screen, 
 
 Next, we need to enter the name of our todo. We can do that using the `.type()` method and passing in a string of what we would like Cypress to type into the input.
 
-```jsx
+```js
 cy.get(".new-todo").type("Buy Milk")
 ```
 
@@ -150,7 +150,7 @@ After saving our file, Cypress will re-run our test, and you should see the foll
 
 Next, we need to simulate the user pressing the `enter` key to add the todo.
 
-```jsx
+```js
 cy.get(".new-todo").type("Buy Milk{enter}")
 ```
 
@@ -160,7 +160,7 @@ By adding `{enter}` inside of our `.type()` function, Cypress will press the ent
 
 So our entire test file should like this so far:
 
-```jsx
+```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
     cy.visit("http://127.0.0.1:8888")
@@ -179,7 +179,7 @@ First, let's use our dev tools to inspect our newly added todo.
 
 We can see that our todos are added as `<li>` elements. Knowing this, we can make an assertion that only a single `<li>` element exists within our todo app like so:
 
-```jsx
+```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
     cy.visit("http://127.0.0.1:8888")
@@ -195,7 +195,7 @@ describe("React TodoMVC", () => {
 
 Let's break down what this line of code is doing.
 
-```jsx
+```js
 cy.get(".todo-list li")
 ```
 
@@ -203,13 +203,13 @@ First, we are getting all of the `<li>` child elements of the `.todo-list` eleme
 
 We then assert that this array should have a length of 1 element.
 
-```jsx
+```js
 cy.get(".todo-list li").should("have.length", 1)
 ```
 
 Let's update our test to add two todos to see if our assertion now fails.
 
-```jsx
+```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
     cy.visit("http://127.0.0.1:8888")
@@ -226,7 +226,7 @@ Our assertion fails because we have more than one todo now.
 
 We can also simplify this code by chaining both of our `.type()` functions together like so:
 
-```jsx
+```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
     cy.visit("http://127.0.0.1:8888")
@@ -240,7 +240,7 @@ This is just a handy way of not getting the same element multiple times, and it 
 
 Now let's update our test so that we are only adding a single todo and everything passes.
 
-```jsx
+```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
     cy.visit("http://127.0.0.1:8888")

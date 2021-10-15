@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [Authentication Overview & Setup](Authentication%20Overview%20&%20Setup%203f4e2a27b6434a27bdadcd217d85397b.md) lesson first.
 
-```jsx
+```js
 it("should error for an invalid user", function () {
   cy.login("invalidUserName", "invalidPa$$word")
 
@@ -19,13 +19,13 @@ You can find out more information about the custom Cypress commands used in this
 
 First, we are using `cy.login()`, a Custom Cypress Command to use the Sign In UI to log in as a user with an invalid username and password.
 
-```jsx
+```js
 cy.login("invalidUserName", "invalidPa$$word")
 ```
 
 Finally, we confirm the error is displayed. The correct error message is shown with a chained expectation that the error is visible and has a specific error message.
 
-```jsx
+```js
 cy.getBySel("signin-error")
   .should("be.visible")
   .and("have.text", "Username or password is invalid")

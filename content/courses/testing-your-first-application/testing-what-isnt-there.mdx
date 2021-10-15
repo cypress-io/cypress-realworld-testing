@@ -8,13 +8,13 @@ This will make more sense when we write our first "negative" test. For instance,
 
 Let's write a test to ensure that the `<footer>` is not visible to our users when there are no todos.
 
-```jsx
+```js
 it("does NOT display the footer when there are no todos", () => {})
 ```
 
 Now let's grab the `<footer>` element and write an assertion that it does not exist when there are no todos.
 
-```jsx
+```js
 cy.get(".footer").should("not.exist")
 ```
 
@@ -24,13 +24,13 @@ Great, our test is passing. Let's also think of some other elements that should 
 
 Another element that should not exist is our `.todo-list` element. Let's write another assertion to ensure that this does not exist if there are no todos.
 
-```jsx
+```js
 cy.get(".todo-list").should("not.exist")
 ```
 
 Since we are now checking for multiple elements, let's update our test name to be more explicit.
 
-```jsx
+```js
 it("does NOT display the footer or todo-list when there are no todos", () => {
   cy.get(".footer").should("not.exist")
   cy.get(".todo-list").should("not.exist")

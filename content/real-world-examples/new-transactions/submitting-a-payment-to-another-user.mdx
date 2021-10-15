@@ -2,7 +2,7 @@
 
 Before continuing, make sure you have read the [New Transaction Overview & Setup](New%20Transaction%20Overview%20&%20Setup%207b6d9e5eb7bd4fc6b712c17a0e1e892b.md) lesson first.
 
-```jsx
+```js
 it("navigates to the new transaction form, selects a user and submits a transaction payment", function () {
     const payment = {
       amount: "35",
@@ -62,7 +62,7 @@ You can find out more information about the custom Cypress commands used in this
 
 First, we create a simple `payment` object.
 
-```jsx
+```js
 const payment = {
   amount: "35",
   description: "Sushi dinner 🍣",
@@ -71,7 +71,7 @@ const payment = {
 
 Next, we click on the "New" transaction button.
 
-```jsx
+```js
 cy.getBySelLike("new-transaction").click()
 ```
 
@@ -79,13 +79,13 @@ cy.getBySelLike("new-transaction").click()
 
 We then on our aliased intercept `@allUsers`. Remember, this happens in the `beforeEach()` hook before this test is run.
 
-```jsx
+```js
 cy.wait("@allUsers")
 ```
 
 Then we search for a user and wait on the `@usersSearch` intercept.
 
-```jsx
+```js
 cy.getBySel("user-list-search-input").type(ctx.contact!.firstName, { force: true });
     cy.wait("@usersSearch");
 ```
@@ -94,7 +94,7 @@ cy.getBySel("user-list-search-input").type(ctx.contact!.firstName, { force: true
 
 We then make an assertion that the user that we just searched for appears in the search results and then we click on that user to make a payment to them.
 
-```jsx
+```js
 cy.getBySelLike("user-list-item").contains(ctx.contact!.firstName).click({ force: true });
 ```
 
@@ -102,7 +102,7 @@ cy.getBySelLike("user-list-item").contains(ctx.contact!.firstName).click({ force
 
 On the payment screen we enter the payment amount and description and submit the payment.
 
-```jsx
+```js
 cy.getBySelLike("amount-input").type(payment.amount)
 cy.getBySelLike("description-input").type(payment.description)
 cy.getBySelLike("submit-payment").click()
@@ -114,7 +114,7 @@ We then wait upon two intercepts `@createTransaction` and `@getUserProfile` . No
 
 Then we assert that the transaction was submitted successfully.
 
-```jsx
+```js
 cy.wait(["@createTransaction", "@getUserProfile"])
 cy.getBySel("alert-bar-success")
   .should("be.visible")
@@ -125,7 +125,7 @@ cy.getBySel("alert-bar-success")
 
 Next, we create a constant called `updatedAccountBalance`
 
-```jsx
+```js
 const updatedAccountBalance = Dinero({
       amount: ctx.user!.balance - parseInt(payment.amount) * 100,
     }).toFormat();
@@ -135,7 +135,7 @@ We are using a 3rd party library called [Dinero.js](https://dinerojs.com/) which
 
 Then we use our `isMobile()` utility function to determine if our test is being run in a mobile viewport. If so, we click on the button to toggle the sidebar.
 
-```jsx
+```js
 if (isMobile()) {
   cy.getBySel("sidenav-toggle").click()
 }
@@ -143,13 +143,13 @@ if (isMobile()) {
 
 We then make an assertion that the user's account balance has been updated to the correct amount via the payment we just made.
 
-```jsx
+```js
 cy.getBySelLike("user-balance").should("contain", updatedAccountBalance)
 ```
 
 Next, we click on the "Create another Transaction" button, then the app name logo in the header and write an assertion to make sure one of the tabs in the app has the correct class.
 
-```jsx
+```js
 cy.getBySelLike("create-another-transaction").click()
 cy.getBySel("app-name-logo").find("a").click()
 cy.getBySelLike("personal-tab").click().should("have.class", "Mui-selected")
@@ -159,13 +159,13 @@ cy.getBySelLike("personal-tab").click().should("have.class", "Mui-selected")
 
 Next, we wait upon the `@personalTransactions` intercept.
 
-```jsx
+```js
 cy.wait("@personalTransactions")
 ```
 
 Then we write an assertion to ensure that the first transaction in the list contains the correct description from the transaction we just made.
 
-```jsx
+```js
 cy.getBySel("transaction-list").first().should("contain", payment.description)
 ```
 
@@ -173,7 +173,7 @@ cy.getBySel("transaction-list").first().should("contain", payment.description)
 
 We then use the custom Cypress command `cy.database()` to find the user we just made the payment to and assert that their balance in the database has been updated appropriately.
 
-```jsx
+```js
 cy.database("find", "users", { id: ctx.contact!.id })
       .its("balance")
       .should("equal", ctx.contact!.balance + parseInt(payment.amount) * 100);
@@ -183,6 +183,6 @@ cy.database("find", "users", { id: ctx.contact!.id })
 
 Finally, we assert that the alert bar does not exist in the `DOM`.
 
-```jsx
+```js
 cy.getBySel("alert-bar-success").should("not.exist")
 ```

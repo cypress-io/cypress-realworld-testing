@@ -14,7 +14,7 @@ In Cypress, we use [Aliases](https://docs.cypress.io/guides/core-concepts/variab
 
 To create an alias use the `.as()` function, like so:
 
-```jsx
+```js
 // Create an alias using the `as()` Cypress Command
 cy.get("table").find("tr").as("rows")
 ```
@@ -23,7 +23,7 @@ This will get the `<table>` HTML element, find all of the `<tr>` elements, and a
 
 We can access our alias using `.get()` but putting the `@` character before our alias name, like so:
 
-```jsx
+```js
 // Reference Cypress Alias `rows`
 cy.get("@rows")
 ```
@@ -36,7 +36,7 @@ Even though Cypress is incredibly smart in handling automatic waiting, there are
 
 Let's take a look at an example of what this looks like in practice.
 
-```jsx
+```js
 describe("User Sign-up and Login", () => {
   beforeEach(() => {
     cy.request("POST", "/users").as("signup") // creating the signup alias

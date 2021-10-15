@@ -8,14 +8,14 @@ When we speak of "Data-Driven Tests," we refer to using variables, fixtures, or 
 
 For example, let's say you have a test which tests the login form in your app. You could hard code the data, like so:
 
-```jsx
+```js
 cy.get("username").type("jdoe")
 cy.get("password").type("password123")
 ```
 
 Or you could use data from variables.
 
-```jsx
+```js
 const users = [
   {
     username: "John",
@@ -33,7 +33,7 @@ cy.get("password").type(users[0].password)
 
 You could also use data from a [fixture](https://docs.cypress.io/api/commands/fixture).
 
-```jsx
+```js
 cy.fixture("users.json").as("usersData")
 
 cy.get("username").type(usersData[0].username)
@@ -44,7 +44,7 @@ Or, you could use an actual user from your database.
 
 ## Using data from remote systems (API, database, etc.) to drive seed data and tests
 
-```jsx
+```js
 describe("Notifications", function () {
   const ctx = {}
 
