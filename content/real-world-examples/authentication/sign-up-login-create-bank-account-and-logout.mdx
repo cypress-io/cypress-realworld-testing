@@ -124,8 +124,8 @@ cy.getBySel("signup-confirmPassword").type(userInfo.password)
 
 Finally we click the Sign Up button to create our new user account.
 
-```bash
-cy.getBySel("signup-submit").click();
+```js
+cy.getBySel("signup-submit").click()
 ```
 
 We will use `cy.wait()` to wait on our intercept which we aliased to `@signup` in the `beforeEach()` hook, to ensure the

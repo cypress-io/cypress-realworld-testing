@@ -2,41 +2,41 @@
 
 Before continuing, make sure you have read the [Bank Accounts Overview & Setup](Bank%20Accounts%20Overview%20&%20Setup%20c40a9fd9fa964f47a726d51989ad5a90.md) lesson first.
 
-```bash
+```js
 it("creates a new bank account", function () {
-    cy.wait("@getNotifications");
-    if (isMobile()) {
-      cy.getBySel("sidenav-toggle").click();
-    }
+  cy.wait("@getNotifications")
+  if (isMobile()) {
+    cy.getBySel("sidenav-toggle").click()
+  }
 
-    cy.getBySel("sidenav-bankaccounts").click();
+  cy.getBySel("sidenav-bankaccounts").click()
 
-    cy.getBySel("bankaccount-new").click();
-    cy.location("pathname").should("eq", "/bankaccounts/new");
-    cy.visualSnapshot("Display New Bank Account Form");
+  cy.getBySel("bankaccount-new").click()
+  cy.location("pathname").should("eq", "/bankaccounts/new")
+  cy.visualSnapshot("Display New Bank Account Form")
 
-    cy.getBySelLike("bankName-input").type("The Best Bank");
-    cy.getBySelLike("routingNumber-input").type("987654321");
-    cy.getBySelLike("accountNumber-input").type("123456789");
-    cy.visualSnapshot("Fill out New Bank Account Form");
-    cy.getBySelLike("submit").click();
+  cy.getBySelLike("bankName-input").type("The Best Bank")
+  cy.getBySelLike("routingNumber-input").type("987654321")
+  cy.getBySelLike("accountNumber-input").type("123456789")
+  cy.visualSnapshot("Fill out New Bank Account Form")
+  cy.getBySelLike("submit").click()
 
-    cy.wait("@gqlCreateBankAccountMutation");
+  cy.wait("@gqlCreateBankAccountMutation")
 
-    cy.getBySelLike("bankaccount-list-item")
-      .should("have.length", 2)
-      .eq(1)
-      .should("contain", "The Best Bank");
-    cy.visualSnapshot("Bank Account Created");
-  });
+  cy.getBySelLike("bankaccount-list-item")
+    .should("have.length", 2)
+    .eq(1)
+    .should("contain", "The Best Bank")
+  cy.visualSnapshot("Bank Account Created")
+})
 ```
 
 You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
 
 First, we wait upon our aliased intercept `@getNotifications`
 
-```bash
-cy.wait("@getNotifications");
+```js
+cy.wait("@getNotifications")
 ```
 
 Next, we click on the "Bank Accounts" link in the left sidebar, depending upon if we are a mobile device or not. You can find out more info about the `isMobile()` utility function [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).

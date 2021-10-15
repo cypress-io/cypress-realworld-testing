@@ -8,61 +8,61 @@ Let's breakdown what is happening within the `beforeEach()` as it is important t
 
 ## beforeEach()
 
-```bash
+```js
 beforeEach(function () {
-  cy.task("db:seed");
+  cy.task("db:seed")
 
-  cy.intercept("PATCH", "/users/*").as("updateUser");
-  cy.intercept("GET", "/notifications*").as("getNotifications");
+  cy.intercept("PATCH", "/users/*").as("updateUser")
+  cy.intercept("GET", "/notifications*").as("getNotifications")
 
   cy.database("find", "users").then((user: User) => {
-    cy.loginByXstate(user.username);
-  });
+    cy.loginByXstate(user.username)
+  })
 
   if (isMobile()) {
-    cy.getBySel("sidenav-toggle").click();
+    cy.getBySel("sidenav-toggle").click()
   }
 
-  cy.getBySel("sidenav-user-settings").click();
-});
+  cy.getBySel("sidenav-user-settings").click()
+})
 ```
 
 You can find out more information about the custom Cypress commands used [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
 
 The first thing we are doing is seeding our database using a custom Cypress task.
 
-```bash
-cy.task("db:seed");
+```js
+cy.task("db:seed")
 ```
 
 Next, we are using `cy.intercept()` to intercept every `PATCH` request to the `/users/*` route. We are then aliasing this intercept to "updateUser." When you see `@updateUser` being used within a test, it is referring to this intercept.
 
-```bash
-cy.intercept("PATCH", "/users/*").as("updateUser");
+```js
+cy.intercept("PATCH", "/users/*").as("updateUser")
 ```
 
 We are also intercepting any `GET` request to the `/notifications` route and aliasing the intercept to "getNotifications." When you see `@getNotifications` being used within a test, it is referring to this intercept.
 
-```bash
-cy.intercept("GET", "/notifications*").as("getNotifications");
+```js
+cy.intercept("GET", "/notifications*").as("getNotifications")
 ```
 
 We then use a custom Cypress command `cy.database()` to query our database for our users. Then we use another custom Cypress command `cy.loginByXstate()` to login into the application using one of the users returned from `cy.database()`.
 
 You can find out how these custom Commands work in greater detail [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
 
-```bash
+```js
 cy.database("find", "users").then((user: User) => {
-  cy.loginByXstate(user.username);
-});
+  cy.loginByXstate(user.username)
+})
 ```
 
 Finally, we click the button to open the user settings window. We have a special utility function to determine if we are simulating a mobile device or not. You can find out how the `isMobile()` function works in greater detail [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
 
-```bash
+```js
 if (isMobile()) {
-  cy.getBySel("sidenav-toggle").click();
+  cy.getBySel("sidenav-toggle").click()
 }
 
-cy.getBySel("sidenav-user-settings").click();
+cy.getBySel("sidenav-user-settings").click()
 ```
