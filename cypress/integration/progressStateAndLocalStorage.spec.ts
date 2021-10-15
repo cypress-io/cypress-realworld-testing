@@ -1,6 +1,6 @@
 /* 
   Note: These tests rely upon local storage state from previous tests, 
-  so make sure to run all of them at once, ie: don't use `it.only()`
+  so make sure to run all of them at once and in order
 */
 import learnJson from "../../learn.json"
 const { _ } = Cypress
