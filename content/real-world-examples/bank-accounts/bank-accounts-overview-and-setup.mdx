@@ -45,7 +45,7 @@ beforeEach(function () {
 })
 ```
 
-You can find out more information about the custom Cypress commands used [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out more information about the custom Cypress commands used [here](/real-world-examples/custom-cypress-commands).
 
 The first thing we are doing is seeding our database using a custom Cypress task.
 
@@ -90,7 +90,7 @@ cy.intercept("POST", apiGraphQL, (req) => {
 
 Finally, we use a custom Cypress command `cy.database()` to query our database for our users. Then we use another custom Cypress command `cy.loginByXstate()` to log in to the application using one of the users returned from the `cy.database()`.
 
-You can find out how these custom Commands work in greater detail [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out how these custom Commands work in greater detail [here](/real-world-examples/custom-cypress-commands).
 
 ```js
 cy.database("find", "users").then((user: User) => {

@@ -71,7 +71,7 @@ it("should allow a visitor to sign-up, login, and logout", function () {
 })
 ```
 
-You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
 First we navigate to the application root route, which will redirect us to the sign in page.
 
@@ -233,4 +233,4 @@ cy.getBySel("sidenav-signout").click()
 cy.location("pathname").should("eq", "/signin")
 ```
 
-The `isMobile()` is a custom utility function we have written to determine if the viewport is a mobile device or not. You can find out more about how this works [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+The `isMobile()` is a custom utility function we have written to determine if the viewport is a mobile device or not. You can find out more about how this works [here](/real-world-examples/custom-cypress-commands).

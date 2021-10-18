@@ -31,7 +31,7 @@ it("creates a new bank account", function () {
 })
 ```
 
-You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
 First, we wait upon our aliased intercept `@getNotifications`
 
@@ -39,7 +39,7 @@ First, we wait upon our aliased intercept `@getNotifications`
 cy.wait("@getNotifications")
 ```
 
-Next, we click on the "Bank Accounts" link in the left sidebar, depending upon if we are a mobile device or not. You can find out more info about the `isMobile()` utility function [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+Next, we click on the "Bank Accounts" link in the left sidebar, depending upon if we are a mobile device or not. You can find out more info about the `isMobile()` utility function [here](/real-world-examples/custom-cypress-commands).
 
 ```js
 if (isMobile()) {

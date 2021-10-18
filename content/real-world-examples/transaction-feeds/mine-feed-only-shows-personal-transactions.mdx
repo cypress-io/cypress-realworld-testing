@@ -22,7 +22,7 @@ it("mine feed only shows personal transactions", function () {
 
 ```
 
-You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
 First, we are using a custom Cypress command `cy.database()` to filter through the `contacts` of the user from the `ctx` object. Remember, the `ctx` object's data is setup in the `beforeEach()` hook at the top of this spec file. We `.map()` over all of the user's contacts and store their `id`'s on the `ctx` object.
 
