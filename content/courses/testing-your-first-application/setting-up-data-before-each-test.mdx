@@ -16,9 +16,9 @@ describe("React TodoMVC", () => {
 })
 ```
 
-Remember, the first thing we need to do is to tell Cypress to navigate to our app. Each `it()` function is a separate test, so for each new test we write, we have to specifically tell Cypress to `navigate` our application.
+Remember, the first thing we need to do is to tell Cypress to navigate to our app. Each `it()` function is a separate test, so for each new test we write, we have to specifically tell Cypress to `cy.navigate()` our application.
 
-You may start to see a potential annoyance here. Granted, since we only have two tests right now, this is not that big of a deal, but what if our test file had several tests. This would mean that within every single `it()`, we would have to specifically tell Cypress to `navigate` to our app for each test, which is very repetitive and annoying. There is a better way, fortunately.
+You may start to see a potential annoyance here. Granted, since we only have two tests right now, this is not that big of a deal, but what if our test file had several tests. This would mean that within every single `it()`, we would have to specifically tell Cypress to `cy.navigate()` to our app for each test, which is very repetitive and annoying. There is a better way, fortunately.
 
 ## beforeEach()
 
@@ -43,7 +43,7 @@ Both tests are still passing with this simple update, and we have cleaned up our
 
 ## Multiple Todos
 
-Now let's update our `adds three todos` test to add three todos.
+Now let's update our **adds three todos** test to add three todos.
 
 ```js
 it("adds three todos", () => {
@@ -139,7 +139,7 @@ If we inspect our app with our dev tools again, we want to ensure that the text 
 
 ![](/images/testing-your-first-application/setting-up-data-before-each-test/Screen_Shot_2021-06-25_at_11.32.00_AM.png)
 
-Knowing this, we can assert that our todo's name is `cy.contained()`within this `<label>` element.
+Knowing this, we can assert that our todo's name is within this `<label>` element.
 
 First we need to get all of the `<li>` elements.
 
@@ -155,17 +155,17 @@ cy.get(".todo-list li").eq(0)
 
 We then pass `eq()` the index of our element, which should be the first one, and it will return that element from the array.
 
-Then we will use the [find()](https://docs.cypress.io/api/commands/find) method to `find` our `<label>` element.
+Then we will use the [find()](https://docs.cypress.io/api/commands/find) method to find our `<label>` element.
 
 ```js
 cy.get(".todo-list li").eq(0).find("label")
 ```
 
-The `find()` method will look for child elements of a specific selector.
+The `.find()` method will look for child elements of a specific selector.
 
-So, we are getting the first `<li>` element from the `.todo-list` element and then within that `<li>` element we are looking for the `<label>` element.
+So, we are getting the first `<li>` element from the **.todo-list** element and then within that `<li>` element we are looking for the `<label>` element.
 
-Finally, we want to make sure that the `<label>` `contains` the text of our todo item.
+Finally, we want to make sure that the `<label>` contains the text of our todo item.
 
 ```js
 cy.get(".todo-list li").eq(0).find("label").should("contain", TODO_ITEM_ONE)

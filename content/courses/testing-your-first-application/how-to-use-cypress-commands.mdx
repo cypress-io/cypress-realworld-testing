@@ -6,7 +6,7 @@ We are starting to make excellent progress thus far, but we have even more excit
 
 For our specific use case, let's write a custom Cypress command that will create some default todos for us. This way, we will have a single line of code that will generate some todos in our app each time we use it.
 
-Open the `cypress/support/commands.js` file and write the following.
+Open the **cypress/support/commands.js** file and write the following.
 
 ```js
 Cypress.Commands.add("createDefaultTodos", () => {})
@@ -130,6 +130,6 @@ it("should append new items to the bottom of the list", () => {
 })
 ```
 
-You will notice that our `.todo-count` is a `<span>` with multiple elements nested inside of it. The number is wrapped in a `<strong>` tag, and the words are wrapped in `<span>` tags. The `.contains()` method will find the appropriate text even though it may be nested in several different tags 🔥
+You will notice that our **.todo-count** is a `<span>` with multiple elements nested inside of it. The number is wrapped in a `<strong>` tag, and the words are wrapped in `<span>` tags. The `.contains()` method will find the appropriate text even though it may be nested in several different tags 🔥
 
 In the above example, we use both `.should('contain')`, and `.contains()`. You can find out more info about `should` [here](https://docs.cypress.io/api/commands/should) and `contains` [here](https://docs.cypress.io/api/commands/contains).
