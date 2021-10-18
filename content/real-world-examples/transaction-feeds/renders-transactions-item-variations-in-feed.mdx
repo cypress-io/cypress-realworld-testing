@@ -1,6 +1,6 @@
 # renders transactions item variations in feed
 
-Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](Transaction%20Feeds%20Overview%20&%20Setup%20375cb80b08844b928872ac8780b9718c.md) lesson first.
+Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](/real-world-examples/transaction-feeds-overview-and-setup) lesson first.
 
 ```js
 describe("renders and paginates all transaction feeds", function () {
@@ -137,7 +137,7 @@ describe("renders and paginates all transaction feeds", function () {
 
 You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
-First, we are using `cy.intercept()` to intercept any `GET` request to the `/transactions/public*` route.
+First, we are using `cy.intercept()` to intercept any **GET** request to the **/transactions/public\*** route.
 
 ```js
 cy.intercept("GET", "/transactions/public*", {
@@ -152,14 +152,14 @@ headers: {
         },
 ```
 
-We are then using a fixture to mock the response's payload. This fixture can be found inside of `cypress/fixtures`
+We are then using a fixture to mock the response's payload. This fixture can be found inside of **cypress/fixtures**
 
 ```js
 fixture: "public-transactions.json",
       }).as("mockedPublicTransactions");
 ```
 
-Then we visit the root route to trigger the `GET` request to `/transactions/public`
+Then we visit the root route to trigger the **GET** request to **/transactions/public**
 
 ```js
 // Visit page again to trigger call to /transactions/public
@@ -173,7 +173,7 @@ cy.wait("@notifications")
 cy.wait("@mockedPublicTransactions")
 ```
 
-We then grab the results from the `@mockedPublicTransactions` intercept. Remember, these results are coming from our `public-transactions.json` fixture.
+We then grab the results from the `@mockedPublicTransactions` intercept. Remember, these results are coming from our **public-transactions.json** fixture.
 .its("response.body.results")
 
 ```js
@@ -199,13 +199,13 @@ Then, we have a function called `getTransactionFromEl` which finds the `transact
 const getTransactionFromEl = ($el: JQuery<Element>): TransactionResponseItem => {
 ```
 
-Our function `getTransactionFromEl` accepts a jQuery element as a parameter and returns a `TransactionResponseItem` which is a TypeScript interface which can be found in `src/models/transaction.ts` around line `50` .
+Our function `getTransactionFromEl` accepts a jQuery element as a parameter and returns a `TransactionResponseItem` which is a TypeScript interface which can be found in **src/models/transaction.ts** around line **50** .
 
 ```js
 const transactionId = $el.data("test").split("transaction-item-")[1]
 ```
 
-Next, we get the transactionID from the `data-test` attribute from the `DOM`. For example the HTML for one of our transactions looks like this.
+Next, we get the transactionID from the **data-test** attribute from the DOM. For example the HTML for one of our transactions looks like this.
 
 ```js
 <li
@@ -213,14 +213,14 @@ Next, we get the transactionID from the `data-test` attribute from the `DOM`. Fo
   data-test="transaction-item-183VHWyuQMS">
 ```
 
-Once we have the `string` located within the `data-test` attribute, we use `.split()` to grab the `transactionID`
+Once we have the string located within the **data-test** attribute, we use `.split()` to grab the `transactionID`
 
 ```js
 "transaction-item-183VHWyuQMS".split("transaction-item-")[1]
 // "183VHWyuQMS"
 ```
 
-Then, we use `_.find()` from [Lodash](https://lodash.com/docs/4.17.15#find) to locate the transaction from the `@mockedPublicTransactions` request. using the ID we just located from the `DOM` .
+Then, we use `_.find()` from [Lodash](https://lodash.com/docs/4.17.15#find) to locate the transaction from the `@mockedPublicTransactions` request. using the ID we just located from the DOM .
 
 ```js
 return _.find(transactions, (transaction) => {
@@ -283,7 +283,7 @@ const formattedAmount = Dinero({
 }).toFormat()
 ```
 
-This will convert the `"amount": 8647` from the fixture above to `$86.47`
+This will convert the `"amount": 8647` from the fixture above to **$86.47**
 
 ```js
 expect([TransactionStatus.pending, TransactionStatus.complete]).to.include(
@@ -291,7 +291,7 @@ expect([TransactionStatus.pending, TransactionStatus.complete]).to.include(
 )
 ```
 
-Then we write an expectation asserting that our transactions status must be either "pending" or "complete." Both of these statuses are coming from a TypeScript enum which can be found in `src/models/transacation.ts` around line `4`.
+Then we write an expectation asserting that our transactions status must be either "pending" or "complete." Both of these statuses are coming from a TypeScript enum which can be found in **src/models/transacation.ts** around line **4**.
 
 ```js
 export enum TransactionStatus {
@@ -328,7 +328,7 @@ cy.getBySelLike("receiver").should("contain", transaction.receiverName)
 
 ![](/images/real-world-examples/transaction-feeds/renders-transactions-item-variations-in-feed/Screen_Shot_2021-09-17_at_9.47.50_AM.png)
 
-Finally, we are asserting that the amount displayed in the `DOM` is correct and has the correct css. In the case of this transaction amount, since it is negative, the UI should display a `-` before the dollar amount and make it red.
+Finally, we are asserting that the amount displayed in the DOM is correct and has the correct css. In the case of this transaction amount, since it is negative, the UI should display a "-" before the dollar amount and make it red.
 
 ```js
 cy.getBySelLike("amount")

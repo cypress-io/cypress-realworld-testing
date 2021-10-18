@@ -222,7 +222,7 @@ Cypress.Commands.add("getBySel", (selector, ...args) => {
 })
 ```
 
-This simple command takes in a selector and then returns the `DOM` element by using `cy.get()`.
+This simple command takes in a selector and then returns the DOM element by using `cy.get()`.
 
 For example, without this command our code would look like this:
 
@@ -256,7 +256,7 @@ Cypress.Commands.add("getBySelLike", (selector, ...args) => {
 })
 ```
 
-This simple command takes in a selector wildcard `*` and returns the `DOM` element using `cy.get()`. It functions similarly to our `cy.getBySel()` custom command only this command will return multiple elements, whereas `cy.getBySel()` will return only one.
+This simple command takes in a selector wildcard `*` and returns the DOM element using `cy.get()`. It functions similarly to our `cy.getBySel()` custom command only this command will return multiple elements, whereas `cy.getBySel()` will return only one.
 
 For example, below, we are getting all the transaction items and asserting that there are 3 of them in total.
 
@@ -514,7 +514,7 @@ cy.intercept("POST", "/login").as("loginUser")
 cy.intercept("GET", "/checkAuth").as("getUserProfile")
 ```
 
-Then, we visit the `/signin` route and take a `DOM` snapshot of the page.
+Then, we visit the `/signin` route and take a DOM snapshot of the page.
 
 ```js
 cy.visit("/signin", { log: false }).then(() => {

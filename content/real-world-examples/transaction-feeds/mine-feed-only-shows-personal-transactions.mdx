@@ -1,6 +1,6 @@
 # mine feed only shows personal transactions
 
-Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](Transaction%20Feeds%20Overview%20&%20Setup%20375cb80b08844b928872ac8780b9718c.md) lesson first.
+Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](/real-world-examples/transaction-feeds-overview-and-setup) lesson first.
 
 ```js
 it("mine feed only shows personal transactions", function () {
@@ -57,7 +57,7 @@ cy.wait("@personalTransactions")
 
 ![](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.32.18_AM.png)
 
-Finally, we make sure that the loading skeleton does not exist in the `DOM`.
+Finally, we make sure that the loading skeleton does not exist in the DOM.
 
 ```js
 cy.getBySel("list-skeleton").should("not.exist")

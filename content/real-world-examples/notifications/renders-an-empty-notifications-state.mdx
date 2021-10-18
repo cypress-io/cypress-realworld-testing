@@ -52,7 +52,7 @@ cy.location("pathname").should("equal", "/notifications")
 
 ![](/images/real-world-examples/notifications/renders-an-empty-notifications-state/Screen_Shot_2021-09-16_at_9.10.15_AM.png)
 
-Finally, we verify that there are not any notifications in the `DOM` and that the screen displays the correct text letting the user know there are no notifications.
+Finally, we verify that there are not any notifications in the DOM and that the screen displays the correct text letting the user know there are no notifications.
 
 ```js
 cy.getBySel("notification-list").should("not.exist")

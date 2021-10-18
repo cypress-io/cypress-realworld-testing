@@ -37,7 +37,7 @@ cy.wait("@updateTransaction").its("response.statusCode").should("equal", 204)
 
 ![](/images/real-world-examples/transaction-view/rejects-a-transaction-request/Screen_Shot_2021-09-16_at_9.25.17_AM.png)
 
-Finally, we make sure the reject request button is no longer in the `DOM` and that the transaction detail header is visible.
+Finally, we make sure the reject request button is no longer in the DOM and that the transaction detail header is visible.
 
 ```js
 cy.getBySelLike("reject-request").should("not.exist")
