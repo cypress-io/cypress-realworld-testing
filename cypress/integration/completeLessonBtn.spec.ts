@@ -57,3 +57,5 @@ describe("Complete Lesson Button", () => {
     cy.getBySel("complete-lesson-button").should("not.exist")
   })
 })
+
+export {}
