@@ -31,9 +31,9 @@ The most basic way to intercept a server request is as follows:
 cy.intercept("POST", "/users")
 ```
 
-In this example we are intercepting any `POST` request to the `/users` route. Typically you will also `alias` an intercept to perform additional actions, like waiting, later in your test(s).
+In this example we are intercepting any **POST** request to the **/users** route. Typically you will also **alias** an intercept to perform additional actions, like waiting, later in your test(s).
 
-We explain how waiting works in the [Waiting & Retry-ability](Waiting%20&%20Retry-ability%20654782dcf1c34be28e8e245ff28a5776.md) lesson.
+We explain how waiting works in the [Waiting & Retry-ability](/cypress-fundamentals/waiting-and-retry-ability) lesson.
 
 ```js
 cy.intercept("POST", "/users").as("signup")
@@ -45,7 +45,7 @@ cy.wait("@signup")
 
 ### Overriding an existing intercept
 
-Sometimes you may need to override and already existing intercept by using a `fixture` to `mock` the response data. Let's look at an example from the [Real World App](https://github.com/cypress-io/cypress-realworld-app/blob/develop/cypress/tests/ui/transaction-feeds.spec.ts).
+Sometimes you may need to override and already existing intercept by using a **fixture** to **mock** the response data. Let's look at an example from the [Real World App](https://github.com/cypress-io/cypress-realworld-app/blob/develop/cypress/tests/ui/transaction-feeds.spec.ts).
 
 ```js
 beforeEach(function () {
@@ -57,9 +57,9 @@ beforeEach(function () {
 })
 ```
 
-In this example, we intercept any `GET` request to any route that matches `/transactions/public*`. We are doing this in a `beforeEach`, which means this intercept will run before every test.
+In this example, we intercept any **GET** request to any route that matches **/transactions/public\***. We are doing this in a `beforeEach()`, which means this intercept will run before every test.
 
-Later on, In one of our tests, we use `cy.intercept` to intercept and override this same `GET` and route but using a `fixture` to mock the response.
+Later on, In one of our tests, we use `cy.intercept()` to intercept and override this same **GET** and route but using a **fixture** to mock the response.
 
 ```js
 cy.intercept("GET", "/transactions/public*", {
@@ -68,7 +68,7 @@ cy.intercept("GET", "/transactions/public*", {
 }).as("mockedPublicTransactions")
 ```
 
-So as you can see, we can also intercept other intercepts and then provide mocked data using a `fixture`. We alias this intercept override as `mockedPublicTransactions`.
+So as you can see, we can also intercept other intercepts and then provide mocked data using a **fixture**. We alias this intercept override as **mockedPublicTransactions**.
 
 ### Changing Headers
 

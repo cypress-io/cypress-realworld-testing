@@ -65,7 +65,7 @@ All of the tests within the RWA are written for Desktop by default. Within the `
 "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
 ```
 
-As you can see, when these commands are executed, we are passing along some custom configuration that tells Cypress the `viewportWidth` and `viewportHeight` to use when launching our tests.
+As you can see, when these commands are executed, we are passing along some custom configuration that tells Cypress the **viewportWidth** and **viewportHeight** to use when launching our tests.
 
 We also have a utility function called `isMobile()` which determines if our tests are being run at the mobile viewport. Here is what that function looks like:
 
@@ -117,7 +117,7 @@ it("should remember a user for 30 days after login", function () {
 })
 ```
 
-In the case of the RWA, the sidebar is hidden by default on mobile. This function will fire whenever our viewport width is less than `414px`.
+In the case of the RWA, the sidebar is hidden by default on mobile. This function will fire whenever our viewport width is less than **414px**.
 
 This allows the same test to be used in both Desktop and Mobile orientations instead of coding mobile-specific tests.
 

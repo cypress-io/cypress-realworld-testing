@@ -15,15 +15,15 @@ button.click()
 
 This is one of the primary reasons why we do not recommend using [variables](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Variables) within your tests.
 
-Instead, Cypress commands `yield` their subjects.
+Instead, Cypress commands **yield** their subjects.
 
-Cypress commands are asynchronous and get queued for execution at a later time. While commands are executed, their subjects are `yielded` from one command to the next. This is because a lot of helpful Cypress code runs between each command to ensure everything is in order.
+Cypress commands are asynchronous and get queued for execution at a later time. While commands are executed, their subjects are **yielded** from one command to the next. This is because a lot of helpful Cypress code runs between each command to ensure everything is in order.
 
 ## .then()
 
-So if a command does not `return` a subject but instead `yields` it, how can you interact with the subject directly? You can interact with a subject directly by using [.then()](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Closures).
+So if a command does not **return** a subject but instead **yields** it, how can you interact with the subject directly? You can interact with a subject directly by using [.then()](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Closures).
 
-`.then()` behaves similarly to Promises in JavaScript. However, `.then()` is a Cypress command, **not a Promise**. This means you cannot use things like `async/await` within your Cypress tests.
+`.then()` behaves similarly to Promises in JavaScript. However, `.then()` is a Cypress command, **not a Promise**. This means you cannot use things like **async/await** within your Cypress tests.
 
 Whatever is returned from the callback function becomes the new subject and will flow into the following command (except for `undefined`).
 
@@ -75,8 +75,6 @@ To learn more about the asynchronous nature of Cypress, please check the followi
 
 [Commands Are Asynchronous](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Commands-Are-Asynchronous)
 
-[Commands Are Promises](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Commands-Are-Promises)
-
-[Commands Are Not Promises](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#Commands-Are-Not-Promises)
+[The Cypress Command Queue](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress#The-Cypress-Command-Queue)
 
 [Return Values](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Return-Values)
