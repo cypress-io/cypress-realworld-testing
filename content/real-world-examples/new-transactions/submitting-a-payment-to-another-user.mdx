@@ -1,6 +1,6 @@
 # Submitting a payment to another user
 
-Before continuing, make sure you have read the [New Transaction Overview & Setup](New%20Transaction%20Overview%20&%20Setup%207b6d9e5eb7bd4fc6b712c17a0e1e892b.md) lesson first.
+Before continuing, make sure you have read the [New Transaction Overview & Setup](/real-world-examples/new-transaction-overview-and-setup) lesson first.
 
 ```js
 it("navigates to the new transaction form, selects a user and submits a transaction payment", function () {
@@ -58,7 +58,7 @@ it("navigates to the new transaction form, selects a user and submits a transact
   });
 ```
 
-You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
 First, we create a simple `payment` object.
 
@@ -181,7 +181,7 @@ cy.database("find", "users", { id: ctx.contact!.id })
 
 ![](/images/real-world-examples/new-transactions/submitting-a-payment-to-another-user/Screen_Shot_2021-09-14_at_4.18.23_PM.png)
 
-Finally, we assert that the alert bar does not exist in the `DOM`.
+Finally, we assert that the alert bar does not exist in the DOM.
 
 ```js
 cy.getBySel("alert-bar-success").should("not.exist")

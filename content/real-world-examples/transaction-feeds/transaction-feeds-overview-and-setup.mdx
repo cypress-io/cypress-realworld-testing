@@ -1,6 +1,6 @@
 # Transaction Feeds Overview & Setup
 
-In this section we will be discussing the various tests located within the `cypress/tests/ui/new-transaction-feeds.spec.ts` file.
+In this section we will be discussing the various tests located within the **cypress/tests/ui/new-transaction-feeds.spec.ts** file.
 
 ## ctx & feedViews Objects
 
@@ -35,7 +35,7 @@ The `feedViews` object contains various information for the different views depe
 - The `tab` property is the name of the selector we will use to grab the correct element.
 - The `tabLabel` is the text contained within the `<label>` element for the tab.
 - The `routeAlias` is the alias name we are using for `cy.intercept()`
-- The `service` is the name of the service we are using for a custom Cypress command `cy.nextTransactionFeedPage(feed.service, pageData.totalPages);` around line `203`.
+- The `service` is the name of the service we are using for a custom Cypress command `cy.nextTransactionFeedPage(feed.service, pageData.totalPages);` around line **203**.
 
 ## beforeEach()
 

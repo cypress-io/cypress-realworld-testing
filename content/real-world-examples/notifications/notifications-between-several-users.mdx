@@ -1,6 +1,6 @@
 # Notifications between several users
 
-Before continuing, make sure you have read the [Notifications Overview & Setup](Notifications%20Overview%20&%20Setup%206a27a2d9b5434a229982931bf0821066.md) lesson first.
+Before continuing, make sure you have read the [Notifications Overview & Setup](/real-world-examples/notifications-overview-and-setup) lesson first.
 
 ```js
 it("User C comments on a transaction between User A and User B; User A and B get notifications that User C commented on their transaction", function () {
@@ -45,7 +45,7 @@ it("User C comments on a transaction between User A and User B; User A and B get
 })
 ```
 
-You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
 First, we log in as `userC` from the `ctx` object, which we set up in the `beforeEach()` hook at the top of this spec file.
 
@@ -96,7 +96,7 @@ cy.wait("@getNotifications")
 
 ![](/images/real-world-examples/notifications/notifications-between-several-users/Screen_Shot_2021-09-16_at_9.14.39_AM.png)
 
-Then, we confirm our user has a total of `9` notifications and that the first notifications contains the first name of `userC` along with the text "commented"
+Then, we confirm our user has a total of **9** notifications and that the first notifications contains the first name of `userC` along with the text "commented"
 
 ```js
 cy.getBySelLike("notification-list-item")
@@ -116,7 +116,7 @@ cy.switchUserByXstate(ctx.userB.username)
 
 ![](/images/real-world-examples/notifications/notifications-between-several-users/Screen_Shot_2021-09-16_at_9.15.23_AM.png)
 
-We then perform similar assertions like we just did for `userA`. We want to make sure that `userB` has a total of `9` notifications and that the first notifications contains the first name of `userC` along with the text "commented"
+We then perform similar assertions like we just did for `userA`. We want to make sure that `userB` has a total of **9** notifications and that the first notifications contains the first name of `userC` along with the text "commented"
 
 ```js
 cy.getBySelLike("notifications-link").click()

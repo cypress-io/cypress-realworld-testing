@@ -1,6 +1,6 @@
 # filters transaction feeds by date range
 
-Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](Transaction%20Feeds%20Overview%20&%20Setup%20375cb80b08844b928872ac8780b9718c.md) lesson first.
+Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](/real-world-examples/transaction-feeds-overview-and-setup) lesson first.
 
 ```js
 describe("filters transaction feeds by date range", function () {
@@ -91,7 +91,7 @@ describe("filters transaction feeds by date range", function () {
 })
 ```
 
-You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
 First, we are checking to see if our test is being run inside of a mobile viewport. If so, we ensure that the data range picker works properly on a mobile device by clicking on it to open it, confirming that it is open, and then closing it.
 
@@ -193,7 +193,7 @@ cy.getBySelLike("transaction-item").should("have.length", transactions.length)
 
 Then we loop through all of the transactions and make sure that all of the transaction dates are within the correct range.
 
-- `startOfDayUTC` is a utility function that can be found in `src/utils/transactionUtils.ts`
+- `startOfDayUTC` is a utility function that can be found in **src/utils/transactionUtils.ts**
 - `isWithinInterval` is a function from the [date-fns](https://date-fns.org/) library.
 
 ```js

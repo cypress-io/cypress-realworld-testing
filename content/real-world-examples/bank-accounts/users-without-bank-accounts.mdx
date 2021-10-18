@@ -1,6 +1,6 @@
 # Users without Bank Accounts
 
-Before continuing, make sure you have read the [Bank Accounts Overview & Setup](Bank%20Accounts%20Overview%20&%20Setup%20c40a9fd9fa964f47a726d51989ad5a90.md) lesson first.
+Before continuing, make sure you have read the [Bank Accounts Overview & Setup](/real-world-examples/bank-accounts-overview-and-setup) lesson first.
 
 ```js
 it("renders an empty bank account list state with onboarding modal", function () {
@@ -30,7 +30,7 @@ it("renders an empty bank account list state with onboarding modal", function ()
 })
 ```
 
-You can find out more information about the custom Cypress commands used in this test [here](https://www.notion.so/RWA-Custom-Cypress-Commands-Tasks-Functions-5efc9089b2184a22910b5532796a65dd).
+You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
 First, we wait upon our aliased intercept `@getNotifications`
 
@@ -38,7 +38,7 @@ First, we wait upon our aliased intercept `@getNotifications`
 cy.wait("@getNotifications")
 ```
 
-Next, we use `cy.intercept` to intercept the `POST` request to our GraphQL endpoint. We then determine if the `POST` request is a GraphQL query to "ListBankAccount." If so, we set the alias to `gqlListBankAccountQuery`.
+Next, we use `cy.intercept` to intercept the **POST** request to our GraphQL endpoint. We then determine if the **POST** request is a GraphQL query to "ListBankAccount." If so, we set the alias to `gqlListBankAccountQuery`.
 
 Then we clear out any `listBankAccount` items that come back by setting this property on the response to an empty array. This is how we manipulate the response data to ensure we "render an empty bank account list," which is necessary for our test.
 
@@ -57,7 +57,7 @@ cy.intercept("POST", `${Cypress.env("apiUrl")}/graphql`, (req) => {
 })
 ```
 
-We then `.visit()` the `/bankaccounts` route.
+We then `cy.visit()` the **/bankaccounts** route.
 
 ```js
 cy.visit("/bankaccounts")
@@ -70,7 +70,7 @@ cy.wait("@getNotifications")
 cy.wait("@gqlListBankAccountQuery")
 ```
 
-Finally, we write some assertions to make sure our UI is displaying the elements that it should. We first want to ensure that the element that would normally display our bank accounts does not exist in the `DOM`.
+Finally, we write some assertions to make sure our UI is displaying the elements that it should. We first want to ensure that the element that would normally display our bank accounts does not exist in the DOM.
 
 Then, we make sure we are displaying the correct message since there are no bank accounts.
 

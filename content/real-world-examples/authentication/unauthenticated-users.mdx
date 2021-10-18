@@ -1,6 +1,6 @@
 # Unauthenticated Users
 
-Before continuing, make sure you have read the [Authentication Overview & Setup](Authentication%20Overview%20&%20Setup%203f4e2a27b6434a27bdadcd217d85397b.md) lesson first.
+Before continuing, make sure you have read the [Authentication Overview & Setup](/real-world-examples/authentication-overview-and-setup) lesson first.
 
 ```js
 it("should redirect unauthenticated user to signin page", function () {
@@ -9,13 +9,13 @@ it("should redirect unauthenticated user to signin page", function () {
 })
 ```
 
-First, we attempt to `.visit()` the URL `/personal`, a protected route that only logged-in users can access.
+First, we attempt to `cy.visit()` the URL **/personal**, a protected route that only logged-in users can access.
 
 ```js
 cy.visit("/personal")
 ```
 
-Finally, we assert that the application redirects users who are not logged in back to the `/signin` page.
+Finally, we assert that the application redirects users who are not logged in back to the **/signin** page.
 
 ```js
 cy.location("pathname").should("equal", "/signin")
