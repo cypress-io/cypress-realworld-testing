@@ -1,6 +1,6 @@
 # Login Errors
 
-Before continuing, make sure you have read the [Authentication Overview & Setup](Authentication%20Overview%20&%20Setup%203f4e2a27b6434a27bdadcd217d85397b.md) lesson first.
+Before continuing, make sure you have read the [Authentication Overview & Setup](/real-world-examples/authentication-overview-and-setup) lesson first.
 
 ```js
 it("should display login errors", function () {
@@ -39,7 +39,7 @@ Once redirected, we get the username input field, then typing in a user name of 
 cy.getBySel("signin-username").type("jdoe").find("input").clear().blur()
 ```
 
-We then `.find()` the `input` as the element we are actually selecting is a div that is wrapping our input.
+We then `.find()` the input as the element we are actually selecting is a div that is wrapping our input.
 
 We then clear the input field and trigger a blur event which triggers the validation.
 
