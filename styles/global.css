@@ -3,8 +3,12 @@
 */
 
 .lesson-content h1 {
-  @apply mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900
+  @apply mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900;
 }
+
+/* 
+  Modal for screenshots
+*/
 
 #modal {
   display: none;
@@ -40,4 +44,13 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* 
+  Removes backticks `` from being redered
+  for inline code in markdown files
+*/
+.prose code::before,
+.prose code::after {
+  content: "";
 }
