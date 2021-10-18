@@ -68,13 +68,6 @@ export default function LessonChallenge({
                       {answer}
                     </label>
                   </dt>
-                  <dd
-                    className={`${
-                      isIncorrectAnswer(index) ? "" : "hidden"
-                    } mt-2 ml-16 text-base text-gray-500`}
-                  >
-                    Details about the answer
-                  </dd>
                 </div>
               ))}
             </dl>
