@@ -7,7 +7,7 @@ First, we need to create another `it()` function to test adding three todos.
 ```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
-    cy.visit("http://127.0.0.1:8888")
+    cy.visit("http://localhost:8888")
     cy.get(".new-todo").type("Buy Milk{enter}")
     cy.get(".todo-list li").should("have.length", 1)
   })
@@ -27,7 +27,7 @@ The `beforeEach()` function, which is provided by [Mocha](https://mochajs.org/),
 ```js
 describe("React TodoMVC", () => {
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:8888")
+    cy.visit("http://localhost:8888")
   })
 
   it("adds a single todo", () => {
@@ -83,7 +83,7 @@ describe('React TodoMVC', () => {
   const TODO_ITEM_THREE = 'Pickup Dry Cleaning'
 
   beforeEach(() => {
-    cy.visit('http://127.0.0.1:8888')
+    cy.visit('http://localhost:8888')
   })
 
 // ...
@@ -98,7 +98,7 @@ describe("React TodoMVC", () => {
   const TODO_ITEM_THREE = "Pickup Dry Cleaning"
 
   beforeEach(() => {
-    cy.visit("http://127.0.0.1:8888")
+    cy.visit("http://localhost:8888")
   })
 
   it("adds a single todo", () => {

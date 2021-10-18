@@ -163,7 +163,7 @@ So our entire test file should like this so far:
 ```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
-    cy.visit("http://127.0.0.1:8888")
+    cy.visit("http://localhost:8888")
     cy.get(".new-todo").type("Buy Milk{enter}")
   })
 })
@@ -182,7 +182,7 @@ We can see that our todos are added as `<li>` elements. Knowing this, we can mak
 ```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
-    cy.visit("http://127.0.0.1:8888")
+    cy.visit("http://localhost:8888")
     cy.get(".new-todo").type("Buy Milk{enter}")
     cy.get(".todo-list li").should("have.length", 1)
   })
@@ -212,7 +212,7 @@ Let's update our test to add two todos to see if our assertion now fails.
 ```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
-    cy.visit("http://127.0.0.1:8888")
+    cy.visit("http://localhost:8888")
     cy.get(".new-todo").type("Buy Milk{enter}")
     cy.get(".new-todo").type("Pay Rent{enter}")
     cy.get(".todo-list li").should("have.length", 1)
@@ -229,7 +229,7 @@ We can also simplify this code by chaining both of our `.type()` functions toget
 ```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
-    cy.visit("http://127.0.0.1:8888")
+    cy.visit("http://localhost:8888")
     cy.get(".new-todo").type("Buy Milk{enter}").type("Pay Rent{enter}")
     cy.get(".todo-list li").should("have.length", 1)
   })
@@ -243,7 +243,7 @@ Now let's update our test so that we are only adding a single todo and everythin
 ```js
 describe("React TodoMVC", () => {
   it("adds a single todo", () => {
-    cy.visit("http://127.0.0.1:8888")
+    cy.visit("http://localhost:8888")
     cy.get(".new-todo").type("Buy Milk{enter}")
     cy.get(".todo-list li").should("have.length", 1)
   })
