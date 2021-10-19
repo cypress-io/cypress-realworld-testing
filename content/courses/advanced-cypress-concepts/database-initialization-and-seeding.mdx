@@ -25,12 +25,12 @@ There are many ways to create seed data. Regardless of which method you choose f
 
 This method involves using Cypress to drive the UI to generate the data you need. For example, you could write tests that would allow Cypress to create users via your application UI by filling out a signup form with a generic user specifically for testing purposes.
 
-### Pros
+**Pros**
 
 1. The easiest and most straightforward way
 2. Confirms that your UI and backend are working correctly
 
-### Cons
+**Cons**
 
 1. Take's a long time
 2. Your spec files could potentially rely upon each other, which is an anti-pattern
@@ -41,14 +41,14 @@ This method involves using Cypress to drive the UI to generate the data you need
 
 This method involves writing raw queries, like SQL, to populate your database with the data you need for testing.
 
-### Pros
+**Pros**
 
 1. relies on the backend to manage the data
 2. more reliable way to get your data
 3. faster than using the UI to initialize the data, i.e., the method listed above
 4. re-use backend logic, i.e., using an ORM or methods to obtain data from the backend for testing purposes. This is only possible if your front end and backend are in the same repo.
 
-### Cons
+**Cons**
 
 1. requires network interaction to get the data, possible issues with latency
 2. requires maintenance when your data model changes
@@ -58,14 +58,14 @@ This method involves writing raw queries, like SQL, to populate your database wi
 
 This method involves utilizing special APIs set up to generate the data you need for your tests.
 
-### Pros
+**Pros**
 
 1. Call and endpoint with parameters, and the backend creates the entities and returns them
 2. Can ensure relationships between entities are established
 3. Responsibility of test data is on the backend, not frontend or QA
 4. Little to no maintenance on frontend/testing side; completely managed by backend
 
-### Cons
+**Cons**
 
 1. could potentially expose PII
 2. may potentially need extra security measures if these endpoints are public-facing
@@ -74,25 +74,25 @@ This method involves utilizing special APIs set up to generate the data you need
 
 This method involves using a SQL dump or an export from one of your databases and then importing the export into another database explicitly used for testing.
 
-### Pros
+**Pros**
 
 1. Working with actual data (potentially sanitized)
 2. Efficient in that data used to drive tests would be provisioned outside of testing
 3. Bulk insert of records
 4. Possible for SQL and NoSQL backends, "easier" for SQL
 
-### Cons
+**Cons**
 
 1. Depending on entities and where data is stored among regions and databases, i.e., cloud infrastructure, it can become quite complicated.
 2. May require DevOps team for setup and deployment.
 
 ## Custom scripts (factories) to generate "test" data
 
-### Pros
+**Pros**
 
 1. Ultimate control over test data for entities and relationships
 
-### Cons
+**Cons**
 
 1. All responsibility for test data is on the frontend/testing team
 2. Script maintenance when data model or backend changes
