@@ -15,6 +15,7 @@ export default function LessonChallenge({ progressService }) {
 
   return (
     <>
+      <hr />
       <div className="flex items-center justify-center my-6">
         <input
           data-test="skip-challenge-input"
