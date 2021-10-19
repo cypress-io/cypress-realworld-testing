@@ -13,6 +13,7 @@ import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import RWELessonHero from "../../components/RealWorldExamples/Lesson/RWELessonHero"
 import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELessonLayout"
+import apiLink from "../../components/Markdown/apiLink"
 const RWENextLessonBtn = dynamic(
   () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
   {
@@ -43,6 +44,7 @@ const components = {
   // See the notes in README.md for more details.
   //TestComponent: dynamic(() => import('../../components/TestComponent')),
   Head,
+  apiLink,
 }
 
 type Props = {
