@@ -52,10 +52,7 @@ describe("progress machine", () => {
   })
 
   it("can disable all challenges", () => {
-    progressService.send({
-      type: "DISABLE_CHALLENGES",
-      value: true,
-    })
+    progressService.send("DISABLE_CHALLENGES")
 
     expect(progressService.state.context.disableChallenges).to.be.true
   })
