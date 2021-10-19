@@ -14,6 +14,7 @@ import Layout from "../../components/Layout"
 import LessonHero from "../../components/Lesson/LessonHero"
 import LessonLayout from "../../components/Lesson/LessonLayout"
 import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
+import apiLink from "../../components/Markdown/apiLink"
 
 const NextLessonBtn = dynamic(
   () => import("../../components/Lesson/NextLessonBtn"),
@@ -44,6 +45,7 @@ const components = {
   // See the notes in README.md for more details.
   //TestComponent: dynamic(() => import('../../components/TestComponent')),
   Head,
+  apiLink,
 }
 
 type Props = {
