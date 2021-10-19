@@ -30,6 +30,13 @@ const CompleteLessonBtn = dynamic(
   }
 )
 
+const SkipChallenge = dynamic(
+  () => import("../../components/Lesson/SkipChallenge"),
+  {
+    ssr: false,
+  }
+)
+
 import {
   LessonTableOfContents,
   MultipleChoiceChallenge,
@@ -125,7 +132,8 @@ export default function LessonPage({
       )}
 
       {lessonData.challenges &&
-        lessonData.challenges[0].challengeType === "multiple-choice" && (
+        lessonData.challenges[0].challengeType === "multiple-choice" &&
+        progressService.state.context.disableChallenges == false && (
           <>
             <MCChallenge
               progressService={progressService}
@@ -139,6 +147,16 @@ export default function LessonPage({
             />
           </>
         )}
+
+      {progressService.state.context.disableChallenges && (
+        <CompleteLessonBtn
+          progressService={progressService}
+          nextLessonPath={nextLesson}
+          lessonPath={lessonPath}
+        />
+      )}
+
+      <SkipChallenge progressService={progressService} />
     </Layout>
   )
 }

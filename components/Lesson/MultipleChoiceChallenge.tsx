@@ -45,7 +45,7 @@ export default function LessonChallenge({
                           isIncorrectAnswer(index)
                             ? "text-gray-300 focus:ring-gray-300"
                             : ""
-                        } focus:ring-indigo-500 text-indigo-600 border-gray-300 rounded h-8 w-8`}
+                        } focus:ring-blue-500 text-blue-600 border-gray-300 rounded h-8 w-8`}
                         onClick={() => {
                           setAnswerChecked((prev) => [...prev, index])
                           progressSend({
