@@ -9,7 +9,7 @@ it("should redirect unauthenticated user to signin page", function () {
 })
 ```
 
-First, we attempt to `cy.visit()` the URL **/personal**, a protected route that only logged-in users can access.
+First, we attempt to <apiLink apiName="visit" displayName="cy.visit()" /> the URL **/personal**, a protected route that only logged-in users can access.
 
 ```js
 cy.visit("/personal")
