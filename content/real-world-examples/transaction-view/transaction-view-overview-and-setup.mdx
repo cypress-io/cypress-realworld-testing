@@ -51,7 +51,7 @@ First, we are using a custom Cypress task to seed our database.
 cy.task("db:seed")
 ```
 
-Next, we use `cy.intercept()` to intercept various requests and aliasing them.
+Next, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept various requests and aliasing them.
 
 ```js
 cy.intercept("GET", "/transactions*").as("personalTransactions")

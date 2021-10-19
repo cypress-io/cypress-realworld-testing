@@ -38,7 +38,7 @@ First, we wait upon our aliased intercept `@getNotifications`
 cy.wait("@getNotifications")
 ```
 
-Next, we use `cy.intercept` to intercept the **POST** request to our GraphQL endpoint. We then determine if the **POST** request is a GraphQL query to "ListBankAccount." If so, we set the alias to `gqlListBankAccountQuery`.
+Next, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept the **POST** request to our GraphQL endpoint. We then determine if the **POST** request is a GraphQL query to "ListBankAccount." If so, we set the alias to `gqlListBankAccountQuery`.
 
 Then we clear out any `listBankAccount` items that come back by setting this property on the response to an empty array. This is how we manipulate the response data to ensure we "render an empty bank account list," which is necessary for our test.
 
@@ -57,7 +57,7 @@ cy.intercept("POST", `${Cypress.env("apiUrl")}/graphql`, (req) => {
 })
 ```
 
-We then `cy.visit()` the **/bankaccounts** route.
+We then <apiLink apiName="visit" displayName="cy.visit()" /> the **/bankaccounts** route.
 
 ```js
 cy.visit("/bankaccounts")

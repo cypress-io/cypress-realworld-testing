@@ -42,7 +42,7 @@ The first thing we are doing is seeding our database using a custom Cypress task
 cy.task("db:seed")
 ```
 
-Next, we are using `cy.intercept()` to intercept and alias several requests.
+Next, we are using <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept and alias several requests.
 
 ```js
 cy.intercept("GET", "/users*").as("allUsers")

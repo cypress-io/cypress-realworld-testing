@@ -35,7 +35,7 @@ The first thing we are doing is seeding our database using a custom Cypress task
 cy.task("db:seed")
 ```
 
-Next, we are using `cy.intercept()` to intercept every **PATCH** request to the **/users/\*** route. We are then aliasing this intercept to "updateUser." When you see `@updateUser` being used within a test, it is referring to this intercept.
+Next, we are using <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept every **PATCH** request to the **/users/\*** route. We are then aliasing this intercept to "updateUser." When you see `@updateUser` being used within a test, it is referring to this intercept.
 
 ```js
 cy.intercept("PATCH", "/users/*").as("updateUser")

@@ -21,7 +21,7 @@ it("renders an empty notifications state", function () {
 
 You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
-First, we use `cy.intercept()` to intercept any **GET** request to the **/notifications** route. If you look closely, we are also passing in an empty array `[]` as a [3rd argument](https://docs.cypress.io/api/commands/intercept#Arguments) which will set the response data to be this empty array. The reason for this is we are trying to test what happens when a user does not have any notifications. The intercept is aliased to `@notifications`
+First, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept any **GET** request to the **/notifications** route. If you look closely, we are also passing in an empty array `[]` as a [3rd argument](https://docs.cypress.io/api/commands/intercept#Arguments) which will set the response data to be this empty array. The reason for this is we are trying to test what happens when a user does not have any notifications. The intercept is aliased to `@notifications`
 
 ```js
 cy.intercept("GET", "/notifications", []).as("notifications")
