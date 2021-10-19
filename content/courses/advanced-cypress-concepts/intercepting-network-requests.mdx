@@ -1,6 +1,6 @@
 # Intercepting Network Requests
 
-Knowing how to test network requests and responses is important for every web application. In this lesson you will learn how to use `cy.intercept()` to manipulate and test network requests and responses.
+Knowing how to test network requests and responses is important for every web application. In this lesson you will learn how to use <apiLink apiName="intercept" displayName="cy.intercept()" /> to manipulate and test network requests and responses.
 
 ## Mocking, Spying & Stubbing
 
@@ -59,7 +59,7 @@ beforeEach(function () {
 
 In this example, we intercept any **GET** request to any route that matches **/transactions/public\***. We are doing this in a `beforeEach()`, which means this intercept will run before every test.
 
-Later on, In one of our tests, we use `cy.intercept()` to intercept and override this same **GET** and route but using a **fixture** to mock the response.
+Later on, In one of our tests, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept and override this same **GET** and route but using a **fixture** to mock the response.
 
 ```js
 cy.intercept("GET", "/transactions/public*", {
@@ -72,7 +72,7 @@ So as you can see, we can also intercept other intercepts and then provide mocke
 
 ### Changing Headers
 
-You can also use `cy.intercept()` to modify headers from a response.
+You can also use <apiLink apiName="intercept" displayName="cy.intercept()" /> to modify headers from a response.
 
 ```js
 cy.intercept("GET", "/transactions/public*", {
@@ -104,7 +104,7 @@ In this example, we are overriding the `listBankAccount` property and setting it
 
 ### Inspecting a Request
 
-You can also use intercept to inspect a request, in the callback passed to `cy.intercept`.
+You can also use intercept to inspect a request, in the callback passed to <apiLink apiName="intercept" displayName="cy.intercept()" />.
 
 ```js
 cy.intercept("POST", apiGraphQL, (req) => {

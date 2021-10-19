@@ -93,7 +93,7 @@ If we inspect the element with our browser's dev tools, we will notice that the 
 <input class="new-todo" placeholder="What needs to be done?" data-reactid=".0.0.1">
 ```
 
-Therefore we can `cy.get()` this element like so:
+Therefore we can <apiLink apiName="get" displayName="cy.get()" /> this element like so:
 
 ```js
 cy.get(".new-todo")
@@ -119,9 +119,9 @@ You should see an error like this:
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.20.58_AM.png)
 
-Cypress is telling us that it is unable to `cy.get()` our input element with the class of **.new-todo**. If you look at the right side of Cypress, you will see a message that says, "This is the default blank page," with some hints about what to do. This is just a blank page that Cypress opens when it doesn't know where to go, but we want Cypress to open our todo application. Let's go back to our test and tell Cypress how to `cy.navigate()` to our app.
+Cypress is telling us that it is unable to <apiLink apiName="get" displayName="cy.get()" /> our input element with the class of **.new-todo**. If you look at the right side of Cypress, you will see a message that says, "This is the default blank page," with some hints about what to do. This is just a blank page that Cypress opens when it doesn't know where to go, but we want Cypress to open our todo application. Let's go back to our test and tell Cypress how to navigate to our app.
 
-We can use the `cy.visit()` method to tell Cypress which URL to visit:
+We can use the <apiLink apiName="visit" displayName="cy.visit()" /> method to tell Cypress which URL to visit:
 
 ```js
 describe("React TodoMVC", () => {
@@ -138,7 +138,7 @@ Cypress provides an excellent developer experience in that each time we save our
 
 The green checkmark in the Cypress Command Log, on the left side of the screen, means that Cypress has successfully found the input with the class of **new-todo**.
 
-Next, we need to enter the name of our todo. We can do that using the `.type()` method and passing in a string of what we would like Cypress to type into the input.
+Next, we need to enter the name of our todo. We can do that using the <apiLink apiName="type" displayName="cy.type()" /> method and passing in a string of what we would like Cypress to type into the input.
 
 ```js
 cy.get(".new-todo").type("Buy Milk")
@@ -154,7 +154,7 @@ Next, we need to simulate the user pressing the **enter** key to add the todo.
 cy.get(".new-todo").type("Buy Milk{enter}")
 ```
 
-By adding `{enter}` inside of our `.type()` function, Cypress will press the enter key after it has finished typing "Buy Milk"
+By adding `{enter}` inside of our <apiLink apiName="type" displayName="cy.type()" /> function, Cypress will press the enter key after it has finished typing "Buy Milk"
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.29.13_AM.png)
 
@@ -224,7 +224,7 @@ Our assertion fails because we have more than one todo now.
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.48.50_AM.png)
 
-We can also simplify this code by chaining both of our `.type()` functions together like so:
+We can also simplify this code by chaining both of our <apiLink apiName="type" displayName="cy.type()" /> functions together like so:
 
 ```js
 describe("React TodoMVC", () => {

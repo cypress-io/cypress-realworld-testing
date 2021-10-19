@@ -137,7 +137,7 @@ describe("renders and paginates all transaction feeds", function () {
 
 You can find out more information about the custom Cypress commands used in this test [here](/real-world-examples/custom-cypress-commands).
 
-First, we are using `cy.intercept()` to intercept any **GET** request to the **/transactions/public\*** route.
+First, we are using <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept any **GET** request to the **/transactions/public\*** route.
 
 ```js
 cy.intercept("GET", "/transactions/public*", {
@@ -228,7 +228,7 @@ return _.find(transactions, (transaction) => {
             })!;
 ```
 
-We then use `cy.log()` to output a custom message to the Cypress Command Log.
+We then use <apiLink apiName="log" displayName="cy.log()" /> to output a custom message to the Cypress Command Log.
 
 ```js
 cy.log("🚩Testing a paid payment transaction item")

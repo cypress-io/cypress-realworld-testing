@@ -6,7 +6,7 @@ Cypress has a lot of [methods & commands](https://docs.cypress.io/api/table-of-c
 
 Invoke a function on the previously yielded subject.
 
-[Cypress is just JavaScript](/cypress-fundamentals/cypress-is-just-javascript), and the `.invoke()` method allows you to call JS functions on JS data types.
+[Cypress is just JavaScript](/cypress-fundamentals/cypress-is-just-javascript), and the <apiLink apiName="invoke" displayName="cy.invoke()" /> method allows you to call JS functions on JS data types.
 
 In the example below, we are invoking the `Array.slice()` function on the response data returned from the `@publicTransactions` alias so that we only iterate over the first five items returned.
 
@@ -32,7 +32,7 @@ it("first five items belong to contacts in public feed", function () {
     });
 ```
 
-Check out our [API docs page](https://docs.cypress.io/api/commands/invoke) for more info on `invoke`
+Check out our [API docs page](https://docs.cypress.io/api/commands/invoke) for more info on <apiLink apiName="intercept" displayName="cy.intercept()" />
 
 ## .its()
 
@@ -50,7 +50,7 @@ Or maybe you want to get the property from an object and make an assertion.
 cy.wrap({ age: 52 }).its("age").should("eq", 52) // true
 ```
 
-In the example in the Invoke section above, we are using `.its()` to grab the `results` from the `@publicTransactions` alias, which is an intercepted network request.
+In the example in the Invoke section above, we are using <apiLink apiName="its" displayName=".its()" /> to grab the `results` from the `@publicTransactions` alias, which is an intercepted network request.
 
 ```js
 it("first five items belong to contacts in public feed", function () {
@@ -61,7 +61,7 @@ it("first five items belong to contacts in public feed", function () {
   .invoke("slice", 0, 5)
 ```
 
-By using `.its()` we can get access to the `results` array which allows us to call `.invoke()` to perform `.slice()` on it.
+By using <apiLink apiName="its" displayName=".its()" /> we can get access to the `results` array which allows us to call `.invoke()` to perform `.slice()` on it.
 
 `.its()` is a very handy method and will become a useful tool in your "Cypress tool belt." You can find out more about it in our [API docs page](https://docs.cypress.io/api/commands/its).
 
@@ -80,13 +80,13 @@ cy.request("POST", "http://localhost:8888/users/admin", { name: "Jane" }).then(
 )
 ```
 
-We make extensive use of `cy.request()` in our [API tests](https://github.com/cypress-io/cypress-realworld-app/tree/develop/cypress/tests/api) within the [Real World App (RWA)](https://github.com/cypress-io/cypress-realworld-app).
+We make extensive use of <apiLink apiName="request" displayName="cy.request()" /> in our [API tests](https://github.com/cypress-io/cypress-realworld-app/tree/develop/cypress/tests/api) within the [Real World App (RWA)](https://github.com/cypress-io/cypress-realworld-app).
 
 ## .within()
 
 Scopes all subsequent Cypress commands to within an element. Useful when working within a particular group of elements such as a `<form>`.
 
-When you are working with elements, you need to drill down into its children, grandchildren, etc. You can use `.within()` to limit the scope of Cypress commands to within a specific element. For example.
+When you are working with elements, you need to drill down into its children, grandchildren, etc. You can use <apiLink apiName="within" displayName=".within()" /> to limit the scope of Cypress commands to within a specific element. For example.
 
 ```js
 it("all of the lesson cards on the section page have a status of 'Completed'", () => {

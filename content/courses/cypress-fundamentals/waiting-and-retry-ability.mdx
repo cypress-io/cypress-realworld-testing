@@ -12,7 +12,7 @@ Cypress will pause executing any commands when a page transition happens until t
 
 In Cypress, we use [Aliases](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Aliases) to reference [elements](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Elements), [requests](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Requests), or [intercepts](https://docs.cypress.io/guides/core-concepts/variables-and-aliases#Intercepts) across our tests.
 
-To create an alias use the `.as()` function, like so:
+To create an alias use the <apiLink apiName="as" displayName=".as()" /> function, like so:
 
 ```js
 // Create an alias using the `as()` Cypress Command
@@ -21,7 +21,7 @@ cy.get("table").find("tr").as("rows")
 
 This will get the `<table>` HTML element, find all of the `<tr>` elements, and allow us to reference them as `@rows` throughout our tests.
 
-We can access our alias using `.get()` but putting the `@` character before our alias name, like so:
+We can access our alias using <apiLink apiName="get" displayName="cy.get()" /> but putting the `@` character before our alias name, like so:
 
 ```js
 // Reference Cypress Alias `rows`

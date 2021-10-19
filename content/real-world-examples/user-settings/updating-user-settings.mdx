@@ -34,7 +34,7 @@ cy.getBySelLike("email").clear().type("email@email.com")
 cy.getBySelLike("phoneNumber-input").clear().type("6155551212").blur()
 ```
 
-We then assert that the submit is not disabled and then `.click()` on it.
+We then assert that the submit is not disabled and then <apiLink apiName="click" displayName=".click()" /> on it.
 
 ```js
 cy.getBySelLike("submit").should("not.be.disabled")

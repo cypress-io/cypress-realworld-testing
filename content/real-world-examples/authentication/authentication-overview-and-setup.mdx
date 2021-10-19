@@ -32,10 +32,10 @@ The first thing that happens inside of this hook is a custom task we have create
 cy.task("db:seed")
 ```
 
-Next, we are using `cy.intercept()` to intercept every **POST** request to the **/users** route. We are then aliasing this intercept to "signup." When you see `@signup` being used within a test, it is referring to this intercept.
+Next, we are using <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept every **POST** request to the **/users** route. We are then aliasing this intercept to "signup." When you see `@signup` being used within a test, it is referring to this intercept.
 
 ```js
 cy.intercept("POST", "/users").as("signup")
 ```
 
-Finally, we are using `cy.intercept()` to intercept every **POST** request to our GraphQL API endpoint. Within the body of this intercept, we have a conditional to check to see if the GraphQL `operationName` is equal to "CreateBankAccount," if so, we are creating an alias to this intercept as `gqlCreateBankAccountMutation` . When you see `@gqlCreateBankAccountMutation` being used within a test, it is referring to this intercept.
+Finally, we are using <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept every **POST** request to our GraphQL API endpoint. Within the body of this intercept, we have a conditional to check to see if the GraphQL `operationName` is equal to "CreateBankAccount," if so, we are creating an alias to this intercept as `gqlCreateBankAccountMutation` . When you see `@gqlCreateBankAccountMutation` being used within a test, it is referring to this intercept.

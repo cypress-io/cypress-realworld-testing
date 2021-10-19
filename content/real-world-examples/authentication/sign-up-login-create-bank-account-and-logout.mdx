@@ -128,7 +128,7 @@ Finally we click the Sign Up button to create our new user account.
 cy.getBySel("signup-submit").click()
 ```
 
-We will use `cy.wait()` to wait on our intercept which we aliased to `@signup` in the `beforeEach()` hook, to ensure the
+We will use <apiLink apiName="wait" displayName="cy.wait()" /> to wait on our intercept which we aliased to `@signup` in the `beforeEach()` hook, to ensure the
 
 ```js
 cy.wait("@signup")

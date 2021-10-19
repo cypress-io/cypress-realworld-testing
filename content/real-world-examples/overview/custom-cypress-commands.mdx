@@ -45,7 +45,7 @@ Cypress.Commands.add("createTransaction", (payload) => {
 })
 ```
 
-First, we use `Cypress.log()` to log out some custom information to the Cypress Command Log.
+First, we use [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log) to log out some custom information to the Cypress Command Log.
 
 ```js
 const log = Cypress.log({
@@ -64,7 +64,7 @@ const log = Cypress.log({
 
 ![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_11.10.06_AM.png)
 
-Next, we use `cy.window()` to grab the `window` object from the browser. Then we take a DOM snapshot and send the `SET_USERS` action to the `createTransactionService` from Xstate. We intentionally expose this service to the `window` object so that Cypress has access to it.
+Next, we use <apiLink apiName="window" displayName="cy.window()" /> to grab the `window` object from the browser. Then we take a DOM snapshot and send the `SET_USERS` action to the `createTransactionService` from Xstate. We intentionally expose this service to the `window` object so that Cypress has access to it.
 
 This service comes from the `createTransactionMachine` located at `src/machines/createTransactionMachine.ts` .
 
@@ -154,7 +154,7 @@ const params = {
 }
 ```
 
-Next, we are creating a custom log with `Cypress.log()` .
+Next, we are creating a custom log with [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log).
 
 ```js
 const log = Cypress.log({
@@ -222,7 +222,7 @@ Cypress.Commands.add("getBySel", (selector, ...args) => {
 })
 ```
 
-This simple command takes in a selector and then returns the DOM element by using `cy.get()`.
+This simple command takes in a selector and then returns the DOM element by using <apiLink apiName="get" displayName="cy.get()" />.
 
 For example, without this command our code would look like this:
 
@@ -256,7 +256,7 @@ Cypress.Commands.add("getBySelLike", (selector, ...args) => {
 })
 ```
 
-This simple command takes in a selector wildcard `*` and returns the DOM element using `cy.get()`. It functions similarly to our `cy.getBySel()` custom command only this command will return multiple elements, whereas `cy.getBySel()` will return only one.
+This simple command takes in a selector wildcard `*` and returns the DOM element using <apiLink apiName="get" displayName="cy.get()" />. It functions similarly to our `cy.getBySel()` custom command only this command will return multiple elements, whereas `cy.getBySel()` will return only one.
 
 For example, below, we are getting all the transaction items and asserting that there are 3 of them in total.
 
@@ -329,7 +329,7 @@ Cypress.Commands.add(
 )
 ```
 
-First, we create a constant called `signinPath` with the path for our sign-in page and use `Cypress.log()` to log some additional information to the Cypress Command Log.
+First, we create a constant called `signinPath` with the path for our sign-in page and use [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log) to log some additional information to the Cypress Command Log.
 
 ```js
 const signinPath = "/signin"
@@ -344,14 +344,14 @@ const log = Cypress.log({
 
 ![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.10.06_AM.png)
 
-Next, we are using `cy.intercept()` to intercept two requests and aliasing them.
+Next, we are using <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept two requests and aliasing them.
 
 ```js
 cy.intercept("POST", "/login").as("loginUser")
 cy.intercept("GET", "checkAuth").as("getUserProfile")
 ```
 
-We then check the `currentPath`, which is the URL in the browser's address bar. If it is not "/signin," then we use `cy.visit()` to navigate to "/signin."
+We then check the `currentPath`, which is the URL in the browser's address bar. If it is not "/signin," then we use `<apiLink apiName="visit" displayName="cy.visit()" /> to navigate to "/signin."
 
 ```js
 cy.location("pathname", { log: false }).then((currentPath) => {
@@ -361,7 +361,7 @@ cy.location("pathname", { log: false }).then((currentPath) => {
 })
 ```
 
-We then take a DOM snapshot using `Cypress.log()`, which we declared above.
+We then take a DOM snapshot using [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log), which we declared above.
 
 ```js
 log.snapshot("before")
@@ -382,7 +382,7 @@ if (rememberUser) {
 }
 ```
 
-Finally, we click on the sign-in button and wait on the `@loginUser` intercept alias. We then use `log.set()` to set some of the login information in our `Cypress.log()`. We then take a final DOM snapshot and `.end()` our log.
+Finally, we click on the sign-in button and wait on the `@loginUser` intercept alias. We then use `log.set()` to set some of the login information in our [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log). We then take a final DOM snapshot and <apiLink apiName="end" displayName=".end()" /> our log.
 
 ```js
 cy.getBySel("signin-submit").click()
@@ -427,7 +427,7 @@ Cypress.Commands.add(
 
 This command logs in a user via one of our API endpoints. It takes the `username` and `password` and sends a `POST` request to our "/login" endpoint, and logs in our user.
 
-Note how we are using `Cypress.env()` to handle our environment variables. You can find these in `cypres/plugins/index.ts` and `cypress.json`, respectively.
+Note how we are using [Cypress.env()](https://docs.cypress.io/api/cypress-api/env) to handle our environment variables. You can find these in `cypres/plugins/index.ts` and `cypress.json`, respectively.
 
 ---
 
@@ -490,13 +490,13 @@ This environment variable can be found in `cypress/plugins/index.ts` around line
 config.env.defaultPassword = process.env.SEED_DEFAULT_USER_PASSWORD
 ```
 
-On the left hand side we are setting the `Cypress.env()` with our environment variable from the `.env` file in the root of the project around line `10`
+On the left hand side we are setting the [Cypress.env()](https://docs.cypress.io/api/cypress-api/env) with our environment variable from the `.env` file in the root of the project around line `10`
 
 ```js
 SEED_DEFAULT_USER_PASSWORD = s3cret
 ```
 
-Next, we are creating some custom logging with `Cypress.log()` .
+Next, we are creating some custom logging with [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log).
 
 ```js
 const log = Cypress.log({
@@ -507,7 +507,7 @@ const log = Cypress.log({
 })
 ```
 
-Then, we use `cy.intercept()` to intercept two requests and alias them.
+Then, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept two requests and alias them.
 
 ```js
 cy.intercept("POST", "/login").as("loginUser")
@@ -522,7 +522,7 @@ cy.visit("/signin", { log: false }).then(() => {
 })
 ```
 
-Next, we log in our user by sending an event to the [XState](https://xstate.js.org/docs/) store, responsible for handling all of our client-side state around authentication. It is very similar to [Redux](https://redux.js.org/). The `authservice` is attached to the `window` object, so we use `cy.window()` to grab the `window` object from the browser. We intentionally expose this service to the `window` object so that Cypress has access to it. You can see an example of how we are doing this [here](https://github.com/cypress-io/cypress-realworld-app/blob/86bc319b33a98fc70a5c2e431e98307f5f28e532/src/containers/App.tsx#L17-L21).
+Next, we log in our user by sending an event to the [XState](https://xstate.js.org/docs/) store, responsible for handling all of our client-side state around authentication. It is very similar to [Redux](https://redux.js.org/). The `authservice` is attached to the `window` object, so we use <apiLink apiName="window" displayName="cy.window()" /> to grab the `window` object from the browser. We intentionally expose this service to the `window` object so that Cypress has access to it. You can see an example of how we are doing this [here](https://github.com/cypress-io/cypress-realworld-app/blob/86bc319b33a98fc70a5c2e431e98307f5f28e532/src/containers/App.tsx#L17-L21).
 
 Then we trigger the `LOGIN` action with our username and password, which updates XState, and logs in the user.
 
@@ -532,7 +532,7 @@ cy.window({ log: false }).then((win) =>
 )
 ```
 
-We are then using [cy.wait](https://docs.cypress.io/api/commands/wait) on the `@loginUser` intercept alias and set some of the login data in our `Cypress.log()` declared above.
+We are then using <apiLink apiName="wait" displayName="cy.wait()" /> on the `@loginUser` intercept alias and set some of the login data in our [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log) declared above.
 
 ```js
 return cy.wait("@loginUser").then((loginUser) => {
@@ -597,7 +597,7 @@ Cypress.Commands.add("logoutByXstate", () => {
 })
 ```
 
-First, we are using `Cypress.log()` to log some custom information to the Cypress Command Log.
+First, we are using [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log) to log some custom information to the Cypress Command Log.
 
 ```js
 const log = Cypress.log({
@@ -609,7 +609,7 @@ const log = Cypress.log({
 })
 ```
 
-Next, we log out our user by updating the [XState](https://xstate.js.org/docs/) store, which handles all of our client-side state around authentication. It is very similar to [Redux](https://redux.js.org/). The `authservice` is attached to the `window` object, so we use `cy.window()` to grab the `window` object from the browser. We intentionally expose this service to the `window` object so that Cypress has access to it. You can see an example of how we are doing this [here](https://github.com/cypress-io/cypress-realworld-app/blob/86bc319b33a98fc70a5c2e431e98307f5f28e532/src/containers/App.tsx#L17-L21).
+Next, we log out our user by updating the [XState](https://xstate.js.org/docs/) store, which handles all of our client-side state around authentication. It is very similar to [Redux](https://redux.js.org/). The `authservice` is attached to the `window` object, so we use <apiLink apiName="window" displayName="cy.window()" /> to grab the `window` object from the browser. We intentionally expose this service to the `window` object so that Cypress has access to it. You can see an example of how we are doing this [here](https://github.com/cypress-io/cypress-realworld-app/blob/86bc319b33a98fc70a5c2e431e98307f5f28e532/src/containers/App.tsx#L17-L21).
 
 Then we trigger the `LOGOUT` action, which updates XState, and logs out the user.
 
@@ -688,7 +688,7 @@ const log = Cypress.log({
 
 ![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.32.20_PM.png)
 
-Next, we are using `cy.window()` to grab the window object and take a DOM snapshot with `log.snapshot("before")`. We then send the `FETCH` action to whichever service is passed in along with the page number. We use pagination in the application, so the page number represents which paginated page of transactions we would like to return.
+Next, we are using <apiLink apiName="window" displayName="cy.window()" /> to grab the window object and take a DOM snapshot with `log.snapshot("before")`. We then send the `FETCH` action to whichever service is passed in along with the page number. We use pagination in the application, so the page number represents which paginated page of transactions we would like to return.
 
 We intentionally expose these services from our machines in Xstate to the `window` object so that Cypress has access to them.
 
@@ -758,7 +758,7 @@ Cypress.Commands.add("pickDateRange", (startDate, endDate) => {
 })
 ```
 
-First, we are using `Cypress.log()` to output some custom information to the Cypress Command Log.
+First, we are using [Cypress.log()](https://docs.cypress.io/api/cypress-api/cypress-log) to output some custom information to the Cypress Command Log.
 
 ```js
 const log = Cypress.log({
@@ -788,7 +788,7 @@ const selectDate = (date: number) => {
 }
 ```
 
-Then, we take a DOM snapshot and using `cy.clock()` to set the current time based upon our start date.
+Then, we take a DOM snapshot and using <apiLink apiName="clock" displayName="cy.clock()" /> to set the current time based upon our start date.
 
 ```js
 log.snapshot("before")
@@ -861,7 +861,7 @@ Cypress.Commands.add("reactComponent", { prevSubject: "element" }, ($el) => {
 
 This command allows us to get access to a React component's props, in order to programmatically interact with them.
 
-For instance, in the `setTransactionAmountRange` command, we need to trigger the `onChange` event for our React component. Still, to do that, we need the actual component, not the DOM element that `cy.get()` would return us. `cy.reactComponent()` queries the previously chained element for the [React Fiber instance](https://reactjs.org/docs/faq-internals.html#what-is-react-fiber) to retrieve the props containing the `onChange` to call programmatically.
+For instance, in the `setTransactionAmountRange` command, we need to trigger the `onChange` event for our React component. Still, to do that, we need the actual component, not the DOM element that <apiLink apiName="get" displayName="cy.get()" /> would return us. `cy.reactComponent()` queries the previously chained element for the [React Fiber instance](https://reactjs.org/docs/faq-internals.html#what-is-react-fiber) to retrieve the props containing the `onChange` to call programmatically.
 
 ## cy.setTransactionAmountRange()
 

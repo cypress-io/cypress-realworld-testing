@@ -85,7 +85,7 @@ Save the file, and now the output should be much cleaner.
 
 ## Aliases
 
-[Aliases in Cypress](https://docs.cypress.io/guides/core-concepts/variables-and-aliases) provide a way for you to reference something later on in your test. You can think of it as a variable where you store something to use later on. Within our custom command to **createDefaultTodos**, we can return our newly created todo's from the command, which we can then access as an alias within our test. Aliases can be used for all sorts of things, but in our case, we want to alias the todo elements or `<li>'s` from the DOM. This will make more sense when we break down the code involved and update our test to use this alias.
+[Aliases in Cypress](https://docs.cypress.io/guides/core-concepts/variables-and-aliases) provide a way for you to reference something later on in your test. You can think of it as a variable where you store something to use later on. Within our custom command to **createDefaultTodos**, we can return our newly created todos from the command, which we can then access as an alias within our test. Aliases can be used for all sorts of things, but in our case, we want to alias the todo elements or `<li>` from the DOM. This will make more sense when we break down the code involved and update our test to use this alias.
 
 The first thing we want to do is store our newly created log into a variable.
 
@@ -100,13 +100,16 @@ let cmd = Cypress.log({
 })
 ```
 
-Then, we get all of the **.todo-list** `<li>` elements, which are the three todos. We are also turning off logging for `cy.get()` in the test runner.
+Then, we get all of the **.todo-list** `<li>` elements, which are the three todos. We are also turning off logging for <apiLink apiName="get" displayName="cy.get()" /> in the test runner.
 
 ```js
 cy.get(".todo-list li", { log: false })
 ```
 
-`.then()` we are putting those elements into a variable called **$listItems** which we then `.set()` on our `Cypress.log()` . Finally, we use [.end()](https://docs.cypress.io/api/commands/end) to let Cypress now that our command is finished.
+Next, we are putting those elements
+into a variable called `$listItems` which we then `.set()` on our `Cypress.log()`
+. Finally, we use <apiLink apiName="end" displayName="cy.end()" /> to let Cypress
+now that our command is finished.
 
 ```js
 .then(function ($listItems) {
@@ -157,7 +160,7 @@ After saving the file, our test is still passing, and the runner has also logged
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.48.45_AM.png)
 
-Now the test runner states explicitly that our `.get()` is getting **@todos** which is the alias we just created.
+Now the test runner states explicitly that our <apiLink apiName="get" displayName="cy.get()" /> is getting **@todos** which is the alias we just created.
 
 ## Snapshot
 
