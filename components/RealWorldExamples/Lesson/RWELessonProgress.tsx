@@ -1,6 +1,6 @@
 export default function RWEExamplesSidebar({ sectionLessons }) {
   return (
-    <nav aria-label="Progress" className="mt-12">
+    <div aria-label="Progress" className="mt-12">
       <ol className="overflow-hidden">
         {sectionLessons.map((lesson, index) => (
           <li
@@ -26,6 +26,6 @@ export default function RWEExamplesSidebar({ sectionLessons }) {
           </li>
         ))}
       </ol>
-    </nav>
+    </div>
   )
 }

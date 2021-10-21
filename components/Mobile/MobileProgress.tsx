@@ -7,7 +7,7 @@ function classNames(...classes) {
 
 export default function LessonSteps({ section, content, progressService }) {
   return (
-    <nav aria-label="Progress" className="mt-4">
+    <div aria-label="Progress" className="mt-4">
       <ol className="overflow-hidden">
         {content?.lessons.map((lesson, index) => (
           <li
@@ -78,6 +78,6 @@ export default function LessonSteps({ section, content, progressService }) {
           </li>
         ))}
       </ol>
-    </nav>
+    </div>
   )
 }

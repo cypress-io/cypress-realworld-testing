@@ -8,7 +8,7 @@ const pages = [
 
 export default function RWELessonBreadcrumbs({ lessonData }) {
   return (
-    <nav
+    <div
       className="bg-white border-b border-gray-200 flex"
       aria-label="Breadcrumb"
     >
@@ -70,6 +70,6 @@ export default function RWELessonBreadcrumbs({ lessonData }) {
           </div>
         </li>
       </ol>
-    </nav>
+    </div>
   )
 }

@@ -13,7 +13,7 @@ export default function CourseProgress({
   const [sectionSlug] = lessonPath.split("/")
 
   return (
-    <nav data-test="section-steps" aria-label="Progress">
+    <div data-test="section-steps" aria-label="Progress">
       <ol className="overflow-hidden">
         {lessons.map((lesson, index) => (
           <li
@@ -84,6 +84,6 @@ export default function CourseProgress({
           </li>
         ))}
       </ol>
-    </nav>
+    </div>
   )
 }

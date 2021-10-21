@@ -29,9 +29,9 @@ export default function LessonLayout({
             <div className="hidden lg:block lg:col-span-3 xl:col-span-2">
               <div className="sticky top-6">
                 <p className="font-semibold mb-4">ON THIS PAGE</p>
-                <nav aria-label="Sidebar" className="">
+                <div aria-label="Sidebar" className="">
                   <LessonToc navigation={toc} />
-                </nav>
+                </div>
               </div>
             </div>
 

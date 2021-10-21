@@ -10,7 +10,7 @@ export default function Breadcrumbs({ lessonPath, sectionTitle, lessonData }) {
   const [sectionSlug] = lessonPath.split("/")
 
   return (
-    <nav
+    <div
       className="bg-white border-b border-gray-200 flex"
       aria-label="Breadcrumb"
     >
@@ -72,6 +72,6 @@ export default function Breadcrumbs({ lessonPath, sectionTitle, lessonData }) {
           </div>
         </li>
       </ol>
-    </nav>
+    </div>
   )
 }

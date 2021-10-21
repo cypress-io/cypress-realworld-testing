@@ -10,7 +10,7 @@ type Props = {
 
 export default function LessonSideNav({ navigation }: Props) {
   return (
-    <nav data-test="toc-sidebar" className="space-y-1" aria-label="Sidebar">
+    <div data-test="toc-sidebar" className="space-y-1" aria-label="Sidebar">
       {navigation.map((item) => (
         <a
           data-test={item.slug}
@@ -27,6 +27,6 @@ export default function LessonSideNav({ navigation }: Props) {
           <span className="truncate">{item.content}</span>
         </a>
       ))}
-    </nav>
+    </div>
   )
 }

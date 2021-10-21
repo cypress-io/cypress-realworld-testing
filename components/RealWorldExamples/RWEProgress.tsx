@@ -1,6 +1,6 @@
 export default function RWEProgress({ content }) {
   return (
-    <nav aria-label="Progress" className="mt-12">
+    <div aria-label="Progress" className="mt-12">
       <ol className="overflow-hidden">
         {content?.lessons.map((lesson, index) => (
           <li
@@ -26,6 +26,6 @@ export default function RWEProgress({ content }) {
           </li>
         ))}
       </ol>
-    </nav>
+    </div>
   )
 }

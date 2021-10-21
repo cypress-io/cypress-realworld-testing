@@ -14,7 +14,7 @@ export default function LessonSteps({
   const [sectionSlug] = lessonPath.split("/")
 
   return (
-    <nav aria-label="Progress">
+    <div aria-label="Progress">
       <ol className="overflow-hidden">
         {sectionLessons.map((lesson, index) => (
           <li
@@ -88,6 +88,6 @@ export default function LessonSteps({
           </li>
         ))}
       </ol>
-    </nav>
+    </div>
   )
 }
