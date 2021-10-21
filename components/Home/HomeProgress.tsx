@@ -1,5 +1,6 @@
 import { CheckIcon } from "@heroicons/react/solid"
 import { isLessonCompleted } from "../../utils/machineUtils"
+import Link from "next/link"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -71,7 +72,9 @@ export default function HomeProgress({ section, content, progressService }) {
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  <a href={`${section}/${lesson.slug}`}>{lesson.title}</a>
+                  <Link href={`/${section}/${lesson.slug}`}>
+                    <a>{lesson.title}</a>
+                  </Link>
                 </span>
               </span>
             </div>
