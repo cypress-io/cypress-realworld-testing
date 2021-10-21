@@ -1,11 +1,6 @@
 # Integration & API Tests
 
-Ready for Review: Yes
-Reviewed By: Kevin
-Reviewed By Kevin: September 9, 2021
-Section: Advanced Cypress Concepts
-Status: Migrated
-Title Approved: Yes
+You've now seen how great Cypress is at e2e testing, but did you know you can use it for integration tests to your API as well?
 
 Cypress provides a great developer experience for testing APIs. We used Cypress extensively to test the various APIs within the [Real World App (RWA)](https://github.com/cypress-io/cypress-realworld-app). Before we built the UI, we wrote various [API and integration tests](https://github.com/cypress-io/cypress-realworld-app/tree/develop/cypress/tests/api) with Cypress to ensure the application APIs were working as expected.
 
@@ -18,7 +13,7 @@ Let's look at one of the API tests from the RWA to understand better how to test
 
 context("GET /users", function () {
   it("gets a list of users", function () {
-    cy.request("GET", apiUsers).then((response) => {
+    cy.request("GET", "/users").then((response) => {
       expect(response.status).to.eq(200)
       expect(response.body.results).length.to.be.greaterThan(1)
     })
