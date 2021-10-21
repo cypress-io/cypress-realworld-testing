@@ -50,11 +50,7 @@ export default function LessonLayout({
             <aside className="hidden xl:block xl:col-span-3">
               <div className="sticky top-6 space-y-4">
                 <p className="font-semibold mb-6">{sectionTitle}</p>
-                <RWELessonProgress
-                  sectionLessons={sectionLessons}
-                  progressService={progressService}
-                  lessonPath={lessonPath}
-                />
+                <RWELessonProgress sectionLessons={sectionLessons} />
               </div>
             </aside>
           </div>
