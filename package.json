@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "check-links": "linkinator ./content -r",
     "broken-link-checker:prod": "node scripts/recursiveBrokenLinkChecker.js",
     "build": "next build",
     "build:profile": "next build --profile",
