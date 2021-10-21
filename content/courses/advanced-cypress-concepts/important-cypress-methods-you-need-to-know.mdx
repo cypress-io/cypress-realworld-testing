@@ -42,10 +42,12 @@ Invoke a function on the previously yielded subject.
 In the example below, we are invoking the `Array.slice()` function on the response data returned from an aliased intercept.
 
 ```js
-it("", function () {
-  cy.wait("@aliasedIntercept")
-    .its("response.body.results")
-    .invoke("slice", 0, 5)
+beforeEach(() => {
+  cy.intercept("GET", "/users").as("users")
+})
+
+it("slices the users returned from /users endpoint", () => {
+  cy.wait("@users").its("response.body.results").invoke("slice", 0, 5)
   // ...
 })
 ```
@@ -76,7 +78,7 @@ Scopes all subsequent Cypress commands to within an element. Useful when working
 When you are working with elements, you need to drill down into its children, grandchildren, etc. You can use <apiLink apiName="within" displayName=".within()" /> to limit the scope of Cypress commands to within a specific element. For example.
 
 ```js
-it("", () => {
+it("ensures the section lesson exists", () => {
   cy.getBySel("section-steps").within(() => {
     cy.getBySel("lesson-complete-0").should("exist")
   })
