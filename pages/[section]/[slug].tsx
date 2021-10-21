@@ -123,7 +123,8 @@ export default function LessonPage({
         lessonData={lessonData}
       />
 
-      {!lessonData.challenges && (
+      {(!lessonData.challenges ||
+        progressService.state.context.disableChallenges) && (
         <CompleteLessonBtn
           progressService={progressService}
           nextLessonPath={nextLesson}
@@ -132,7 +133,6 @@ export default function LessonPage({
       )}
 
       {lessonData.challenges &&
-        lessonData.challenges[0].challengeType === "multiple-choice" &&
         progressService.state.context.disableChallenges == false && (
           <>
             <MCChallenge
@@ -148,15 +148,9 @@ export default function LessonPage({
           </>
         )}
 
-      {progressService.state.context.disableChallenges && (
-        <CompleteLessonBtn
-          progressService={progressService}
-          nextLessonPath={nextLesson}
-          lessonPath={lessonPath}
-        />
+      {lessonData.challenges && (
+        <SkipChallenge progressService={progressService} />
       )}
-
-      <SkipChallenge progressService={progressService} />
     </Layout>
   )
 }
