@@ -34,8 +34,8 @@ describe("Next Lesson Button on Course Pages", () => {
   })
 
   it("says 'Next Lesson' and links to the 2nd lesson if the first lesson has been completed", () => {
-    cy.visit(`/${sectionSlug}/cypress-runs-in-the-browser`)
-    cy.get("#answer-0").click()
+    cy.visit(`/${sectionSlug}/how-to-write-a-test`)
+    cy.get("#answer-2").click()
 
     cy.visit(`/${sectionSlug}`)
 

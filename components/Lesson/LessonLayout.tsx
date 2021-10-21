@@ -25,7 +25,7 @@ export default function LessonLayout({
         lessonData={lessonData}
       />
 
-      <div className="min-h-screen my-20">
+      <div className="min-h-screen mt-20">
         <div className="py-6">
           <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
             {/* Table of Content */}
@@ -40,7 +40,7 @@ export default function LessonLayout({
 
             {/* Content */}
             <main className="lesson-content lg:col-span-9 xl:col-span-7">
-              <div className="relative pb-16 bg-white overflow-hidden">
+              <div className="relative bg-white overflow-hidden">
                 <div className="relative px-4 sm:px-6 lg:px-8">
                   <div className="prose prose-indigo prose-lg text-gray-500 mx-auto">
                     <MDXRemote {...source} components={components} />

@@ -44,7 +44,7 @@
   "testing-foundations": {
     "title": "Testing Foundations",
     "slug": "testing-foundations",
-    "description": "The fundamentals you need write great tests.",
+    "description": "The fundamentals you need to write great tests.",
     "image": "/images/courses/cypress-features.jpg",
     "learnFeatures": [
       "Learn what to test and why",
@@ -103,26 +103,10 @@
           "challengeType": "multiple-choice",
           "question": "Testing is everyone's responsibility",
           "answers": [
-            "False",
-            "True"
+            "True",
+            "False"
           ],
           "correctAnswerIndex": 0
-        }]
-      },
-      {
-        "title": "How to Write a Test",
-        "slug": "how-to-write-a-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "challenges": [{
-          "challengeType": "multiple-choice",
-          "question": "What is a good pattern for writing tests?",
-          "answers": [
-            "Assert, Act, Arrange",
-            "Arrange, Assert, Act",
-            "Arrange, Act, Assert",
-            "Act, Assert, Arrange"
-          ],
-          "correctAnswerIndex": 2
         }]
       },
       {
@@ -151,7 +135,23 @@
       "How to chain methods and assertions together",
       "How Cypress works 'under the hood'"
     ],
-    "lessons": [{
+    "lessons": [
+      {
+        "title": "How to Write a Test",
+        "slug": "how-to-write-a-test",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "challenges": [{
+          "challengeType": "multiple-choice",
+          "question": "What is a good pattern for writing tests?",
+          "answers": [
+            "Assert, Act, Arrange",
+            "Arrange, Assert, Act",
+            "Arrange, Act, Assert",
+            "Act, Assert, Arrange"
+          ],
+          "correctAnswerIndex": 2
+        }]
+      },{
         "title": "Cypress Runs in the Browser",
         "slug": "cypress-runs-in-the-browser",
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",

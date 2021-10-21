@@ -176,21 +176,3 @@ Save the file and let the tests run again.
 ![](/images/testing-your-first-application/setting-up-data-before-each-test/Screen_Shot_2021-06-25_at_11.40.52_AM.png)
 
 Great, everything is green and passing.
-
-## Aside: Formatting long method chains
-
-```js
-cy.get(".todo-list li").eq(0).find("label").should("contain", TODO_ITEM_ONE)
-```
-
-Chaining is when you attach multiple methods together, one after another. You can chain multiple Cypress methods together to perform powerful assertions. However, chaining several methods together can quickly become difficult to read. An easy way to solve this is to format the "chain" slightly differently, like so:
-
-```js
-it("adds a single todo", () => {
-  cy.get(".new-todo").type(`${TODO_ITEM_ONE}{enter}`)
-  cy.get(".todo-list li").eq(0).find("label").should("contain", TODO_ITEM_ONE)
-  cy.get(".todo-list li").should("have.length", 1)
-})
-```
-
-This is entirely optional, but we often find it makes reading long-chained assertions easier to read. You can use a tool like [Prettier](https://prettier.io/) to do this for you automatically.

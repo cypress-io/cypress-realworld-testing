@@ -2,38 +2,6 @@
 
 Cypress has a lot of [methods & commands](https://docs.cypress.io/api/table-of-contents). While our documentation covers them in great detail, it can be overwhelming trying to learn them all. This lesson will highlight some of the most important methods that we think you should know. These are not methods you will use all of the time, but simply knowing they exist will be incredibly helpful as you begin to write more complicated tests.
 
-## .invoke()
-
-Invoke a function on the previously yielded subject.
-
-[Cypress is just JavaScript](/cypress-fundamentals/cypress-is-just-javascript), and the <apiLink apiName="invoke" displayName="cy.invoke()" /> method allows you to call JS functions on JS data types.
-
-In the example below, we are invoking the `Array.slice()` function on the response data returned from the `@publicTransactions` alias so that we only iterate over the first five items returned.
-
-```js
-// transaction-feeds.spec.ts
-it("first five items belong to contacts in public feed", function () {
-      cy.database("filter", "contacts", { userId: ctx.user!.id }).then((contacts: Contact[]) => {
-        ctx.contactIds = contacts.map((contact) => contact.contactUserId);
-      });
-
-      cy.wait("@publicTransactions")
-        .its("response.body.results")
-        .invoke("slice", 0, 5)
-        .each((transaction: Transaction) => {
-          const transactionParticipants = [transaction.senderId, transaction.receiverId];
-
-          const contactsInTransaction = _.intersection(transactionParticipants, ctx.contactIds!);
-          const message = `"${contactsInTransaction}" are contacts of ${ctx.user!.id}`;
-          expect(contactsInTransaction, message).to.not.be.empty;
-        });
-      cy.getBySel("list-skeleton").should("not.exist");
-      cy.visualSnapshot("First 5 Transaction Items belong to contacts");
-    });
-```
-
-Check out our [API docs page](https://docs.cypress.io/api/commands/invoke) for more info on <apiLink apiName="intercept" displayName="cy.intercept()" />
-
 ## .its()
 
 Get a property's value on the previously yielded subject.
@@ -65,6 +33,27 @@ By using <apiLink apiName="its" displayName=".its()" /> we can get access to the
 
 `.its()` is a very handy method and will become a useful tool in your "Cypress tool belt." You can find out more about it in our [API docs page](https://docs.cypress.io/api/commands/its).
 
+## .invoke()
+
+Invoke a function on the previously yielded subject.
+
+[Cypress is just JavaScript](/cypress-fundamentals/cypress-is-just-javascript), and the <apiLink apiName="invoke" displayName="cy.invoke()" /> method allows you to call JS functions on JS data types.
+
+In the example below, we are invoking the `Array.slice()` function on the response data returned from an aliased intercept.
+
+```js
+beforeEach(() => {
+  cy.intercept("GET", "/users").as("users")
+})
+
+it("slices the users returned from /users endpoint", () => {
+  cy.wait("@users").its("response.body.results").invoke("slice", 0, 5)
+  // ...
+})
+```
+
+Check out our [API docs page](https://docs.cypress.io/api/commands/invoke) for more info on <apiLink apiName="intercept" displayName="cy.intercept()" />
+
 ## .request()
 
 Make an HTTP request.
@@ -89,19 +78,12 @@ Scopes all subsequent Cypress commands to within an element. Useful when working
 When you are working with elements, you need to drill down into its children, grandchildren, etc. You can use <apiLink apiName="within" displayName=".within()" /> to limit the scope of Cypress commands to within a specific element. For example.
 
 ```js
-it("all of the lesson cards on the section page have a status of 'Completed'", () => {
-  cy.visit("/testing-your-first-application")
-  const lessons = learnJson["testing-your-first-application"].lessons
-
-  cy.getBySel("section-steps").within(($course) => {
-    _.each(lessons, (lesson, index) => {
-      cy.getBySel(`lesson-complete-${index}`).should("exist")
-    })
+it("ensures the section lesson exists", () => {
+  cy.getBySel("section-steps").within(() => {
+    cy.getBySel("lesson-complete-0").should("exist")
   })
 })
 ```
-
-In this example, we are looping through all of the lessons nested within the `section-steps` element.
 
 You can find out more about `.within()` on our [API docs page](https://docs.cypress.io/api/commands/within).
 

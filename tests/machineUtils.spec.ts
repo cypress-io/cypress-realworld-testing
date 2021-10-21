@@ -4,7 +4,7 @@ import { progressMachine } from "../machines/progressMachine"
 import * as machineUtils from "../utils/machineUtils"
 import learnJson from "../learn.json"
 
-const lessonPath = "cypress-fundamentals/cypress-runs-in-the-browser"
+const lessonPath = "cypress-fundamentals/how-to-write-a-test"
 
 const [sectionSlug, lessonSlug] = lessonPath.split("/")
 
@@ -51,9 +51,9 @@ describe("machine utils", () => {
   it("isLessonCompleted() - returns true when a lesson is complete", () => {
     const answerEvent = {
       type: "SUBMIT_ANSWER",
-      id: "cypress-fundamentals/cypress-runs-in-the-browser",
+      id: lessonPath,
       challengeIndex: 0,
-      userAnswerIndex: 0,
+      userAnswerIndex: 2,
     }
     progressService.send(answerEvent)
 
@@ -64,7 +64,7 @@ describe("machine utils", () => {
   it("isLessonCompleted() - returns false when a lesson is incomplete", () => {
     const answerEvent = {
       type: "SUBMIT_ANSWER",
-      id: "cypress-fundamentals/cypress-runs-in-the-browser",
+      id: lessonPath,
       challengeIndex: 0,
       userAnswerIndex: 1,
     }

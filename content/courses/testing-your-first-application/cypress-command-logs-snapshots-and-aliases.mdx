@@ -109,11 +109,11 @@ cy.get(".todo-list li", { log: false })
 Next, we are putting those elements
 into a variable called `$listItems` which we then `.set()` on our `Cypress.log()`
 . Finally, we use <apiLink apiName="end" displayName="cy.end()" /> to let Cypress
-now that our command is finished.
+know that our command is finished.
 
 ```js
 .then(function ($listItems) {
-      cmd.set({ $el: $listItems }).end()
+      cmd.set({ el: listItems }).snapshot().end()
     })
 ```
 
@@ -186,4 +186,4 @@ Next to the "DOM Snapshot (pinned)," you will see two buttons with a 1 and 2, re
 
 ## Practice
 
-Update the **should append new items to the bottom of the list** test to use an alias as we did in the **adds three todos** test.
+Now that you have seen how aliases work, try it on your own. Update the **should append new items to the bottom of the list** test to use an alias as we did in the **adds three todos** test.

@@ -59,7 +59,7 @@ In this example, we are first getting the `<button>` HTML element. Our subject, 
 
 Before our assertion, which in this case is `.should('not.have.class', cls)` we first need Cypress to <apiLink apiName="click" displayName=".click()" /> the button. For Cypress to click on our `$btn`, we must first wrap it with <apiLink apiName="wrap" displayName="cy.wrap()" /> to provide the proper context for Cypress to perform the click.
 
-We _cannot_ do something like this, because `$btn` is a jQuery object.
+To illustrate, we **cannot** do something like this, because `$btn` is a jQuery object.
 
 ```js
 $btn.click().should("not.have.class", cls) // Does not work
