@@ -103,8 +103,8 @@
           "challengeType": "multiple-choice",
           "question": "Testing is everyone's responsibility",
           "answers": [
-            "False",
-            "True"
+            "True",
+            "False"
           ],
           "correctAnswerIndex": 0
         }]
