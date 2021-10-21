@@ -20,7 +20,7 @@ describe("Progress State & Local Storage", () => {
 
   it("the progress state on the lesson page is preserved upon refresh", () => {
     cy.visit(`/${sectionSlug}/${lessons[0].slug}`)
-    cy.get("#answer-0").click()
+    cy.get("#answer-2").click()
     cy.getBySel("next-lesson-button").should("be.visible")
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
     cy.reload()
