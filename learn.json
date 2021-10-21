@@ -44,7 +44,7 @@
   "testing-foundations": {
     "title": "Testing Foundations",
     "slug": "testing-foundations",
-    "description": "The fundamentals you need write great tests.",
+    "description": "The fundamentals you need to write great tests.",
     "image": "/images/courses/cypress-features.jpg",
     "learnFeatures": [
       "Learn what to test and why",
