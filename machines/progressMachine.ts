@@ -68,7 +68,7 @@ export const progressMachine = createMachine(
         }
       }),
       disableChallenges: assign((context: any, event: any) => ({
-        disableChallenges: true,
+        disableChallenges: event.value,
       })),
 
       isSectionCompleted: assign((context: any, event: any) => {

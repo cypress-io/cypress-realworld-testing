@@ -16,6 +16,40 @@ describe("Multiple Choice Challenge", () => {
     cy.getBySel("next-lesson-button").should("be.visible")
     cy.getBySel("lesson-complete-0").should("have.class", "bg-indigo-600")
   })
+
+  context("Disable Challenges Functionality", () => {
+    beforeEach(() => {
+      // @ts-ignore
+      cy.restoreLocalStorage()
+    })
+
+    afterEach(() => {
+      // @ts-ignore
+      cy.saveLocalStorage()
+    })
+
+    it("toggles the display of the question if checked or not", () => {
+      cy.getBySel("multiple-choice-challenge").should("be.visible")
+      cy.getBySel("skip-challenge-input").click()
+      cy.getBySel("multiple-choice-challenge").should("not.exist")
+
+      cy.getBySel("skip-challenge-input").click()
+      cy.getBySel("multiple-choice-challenge").should("exist")
+      cy.getBySel("multiple-choice-challenge").should("be.visible")
+    })
+
+    it.only("displays the complete lesson button when checked", () => {
+      cy.getBySel("skip-challenge-input").click()
+      cy.getBySel("complete-lesson-button").should("be.visible")
+      cy.getBySel("next-lesson-button").should("not.exist")
+    })
+
+    it("remains checked after page refresh", () => {
+      cy.getBySel("skip-challenge-input").click()
+      cy.reload()
+      cy.getBySel("multiple-choice-challenge").should("not.exist")
+    })
+  })
 })
 
 export {}
