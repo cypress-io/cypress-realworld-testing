@@ -5,7 +5,7 @@ import { serialize } from "next-mdx-remote/serialize"
 import Head from "next/head"
 import dynamic from "next/dynamic"
 import path from "path"
-import { find } from "lodash/fp"
+import { find, findIndex } from "lodash/fp"
 import { useActor } from "@xstate/react"
 import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
@@ -107,10 +107,7 @@ export default function LessonPage({
         lessonData={lessonData}
       />
 
-      <RWENextLessonBtn
-        path={nextLesson}
-        isCompleted={isLessonCompleted(progressService, lessonPath)}
-      />
+      <RWENextLessonBtn path={nextLesson} />
     </Layout>
   )
 }
@@ -139,6 +136,15 @@ export const getStaticProps = async ({ params }) => {
   const lessonData = find({ slug: params.slug }, rweJson[section].lessons)
   const { title, lessons } = rweJson[section]
 
+  const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
+  let nextLesson
+
+  if (nextLessonIndex < lessons.length) {
+    nextLesson = lessons[nextLessonIndex].slug
+  } else {
+    nextLesson = null
+  }
+
   return {
     props: {
       source: mdxSource,
@@ -146,6 +152,7 @@ export const getStaticProps = async ({ params }) => {
       toc,
       lessonData,
       sectionLessons: lessons,
+      nextLesson,
       sectionTitle: title,
       lessonPath: `${section}/${params.slug}`,
       rweJson,
