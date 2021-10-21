@@ -26,16 +26,16 @@ describe("RWE Landing Page", function () {
     it("the examples in the progress sidebar link to the correct examples", () => {
       cy.visit("/real-world-examples/authentication-overview-and-setup")
 
-      cy.getBySel("lesson-progress-link-1").click()
+      cy.getBySel("real-world-lesson-1").click()
       cy.location("pathname").should(
         "eq",
         "/real-world-examples/unauthenticated-users"
       )
 
-      cy.getBySel("lesson-progress-link-3").click()
+      cy.getBySel("real-world-lesson-3").click()
       cy.location("pathname").should("eq", "/real-world-examples/invalid-users")
 
-      cy.getBySel("lesson-progress-link-4").click()
+      cy.getBySel("real-world-lesson-4").click()
       cy.location("pathname").should(
         "eq",
         "/real-world-examples/sign-up-login-create-bank-account-and-logout"
