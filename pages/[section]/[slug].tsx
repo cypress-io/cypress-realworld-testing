@@ -22,6 +22,14 @@ const NextLessonBtn = dynamic(
     ssr: false,
   }
 )
+
+const CompleteLessonBtn = dynamic(
+  () => import("../../components/Lesson/CompleteLessonBtn"),
+  {
+    ssr: false,
+  }
+)
+
 import {
   LessonTableOfContents,
   MultipleChoiceChallenge,
@@ -108,19 +116,29 @@ export default function LessonPage({
         lessonData={lessonData}
       />
 
+      {!lessonData.challenges && (
+        <CompleteLessonBtn
+          progressService={progressService}
+          nextLessonPath={nextLesson}
+          lessonPath={lessonPath}
+        />
+      )}
+
       {lessonData.challenges &&
         lessonData.challenges[0].challengeType === "multiple-choice" && (
-          <MCChallenge
-            progressService={progressService}
-            lessonData={lessonData}
-            lessonPath={lessonPath}
-          />
-        )}
+          <>
+            <MCChallenge
+              progressService={progressService}
+              lessonData={lessonData}
+              lessonPath={lessonPath}
+            />
 
-      <NextLessonBtn
-        path={nextLesson}
-        isCompleted={isLessonCompleted(progressService, lessonPath)}
-      />
+            <NextLessonBtn
+              path={nextLesson}
+              isCompleted={isLessonCompleted(progressService, lessonPath)}
+            />
+          </>
+        )}
     </Layout>
   )
 }

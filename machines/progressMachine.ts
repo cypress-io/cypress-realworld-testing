@@ -29,6 +29,7 @@ export const progressMachine = createMachine(
             actions: ["validateAndLogAnswer", "isSectionCompleted"],
           },
           DISABLE_CHALLENGES: { actions: ["disableChallenges"] },
+          COMPLETE_LESSON: { actions: ["saveProgress"] },
         },
       },
       completed: {
