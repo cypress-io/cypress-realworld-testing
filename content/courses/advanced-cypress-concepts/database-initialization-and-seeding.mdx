@@ -35,7 +35,7 @@ This method involves using Cypress to drive the UI to generate the data you need
 - Take's a long time
 - Your spec files could potentially rely upon each other, which is an anti-pattern
 - Data initialization is less resilient because you don't have a way of knowing if the data exists
-- if your tests fail, your data will not be created, and any subsequent tests that rely upon the creation of this data will also fail.
+- If your tests fail, your data will not be created, and any subsequent tests that rely upon the creation of this data will also fail.
 
 ## Make queries to the database to create the data you need
 
@@ -44,15 +44,15 @@ This method involves writing raw queries, like SQL, to populate your database wi
 **Pros**
 
 - Relies on the backend to manage the data
-- more reliable way to get your data
-- faster than using the UI to initialize the data, i.e., the method listed above
-- re-use backend logic, i.e., using an ORM or methods to obtain data from the backend for testing purposes. This is only possible if your front end and backend are in the same repo.
+- More reliable way to get your data
+- Faster than using the UI to initialize the data, i.e., the method listed above
+- Re-use backend logic, i.e., using an ORM or methods to obtain data from the backend for testing purposes. This is only possible if your front end and backend are in the same repo.
 
 **Cons**
 
 - Requires network interaction to get the data, possible issues with latency
-- requires maintenance when your data model changes
-- potential security issues with PII may need to anonymize data
+- Requires maintenance when your data model changes
+- Potential security issues with PII may need to anonymize data
 
 ## Making API calls to your backend to provision data
 
@@ -68,7 +68,7 @@ This method involves utilizing special APIs set up to generate the data you need
 **Cons**
 
 - Could potentially expose PII
-- may potentially need extra security measures if these endpoints are public-facing
+- May potentially need extra security measures if these endpoints are public-facing
 
 ## Database dump or import
 
