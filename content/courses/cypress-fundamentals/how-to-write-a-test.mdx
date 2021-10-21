@@ -48,14 +48,14 @@ Each test file will typically begin with a `describe()` function or "block." Thi
 
 Next, we have an `it` block. This is our actual test and where our test code goes. We first provide a test name "adds a single todo" and then pass in a callback function. Within the body of our test, we are doing three things.
 
-### 1. **Arrange**
+### 1. Arrange
 
 Telling Cypress to visit the URL **http://localhost:8888**
 
-### 2. **Act**
+### 2. Act
 
 Getting the element with the class of **.new-todo** and typing in the string "Buy Milk" and pressing the **Enter** key.
 
-### 3. **Assert**
+### 3. Assert
 
 We are asserting that only a single todo has been added to the app.
