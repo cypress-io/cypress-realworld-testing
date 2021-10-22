@@ -2,7 +2,7 @@ import Header from "./Header"
 import dynamic from "next/dynamic"
 
 const Footer = dynamic(() => import("./Footer"), {
-  ssr: false,
+  ssr: true,
 })
 
 export default function Layout({

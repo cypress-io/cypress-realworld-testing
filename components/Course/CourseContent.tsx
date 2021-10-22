@@ -2,11 +2,11 @@ import dynamic from "next/dynamic"
 import { CheckIcon } from "@heroicons/react/outline"
 
 const CourseNextLessonBtn = dynamic(() => import("./CourseNextLessonBtn"), {
-  ssr: false,
+  ssr: true,
 })
 
 const CourseProgress = dynamic(() => import("./CourseProgress"), {
-  ssr: false,
+  ssr: true,
 })
 
 export default function CourseContent({

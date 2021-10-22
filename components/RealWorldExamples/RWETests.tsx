@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 
 const RWEProgress = dynamic(() => import("./RWEProgress"), {
-  ssr: false,
+  ssr: true,
 })
 
 export default function RWETests({ sections, content, progressService }) {
