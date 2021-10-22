@@ -5,6 +5,7 @@
     "build": "next build",
     "build:profile": "next build --profile",
     "build:debug": "next build --debug",
+    "changed-files-broken-link-checker:ci": "node scripts/changedFilesBrokenLinkChecker.js",
     "cypress:open": "cypress open",
     "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
     "cypress:run": "cypress run",
