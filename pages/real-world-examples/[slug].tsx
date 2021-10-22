@@ -16,9 +16,7 @@ import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELesson
 import apiLink from "../../components/Markdown/apiLink"
 const RWENextLessonBtn = dynamic(
   () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
-  {
-    ssr: false,
-  }
+  {}
 )
 import {
   LessonTableOfContents,

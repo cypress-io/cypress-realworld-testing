@@ -1,13 +1,9 @@
 import dynamic from "next/dynamic"
 import { CheckIcon } from "@heroicons/react/outline"
 
-const CourseNextLessonBtn = dynamic(() => import("./CourseNextLessonBtn"), {
-  ssr: true,
-})
+const CourseNextLessonBtn = dynamic(() => import("./CourseNextLessonBtn"), {})
 
-const CourseProgress = dynamic(() => import("./CourseProgress"), {
-  ssr: true,
-})
+const CourseProgress = dynamic(() => import("./CourseProgress"), {})
 
 export default function CourseContent({
   title,

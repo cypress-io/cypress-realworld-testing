@@ -4,9 +4,7 @@ import { MDXRemote } from "next-mdx-remote"
 import dynamic from "next/dynamic"
 import Script from "next/script"
 
-const RWELessonProgress = dynamic(() => import("./RWELessonProgress"), {
-  ssr: true,
-})
+const RWELessonProgress = dynamic(() => import("./RWELessonProgress"), {})
 
 export default function LessonLayout({
   toc,

@@ -3,9 +3,7 @@ import LessonBreadcrumbs from "./LessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import dynamic from "next/dynamic"
 import Script from "next/script"
-const LessonProgress = dynamic(() => import("./LessonProgress"), {
-  ssr: true,
-})
+const LessonProgress = dynamic(() => import("./LessonProgress"), {})
 
 export default function LessonLayout({
   toc,

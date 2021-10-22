@@ -18,23 +18,17 @@ import apiLink from "../../components/Markdown/apiLink"
 
 const NextLessonBtn = dynamic(
   () => import("../../components/Lesson/NextLessonBtn"),
-  {
-    ssr: false,
-  }
+  {}
 )
 
 const CompleteLessonBtn = dynamic(
   () => import("../../components/Lesson/CompleteLessonBtn"),
-  {
-    ssr: false,
-  }
+  {}
 )
 
 const SkipChallenge = dynamic(
   () => import("../../components/Lesson/SkipChallenge"),
-  {
-    ssr: false,
-  }
+  {}
 )
 
 import {

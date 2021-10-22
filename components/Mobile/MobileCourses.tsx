@@ -1,9 +1,7 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
 
-const MobileProgress = dynamic(() => import("./MobileProgress"), {
-  ssr: true,
-})
+const MobileProgress = dynamic(() => import("./MobileProgress"), {})
 
 export default function Courses({ sections, content, progressService }) {
   return (
