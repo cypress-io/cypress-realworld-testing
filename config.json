@@ -1,0 +1,26 @@
+{
+  "index_name": "real_world_testing",
+  "start_urls": ["https://happy-ardinghelli-751b8c.netlify.app/"],
+  "selectors": {
+    "lvl0": {
+      "selector": ".site-name",
+      "global": true
+    },
+    "lvl1": ".lesson-content h1",
+    "lvl2": ".lesson-content h2",
+    "lvl3": ".lesson-content h3",
+    "lvl4": ".lesson-content h4",
+    "lvl5": ".lesson-content h5",
+    "text": ".lesson-content p",
+    "lang": {
+      "selector": "/html/@lang",
+      "type": "xpath",
+      "global": true
+    }
+  },
+  "custom_settings": {
+    "attributesForFaceting": [
+      "lang"
+    ]
+  }
+}

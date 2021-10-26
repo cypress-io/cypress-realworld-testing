@@ -40,7 +40,7 @@ import { unslugify } from "unslugify"
       }
 
       index.push({
-        slug: getSlugFromPathname(contentFilePaths[i]),
+        // slug: getSlugFromPathname(contentFilePaths[i]),
         title: unslugify(getSlugFromPathname(contentFilePaths[i])),
         content,
         hierarchy: {
