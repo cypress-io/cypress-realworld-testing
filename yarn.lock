@@ -11936,6 +11936,11 @@ unset-value@^1.0.0:
     has-value "^0.3.1"
     isobject "^3.0.0"
 
+unslugify@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/unslugify/-/unslugify-1.0.2.tgz#47fe432ad6dad6de1a1cc94c62fb7f4bf52afbf3"
+  integrity sha512-BgxXV5mZCqydTEQzNqUPilmwvFW2v/CIHqcl7xLVNjLPpR0lOs0yuHbQs76JT2v/7M88rWG5Jn7CKNCQBd00uA==
+
 untildify@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/untildify/-/untildify-4.0.0.tgz#2bc947b953652487e4600949fb091e3ae8cd919b"
