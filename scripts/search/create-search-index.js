@@ -22,11 +22,32 @@ import { unslugify } from "unslugify"
     let i = 0
     for await (let file of files) {
       const { content } = grayMatter(file)
+      let lessonFilePath
+      const coursesFilePathRegex = new RegExp("/courses/")
+      const RWEFilePathRegex = new RegExp("/real-world-examples/")
+
+      if (coursesFilePathRegex.test(contentFilePaths[i])) {
+        const pathArray = contentFilePaths[i].split("/")
+        const course = pathArray.slice(-2)[0]
+        const lesson = pathArray.slice(-1)[0].replace(/.mdx/, "")
+        lessonFilePath = `/${course}/${lesson}`
+      }
+
+      if (RWEFilePathRegex.test(contentFilePaths[i])) {
+        const pathArray = contentFilePaths[i].split("/")
+        const lesson = pathArray.slice(-1)[0].replace(/.mdx/, "")
+        lessonFilePath = `/real-world-examples/${lesson}`
+      }
 
       index.push({
         slug: getSlugFromPathname(contentFilePaths[i]),
         title: unslugify(getSlugFromPathname(contentFilePaths[i])),
-        body: content,
+        content,
+        hierarchy: {
+          lvl0: unslugify(getSlugFromPathname(contentFilePaths[i])),
+          lvl1: unslugify(getSlugFromPathname(contentFilePaths[i])),
+        },
+        url: lessonFilePath,
       })
       i++
     }
