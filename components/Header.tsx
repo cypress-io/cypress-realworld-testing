@@ -304,8 +304,8 @@ export default function Header({ content, sections, progressService }) {
               <div className="flex items-center md:ml-12">
                 {/* Search */}
                 <DocSearch
-                  appId="BH4D9OD16A"
-                  apiKey="25626fae796133dc1e734c6bcaaeac3c"
+                  appId="8V1MWQUQBN"
+                  apiKey="9ed61950eb9df441b30a47fcdd423a48"
                   indexName="docsearch"
                 />
               </div>
