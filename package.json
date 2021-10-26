@@ -27,6 +27,7 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
+    "@docsearch/react": "^3.0.0-alpha.41",
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.3",
     "@mapbox/rehype-prism": "^0.7.0",
