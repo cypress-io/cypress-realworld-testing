@@ -307,6 +307,7 @@ export default function Header({ content, sections, progressService }) {
                   appId="8V1MWQUQBN"
                   apiKey="9ed61950eb9df441b30a47fcdd423a48"
                   indexName="real_world_testing"
+                  disableUserPersonalization={true}
                 />
               </div>
             </div>
