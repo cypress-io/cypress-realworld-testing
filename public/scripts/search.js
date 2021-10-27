@@ -146,3 +146,5 @@ const renderResults = (results) => {
 
 initLunr()
 initUI()
+
+document.getElementById("searchBox").focus()
