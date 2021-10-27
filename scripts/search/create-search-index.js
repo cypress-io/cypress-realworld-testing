@@ -40,15 +40,9 @@ import { unslugify } from "unslugify"
       }
 
       index.push({
-        // slug: getSlugFromPathname(contentFilePaths[i]),
+        slug: getSlugFromPathname(contentFilePaths[i]),
         title: unslugify(getSlugFromPathname(contentFilePaths[i])),
-        content,
-        hierarchy: {
-          lvl0: {
-            defaultValue: "Lessons",
-          },
-          lvl1: unslugify(getSlugFromPathname(contentFilePaths[i])),
-        },
+        body: content,
         url: lessonFilePath,
         type: "lvl1",
       })
