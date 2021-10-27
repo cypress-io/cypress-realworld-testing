@@ -58,3 +58,19 @@
 .lesson-content img {
   cursor: pointer;
 }
+
+/* 
+  Search Page
+*/
+/* #searchBox {
+  border: 2px solid black;
+  border-radius: 5px;
+} */
+
+.searchResultPage {
+  @apply py-5 text-sm;
+}
+
+.searchResultTitle {
+  @apply text-blue-900 text-xl;
+}
