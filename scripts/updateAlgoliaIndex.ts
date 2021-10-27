@@ -6,6 +6,6 @@ const client = algoliasearch("8V1MWQUQBN", process.env.ALGOLIA_ADMIN_KEY)
 
 const index = client.initIndex("real_world_testing")
 
-index.saveObjects(searchIndex, {
+index.replaceAllObjects(searchIndex, {
   autoGenerateObjectIDIfNotExist: true,
 })
