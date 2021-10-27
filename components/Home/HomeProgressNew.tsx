@@ -1,7 +1,4 @@
-/* This example requires Tailwind CSS v2.0+ */
 import { CheckIcon } from "@heroicons/react/solid"
-import { isLessonCompleted } from "../../utils/machineUtils"
-import { includes } from "lodash"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -13,24 +10,6 @@ export default function HomeProgressNew({
   index,
   lessonCompleted,
 }) {
-  // console.table(completed)
-
-  // completed.map((lesson) => {
-  //   console.log(
-  //     includes(
-  //       lesson,
-  //       "testing-your-first-application/todomvc-app-install-and-overview"
-  //     )
-  //   )
-  // })
-
-  // console.log(
-  //   includes(
-  //     completed,
-  //     "testing-your-first-application/todomvc-app-install-and-overview"
-  //   )
-  // )
-
   return (
     <li
       className={classNames(
