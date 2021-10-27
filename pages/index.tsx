@@ -2,13 +2,13 @@ import Head from "next/head"
 import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeFeatures from "../components/Home/HomeFeatures"
-import HomeCourses from "../components/Home/HomeCourses"
+import CourseFirstApp from "../components/Home/CourseFirstApp"
 import HomeRealWorldExamples from "../components/Home/HomeRealWorldExamples"
 import learnJson from "../learn.json"
 import realWorldExamples from "../real-world-examples.json"
 import { progressService } from "../machines/progressService"
 
-export default function Home({ content, sections, rWESections }) {
+export default function Home({ content, sections }) {
   return (
     <Layout
       content={content}
@@ -20,27 +20,24 @@ export default function Home({ content, sections, rWESections }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomeHero />
-      <HomeFeatures />
-      <HomeCourses
-        sections={sections}
+      {/* <HomeHero /> */}
+      {/* <HomeFeatures /> */}
+      <CourseFirstApp
         content={content}
-        progressService={progressService}
+        completedLessons={progressService.state.context.lessons}
       />
-      <HomeRealWorldExamples />
+      {/* <HomeRealWorldExamples /> */}
     </Layout>
   )
 }
 
 export const getStaticProps = async ({ params }) => {
   const sections = Object.keys(learnJson)
-  const rWESections = Object.keys(realWorldExamples)
   return {
     props: {
       content: learnJson,
       sections,
       realWorldExamples,
-      rWESections,
     },
   }
 }
