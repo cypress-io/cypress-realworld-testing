@@ -44,10 +44,13 @@ import { unslugify } from "unslugify"
         title: unslugify(getSlugFromPathname(contentFilePaths[i])),
         content,
         hierarchy: {
-          lvl0: unslugify(getSlugFromPathname(contentFilePaths[i])),
+          lvl0: {
+            defaultValue: "Lessons",
+          },
           lvl1: unslugify(getSlugFromPathname(contentFilePaths[i])),
         },
         url: lessonFilePath,
+        type: "lvl1",
       })
       i++
     }
