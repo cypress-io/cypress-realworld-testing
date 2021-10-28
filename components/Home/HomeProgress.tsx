@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic"
+import Link from "next/link"
 import { isLessonCompleted } from "../../utils/machineUtils"
 
 const ProgressLine = dynamic(() => import("./ProgressLine"), {
@@ -54,7 +55,11 @@ export default function HomeProgress({ section, content, progressService }) {
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  <a href={`/${section}/${lesson.slug}`}>{lesson.title}</a>
+                  <Link href={`/${section}/${lesson.slug}`}>
+                    <a data-test={`lesson-progress-link-${index}`}>
+                      {lesson.title}
+                    </a>
+                  </Link>
                 </span>
               </span>
             </div>
