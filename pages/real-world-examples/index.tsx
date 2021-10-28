@@ -32,7 +32,7 @@ export default function Home({ content, sections, rWESections }) {
   )
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async () => {
   const sections = Object.keys(learnJson)
   const rWESections = Object.keys(realWorldExamples)
   return {
