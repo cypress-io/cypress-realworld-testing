@@ -3,12 +3,21 @@ import Script from "next/script"
 export default function SearchInput() {
   return (
     <>
+      <Script
+        src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"
+        strategy="beforeInteractive"
+      />
+      <Script
+        src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"
+        strategy="beforeInteractive"
+      />
+
       <section className="max-w-3xl mx-auto px-3">
         <div className="searchBoxContainer">
           <input
             type="text"
             id="searchBox"
-            className="searchBox w-full px-2 py-1"
+            className="block w-full bg-white bg-opacity-20 py-2 pl-10 pr-3 border rounded-md leading-5 text-gray-900 focus:outline-none focus:bg-opacity-100 focus:placeholder-gray-500 focus:ring-0 sm:text-sm"
             placeholder="Search..."
             data-test="search-input"
           />
@@ -17,7 +26,7 @@ export default function SearchInput() {
         <div id="searchResults" className="searchResults lg:pl-8"></div>
       </section>
 
-      <Script src="/scripts/search.js" strategy="afterInteractive" />
+      <Script src="/scripts/search.js" />
     </>
   )
 }
