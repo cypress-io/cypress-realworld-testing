@@ -3,9 +3,7 @@ import LessonBreadcrumbs from "./LessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import dynamic from "next/dynamic"
 import Script from "next/script"
-const LessonProgress = dynamic(() => import("./LessonProgress"), {
-  ssr: false,
-})
+import LessonProgress from "./LessonProgress"
 
 export default function LessonLayout({
   toc,
@@ -16,6 +14,7 @@ export default function LessonLayout({
   progressService,
   lessonPath,
   lessonData,
+  section,
 }) {
   return (
     <>
@@ -54,9 +53,9 @@ export default function LessonLayout({
               <div className="sticky top-6 space-y-4">
                 <p className="font-semibold mb-6">{sectionTitle}</p>
                 <LessonProgress
-                  sectionLessons={sectionLessons}
+                  section={section}
+                  lessons={sectionLessons}
                   progressService={progressService}
-                  lessonPath={lessonPath}
                 />
               </div>
             </aside>
