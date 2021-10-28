@@ -32,7 +32,7 @@ export default function HomeCourses({ sections, content, progressService }) {
                       />
                       <div className="mt-6">
                         <a
-                          href={content[section].slug}
+                          href={`/${content[section].slug}`}
                           className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-600"
                         >
                           Get started
@@ -76,7 +76,7 @@ export default function HomeCourses({ sections, content, progressService }) {
                       />
                       <div className="mt-6">
                         <a
-                          href={content[section].slug}
+                          href={`/${content[section].slug}`}
                           className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-600"
                         >
                           Get started
