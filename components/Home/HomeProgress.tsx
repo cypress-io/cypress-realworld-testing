@@ -54,7 +54,7 @@ export default function HomeProgress({ section, content, progressService }) {
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  <a href={`${section}/${lesson.slug}`}>{lesson.title}</a>
+                  <a href={`/${section}/${lesson.slug}`}>{lesson.title}</a>
                 </span>
               </span>
             </div>
