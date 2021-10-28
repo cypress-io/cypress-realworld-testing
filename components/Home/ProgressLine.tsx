@@ -1,4 +1,4 @@
-export default function HomeProgress({ index, isCompleted, content }) {
+export default function ProgressLine({ index, isCompleted, content }) {
   return (
     <>
       {index !== content?.lessons.length - 1 ? (
