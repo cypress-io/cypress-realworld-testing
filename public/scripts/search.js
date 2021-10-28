@@ -102,7 +102,7 @@ const initUI = () => {
 const renderResults = (results) => {
   const searchResults = document.querySelector("#searchResults")
   const query = document.querySelector("#searchBox").value
-  const BODY_LENGTH = 100
+  const BODY_LENGTH = 500
   const MAX_PAGES = 10
 
   // Clear search result
