@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic"
 import { includes } from "lodash"
-const HomeProgressNew = dynamic(() => import("./HomeProgressNew"), {})
+import HomeProgressNew from "../../components/Home/HomeProgressNew"
+// const HomeProgressNew = dynamic(() => import("./HomeProgressNew"), {})
 
 export default function HomeCourses({ content, completedLessons }) {
   const completed = completedLessons.map((lesson) => {
