@@ -34,9 +34,6 @@ workflows:
             - run:
                 name: Run Unit Tests
                 command: yarn test:unit
-            - run:
-                name: Check for Broken Links
-                command: yarn start | yarn check:links
 
       # Run E2E tests in Chrome
       - cypress/run:
@@ -48,3 +45,7 @@ workflows:
           start: yarn start
           requires:
             - Setup Linux
+          post-steps:
+            - run:
+                name: Check for Broken Links
+                command: yarn check:links
