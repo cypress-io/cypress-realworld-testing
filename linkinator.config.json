@@ -1,5 +1,0 @@
-{
-  "recurse": true,
-  "directoryListing": true,
-  "skip": ["https://github.com/cypress-io/cypress-realworld-testing", "_next"]
-}
