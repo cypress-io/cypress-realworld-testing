@@ -37,7 +37,6 @@ workflows:
             - run:
                 name: Check for Broken Links
                 command: yarn start && yarn check:links
-                wait-on: "http://localhost:3000"
 
       # Run E2E tests in Chrome
       - cypress/run:
