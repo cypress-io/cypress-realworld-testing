@@ -34,6 +34,10 @@ workflows:
             - run:
                 name: Run Unit Tests
                 command: yarn test:unit
+            - run:
+                name: Check for Broken Links
+                command: yarn start && check:links
+                wait-on: "http://localhost:3000"
 
       # Run E2E tests in Chrome
       - cypress/run:
