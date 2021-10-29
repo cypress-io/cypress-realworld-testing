@@ -2,15 +2,15 @@ import dynamic from "next/dynamic"
 import Link from "next/link"
 import { isLessonCompleted } from "../../utils/machineUtils"
 
-const ProgressLine = dynamic(() => import("./ProgressLine"), {
+const ProgressLine = dynamic(() => import("../Progress/ProgressLine"), {
   ssr: false,
 })
 
-const CompletedLesson = dynamic(() => import("./CompletedLesson"), {
+const CompletedLesson = dynamic(() => import("../Progress/CompletedLesson"), {
   ssr: false,
 })
 
-const IncompleteLesson = dynamic(() => import("./IncompleteLesson"), {
+const IncompleteLesson = dynamic(() => import("../Progress/IncompleteLesson"), {
   ssr: false,
 })
 
@@ -34,7 +34,7 @@ export default function HomeProgress({ section, content, progressService }) {
             {/* Solid Line that connects the checkmarks */}
             <ProgressLine
               index={index}
-              content={content}
+              lessons={content.lessons}
               isCompleted={isLessonCompleted(
                 progressService,
                 `${section}/${lesson.slug}`
