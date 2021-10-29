@@ -17,6 +17,10 @@ export default function Home({ content, sections }) {
     >
       <Head>
         <title>Real World Testing with Cypress</title>
+        <meta
+          name="description"
+          content="Learn from top industry experts and level-up your testing knowledge - for free."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
