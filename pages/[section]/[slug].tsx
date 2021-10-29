@@ -83,6 +83,7 @@ type Props = {
   lessonPath: string
   learnJson: object
   sections: []
+  section: string
 }
 
 export default function LessonPage({
@@ -95,6 +96,7 @@ export default function LessonPage({
   lessonPath,
   learnJson,
   sections,
+  section,
 }: Props) {
   // TODO: Figure out a better way to do this. It is necessary for the UI to update when state changes.
   const [progressState] = useActor(progressService)
@@ -121,6 +123,7 @@ export default function LessonPage({
         progressService={progressService}
         lessonPath={lessonPath}
         lessonData={lessonData}
+        section={section}
       />
 
       {(!lessonData.challenges ||
@@ -199,6 +202,7 @@ export const getStaticProps = async ({ params }) => {
       lessonPath: `${params.section}/${params.slug}`,
       learnJson,
       sections,
+      section: params.section,
     },
   }
 }

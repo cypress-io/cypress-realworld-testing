@@ -10,7 +10,6 @@ export default function SectionPage({
   lessons,
   description,
   learnFeatures,
-  lessonPath,
   content,
   sections,
   section,
@@ -36,7 +35,6 @@ export default function SectionPage({
         lessons={lessons}
         learnFeatures={learnFeatures}
         progressService={progressService}
-        lessonPath={lessonPath}
         section={section}
       />
     </Layout>
@@ -54,7 +52,6 @@ export async function getStaticProps({ params }) {
       title,
       description,
       learnFeatures,
-      lessonPath: `${params.section}/${params.slug}`,
       content: learnJson,
       sections,
       section: params.section,

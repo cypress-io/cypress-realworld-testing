@@ -45,3 +45,7 @@ workflows:
           start: yarn start
           requires:
             - Setup Linux
+          post-steps:
+            - run:
+                name: Check for Broken Links
+                command: yarn check:links
