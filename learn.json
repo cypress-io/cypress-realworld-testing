@@ -54,7 +54,7 @@
     "lessons": [{
         "title": "Testing is a Mindset",
         "slug": "testing-is-a-mindset",
-        "description": "Understanding how to think about testing is crucial to writing tests.",
+        "description": "Understand the testing mindset that is necessary before you begin writing tests.",
         "challenges": [{
           "challengeType": "multiple-choice",
           "question": "Even if you have a QA team, their input is not necessary for automated tests?",
