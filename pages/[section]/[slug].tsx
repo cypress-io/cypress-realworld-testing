@@ -109,7 +109,7 @@ export default function LessonPage({
     >
       <Head>
         <title>{lessonData.title}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content={lessonData.description} />
       </Head>
 
       {lessonData.videoURL && <LessonHero lessonData={lessonData} />}
