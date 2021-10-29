@@ -4,7 +4,7 @@
     "build": "next build",
     "build:profile": "next build --profile",
     "build:debug": "next build --debug",
-    "check:links": "linkinator http://localhost:3000 --skip 'https://github.com/cypress-io/cypress-realworld-testing' --recurse",
+    "check:links": "linkinator http://localhost:3000",
     "cypress:open": "cypress open",
     "cypress:open:mobile": "cypress open --config viewportWidth=375,viewportHeight=667",
     "cypress:run": "cypress run",
