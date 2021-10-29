@@ -12,32 +12,32 @@
     "lessons": [{
         "title": "TodoMVC App Install and Overview",
         "slug": "todomvc-app-install-and-overview",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "How to install the TodoMVC application and get it up and running."
       },
       {
         "title": "Installing Cypress and writing our first test",
         "slug": "installing-cypress-and-writing-our-first-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "How to install Cypress and write your first end to end test."
       },
       {
         "title": "Setting up Data Before Each Test",
         "slug": "setting-up-data-before-each-test",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "How to utilize the beforeEach hook to setup data before each test."
       },
       {
         "title": "How to use Cypress Commands",
         "slug": "how-to-use-cypress-commands",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "How to use custom Cypress commands to simplify your test code."
       },
       {
         "title": "Cypress Command Logs, Snapshots and Aliases",
         "slug": "cypress-command-logs-snapshots-and-aliases",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "How Cypress Command Logs, Snapshots and Aliases work."
       },
       {
         "title": "Testing what isn't there",
         "slug": "testing-what-isnt-there",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Learn how to test the 'Unhappy Paths' by ensuring certain elements do not exist on the page."
       }
     ]
   },
