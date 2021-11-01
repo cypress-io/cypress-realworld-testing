@@ -58,3 +58,11 @@
 .lesson-content img {
   cursor: pointer;
 }
+
+/* 
+  Doc Search
+*/
+
+input[type='search']:focus {
+  --tw-ring-color: none;
+}
