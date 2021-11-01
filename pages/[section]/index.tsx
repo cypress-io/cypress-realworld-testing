@@ -21,8 +21,8 @@ export default function SectionPage({
       progressService={progressService}
     >
       <Head>
-        <title>{title}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{title} | Real World Testing with Cypress</title>
+        <meta name="description" content={description} />
       </Head>
 
       <CourseHero
