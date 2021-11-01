@@ -1,0 +1,6 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://happy-ardinghelli-751b8c.netlify.app/
