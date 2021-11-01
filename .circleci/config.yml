@@ -9,6 +9,19 @@ executors:
       - image: "cypress/browsers:node14.17.0-chrome88-ff89"
     resource_class: medium+
 
+job-defaults: &job-defaults
+  executor: with-chrome-and-firefox
+  working_directory: ~/repo
+
+jobs:
+  update-algolia-index:
+    <<: *job-defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/repo
+      - run: yarn update-algolia-index
+
 workflows:
   build-and-test:
     jobs:
@@ -49,3 +62,14 @@ workflows:
             - run:
                 name: Check for Broken Links
                 command: yarn check:links
+
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - update-algolia-index
