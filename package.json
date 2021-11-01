@@ -17,7 +17,7 @@
     "generate-content": "ts-node scripts/generateContentFiles.ts",
     "generate-rwe-content": "ts-node scripts/generateRealWorldExamples.ts",
     "lint": "next lint",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && create-search-index",
     "pre-commit": "yarn types && pretty-quick --staged && yarn run lint && yarn run stop-only",
     "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
     "start": "next start",
