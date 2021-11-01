@@ -304,8 +304,8 @@ export default function Header({ content, sections, progressService }) {
               <div className="flex items-center md:ml-12">
                 {/* Search */}
                 <DocSearch
-                  appId="8V1MWQUQBN"
-                  apiKey="9ed61950eb9df441b30a47fcdd423a48"
+                  appId={process.env.NEXT_PUBLIC_ALGOLIA_APP_ID}
+                  apiKey={process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY}
                   indexName="real_world_testing"
                   disableUserPersonalization={true}
                 />
