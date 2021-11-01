@@ -1,4 +1,5 @@
 import { Fragment } from "react"
+import dynamic from "next/dynamic"
 import { Popover, Transition } from "@headlessui/react"
 import MobileNav from "./Mobile/MobileNav"
 import Link from "next/link"
@@ -19,9 +20,10 @@ import {
   TemplateIcon,
 } from "@heroicons/react/outline"
 import { ChevronDownIcon } from "@heroicons/react/solid"
-import { DocSearch } from "@docsearch/react"
 
-import "@docsearch/css"
+const Search = dynamic(() => import("./Search"), {
+  ssr: false,
+})
 
 const company = [
   {
@@ -302,13 +304,7 @@ export default function Header({ content, sections, progressService }) {
                 </Link>
               </Popover.Group>
               <div className="flex items-center md:ml-12">
-                {/* Search */}
-                <DocSearch
-                  appId={process.env.NEXT_PUBLIC_ALGOLIA_APP_ID}
-                  apiKey={process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY}
-                  indexName="real_world_testing"
-                  disableUserPersonalization={true}
-                />
+                <Search />
               </div>
             </div>
           </div>
