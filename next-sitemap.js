@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: "https://happy-ardinghelli-751b8c.netlify.app/",
+  siteUrl: process.env.SITE_URL,
   generateRobotsTxt: true,
 }
