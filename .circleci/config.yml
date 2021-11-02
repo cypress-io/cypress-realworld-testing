@@ -70,6 +70,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
     jobs:
       - update-algolia-index
