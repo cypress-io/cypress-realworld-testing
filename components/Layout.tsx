@@ -1,8 +1,6 @@
 import dynamic from "next/dynamic"
 import Head from "next/head"
 import Header from "./Header"
-import { useEffect } from "react"
-import * as FullStory from "@fullstory/browser"
 
 const Footer = dynamic(() => import("./Footer"), {
   ssr: false,
@@ -14,9 +12,6 @@ export default function Layout({
   sections,
   progressService,
 }) {
-  useEffect(() => {
-    FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
-  }, [])
   return (
     <>
       <Head>
