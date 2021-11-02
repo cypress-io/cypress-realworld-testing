@@ -37,7 +37,3 @@ yarn-error.log*
 # Cypress
 cypress/videos
 cypress/screenshots
-
-# Robots.txt & Sitemap
-public/robots.txt
-public/sitemap.xml
