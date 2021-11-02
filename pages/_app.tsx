@@ -1,6 +1,8 @@
 import "tailwindcss/tailwind.css"
 import "../styles/global.css"
 import Head from "next/head"
+import * as FullStory from "@fullstory/browser"
+FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
 
 function MyApp({ Component, pageProps }) {
   return (
