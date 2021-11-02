@@ -59,6 +59,11 @@ jobs:
 workflows:
   build-and-test:
     jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - main
       # Setup
       #  1. Install Cypress
       #  2. Validate types
@@ -66,8 +71,9 @@ workflows:
       - cypress/install:
           name: "Setup Linux"
           yarn: true
-          install-command: yarn --frozen-lockfile
           executor: with-chrome-and-firefox
+          requires:
+            - build
           post-steps:
             - run:
                 name: Print machine info ℹ️
@@ -97,11 +103,6 @@ workflows:
             - run:
                 name: Check for Broken Links
                 command: yarn check:links
-      - build:
-          filters:
-            branches:
-              ignore:
-                - main
 
   nightly:
     triggers:
