@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  cypress: cypress-io/cypress@1.28.0
+  cypress: cypress-io/cypress@1.29.0
 
 executors:
   with-chrome-and-firefox:
@@ -71,6 +71,7 @@ workflows:
       - cypress/install:
           name: "Setup Linux"
           yarn: true
+          cache-key: 'yarn-cache-{{ checksum "yarn.lock" }}'
           executor: with-chrome-and-firefox
           requires:
             - build
@@ -95,6 +96,7 @@ workflows:
           executor: with-chrome-and-firefox
           wait-on: "http://localhost:3000"
           yarn: true
+          cache-key: 'yarn-cache-{{ checksum "yarn.lock" }}'
           start: yarn start
           requires:
             - build
