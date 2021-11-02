@@ -97,6 +97,11 @@ workflows:
             - run:
                 name: Check for Broken Links
                 command: yarn check:links
+      - build:
+          filters:
+            branches:
+              ignore:
+                - main
 
   nightly:
     triggers:
