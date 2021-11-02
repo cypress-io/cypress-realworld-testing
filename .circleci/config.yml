@@ -9,18 +9,52 @@ executors:
       - image: "cypress/browsers:node14.17.0-chrome88-ff89"
     resource_class: medium+
 
+commands:
+  next-build:
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn --frozen-lockfile
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run:
+          name: Next Build
+          command: yarn build
+
 job-defaults: &job-defaults
   executor: with-chrome-and-firefox
   working_directory: ~/repo
 
 jobs:
+  build:
+    <<: *job-defaults
+    steps:
+      - next-build
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - out/*
+            - node_modules/*
+
   update-algolia-index:
     <<: *job-defaults
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/repo
-      - run: yarn update-algolia-index
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn --frozen-lockfile
+      - run:
+          name: Updated Aloglia Search Index
+          command: yarn update-algolia-index
 
 workflows:
   build-and-test:
@@ -32,8 +66,8 @@ workflows:
       - cypress/install:
           name: "Setup Linux"
           yarn: true
+          install-command: yarn --frozen-lockfile
           executor: with-chrome-and-firefox
-          build: "yarn build"
           post-steps:
             - run:
                 name: Print machine info ℹ️
@@ -57,6 +91,7 @@ workflows:
           yarn: true
           start: yarn start
           requires:
+            - build
             - Setup Linux
           post-steps:
             - run:
