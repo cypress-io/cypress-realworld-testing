@@ -51,6 +51,7 @@
     "xstate": "^4.23.1"
   },
   "devDependencies": {
+    "@cypress/skip-test": "^2.6.1",
     "@types/chai": "^4.2.21",
     "@types/lodash": "^4.14.172",
     "@types/mocha": "^9.0.0",
