@@ -1,13 +1,8 @@
 import "tailwindcss/tailwind.css"
 import "../styles/global.css"
 import Head from "next/head"
-import { useEffect } from "react"
-import * as FullStory from "@fullstory/browser"
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
-  }, [])
   return (
     <>
       <Head>
