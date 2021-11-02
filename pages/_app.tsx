@@ -3,7 +3,7 @@ import "../styles/global.css"
 import Head from "next/head"
 import * as FullStory from "@fullstory/browser"
 
-if (typeof window !== "undefined") {
+if (typeof window !== "undefined" && process.env.NODE_ENV === "production") {
   FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
 }
 
