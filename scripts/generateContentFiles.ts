@@ -1,6 +1,6 @@
 import path from "path"
 import fs from "fs"
-import learnJson from "../learn.json"
+import learnJson from "../data/courses.json"
 
 const sections = Object.keys(learnJson)
 

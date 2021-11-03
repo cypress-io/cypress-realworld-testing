@@ -2,7 +2,7 @@
   Note: These tests rely upon local storage state from previous tests, 
   so make sure to run all of them at once and in order
 */
-import learnJson from "../../learn.json"
+import learnJson from "../../data/courses.json"
 const { _ } = Cypress
 const sectionSlug = "cypress-fundamentals"
 const lessons = learnJson[sectionSlug].lessons

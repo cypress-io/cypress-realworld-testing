@@ -1,7 +1,7 @@
 import path from "path"
 import fs from "fs"
 import slugify from "slugify"
-import learnJson from "../learn.json"
+import learnJson from "../data/courses.json"
 
 Object.keys(learnJson).forEach((section) => {
   let { slug, title, lessons } = learnJson[section]

@@ -1,5 +1,5 @@
 const { _ } = Cypress
-import learnJson from "../../learn.json"
+import learnJson from "../../data/courses.json"
 const courses = Object.keys(learnJson)
 
 const verifyCourseLinks = (path) => {

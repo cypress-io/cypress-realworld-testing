@@ -47,7 +47,7 @@ import {
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
 import { isLessonCompleted } from "../../utils/machineUtils"
-import learnJson from "../../learn.json"
+import learnJson from "../../data/courses.json"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how

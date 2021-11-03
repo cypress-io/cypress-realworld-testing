@@ -1,4 +1,4 @@
-import learnJson from "../../learn.json"
+import learnJson from "../../data/courses.json"
 import rweJson from "../../real-world-examples.json"
 
 describe("SEO titles and descriptions", function () {

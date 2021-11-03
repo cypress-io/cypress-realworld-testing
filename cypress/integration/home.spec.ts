@@ -1,4 +1,4 @@
-import learnJson from "../../learn.json"
+import learnJson from "../../data/courses.json"
 const { _ } = Cypress
 
 describe("RWT Home", function () {

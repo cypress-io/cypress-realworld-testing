@@ -2,7 +2,7 @@ import { expect } from "chai"
 import { interpret } from "xstate"
 import { progressMachine } from "../machines/progressMachine"
 import * as machineUtils from "../utils/machineUtils"
-import learnJson from "../learn.json"
+import learnJson from "../data/courses.json"
 
 const lessonPath = "cypress-fundamentals/how-to-write-a-test"
 

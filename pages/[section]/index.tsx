@@ -3,7 +3,7 @@ import Layout from "../../components/Layout"
 import CourseHero from "../../components/Course/CourseHero"
 import CourseContent from "../../components/Course/CourseContent"
 import { progressService } from "../../machines/progressService"
-import learnJson from "../../learn.json"
+import learnJson from "../../data/courses.json"
 
 export default function SectionPage({
   title,

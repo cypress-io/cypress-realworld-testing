@@ -4,7 +4,7 @@ import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
 import RWETests from "../../components/RealWorldExamples/RWETests"
 import RWEHero from "../../components/RealWorldExamples/RWEHero"
 import { progressService } from "../../machines/progressService"
-import learnJson from "../../learn.json"
+import learnJson from "../../data/courses.json"
 import realWorldExamples from "../../real-world-examples.json"
 
 export default function Home({ content, sections, rWESections }) {

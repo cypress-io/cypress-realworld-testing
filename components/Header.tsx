@@ -4,7 +4,7 @@ import { Popover, Transition } from "@headlessui/react"
 import MobileNav from "./Mobile/MobileNav"
 import Link from "next/link"
 import Image from "next/image"
-import learnJson from "../learn.json"
+import learnJson from "../data/courses.json"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
