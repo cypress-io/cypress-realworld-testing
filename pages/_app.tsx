@@ -5,12 +5,13 @@ import { useEffect } from "react"
 import * as FullStory from "@fullstory/browser"
 
 function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    // @ts-ignore
-    if (!window.Cypress) {
+  // @ts-ignore
+  if (!window.Cypress) {
+    // eslint-disable-next-line
+    useEffect(() => {
       FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
-    }
-  }, [])
+    }, [])
+  }
 
   return (
     <>
