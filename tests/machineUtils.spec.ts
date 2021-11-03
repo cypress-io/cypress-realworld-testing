@@ -2,7 +2,7 @@ import { expect } from "chai"
 import { interpret } from "xstate"
 import { progressMachine } from "../machines/progressMachine"
 import * as machineUtils from "../utils/machineUtils"
-import learnJson from "../data/courses.json"
+import coursesJson from "../data/courses.json"
 
 const lessonPath = "cypress-fundamentals/how-to-write-a-test"
 
@@ -17,35 +17,37 @@ describe("machine utils", () => {
   })
 
   it("getAllLessons() - returns all lessons from a section", () => {
-    const lessons = machineUtils.getAllLessons(learnJson, lessonPath)
+    const lessons = machineUtils.getAllLessons(coursesJson, lessonPath)
 
-    expect(lessons).to.equal(learnJson[sectionSlug].lessons)
+    expect(lessons).to.equal(coursesJson[sectionSlug].lessons)
   })
 
   it("findLesson() - returns a single lesson", () => {
-    const lesson = machineUtils.findLesson(learnJson, lessonPath)
+    const lesson = machineUtils.findLesson(coursesJson, lessonPath)
 
-    expect(lesson).to.equal(learnJson[sectionSlug].lessons[0])
+    expect(lesson).to.equal(coursesJson[sectionSlug].lessons[0])
   })
 
   it("getChallenge() - returns a single challenge", () => {
-    const lesson = machineUtils.getChallenge(learnJson, lessonPath, 0)
+    const lesson = machineUtils.getChallenge(coursesJson, lessonPath, 0)
 
-    expect(lesson).to.equal(learnJson[sectionSlug].lessons[0].challenges[0])
+    expect(lesson).to.equal(coursesJson[sectionSlug].lessons[0].challenges[0])
   })
 
   it("getLessonIndex() - returns the index of the lesson", () => {
-    const lessonIndex = machineUtils.getLessonIndex(learnJson, lessonPath)
+    const lessonIndex = machineUtils.getLessonIndex(coursesJson, lessonPath)
 
     expect(lessonIndex).to.equal(
-      learnJson[sectionSlug].lessons.indexOf(learnJson[sectionSlug].lessons[0])
+      coursesJson[sectionSlug].lessons.indexOf(
+        coursesJson[sectionSlug].lessons[0]
+      )
     )
   })
 
   it("getSection() - returns the section", () => {
-    const section = machineUtils.getSection(learnJson, lessonPath)
+    const section = machineUtils.getSection(coursesJson, lessonPath)
 
-    expect(section).to.equal(learnJson[sectionSlug])
+    expect(section).to.equal(coursesJson[sectionSlug])
   })
 
   it("isLessonCompleted() - returns true when a lesson is complete", () => {

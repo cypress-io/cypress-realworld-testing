@@ -1,4 +1,4 @@
-import learnJson from "../../data/courses.json"
+import coursesJson from "../../data/courses.json"
 const { _ } = Cypress
 
 describe("RWT Home", function () {
@@ -7,12 +7,12 @@ describe("RWT Home", function () {
   })
 
   it("renders all of the course titles, descriptions & lessons", function () {
-    const courses = Object.keys(learnJson)
+    const courses = Object.keys(coursesJson)
 
     _.each(courses, (course, index) => {
-      const title = learnJson[course].title
-      const description = learnJson[course].description
-      const lessons = learnJson[course].lessons
+      const title = coursesJson[course].title
+      const description = coursesJson[course].description
+      const lessons = coursesJson[course].lessons
 
       cy.getBySel(`course-${index}`).within(($course) => {
         cy.getBySel("course-title").contains(title)

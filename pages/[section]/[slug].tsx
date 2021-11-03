@@ -47,7 +47,7 @@ import {
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
 import { isLessonCompleted } from "../../utils/machineUtils"
-import learnJson from "../../data/courses.json"
+import coursesJson from "../../data/courses.json"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -81,7 +81,7 @@ type Props = {
   nextLesson: string
   sectionTitle: string
   lessonPath: string
-  learnJson: object
+  coursesJson: object
   sections: []
   section: string
 }
@@ -94,7 +94,7 @@ export default function LessonPage({
   nextLesson,
   sectionTitle,
   lessonPath,
-  learnJson,
+  coursesJson,
   sections,
   section,
 }: Props) {
@@ -103,7 +103,7 @@ export default function LessonPage({
 
   return (
     <Layout
-      content={learnJson}
+      content={coursesJson}
       sections={sections}
       progressService={progressService}
     >
@@ -159,7 +159,7 @@ export default function LessonPage({
 }
 
 export const getStaticProps = async ({ params }) => {
-  const sections = Object.keys(learnJson)
+  const sections = Object.keys(coursesJson)
   const contentFilePath = path.join(
     CONTENT_PATH,
     `${params.section}/${params.slug}.mdx`
@@ -178,9 +178,9 @@ export const getStaticProps = async ({ params }) => {
   })
   const lessonData = find(
     { slug: params.slug },
-    learnJson[params.section].lessons
+    coursesJson[params.section].lessons
   )
-  const { title, lessons } = learnJson[params.section]
+  const { title, lessons } = coursesJson[params.section]
   const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
   let nextLesson
 
@@ -200,7 +200,7 @@ export const getStaticProps = async ({ params }) => {
       nextLesson,
       sectionTitle: title,
       lessonPath: `${params.section}/${params.slug}`,
-      learnJson,
+      coursesJson,
       sections,
       section: params.section,
     },

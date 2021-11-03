@@ -6,7 +6,7 @@ import {
   getChallenge,
   isSectionCompleted,
 } from "../utils/machineUtils"
-import learnJson from "../data/courses.json"
+import coursesJson from "../data/courses.json"
 
 const defaultContext: ProgressContext = {
   sectionsCompleted: [],
@@ -49,7 +49,7 @@ export const progressMachine = createMachine(
       })),
       validateAndLogAnswer: assign((context: any, event: any) => {
         const challenge = getChallenge(
-          learnJson,
+          coursesJson,
           event.id,
           event.challengeIndex
         )
@@ -73,7 +73,7 @@ export const progressMachine = createMachine(
 
       isSectionCompleted: assign((context: any, event: any) => {
         const [sectionSlug] = event.id.split("/")
-        const section = getSection(learnJson, event.id)
+        const section = getSection(coursesJson, event.id)
         const completedLessons = context.lessons.filter(
           (lesson) => lesson.status === "completed"
         )

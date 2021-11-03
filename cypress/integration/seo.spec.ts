@@ -1,4 +1,4 @@
-import learnJson from "../../data/courses.json"
+import coursesJson from "../../data/courses.json"
 import rweJson from "../../data/real-world-examples.json"
 
 describe("SEO titles and descriptions", function () {
@@ -17,8 +17,8 @@ describe("SEO titles and descriptions", function () {
   it("The course section pages have the correct meta title and description", function () {
     cy.visit("/cypress-fundamentals")
 
-    const title = learnJson["cypress-fundamentals"].title
-    const description = learnJson["cypress-fundamentals"].description
+    const title = coursesJson["cypress-fundamentals"].title
+    const description = coursesJson["cypress-fundamentals"].description
 
     cy.title().should("eq", `${title} | Real World Testing with Cypress`)
 
@@ -32,8 +32,9 @@ describe("SEO titles and descriptions", function () {
   it("The lesson pages have the correct meta title and description", function () {
     cy.visit("/testing-foundations/testing-is-a-mindset")
 
-    const title = learnJson["testing-foundations"].lessons[0].title
-    const description = learnJson["testing-foundations"].lessons[0].description
+    const title = coursesJson["testing-foundations"].lessons[0].title
+    const description =
+      coursesJson["testing-foundations"].lessons[0].description
 
     cy.title().should("eq", `${title} | Real World Testing with Cypress`)
 

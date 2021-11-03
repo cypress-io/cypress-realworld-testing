@@ -1,11 +1,11 @@
 import path from "path"
 import fs from "fs"
-import learnJson from "../data/courses.json"
+import coursesJson from "../data/courses.json"
 
-const sections = Object.keys(learnJson)
+const sections = Object.keys(coursesJson)
 
 sections.map((section) => {
-  const { lessons } = learnJson[section]
+  const { lessons } = coursesJson[section]
   lessons.map((lesson) => {
     const fileData = `---
 title: ${lesson.title}

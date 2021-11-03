@@ -1,35 +1,35 @@
 import { find, findIndex, get, gte } from "lodash/fp"
 
-export const getAllLessons = (learnJson: object, lessonPath) => {
+export const getAllLessons = (coursesJson: object, lessonPath) => {
   const [sectionSlug] = lessonPath.split("/")
-  const section = getSection(learnJson, sectionSlug)
+  const section = getSection(coursesJson, sectionSlug)
   return get("lessons", section)
 }
 
-export const findLesson = (learnJson: object, lessonPath: string) => {
+export const findLesson = (coursesJson: object, lessonPath: string) => {
   const [, lessonSlug] = lessonPath.split("/")
-  const lessons = getAllLessons(learnJson, lessonPath)
+  const lessons = getAllLessons(coursesJson, lessonPath)
   return find({ slug: lessonSlug }, lessons)
 }
 
 export const getChallenge = (
-  learnJson: object,
+  coursesJson: object,
   lessonPath: string,
   challengeIndex: number
 ) => {
-  const lesson = findLesson(learnJson, lessonPath)
+  const lesson = findLesson(coursesJson, lessonPath)
   return lesson.challenges[challengeIndex]
 }
 
-export const getLessonIndex = (learnJson: object, lessonPath: string) => {
+export const getLessonIndex = (coursesJson: object, lessonPath: string) => {
   const [, lessonSlug] = lessonPath.split("/")
-  const lessons = getAllLessons(learnJson, lessonPath)
+  const lessons = getAllLessons(coursesJson, lessonPath)
   return findIndex({ slug: lessonSlug }, lessons)
 }
 
-export const getSection = (learnJson: object, lessonPath: string) => {
+export const getSection = (coursesJson: object, lessonPath: string) => {
   const [sectionSlug] = lessonPath.split("/")
-  return learnJson[sectionSlug]
+  return coursesJson[sectionSlug]
 }
 
 export const isLessonCompleted = (progressService, lessonPath) => {

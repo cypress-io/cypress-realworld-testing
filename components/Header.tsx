@@ -4,7 +4,7 @@ import { Popover, Transition } from "@headlessui/react"
 import MobileNav from "./Mobile/MobileNav"
 import Link from "next/link"
 import Image from "next/image"
-import learnJson from "../data/courses.json"
+import coursesJson from "../data/courses.json"
 import {
   BookmarkAltIcon,
   BriefcaseIcon,
@@ -87,7 +87,7 @@ function classNames(...classes) {
 }
 
 export default function Header({ content, sections, progressService }) {
-  const learnJsonSections = Object.keys(learnJson)
+  const learnJsonSections = Object.keys(coursesJson)
 
   return (
     <>
@@ -156,18 +156,18 @@ export default function Header({ content, sections, progressService }) {
                           >
                             {learnJsonSections.map((section) => (
                               <a
-                                key={learnJson[section].slug}
-                                href={`/${learnJson[section].slug}`}
+                                key={coursesJson[section].slug}
+                                href={`/${coursesJson[section].slug}`}
                                 className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex md:h-full lg:flex-col">
                                   <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
                                     <div>
                                       <p className="text-base font-medium text-gray-900">
-                                        {learnJson[section].title}
+                                        {coursesJson[section].title}
                                       </p>
                                       <p className="mt-1 text-sm text-gray-500">
-                                        {learnJson[section].description}
+                                        {coursesJson[section].description}
                                       </p>
                                     </div>
                                     <p className="mt-2 text-sm font-medium text-blue-500 lg:mt-4">

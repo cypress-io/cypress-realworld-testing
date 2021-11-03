@@ -3,7 +3,7 @@ import Layout from "../../components/Layout"
 import CourseHero from "../../components/Course/CourseHero"
 import CourseContent from "../../components/Course/CourseContent"
 import { progressService } from "../../machines/progressService"
-import learnJson from "../../data/courses.json"
+import coursesJson from "../../data/courses.json"
 
 export default function SectionPage({
   title,
@@ -43,8 +43,8 @@ export default function SectionPage({
 
 export async function getStaticProps({ params }) {
   const { title, lessons, description, learnFeatures } =
-    learnJson[params.section]
-  const sections = Object.keys(learnJson)
+    coursesJson[params.section]
+  const sections = Object.keys(coursesJson)
 
   return {
     props: {
@@ -52,7 +52,7 @@ export async function getStaticProps({ params }) {
       title,
       description,
       learnFeatures,
-      content: learnJson,
+      content: coursesJson,
       sections,
       section: params.section,
     },
@@ -60,9 +60,9 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const sections = Object.keys(learnJson)
+  const sections = Object.keys(coursesJson)
   const paths = sections.map((section) => {
-    const { title, lessons } = learnJson[section]
+    const { title, lessons } = coursesJson[section]
     return { params: { section, lessons, title } }
   })
 

@@ -4,7 +4,7 @@ import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
 import RWETests from "../../components/RealWorldExamples/RWETests"
 import RWEHero from "../../components/RealWorldExamples/RWEHero"
 import { progressService } from "../../machines/progressService"
-import learnJson from "../../data/courses.json"
+import coursesJson from "../../data/courses.json"
 import realWorldExamples from "../../data/real-world-examples.json"
 
 export default function Home({ content, sections, rWESections }) {
@@ -36,11 +36,11 @@ export default function Home({ content, sections, rWESections }) {
 }
 
 export const getStaticProps = async () => {
-  const sections = Object.keys(learnJson)
+  const sections = Object.keys(coursesJson)
   const rWESections = Object.keys(realWorldExamples)
   return {
     props: {
-      content: learnJson,
+      content: coursesJson,
       sections,
       realWorldExamples,
       rWESections,
