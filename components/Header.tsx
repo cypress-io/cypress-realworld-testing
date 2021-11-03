@@ -87,7 +87,7 @@ function classNames(...classes) {
 }
 
 export default function Header({ content, sections, progressService }) {
-  const learnJsonSections = Object.keys(coursesJson)
+  const coursesJsonSections = Object.keys(coursesJson)
 
   return (
     <>
@@ -154,7 +154,7 @@ export default function Header({ content, sections, progressService }) {
                             className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
                             data-test="courses-dropdown-menu"
                           >
-                            {learnJsonSections.map((section) => (
+                            {coursesJsonSections.map((section) => (
                               <a
                                 key={coursesJson[section].slug}
                                 href={`/${coursesJson[section].slug}`}
