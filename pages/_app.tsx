@@ -6,7 +6,7 @@ import * as FullStory from "@fullstory/browser"
 
 function MyApp({ Component, pageProps }) {
   // @ts-ignore
-  if (!window.Cypress) {
+  if (typeof window !== "undefined" && !window.Cypress) {
     // eslint-disable-next-line
     useEffect(() => {
       FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
