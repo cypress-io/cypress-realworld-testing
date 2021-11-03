@@ -79,7 +79,7 @@ cy.intercept("POST", "/bankaccounts", (req) => {
 })
 ```
 
-In this example, we are overriding the `listBankAccount` property and setting it to be an empty array. We need to use `.continue()` to modify the response data. You can learn more about how to use `.continue()` [here](https://docs.cypress.io/api/commands/intercept#Controlling-the-outbound-request-with-req-continue).
+In this example, we are overriding the `listBankAccount` property and setting it to be an empty array. We need to use [.continue()](https://docs.cypress.io/api/commands/intercept#Controlling-the-outbound-request-with-req-continue) to modify the response data.
 
 ### Inspecting a Request
 
