@@ -1,5 +1,5 @@
 import learnJson from "../../data/courses.json"
-import rweJson from "../../real-world-examples.json"
+import rweJson from "../../data/real-world-examples.json"
 
 describe("SEO titles and descriptions", function () {
   it("The homepage has the correct meta title and description", function () {

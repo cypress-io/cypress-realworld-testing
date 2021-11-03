@@ -31,7 +31,7 @@ import {
   getRealWorldExamplePath,
 } from "../../utils/mdxUtils"
 import { isLessonCompleted } from "../../utils/machineUtils"
-import rweJson from "../../real-world-examples.json"
+import rweJson from "../../data/real-world-examples.json"
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how

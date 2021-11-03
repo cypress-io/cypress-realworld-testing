@@ -1,7 +1,7 @@
 import path from "path"
 import fs from "fs"
 import slugify from "slugify"
-import realWorldExamples from "../real-world-examples.json"
+import realWorldExamples from "../data/real-world-examples.json"
 
 Object.keys(realWorldExamples).forEach((section) => {
   let { slug, title, lessons } = realWorldExamples[section]

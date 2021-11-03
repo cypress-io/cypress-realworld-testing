@@ -5,7 +5,7 @@ import HomeFeatures from "../components/Home/HomeFeatures"
 import HomeCourses from "../components/Home/HomeCourses"
 import HomeRealWorldExamples from "../components/Home/HomeRealWorldExamples"
 import learnJson from "../data/courses.json"
-import realWorldExamples from "../real-world-examples.json"
+import realWorldExamples from "../data/real-world-examples.json"
 import { progressService } from "../machines/progressService"
 
 export default function Home({ content, sections }) {

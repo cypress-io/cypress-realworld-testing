@@ -1,6 +1,6 @@
 import path from "path"
 import fs from "fs"
-import realWorldExamples from "../real-world-examples.json"
+import realWorldExamples from "../data/real-world-examples.json"
 
 const sections = Object.keys(realWorldExamples)
 
