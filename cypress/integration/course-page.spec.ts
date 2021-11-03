@@ -2,10 +2,10 @@
   Note: These tests rely upon local storage state from previous tests, 
   so make sure to run all of them at once and in order
 */
-import learnJson from "../../learn.json"
+import coursesJson from "../../data/courses.json"
 const { _ } = Cypress
 const sectionSlug = "cypress-fundamentals"
-const lessons = learnJson[sectionSlug].lessons
+const lessons = coursesJson[sectionSlug].lessons
 
 describe("Next Lesson Button on Course Pages", () => {
   beforeEach(() => {
@@ -28,7 +28,7 @@ describe("Next Lesson Button on Course Pages", () => {
 
       expect(text).to.eq("Start Course")
       expect(href).to.eq(
-        `/${sectionSlug}/${learnJson[`${sectionSlug}`].lessons[0].slug}`
+        `/${sectionSlug}/${coursesJson[`${sectionSlug}`].lessons[0].slug}`
       )
     })
   })
@@ -47,18 +47,18 @@ describe("Next Lesson Button on Course Pages", () => {
 
       expect(text).to.eq("Next Lesson")
       expect(href).to.eq(
-        `/${sectionSlug}/${learnJson[`${sectionSlug}`].lessons[1].slug}`
+        `/${sectionSlug}/${coursesJson[`${sectionSlug}`].lessons[1].slug}`
       )
     })
   })
 
   it("says 'Course Completed' and links to the home page if all of the lessons have been completed", () => {
-    cy.visit(`/${sectionSlug}/${learnJson[sectionSlug].lessons[0].slug}`)
+    cy.visit(`/${sectionSlug}/${coursesJson[sectionSlug].lessons[0].slug}`)
 
     _.each(lessons, (lesson, index) => {
       cy.location("pathname").should(
         "eq",
-        `/${sectionSlug}/${learnJson[sectionSlug].lessons[index].slug}`
+        `/${sectionSlug}/${coursesJson[sectionSlug].lessons[index].slug}`
       )
       cy.getBySel(
         `"challenge-answer-${lesson["challenges"][0]["correctAnswerIndex"]}"`

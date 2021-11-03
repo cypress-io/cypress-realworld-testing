@@ -1,4 +1,4 @@
-import realWorldExamples from "../../real-world-examples.json"
+import realWorldExamples from "../../data/real-world-examples.json"
 const { _ } = Cypress
 
 describe("RWE Landing Page", function () {

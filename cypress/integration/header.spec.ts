@@ -1,13 +1,13 @@
 const { _ } = Cypress
-import learnJson from "../../learn.json"
-const courses = Object.keys(learnJson)
+import coursesJson from "../../data/courses.json"
+const courses = Object.keys(coursesJson)
 
 const verifyCourseLinks = (path) => {
   cy.visit(path)
   cy.getBySel("courses-dropdown").click()
   cy.getBySel("courses-dropdown-menu").within(() => {
     _.each(courses, (course, index) => {
-      const title = learnJson[course].title
+      const title = coursesJson[course].title
       cy.get("a").its(index).contains(title)
     })
   })
