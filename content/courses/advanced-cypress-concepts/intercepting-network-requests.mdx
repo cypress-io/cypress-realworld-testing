@@ -2,27 +2,6 @@
 
 Knowing how to test network requests and responses is important for every web application. In this lesson you will learn how to use <apiLink apiName="intercept" displayName="cy.intercept()" /> to manipulate and test network requests and responses.
 
-## Mocking, Spying & Stubbing
-
-If you are unfamiliar with the terminology of Mocking, Spying or Stubbing you can learn more about each in our docs.
-
-### Mocking with Fixtures
-
-- [Fixtures](https://docs.cypress.io/guides/guides/network-requests#Fixtures)
-- [Fixture API Docs](https://docs.cypress.io/api/commands/fixture)
-
-### Spying
-
-- [Spies](https://docs.cypress.io/guides/guides/stubs-spies-and-clocks#Spies)
-- [Spy API Docs](https://docs.cypress.io/api/commands/spy)
-
-### Stubbing
-
-- [Stubs](https://docs.cypress.io/guides/guides/stubs-spies-and-clocks#Stubs)
-- [Stub API Docs](https://docs.cypress.io/api/commands/stub)
-
-## Example Use Cases
-
 ### Intercepting Server Requests
 
 The most basic way to intercept a server request is as follows:
@@ -59,7 +38,7 @@ beforeEach(function () {
 
 In this example, we intercept any **GET** request to any route that matches **/transactions/public\***. We are doing this in a `beforeEach()`, which means this intercept will run before every test.
 
-Later on, In one of our tests, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept and override this same **GET** and route but using a **fixture** to mock the response.
+Later on, In one of our tests, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept and override this same **GET** and route but using a [fixture](https://docs.cypress.io/guides/guides/network-requests#Fixtures) to mock the response.
 
 ```js
 cy.intercept("GET", "/transactions/public*", {
@@ -124,6 +103,7 @@ In this example, we are using intercept to inspect a GraphQL query to determine 
 To learn more check out these resources in our docs:
 
 - [Network Requests](https://docs.cypress.io/guides/guides/network-requests)
+- [Fixtures](https://docs.cypress.io/guides/guides/network-requests#Fixtures)
 - [Intercept API docs](https://docs.cypress.io/api/commands/intercept)
 - [Stubs, Spies & Clocks](https://docs.cypress.io/guides/guides/stubs-spies-and-clocks)
 
