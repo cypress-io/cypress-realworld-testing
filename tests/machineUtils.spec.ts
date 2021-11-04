@@ -16,7 +16,7 @@ describe("machine utils", () => {
     progressService.start()
   })
 
-  it("getAllLessons() - returns all lessons from a section", () => {
+  it("getAllLessons() - returns all lessons from a course", () => {
     const lessons = machineUtils.getAllLessons(coursesJson, lessonPath)
 
     expect(lessons).to.equal(coursesJson[sectionSlug].lessons)
@@ -44,10 +44,10 @@ describe("machine utils", () => {
     )
   })
 
-  it("getSection() - returns the section", () => {
-    const section = machineUtils.getSection(coursesJson, lessonPath)
+  it("getCourse() - returns the course", () => {
+    const course = machineUtils.getCourse(coursesJson, lessonPath)
 
-    expect(section).to.equal(coursesJson[sectionSlug])
+    expect(course).to.equal(coursesJson[sectionSlug])
   })
 
   it("isLessonCompleted() - returns true when a lesson is complete", () => {

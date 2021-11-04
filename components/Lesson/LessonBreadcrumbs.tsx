@@ -32,7 +32,7 @@ export default function Breadcrumbs({ lessonPath, sectionTitle, lessonData }) {
           </div>
         </li>
 
-        {/* Section */}
+        {/* Course */}
         <li className="flex">
           <div className="flex items-center">
             <svg

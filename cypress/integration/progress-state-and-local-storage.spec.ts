@@ -56,10 +56,10 @@ describe("Progress State & Local Storage", () => {
     })
   })
 
-  it("all of the lesson cards on the section page have a status of 'Completed'", () => {
+  it("all of the lesson cards on the course page have a status of 'Completed'", () => {
     cy.visit(`/${sectionSlug}`)
 
-    cy.getBySel("section-steps").within(($course) => {
+    cy.getBySel("course-steps").within(($course) => {
       _.each(lessons, (lesson, index) => {
         cy.getBySel(`lesson-complete-${index}`).should("exist")
       })
