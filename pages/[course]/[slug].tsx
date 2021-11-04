@@ -83,7 +83,7 @@ type Props = {
   lessonPath: string
   coursesJson: object
   courses: []
-  section: string
+  course: string
 }
 
 export default function LessonPage({
@@ -96,7 +96,7 @@ export default function LessonPage({
   lessonPath,
   coursesJson,
   courses,
-  section,
+  course,
 }: Props) {
   // TODO: Figure out a better way to do this. It is necessary for the UI to update when state changes.
   const [progressState] = useActor(progressService)
@@ -123,7 +123,7 @@ export default function LessonPage({
         progressService={progressService}
         lessonPath={lessonPath}
         lessonData={lessonData}
-        section={section}
+        course={course}
       />
 
       {(!lessonData.challenges ||
@@ -162,7 +162,7 @@ export const getStaticProps = async ({ params }) => {
   const courses = Object.keys(coursesJson)
   const contentFilePath = path.join(
     CONTENT_PATH,
-    `${params.section}/${params.slug}.mdx`
+    `${params.course}/${params.slug}.mdx`
   )
   const source = fs.readFileSync(contentFilePath)
   const { content, data } = matter(source)
@@ -178,9 +178,9 @@ export const getStaticProps = async ({ params }) => {
   })
   const lessonData = find(
     { slug: params.slug },
-    coursesJson[params.section].lessons
+    coursesJson[params.course].lessons
   )
-  const { title, lessons } = coursesJson[params.section]
+  const { title, lessons } = coursesJson[params.course]
   const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
   let nextLesson
 
@@ -199,10 +199,10 @@ export const getStaticProps = async ({ params }) => {
       sectionLessons: lessons,
       nextLesson,
       sectionTitle: title,
-      lessonPath: `${params.section}/${params.slug}`,
+      lessonPath: `${params.course}/${params.slug}`,
       coursesJson,
       courses,
-      section: params.section,
+      course: params.course,
     },
   }
 }
@@ -213,8 +213,8 @@ export const getStaticPaths = async () => {
     .map((path) => path.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js
     .map((filePath) => {
-      const [section, slug] = filePath.split("/")
-      return { params: { slug, section } }
+      const [course, slug] = filePath.split("/")
+      return { params: { slug, course } }
     })
 
   return {
