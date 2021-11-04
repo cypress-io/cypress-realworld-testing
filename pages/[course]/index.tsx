@@ -11,13 +11,13 @@ export default function SectionPage({
   description,
   learnFeatures,
   content,
-  sections,
+  courses,
   section,
 }) {
   return (
     <Layout
       content={content}
-      sections={sections}
+      courses={courses}
       progressService={progressService}
     >
       <Head>
@@ -44,7 +44,7 @@ export default function SectionPage({
 export async function getStaticProps({ params }) {
   const { title, lessons, description, learnFeatures } =
     coursesJson[params.section]
-  const sections = Object.keys(coursesJson)
+  const courses = Object.keys(coursesJson)
 
   return {
     props: {
@@ -53,15 +53,15 @@ export async function getStaticProps({ params }) {
       description,
       learnFeatures,
       content: coursesJson,
-      sections,
+      courses,
       section: params.section,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const sections = Object.keys(coursesJson)
-  const paths = sections.map((section) => {
+  const courses = Object.keys(coursesJson)
+  const paths = courses.map((section) => {
     const { title, lessons } = coursesJson[section]
     return { params: { section, lessons, title } }
   })

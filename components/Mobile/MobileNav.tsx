@@ -6,7 +6,7 @@ import { XIcon } from "@heroicons/react/outline"
 
 export default function MobileProgressMenu({
   content,
-  sections,
+  courses,
   progressService,
 }) {
   return (
@@ -77,7 +77,7 @@ export default function MobileProgressMenu({
               </div>
               <div className="mt-6">
                 <MobileCourses
-                  sections={sections}
+                  courses={courses}
                   content={content}
                   progressService={progressService}
                 />

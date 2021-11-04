@@ -8,11 +8,11 @@ import coursesJson from "../data/courses.json"
 import realWorldExamples from "../data/real-world-examples.json"
 import { progressService } from "../machines/progressService"
 
-export default function Home({ content, sections }) {
+export default function Home({ content, courses }) {
   return (
     <Layout
       content={content}
-      sections={sections}
+      courses={courses}
       progressService={progressService}
     >
       <Head>
@@ -26,7 +26,7 @@ export default function Home({ content, sections }) {
       <HomeHero />
       <HomeFeatures />
       <HomeCourses
-        sections={sections}
+        courses={courses}
         content={content}
         progressService={progressService}
       />
@@ -36,11 +36,11 @@ export default function Home({ content, sections }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const sections = Object.keys(coursesJson)
+  const courses = Object.keys(coursesJson)
   return {
     props: {
       content: coursesJson,
-      sections,
+      courses,
       realWorldExamples,
     },
   }

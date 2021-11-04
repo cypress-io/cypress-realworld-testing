@@ -2,9 +2,9 @@ import path from "path"
 import fs from "fs"
 import coursesJson from "../data/courses.json"
 
-const sections = Object.keys(coursesJson)
+const courses = Object.keys(coursesJson)
 
-sections.map((section) => {
+courses.map((section) => {
   const { lessons } = coursesJson[section]
   lessons.map((lesson) => {
     const fileData = `---

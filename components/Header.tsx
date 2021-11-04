@@ -86,7 +86,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function Header({ content, sections, progressService }) {
+export default function Header({ content, courses, progressService }) {
   const coursesJsonSections = Object.keys(coursesJson)
 
   return (
@@ -312,7 +312,7 @@ export default function Header({ content, sections, progressService }) {
       </Popover>
       <MobileNav
         content={content}
-        sections={sections}
+        courses={courses}
         progressService={progressService}
       />
     </>

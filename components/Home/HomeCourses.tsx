@@ -2,10 +2,10 @@ import dynamic from "next/dynamic"
 
 const HomeProgress = dynamic(() => import("./HomeProgress"), {})
 
-export default function HomeCourses({ sections, content, progressService }) {
+export default function HomeCourses({ courses, content, progressService }) {
   return (
     <div className="relative bg-white pt-16 pb-32 overflow-hidden">
-      {sections.map((section, index) => (
+      {courses.map((section, index) => (
         <div key={section} data-test={`course-${index}`}>
           {index % 2 === 0 ? (
             <div className="relative">

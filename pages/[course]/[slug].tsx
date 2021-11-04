@@ -82,7 +82,7 @@ type Props = {
   sectionTitle: string
   lessonPath: string
   coursesJson: object
-  sections: []
+  courses: []
   section: string
 }
 
@@ -95,7 +95,7 @@ export default function LessonPage({
   sectionTitle,
   lessonPath,
   coursesJson,
-  sections,
+  courses,
   section,
 }: Props) {
   // TODO: Figure out a better way to do this. It is necessary for the UI to update when state changes.
@@ -104,7 +104,7 @@ export default function LessonPage({
   return (
     <Layout
       content={coursesJson}
-      sections={sections}
+      courses={courses}
       progressService={progressService}
     >
       <Head>
@@ -159,7 +159,7 @@ export default function LessonPage({
 }
 
 export const getStaticProps = async ({ params }) => {
-  const sections = Object.keys(coursesJson)
+  const courses = Object.keys(coursesJson)
   const contentFilePath = path.join(
     CONTENT_PATH,
     `${params.section}/${params.slug}.mdx`
@@ -201,7 +201,7 @@ export const getStaticProps = async ({ params }) => {
       sectionTitle: title,
       lessonPath: `${params.section}/${params.slug}`,
       coursesJson,
-      sections,
+      courses,
       section: params.section,
     },
   }
