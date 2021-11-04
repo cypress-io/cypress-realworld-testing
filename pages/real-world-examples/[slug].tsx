@@ -86,7 +86,7 @@ export default function LessonPage({
   return (
     <Layout
       content={rweJson}
-      sections={sections}
+      courses={sections}
       progressService={progressService}
     >
       <Head>
