@@ -2,8 +2,8 @@ import { find, findIndex, get, gte } from "lodash/fp"
 
 export const getAllLessons = (coursesJson: object, lessonPath) => {
   const [sectionSlug] = lessonPath.split("/")
-  const section = getSection(coursesJson, sectionSlug)
-  return get("lessons", section)
+  const course = getCourse(coursesJson, sectionSlug)
+  return get("lessons", course)
 }
 
 export const findLesson = (coursesJson: object, lessonPath: string) => {
@@ -27,7 +27,7 @@ export const getLessonIndex = (coursesJson: object, lessonPath: string) => {
   return findIndex({ slug: lessonSlug }, lessons)
 }
 
-export const getSection = (coursesJson: object, lessonPath: string) => {
+export const getCourse = (coursesJson: object, lessonPath: string) => {
   const [sectionSlug] = lessonPath.split("/")
   return coursesJson[sectionSlug]
 }

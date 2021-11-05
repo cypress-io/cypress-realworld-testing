@@ -4,11 +4,11 @@ import { isLessonCompleted } from "../../utils/machineUtils"
 export default function CourseNextLessonBtn({
   lessons,
   progressService,
-  section,
+  course,
 }) {
   const incompleLessons = lessons
     .map((lesson) => {
-      if (!isLessonCompleted(progressService, `${section}/${lesson.slug}`)) {
+      if (!isLessonCompleted(progressService, `${course}/${lesson.slug}`)) {
         return lesson.slug
       }
     })
@@ -30,7 +30,7 @@ export default function CourseNextLessonBtn({
     if (!incompleLessons.length) {
       return "/"
     } else {
-      return `${section}/${incompleLessons[0]}`
+      return `${course}/${incompleLessons[0]}`
     }
   }
 

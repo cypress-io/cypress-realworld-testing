@@ -86,8 +86,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function Header({ content, sections, progressService }) {
-  const coursesJsonSections = Object.keys(coursesJson)
+export default function Header({ content, courses, progressService }) {
+  const coursesJsonCourses = Object.keys(coursesJson)
 
   return (
     <>
@@ -154,20 +154,20 @@ export default function Header({ content, sections, progressService }) {
                             className="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
                             data-test="courses-dropdown-menu"
                           >
-                            {coursesJsonSections.map((section) => (
+                            {coursesJsonCourses.map((course) => (
                               <a
-                                key={coursesJson[section].slug}
-                                href={`/${coursesJson[section].slug}`}
+                                key={coursesJson[course].slug}
+                                href={`/${coursesJson[course].slug}`}
                                 className="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50"
                               >
                                 <div className="flex md:h-full lg:flex-col">
                                   <div className="ml-4 md:flex-1 md:flex md:flex-col md:justify-between lg:ml-0 lg:mt-4">
                                     <div>
                                       <p className="text-base font-medium text-gray-900">
-                                        {coursesJson[section].title}
+                                        {coursesJson[course].title}
                                       </p>
                                       <p className="mt-1 text-sm text-gray-500">
-                                        {coursesJson[section].description}
+                                        {coursesJson[course].description}
                                       </p>
                                     </div>
                                     <p className="mt-2 text-sm font-medium text-blue-500 lg:mt-4">
@@ -312,7 +312,7 @@ export default function Header({ content, sections, progressService }) {
       </Popover>
       <MobileNav
         content={content}
-        sections={sections}
+        courses={courses}
         progressService={progressService}
       />
     </>

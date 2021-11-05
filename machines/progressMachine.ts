@@ -2,7 +2,7 @@ import { createMachine, assign } from "xstate"
 import { ProgressContext } from "common"
 import { concat } from "lodash/fp"
 import {
-  getSection,
+  getCourse,
   getChallenge,
   isSectionCompleted,
 } from "../utils/machineUtils"
@@ -73,13 +73,13 @@ export const progressMachine = createMachine(
 
       isSectionCompleted: assign((context: any, event: any) => {
         const [sectionSlug] = event.id.split("/")
-        const section = getSection(coursesJson, event.id)
+        const course = getCourse(coursesJson, event.id)
         const completedLessons = context.lessons.filter(
           (lesson) => lesson.status === "completed"
         )
 
         if (
-          completedLessons.length === section.lessons.length &&
+          completedLessons.length === course.lessons.length &&
           !isSectionCompleted(context.sectionsCompleted, sectionSlug)
         ) {
           return {

@@ -3,8 +3,8 @@ import fs from "fs"
 import slugify from "slugify"
 import coursesJson from "../data/courses.json"
 
-Object.keys(coursesJson).forEach((section) => {
-  let { slug, title, lessons } = coursesJson[section]
+Object.keys(coursesJson).forEach((course) => {
+  let { slug, title, lessons } = coursesJson[course]
   slug = slugify(title, { lower: true })
 
   lessons.forEach((lesson) => {

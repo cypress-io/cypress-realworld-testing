@@ -14,7 +14,7 @@ export default function LessonLayout({
   progressService,
   lessonPath,
   lessonData,
-  section,
+  course,
 }) {
   return (
     <>
@@ -53,7 +53,7 @@ export default function LessonLayout({
               <div className="sticky top-6 space-y-4">
                 <p className="font-semibold mb-6">{sectionTitle}</p>
                 <LessonProgress
-                  section={section}
+                  course={course}
                   lessons={sectionLessons}
                   progressService={progressService}
                 />

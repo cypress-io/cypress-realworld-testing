@@ -11,7 +11,7 @@ export default function Home({ content, sections, rWESections }) {
   return (
     <Layout
       content={content}
-      sections={sections}
+      courses={sections}
       progressService={progressService}
     >
       <Head>

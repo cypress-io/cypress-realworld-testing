@@ -2,10 +2,10 @@ import path from "path"
 import fs from "fs"
 import coursesJson from "../data/courses.json"
 
-const sections = Object.keys(coursesJson)
+const courses = Object.keys(coursesJson)
 
-sections.map((section) => {
-  const { lessons } = coursesJson[section]
+courses.map((course) => {
+  const { lessons } = coursesJson[course]
   lessons.map((lesson) => {
     const fileData = `---
 title: ${lesson.title}
@@ -19,10 +19,7 @@ ${lesson.description}
 ${lesson.description}`
 
     fs.writeFile(
-      path.join(
-        process.cwd(),
-        `/content/courses/${section}/${lesson.slug}.mdx`
-      ),
+      path.join(process.cwd(), `/content/courses/${course}/${lesson.slug}.mdx`),
       fileData,
       (err) => {
         if (err) {

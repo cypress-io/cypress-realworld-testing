@@ -11,7 +11,7 @@ export default function CourseContent({
   lessons,
   learnFeatures,
   progressService,
-  section,
+  course,
 }) {
   const stats = [{ label: "Lessons", value: lessons.length }]
 
@@ -27,7 +27,7 @@ export default function CourseContent({
               </h2>
               <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
                 <CourseProgress
-                  section={section}
+                  course={course}
                   lessons={lessons}
                   progressService={progressService}
                 />
@@ -63,7 +63,7 @@ export default function CourseContent({
                   </div>
                 </div>
 
-                {/* Stats section */}
+                {/* Stats course */}
                 <div className="mt-10">
                   <dl className="grid grid-cols-2 gap-x-4 gap-y-8">
                     {stats.map((stat) => (
@@ -84,7 +84,7 @@ export default function CourseContent({
                 <CourseNextLessonBtn
                   lessons={lessons}
                   progressService={progressService}
-                  section={section}
+                  course={course}
                 />
               </div>
             </div>

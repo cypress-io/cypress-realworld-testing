@@ -14,7 +14,7 @@ describe("SEO titles and descriptions", function () {
     )
   })
 
-  it("The course section pages have the correct meta title and description", function () {
+  it("The course pages have the correct meta title and description", function () {
     cy.visit("/cypress-fundamentals")
 
     const title = coursesJson["cypress-fundamentals"].title

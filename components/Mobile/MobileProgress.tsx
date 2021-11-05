@@ -5,7 +5,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ section, content, progressService }) {
+export default function LessonSteps({ course, content, progressService }) {
   return (
     <nav aria-label="Progress" className="mt-4">
       <ol className="overflow-hidden">
@@ -22,10 +22,7 @@ export default function LessonSteps({ section, content, progressService }) {
             {index !== content?.lessons.length - 1 ? (
               <div
                 className={`-ml-px absolute mt-0.5 top-4 left-2 w-0.5 h-full ${
-                  isLessonCompleted(
-                    progressService,
-                    `${section}/${lesson.slug}`
-                  )
+                  isLessonCompleted(progressService, `${course}/${lesson.slug}`)
                     ? "bg-indigo-600"
                     : "bg-gray-300"
                 }`}
@@ -38,7 +35,7 @@ export default function LessonSteps({ section, content, progressService }) {
 
               {isLessonCompleted(
                 progressService,
-                `${section}/${lesson.slug}`
+                `${course}/${lesson.slug}`
               ) && (
                 <span className="h-9 flex items-center">
                   <span
@@ -56,7 +53,7 @@ export default function LessonSteps({ section, content, progressService }) {
               {/* "upcoming" */}
               {!isLessonCompleted(
                 progressService,
-                `${section}/${lesson.slug}`
+                `${course}/${lesson.slug}`
               ) && (
                 <span className="h-9 flex items-center" aria-hidden="true">
                   <span
@@ -71,7 +68,7 @@ export default function LessonSteps({ section, content, progressService }) {
               {/* Lesson Title */}
               <span className="ml-4 min-w-0 flex flex-col">
                 <span className="text-xs font-semibold tracking-wide uppercase">
-                  <a href={`${section}/${lesson.slug}`}>{lesson.title}</a>
+                  <a href={`${course}/${lesson.slug}`}>{lesson.title}</a>
                 </span>
               </span>
             </div>
