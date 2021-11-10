@@ -9,17 +9,12 @@ executors:
       - image: "cypress/browsers:node14.17.0-chrome88-ff89"
     resource_class: medium+
 
-job-defaults: &job-defaults
-  executor: with-chrome-and-firefox
-  working_directory: ~/repo
-
 jobs:
   update-algolia-index:
-    <<: *job-defaults
+    executor: with-chrome-and-firefox
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/repo
+      - run: yarn install
       - run: yarn update-algolia-index
 
 workflows:
