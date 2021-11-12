@@ -66,3 +66,19 @@
 input[type='search']:focus {
   --tw-ring-color: none;
 }
+
+/* 
+  Lesson Sidebar
+*/
+
+.pro-sidebar > .pro-sidebar-inner {
+  background: #ffffff !important;
+}
+
+.pro-sidebar .pro-sub-menu.open {
+  color: #007780 !important;
+}
+
+.pro-sidebar .pro-menu a {
+  color: #007780 !important;
+}

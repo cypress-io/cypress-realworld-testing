@@ -2,8 +2,8 @@ import Link from "next/link"
 import dynamic from "next/dynamic"
 import { LessonTableOfContents } from "../../types/common"
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
-import "react-pro-sidebar/dist/css/styles.css"
 import { isLessonCompleted } from "../../utils/machineUtils"
+import "react-pro-sidebar/dist/css/styles.css"
 
 type Props = {
   navigation: LessonTableOfContents[]
@@ -37,7 +37,7 @@ export default function LessonSidebar({
   return (
     <>
       <ProSidebar>
-        <Menu iconShape="circle">
+        <Menu>
           {lessons.map((lesson, index) => (
             <div key={index}>
               {!isCurrentPage(`/${course}/${lesson.slug}`) &&

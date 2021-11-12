@@ -35,14 +35,12 @@ export default function LessonLayout({
             <div className="hidden lg:block lg:col-span-3 xl:col-span-3">
               <div className="sticky top-6">
                 <p className="font-semibold mb-4">ON THIS PAGE</p>
-                <nav aria-label="Sidebar" className="">
-                  <LessonSidebar
-                    navigation={toc}
-                    course={course}
-                    lessons={sectionLessons}
-                    progressService={progressService}
-                  />
-                </nav>
+                <LessonSidebar
+                  navigation={toc}
+                  course={course}
+                  lessons={sectionLessons}
+                  progressService={progressService}
+                />
               </div>
             </div>
 
@@ -58,7 +56,7 @@ export default function LessonLayout({
             </main>
 
             {/* Progress Steps */}
-            <aside className="hidden xl:block xl:col-span-3">
+            {/* <aside className="hidden xl:block xl:col-span-3">
               <div className="sticky top-6 space-y-4">
                 <p className="font-semibold mb-6">{sectionTitle}</p>
                 <LessonProgress
@@ -67,7 +65,7 @@ export default function LessonLayout({
                   progressService={progressService}
                 />
               </div>
-            </aside>
+            </aside> */}
           </div>
         </div>
       </div>
