@@ -2,12 +2,12 @@ const { _ } = Cypress
 
 describe("Lesson Pages", () => {
   beforeEach(() => {
-    cy.visit("/cypress-fundamentals/cypress-ui-overview")
+    cy.visit("/cypress-fundamentals/how-to-write-a-test")
   })
 
-  it("the TOC links to the correct content section when clicked", () => {
-    cy.getBySel("toc-sidebar").within(() => {
-      cy.get("a").each(($link) => {
+  it.only("the TOC links to the correct content section when clicked", () => {
+    cy.getBySel("sidebar").within(() => {
+      cy.getBySel("sidebar-toc-link").each(($link) => {
         const href = $link.attr("href")
         console.log(href)
         cy.wrap($link).click()

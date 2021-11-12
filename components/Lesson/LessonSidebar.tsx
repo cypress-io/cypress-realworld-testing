@@ -1,4 +1,3 @@
-import Link from "next/link"
 import dynamic from "next/dynamic"
 import { LessonTableOfContents, Lessons } from "../../types/common"
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
@@ -35,7 +34,7 @@ export default function LessonSidebar({
   progressService,
 }: Props) {
   return (
-    <>
+    <div data-test="sidebar">
       <ProSidebar>
         <Menu>
           {lessons.map((lesson, index) => (
@@ -45,11 +44,9 @@ export default function LessonSidebar({
                   progressService,
                   `${course}/${lesson.slug}`
                 ) && (
-                  <Link href={`/${course}/${lesson.slug}`} passHref>
-                    <MenuItem icon={<CompletedLesson index={index} />}>
-                      {lesson.title}
-                    </MenuItem>
-                  </Link>
+                  <MenuItem icon={<CompletedLesson index={index} />}>
+                    <a href={`/${course}/${lesson.slug}`}>{lesson.title}</a>
+                  </MenuItem>
                 )}
 
               {!isCurrentPage(`/${course}/${lesson.slug}`) &&
@@ -57,11 +54,9 @@ export default function LessonSidebar({
                   progressService,
                   `${course}/${lesson.slug}`
                 ) && (
-                  <Link href={`/${course}/${lesson.slug}`} passHref>
-                    <MenuItem icon={<IncompleteLesson index={index} />}>
-                      {lesson.title}
-                    </MenuItem>
-                  </Link>
+                  <MenuItem icon={<IncompleteLesson index={index} />}>
+                    <a href={`/${course}/${lesson.slug}`}>{lesson.title}</a>
+                  </MenuItem>
                 )}
 
               {isCurrentPage(`/${course}/${lesson.slug}`) &&
@@ -76,9 +71,9 @@ export default function LessonSidebar({
                   >
                     {navigation.map((item) => (
                       <MenuItem key={item.slug}>
-                        <Link data-test={item.slug} href={`#${item.slug}`}>
-                          <a>{item.content}</a>
-                        </Link>
+                        <a data-test="sidebar-toc-link" href={`#${item.slug}`}>
+                          {item.content}
+                        </a>
                       </MenuItem>
                     ))}
                   </SubMenu>
@@ -96,9 +91,9 @@ export default function LessonSidebar({
                   >
                     {navigation.map((item) => (
                       <MenuItem key={item.slug}>
-                        <Link data-test={item.slug} href={`#${item.slug}`}>
-                          <a>{item.slug}</a>
-                        </Link>
+                        <a data-test="sidebar-toc-link" href={`#${item.slug}`}>
+                          {item.content}
+                        </a>
                       </MenuItem>
                     ))}
                   </SubMenu>
@@ -107,6 +102,6 @@ export default function LessonSidebar({
           ))}
         </Menu>
       </ProSidebar>
-    </>
+    </div>
   )
 }
