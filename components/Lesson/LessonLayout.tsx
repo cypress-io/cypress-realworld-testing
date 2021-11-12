@@ -2,8 +2,12 @@ import LessonToc from "../../components/Lesson/LessonToc"
 import LessonBreadcrumbs from "./LessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import Script from "next/script"
+import dynamic from "next/dynamic"
 import LessonProgress from "./LessonProgress"
-import LessonSidebar from "./LessonSidebar"
+
+const LessonSidebar = dynamic(() => import("./LessonSidebar"), {
+  ssr: false,
+})
 
 export default function LessonLayout({
   toc,

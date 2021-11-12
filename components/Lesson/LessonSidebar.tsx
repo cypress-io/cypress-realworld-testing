@@ -27,7 +27,7 @@ export default function LessonSidebar({ navigation, course, lessons }: Props) {
               )}
 
               {isCurrentPage(`/${course}/${lesson.slug}`) && (
-                <SubMenu title={lesson.title}>
+                <SubMenu title={lesson.title} defaultOpen={true}>
                   {navigation.map((item) => (
                     <MenuItem key={item.slug}>
                       <Link data-test={item.slug} href={`#${item.slug}`}>
@@ -41,16 +41,6 @@ export default function LessonSidebar({ navigation, course, lessons }: Props) {
           ))}
         </Menu>
       </ProSidebar>
-
-      {/* <ProSidebar>
-        <Menu iconShape="square">
-          <MenuItem>Dashboard</MenuItem>
-          <SubMenu title="Components">
-            <MenuItem>Component 1</MenuItem>
-            <MenuItem>Component 2</MenuItem>
-          </SubMenu>
-        </Menu>
-      </ProSidebar> */}
     </>
   )
 }
