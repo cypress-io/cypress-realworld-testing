@@ -45,7 +45,12 @@ export default function LessonSidebar({
                   `${course}/${lesson.slug}`
                 ) && (
                   <MenuItem icon={<CompletedLesson index={index} />}>
-                    <a href={`/${course}/${lesson.slug}`}>{lesson.title}</a>
+                    <a
+                      data-test={`sidebar-toc-link-${index}`}
+                      href={`/${course}/${lesson.slug}`}
+                    >
+                      {lesson.title}
+                    </a>
                   </MenuItem>
                 )}
 
@@ -55,7 +60,12 @@ export default function LessonSidebar({
                   `${course}/${lesson.slug}`
                 ) && (
                   <MenuItem icon={<IncompleteLesson index={index} />}>
-                    <a href={`/${course}/${lesson.slug}`}>{lesson.title}</a>
+                    <a
+                      data-test={`sidebar-toc-link-${index}`}
+                      href={`/${course}/${lesson.slug}`}
+                    >
+                      {lesson.title}
+                    </a>
                   </MenuItem>
                 )}
 
@@ -71,7 +81,10 @@ export default function LessonSidebar({
                   >
                     {navigation.map((item) => (
                       <MenuItem key={item.slug}>
-                        <a data-test="sidebar-toc-link" href={`#${item.slug}`}>
+                        <a
+                          data-test="sidebar-submenu-toc-link"
+                          href={`#${item.slug}`}
+                        >
                           {item.content}
                         </a>
                       </MenuItem>
@@ -91,7 +104,10 @@ export default function LessonSidebar({
                   >
                     {navigation.map((item) => (
                       <MenuItem key={item.slug}>
-                        <a data-test="sidebar-toc-link" href={`#${item.slug}`}>
+                        <a
+                          data-test="sidebar-submenu-toc-link"
+                          href={`#${item.slug}`}
+                        >
                           {item.content}
                         </a>
                       </MenuItem>

@@ -2,14 +2,14 @@ const { _ } = Cypress
 
 describe("Lesson Pages", () => {
   beforeEach(() => {
-    cy.visit("/cypress-fundamentals/how-to-write-a-test")
+    cy.visit("/cypress-fundamentals/cypress-ui-overview")
   })
 
-  it.only("the TOC links to the correct content section when clicked", () => {
+  it("the TOC links to the correct content section when clicked", () => {
     cy.getBySel("sidebar").within(() => {
-      cy.getBySel("sidebar-toc-link").each(($link) => {
+      cy.getBySel("sidebar-submenu-toc-link").each(($link, index) => {
+        console.log(index)
         const href = $link.attr("href")
-        console.log(href)
         cy.wrap($link).click()
 
         cy.window().then(($window) => {
@@ -42,19 +42,19 @@ describe("Lesson Pages", () => {
       cy.visit(
         "/testing-your-first-application/todomvc-app-install-and-overview"
       )
-      cy.getBySel("lesson-progress-link-0").click()
-      cy.location("pathname").should(
-        "eq",
-        "/testing-your-first-application/todomvc-app-install-and-overview"
-      )
-
-      cy.getBySel("lesson-progress-link-1").click()
+      cy.getBySel("sidebar-toc-link-1").click({ force: true })
       cy.location("pathname").should(
         "eq",
         "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
       )
 
-      cy.getBySel("lesson-progress-link-4").click()
+      cy.getBySel("sidebar-toc-link-2").click({ force: true })
+      cy.location("pathname").should(
+        "eq",
+        "/testing-your-first-application/setting-up-data-before-each-test"
+      )
+
+      cy.getBySel("sidebar-toc-link-4").click({ force: true })
       cy.location("pathname").should(
         "eq",
         "/testing-your-first-application/cypress-command-logs-snapshots-and-aliases"
