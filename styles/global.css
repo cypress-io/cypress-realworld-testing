@@ -75,6 +75,10 @@ input[type='search']:focus {
   width: 100% !important;
 }
 
+.pro-sidebar .pro-arrow-wrapper {
+  display: none;
+}
+
 .pro-sidebar > .pro-sidebar-inner {
   background: #ffffff !important;
 }
