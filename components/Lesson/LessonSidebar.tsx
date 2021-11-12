@@ -1,30 +1,68 @@
+import Link from "next/link"
+import dynamic from "next/dynamic"
 import { LessonTableOfContents } from "../../types/common"
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
-import Link from "next/link"
 import "react-pro-sidebar/dist/css/styles.css"
+import { isLessonCompleted } from "../../utils/machineUtils"
 
 type Props = {
   navigation: LessonTableOfContents[]
   lessons: []
   course: string
+  progressService: object
 }
+
+const ProgressLine = dynamic(() => import("../Progress/ProgressLine"), {
+  ssr: false,
+})
+
+const CompletedLesson = dynamic(() => import("../Progress/CompletedLesson"), {
+  ssr: false,
+})
+
+const IncompleteLesson = dynamic(() => import("../Progress/IncompleteLesson"), {
+  ssr: false,
+})
 
 const isCurrentPage = (lessonPath) => {
   return window.location.pathname === lessonPath
 }
 
-export default function LessonSidebar({ navigation, course, lessons }: Props) {
+export default function LessonSidebar({
+  navigation,
+  course,
+  lessons,
+  progressService,
+}: Props) {
   return (
     <>
       <ProSidebar>
         <Menu iconShape="circle">
           {lessons.map((lesson, index) => (
             <div key={index}>
-              {!isCurrentPage(`/${course}/${lesson.slug}`) && (
-                <Link href={`/${course}/${lesson.slug}`} passHref>
-                  <MenuItem>{lesson.title}</MenuItem>
-                </Link>
-              )}
+              {!isCurrentPage(`/${course}/${lesson.slug}`) &&
+                isLessonCompleted(
+                  progressService,
+                  `${course}/${lesson.slug}`
+                ) && (
+                  <Link href={`/${course}/${lesson.slug}`} passHref>
+                    <MenuItem icon={<CompletedLesson index={index} />}>
+                      {lesson.title}
+                    </MenuItem>
+                  </Link>
+                )}
+
+              {!isCurrentPage(`/${course}/${lesson.slug}`) &&
+                !isLessonCompleted(
+                  progressService,
+                  `${course}/${lesson.slug}`
+                ) && (
+                  <Link href={`/${course}/${lesson.slug}`} passHref>
+                    <MenuItem icon={<IncompleteLesson index={index} />}>
+                      {lesson.title}
+                    </MenuItem>
+                  </Link>
+                )}
 
               {isCurrentPage(`/${course}/${lesson.slug}`) && (
                 <SubMenu title={lesson.title} defaultOpen={true}>
