@@ -64,17 +64,45 @@ export default function LessonSidebar({
                   </Link>
                 )}
 
-              {isCurrentPage(`/${course}/${lesson.slug}`) && (
-                <SubMenu title={lesson.title} defaultOpen={true}>
-                  {navigation.map((item) => (
-                    <MenuItem key={item.slug}>
-                      <Link data-test={item.slug} href={`#${item.slug}`}>
-                        <a>{item.slug}</a>
-                      </Link>
-                    </MenuItem>
-                  ))}
-                </SubMenu>
-              )}
+              {isCurrentPage(`/${course}/${lesson.slug}`) &&
+                isLessonCompleted(
+                  progressService,
+                  `${course}/${lesson.slug}`
+                ) && (
+                  <SubMenu
+                    title={lesson.title}
+                    defaultOpen={true}
+                    icon={<CompletedLesson index={index} />}
+                  >
+                    {navigation.map((item) => (
+                      <MenuItem key={item.slug}>
+                        <Link data-test={item.slug} href={`#${item.slug}`}>
+                          <a>{item.slug}</a>
+                        </Link>
+                      </MenuItem>
+                    ))}
+                  </SubMenu>
+                )}
+
+              {isCurrentPage(`/${course}/${lesson.slug}`) &&
+                !isLessonCompleted(
+                  progressService,
+                  `${course}/${lesson.slug}`
+                ) && (
+                  <SubMenu
+                    title={lesson.title}
+                    defaultOpen={true}
+                    icon={<IncompleteLesson index={index} />}
+                  >
+                    {navigation.map((item) => (
+                      <MenuItem key={item.slug}>
+                        <Link data-test={item.slug} href={`#${item.slug}`}>
+                          <a>{item.slug}</a>
+                        </Link>
+                      </MenuItem>
+                    ))}
+                  </SubMenu>
+                )}
             </div>
           ))}
         </Menu>
