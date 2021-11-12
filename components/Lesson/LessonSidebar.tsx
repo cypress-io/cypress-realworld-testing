@@ -34,7 +34,6 @@ export default function LessonSidebar({
   lessons,
   progressService,
 }: Props) {
-  console.log(lessons)
   return (
     <>
       <ProSidebar>
