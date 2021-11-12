@@ -1,13 +1,13 @@
 import Link from "next/link"
 import dynamic from "next/dynamic"
-import { LessonTableOfContents } from "../../types/common"
+import { LessonTableOfContents, Lessons } from "../../types/common"
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
 import { isLessonCompleted } from "../../utils/machineUtils"
 import "react-pro-sidebar/dist/css/styles.css"
 
 type Props = {
   navigation: LessonTableOfContents[]
-  lessons: []
+  lessons: Lessons[]
   course: string
   progressService: object
 }
@@ -34,6 +34,7 @@ export default function LessonSidebar({
   lessons,
   progressService,
 }: Props) {
+  console.log(lessons)
   return (
     <>
       <ProSidebar>

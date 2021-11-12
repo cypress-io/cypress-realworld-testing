@@ -5,6 +5,13 @@ export type LessonTableOfContents = {
   current?: boolean
 }
 
+export type Lessons = {
+  title: string
+  description: string
+  slug: string
+  challenges: []
+}
+
 export interface ChallengeAnswer {
   id: string
   answeredCorrectly?: boolean
