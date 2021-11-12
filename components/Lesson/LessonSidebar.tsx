@@ -77,7 +77,7 @@ export default function LessonSidebar({
                     {navigation.map((item) => (
                       <MenuItem key={item.slug}>
                         <Link data-test={item.slug} href={`#${item.slug}`}>
-                          <a>{item.slug}</a>
+                          <a>{item.content}</a>
                         </Link>
                       </MenuItem>
                     ))}
