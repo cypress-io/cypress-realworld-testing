@@ -142,12 +142,14 @@ export default function LessonPage({
               progressService={progressService}
               lessonData={lessonData}
               lessonPath={lessonPath}
-            />
-
-            <NextLessonBtn
               path={nextLesson}
               isCompleted={isLessonCompleted(progressService, lessonPath)}
             />
+
+            {/* <NextLessonBtn
+              path={nextLesson}
+              isCompleted={isLessonCompleted(progressService, lessonPath)}
+            /> */}
           </>
         )}
 

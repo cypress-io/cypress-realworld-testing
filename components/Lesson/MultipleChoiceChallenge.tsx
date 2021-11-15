@@ -1,10 +1,17 @@
 import { useActor } from "@xstate/react"
 import { useState } from "react"
+import dynamic from "next/dynamic"
+
+const NextLessonBtn = dynamic(() => import("./NextLessonBtn"), {
+  ssr: false,
+})
 
 export default function LessonChallenge({
   progressService,
   lessonData,
   lessonPath,
+  path,
+  isCompleted,
 }) {
   const [answerIndicies, setAnswerChecked] = useState([])
   const [, progressSend] = useActor(progressService)
@@ -19,13 +26,16 @@ export default function LessonChallenge({
   return (
     <>
       <hr className="mb-6" />
-      <div data-test="multiple-choice-challenge" className="py-12 flex">
+      <div
+        data-test="multiple-choice-challenge"
+        className="py-12 flex bg-teal-500"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-blue-500 font-semibold tracking-wide uppercase">
+            <h2 className="text-base text-gray-50 font-semibold tracking-wide uppercase">
               Unlock the Next Lesson
             </h2>
-            <p className="mt-6 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            <p className="mt-6 text-3xl leading-8 font-extrabold tracking-tight text-jade-100 sm:text-4xl">
               {lessonData.challenges[0].question}
             </p>
           </div>
@@ -63,7 +73,7 @@ export default function LessonChallenge({
                         isIncorrectAnswer(index)
                           ? "line-through text-gray-300"
                           : ""
-                      } ml-16 text-lg leading-6 font-medium text-gray-900`}
+                      } ml-16 text-lg leading-6 font-medium text-gray-50`}
                     >
                       {answer}
                     </label>
@@ -72,6 +82,7 @@ export default function LessonChallenge({
               ))}
             </dl>
           </div>
+          <NextLessonBtn path={path} isCompleted={isCompleted} />
         </div>
       </div>
       <hr />

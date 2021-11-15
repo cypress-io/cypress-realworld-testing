@@ -16,12 +16,12 @@ export default function LessonChallenge({ progressService }) {
   return (
     <>
       <hr />
-      <div className="flex items-center justify-center my-6">
+      <div className="flex items-center justify-center py-6 bg-teal-500">
         <input
           data-test="skip-challenge-input"
           name="answer"
           type="checkbox"
-          className="focus:ring-blue-500 text-blue-600 border-gray-300 rounded h-4 w-4"
+          className="focus:ring-blue-500 text-gray-500 border-gray-300 rounded h-4 w-4"
           checked={progressService.state.context.disableChallenges}
           onChange={handleInputChange}
         />
