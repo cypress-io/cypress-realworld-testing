@@ -68,7 +68,7 @@ input[type='search']:focus {
 }
 
 /* 
-  Lesson Sidebar
+  Lesson Page Sidebar
 */
 
 .pro-sidebar {
@@ -87,7 +87,7 @@ input[type='search']:focus {
   color: #007780 !important;
 }
 
-.pro-sidebar .pro-menu a {
+.pro-sidebar .pro-sub-menu.open a {
   color: #007780 !important;
   background: #F3F4FA;
   border-radius: 40px;
