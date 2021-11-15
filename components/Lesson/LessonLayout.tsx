@@ -52,18 +52,6 @@ export default function LessonLayout({
                 </div>
               </div>
             </main>
-
-            {/* Progress Steps */}
-            {/* <aside className="hidden xl:block xl:col-span-3">
-              <div className="sticky top-6 space-y-4">
-                <p className="font-semibold mb-6">{sectionTitle}</p>
-                <LessonProgress
-                  course={course}
-                  lessons={sectionLessons}
-                  progressService={progressService}
-                />
-              </div>
-            </aside> */}
           </div>
         </div>
       </div>
