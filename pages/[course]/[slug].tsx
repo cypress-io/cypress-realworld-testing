@@ -16,13 +16,6 @@ import LessonLayout from "../../components/Lesson/LessonLayout"
 import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
 import apiLink from "../../components/Markdown/apiLink"
 
-const NextLessonBtn = dynamic(
-  () => import("../../components/Lesson/NextLessonBtn"),
-  {
-    ssr: false,
-  }
-)
-
 const CompleteLessonBtn = dynamic(
   () => import("../../components/Lesson/CompleteLessonBtn"),
   {
@@ -145,11 +138,6 @@ export default function LessonPage({
               path={nextLesson}
               isCompleted={isLessonCompleted(progressService, lessonPath)}
             />
-
-            {/* <NextLessonBtn
-              path={nextLesson}
-              isCompleted={isLessonCompleted(progressService, lessonPath)}
-            /> */}
           </>
         )}
 
