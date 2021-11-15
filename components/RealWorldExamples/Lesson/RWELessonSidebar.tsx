@@ -42,7 +42,7 @@ export default function LessonSidebar({
               {!isCurrentPage(`/real-world-examples/${lesson.slug}`) && (
                 <MenuItem>
                   <a
-                    data-test={`sidebar-toc-link-${index}`}
+                    data-test={`real-world-lesson-${index}`}
                     href={`/real-world-examples/${lesson.slug}`}
                   >
                     {lesson.title}
