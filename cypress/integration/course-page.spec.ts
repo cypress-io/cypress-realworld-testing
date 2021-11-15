@@ -1,7 +1,3 @@
-/* 
-  Note: These tests rely upon local storage state from previous tests, 
-  so make sure to run all of them at once and in order
-*/
 import coursesJson from "../../data/courses.json"
 const { _ } = Cypress
 const sectionSlug = "cypress-fundamentals"
