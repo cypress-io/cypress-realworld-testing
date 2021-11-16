@@ -2,37 +2,47 @@
 
 The application we will be writing tests for can be found [here](https://github.com/cypress-io/cypress-realworld-testing-todomvc). The app is a TodoMVC application built with React. Don't worry if you do not know React. You can still follow along even if you have never used React before.
 
-## Install
+## Clone Repo
 
-The first thing you need to do is to clone the [TodoMVC repo](https://github.com/cypress-io/cypress-realworld-testing-todomvc).
+If you have git installed, you can clone down the [TodoMVC repo](https://github.com/cypress-io/cypress-realworld-testing-todomvc) by entering the following command in your terminal:
 
 ```bash
 git clone git@github.com:cypress-io/cypress-realworld-testing-todomvc.git
 ```
 
-You can also download a .zip file of the repo by clicking on the green "Code" button and then "Download Zip."
+If you don't want to use git, you can also download a .zip file of the repo by clicking on the green "Code" button and then "Download Zip."
 
 ![](/images/testing-your-first-application/todomvc-app-install-and-overview/Screen_Shot_2021-10-21_at_10.13.11-AM.png)
 
 Next, you will need to open the repo in your text editor. We will be using [VS Code](https://code.visualstudio.com/), but feel free to use any text editor you like.
 
-You can install all of the dependencies by typing the following in the terminal.
+## Install
+
+> Make sure to be using a version of Node that is `v.14` or higher.
+
+You will need to install all of the dependencies with [Yarn](https://yarnpkg.com/). If you don't have it installed, you can install it with this command:
+
+```bash
+npm install -g yarn
+```
+
+Change directories into the repo.
+
+```bash
+cd cypress-realworld-testing-todomvc
+```
+
+Install all of the dependencies with the following command:
 
 ```bash
 yarn install
 ```
 
-Make sure to be using a version of Node that is `v.14` or higher and use [Yarn package manager](https://yarnpkg.com/).
-
-If you don't have Yarn installed, you can install it with this command:
-
-```bash
-npm install --global yarn
-```
-
 ![](/images/testing-your-first-application/todomvc-app-install-and-overview/Screen_Shot_2021-09-17_at_10.13.32_AM.png)
 
-Then to start the app:
+> If you are having trouble seeing the screenshots, you can click on them to open a larger image.
+
+Start the app:
 
 ```bash
 yarn start
@@ -58,6 +68,10 @@ In the next lesson, we will learn how to install Cypress and write our first tes
 
 ## Practice
 
-After completing all of the lessons in this tutorial, make sure to check out the **cypress/integration/practice/practice.spec.js** file. This file contains several tests, with helpful comments, to help you put into practice all of the concepts you will learn in this tutorial.
+After completing all of the lessons in this tutorial, make sure to check out the **cypress/integration/practice/practice.spec.js** file in the repo. This file contains several tests, with helpful comments, to help you put into practice all of the concepts you will learn in this tutorial.
+
+![](/images/testing-your-first-application/todomvc-app-install-and-overview/practice.png)
 
 Should you get stuck or need some help, all of the answers are provided within **cypress/integration/final/practice.spec.js**
+
+![](/images/testing-your-first-application/todomvc-app-install-and-overview/final-practice.png)
