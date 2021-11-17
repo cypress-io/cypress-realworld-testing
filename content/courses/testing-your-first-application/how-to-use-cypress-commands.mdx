@@ -40,6 +40,7 @@ Cypress.Commands.add("createDefaultTodos", () => {
 Now let's update our second test to use this new command.
 
 ```js
+// ...
 it("adds three todos", () => {
   cy.createDefaultTodos()
   cy.get(".todo-list li").should("have.length", 3)

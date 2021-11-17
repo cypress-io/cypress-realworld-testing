@@ -7,7 +7,7 @@ Before we can begin writing our tests, we first need to install Cypress into our
 We can add Cypress to our project with the following command:
 
 ```bash
-yarn add Cypress -D
+yarn add cypress -D
 ```
 
 Next we will add a custom npm script so we can launch Cypress easily. The entire "scripts" object within **package.json** should look like this:
@@ -89,7 +89,7 @@ Open the app in your browser and note all of the steps you need to perform to ad
 
 Now let's write out these steps into our test.
 
-Before having Cypress click into the input field, we first need to grab the input field element from the DOM, so Cypress knows which element to click.
+Before having Cypress click into the input field, we first need to grab the input field element from the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model), so Cypress knows which element to click.
 
 If we inspect the element with our browser's dev tools, we will notice that the input field has a class of **new-todo** .
 

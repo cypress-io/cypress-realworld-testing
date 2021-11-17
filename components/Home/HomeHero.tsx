@@ -13,6 +13,10 @@ const features = [
     name: "30+ Real World Examples",
     description: "",
   },
+  {
+    name: "Free and Open Source",
+    description: "",
+  },
 ]
 
 export default function HomeHero() {
@@ -36,7 +40,7 @@ export default function HomeHero() {
                     </h1>
                     <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                       Learn from top industry experts and level-up your testing
-                      knowledge - for free.
+                      knowledge.
                     </p>
 
                     {/* Features */}

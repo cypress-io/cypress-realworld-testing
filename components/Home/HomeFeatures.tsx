@@ -9,36 +9,39 @@ import {
 
 const features = [
   {
-    name: "Testing Mindset",
+    name: "Prepare your Testing Mindset",
     icon: LightBulbIcon,
-    description: "The mindset necessary when testing applications.",
+    description:
+      "Build a healthy mental model before testing your applications.",
   },
   {
-    name: "Knowing What to Test",
+    name: "Learn What to Test",
     icon: BeakerIcon,
-    description: "Know which parts of your application you should test.",
+    description: "Prioritize what parts of your application to test.",
   },
   {
-    name: "How to Debug Failing Tests",
+    name: "Debug Failing Tests Efficiently",
     icon: TerminalIcon,
     description:
-      "Various tips, methods and techniques to help you debug your failing tests",
+      "Learn various tips, methods and techniques to help you better debug your failing tests",
   },
   {
-    name: "Database Initialization & Seeding",
+    name: "Learn Database Initialization & Seeding",
     icon: DatabaseIcon,
-    description: "How to create the data you need for your tests",
+    description:
+      "Get practical guidance on how to create the data you need for your tests.",
   },
   {
-    name: "Types of Testing",
+    name: "Understand Different Testing Types",
     icon: CodeIcon,
     description:
-      "The difference between unit, integration and end to end tests",
+      "Learn the difference between unit, integration and end-to-end tests.",
   },
   {
-    name: "How to Test",
+    name: "Apply your Knowledge",
     icon: AdjustmentsIcon,
-    description: "How to tests different apps from simple to complex",
+    description:
+      "Practice how to test different apps in the real world, from simple to complex.",
   },
 ]
 
@@ -46,11 +49,8 @@ export default function HomeFeatures() {
   return (
     <div className="features relative bg-white py-16 sm:py-24 lg:py-16">
       <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-        <h2 className="text-base font-semibold tracking-wider text-blue-500 uppercase">
-          What&apos;s Inside
-        </h2>
         <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
-          A quick preview of what you’ll learn
+          What you&apos;ll learn
         </p>
         <div className="mt-12">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
