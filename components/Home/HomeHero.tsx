@@ -31,7 +31,7 @@ export default function HomeHero() {
                           <dt className="order-2 text-base font-medium text-gray-600">
                             Courses
                           </dt>
-                          <dd className="order-1 text-2xl text-gray-600 sm:text-3xl">
+                          <dd className="order-1 text-3xl text-gray-600 sm:text-3xl">
                             4
                           </dd>
                         </div>
@@ -39,7 +39,7 @@ export default function HomeHero() {
                           <dt className="order-2 text-base font-medium text-gray-600">
                             Lessons
                           </dt>
-                          <dd className="order-1 text-2xl text-gray-600 sm:text-3xl">
+                          <dd className="order-1 text-3xl text-gray-600 sm:text-3xl">
                             25+
                           </dd>
                         </div>
@@ -47,7 +47,7 @@ export default function HomeHero() {
                           <dt className="order-2 text-base font-medium text-gray-600">
                             Real World Examples
                           </dt>
-                          <dd className="order-1 text-2xl text-gray-600 sm:text-3xl">
+                          <dd className="order-1 text-3xl text-gray-600 sm:text-3xl">
                             30+
                           </dd>
                         </div>
