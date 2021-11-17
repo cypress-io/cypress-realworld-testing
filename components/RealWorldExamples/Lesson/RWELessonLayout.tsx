@@ -1,10 +1,9 @@
-import LessonToc from "../../Lesson/LessonToc"
 import RWELessonBreadcrumbs from "./RWELessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
-import dynamic from "next/dynamic"
 import Script from "next/script"
+import dynamic from "next/dynamic"
 
-const RWELessonProgress = dynamic(() => import("./RWELessonProgress"), {
+const RWELessonSidebar = dynamic(() => import("./RWELessonSidebar"), {
   ssr: false,
 })
 
@@ -30,7 +29,11 @@ export default function LessonLayout({
               <div className="sticky top-6">
                 <p className="font-semibold mb-4">ON THIS PAGE</p>
                 <nav aria-label="Sidebar" className="">
-                  <LessonToc navigation={toc} />
+                  <RWELessonSidebar
+                    navigation={toc}
+                    lessons={sectionLessons}
+                    progressService={progressService}
+                  />
                 </nav>
               </div>
             </div>
@@ -45,14 +48,6 @@ export default function LessonLayout({
                 </div>
               </div>
             </main>
-
-            {/* Progress Steps */}
-            <aside className="hidden xl:block xl:col-span-3">
-              <div className="sticky top-6 space-y-4">
-                <p className="font-semibold mb-6">{sectionTitle}</p>
-                <RWELessonProgress sectionLessons={sectionLessons} />
-              </div>
-            </aside>
           </div>
         </div>
       </div>

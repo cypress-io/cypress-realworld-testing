@@ -66,3 +66,30 @@
 input[type='search']:focus {
   --tw-ring-color: none;
 }
+
+/* 
+  Lesson Page Sidebar
+*/
+
+.pro-sidebar {
+  width: 100% !important;
+}
+
+.pro-sidebar .pro-arrow-wrapper {
+  display: none;
+}
+
+.pro-sidebar > .pro-sidebar-inner {
+  background: #ffffff !important;
+}
+
+.pro-sidebar .pro-sub-menu.open {
+  color: #007780 !important;
+}
+
+.pro-sidebar .pro-sub-menu.open a {
+  color: #007780 !important;
+  background: #F3F4FA;
+  border-radius: 40px;
+  padding:  20px 10px;
+}
