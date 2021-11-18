@@ -2,7 +2,8 @@ import Head from "next/head"
 import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeFeatures from "../components/Home/HomeFeatures"
-import HomeCourses from "../components/Home/HomeCourses"
+// import HomeCourses from "../components/Home/HomeCourses"
+import HomeCoursesLayout from "../components/Home/HomeCoursesLayout"
 import HomeRealWorldExamples from "../components/Home/HomeRealWorldExamples"
 import coursesJson from "../data/courses.json"
 import realWorldExamples from "../data/real-world-examples.json"
@@ -25,7 +26,12 @@ export default function Home({ content, courses }) {
 
       <HomeHero />
       <HomeFeatures />
-      <HomeCourses
+      {/* <HomeCourses
+        courses={courses}
+        content={content}
+        progressService={progressService}
+      /> */}
+      <HomeCoursesLayout
         courses={courses}
         content={content}
         progressService={progressService}

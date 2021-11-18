@@ -1,8 +1,6 @@
-import { CheckIcon } from "@heroicons/react/outline"
-
 export default function HomeHero() {
   return (
-    <div className="">
+    <>
       <div className="relative overflow-hidden">
         <main>
           <div className="pt-10 bg-white sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
@@ -98,6 +96,6 @@ export default function HomeHero() {
           </div>
         </main>
       </div>
-    </div>
+    </>
   )
 }

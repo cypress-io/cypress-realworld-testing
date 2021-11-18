@@ -1,14 +1,5 @@
 import Image from "next/image"
 
-import {
-  LightBulbIcon,
-  BeakerIcon,
-  TerminalIcon,
-  DatabaseIcon,
-  CodeIcon,
-  AdjustmentsIcon,
-} from "@heroicons/react/outline"
-
 const features = [
   {
     name: "Prepare your Testing Mindset",

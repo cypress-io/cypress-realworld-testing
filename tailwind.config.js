@@ -12,8 +12,10 @@ module.exports = {
       colors: {
         gray: {
           50: "#F3F4FA",
+          400: "#AFB3C7",
         },
         jade: {
+          50: "#E4FBF2",
           100: "#C2F1DE",
           200: "#A3E7CB",
           300: "#69D3A7",
