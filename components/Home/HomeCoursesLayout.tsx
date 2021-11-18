@@ -1,6 +1,9 @@
 import { useState } from "react"
 import { RadioGroup } from "@headlessui/react"
 import Image from "next/image"
+import dynamic from "next/dynamic"
+
+const HomeProgress = dynamic(() => import("./HomeProgress"), {})
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -99,7 +102,13 @@ export default function HomeCoursesLayout({
         </>
 
         {/* Course Progress */}
-        <>Right</>
+        <>
+          <HomeProgress
+            course={selected}
+            content={content[selected]}
+            progressService={progressService}
+          />
+        </>
       </div>
     </div>
   )
