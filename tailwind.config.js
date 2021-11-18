@@ -13,6 +13,10 @@ module.exports = {
         gray: {
           50: "#F3F4FA",
           400: "#AFB3C7",
+          600: "#747994",
+        },
+        indigo: {
+          100: "#DADDFE",
         },
         jade: {
           50: "#E4FBF2",
