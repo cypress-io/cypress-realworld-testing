@@ -36,9 +36,9 @@ export default function HomeCoursesLayout({
                   value={course}
                   className={({ checked, active }) =>
                     classNames(
-                      checked ? "bg-teal-500" : "",
-                      active ? "bg-teal-500" : "",
-                      "relative bg-gray-50 border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center"
+                      checked ? "bg-teal-500" : "bg-gray-50",
+                      active ? "" : "bg-teal-500",
+                      "relative  border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center"
                     )
                   }
                 >
