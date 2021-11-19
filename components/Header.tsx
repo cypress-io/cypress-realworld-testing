@@ -103,7 +103,7 @@ export default function Header({ content, courses, progressService }) {
                   <span className="sr-only">Workflow</span>
                   <Image
                     className="h-8 w-auto sm:h-10"
-                    src="/images/logo/cypress-logo.webp"
+                    src="/images/logo/logo.svg"
                     alt="Cypress Logo"
                     height={40}
                     width={120}

@@ -24,11 +24,11 @@ export default function Footer() {
   return (
     <>
       <hr />
-      <footer className="bg-white">
+      <footer className="bg-teal-500">
         {/* Email Subscription */}
         <div className="py-8 lg:flex lg:items-center lg:justify-between lg:max-w-7xl lg:mx-auto xl:mt-0">
           <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+            <h3 className="text-gray-50 tracking-wider uppercase">
               Subscribe for updates
             </h3>
             {/* <p className="mt-2 text-base text-gray-500">
@@ -45,13 +45,13 @@ export default function Footer() {
               id="email-address"
               autoComplete="email"
               required
-              className="appearance-none min-w-0 w-full bg-white border border-gray-300 py-2 px-4 text-base rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:placeholder-gray-400 sm:max-w-xs"
+              className="appearance-none min-w-0 w-full bg-white border border-gray-300 py-2 px-4 text-base rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:max-w-xs"
               placeholder="Enter your email"
             />
             <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
               <button
                 type="submit"
-                className="w-full bg-blue-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="w-full bg-jade-300 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-lg text-teal-600 font-semibold"
               >
                 Subscribe
               </button>
@@ -68,14 +68,14 @@ export default function Footer() {
               <div key={item.name} className="px-5 py-2">
                 <a
                   href={item.href}
-                  className="text-base text-gray-500 hover:text-gray-900"
+                  className="text-base text-gray-50 hover:text-gray-900"
                 >
                   {item.name}
                 </a>
               </div>
             ))}
           </nav>
-          <p className="mt-8 text-center text-base text-gray-400">
+          <p className="mt-8 text-center text-base text-gray-50">
             &copy; {`${new Date().getFullYear()}`} Cypress. All rights reserved.
           </p>
         </div>
