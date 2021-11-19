@@ -49,7 +49,9 @@ describe("Progress State & Local Storage", () => {
   it("all of the lesson steps, on the homepage, for the first completed course are filled and completed", () => {
     cy.visit("/")
 
-    cy.getBySel("course-2").within(($course) => {
+    cy.getBySel("course-2").click()
+
+    cy.getBySel("course-progress").within(() => {
       _.each(lessons, (lesson, index) => {
         cy.getBySel(`lesson-complete-${index}`).should("exist")
       })
