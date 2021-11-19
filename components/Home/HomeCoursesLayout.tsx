@@ -34,6 +34,7 @@ export default function HomeCoursesLayout({
                 <RadioGroup.Option
                   key={index}
                   value={course}
+                  data-test={`course-${index}`}
                   className={({ checked, active }) =>
                     classNames(
                       checked ? "bg-teal-500" : "bg-gray-50",
