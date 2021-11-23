@@ -1,44 +1,35 @@
 import Image from "next/image"
 
-import {
-  DesktopComputerIcon,
-  CogIcon,
-  LockClosedIcon,
-  DatabaseIcon,
-  LightningBoltIcon,
-  CodeIcon,
-} from "@heroicons/react/outline"
-
 const features = [
   {
     name: "How to Test Authentication",
-    icon: LockClosedIcon,
+    icon: "authentication.svg",
     description: "Learn how to test authentication in multiple ways",
   },
   {
     name: "Custom Cypress Commands",
-    icon: CogIcon,
+    icon: "custom-commands.svg",
     description: "The correct abstractions for reusability in your tests",
   },
   {
     name: "How to Test Mobile and Desktop",
-    icon: DesktopComputerIcon,
+    icon: "desktop.svg",
     description: "Execute your test code depending upon viewport size",
   },
   {
     name: "Data Driven Testing",
-    icon: DatabaseIcon,
+    icon: "db.svg",
     description: "Learn how to drive tests with data from an external source",
   },
   {
     name: "How to Create Tests Dynamically",
-    icon: CodeIcon,
+    icon: "dynamic-tests.svg",
     description:
       "Use loops and libraries like lodash to dynamically generate test cases",
   },
   {
     name: "How to Test GraphQL",
-    icon: LightningBoltIcon,
+    icon: "graphql.svg",
     description: "How to test various GraphQl queries and mutations",
   },
 ]
@@ -57,7 +48,7 @@ export default function RWEFeatures() {
                 <div className="bg-gray-50 rounded-lg px-6 py-8">
                   <Image
                     className="h-8 w-auto sm:h-10"
-                    src={`/images/home/${feature.icon}`}
+                    src={`/images/real-world-examples/features/${feature.icon}`}
                     alt="Cypress Logo"
                     height={62}
                     width={75}
