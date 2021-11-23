@@ -3,22 +3,25 @@
     "title": "Overview",
     "slug": "overview",
     "description": "What you need to know to understand the examples below",
-    "image": "/images/real-world-examples/overview.png",
+    "image": "/images/real-world-examples/overview/overview.svg",
     "lessons": [
       {
         "title": "Cypress Real World App Overview",
         "slug": "cypress-real-world-app-overview",
-        "description": "A general overview of what the Real World App is and how to use it"
+        "description": "A general overview of what the Real World App is and how to use it",
+        "image": "rwa-overview.svg"
       },
       {
         "title": "Our Approach to Testing the Real World App",
         "slug": "our-approach-to-testing-the-real-world-app",
-        "description": "Our recommended approach to testing web applications"
+        "description": "Our recommended approach to testing web applications",
+        "image": "approach-to-testing.svg"
       },
       {
         "title": "Custom Cypress Commands",
         "slug": "custom-cypress-commands",
-        "description": "A detailed explanation of all the custom Cypress Commands used in the app"
+        "description": "A detailed explanation of all the custom Cypress Commands used in the app",
+        "image": "custom-commands.svg"
       }
     ]
   },
