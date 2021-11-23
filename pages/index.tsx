@@ -3,7 +3,7 @@ import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeFeatures from "../components/Home/HomeFeatures"
 import HomeCoursesLayout from "../components/Home/HomeCoursesLayout"
-import HomeRealWorldExamples from "../components/Home/HomeRealWorldExamples"
+import RealWorldExamples from "../components/RealWorldExamples/RWEHero"
 import coursesJson from "../data/courses.json"
 import realWorldExamples from "../data/real-world-examples.json"
 import { progressService } from "../machines/progressService"
@@ -30,7 +30,7 @@ export default function Home({ content, courses }) {
         content={content}
         progressService={progressService}
       />
-      <HomeRealWorldExamples />
+      <RealWorldExamples showButton={true} />
     </Layout>
   )
 }

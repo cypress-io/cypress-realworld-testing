@@ -17,6 +17,7 @@ module.exports = {
         },
         indigo: {
           100: "#DADDFE",
+          400: "#6470F3",
         },
         jade: {
           50: "#E4FBF2",
