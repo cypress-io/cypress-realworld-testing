@@ -84,7 +84,7 @@
       "background": "bg-indigo-400",
       "card": "bg-indigo-200",
       "text-primary": "text-gray-50",
-      "text-secondary": "text-indigo-100"
+      "text-secondary": "text-gray-50"
     },
     "lessons": [
       {
@@ -186,7 +186,7 @@
       "background": "bg-indigo-400",
       "card": "bg-indigo-200",
       "text-primary": "text-gray-50",
-      "text-secondary": "text-indigo-50"
+      "text-secondary": "text-gray-50"
     },
     "lessons": [
       {

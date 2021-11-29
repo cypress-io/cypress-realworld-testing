@@ -31,7 +31,7 @@ export default function ExamplesLayout({ examples, index }) {
         </div>
         <div className="relative max-w-7xl mx-auto">
           <div
-            className={`mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-${examples.lessons.length} lg:max-w-none`}
+            className={`mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none`}
           >
             {examples.lessons.map((example, indx) => (
               <div
