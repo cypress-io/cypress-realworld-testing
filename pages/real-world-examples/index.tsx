@@ -26,7 +26,9 @@ export default function Home({ content, sections, rWESections }) {
 
       <RWEFeatures />
 
-      <ExamplesLayout examples={realWorldExamples["notifications"]} />
+      {rWESections.map((section, index) => (
+        <ExamplesLayout key={index} examples={realWorldExamples[section]} />
+      ))}
     </Layout>
   )
 }
