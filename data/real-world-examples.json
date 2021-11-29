@@ -143,10 +143,10 @@
     "title": "New Transactions",
     "slug": "new-transactions",
     "description": "Users can send and receive payments. Transactions can be filtered and searched.",
-    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "image": "/images/real-world-examples/new-transactions/new-transactions.svg",
     "colors": {
-      "background": "bg-white",
-      "card": "bg-indigo-400",
+      "background": "bg-indigo-100",
+      "card": "bg-indigo-300",
       "text-primary": "text-gray-900",
       "text-secondary": "text-gray-600"
     },
@@ -155,25 +155,25 @@
         "title": "New Transaction Overview and Setup",
         "slug": "new-transaction-overview-and-setup",
         "description": "Understand what is happening beforeEach() test is run",
-        "image": ""
+        "image": "overview.svg"
       },
       {
         "title": "Submitting a Payment to Another User",
         "slug": "submitting-a-payment-to-another-user",
         "description": "Verifies that users are able to send payments to one another",
-        "image": ""
+        "image": "payment.svg"
       },
       {
         "title": "Verifying the Deposit of a Payment",
         "slug": "verifying-the-deposit-of-a-payment",
         "description": "Verifies that a payment sent to another user updates that users account in the app and also in the database",
-        "image": ""
+        "image": "verify.svg"
       },
       {
         "title": "Searching by Attributes",
         "slug": "searching-by-attributes",
         "description": "Verifies that users can seach and filter transactions by attributes",
-        "image": ""
+        "image": "search.svg"
       }
     ]
   },

@@ -26,7 +26,7 @@ export default function Home({ content, sections, rWESections }) {
 
       <RWEFeatures />
 
-      <ExamplesLayout examples={realWorldExamples["bank-accounts"]} />
+      <ExamplesLayout examples={realWorldExamples["new-transactions"]} />
     </Layout>
   )
 }
