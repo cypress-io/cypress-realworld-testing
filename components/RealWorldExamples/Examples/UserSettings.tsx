@@ -3,12 +3,12 @@ import Link from "next/link"
 
 export default function ExamplesLayout({ examples }) {
   return (
-    <section data-test={`real-world-example-authentication`}>
+    <section data-test={`real-world-example-user-settings`}>
       <div className={`grid grid-cols-2 gap-8 p-16 h-full bg-indigo-400`}>
         <div className="w-6/12 mx-auto">
           <h3
             className={`mt-2 text-3xl font-extrabold text-gray-50 tracking-tight sm:text-4xl mb-8`}
-            data-test={`category-authentication-title`}
+            data-test={`user-settings-title`}
           >
             {examples.title}
           </h3>
@@ -49,13 +49,13 @@ export default function ExamplesLayout({ examples }) {
                     <div className="flex-1">
                       <p
                         className={`text-xl font-semibold text-gray-50`}
-                        data-test={`real-world-example-${indx}-title`}
+                        data-test={`user-settings-${indx}-title`}
                       >
                         {example.title}
                       </p>
                       <p
                         className={`mt-3 text-base text-indigo-100`}
-                        data-test={`real-world-example-${indx}-description`}
+                        data-test={`user-settings-${indx}-description`}
                       >
                         {example.description}
                       </p>

@@ -8,7 +8,7 @@ export default function ExamplesLayout({ examples }) {
         <div className="w-6/12 mx-auto">
           <h3
             className={`mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl mb-8`}
-            data-test={`category-authentication-title`}
+            data-test={`authentication-title`}
           >
             {examples.title}
           </h3>
@@ -49,13 +49,13 @@ export default function ExamplesLayout({ examples }) {
                     <div className="flex-1">
                       <p
                         className={`text-xl font-semibold text-gray-900`}
-                        data-test={`real-world-example-${indx}-title`}
+                        data-test={`authentication-${indx}-title`}
                       >
                         {example.title}
                       </p>
                       <p
                         className={`mt-3 text-base text-gray-600`}
-                        data-test={`real-world-example-${indx}-description`}
+                        data-test={`authentication-${indx}-description`}
                       >
                         {example.description}
                       </p>
