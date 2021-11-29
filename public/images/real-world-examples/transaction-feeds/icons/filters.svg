@@ -1,0 +1,20 @@
+<svg width="89" height="78" viewBox="0 0 89 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect y="10" width="88.6429" height="68" rx="5" fill="#3A46CC"/>
+<path d="M0 15C0 12.2386 2.23858 10 5 10H83.6429C86.4043 10 88.6429 12.2386 88.6429 15V28H0V15Z" fill="#9AA2FC"/>
+<rect x="24" width="8" height="20" rx="4" fill="#6470F3"/>
+<rect x="56" width="8" height="20" rx="4" fill="#6470F3"/>
+<circle cx="14" cy="41" r="4" fill="#C5C9FD"/>
+<circle cx="14" cy="54" r="4" fill="#C5C9FD"/>
+<circle cx="14" cy="67" r="4" fill="#C5C9FD"/>
+<circle cx="34" cy="41" r="4" fill="#C5C9FD"/>
+<circle cx="34" cy="54" r="4" fill="#C5C9FD"/>
+<circle cx="34" cy="67" r="4" fill="#C5C9FD"/>
+<circle cx="54" cy="41" r="4" fill="#C5C9FD"/>
+<circle cx="54" cy="54" r="4" fill="#C5C9FD"/>
+<circle cx="54" cy="67" r="4" fill="#C5C9FD"/>
+<circle cx="74" cy="41" r="4" fill="#C5C9FD"/>
+<circle cx="74" cy="54" r="4" fill="#C5C9FD"/>
+<circle cx="74" cy="67" r="4" fill="#C5C9FD"/>
+<rect width="48" height="8" rx="4" transform="matrix(-1 0 0 1 78 37)" fill="#69D3A7"/>
+<rect width="28" height="8" rx="4" transform="matrix(-1 0 0 1 38 50)" fill="#69D3A7"/>
+</svg>

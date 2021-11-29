@@ -181,43 +181,43 @@
     "title": "Transaction Feeds",
     "slug": "transaction-feeds",
     "description": "The application UI renders the correct transactions in different states.",
-    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "image": "/images/real-world-examples/transaction-feeds/transaction-feeds.svg",
     "colors": {
-      "background": "bg-white",
-      "card": "bg-indigo-400",
-      "text-primary": "text-gray-900",
-      "text-secondary": "text-gray-600"
+      "background": "bg-indigo-400",
+      "card": "bg-indigo-200",
+      "text-primary": "text-gray-50",
+      "text-secondary": "text-indigo-50"
     },
     "lessons": [
       {
         "title": "Transaction Feeds Overview and Setup",
         "slug": "transaction-feeds-overview-and-setup",
         "description": "Understand what is happening beforeEach() test is run",
-        "image": ""
+        "image": "overview.svg"
       },
       {
         "title": "App Layout and Responsiveness",
         "slug": "app-layout-and-responsiveness",
         "description": "Verifies the UI displays the correct components and layout between desktop and mobile",
-        "image": ""
+        "image": "responsive.svg"
       },
       {
         "title": "Renders Transactions Item Variations in Feed",
         "slug": "renders-transactions-item-variations-in-feed",
         "description": "Verfifies the correct transaction and is rendered dependent upon its state and status",
-        "image": ""
+        "image": "renders.svg"
       },
       {
         "title": "Filters Transaction Feeds by Date Range",
         "slug": "filters-transaction-feeds-by-date-range",
         "description": "Verifies that users can filter transactions using a date range picker",
-        "image": ""
+        "image": "filters.svg"
       },
       {
         "title": "Mine Feed Only Shows Personal Transactions",
         "slug": "mine-feed-only-shows-personal-transactions",
         "description": "Verifies that the personal tab only displays transactions for the currently logged in user",
-        "image": ""
+        "image": "personal-transactions.svg"
       }
     ]
   },
@@ -225,7 +225,7 @@
     "title": "Notifications",
     "slug": "notifications",
     "description": "Notifications and their relationships with users.",
-    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "image": "/images/real-world-examples/notifications/notifications.svg",
     "colors": {
       "background": "bg-white",
       "card": "bg-indigo-400",
@@ -237,19 +237,19 @@
         "title": "Notifications Overview and Setup",
         "slug": "notifications-overview-and-setup",
         "description": "Understand what is happening beforeEach() test is run",
-        "image": ""
+        "image": "overview.svg"
       },
       {
         "title": "Renders an Empty Notifications State",
         "slug": "renders-an-empty-notifications-state",
         "description": "Verifies that there are no notifications by default",
-        "image": ""
+        "image": "empty.svg"
       },
       {
         "title": "Notifications between several users",
         "slug": "notifications-between-several-users",
         "description": "Verifies that notifications are triggered and displayed between three different users",
-        "image": ""
+        "image": "users.svg"
       }
     ]
   },
