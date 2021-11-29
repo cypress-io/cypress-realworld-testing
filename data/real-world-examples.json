@@ -5,7 +5,7 @@
     "description": "What you need to know to understand the examples below",
     "image": "/images/real-world-examples/overview/overview.svg",
     "colors": {
-      "background": "bg-white-100",
+      "background": "bg-white",
       "card": "bg-indigo-400",
       "text-primary": "text-gray-900",
       "text-secondary": "text-gray-600"
