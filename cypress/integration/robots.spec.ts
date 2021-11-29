@@ -1,7 +1,7 @@
 if (Cypress.platform === "linux") {
   describe("Robots.txt", function () {
-    it("allows all pages to be crawled", function () {
-      cy.request("/robots.txt").its("body").should("contain", "Allow: /")
+    it("disallows all pages to be crawled", function () {
+      cy.request("/robots.txt").its("body").should("contain", "Disallow: /")
     })
 
     it("allows all user agents", function () {
