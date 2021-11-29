@@ -2,7 +2,7 @@ import Head from "next/head"
 import Layout from "../../components/Layout"
 import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
 import RWEHero from "../../components/RealWorldExamples/RWEHero"
-import ExamplesLayout from "../../components/RealWorldExamples/ExamplesLayout"
+import RealWorldExamples from "../../components/RealWorldExamples/RealWorldExamples"
 import { progressService } from "../../machines/progressService"
 import coursesJson from "../../data/courses.json"
 import realWorldExamples from "../../data/real-world-examples.json"
@@ -27,7 +27,11 @@ export default function Home({ content, sections, rWESections }) {
       <RWEFeatures />
 
       {rWESections.map((section, index) => (
-        <ExamplesLayout key={index} examples={realWorldExamples[section]} />
+        <RealWorldExamples
+          key={index}
+          examples={realWorldExamples[section]}
+          index={index}
+        />
       ))}
     </Layout>
   )

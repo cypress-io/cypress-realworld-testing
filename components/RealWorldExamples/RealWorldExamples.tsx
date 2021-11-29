@@ -1,14 +1,15 @@
 import Image from "next/image"
 
-export default function ExamplesLayout({ examples }) {
+export default function ExamplesLayout({ examples, index }) {
   return (
-    <>
+    <section data-test={`real-world-example-${index}`}>
       <div
         className={`grid grid-cols-2 gap-8 p-16 h-full ${examples.colors.background}`}
       >
         <div className="w-6/12 mx-auto">
           <h3
             className={`mt-2 text-3xl font-extrabold ${examples.colors["text-primary"]} tracking-tight sm:text-4xl mb-8`}
+            data-test={`category-${index}-title`}
           >
             {examples.title}
           </h3>
@@ -32,7 +33,7 @@ export default function ExamplesLayout({ examples }) {
           <div
             className={`mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-${examples.lessons.length} lg:max-w-none`}
           >
-            {examples.lessons.map((example) => (
+            {examples.lessons.map((example, indx) => (
               <div
                 key={example.title}
                 className="flex flex-col rounded-lg shadow-lg overflow-hidden"
@@ -52,11 +53,13 @@ export default function ExamplesLayout({ examples }) {
                     >
                       <p
                         className={`text-xl font-semibold ${examples.colors["text-primary"]}`}
+                        data-test={`real-world-example-${indx}-title`}
                       >
                         {example.title}
                       </p>
                       <p
                         className={`mt-3 text-base ${examples.colors["text-secondary"]}`}
+                        data-test={`real-world-example-${indx}-description`}
                       >
                         {example.description}
                       </p>
@@ -68,6 +71,6 @@ export default function ExamplesLayout({ examples }) {
           </div>
         </div>
       </div>
-    </>
+    </section>
   )
 }

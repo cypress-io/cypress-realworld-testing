@@ -13,33 +13,19 @@ describe("RWE Landing Page", function () {
       const title = realWorldExamples[lesson].title
       const lessons = realWorldExamples[lesson].lessons
 
-      cy.getBySel(`real-world-example-${index}`).within(($lesson) => {
+      cy.getBySel(`real-world-example-${index}`).within(() => {
+        cy.getBySel(`category-${index}-title`).contains(title)
+
         _.each(lessons, (lesson, index) => {
           const lessonTitle = lessons[index].title
-          cy.getBySel(`real-world-lesson-${index}`).contains(lessonTitle)
+          const lessonDescription = lessons[index].description
+
+          cy.getBySel(`real-world-example-${index}-title`).contains(lessonTitle)
+          cy.getBySel(`real-world-example-${index}-description`).contains(
+            lessonDescription
+          )
         })
       })
-    })
-  })
-
-  context("Example Progress Sidebar", () => {
-    it("the examples in the progress sidebar link to the correct examples", () => {
-      cy.visit("/real-world-examples/authentication-overview-and-setup")
-
-      cy.getBySel("real-world-lesson-1").click()
-      cy.location("pathname").should(
-        "eq",
-        "/real-world-examples/unauthenticated-users"
-      )
-
-      cy.getBySel("real-world-lesson-3").click()
-      cy.location("pathname").should("eq", "/real-world-examples/invalid-users")
-
-      cy.getBySel("real-world-lesson-4").click()
-      cy.location("pathname").should(
-        "eq",
-        "/real-world-examples/sign-up-login-create-bank-account-and-logout"
-      )
     })
   })
 })
