@@ -1,7 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme")
 
 module.exports = {
-  mode: "jit",
+  // mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -17,6 +17,8 @@ module.exports = {
         },
         indigo: {
           100: "#DADDFE",
+          200: "#C5C9FD",
+          300: "#9AA2FC",
           400: "#6470F3",
         },
         jade: {
@@ -28,6 +30,9 @@ module.exports = {
         teal: {
           500: "#007780",
           600: "#00595D",
+        },
+        white: {
+          100: "#F8F9FF",
         },
       },
     },

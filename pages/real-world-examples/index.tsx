@@ -1,7 +1,6 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
 import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
-import RWETests from "../../components/RealWorldExamples/RWETests"
 import RWEHero from "../../components/RealWorldExamples/RWEHero"
 import ExamplesLayout from "../../components/RealWorldExamples/ExamplesLayout"
 import { progressService } from "../../machines/progressService"
@@ -27,13 +26,7 @@ export default function Home({ content, sections, rWESections }) {
 
       <RWEFeatures />
 
-      <ExamplesLayout examples={realWorldExamples["overview"]} />
-
-      <RWETests
-        sections={rWESections}
-        content={realWorldExamples}
-        progressService={progressService}
-      />
+      <ExamplesLayout examples={realWorldExamples["bank-accounts"]} />
     </Layout>
   )
 }

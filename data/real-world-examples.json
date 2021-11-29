@@ -4,6 +4,12 @@
     "slug": "overview",
     "description": "What you need to know to understand the examples below",
     "image": "/images/real-world-examples/overview/overview.svg",
+    "colors": {
+      "background": "bg-white-100",
+      "card": "bg-indigo-400",
+      "text-primary": "text-gray-900",
+      "text-secondary": "text-gray-600"
+    },
     "lessons": [
       {
         "title": "Cypress Real World App Overview",
@@ -29,32 +35,43 @@
     "title": "Authentication",
     "slug": "authentication",
     "description": "Users can signup, login and logout. Errors are displayed and handled correctly.",
-    "image": "/images/real-world-examples/auth.png",
+    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "colors": {
+      "background": "bg-indigo-100",
+      "card": "bg-indigo-300",
+      "text-primary": "text-gray-900",
+      "text-secondary": "text-gray-600"
+    },
     "lessons": [
       {
         "title": "Authentication Overview and Setup",
         "slug": "authentication-overview-and-setup",
-        "description": "Understand what is happening beforeEach() test is run"
+        "description": "Understand what is happening beforeEach() test is run",
+        "image": "overview.svg"
       },
       {
         "title": "Unauthenticated Users",
         "slug": "unauthenticated-users",
-        "description": "Verifies that unauthenticated users cannot access the app."
+        "description": "Verifies that unauthenticated users cannot access the app.",
+        "image": "unauthenticated-users.svg"
       },
       {
         "title": "Login Errors",
         "slug": "login-errors",
-        "description": "Verifies that the login form validation works and renders the correct error messages"
+        "description": "Verifies that the login form validation works and renders the correct error messages",
+        "image": "login-errors.svg"
       },
       {
         "title": "Invalid Users",
         "slug": "invalid-users",
-        "description": "Verifies users with an incorrect username and/or password cannot access the app."
+        "description": "Verifies users with an incorrect username and/or password cannot access the app.",
+        "image": "invalid-users.svg"
       },
       {
         "title": "Sign-up, Login, Create Bank Account and Logout",
         "slug": "sign-up-login-create-bank-account-and-logout",
-        "description": "A User Journey Test. This single test ensures a user can sign up for an account, log in to that account, add their bank account, and log out."
+        "description": "A User Journey Test. This single test ensures a user can sign up for an account, log in to that account, add their bank account, and log out.",
+        "image": "sign-up.svg"
       }
     ]
   },
@@ -62,22 +79,31 @@
     "title": "User Settings",
     "slug": "user-settings",
     "description": "Users can update their account settings. Errors are displayed and handled correctly.",
-    "image": "/images/real-world-examples/user-settings.png",
+    "image": "/images/real-world-examples/user-settings/user-settings.svg",
+    "colors": {
+      "background": "bg-indigo-400",
+      "card": "bg-indigo-200",
+      "text-primary": "text-gray-900",
+      "text-secondary": "text-gray-600"
+    },
     "lessons": [
       {
         "title": "User Settings Overview and Setup",
         "slug": "user-settings-overview-and-setup",
-        "description": "Understand what is happening beforeEach() test is run"
+        "description": "Understand what is happening beforeEach() test is run",
+        "image": "overview.svg"
       },
       {
         "title": "User Setting Form Errors",
         "slug": "user-setting-form-errors",
-        "description": "Verifies that the user settings form validation works and renders the correct error messages"
+        "description": "Verifies that the user settings form validation works and renders the correct error messages",
+        "image": "form-errors.svg"
       },
       {
         "title": "Updating User Settings",
         "slug": "updating-user-settings",
-        "description": "Verifies that a user is able to update their peronsal info and settings"
+        "description": "Verifies that a user is able to update their personal info and settings",
+        "image": "user-settings.svg"
       }
     ]
   },
@@ -85,22 +111,31 @@
     "title": "Bank Accounts",
     "slug": "bank-accounts",
     "description": "Users can add and remove bank accounts.",
-    "image": "/images/real-world-examples/bank-accounts.png",
+    "image": "/images/real-world-examples/bank-accounts/bank-accounts.svg",
+    "colors": {
+      "background": "bg-white",
+      "card": "bg-indigo-400",
+      "text-primary": "text-gray-900",
+      "text-secondary": "text-gray-600"
+    },
     "lessons": [
       {
         "title": "Bank Accounts Overview and Setup",
         "slug": "bank-accounts-overview-and-setup",
-        "description": "Understand what is happening beforeEach() test is run"
+        "description": "Understand what is happening beforeEach() test is run",
+        "image": "overview.svg"
       },
       {
         "title": "Creating a New Bank Account",
         "slug": "creating-a-new-bank-account",
-        "description": "Verifies that users are able to add and create new bank accounts"
+        "description": "Verifies that users are able to add and create new bank accounts",
+        "image": "new-bank-account.svg"
       },
       {
         "title": "Users Without Bank Accounts",
         "slug": "users-without-bank-accounts",
-        "description": "Verifies that the UI displays the correct content when a user does not have a bank account"
+        "description": "Verifies that the UI displays the correct content when a user does not have a bank account",
+        "image": "without-bank-accounts.svg"
       }
     ]
   },
@@ -108,27 +143,37 @@
     "title": "New Transactions",
     "slug": "new-transactions",
     "description": "Users can send and receive payments. Transactions can be filtered and searched.",
-    "image": "/images/real-world-examples/new-transactions.png",
+    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "colors": {
+      "background": "bg-white",
+      "card": "bg-indigo-400",
+      "text-primary": "text-gray-900",
+      "text-secondary": "text-gray-600"
+    },
     "lessons": [
       {
         "title": "New Transaction Overview and Setup",
         "slug": "new-transaction-overview-and-setup",
-        "description": "Understand what is happening beforeEach() test is run"
+        "description": "Understand what is happening beforeEach() test is run",
+        "image": ""
       },
       {
         "title": "Submitting a Payment to Another User",
         "slug": "submitting-a-payment-to-another-user",
-        "description": "Verifies that users are able to send payments to one another"
+        "description": "Verifies that users are able to send payments to one another",
+        "image": ""
       },
       {
         "title": "Verifying the Deposit of a Payment",
         "slug": "verifying-the-deposit-of-a-payment",
-        "description": "Verifies that a payment sent to another user updates that users account in the app and also in the database"
+        "description": "Verifies that a payment sent to another user updates that users account in the app and also in the database",
+        "image": ""
       },
       {
         "title": "Searching by Attributes",
         "slug": "searching-by-attributes",
-        "description": "Verifies that users can seach and filter transactions by attributes"
+        "description": "Verifies that users can seach and filter transactions by attributes",
+        "image": ""
       }
     ]
   },
@@ -136,32 +181,43 @@
     "title": "Transaction Feeds",
     "slug": "transaction-feeds",
     "description": "The application UI renders the correct transactions in different states.",
-    "image": "/images/real-world-examples/transaction-feeds.png",
+    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "colors": {
+      "background": "bg-white",
+      "card": "bg-indigo-400",
+      "text-primary": "text-gray-900",
+      "text-secondary": "text-gray-600"
+    },
     "lessons": [
       {
         "title": "Transaction Feeds Overview and Setup",
         "slug": "transaction-feeds-overview-and-setup",
-        "description": "Understand what is happening beforeEach() test is run"
+        "description": "Understand what is happening beforeEach() test is run",
+        "image": ""
       },
       {
         "title": "App Layout and Responsiveness",
         "slug": "app-layout-and-responsiveness",
-        "description": "Verifies the UI displays the correct components and layout between desktop and mobile"
+        "description": "Verifies the UI displays the correct components and layout between desktop and mobile",
+        "image": ""
       },
       {
         "title": "Renders Transactions Item Variations in Feed",
         "slug": "renders-transactions-item-variations-in-feed",
-        "description": "Verfifies the correct transaction and is rendered dependent upon its state and status"
+        "description": "Verfifies the correct transaction and is rendered dependent upon its state and status",
+        "image": ""
       },
       {
         "title": "Filters Transaction Feeds by Date Range",
         "slug": "filters-transaction-feeds-by-date-range",
-        "description": "Verifies that users can filter transactions using a date range picker"
+        "description": "Verifies that users can filter transactions using a date range picker",
+        "image": ""
       },
       {
         "title": "Mine Feed Only Shows Personal Transactions",
         "slug": "mine-feed-only-shows-personal-transactions",
-        "description": "Verifies that the personal tab only displays transactions for the currently logged in user"
+        "description": "Verifies that the personal tab only displays transactions for the currently logged in user",
+        "image": ""
       }
     ]
   },
@@ -169,22 +225,31 @@
     "title": "Notifications",
     "slug": "notifications",
     "description": "Notifications and their relationships with users.",
-    "image": "/images/real-world-examples/notifications.png",
+    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "colors": {
+      "background": "bg-white",
+      "card": "bg-indigo-400",
+      "text-primary": "text-gray-900",
+      "text-secondary": "text-gray-600"
+    },
     "lessons": [
       {
         "title": "Notifications Overview and Setup",
         "slug": "notifications-overview-and-setup",
-        "description": "Understand what is happening beforeEach() test is run"
+        "description": "Understand what is happening beforeEach() test is run",
+        "image": ""
       },
       {
         "title": "Renders an Empty Notifications State",
         "slug": "renders-an-empty-notifications-state",
-        "description": "Verifies that there are no notifications by default"
+        "description": "Verifies that there are no notifications by default",
+        "image": ""
       },
       {
         "title": "Notifications between several users",
         "slug": "notifications-between-several-users",
-        "description": "Verifies that notifications are triggered and displayed between three different users"
+        "description": "Verifies that notifications are triggered and displayed between three different users",
+        "image": ""
       }
     ]
   },
@@ -192,32 +257,43 @@
     "title": "Transaction View",
     "slug": "transaction-view",
     "description": "Transaction details display the correct information in various states.",
-    "image": "/images/real-world-examples/transaction-view.png",
+    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "colors": {
+      "background": "bg-white",
+      "card": "bg-indigo-400",
+      "text-primary": "text-gray-900",
+      "text-secondary": "text-gray-600"
+    },
     "lessons": [
       {
         "title": "Transaction View Overview and Setup",
         "slug": "transaction-view-overview-and-setup",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "image": ""
       },
       {
         "title": "Transactions Navigation Tabs are Hidden on a Transaction View Page",
         "slug": "transactions-navigation-tabs-are-hidden-on-a-transaction-view-page",
-        "description": "Verifies that the navigation tabs are hidden by default on the transaction view page"
+        "description": "Verifies that the navigation tabs are hidden by default on the transaction view page",
+        "image": ""
       },
       {
         "title": "Comments on a Transaction",
         "slug": "comments-on-a-transaction",
-        "description": "Verifies that comments for transactions work correctly"
+        "description": "Verifies that comments for transactions work correctly",
+        "image": ""
       },
       {
         "title": "Rejects a Transaction Request",
         "slug": "rejects-a-transaction-request",
-        "description": "Verifies that the reject request button does in fact reject the transaction"
+        "description": "Verifies that the reject request button does in fact reject the transaction",
+        "image": ""
       },
       {
         "title": "Does not Display Accept or Reject Buttons on Completed Request",
         "slug": "does-not-display-accept-reject-buttons-on-completed-request",
-        "description": "Verfies that completed requests do not display the accept or reject buttons"
+        "description": "Verfies that completed requests do not display the accept or reject buttons",
+        "image": ""
       }
     ]
   }
