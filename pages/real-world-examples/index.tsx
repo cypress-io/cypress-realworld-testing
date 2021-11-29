@@ -14,7 +14,7 @@ import { progressService } from "../../machines/progressService"
 import coursesJson from "../../data/courses.json"
 import realWorldExamples from "../../data/real-world-examples.json"
 
-export default function Home({ content, sections, rWESections }) {
+export default function Home({ content, sections }) {
   return (
     <Layout
       content={content}
@@ -47,13 +47,11 @@ export default function Home({ content, sections, rWESections }) {
 
 export const getStaticProps = async () => {
   const sections = Object.keys(coursesJson)
-  const rWESections = Object.keys(realWorldExamples)
   return {
     props: {
       content: coursesJson,
       sections,
       realWorldExamples,
-      rWESections,
     },
   }
 }
