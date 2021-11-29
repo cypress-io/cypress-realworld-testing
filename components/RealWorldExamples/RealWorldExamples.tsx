@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 export default function ExamplesLayout({ examples, index }) {
   return (
@@ -34,23 +35,22 @@ export default function ExamplesLayout({ examples, index }) {
             className={`mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none`}
           >
             {examples.lessons.map((example, indx) => (
-              <div
+              <Link
+                href={`/real-world-examples/${example.slug}`}
                 key={example.title}
-                className="flex flex-col rounded-lg shadow-lg overflow-hidden"
               >
-                <div className={`p-8 ${examples.colors.card}`}>
-                  <img
-                    className="mx-auto"
-                    src={`/images/real-world-examples/${examples.slug}/icons/${example.image}`}
-                    alt=""
-                  />
-                </div>
-                <div className="flex-1 bg-white p-6 flex flex-col justify-between">
-                  <div className="flex-1">
-                    <a
-                      href={`/real-world-examples/${example.slug}`}
-                      className="block mt-2"
-                    >
+                <a className="flex flex-col rounded-lg shadow-lg overflow-hidden">
+                  <div className={`p-8 text-center ${examples.colors.card}`}>
+                    <Image
+                      className="mx-auto"
+                      src={`/images/real-world-examples/${examples.slug}/icons/${example.image}`}
+                      alt=""
+                      width="200"
+                      height="100"
+                    />
+                  </div>
+                  <div className="flex-1 bg-white p-6 flex flex-col justify-between">
+                    <div className="flex-1">
                       <p
                         className={`text-xl font-semibold ${examples.colors["text-primary"]}`}
                         data-test={`real-world-example-${indx}-title`}
@@ -63,10 +63,10 @@ export default function ExamplesLayout({ examples, index }) {
                       >
                         {example.description}
                       </p>
-                    </a>
+                    </div>
                   </div>
-                </div>
-              </div>
+                </a>
+              </Link>
             ))}
           </div>
         </div>
