@@ -3,7 +3,7 @@
     "title": "Overview",
     "slug": "overview",
     "description": "What you need to know to understand the examples below",
-    "image": "/images/real-world-examples/overview/overview.svg",
+    "image": "/images/real-world-examples/overview/overview.png",
     "lessons": [
       {
         "title": "Cypress Real World App Overview",
@@ -29,7 +29,7 @@
     "title": "Authentication",
     "slug": "authentication",
     "description": "Users can signup, login and logout. Errors are displayed and handled correctly.",
-    "image": "/images/real-world-examples/authentication/authentication.svg",
+    "image": "/images/real-world-examples/authentication/authentication.png",
     "lessons": [
       {
         "title": "Authentication Overview and Setup",
@@ -67,7 +67,7 @@
     "title": "User Settings",
     "slug": "user-settings",
     "description": "Users can update their account settings. Errors are displayed and handled correctly.",
-    "image": "/images/real-world-examples/user-settings/user-settings.svg",
+    "image": "/images/real-world-examples/user-settings/user-settings.png",
     "lessons": [
       {
         "title": "User Settings Overview and Setup",
@@ -93,7 +93,7 @@
     "title": "Bank Accounts",
     "slug": "bank-accounts",
     "description": "Users can add and remove bank accounts.",
-    "image": "/images/real-world-examples/bank-accounts/bank-accounts.svg",
+    "image": "/images/real-world-examples/bank-accounts/bank-accounts.png",
     "lessons": [
       {
         "title": "Bank Accounts Overview and Setup",
@@ -119,7 +119,7 @@
     "title": "New Transactions",
     "slug": "new-transactions",
     "description": "Users can send and receive payments. Transactions can be filtered and searched.",
-    "image": "/images/real-world-examples/new-transactions/new-transactions.svg",
+    "image": "/images/real-world-examples/new-transactions/new-transactions.png",
     "lessons": [
       {
         "title": "New Transaction Overview and Setup",
@@ -151,7 +151,7 @@
     "title": "Transaction Feeds",
     "slug": "transaction-feeds",
     "description": "The application UI renders the correct transactions in different states.",
-    "image": "/images/real-world-examples/transaction-feeds/transaction-feeds.svg",
+    "image": "/images/real-world-examples/transaction-feeds/transaction-feeds.png",
     "lessons": [
       {
         "title": "Transaction Feeds Overview and Setup",
@@ -189,7 +189,7 @@
     "title": "Notifications",
     "slug": "notifications",
     "description": "Notifications and their relationships with users.",
-    "image": "/images/real-world-examples/notifications/notifications.svg",
+    "image": "/images/real-world-examples/notifications/notifications.png",
     "lessons": [
       {
         "title": "Notifications Overview and Setup",
@@ -215,7 +215,7 @@
     "title": "Transaction View",
     "slug": "transaction-view",
     "description": "Transaction details display the correct information in various states.",
-    "image": "/images/real-world-examples/transaction-view/transaction-view.svg",
+    "image": "/images/real-world-examples/transaction-view/transaction-view.png",
     "lessons": [
       {
         "title": "Transaction View Overview and Setup",
