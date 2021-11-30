@@ -1,10 +1,12 @@
+import Image from "next/image"
+
 export default function HomeHero() {
   return (
     <>
       <div className="relative overflow-hidden">
         <main>
-          <div className="pt-10 bg-white sm:pt-16 lg:pt-8 lg:pb-14 lg:overflow-hidden">
-            <div className="mx-auto max-w-7xl lg:px-8">
+          <div className="pt-10 bg-white sm:pt-16 lg:pt-8 lg:overflow-hidden">
+            <div className="mx-auto w-full lg:pl-8">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                 <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
                   <div className="lg:py-24">
@@ -85,9 +87,11 @@ export default function HomeHero() {
                 </div>
                 <div className="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
                   <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-                    <img
+                    <Image
                       className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
                       src="/images/home/hero.svg"
+                      alt="Home Page Hero Image"
+                      layout="fill"
                     />
                   </div>
                 </div>
