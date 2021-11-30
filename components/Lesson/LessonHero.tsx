@@ -23,11 +23,7 @@ export default function LessonHero(props) {
                   className="relative block w-full bg-white rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   <span className="sr-only">Watch our video to learn more</span>
-                  <img
-                    className="w-full"
-                    src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt=""
-                  />
+                  {/* Video Goes Here */}
                   <div
                     className="absolute inset-0 w-full h-full flex items-center justify-center"
                     aria-hidden="true"
