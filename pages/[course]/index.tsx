@@ -28,12 +28,10 @@ export default function SectionPage({
       <CourseHero
         title={title}
         description={description}
-        image={content[course].image}
+        learnFeatures={learnFeatures}
       />
       <CourseContent
-        title={title}
         lessons={lessons}
-        learnFeatures={learnFeatures}
         progressService={progressService}
         course={course}
       />

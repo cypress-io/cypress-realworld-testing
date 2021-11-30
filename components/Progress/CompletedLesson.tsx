@@ -10,7 +10,7 @@ export default function CompletedLesson({ index }: Props) {
       <span className="h-9 flex items-center">
         <span
           data-test={`lesson-complete-${index}`}
-          className="relative z-10 w-8 h-8 flex items-center justify-center bg-teal-500 rounded-full group-hover:bg-indigo-800"
+          className="relative z-10 w-8 h-8 flex items-center justify-center bg-jade-300 rounded-full group-hover:bg-indigo-800"
         >
           <CheckIcon className="w-5 h-5 text-white" aria-hidden="true" />
         </span>
