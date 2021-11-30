@@ -28,13 +28,11 @@ export default function Footer() {
         {/* Email Subscription */}
         <div className="py-12 lg:flex lg:items-center lg:justify-between lg:max-w-7xl lg:mx-auto xl:mt-0">
           <div>
-            <h2 className="text-jade-100 tracking-wider font-bold text-3xl mb-2">
+            <p className="text-jade-100 tracking-wider font-bold text-3xl mb-2">
               Stay in the loop
-            </h2>
+            </p>
 
-            <h3 className="text-gray-50 tracking-wider">
-              Subscribe for updates
-            </h3>
+            <p className="text-gray-50 tracking-wider">Subscribe for updates</p>
             {/* <p className="mt-2 text-base text-gray-500">
             The latest updates sent to your inbox.
           </p> */}
