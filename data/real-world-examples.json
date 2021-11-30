@@ -172,7 +172,7 @@
       {
         "title": "Searching by Attributes",
         "slug": "searching-by-attributes",
-        "description": "Verifies that users can seach and filter transactions by attributes",
+        "description": "Verifies that users can search and filter transactions by attributes",
         "image": "search.svg"
       }
     ]
