@@ -28,7 +28,7 @@ export default function Footer() {
         {/* Email Subscription */}
         <div className="py-8 lg:flex lg:items-center lg:justify-between lg:max-w-7xl lg:mx-auto xl:mt-0">
           <div>
-            <h3 className="text-gray-50 tracking-wider uppercase">
+            <h3 className="text-gray-50 tracking-wider">
               Subscribe for updates
             </h3>
             {/* <p className="mt-2 text-base text-gray-500">
@@ -49,10 +49,7 @@ export default function Footer() {
               placeholder="Enter your email"
             />
             <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-              <button
-                type="submit"
-                className="w-full bg-jade-300 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-lg text-teal-600 font-semibold"
-              >
+              <button className="w-full bg-jade-300 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-lg text-teal-600">
                 Subscribe
               </button>
             </div>
