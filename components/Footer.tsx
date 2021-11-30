@@ -26,8 +26,12 @@ export default function Footer() {
       <hr />
       <footer className="bg-teal-500">
         {/* Email Subscription */}
-        <div className="py-8 lg:flex lg:items-center lg:justify-between lg:max-w-7xl lg:mx-auto xl:mt-0">
+        <div className="py-12 lg:flex lg:items-center lg:justify-between lg:max-w-7xl lg:mx-auto xl:mt-0">
           <div>
+            <h2 className="text-jade-100 tracking-wider font-bold text-3xl mb-2">
+              Stay in the loop
+            </h2>
+
             <h3 className="text-gray-50 tracking-wider">
               Subscribe for updates
             </h3>
