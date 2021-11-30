@@ -4,12 +4,6 @@
     "slug": "overview",
     "description": "What you need to know to understand the examples below",
     "image": "/images/real-world-examples/overview/overview.svg",
-    "colors": {
-      "background": "bg-white",
-      "card": "bg-indigo-400",
-      "text-primary": "text-gray-900",
-      "text-secondary": "text-gray-600"
-    },
     "lessons": [
       {
         "title": "Cypress Real World App Overview",
@@ -36,12 +30,6 @@
     "slug": "authentication",
     "description": "Users can signup, login and logout. Errors are displayed and handled correctly.",
     "image": "/images/real-world-examples/authentication/authentication.svg",
-    "colors": {
-      "background": "bg-indigo-100",
-      "card": "bg-indigo-300",
-      "text-primary": "text-gray-900",
-      "text-secondary": "text-gray-600"
-    },
     "lessons": [
       {
         "title": "Authentication Overview and Setup",
@@ -80,12 +68,6 @@
     "slug": "user-settings",
     "description": "Users can update their account settings. Errors are displayed and handled correctly.",
     "image": "/images/real-world-examples/user-settings/user-settings.svg",
-    "colors": {
-      "background": "bg-indigo-400",
-      "card": "bg-indigo-200",
-      "text-primary": "text-gray-50",
-      "text-secondary": "text-indigo-100"
-    },
     "lessons": [
       {
         "title": "User Settings Overview and Setup",
@@ -112,12 +94,6 @@
     "slug": "bank-accounts",
     "description": "Users can add and remove bank accounts.",
     "image": "/images/real-world-examples/bank-accounts/bank-accounts.svg",
-    "colors": {
-      "background": "bg-white",
-      "card": "bg-indigo-400",
-      "text-primary": "text-gray-900",
-      "text-secondary": "text-gray-600"
-    },
     "lessons": [
       {
         "title": "Bank Accounts Overview and Setup",
@@ -144,12 +120,6 @@
     "slug": "new-transactions",
     "description": "Users can send and receive payments. Transactions can be filtered and searched.",
     "image": "/images/real-world-examples/new-transactions/new-transactions.svg",
-    "colors": {
-      "background": "bg-indigo-100",
-      "card": "bg-indigo-300",
-      "text-primary": "text-gray-900",
-      "text-secondary": "text-gray-600"
-    },
     "lessons": [
       {
         "title": "New Transaction Overview and Setup",
@@ -182,12 +152,6 @@
     "slug": "transaction-feeds",
     "description": "The application UI renders the correct transactions in different states.",
     "image": "/images/real-world-examples/transaction-feeds/transaction-feeds.svg",
-    "colors": {
-      "background": "bg-indigo-400",
-      "card": "bg-indigo-200",
-      "text-primary": "text-gray-50",
-      "text-secondary": "text-indigo-50"
-    },
     "lessons": [
       {
         "title": "Transaction Feeds Overview and Setup",
@@ -226,12 +190,6 @@
     "slug": "notifications",
     "description": "Notifications and their relationships with users.",
     "image": "/images/real-world-examples/notifications/notifications.svg",
-    "colors": {
-      "background": "bg-white",
-      "card": "bg-indigo-400",
-      "text-primary": "text-gray-900",
-      "text-secondary": "text-gray-600"
-    },
     "lessons": [
       {
         "title": "Notifications Overview and Setup",
@@ -258,12 +216,6 @@
     "slug": "transaction-view",
     "description": "Transaction details display the correct information in various states.",
     "image": "/images/real-world-examples/transaction-view/transaction-view.svg",
-    "colors": {
-      "background": "bg-indigo-100",
-      "card": "bg-indigo-300",
-      "text-primary": "text-gray-900",
-      "text-secondary": "text-gray-600"
-    },
     "lessons": [
       {
         "title": "Transaction View Overview and Setup",

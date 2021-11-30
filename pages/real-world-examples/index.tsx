@@ -2,7 +2,6 @@ import Head from "next/head"
 import Layout from "../../components/Layout"
 import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
 import RWEHero from "../../components/RealWorldExamples/RWEHero"
-// import RealWorldExamples from "../../components/RealWorldExamples/RealWorldExamples"
 import Overview from "../../components/RealWorldExamples/Examples/Overview"
 import Authentication from "../../components/RealWorldExamples/Examples/Authentication"
 import UserSettings from "../../components/RealWorldExamples/Examples/UserSettings"
@@ -14,14 +13,8 @@ import TransactionView from "../../components/RealWorldExamples/Examples/Transac
 import { progressService } from "../../machines/progressService"
 import coursesJson from "../../data/courses.json"
 import realWorldExamples from "../../data/real-world-examples.json"
-import dynamic from "next/dynamic"
 
-const RealWorldExamples = dynamic(
-  () => import("../../components/RealWorldExamples/RealWorldExamples"),
-  { ssr: false }
-)
-
-export default function Home({ content, sections, rWESections }) {
+export default function Home({ content, sections }) {
   return (
     <Layout
       content={content}
@@ -40,35 +33,25 @@ export default function Home({ content, sections, rWESections }) {
 
       <RWEFeatures />
 
-      {rWESections.map((section, index) => (
-        <RealWorldExamples
-          key={index}
-          examples={realWorldExamples[section]}
-          index={index}
-        />
-      ))}
-
-      {/* <Overview examples={realWorldExamples["overview"]} />
+      <Overview examples={realWorldExamples["overview"]} />
       <Authentication examples={realWorldExamples["authentication"]} />
       <UserSettings examples={realWorldExamples["user-settings"]} />
       <BankAccounts examples={realWorldExamples["bank-accounts"]} />
       <NewTransactions examples={realWorldExamples["new-transactions"]} />
       <TransactionFeeds examples={realWorldExamples["transaction-feeds"]} />
       <Notifications examples={realWorldExamples["notifications"]} />
-      <TransactionView examples={realWorldExamples["transaction-view"]} /> */}
+      <TransactionView examples={realWorldExamples["transaction-view"]} />
     </Layout>
   )
 }
 
 export const getStaticProps = async () => {
   const sections = Object.keys(coursesJson)
-  const rWESections = Object.keys(realWorldExamples)
   return {
     props: {
       content: coursesJson,
       sections,
       realWorldExamples,
-      rWESections,
     },
   }
 }
