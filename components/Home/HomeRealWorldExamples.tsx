@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 export default function HomeRealWorldExamples({}) {
   return (
@@ -19,7 +20,12 @@ export default function HomeRealWorldExamples({}) {
             </a>
           </Link>
         </div>
-        <img src="/images/home/RealWorldApp.png" alt="Real World App" />
+        <Image
+          src="/images/home/RealWorldApp.png"
+          alt="Real World App"
+          width={873}
+          height={621}
+        />
       </div>
     </>
   )
