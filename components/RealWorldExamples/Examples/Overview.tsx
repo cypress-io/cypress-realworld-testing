@@ -3,9 +3,9 @@ import Link from "next/link"
 
 export default function ExamplesLayout({ examples }) {
   return (
-    <section data-test={`real-world-example-overview`}>
-      <div className={`grid grid-cols-2 gap-8 p-16 h-full bg-white`}>
-        <div className="w-6/12 mx-auto">
+    <section data-test={`real-world-example-overview`} className="bg-white">
+      <div className={`grid grid-cols-2 gap-8 py-16 h-full max-w-7xl mx-auto`}>
+        <div className="w-6/12">
           <h3
             className={`mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl mb-8`}
             data-test={`overview-title`}
@@ -16,7 +16,13 @@ export default function ExamplesLayout({ examples }) {
             {examples.description}
           </p>
         </div>
-        <Image src={examples.image} alt="" width={625} height={309} />
+        <Image
+          src={examples.image}
+          alt=""
+          width={625}
+          height={309}
+          className="rounded-lg shadow-lg"
+        />
       </div>
 
       {/* Examples */}
