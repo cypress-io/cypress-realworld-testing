@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic"
 import { CheckIcon } from "@heroicons/react/outline"
 import CourseProgress from "./CourseProgress"
+import { Lesson } from "common"
 
 const CourseNextLessonBtn = dynamic(() => import("./CourseNextLessonBtn"), {
   ssr: false,
@@ -8,7 +9,7 @@ const CourseNextLessonBtn = dynamic(() => import("./CourseNextLessonBtn"), {
 
 type Props = {
   title: string
-  lessons: object[]
+  lessons: Lesson[]
   learnFeatures: string[]
   progressService: object
   course: string

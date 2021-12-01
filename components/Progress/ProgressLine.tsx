@@ -1,7 +1,9 @@
+import { Lesson } from "common"
+
 type Props = {
   index: number
   isCompleted: boolean
-  lessons: []
+  lessons: Lesson[]
 }
 
 export default function ProgressLine({ index, isCompleted, lessons }: Props) {

@@ -1,11 +1,18 @@
 import Link from "next/link"
 import { isLessonCompleted } from "../../utils/machineUtils"
+import { Lesson } from "common"
+
+type Props = {
+  lessons: Lesson[]
+  progressService: object
+  course: string
+}
 
 export default function CourseNextLessonBtn({
   lessons,
   progressService,
   course,
-}) {
+}: Props) {
   const incompleLessons = lessons
     .map((lesson) => {
       if (!isLessonCompleted(progressService, `${course}/${lesson.slug}`)) {
