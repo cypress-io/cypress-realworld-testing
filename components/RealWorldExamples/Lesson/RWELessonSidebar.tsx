@@ -1,27 +1,11 @@
-import dynamic from "next/dynamic"
 import { LessonTableOfContents, Lesson } from "../../../types/common"
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
-import { isLessonCompleted } from "../../../utils/machineUtils"
 import "react-pro-sidebar/dist/css/styles.css"
 
 type Props = {
   navigation: LessonTableOfContents[]
   lessons: Lesson[]
 }
-
-const CompletedLesson = dynamic(
-  () => import("../../Progress/CompletedLesson"),
-  {
-    ssr: false,
-  }
-)
-
-const IncompleteLesson = dynamic(
-  () => import("../../Progress/IncompleteLesson"),
-  {
-    ssr: false,
-  }
-)
 
 const isCurrentPage = (lessonPath) => {
   return window.location.pathname === lessonPath

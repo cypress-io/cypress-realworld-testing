@@ -38,11 +38,7 @@ export default function LessonLayout({
               <div className="sticky top-6">
                 <p className="font-semibold mb-4">ON THIS PAGE</p>
                 <nav aria-label="Sidebar" className="">
-                  <RWELessonSidebar
-                    navigation={toc}
-                    lessons={sectionLessons}
-                    progressService={progressService}
-                  />
+                  <RWELessonSidebar navigation={toc} lessons={sectionLessons} />
                 </nav>
               </div>
             </div>

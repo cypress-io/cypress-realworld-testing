@@ -6,31 +6,27 @@ import Head from "next/head"
 import dynamic from "next/dynamic"
 import path from "path"
 import { find, findIndex } from "lodash/fp"
-import { useActor } from "@xstate/react"
 import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELessonLayout"
 import apiLink from "../../components/Markdown/apiLink"
-const RWENextLessonBtn = dynamic(
-  () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
-  {
-    ssr: false,
-  }
-)
-import {
-  LessonTableOfContents,
-  MultipleChoiceChallenge,
-} from "../../types/common"
+import { LessonTableOfContents, Lesson } from "common"
 import {
   REAL_WORLD_EXAMPLES_PATH,
   allRealWorldExamplesFilePaths,
   getToCForMarkdown,
   getRealWorldExamplePath,
 } from "../../utils/mdxUtils"
-import { isLessonCompleted } from "../../utils/machineUtils"
 import rweJson from "../../data/real-world-examples.json"
+
+const RWENextLessonBtn = dynamic(
+  () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
+  {
+    ssr: false,
+  }
+)
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -48,24 +44,14 @@ const components = {
 
 type Props = {
   source: MDXRemoteSerializeResult<Record<string, unknown>>
-  frontMatter: {
-    [key: string]: any
-  }
   toc: LessonTableOfContents[]
-  lessonData: {
-    title: string
-    slug: string
-    description: string
-    status: string
-    videoURL: string
-    challenges: MultipleChoiceChallenge[]
-  }
+  lessonData: Lesson
   sectionLessons: []
   nextLesson: string
   sectionTitle: string
   lessonPath: string
   rweJson: object
-  sections: []
+  sections: string[]
 }
 
 export default function LessonPage({
@@ -79,9 +65,6 @@ export default function LessonPage({
   rweJson,
   sections,
 }: Props) {
-  // TODO: Figure out a better way to do this. It is necessary for the UI to update when state changes.
-  const [progressState] = useActor(progressService)
-
   return (
     <Layout
       content={rweJson}
@@ -98,9 +81,7 @@ export default function LessonPage({
         source={source}
         components={components}
         sectionLessons={sectionLessons}
-        sectionTitle={sectionTitle}
         progressService={progressService}
-        lessonPath={lessonPath}
         lessonData={lessonData}
       />
 
