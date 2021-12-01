@@ -1,19 +1,15 @@
 import dynamic from "next/dynamic"
-import { LessonTableOfContents, Lessons } from "../../types/common"
+import { LessonTableOfContents, Lesson } from "common"
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
 import { isLessonCompleted } from "../../utils/machineUtils"
 import "react-pro-sidebar/dist/css/styles.css"
 
 type Props = {
   navigation: LessonTableOfContents[]
-  lessons: Lessons[]
   course: string
+  lessons: Lesson[]
   progressService: object
 }
-
-const ProgressLine = dynamic(() => import("../Progress/ProgressLine"), {
-  ssr: false,
-})
 
 const CompletedLesson = dynamic(() => import("../Progress/CompletedLesson"), {
   ssr: false,

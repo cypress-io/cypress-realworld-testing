@@ -1,6 +1,10 @@
 import { useActor } from "@xstate/react"
 
-export default function LessonChallenge({ progressService }) {
+type Props = {
+  progressService: any
+}
+
+export default function LessonChallenge({ progressService }: Props) {
   const [, progressSend] = useActor(progressService)
 
   const handleInputChange = (event) => {
