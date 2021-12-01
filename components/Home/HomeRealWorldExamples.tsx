@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 
-export default function HomeRealWorldExamples({}) {
+export default function HomeRealWorldExamples() {
   return (
     <>
       <div className="grid grid-cols-2 gap-8 p-16 bg-indigo-100 h-full">

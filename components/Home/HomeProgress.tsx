@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import { isLessonCompleted } from "../../utils/machineUtils"
+import { Course } from "common"
 
 const ProgressLine = dynamic(() => import("../Progress/ProgressLine"), {
   ssr: false,
@@ -18,7 +19,18 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function HomeProgress({ course, content, progressService }) {
+type Props = {
+  course: string
+  content: Course
+  progressService: object
+}
+
+export default function HomeProgress({
+  course,
+  content,
+  progressService,
+}: Props) {
+  console.log(content)
   return (
     <nav aria-label="Progress" className="mt-12" data-test="course-progress">
       <ol className="overflow-hidden">
