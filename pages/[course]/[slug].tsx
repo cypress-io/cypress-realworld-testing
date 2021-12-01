@@ -76,8 +76,8 @@ export default function LessonPage({
   courses,
   course,
 }: Props) {
-  // TODO: Figure out a better way to do this. It is necessary for the UI to update when state changes.
-  const [progressState] = useActor(progressService)
+  useActor(progressService)
+
   return (
     <Layout
       content={coursesJson}
