@@ -8,7 +8,6 @@ describe("Lesson Pages", () => {
   it("the TOC links to the correct content section when clicked", () => {
     cy.getBySel("sidebar").within(() => {
       cy.getBySel("sidebar-submenu-toc-link").each(($link, index) => {
-        console.log(index)
         const href = $link.attr("href")
         cy.wrap($link).click()
 

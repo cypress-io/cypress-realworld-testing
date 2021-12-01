@@ -1,12 +1,19 @@
 import Link from "next/link"
 import { isLessonCompleted } from "../../utils/machineUtils"
+import { Lesson } from "common"
+
+type Props = {
+  lessons: Lesson[]
+  progressService: object
+  course: string
+}
 
 export default function CourseNextLessonBtn({
   lessons,
   progressService,
   course,
-}) {
-  const incompleLessons = lessons
+}: Props) {
+  const incompleteLessons = lessons
     .map((lesson) => {
       if (!isLessonCompleted(progressService, `${course}/${lesson.slug}`)) {
         return lesson.slug
@@ -15,11 +22,11 @@ export default function CourseNextLessonBtn({
     .filter((lesson) => lesson !== undefined)
 
   const buttonText = () => {
-    if (!incompleLessons.length) {
+    if (!incompleteLessons.length) {
       return "Course Completed"
     }
 
-    if (incompleLessons.length === lessons.length) {
+    if (incompleteLessons.length === lessons.length) {
       return "Start Course"
     } else {
       return "Next Lesson"
@@ -27,10 +34,10 @@ export default function CourseNextLessonBtn({
   }
 
   const buttonURL = () => {
-    if (!incompleLessons.length) {
+    if (!incompleteLessons.length) {
       return "/"
     } else {
-      return `${course}/${incompleLessons[0]}`
+      return `${course}/${incompleteLessons[0]}`
     }
   }
 

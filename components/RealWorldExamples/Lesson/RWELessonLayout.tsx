@@ -2,21 +2,30 @@ import RWELessonBreadcrumbs from "./RWELessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import Script from "next/script"
 import dynamic from "next/dynamic"
+import { Lesson, LessonTableOfContents } from "common"
+import { MDXRemoteSerializeResult } from "next-mdx-remote"
 
 const RWELessonSidebar = dynamic(() => import("./RWELessonSidebar"), {
   ssr: false,
 })
+
+type Props = {
+  toc: LessonTableOfContents[]
+  source: MDXRemoteSerializeResult<Record<string, unknown>>
+  components: Record<string, React.ReactNode>
+  sectionLessons: []
+  progressService: object
+  lessonData: Lesson
+}
 
 export default function LessonLayout({
   toc,
   source,
   components,
   sectionLessons,
-  sectionTitle,
   progressService,
-  lessonPath,
   lessonData,
-}) {
+}: Props) {
   return (
     <>
       <RWELessonBreadcrumbs lessonData={lessonData} />
@@ -29,11 +38,7 @@ export default function LessonLayout({
               <div className="sticky top-6">
                 <p className="font-semibold mb-4">ON THIS PAGE</p>
                 <nav aria-label="Sidebar" className="">
-                  <RWELessonSidebar
-                    navigation={toc}
-                    lessons={sectionLessons}
-                    progressService={progressService}
-                  />
+                  <RWELessonSidebar navigation={toc} lessons={sectionLessons} />
                 </nav>
               </div>
             </div>

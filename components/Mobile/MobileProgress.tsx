@@ -1,11 +1,22 @@
 import { CheckIcon } from "@heroicons/react/solid"
 import { isLessonCompleted } from "../../utils/machineUtils"
+import { Course } from "common"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ course, content, progressService }) {
+type Props = {
+  course: string
+  content: Course
+  progressService: object
+}
+
+export default function MobileProgress({
+  course,
+  content,
+  progressService,
+}: Props) {
   return (
     <nav aria-label="Progress" className="mt-4">
       <ol className="overflow-hidden">

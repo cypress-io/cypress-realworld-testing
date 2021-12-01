@@ -4,6 +4,17 @@ import CourseHero from "../../components/Course/CourseHero"
 import CourseContent from "../../components/Course/CourseContent"
 import { progressService } from "../../machines/progressService"
 import coursesJson from "../../data/courses.json"
+import { Lesson } from "common"
+
+type Props = {
+  title: string
+  lessons: Lesson[]
+  description: string
+  learnFeatures: string[]
+  content: object
+  courses: string[]
+  course: string
+}
 
 export default function SectionPage({
   title,
@@ -13,7 +24,7 @@ export default function SectionPage({
   content,
   courses,
   course,
-}) {
+}: Props) {
   return (
     <Layout
       content={content}

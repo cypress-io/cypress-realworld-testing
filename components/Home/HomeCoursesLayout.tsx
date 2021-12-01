@@ -9,11 +9,17 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
+type Props = {
+  content: object
+  courses: string[]
+  progressService: object
+}
+
 export default function HomeCoursesLayout({
   courses,
   content,
   progressService,
-}) {
+}: Props) {
   const [selected, setSelected] = useState(courses[0])
 
   return (

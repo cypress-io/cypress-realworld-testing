@@ -1,4 +1,9 @@
-export default function NextLessonBtn({ path, isCompleted }) {
+type Props = {
+  path: string
+  isCompleted: boolean
+}
+
+export default function NextLessonBtn({ path, isCompleted }: Props) {
   return (
     <div className={`${isCompleted ? "" : "hidden"} py-20`}>
       <a

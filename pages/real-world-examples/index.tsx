@@ -7,7 +7,13 @@ import { progressService } from "../../machines/progressService"
 import coursesJson from "../../data/courses.json"
 import realWorldExamples from "../../data/real-world-examples.json"
 
-export default function Home({ content, sections, rWESections }) {
+type Props = {
+  content: object
+  sections: string[]
+  rWESections: string[]
+}
+
+export default function Home({ content, sections, rWESections }: Props) {
   return (
     <Layout
       content={content}

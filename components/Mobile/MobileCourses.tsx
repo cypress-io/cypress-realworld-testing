@@ -5,7 +5,13 @@ const MobileProgress = dynamic(() => import("./MobileProgress"), {
   ssr: false,
 })
 
-export default function Courses({ courses, content, progressService }) {
+type Props = {
+  courses: string[]
+  content: object
+  progressService: object
+}
+
+export default function Courses({ courses, content, progressService }: Props) {
   return (
     <div className="relative bg-white overflow-hidden">
       {courses.map((course, index) => (

@@ -1,10 +1,19 @@
 import { useActor } from "@xstate/react"
 import { useState } from "react"
 import dynamic from "next/dynamic"
+import { Lesson } from "common"
 
 const NextLessonBtn = dynamic(() => import("./NextLessonBtn"), {
   ssr: false,
 })
+
+type Props = {
+  progressService: any
+  lessonData: Lesson
+  lessonPath: string
+  path: string
+  isCompleted: boolean
+}
 
 export default function LessonChallenge({
   progressService,
@@ -12,7 +21,7 @@ export default function LessonChallenge({
   lessonPath,
   path,
   isCompleted,
-}) {
+}: Props) {
   const [answerIndicies, setAnswerChecked] = useState([])
   const [, progressSend] = useActor(progressService)
 

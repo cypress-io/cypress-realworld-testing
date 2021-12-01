@@ -5,11 +5,17 @@ import { Popover, Transition } from "@headlessui/react"
 import MobileCourses from "./MobileCourses"
 import { XIcon } from "@heroicons/react/outline"
 
+type Props = {
+  content: object
+  courses: string[]
+  progressService: object
+}
+
 export default function MobileProgressMenu({
   content,
   courses,
   progressService,
-}) {
+}: Props) {
   return (
     <Popover className="relative bg-white md:hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">

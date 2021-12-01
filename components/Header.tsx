@@ -85,9 +85,14 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function Header({ content, courses, progressService }) {
-  const coursesJsonCourses = Object.keys(coursesJson)
+type Props = {
+  content: object
+  courses: string[]
+  progressService: object
+}
 
+export default function Header({ content, courses, progressService }: Props) {
+  const coursesJsonCourses = Object.keys(coursesJson)
   return (
     <>
       <Popover className="relative bg-white hidden lg:block">

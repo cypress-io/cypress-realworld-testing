@@ -1,10 +1,16 @@
 import { useActor } from "@xstate/react"
 
+type Props = {
+  nextLessonPath: string
+  progressService: any
+  lessonPath: string
+}
+
 export default function NextLessonBtn({
   nextLessonPath,
   progressService,
   lessonPath,
-}) {
+}: Props) {
   const [, progressSend] = useActor(progressService)
 
   return (
