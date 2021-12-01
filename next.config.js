@@ -3,7 +3,12 @@ const withCSS = require("@zeit/next-css")
 module.exports = {
   swcMinify: true,
   images: {
-    domains: ["images.unsplash.com", "source.unsplash.com", "tailwindui.com"],
+    domains: [
+      "images.unsplash.com",
+      "source.unsplash.com",
+      "tailwindui.com",
+      "raw.githubusercontent.com",
+    ],
   },
   webpack: function (config) {
     config.module.rules.push({
