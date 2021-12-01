@@ -8,7 +8,12 @@ import coursesJson from "../data/courses.json"
 import realWorldExamples from "../data/real-world-examples.json"
 import { progressService } from "../machines/progressService"
 
-export default function Home({ content, courses }) {
+type Props = {
+  content: object
+  courses: string[]
+}
+
+export default function Home({ content, courses }: Props) {
   return (
     <Layout
       content={content}
