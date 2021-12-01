@@ -6,12 +6,19 @@ const Footer = dynamic(() => import("./Footer"), {
   ssr: false,
 })
 
+type Props = {
+  children: object
+  content: object
+  courses: []
+  progressService: object
+}
+
 export default function Layout({
   children,
   content,
   courses,
   progressService,
-}) {
+}: Props) {
   return (
     <>
       <Head>

@@ -35,7 +35,7 @@ export default function Home({ content, courses }) {
   )
 }
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({}) => {
   const courses = Object.keys(coursesJson)
   return {
     props: {
