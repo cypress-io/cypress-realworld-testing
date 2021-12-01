@@ -9,7 +9,7 @@ const Footer = dynamic(() => import("./Footer"), {
 type Props = {
   children: object
   content: object
-  courses: []
+  courses: string[]
   progressService: object
 }
 
