@@ -1,12 +1,23 @@
 import Link from "next/link"
 import { HomeIcon } from "@heroicons/react/solid"
+import { Lesson } from "common"
 
 const pages = [
   { name: "Projects", href: "#", current: false },
   { name: "Project Nero", href: "#", current: true },
 ]
 
-export default function Breadcrumbs({ lessonPath, sectionTitle, lessonData }) {
+type Props = {
+  lessonPath: string
+  sectionTitle: string
+  lessonData: Lesson
+}
+
+export default function Breadcrumbs({
+  lessonPath,
+  sectionTitle,
+  lessonData,
+}: Props) {
   const [sectionSlug] = lessonPath.split("/")
 
   return (

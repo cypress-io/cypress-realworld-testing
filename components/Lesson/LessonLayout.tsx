@@ -2,10 +2,24 @@ import LessonBreadcrumbs from "./LessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import Script from "next/script"
 import dynamic from "next/dynamic"
+import { Lesson, LessonTableOfContents } from "common"
+import { MDXRemoteSerializeResult } from "next-mdx-remote"
 
 const LessonSidebar = dynamic(() => import("./LessonSidebar"), {
   ssr: false,
 })
+
+type Props = {
+  toc: LessonTableOfContents[]
+  source: MDXRemoteSerializeResult<Record<string, unknown>>
+  components: Record<string, React.ReactNode>
+  sectionLessons: []
+  sectionTitle: string
+  progressService: object
+  lessonPath: string
+  lessonData: Lesson
+  course: string
+}
 
 export default function LessonLayout({
   toc,
@@ -17,7 +31,7 @@ export default function LessonLayout({
   lessonPath,
   lessonData,
   course,
-}) {
+}: Props) {
   return (
     <>
       <LessonBreadcrumbs
