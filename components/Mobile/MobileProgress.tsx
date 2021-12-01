@@ -1,17 +1,18 @@
 import { CheckIcon } from "@heroicons/react/solid"
 import { isLessonCompleted } from "../../utils/machineUtils"
+import { Course } from "common"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
 type Props = {
-  content: object
-  courses: string[]
+  course: string
+  content: Course
   progressService: object
 }
 
-export default function LessonSteps({
+export default function MobileProgress({
   course,
   content,
   progressService,

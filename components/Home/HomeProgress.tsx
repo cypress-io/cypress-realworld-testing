@@ -30,7 +30,6 @@ export default function HomeProgress({
   content,
   progressService,
 }: Props) {
-  console.log(content)
   return (
     <nav aria-label="Progress" className="mt-12" data-test="course-progress">
       <ol className="overflow-hidden">

@@ -12,7 +12,6 @@ type Props = {
 }
 
 export default function RWELessonBreadcrumbs({ lessonData }: Props) {
-  console.log(lessonData)
   return (
     <nav
       className="bg-white border-b border-gray-200 flex"

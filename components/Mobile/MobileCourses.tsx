@@ -6,8 +6,8 @@ const MobileProgress = dynamic(() => import("./MobileProgress"), {
 })
 
 type Props = {
-  content: object
   courses: string[]
+  content: object
   progressService: object
 }
 
