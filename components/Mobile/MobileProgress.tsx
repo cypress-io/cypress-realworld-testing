@@ -5,7 +5,17 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function LessonSteps({ course, content, progressService }) {
+type Props = {
+  content: object
+  courses: string[]
+  progressService: object
+}
+
+export default function LessonSteps({
+  course,
+  content,
+  progressService,
+}: Props) {
   return (
     <nav aria-label="Progress" className="mt-4">
       <ol className="overflow-hidden">
