@@ -6,13 +6,21 @@ const CourseNextLessonBtn = dynamic(() => import("./CourseNextLessonBtn"), {
   ssr: false,
 })
 
+type Props = {
+  title: string
+  lessons: object[]
+  learnFeatures: string[]
+  progressService: object
+  course: string
+}
+
 export default function CourseContent({
   title,
   lessons,
   learnFeatures,
   progressService,
   course,
-}) {
+}: Props) {
   const stats = [{ label: "Lessons", value: lessons.length }]
 
   return (
