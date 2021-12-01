@@ -1,13 +1,12 @@
 import dynamic from "next/dynamic"
-import { LessonTableOfContents, Lessons } from "../../../types/common"
+import { LessonTableOfContents, Lesson } from "../../../types/common"
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
 import { isLessonCompleted } from "../../../utils/machineUtils"
 import "react-pro-sidebar/dist/css/styles.css"
 
 type Props = {
   navigation: LessonTableOfContents[]
-  lessons: Lessons[]
-  progressService: object
+  lessons: Lesson[]
 }
 
 const CompletedLesson = dynamic(
@@ -28,11 +27,7 @@ const isCurrentPage = (lessonPath) => {
   return window.location.pathname === lessonPath
 }
 
-export default function LessonSidebar({
-  navigation,
-  lessons,
-  progressService,
-}: Props) {
+export default function LessonSidebar({ navigation, lessons }: Props) {
   return (
     <div data-test="sidebar">
       <ProSidebar>

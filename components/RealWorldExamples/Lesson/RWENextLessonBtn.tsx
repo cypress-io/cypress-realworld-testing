@@ -1,4 +1,8 @@
-export default function NextLessonBtn({ path }) {
+type Props = {
+  path: string
+}
+
+export default function NextLessonBtn({ path }: Props) {
   return (
     <div data-test="next-lesson-button" className="py-20">
       <a

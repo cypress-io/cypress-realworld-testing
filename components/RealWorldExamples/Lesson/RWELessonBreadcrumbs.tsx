@@ -1,12 +1,18 @@
 import Link from "next/link"
 import { HomeIcon } from "@heroicons/react/solid"
+import { Lesson } from "common"
 
 const pages = [
   { name: "Projects", href: "#", current: false },
   { name: "Project Nero", href: "#", current: true },
 ]
 
-export default function RWELessonBreadcrumbs({ lessonData }) {
+type Props = {
+  lessonData: Lesson
+}
+
+export default function RWELessonBreadcrumbs({ lessonData }: Props) {
+  console.log(lessonData)
   return (
     <nav
       className="bg-white border-b border-gray-200 flex"
