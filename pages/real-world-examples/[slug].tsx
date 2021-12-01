@@ -11,7 +11,6 @@ import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
-import RWELessonHero from "../../components/RealWorldExamples/Lesson/RWELessonHero"
 import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELessonLayout"
 import apiLink from "../../components/Markdown/apiLink"
 const RWENextLessonBtn = dynamic(
@@ -93,8 +92,6 @@ export default function LessonPage({
         <title>{lessonData.title} | Real World Testing with Cypress</title>
         <meta name="description" content={lessonData.description} />
       </Head>
-
-      {lessonData.videoURL && <RWELessonHero lessonData={lessonData} />}
 
       <RWELessonLayout
         toc={toc}

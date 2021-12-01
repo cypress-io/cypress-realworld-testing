@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import MobileCourses from "./MobileCourses"
@@ -15,11 +16,16 @@ export default function MobileProgressMenu({
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/">
-              <img
-                className="h-8 w-auto sm:h-10"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                alt=""
-              />
+              <a className="flex">
+                <span className="sr-only">Workflow</span>
+                <Image
+                  className="h-8 w-auto sm:h-10"
+                  src="/images/logo/logo.svg"
+                  alt="Cypress Logo"
+                  height={40}
+                  width={120}
+                />
+              </a>
             </Link>
           </div>
           {/* Mobile Hamburger Menu */}
@@ -62,10 +68,12 @@ export default function MobileProgressMenu({
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt="Workflow"
+                  <Image
+                    className="h-8 w-auto sm:h-10"
+                    src="/images/logo/logo.svg"
+                    alt="Cypress Logo"
+                    height={40}
+                    width={120}
                   />
                 </div>
                 <div className="-mr-2">
@@ -84,10 +92,18 @@ export default function MobileProgressMenu({
               </div>
               <hr className="my-8" />
               <div>
-                <img
-                  src="https://raw.githubusercontent.com/cypress-io/cypress-realworld-app/develop/public/img/rwa-readme-screenshot.png"
-                  alt=""
-                />
+                <Link href="/real-world-examples">
+                  <a className="flex">
+                    <span className="sr-only">Workflow</span>
+                    <Image
+                      className="h-8 w-auto sm:h-10"
+                      src="https://raw.githubusercontent.com/cypress-io/cypress-realworld-app/develop/public/img/rwa-readme-screenshot.png"
+                      alt="Cypress Logo"
+                      height={153}
+                      width={358}
+                    />
+                  </a>
+                </Link>
               </div>
               <div className="relative bg-white pt-16 overflow-hidden">
                 <div className="max-w-lg mx-auto">
