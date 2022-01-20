@@ -23,9 +23,9 @@ export default function HomeCoursesLayout({
   const [selected, setSelected] = useState(courses[0])
 
   return (
-    <div className="features relative bg-white p-16">
+    <div className="features p-28 mx-auto max-w-7xl">
       <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-        <h3 className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl mb-8">
+        <h3 className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-5xl mb-24 text-center">
           Courses
         </h3>
       </div>
