@@ -7,9 +7,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "hero-hero": "url('/images/home/hero/hero-bg.png')",
+      },
+
       fontFamily: {
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
+
       colors: {
         gray: {
           50: "#F3F4FA",
