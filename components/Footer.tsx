@@ -24,18 +24,15 @@ export default function Footer() {
   return (
     <>
       <hr />
-      <footer className="bg-teal-500">
+      <footer className="bg-indigo-500">
         {/* Email Subscription */}
-        <div className="py-8 lg:mx-auto lg:flex lg:max-w-7xl lg:items-center lg:justify-between xl:mt-0">
+        <div className="py-8 lg:flex lg:items-center lg:justify-center lg:max-w-7xl lg:mx-auto xl:mt-0">
           <div>
-            <h3 className="uppercase tracking-wider text-gray-50">
-              Subscribe for updates
+            <h3 className="text-gray-50 text-xl tracking-wider mr-10">
+              Get course updates to your inbox
             </h3>
-            {/* <p className="mt-2 text-base text-gray-500">
-            The latest updates sent to your inbox.
-          </p> */}
           </div>
-          <form className="mt-4 sm:flex sm:max-w-md lg:mt-0">
+          <form className="mt-4 sm:flex sm:max-w-md lg:mt-0 w-full">
             <label htmlFor="email-address" className="sr-only">
               Email address
             </label>
@@ -45,13 +42,13 @@ export default function Footer() {
               id="email-address"
               autoComplete="email"
               required
-              className="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none sm:max-w-xs"
+              className="appearance-none min-w-0 w-full bg-white border border-gray-300 py-2 px-4 text-base rounded-tl-md rounded-bl-md text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:max-w-xs"
               placeholder="Enter your email"
             />
-            <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+            <div className="mt-3 rounded-md sm:mt-0 sm:flex-shrink-0">
               <button
                 type="submit"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-jade-300 py-2 px-4 text-lg font-semibold text-teal-600"
+                className="w-full bg-indigo-100 border border-transparent rounded-tr-md rounded-br-md py-2 px-4 flex items-center justify-center text-indigo-900"
               >
                 Subscribe
               </button>
