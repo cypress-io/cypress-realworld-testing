@@ -29,6 +29,7 @@ module.exports = {
           50: "#F0F1FF",
           100: "#DADDFE",
           500: "#4956E3",
+          900: "#1C236D",
         },
         jade: {
           50: "#E4FBF2",
