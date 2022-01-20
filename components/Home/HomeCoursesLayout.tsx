@@ -43,9 +43,10 @@ export default function HomeCoursesLayout({
                   data-test={`course-${index}`}
                   className={({ checked, active }) =>
                     classNames(
-                      checked ? "bg-teal-500" : "bg-gray-50",
-                      active ? "" : "bg-teal-500",
-                      "relative  flex cursor-pointer items-center justify-between rounded-lg border px-6 py-4 shadow-sm"
+                      checked
+                        ? "shadow-2xl border-2 border-indigo-400"
+                        : "bg-white opacity-50 border-2 border-gray-200",
+                      "rounded-lg px-6 py-4 cursor-pointer flex justify-between items-center"
                     )
                   }
                 >
@@ -55,18 +56,17 @@ export default function HomeCoursesLayout({
                         <div className="text-sm">
                           <RadioGroup.Label
                             as="p"
-                            // className="font-medium text-gray-900"
                             className={() =>
                               classNames(
-                                checked ? "text-jade-50" : "",
+                                checked ? "text-gray-900" : "",
                                 active ? "text-gray-900" : "",
-                                "flex items-center justify-between text-lg font-extrabold text-gray-400"
+                                "text-gray-900 font-normal text-lg flex justify-between items-center"
                               )
                             }
                           >
                             <Image
                               className="h-8 w-auto sm:h-10"
-                              src={`/images/home/${course}.svg`}
+                              src={`/images/home/course-icons/${course}.svg`}
                               alt="Cypress Logo"
                               height={62}
                               width={75}
@@ -83,14 +83,15 @@ export default function HomeCoursesLayout({
                         as="div"
                         className="mt-2 flex text-sm sm:mt-0 sm:ml-4 sm:block sm:text-right"
                       >
-                        {checked && (
-                          <a
-                            href={`/${content[course].slug}`}
-                            className="inline-flex rounded-md border border-transparent bg-jade-300 px-4 py-2 text-base font-medium text-white shadow-sm"
-                          >
-                            Get started
-                          </a>
-                        )}
+                        <a
+                          href={`/${content[course].slug}`}
+                          className="inline-flex px-4 py-2 text-base font-medium text-white"
+                        >
+                          <img
+                            src={`/images/home/course-icons/chevron-right.svg`}
+                            alt=""
+                          />
+                        </a>
                       </RadioGroup.Description>
                       <div
                         className={classNames(
