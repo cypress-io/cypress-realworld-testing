@@ -23,8 +23,8 @@ export default function HomeCoursesLayout({
   const [selected, setSelected] = useState(courses[0])
 
   return (
-    <div className="features p-28 mx-auto max-w-7xl">
-      <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
+    <div className="features py-28 px-44 mx-auto w-full">
+      <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-full">
         <h3 className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-5xl mb-24 text-center">
           Courses
         </h3>
@@ -32,7 +32,7 @@ export default function HomeCoursesLayout({
 
       <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
         {/* Course Selector */}
-        <div className="hidden lg:block lg:col-span-6">
+        <div className="course-selector lg:block lg:col-span-6">
           <div className="sticky top-6">
             <RadioGroup value={selected} onChange={setSelected}>
               <RadioGroup.Label className="sr-only">

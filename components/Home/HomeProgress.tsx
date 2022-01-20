@@ -67,22 +67,9 @@ export default function HomeProgress({
             <li
               data-test={`lesson-${index}`}
               key={lesson.title}
-              className={classNames(
-                index !== content?.lessons.length - 1 ? "pb-10" : "",
-                "relative"
-              )}
+              className="py-6 relative border rounded mb-6 pl-4"
             >
-              {/* Solid Line that connects the checkmarks */}
-              <ProgressLine
-                index={index}
-                lessons={content.lessons}
-                isCompleted={isLessonCompleted(
-                  progressService,
-                  `${course}/${lesson.slug}`
-                )}
-              />
-
-              <div className="relative flex items-start group">
+              <div className="relative flex items-center">
                 {isLessonCompleted(
                   progressService,
                   `${course}/${lesson.slug}`
@@ -94,8 +81,8 @@ export default function HomeProgress({
                 ) && <IncompleteLesson index={index} />}
 
                 {/* Lesson Title */}
-                <span className="ml-4 min-w-0 flex flex-col">
-                  <span className="text-xs font-semibold tracking-wide uppercase">
+                <span className="ml-4 min-w-0 flex flex-row">
+                  <span className="font-normal">
                     <Link href={`/${course}/${lesson.slug}`}>
                       <a data-test={`lesson-progress-link-${index}`}>
                         {lesson.title}
@@ -103,6 +90,11 @@ export default function HomeProgress({
                     </Link>
                   </span>
                 </span>
+                <img
+                  className="absolute right-8"
+                  src={`/images/home/course-icons/course-play-icon.svg`}
+                  alt=""
+                />
               </div>
             </li>
           ))}
