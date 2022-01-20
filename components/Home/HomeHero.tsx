@@ -5,7 +5,7 @@ export default function HomeHero() {
     <>
       <div className="relative overflow-hidden">
         <main>
-          <div className="pt-10 bg-jade-300 bg-hero-hero bg-no-repeat bg-cover bg-center sm:pt-16 lg:pt-8 lg:overflow-hidden">
+          <div className="pt-10 bg-jade-300 bg-home-hero bg-no-repeat bg-cover bg-center sm:pt-16 lg:pt-8 lg:overflow-hidden">
             <div className="mx-auto w-full lg:pl-8">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                 <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
