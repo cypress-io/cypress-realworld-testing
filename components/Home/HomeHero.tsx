@@ -14,7 +14,7 @@ export default function HomeHero() {
                       data-test="hero-heading"
                       className="mt-4 font-bold text-5xl text-gray-1000 leading-tight"
                     >
-                      Learn how to use the most powerful testing suite—for free
+                      Real World Testing with Cypress
                     </h1>
                     <p className="mt-3 text-base text-jade-700 sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
                       Learn from top industry experts and level-up your testing
