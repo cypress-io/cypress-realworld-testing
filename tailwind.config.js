@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "home-hero": "url('/images/home/hero/hero-bg.png')",
-        "home-features": "url('/images/home/features/features-bg.png')",
+        "home-features": "url('/images/home/features-bg.png')",
       },
 
       fontFamily: {
@@ -26,6 +26,7 @@ module.exports = {
           1000: "#1B1E2E",
         },
         indigo: {
+          50: "#F0F1FF",
           100: "#DADDFE",
           500: "#4956E3",
         },
