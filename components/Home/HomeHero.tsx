@@ -25,26 +25,26 @@ export default function HomeHero() {
                     <div className="mt-8 overflow-hidden">
                       <dl className="-mx-8 -mt-8 flex flex-wrap">
                         <div className="flex flex-col px-8 pt-8">
-                          <dt className="order-2 text-base font-medium text-gray-600">
+                          <dt className="order-2 text-base font-normal text-jade-700">
                             Courses
                           </dt>
-                          <dd className="order-1 text-3xl text-gray-600 sm:text-3xl">
+                          <dd className="order-1 text-3xl font-semibold text-jade-800 sm:text-4xl">
                             4
                           </dd>
                         </div>
                         <div className="flex flex-col px-8 pt-8">
-                          <dt className="order-2 text-base font-medium text-gray-600">
+                          <dt className="order-2 text-base font-normal text-jade-700">
                             Lessons
                           </dt>
-                          <dd className="order-1 text-3xl text-gray-600 sm:text-3xl">
+                          <dd className="order-1 text-3xl font-semibold text-jade-800 sm:text-4xl">
                             25+
                           </dd>
                         </div>
                         <div className="flex flex-col px-8 pt-8">
-                          <dt className="order-2 text-base font-medium text-gray-600">
+                          <dt className="order-2 text-base font-normal text-jade-700">
                             Real World Examples
                           </dt>
-                          <dd className="order-1 text-3xl text-gray-600 sm:text-3xl">
+                          <dd className="order-1 text-3xl font-semibold text-jade-800 sm:text-4xl">
                             30+
                           </dd>
                         </div>
@@ -53,32 +53,19 @@ export default function HomeHero() {
 
                     {/* Email Subscribe */}
                     <div className="mt-10 sm:mt-12">
-                      <form
-                        action="#"
-                        className="sm:mx-auto sm:max-w-xl lg:mx-0"
+                      <button
+                        type="button"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       >
-                        <div className="sm:flex">
-                          <div className="min-w-0 flex-1">
-                            <label htmlFor="email" className="sr-only">
-                              Subscribe for Updates
-                            </label>
-                            <input
-                              id="email"
-                              type="email"
-                              placeholder="Subscribe for Updates"
-                              className="border-2text-base block w-full rounded-md px-4 py-3 text-gray-900 placeholder-gray-500"
-                            />
-                          </div>
-                          <div className="mt-3 sm:mt-0 sm:ml-3">
-                            <button
-                              type="submit"
-                              className="block w-full rounded-md bg-teal-500 py-3 px-4 font-medium text-white shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2 focus:ring-offset-gray-900"
-                            >
-                              Subscribe
-                            </button>
-                          </div>
-                        </div>
-                      </form>
+                        Start Learning
+                      </button>
+
+                      <button
+                        type="button"
+                        className="inline-flex ml-6 items-center px-4 py-2 border border-gray-300 shadow-sm text-base font-medium rounded-md text-indigo-500 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      >
+                        Get Course Updates
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -86,7 +73,7 @@ export default function HomeHero() {
                   <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
                     <Image
                       className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                      src="/images/home/home-rwa-hero.svg"
+                      src="/images/home/hero/home-rwa-hero.svg"
                       alt="Home Page Hero Image"
                       layout="fill"
                     />
