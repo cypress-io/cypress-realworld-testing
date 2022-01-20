@@ -5,21 +5,18 @@ export default function HomeHero() {
     <>
       <div className="relative overflow-hidden">
         <main>
-          <div className="pt-10 bg-white sm:pt-16 lg:pt-8 lg:overflow-hidden">
+          <div className="pt-10 bg-jade-300 sm:pt-16 lg:pt-8 lg:overflow-hidden">
             <div className="mx-auto w-full lg:pl-8">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8">
                 <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
                   <div className="lg:py-24">
                     <h1
                       data-test="hero-heading"
-                      className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl"
+                      className="mt-4 font-bold text-5xl text-gray-1000 leading-tight"
                     >
-                      <span className="block text-gray-900">
-                        Real World Testing
-                      </span>
-                      <span className="block text-gray-900">with Cypress</span>
+                      Learn how to use the most powerful testing suite—for free
                     </h1>
-                    <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+                    <p className="mt-3 text-base text-jade-700 sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
                       Learn from top industry experts and level-up your testing
                       knowledge &mdash; for free!
                     </p>
@@ -89,7 +86,7 @@ export default function HomeHero() {
                   <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
                     <Image
                       className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                      src="/images/home/hero.svg"
+                      src="/images/home/home-rwa-hero.svg"
                       alt="Home Page Hero Image"
                       layout="fill"
                     />
