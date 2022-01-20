@@ -49,7 +49,7 @@ export default function HomeProgress({
                 <div key={index} className="relative mb-6">
                   <dt>
                     <CheckIcon
-                      className="absolute h-6 w-6 text-blue-500"
+                      className="absolute h-6 w-6 text-gray-500"
                       aria-hidden="true"
                     />
                     <p className="ml-9 text-lg leading-6 font-medium text-gray-600">
