@@ -35,14 +35,19 @@ export default function HomeHero({
                     <div className="mt-10 sm:mt-12">{children}</div>
                   </div>
                 </div>
-                <div className="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
-                  <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-                    <Image
-                      className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                      src={image}
-                      alt="Course Page Hero Image"
-                      layout="fill"
-                    />
+
+                <div className="sm:mx-auto sm:max-w-3xl sm:px-6">
+                  <div className="py-12 sm:relative sm:mt-12 sm:py-16 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+                    <div className="hidden sm:block"></div>
+                    <div className="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:max-w-none lg:h-full lg:pl-12">
+                      <Image
+                        className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
+                        src={image}
+                        alt="Course Page Hero Image"
+                        width={917}
+                        height={518}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
