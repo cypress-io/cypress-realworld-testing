@@ -24,7 +24,7 @@ export default function CourseContent({
         <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
             <div className="relative z-10">
-              <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
+              <div className="flex text-base max-w-prose mx-auto lg:max-w-none">
                 <div className="">
                   <h2 className="text-3xl text-gray-700 font-bold tracking-tight">
                     What You Will Learn:
