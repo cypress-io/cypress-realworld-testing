@@ -1,10 +1,18 @@
 import Head from "next/head"
+import dynamic from "next/dynamic"
 import Layout from "../../components/Layout"
 import CourseHero from "../../components/Course/CourseHero"
 import CourseContent from "../../components/Course/CourseContent"
 import { progressService } from "../../machines/progressService"
 import coursesJson from "../../data/courses.json"
 import { Lesson } from "common"
+
+const CourseNextLessonBtn = dynamic(
+  () => import("../../components/Course/CourseNextLessonBtn"),
+  {
+    ssr: false,
+  }
+)
 
 type Props = {
   title: string
@@ -40,7 +48,14 @@ export default function SectionPage({
         title={title}
         description={description}
         image={content[course].image}
-      />
+      >
+        <CourseNextLessonBtn
+          lessons={lessons}
+          progressService={progressService}
+          course={course}
+        />
+      </CourseHero>
+
       <CourseContent
         title={title}
         lessons={lessons}

@@ -46,7 +46,7 @@ export default function CourseNextLessonBtn({
       <Link href={buttonURL()}>
         <a
           data-test="next-lesson-button"
-          className="mx-auto flex max-w-xl items-center justify-center rounded-md bg-blue-500 px-8 py-3 text-base font-medium text-white hover:bg-blue-600 md:py-4 md:px-10 md:text-lg"
+          className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
           {buttonText()}
         </a>
