@@ -34,7 +34,7 @@ export default function HomeProgress({
   return (
     <>
       <nav aria-label="Progress" className="" data-test="course-progress">
-        <div className="what-you-will-learn bg-jade-50 p-8 my-8 lg:mb-8 rounded">
+        <div className="what-you-will-learn bg-jade-50 p-8 my-8 lg:mb-8 lg:mt-0 rounded">
           <img
             src={`/images/home/course-icons/book-icon.svg`}
             alt="book icon"

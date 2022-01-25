@@ -33,7 +33,7 @@ export default function HomeCoursesLayout({
       <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
         {/* Course Selector */}
         <div className="course-selector lg:block lg:col-span-6">
-          <div className="sticky top-6">
+          <div className="sticky top-2">
             <RadioGroup value={selected} onChange={setSelected}>
               <div className="space-y-4">
                 {courses.map((course, index) => (
