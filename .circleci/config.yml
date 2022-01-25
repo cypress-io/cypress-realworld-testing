@@ -20,10 +20,6 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      # Setup
-      #  1. Install Cypress
-      #  2. Validate types
-      #  3. Run server unit-tests
       - cypress/install:
           name: "Setup Linux"
           yarn: true
