@@ -58,6 +58,18 @@ workflows:
                 name: Check for Broken Links
                 command: yarn check:links
 
+      # Run E2E tests in Chrome with mobile viewport
+      - cypress/run:
+          name: "UI Tests - Chrome"
+          browser: chrome
+          config: "viewportWidth=375,viewportHeight=667"
+          executor: with-chrome-and-firefox
+          wait-on: "http://localhost:3000"
+          yarn: true
+          start: yarn start
+          requires:
+            - Setup Linux
+
   nightly:
     triggers:
       - schedule:
