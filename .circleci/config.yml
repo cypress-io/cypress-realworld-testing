@@ -60,7 +60,7 @@ workflows:
 
       # Run E2E tests in Chrome with mobile viewport
       - cypress/run:
-          name: "UI Tests - Chrome"
+          name: "UI Tests - Chrome - Mobile"
           browser: chrome
           config: "viewportWidth=375,viewportHeight=667"
           executor: with-chrome-and-firefox
