@@ -44,7 +44,7 @@ export default function LessonLayout({
         <div className="py-6">
           <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
             {/* Table of Content */}
-            <div className="hidden lg:col-span-3 lg:block xl:col-span-3">
+            <div className="lg:col-span-3 xl:col-span-3">
               <div className="sticky top-6">
                 <p className="mb-4 font-semibold">ON THIS PAGE</p>
                 <LessonSidebar
