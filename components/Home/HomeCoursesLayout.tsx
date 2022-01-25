@@ -23,9 +23,9 @@ export default function HomeCoursesLayout({
   const [selected, setSelected] = useState(courses[0])
 
   return (
-    <div className="features py-28 px-44 mx-auto w-full">
+    <div className="features px-8 lg:py-28 lg:px-44 mx-auto w-full">
       <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-full">
-        <h3 className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-5xl mb-24 text-center">
+        <h3 className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-5xl py-8 lg:mb-24 text-center">
           Courses
         </h3>
       </div>
@@ -35,9 +35,6 @@ export default function HomeCoursesLayout({
         <div className="course-selector lg:block lg:col-span-6">
           <div className="sticky top-6">
             <RadioGroup value={selected} onChange={setSelected}>
-              <RadioGroup.Label className="sr-only">
-                Server size
-              </RadioGroup.Label>
               <div className="space-y-4">
                 {courses.map((course, index) => (
                   <RadioGroup.Option
@@ -93,6 +90,7 @@ export default function HomeCoursesLayout({
                             <img
                               src={`/images/home/course-icons/chevron-right.svg`}
                               alt=""
+                              className="hidden lg:block"
                             />
                           </a>
                         </RadioGroup.Description>
@@ -116,7 +114,7 @@ export default function HomeCoursesLayout({
         {/* Course Progress */}
         <main className="course-progress lg:col-span-6">
           <div className="relative bg-white overflow-hidden">
-            <div className="relative px-4 sm:px-6 lg:px-8">
+            <div className="relative lg:px-8">
               <HomeProgress
                 course={selected}
                 content={content[selected]}

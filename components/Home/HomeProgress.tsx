@@ -34,7 +34,7 @@ export default function HomeProgress({
   return (
     <>
       <nav aria-label="Progress" className="" data-test="course-progress">
-        <div className="what-you-will-learn bg-jade-50 p-8 mb-8 rounded">
+        <div className="what-you-will-learn bg-jade-50 p-8 my-8 lg:mb-8 rounded">
           <img
             src={`/images/home/course-icons/book-icon.svg`}
             alt="book icon"
@@ -67,7 +67,7 @@ export default function HomeProgress({
             <li
               data-test={`lesson-${index}`}
               key={lesson.title}
-              className="py-6 relative border rounded mb-6 pl-4"
+              className="py-4 lg:py-6 relative border rounded mb-6 pl-4"
             >
               <div className="relative flex items-center">
                 {isLessonCompleted(
@@ -81,7 +81,7 @@ export default function HomeProgress({
                 ) && <IncompleteLesson index={index} />}
 
                 {/* Lesson Title */}
-                <span className="ml-4 min-w-0 flex flex-row">
+                <span className="ml-2 lg:ml-4 min-w-0 flex flex-row">
                   <span className="font-normal">
                     <Link href={`/${course}/${lesson.slug}`}>
                       <a data-test={`lesson-progress-link-${index}`}>
@@ -91,7 +91,7 @@ export default function HomeProgress({
                   </span>
                 </span>
                 <img
-                  className="absolute right-8"
+                  className="hidden lg:inline-block absolute right-8"
                   src={`/images/home/course-icons/course-play-icon.svg`}
                   alt=""
                 />
