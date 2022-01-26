@@ -26,9 +26,9 @@ export default function Footer() {
       <hr />
       <footer className="bg-teal-500">
         {/* Email Subscription */}
-        <div className="py-8 lg:flex lg:items-center lg:justify-between lg:max-w-7xl lg:mx-auto xl:mt-0">
+        <div className="py-8 lg:mx-auto lg:flex lg:max-w-7xl lg:items-center lg:justify-between xl:mt-0">
           <div>
-            <h3 className="text-gray-50 tracking-wider uppercase">
+            <h3 className="uppercase tracking-wider text-gray-50">
               Subscribe for updates
             </h3>
             {/* <p className="mt-2 text-base text-gray-500">
@@ -45,13 +45,13 @@ export default function Footer() {
               id="email-address"
               autoComplete="email"
               required
-              className="appearance-none min-w-0 w-full bg-white border border-gray-300 py-2 px-4 text-base rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:max-w-xs"
+              className="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none sm:max-w-xs"
               placeholder="Enter your email"
             />
             <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
               <button
                 type="submit"
-                className="w-full bg-jade-300 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-lg text-teal-600 font-semibold"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-jade-300 py-2 px-4 text-lg font-semibold text-teal-600"
               >
                 Subscribe
               </button>
@@ -59,7 +59,7 @@ export default function Footer() {
           </form>
         </div>
         <hr />
-        <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
           <nav
             className="-mx-5 -my-2 flex flex-wrap justify-center"
             aria-label="Footer"

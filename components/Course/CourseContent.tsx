@@ -27,14 +27,14 @@ export default function CourseContent({
   return (
     <>
       <hr />
-      <div className="py-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 space-y-8 sm:px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
+      <div className="overflow-hidden py-16">
+        <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
             <div className="relative z-10">
-              <h2 className="text-base font-semibold tracking-wide uppercase">
+              <h2 className="text-base font-semibold uppercase tracking-wide">
                 {title}
               </h2>
-              <div className="mt-10 flex text-base max-w-prose mx-auto lg:max-w-none">
+              <div className="mx-auto mt-10 flex max-w-prose text-base lg:max-w-none">
                 <CourseProgress
                   course={course}
                   lessons={lessons}
@@ -44,11 +44,11 @@ export default function CourseContent({
             </div>
 
             {/* Right Column */}
-            <div className="mt-12 relative text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none">
+            <div className="relative mx-auto mt-12 max-w-prose text-base lg:mt-0 lg:max-w-none">
               <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
                 {/* Content area */}
                 <div className="">
-                  <h2 className="text-3xl text-gray-900 font-extrabold tracking-tight sm:text-4xl">
+                  <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                     What You Will Learn
                   </h2>
 
@@ -62,7 +62,7 @@ export default function CourseContent({
                               className="absolute h-6 w-6 text-blue-500"
                               aria-hidden="true"
                             />
-                            <p className="ml-9 text-lg leading-6 font-medium text-gray-600">
+                            <p className="ml-9 text-lg font-medium leading-6 text-gray-600">
                               {feature}
                             </p>
                           </dt>

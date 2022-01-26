@@ -5,14 +5,14 @@ export default function HomeHero() {
     <>
       <div className="relative overflow-hidden">
         <main>
-          <div className="pt-10 bg-white sm:pt-16 lg:pt-8 lg:overflow-hidden">
+          <div className="bg-white pt-10 sm:pt-16 lg:overflow-hidden lg:pt-8">
             <div className="mx-auto w-full lg:pl-8">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-                <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
+                <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
                   <div className="lg:py-24">
                     <h1
                       data-test="hero-heading"
-                      className="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl"
+                      className="mt-4 text-4xl font-extrabold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl"
                     >
                       <span className="block text-gray-900">
                         Real World Testing
@@ -58,7 +58,7 @@ export default function HomeHero() {
                     <div className="mt-10 sm:mt-12">
                       <form
                         action="#"
-                        className="sm:max-w-xl sm:mx-auto lg:mx-0"
+                        className="sm:mx-auto sm:max-w-xl lg:mx-0"
                       >
                         <div className="sm:flex">
                           <div className="min-w-0 flex-1">
@@ -69,13 +69,13 @@ export default function HomeHero() {
                               id="email"
                               type="email"
                               placeholder="Subscribe for Updates"
-                              className="block w-full px-4 py-3 rounded-md border-2text-base text-gray-900 placeholder-gray-500"
+                              className="border-2text-base block w-full rounded-md px-4 py-3 text-gray-900 placeholder-gray-500"
                             />
                           </div>
                           <div className="mt-3 sm:mt-0 sm:ml-3">
                             <button
                               type="submit"
-                              className="block w-full py-3 px-4 rounded-md shadow bg-teal-500 text-white font-medium hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 focus:ring-offset-gray-900"
+                              className="block w-full rounded-md bg-teal-500 py-3 px-4 font-medium text-white shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-indigo-300 focus:ring-offset-2 focus:ring-offset-gray-900"
                             >
                               Subscribe
                             </button>
@@ -85,7 +85,7 @@ export default function HomeHero() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
+                <div className="mt-12 -mb-16 sm:-mb-48 lg:relative lg:m-0">
                   <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
                     <Image
                       className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"

@@ -13,12 +13,12 @@ type Props = {
 
 export default function Courses({ courses, content, progressService }: Props) {
   return (
-    <div className="relative bg-white overflow-hidden">
+    <div className="relative overflow-hidden bg-white">
       {courses.map((course, index) => (
         <div key={course} data-test={`course-${index}`}>
           <div className="relative">
-            <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
-              <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
+            <div className="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-24 lg:px-8">
+              <div className="mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
                 <div>
                   <div className="mt-6">
                     <Link href={`/${content[course].slug}`}>

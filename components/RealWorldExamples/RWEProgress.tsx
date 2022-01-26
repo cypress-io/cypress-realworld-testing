@@ -8,12 +8,12 @@ export default function RWEProgress({ content }) {
             key={lesson.title}
             className="pb-10"
           >
-            <div className="relative flex items-start group">
-              <span className="min-w-0 flex flex-col">
+            <div className="group relative flex items-start">
+              <span className="flex min-w-0 flex-col">
                 <a
                   href={`/real-world-examples/${lesson.slug}`}
                   data-test={`real-world-lesson-${index}`}
-                  className="text-xs font-semibold tracking-wide uppercase text-gray-900"
+                  className="text-xs font-semibold uppercase tracking-wide text-gray-900"
                 >
                   {lesson.title}
                 </a>

@@ -41,15 +41,15 @@ const features = [
 export default function HomeFeatures() {
   return (
     <div className="features relative bg-teal-500 py-16 sm:py-24 lg:py-16">
-      <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-        <p className="mt-2 text-3xl font-extrabold text-gray-50 tracking-tight sm:text-4xl">
+      <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+        <p className="mt-2 text-3xl font-extrabold tracking-tight text-gray-50 sm:text-4xl">
           What you&apos;ll learn
         </p>
         <div className="mt-12">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div key={feature.name} className="pt-6">
-                <div className="bg-gray-50 rounded-lg px-6 py-8">
+                <div className="rounded-lg bg-gray-50 px-6 py-8">
                   <Image
                     className="h-8 w-auto sm:h-10"
                     src={`/images/home/${feature.icon}`}
@@ -57,7 +57,7 @@ export default function HomeFeatures() {
                     height={62}
                     width={75}
                   />
-                  <h3 className="mt-4 text-lg font-medium text-gray-900 tracking-tight">
+                  <h3 className="mt-4 text-lg font-medium tracking-tight text-gray-900">
                     {feature.name}
                   </h3>
                   <p className="mt-5 text-base text-gray-500">

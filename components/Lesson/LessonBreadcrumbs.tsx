@@ -22,19 +22,19 @@ export default function Breadcrumbs({
 
   return (
     <nav
-      className="bg-white border-b border-gray-200 flex"
+      className="flex border-b border-gray-200 bg-white"
       aria-label="Breadcrumb"
     >
       <ol
         role="list"
-        className="max-w-screen-xl w-full mx-auto px-4 flex space-x-4 sm:px-6 lg:px-8"
+        className="mx-auto flex w-full max-w-screen-xl space-x-4 px-4 sm:px-6 lg:px-8"
       >
         <li className="flex">
           <div className="flex items-center">
             <Link href="/">
               <a className="text-gray-400 hover:text-gray-500">
                 <HomeIcon
-                  className="flex-shrink-0 h-5 w-5"
+                  className="h-5 w-5 flex-shrink-0"
                   aria-hidden="true"
                 />
                 <span className="sr-only">Home</span>
@@ -47,7 +47,7 @@ export default function Breadcrumbs({
         <li className="flex">
           <div className="flex items-center">
             <svg
-              className="flex-shrink-0 w-6 h-full text-gray-200"
+              className="h-full w-6 flex-shrink-0 text-gray-200"
               viewBox="0 0 24 44"
               preserveAspectRatio="none"
               fill="currentColor"
@@ -68,7 +68,7 @@ export default function Breadcrumbs({
         <li className="flex">
           <div className="flex items-center">
             <svg
-              className="flex-shrink-0 w-6 h-full text-gray-200"
+              className="h-full w-6 flex-shrink-0 text-gray-200"
               viewBox="0 0 24 44"
               preserveAspectRatio="none"
               fill="currentColor"

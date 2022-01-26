@@ -40,13 +40,13 @@ export default function LessonLayout({
         lessonData={lessonData}
       />
 
-      <div className="min-h-screen mt-20">
+      <div className="mt-20 min-h-screen">
         <div className="py-6">
-          <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
+          <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
             {/* Table of Content */}
-            <div className="hidden lg:block lg:col-span-3 xl:col-span-3">
+            <div className="hidden lg:col-span-3 lg:block xl:col-span-3">
               <div className="sticky top-6">
-                <p className="font-semibold mb-4">ON THIS PAGE</p>
+                <p className="mb-4 font-semibold">ON THIS PAGE</p>
                 <LessonSidebar
                   navigation={toc}
                   course={course}
@@ -58,9 +58,9 @@ export default function LessonLayout({
 
             {/* Content */}
             <main className="lesson-content lg:col-span-9 xl:col-span-7">
-              <div className="relative bg-white overflow-hidden">
+              <div className="relative overflow-hidden bg-white">
                 <div className="relative px-4 sm:px-6 lg:px-8">
-                  <div className="prose prose-indigo prose-lg text-gray-500 mx-auto">
+                  <div className="prose prose-lg prose-indigo mx-auto text-gray-500">
                     <MDXRemote {...source} components={components} />
                   </div>
                 </div>

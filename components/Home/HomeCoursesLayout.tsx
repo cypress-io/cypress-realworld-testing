@@ -24,8 +24,8 @@ export default function HomeCoursesLayout({
 
   return (
     <div className="features relative bg-white p-16">
-      <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-        <h3 className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl mb-8">
+      <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+        <h3 className="mt-2 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
           Courses
         </h3>
       </div>
@@ -45,7 +45,7 @@ export default function HomeCoursesLayout({
                     classNames(
                       checked ? "bg-teal-500" : "bg-gray-50",
                       active ? "" : "bg-teal-500",
-                      "relative  border rounded-lg shadow-sm px-6 py-4 cursor-pointer flex justify-between items-center"
+                      "relative  flex cursor-pointer items-center justify-between rounded-lg border px-6 py-4 shadow-sm"
                     )
                   }
                 >
@@ -60,7 +60,7 @@ export default function HomeCoursesLayout({
                               classNames(
                                 checked ? "text-jade-50" : "",
                                 active ? "text-gray-900" : "",
-                                "text-gray-400 font-extrabold text-lg flex justify-between items-center"
+                                "flex items-center justify-between text-lg font-extrabold text-gray-400"
                               )
                             }
                           >
@@ -81,12 +81,12 @@ export default function HomeCoursesLayout({
                       </div>
                       <RadioGroup.Description
                         as="div"
-                        className="mt-2 flex text-sm sm:mt-0 sm:block sm:ml-4 sm:text-right"
+                        className="mt-2 flex text-sm sm:mt-0 sm:ml-4 sm:block sm:text-right"
                       >
                         {checked && (
                           <a
                             href={`/${content[course].slug}`}
-                            className="inline-flex px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-jade-300"
+                            className="inline-flex rounded-md border border-transparent bg-jade-300 px-4 py-2 text-base font-medium text-white shadow-sm"
                           >
                             Get started
                           </a>
@@ -96,7 +96,7 @@ export default function HomeCoursesLayout({
                         className={classNames(
                           active ? "border" : "border-2",
                           checked ? "" : "border-transparent",
-                          "absolute -inset-px rounded-lg pointer-events-none"
+                          "pointer-events-none absolute -inset-px rounded-lg"
                         )}
                         aria-hidden="true"
                       />

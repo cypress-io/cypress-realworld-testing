@@ -32,7 +32,7 @@ export default function MobileProgress({
             {/* Solid Line that connects the checkmarks */}
             {index !== content?.lessons.length - 1 ? (
               <div
-                className={`-ml-px absolute mt-0.5 top-4 left-2 w-0.5 h-full ${
+                className={`absolute top-4 left-2 -ml-px mt-0.5 h-full w-0.5 ${
                   isLessonCompleted(progressService, `${course}/${lesson.slug}`)
                     ? "bg-indigo-600"
                     : "bg-gray-300"
@@ -41,20 +41,20 @@ export default function MobileProgress({
               />
             ) : null}
 
-            <div className="relative flex items-center group">
+            <div className="group relative flex items-center">
               {/* "completed" */}
 
               {isLessonCompleted(
                 progressService,
                 `${course}/${lesson.slug}`
               ) && (
-                <span className="h-9 flex items-center">
+                <span className="flex h-9 items-center">
                   <span
                     data-test={`lesson-complete-${index}`}
-                    className="relative z-10 w-4 h-4 flex items-center justify-center bg-indigo-600 rounded-full group-hover:bg-indigo-800"
+                    className="relative z-10 flex h-4 w-4 items-center justify-center rounded-full bg-indigo-600 group-hover:bg-indigo-800"
                   >
                     <CheckIcon
-                      className="w-5 h-5 text-white"
+                      className="h-5 w-5 text-white"
                       aria-hidden="true"
                     />
                   </span>
@@ -66,19 +66,19 @@ export default function MobileProgress({
                 progressService,
                 `${course}/${lesson.slug}`
               ) && (
-                <span className="h-9 flex items-center" aria-hidden="true">
+                <span className="flex h-9 items-center" aria-hidden="true">
                   <span
                     data-test={`lesson-upcoming-${index}`}
-                    className="relative z-10 w-4 h-4 flex items-center justify-center bg-white border-2 border-gray-300 rounded-full group-hover:border-gray-400"
+                    className="relative z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 border-gray-300 bg-white group-hover:border-gray-400"
                   >
-                    <span className="h-2.5 w-2.5 bg-transparent rounded-full group-hover:bg-gray-300" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300" />
                   </span>
                 </span>
               )}
 
               {/* Lesson Title */}
-              <span className="ml-4 min-w-0 flex flex-col">
-                <span className="text-xs font-semibold tracking-wide uppercase">
+              <span className="ml-4 flex min-w-0 flex-col">
+                <span className="text-xs font-semibold uppercase tracking-wide">
                   <a href={`${course}/${lesson.slug}`}>{lesson.title}</a>
                 </span>
               </span>

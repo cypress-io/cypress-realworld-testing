@@ -52,7 +52,7 @@ export default function CourseProgress({
               )}
             />
 
-            <div className="relative flex items-start group">
+            <div className="group relative flex items-start">
               {isLessonCompleted(
                 progressService,
                 `${course}/${lesson.slug}`
@@ -64,8 +64,8 @@ export default function CourseProgress({
               ) && <IncompleteLesson index={index} />}
 
               {/* Lesson Title */}
-              <span className="ml-4 min-w-0 flex flex-col">
-                <span className="text-xs font-semibold tracking-wide uppercase">
+              <span className="ml-4 flex min-w-0 flex-col">
+                <span className="text-xs font-semibold uppercase tracking-wide">
                   <Link href={`/${course}/${lesson.slug}`}>
                     <a data-test={`lesson-progress-link-${index}`}>
                       {lesson.title}

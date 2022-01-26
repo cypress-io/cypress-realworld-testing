@@ -8,7 +8,7 @@ export default function NextLessonBtn({ path, isCompleted }: Props) {
     <div className={`${isCompleted ? "" : "hidden"} py-20`}>
       <a
         href={path ? path : "/"}
-        className="px-8 py-3 text-base font-medium rounded-md text-white bg-jade-300  md:py-4 md:text-lg md:px-10"
+        className="rounded-md bg-jade-300 px-8 py-3 text-base font-medium text-white  md:py-4 md:px-10 md:text-lg"
         data-test="next-lesson-button"
       >
         {path ? "Next Lesson" : "Complete Course"}
