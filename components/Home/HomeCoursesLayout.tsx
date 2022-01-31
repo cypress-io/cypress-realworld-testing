@@ -23,16 +23,16 @@ export default function HomeCoursesLayout({
   const [selected, setSelected] = useState(courses[0])
 
   return (
-    <div className="features px-8 lg:py-28 lg:px-44 mx-auto w-full">
-      <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-full">
-        <h3 className="mt-2 text-3xl font-bold text-gray-900 tracking-tight sm:text-5xl py-8 lg:mb-24 text-center">
+    <div className="features mx-auto w-full px-8 lg:py-28 lg:px-44">
+      <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-full lg:px-8">
+        <h3 className="mt-2 py-8 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:mb-24">
           Courses
         </h3>
       </div>
 
-      <div className="max-w-3xl mx-auto sm:px-6 lg:max-w-full lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
+      <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
         {/* Course Selector */}
-        <div className="course-selector lg:block lg:col-span-6">
+        <div className="course-selector lg:col-span-6 lg:block">
           <div className="sticky top-2">
             <RadioGroup value={selected} onChange={setSelected}>
               <div className="space-y-4">
@@ -44,9 +44,9 @@ export default function HomeCoursesLayout({
                     className={({ checked, active }) =>
                       classNames(
                         checked
-                          ? "shadow-2xl border-2 border-indigo-400"
-                          : "bg-white opacity-50 border-2 border-gray-200",
-                        "rounded-lg px-6 py-4 cursor-pointer flex justify-between items-center"
+                          ? "border-2 border-indigo-400 shadow-2xl"
+                          : "border-2 border-gray-200 bg-white opacity-50",
+                        "flex cursor-pointer items-center justify-between rounded-lg px-6 py-4"
                       )
                     }
                   >
@@ -60,7 +60,7 @@ export default function HomeCoursesLayout({
                                 classNames(
                                   checked ? "text-gray-900" : "",
                                   active ? "text-gray-900" : "",
-                                  "text-gray-900 font-normal text-lg flex justify-between items-center"
+                                  "flex items-center justify-between text-lg font-normal text-gray-900"
                                 )
                               }
                             >
@@ -81,7 +81,7 @@ export default function HomeCoursesLayout({
                         </div>
                         <RadioGroup.Description
                           as="div"
-                          className="mt-2 flex text-sm sm:mt-0 sm:block sm:ml-4 sm:text-right"
+                          className="mt-2 flex text-sm sm:mt-0 sm:ml-4 sm:block sm:text-right"
                         >
                           <a
                             href={`/${content[course].slug}`}
@@ -98,7 +98,7 @@ export default function HomeCoursesLayout({
                           className={classNames(
                             active ? "border" : "border-2",
                             checked ? "" : "border-transparent",
-                            "absolute -inset-px rounded-lg pointer-events-none"
+                            "pointer-events-none absolute -inset-px rounded-lg"
                           )}
                           aria-hidden="true"
                         />
@@ -113,7 +113,7 @@ export default function HomeCoursesLayout({
 
         {/* Course Progress */}
         <main className="course-progress lg:col-span-6">
-          <div className="relative bg-white overflow-hidden">
+          <div className="relative overflow-hidden bg-white">
             <div className="relative lg:px-8">
               <HomeProgress
                 course={selected}

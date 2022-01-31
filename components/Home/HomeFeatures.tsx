@@ -40,9 +40,9 @@ const features = [
 
 export default function HomeFeatures() {
   return (
-    <div className="features relative bg-jade-300 py-16 sm:py-24 lg:py-16 bg-home-features bg-no-repeat bg-cover bg-center">
-      <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-        <p className="mt-2 text-3xl font-extrabold text-gray-50 tracking-tight sm:text-4xl text-center lg:text-left">
+    <div className="features relative bg-jade-300 bg-home-features bg-cover bg-center bg-no-repeat py-16 sm:py-24 lg:py-16">
+      <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+        <p className="mt-2 text-center text-3xl font-extrabold tracking-tight text-gray-50 sm:text-4xl lg:text-left">
           What you&apos;ll learn
         </p>
         <div className="mt-12">

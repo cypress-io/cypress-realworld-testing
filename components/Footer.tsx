@@ -26,13 +26,13 @@ export default function Footer() {
       <hr />
       <footer className="bg-indigo-500 p-4 md:p-0">
         {/* Email Subscription */}
-        <div className="py-8 lg:flex lg:items-center lg:justify-center lg:max-w-7xl lg:mx-auto xl:mt-0">
+        <div className="py-8 lg:mx-auto lg:flex lg:max-w-7xl lg:items-center lg:justify-center xl:mt-0">
           <div>
-            <h3 className="text-gray-50 text-xl tracking-wider mr-10">
+            <h3 className="mr-10 text-xl tracking-wider text-gray-50">
               Get course updates to your inbox
             </h3>
           </div>
-          <form className="mt-4 sm:flex sm:max-w-md lg:mt-0 w-full">
+          <form className="mt-4 w-full sm:flex sm:max-w-md lg:mt-0">
             <label htmlFor="email-address" className="sr-only">
               Email address
             </label>
@@ -42,13 +42,13 @@ export default function Footer() {
               id="email-address"
               autoComplete="email"
               required
-              className="appearance-none min-w-0 w-full bg-white border border-gray-300 py-2 px-4 text-base rounded md:rounded-none md:rounded-tl-md md:rounded-bl-md text-gray-900 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 sm:max-w-xs"
+              className="w-full min-w-0 appearance-none rounded border border-gray-300 bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:placeholder-gray-400 focus:outline-none sm:max-w-xs md:rounded-none md:rounded-tl-md md:rounded-bl-md"
               placeholder="Enter your email"
             />
             <div className="mt-3 rounded-md sm:mt-0 sm:flex-shrink-0">
               <button
                 type="submit"
-                className="w-full bg-indigo-100 border border-transparent rounded md:rounded-none md:rounded-tr-md md:rounded-br-md py-2 px-4 flex items-center justify-center text-indigo-900"
+                className="flex w-full items-center justify-center rounded border border-transparent bg-indigo-100 py-2 px-4 text-indigo-900 md:rounded-none md:rounded-tr-md md:rounded-br-md"
               >
                 Subscribe
               </button>
@@ -58,7 +58,7 @@ export default function Footer() {
 
         <hr />
 
-        <div className="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
           <nav
             className="-mx-5 -my-2 flex flex-wrap justify-center"
             aria-label="Footer"

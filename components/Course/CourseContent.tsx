@@ -24,9 +24,9 @@ export default function CourseContent({
         <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
             <div className="relative z-10">
-              <div className="flex text-base max-w-prose mx-auto lg:max-w-none">
+              <div className="mx-auto flex max-w-prose text-base lg:max-w-none">
                 <div className="">
-                  <h2 className="text-3xl text-gray-700 font-bold tracking-tight">
+                  <h2 className="text-3xl font-bold tracking-tight text-gray-700">
                     What You Will Learn:
                   </h2>
 
@@ -53,7 +53,7 @@ export default function CourseContent({
             </div>
 
             {/* Right Column */}
-            <div className="mt-12 relative text-base max-w-prose mx-auto lg:mt-0 lg:max-w-none">
+            <div className="relative mx-auto mt-12 max-w-prose text-base lg:mt-0 lg:max-w-none">
               <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
                 <CourseProgress
                   course={course}

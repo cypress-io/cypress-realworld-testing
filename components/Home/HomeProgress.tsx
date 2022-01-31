@@ -34,12 +34,12 @@ export default function HomeProgress({
   return (
     <>
       <nav aria-label="Progress" className="" data-test="course-progress">
-        <div className="what-you-will-learn bg-jade-50 p-8 my-8 lg:mb-8 lg:mt-0 rounded">
+        <div className="what-you-will-learn my-8 rounded bg-jade-50 p-8 lg:mb-8 lg:mt-0">
           <img
             src={`/images/home/course-icons/book-icon.svg`}
             alt="book icon"
           />
-          <p className="font-bold text-gray-800 py-6">
+          <p className="py-6 font-bold text-gray-800">
             IN THIS COURSE YOU&apos;LL LEARN
           </p>
 
@@ -52,7 +52,7 @@ export default function HomeProgress({
                       className="absolute h-6 w-6 text-gray-500"
                       aria-hidden="true"
                     />
-                    <p className="ml-9 text-lg leading-6 font-medium text-gray-600">
+                    <p className="ml-9 text-lg font-medium leading-6 text-gray-600">
                       {feature}
                     </p>
                   </dt>
@@ -67,7 +67,7 @@ export default function HomeProgress({
             <li
               data-test={`lesson-${index}`}
               key={lesson.title}
-              className="py-4 lg:py-6 relative border rounded mb-6 pl-4"
+              className="relative mb-6 rounded border py-4 pl-4 lg:py-6"
             >
               <div className="relative flex items-center">
                 {isLessonCompleted(
@@ -81,7 +81,7 @@ export default function HomeProgress({
                 ) && <IncompleteLesson index={index} />}
 
                 {/* Lesson Title */}
-                <span className="ml-2 lg:ml-4 min-w-0 flex flex-row">
+                <span className="ml-2 flex min-w-0 flex-row lg:ml-4">
                   <span className="font-normal">
                     <Link href={`/${course}/${lesson.slug}`}>
                       <a data-test={`lesson-progress-link-${index}`}>
@@ -91,7 +91,7 @@ export default function HomeProgress({
                   </span>
                 </span>
                 <img
-                  className="hidden lg:inline-block absolute right-8"
+                  className="absolute right-8 hidden lg:inline-block"
                   src={`/images/home/course-icons/course-play-icon.svg`}
                   alt=""
                 />

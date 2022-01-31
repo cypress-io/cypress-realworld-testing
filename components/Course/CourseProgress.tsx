@@ -28,7 +28,7 @@ export default function CourseProgress({
 }: Props) {
   return (
     <>
-      <h2 className="text-3xl text-gray-700 font-bold tracking-tight">
+      <h2 className="text-3xl font-bold tracking-tight text-gray-700">
         {lessons.length} Lessons
       </h2>
 
@@ -55,8 +55,8 @@ export default function CourseProgress({
                 ) && <IncompleteLesson index={index} />}
 
                 {/* Lesson Title */}
-                <span className="ml-4 min-w-0 flex flex-col">
-                  <span className="text-xs font-semibold tracking-wide uppercase">
+                <span className="ml-4 flex min-w-0 flex-col">
+                  <span className="text-xs font-semibold uppercase tracking-wide">
                     <Link href={`/${course}/${lesson.slug}`}>
                       <a data-test={`lesson-progress-link-${index}`}>
                         {lesson.title}
