@@ -11,7 +11,7 @@ export default function ProgressLine({ index, isCompleted, lessons }: Props) {
     <>
       {index !== lessons.length - 1 ? (
         <div
-          className={`-ml-px absolute mt-0.5 top-4 left-4 w-0.5 h-full ${
+          className={`absolute top-4 left-4 -ml-px mt-0.5 h-full w-0.5 ${
             isCompleted ? "bg-indigo-600" : "bg-gray-300"
           }`}
           aria-hidden="true"

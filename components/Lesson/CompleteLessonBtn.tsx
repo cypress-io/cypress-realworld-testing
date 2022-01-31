@@ -17,7 +17,7 @@ export default function NextLessonBtn({
     <div data-test="complete-lesson-button" className="py-20">
       <a
         href={nextLessonPath ? nextLessonPath : "/"}
-        className="mx-auto max-w-xl flex items-center justify-center px-8 py-3 text-base font-medium rounded-md text-white bg-teal-500  md:py-4 md:text-lg md:px-10"
+        className="mx-auto flex max-w-xl items-center justify-center rounded-md bg-teal-500 px-8 py-3 text-base font-medium text-white  md:py-4 md:px-10 md:text-lg"
         onClick={() => {
           progressSend({
             type: "COMPLETE_LESSON",

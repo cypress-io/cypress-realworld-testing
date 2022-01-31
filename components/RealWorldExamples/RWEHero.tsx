@@ -2,13 +2,13 @@ export default function RWEHero() {
   return (
     <>
       <hr />
-      <div className="relative pt-16 overflow-hidden sm:pt-24 lg:pt-20">
-        <div className="mx-auto max-w-md px-4 text-center sm:px-6 sm:max-w-3xl lg:px-8 lg:max-w-7xl">
+      <div className="relative overflow-hidden pt-16 sm:pt-24 lg:pt-20">
+        <div className="mx-auto max-w-md px-4 text-center sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
           <div>
-            <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
+            <p className="mt-2 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Real World Examples
             </p>
-            <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
+            <p className="mx-auto mt-5 max-w-prose text-xl text-gray-500">
               A payment application to demonstrate real-world usage of Cypress
               testing methods, patterns, and workflows.
             </p>
