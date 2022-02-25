@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Layout from "../../components/Layout"
-import RWEFeatures from "../../components/RealWorldExamples/RWEFeatures"
+import RWEAbout from "../../components/RealWorldExamples/RWEAbout"
 import RWETests from "../../components/RealWorldExamples/RWETests"
 import RWEHero from "../../components/RealWorldExamples/RWEHero"
 import { progressService } from "../../machines/progressService"
@@ -30,7 +30,7 @@ export default function Home({ content, sections, rWESections }: Props) {
 
       <RWEHero />
 
-      <RWEFeatures />
+      <RWEAbout />
 
       <RWETests
         sections={rWESections}
