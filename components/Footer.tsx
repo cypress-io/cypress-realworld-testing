@@ -28,11 +28,11 @@ export default function Footer() {
         {/* Email Subscription */}
         <div className="py-8 lg:mx-auto lg:flex lg:max-w-7xl lg:items-center lg:justify-center xl:mt-0">
           <div>
-            <h3 className="mr-10 text-xl tracking-wider text-gray-50">
+            <h3 className="mr-10 text-center text-xl tracking-wider text-gray-50 lg:text-left">
               Get course updates to your inbox
             </h3>
           </div>
-          <form className="mt-4 w-full sm:flex sm:max-w-md lg:mt-0">
+          <form className="mt-4 w-full sm:flex sm:justify-center lg:mt-0 lg:max-w-md">
             <label htmlFor="email-address" className="sr-only">
               Email address
             </label>
