@@ -2,7 +2,7 @@ import { CheckIcon } from "@heroicons/react/outline"
 
 export default function RWEAbout() {
   return (
-    <div className="relative bg-gray-50 p-16">
+    <div className="relative bg-gray-50 p-8 md:p-16">
       <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8 ">
         <h2 className="mb-8 text-3xl font-bold tracking-tight text-gray-700">
           About these examples

@@ -27,7 +27,7 @@ export default function RWEProgress({ content }) {
                 <img
                   src="/images/real-world-examples/icons/right-arrow.svg"
                   alt="right arrow icon"
-                  className="absolute right-2 top-4"
+                  className="invisible absolute right-2 top-4 md:visible"
                 />
               </div>
               <div className="mt-4 border" />
