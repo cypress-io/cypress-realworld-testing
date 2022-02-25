@@ -5,22 +5,6 @@ describe("Lesson Pages", () => {
     cy.visit("/cypress-fundamentals/cypress-ui-overview")
   })
 
-  it("the TOC links to the correct content section when clicked", () => {
-    cy.getBySel("sidebar").within(() => {
-      cy.getBySel("sidebar-submenu-toc-link").each(($link, index) => {
-        const href = $link.attr("href")
-        cy.wrap($link).click()
-
-        cy.window().then(($window) => {
-          expect($window.scrollY).to.be.closeTo(
-            Math.ceil(cy.$$(`${href}`).offset().top),
-            5
-          )
-        })
-      })
-    })
-  })
-
   it("shows the challenge", () => {
     cy.getBySel("multiple-choice-challenge").should("exist")
   })
@@ -36,8 +20,24 @@ describe("Lesson Pages", () => {
     cy.get("#modal").should("not.be.visible")
   })
 
-  context("Lesson Progress Sidebar", () => {
-    it("the lessons in the progress sidebar link to the correct lessons", () => {
+  context("Table of Contents", () => {
+    it("the TOC links to the correct content section when clicked", () => {
+      cy.getBySel("sidebar").within(() => {
+        cy.getBySel("sidebar-submenu-toc-link").each(($link, index) => {
+          const href = $link.attr("href")
+          cy.wrap($link).click()
+
+          cy.window().then(($window) => {
+            expect($window.scrollY).to.be.closeTo(
+              Math.ceil(cy.$$(`${href}`).offset().top),
+              5
+            )
+          })
+        })
+      })
+    })
+
+    it("links to the correct content lesson when clicked", () => {
       cy.visit(
         "/testing-your-first-application/todomvc-app-install-and-overview"
       )

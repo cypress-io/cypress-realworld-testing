@@ -23,99 +23,106 @@ export default function HomeCoursesLayout({
   const [selected, setSelected] = useState(courses[0])
 
   return (
-    <div className="features relative bg-white p-16">
-      <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-        <h3 className="mt-2 mb-8 text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+    <div className="features mx-auto w-full px-8 lg:py-28 lg:px-44">
+      <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-full lg:px-8">
+        <h3 className="mt-2 py-8 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:mb-24">
           Courses
         </h3>
       </div>
 
-      <div className="grid grid-cols-2 gap-8">
+      <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
         {/* Course Selector */}
-        <>
-          <RadioGroup value={selected} onChange={setSelected}>
-            <RadioGroup.Label className="sr-only">Server size</RadioGroup.Label>
-            <div className="space-y-4">
-              {courses.map((course, index) => (
-                <RadioGroup.Option
-                  key={index}
-                  value={course}
-                  data-test={`course-${index}`}
-                  className={({ checked, active }) =>
-                    classNames(
-                      checked ? "bg-teal-500" : "bg-gray-50",
-                      active ? "" : "bg-teal-500",
-                      "relative  flex cursor-pointer items-center justify-between rounded-lg border px-6 py-4 shadow-sm"
-                    )
-                  }
-                >
-                  {({ active, checked }) => (
-                    <>
-                      <div className="flex items-center">
-                        <div className="text-sm">
-                          <RadioGroup.Label
-                            as="p"
-                            // className="font-medium text-gray-900"
-                            className={() =>
-                              classNames(
-                                checked ? "text-jade-50" : "",
-                                active ? "text-gray-900" : "",
-                                "flex items-center justify-between text-lg font-extrabold text-gray-400"
-                              )
-                            }
-                          >
-                            <Image
-                              className="h-8 w-auto sm:h-10"
-                              src={`/images/home/${course}.svg`}
-                              alt="Cypress Logo"
-                              height={62}
-                              width={75}
-                            />
-                            {content[course].title}
-                          </RadioGroup.Label>
-                          <RadioGroup.Description
-                            as="div"
-                            className="text-gray-500"
-                          ></RadioGroup.Description>
+        <div className="course-selector lg:col-span-6 lg:block">
+          <div className="sticky top-2">
+            <RadioGroup value={selected} onChange={setSelected}>
+              <div className="space-y-4">
+                {courses.map((course, index) => (
+                  <RadioGroup.Option
+                    key={index}
+                    value={course}
+                    data-test={`course-${index}`}
+                    className={({ checked, active }) =>
+                      classNames(
+                        checked
+                          ? "border-2 border-indigo-400 shadow-2xl"
+                          : "border-2 border-gray-200 bg-white opacity-50",
+                        "flex cursor-pointer items-center justify-between rounded-lg px-6 py-4"
+                      )
+                    }
+                  >
+                    {({ active, checked }) => (
+                      <>
+                        <div className="flex items-center">
+                          <div className="text-sm">
+                            <RadioGroup.Label
+                              as="p"
+                              className={() =>
+                                classNames(
+                                  checked ? "text-gray-900" : "",
+                                  active ? "text-gray-900" : "",
+                                  "flex items-center justify-between text-lg font-normal text-gray-900"
+                                )
+                              }
+                            >
+                              <Image
+                                className="h-8 w-auto sm:h-10"
+                                src={`/images/home/course-icons/${course}.svg`}
+                                alt="Cypress Logo"
+                                height={62}
+                                width={75}
+                              />
+                              {content[course].title}
+                            </RadioGroup.Label>
+                            <RadioGroup.Description
+                              as="div"
+                              className="text-gray-500"
+                            ></RadioGroup.Description>
+                          </div>
                         </div>
-                      </div>
-                      <RadioGroup.Description
-                        as="div"
-                        className="mt-2 flex text-sm sm:mt-0 sm:ml-4 sm:block sm:text-right"
-                      >
-                        {checked && (
+                        <RadioGroup.Description
+                          as="div"
+                          className="mt-2 flex text-sm sm:mt-0 sm:ml-4 sm:block sm:text-right"
+                        >
                           <a
                             href={`/${content[course].slug}`}
-                            className="inline-flex rounded-md border border-transparent bg-jade-300 px-4 py-2 text-base font-medium text-white shadow-sm"
+                            className="inline-flex px-4 py-2 text-base font-medium text-white"
                           >
-                            Get started
+                            <img
+                              src={`/images/home/course-icons/chevron-right.svg`}
+                              alt=""
+                              className="hidden lg:block"
+                            />
                           </a>
-                        )}
-                      </RadioGroup.Description>
-                      <div
-                        className={classNames(
-                          active ? "border" : "border-2",
-                          checked ? "" : "border-transparent",
-                          "pointer-events-none absolute -inset-px rounded-lg"
-                        )}
-                        aria-hidden="true"
-                      />
-                    </>
-                  )}
-                </RadioGroup.Option>
-              ))}
-            </div>
-          </RadioGroup>
-        </>
+                        </RadioGroup.Description>
+                        <div
+                          className={classNames(
+                            active ? "border" : "border-2",
+                            checked ? "" : "border-transparent",
+                            "pointer-events-none absolute -inset-px rounded-lg"
+                          )}
+                          aria-hidden="true"
+                        />
+                      </>
+                    )}
+                  </RadioGroup.Option>
+                ))}
+              </div>
+            </RadioGroup>
+          </div>
+        </div>
 
         {/* Course Progress */}
-        <>
-          <HomeProgress
-            course={selected}
-            content={content[selected]}
-            progressService={progressService}
-          />
-        </>
+        <main className="course-progress lg:col-span-6">
+          <div className="relative overflow-hidden bg-white">
+            <div className="relative lg:px-8">
+              <HomeProgress
+                course={selected}
+                content={content[selected]}
+                progressService={progressService}
+              />
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   )

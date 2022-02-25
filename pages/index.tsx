@@ -29,12 +29,12 @@ export default function Home({ content, courses }: Props) {
       </Head>
 
       <HomeHero />
-      <HomeFeatures />
       <HomeCoursesLayout
         courses={courses}
         content={content}
         progressService={progressService}
       />
+      <HomeFeatures />
       <HomeRealWorldExamples />
     </Layout>
   )

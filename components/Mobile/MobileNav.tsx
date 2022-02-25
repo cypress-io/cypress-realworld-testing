@@ -36,7 +36,10 @@ export default function MobileProgressMenu({
           </div>
           {/* Mobile Hamburger Menu */}
           <div className="md:hidden">
-            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+            <Popover.Button
+              className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              data-test="mobile-menu-button"
+            >
               <span className="sr-only">Open menu</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"

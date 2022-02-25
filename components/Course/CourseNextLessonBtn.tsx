@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { isLessonCompleted } from "../../utils/machineUtils"
 import { Lesson } from "common"
 
@@ -42,15 +43,22 @@ export default function CourseNextLessonBtn({
   }
 
   return (
-    <div className="py-20">
-      <Link href={buttonURL()}>
-        <a
-          data-test="next-lesson-button"
-          className="mx-auto flex max-w-xl items-center justify-center rounded-md bg-blue-500 px-8 py-3 text-base font-medium text-white hover:bg-blue-600 md:py-4 md:px-10 md:text-lg"
-        >
-          {buttonText()}
-        </a>
-      </Link>
-    </div>
+    <Link href={buttonURL()}>
+      <a
+        data-test="next-lesson-button"
+        className="inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      >
+        {incompleteLessons.length === lessons.length && (
+          <Image
+            src="/images/course-page/course-play-icon.svg"
+            alt="Play Icon"
+            width={16}
+            height={16}
+          />
+        )}
+
+        <span className="ml-2">{buttonText()}</span>
+      </a>
+    </Link>
   )
 }

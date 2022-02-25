@@ -63,7 +63,7 @@
   Doc Search
 */
 
-input[type='search']:focus {
+input[type="search"]:focus {
   --tw-ring-color: none;
 }
 
@@ -89,7 +89,7 @@ input[type='search']:focus {
 
 .pro-sidebar .pro-sub-menu.open a {
   color: #007780 !important;
-  background: #F3F4FA;
+  background: #f3f4fa;
   border-radius: 40px;
-  padding:  20px 10px;
+  padding: 20px 10px;
 }

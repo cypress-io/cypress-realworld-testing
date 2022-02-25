@@ -40,9 +40,9 @@ const features = [
 
 export default function HomeFeatures() {
   return (
-    <div className="features relative bg-teal-500 py-16 sm:py-24 lg:py-16">
+    <div className="features relative bg-jade-300 bg-home-features bg-cover bg-center bg-no-repeat py-16 sm:py-24 lg:py-16">
       <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-        <p className="mt-2 text-3xl font-extrabold tracking-tight text-gray-50 sm:text-4xl">
+        <p className="mt-2 text-center text-3xl font-extrabold tracking-tight text-gray-50 sm:text-4xl lg:text-left">
           What you&apos;ll learn
         </p>
         <div className="mt-12">
@@ -52,7 +52,7 @@ export default function HomeFeatures() {
                 <div className="rounded-lg bg-gray-50 px-6 py-8">
                   <Image
                     className="h-8 w-auto sm:h-10"
-                    src={`/images/home/${feature.icon}`}
+                    src={`/images/home/course-icons/book-icon.svg`}
                     alt="Cypress Logo"
                     height={62}
                     width={75}
