@@ -6,12 +6,12 @@ const RWEProgress = dynamic(() => import("./RWEProgress"), {
 
 export default function RWETests({ sections, content, progressService }) {
   return (
-    <div className="relative overflow-hidden bg-white py-32">
+    <div className="relative overflow-hidden bg-white py-8 pb-32">
       {sections.map((section, index) => (
         <div key={section} data-test={`real-world-example-${index}`}>
           <div className="relative">
             <div className="lg:mx-auto lg:max-w-5xl lg:px-8">
-              <div className="mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-16 lg:px-0">
+              <div className="mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-8">
                 <div>
                   <div className="mt-6">
                     <h2
@@ -19,7 +19,7 @@ export default function RWETests({ sections, content, progressService }) {
                       className="mb-12 flex text-3xl font-extrabold tracking-tight text-gray-900"
                     >
                       <img
-                        src="/images/real-world-examples/circle-arrow-icon.svg"
+                        src="/images/real-world-examples/icons/circle-arrow-icon.svg"
                         alt=""
                         className="mr-4"
                       />
@@ -33,7 +33,7 @@ export default function RWETests({ sections, content, progressService }) {
 
                     <p
                       data-test={`example-description`}
-                      className="mt-8 text-lg text-gray-500"
+                      className="mt-16 text-lg text-gray-500"
                     >
                       {content[section].description}
                     </p>

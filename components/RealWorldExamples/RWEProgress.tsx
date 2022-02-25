@@ -1,6 +1,10 @@
 export default function RWEProgress({ content }) {
   return (
     <nav aria-label="Progress" className="mt-12">
+      <p className="mb-8 font-bold text-indigo-400">
+        {content?.lessons.length} Examples
+      </p>
+
       <ol className="overflow-hidden">
         {content?.lessons.map((lesson, index) => (
           <li
@@ -13,16 +17,21 @@ export default function RWEProgress({ content }) {
                 <a
                   href={`/real-world-examples/${lesson.slug}`}
                   data-test={`real-world-lesson-${index}`}
-                  className="text-xs font-semibold uppercase tracking-wide text-gray-900"
+                  className="mb-2 text-lg font-semibold uppercase tracking-wide text-gray-700"
                 >
                   {lesson.title}
                 </a>
 
-                <span className="text-sm text-gray-500">
-                  {lesson.description}
-                </span>
+                <span className="text text-gray-500">{lesson.description}</span>
               </span>
+
+              <img
+                src="/images/real-world-examples/icons/right-arrow.svg"
+                alt="right arrow icon"
+                className="absolute right-2 top-4"
+              />
             </div>
+            <div className="mt-4 border" />
           </li>
         ))}
       </ol>
