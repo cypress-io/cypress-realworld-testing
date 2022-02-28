@@ -1,4 +1,5 @@
 const { _ } = Cypress
+import { isMobile } from "../support/utils"
 
 describe("Lesson Pages", () => {
   beforeEach(() => {
@@ -22,19 +23,21 @@ describe("Lesson Pages", () => {
 
   context("Table of Contents", () => {
     it("the TOC links to the correct content section when clicked", () => {
-      cy.getBySel("toc-sidebar").within(() => {
-        cy.getBySel("toc-link").each(($link, index) => {
-          const href = $link.attr("href")
-          cy.wrap($link).click()
+      if (!isMobile()) {
+        cy.getBySel("toc-sidebar").within(() => {
+          cy.getBySel("toc-link").each(($link, index) => {
+            const href = $link.attr("href")
+            cy.wrap($link).click()
 
-          cy.window().then(($window) => {
-            expect($window.scrollY).to.be.closeTo(
-              Math.ceil(cy.$$(`${href}`).offset().top),
-              5
-            )
+            cy.window().then(($window) => {
+              expect($window.scrollY).to.be.closeTo(
+                Math.ceil(cy.$$(`${href}`).offset().top),
+                5
+              )
+            })
           })
         })
-      })
+      }
     })
 
     it("links to the correct content lesson when clicked", () => {
