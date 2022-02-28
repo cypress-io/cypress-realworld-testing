@@ -83,7 +83,7 @@ export default function LessonLayout({
 
       <Script id="show-banner" strategy="afterInteractive">
         {`
-          const images = document.querySelectorAll(".lesson-content img")
+          const images = document.querySelectorAll(".prose img")
           const modal = document.getElementById("modal")
           const modalImg = document.querySelector("#modal .modal-content img")
           const modalClose = document.querySelector("#modal .modal-content .close")

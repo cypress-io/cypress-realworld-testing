@@ -10,20 +10,20 @@ describe("Lesson Pages", () => {
   })
 
   it("displays the lightbox whenever an image is clicked", () => {
-    cy.get(".lesson-content img").its(0).click()
+    cy.get(".prose img").its(0).click()
     cy.get("#modal").should("be.visible")
   })
 
   it("the lightbox closes when the close button is clicked", () => {
-    cy.get(".lesson-content img").its(0).click()
+    cy.get(".prose img").its(0).click()
     cy.get("#modal .modal-content .close").click()
     cy.get("#modal").should("not.be.visible")
   })
 
   context("Table of Contents", () => {
     it("the TOC links to the correct content section when clicked", () => {
-      cy.getBySel("sidebar").within(() => {
-        cy.getBySel("sidebar-submenu-toc-link").each(($link, index) => {
+      cy.getBySel("toc-sidebar").within(() => {
+        cy.getBySel("toc-link").each(($link, index) => {
           const href = $link.attr("href")
           cy.wrap($link).click()
 

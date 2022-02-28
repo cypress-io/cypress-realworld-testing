@@ -1,5 +1,5 @@
-/* 
-  Note: These tests rely upon local storage state from previous tests, 
+/*
+  Note: These tests rely upon local storage state from previous tests,
   so make sure to run all of them at once and in order
 */
 import coursesJson from "../../data/courses.json"
@@ -22,10 +22,8 @@ describe("Progress State & Local Storage", () => {
     cy.visit(`/${sectionSlug}/${lessons[0].slug}`)
     cy.get("#answer-2").click()
     cy.getBySel("next-lesson-button").should("be.visible")
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-teal-500")
     cy.reload()
     cy.getBySel("next-lesson-button").should("be.visible")
-    cy.getBySel("lesson-complete-0").should("have.class", "bg-teal-500")
   })
 
   it("the lesson page displays the complete lesson button when a lesson is completed and navigates to the homepage after the final lesson is completed", () => {
@@ -39,7 +37,6 @@ describe("Progress State & Local Storage", () => {
       cy.getBySel(
         `"challenge-answer-${lesson["challenges"][0]["correctAnswerIndex"]}"`
       ).click()
-      cy.getBySel("lesson-complete-0").should("have.class", "bg-teal-500")
       cy.getBySel("next-lesson-button").click()
     })
 

@@ -59,7 +59,6 @@ describe("Next Lesson Button on Course Pages", () => {
       cy.getBySel(
         `"challenge-answer-${lesson["challenges"][0]["correctAnswerIndex"]}"`
       ).click()
-      cy.getBySel("lesson-complete-0").should("have.class", "bg-teal-500")
       cy.getBySel("next-lesson-button").click()
     })
 

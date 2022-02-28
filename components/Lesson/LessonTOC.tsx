@@ -13,9 +13,9 @@ export default function LessonTOC({ navigation }: Props) {
     <>
       <p className="mb-4 font-semibold">ON THIS PAGE</p>
       <nav data-test="toc-sidebar" className="space-y-1" aria-label="Sidebar">
-        {navigation.map((item) => (
+        {navigation.map((item, index) => (
           <a
-            data-test={item.slug}
+            data-test={`toc-link`}
             key={item.slug}
             href={`#${item.slug}`}
             className={classNames(
