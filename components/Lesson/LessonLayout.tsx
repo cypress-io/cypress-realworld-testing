@@ -44,59 +44,36 @@ export default function LessonLayout({
       <div className="py-6">
         <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
           <div className="hidden lg:col-span-3 lg:block xl:col-span-2">
+            {/* Course Progress */}
             <nav
               aria-label="Sidebar"
               className="sticky top-6 divide-y divide-gray-300"
             >
-              <p className="mb-4 font-semibold">ON THIS PAGE</p>
               <LessonCourseProgress
-                navigation={toc}
                 course={course}
                 lessons={sectionLessons}
                 progressService={progressService}
               />
             </nav>
           </div>
+
+          {/* Main Content */}
           <main className="lg:col-span-9 xl:col-span-6">
             <div className="prose prose-lg prose-indigo mx-auto text-gray-500">
               <MDXRemote {...source} components={components} />
             </div>
           </main>
+
+          {/* Table of Contents */}
           <aside className="hidden xl:col-span-4 xl:block">
-            <div className="sticky top-6 space-y-4">{/* Your content */}</div>
+            <div className="sticky top-6 space-y-4">
+              <LessonTOC navigation={toc} />
+            </div>
           </aside>
         </div>
       </div>
 
-      {/* OLD LAYOUT */}
-      {/* <div className="mt-20 min-h-screen">
-        <div className="py-6">
-          <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
-            <div className="lg:col-span-3 xl:col-span-3">
-              <div className="sticky top-6">
-                <p className="mb-4 font-semibold">ON THIS PAGE</p>
-                <LessonSidebar
-                  navigation={toc}
-                  course={course}
-                  lessons={sectionLessons}
-                  progressService={progressService}
-                />
-              </div>
-            </div>
-
-            <main className="lesson-content lg:col-span-9 xl:col-span-7">
-              <div className="relative overflow-hidden bg-white">
-                <div className="relative px-4 sm:px-6 lg:px-8">
-                  <div className="prose prose-lg prose-indigo mx-auto text-gray-500">
-                    <MDXRemote {...source} components={components} />
-                  </div>
-                </div>
-              </div>
-            </main>
-          </div>
-        </div>
-      </div> */}
-
+      {/* Modal/Lightbox */}
       <div id="modal" data-test="lesson-modal">
         <div className="modal-content">
           <span className="close">&times;</span>
