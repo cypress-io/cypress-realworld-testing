@@ -23,7 +23,7 @@ const isCurrentPage = (lessonPath) => {
   return window.location.pathname === lessonPath
 }
 
-export default function LessonSidebar({
+export default function LessonCourseProgress({
   navigation,
   course,
   lessons,

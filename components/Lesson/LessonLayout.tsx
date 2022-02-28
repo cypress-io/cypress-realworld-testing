@@ -1,11 +1,12 @@
-import LessonBreadcrumbs from "./LessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import Script from "next/script"
 import dynamic from "next/dynamic"
 import { Lesson, LessonTableOfContents } from "common"
 import { MDXRemoteSerializeResult } from "next-mdx-remote"
+import LessonBreadcrumbs from "./LessonBreadcrumbs"
+import LessonTOC from "./LessonTOC"
 
-const LessonSidebar = dynamic(() => import("./LessonSidebar"), {
+const LessonCourseProgress = dynamic(() => import("./LessonCourseProgress"), {
   ssr: false,
 })
 
@@ -40,10 +41,37 @@ export default function LessonLayout({
         lessonData={lessonData}
       />
 
-      <div className="mt-20 min-h-screen">
+      <div className="py-6">
+        <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+          <div className="hidden lg:col-span-3 lg:block xl:col-span-2">
+            <nav
+              aria-label="Sidebar"
+              className="sticky top-6 divide-y divide-gray-300"
+            >
+              <p className="mb-4 font-semibold">ON THIS PAGE</p>
+              <LessonCourseProgress
+                navigation={toc}
+                course={course}
+                lessons={sectionLessons}
+                progressService={progressService}
+              />
+            </nav>
+          </div>
+          <main className="lg:col-span-9 xl:col-span-6">
+            <div className="prose prose-lg prose-indigo mx-auto text-gray-500">
+              <MDXRemote {...source} components={components} />
+            </div>
+          </main>
+          <aside className="hidden xl:col-span-4 xl:block">
+            <div className="sticky top-6 space-y-4">{/* Your content */}</div>
+          </aside>
+        </div>
+      </div>
+
+      {/* OLD LAYOUT */}
+      {/* <div className="mt-20 min-h-screen">
         <div className="py-6">
           <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
-            {/* Table of Content */}
             <div className="lg:col-span-3 xl:col-span-3">
               <div className="sticky top-6">
                 <p className="mb-4 font-semibold">ON THIS PAGE</p>
@@ -56,7 +84,6 @@ export default function LessonLayout({
               </div>
             </div>
 
-            {/* Content */}
             <main className="lesson-content lg:col-span-9 xl:col-span-7">
               <div className="relative overflow-hidden bg-white">
                 <div className="relative px-4 sm:px-6 lg:px-8">
@@ -68,7 +95,7 @@ export default function LessonLayout({
             </main>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div id="modal" data-test="lesson-modal">
         <div className="modal-content">
