@@ -1,12 +1,12 @@
-/* 
+/*
   Lesson Content
 */
 
 .lesson-content h1 {
-  @apply mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900;
+  @apply mt-2 block text-center text-3xl font-extrabold leading-8 tracking-tight text-gray-900;
 }
 
-/* 
+/*
   Modal for screenshots
 */
 
@@ -46,7 +46,7 @@
   cursor: pointer;
 }
 
-/* 
+/*
   Removes backticks `` from being redered
   for inline code in markdown files
 */
@@ -59,7 +59,7 @@
   cursor: pointer;
 }
 
-/* 
+/*
   Doc Search
 */
 
@@ -67,7 +67,7 @@ input[type="search"]:focus {
   --tw-ring-color: none;
 }
 
-/* 
+/*
   Lesson Page Sidebar
 */
 
@@ -92,4 +92,9 @@ input[type="search"]:focus {
   background: #f3f4fa;
   border-radius: 40px;
   padding: 20px 10px;
+}
+
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item > .pro-item-content {
+  overflow: visible !important;
+  white-space: inherit !important;
 }

@@ -42,10 +42,10 @@ export default function LessonLayout({
       />
 
       <div className="py-6">
-        <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+        <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-screen-2xl lg:grid-cols-12 lg:gap-8 lg:px-8">
           <div className="hidden lg:col-span-3 lg:block xl:col-span-2">
             {/* Course Progress */}
-            <nav
+            <div
               aria-label="Sidebar"
               className="sticky top-6 divide-y divide-gray-300"
             >
@@ -54,18 +54,18 @@ export default function LessonLayout({
                 lessons={sectionLessons}
                 progressService={progressService}
               />
-            </nav>
+            </div>
           </div>
 
           {/* Main Content */}
-          <main className="lg:col-span-9 xl:col-span-6">
+          <main className="lg:col-span-9 xl:col-span-8">
             <div className="prose prose-lg prose-indigo mx-auto text-gray-500">
               <MDXRemote {...source} components={components} />
             </div>
           </main>
 
           {/* Table of Contents */}
-          <aside className="hidden xl:col-span-4 xl:block">
+          <aside className="hidden xl:col-span-2 xl:block">
             <div className="sticky top-6 space-y-4">
               <LessonTOC navigation={toc} />
             </div>

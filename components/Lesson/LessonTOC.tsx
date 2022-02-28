@@ -26,7 +26,7 @@ export default function LessonTOC({ navigation }: Props) {
             )}
             aria-current={item.current ? "page" : undefined}
           >
-            <span className="truncate">{item.content}</span>
+            <span>{item.content}</span>
           </a>
         ))}
       </nav>
