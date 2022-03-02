@@ -10,7 +10,7 @@ import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
-import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELessonLayout"
+import TutorialLessonLayout from "@/components/Tutorials/Lesson/TutorialLessonLayout"
 import apiLink from "../../components/Markdown/apiLink"
 import { LessonTableOfContents, Lesson } from "common"
 import {
@@ -21,8 +21,8 @@ import {
 } from "../../utils/mdxUtils"
 import tutorialsJson from "../../data/tutorials.json"
 
-const RWENextLessonBtn = dynamic(
-  () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
+const TutorialNextLessonBtn = dynamic(
+  () => import("@/components/Tutorials/Lesson/TutorialNextLessonBtn"),
   {
     ssr: false,
   }
@@ -74,7 +74,7 @@ export default function LessonPage({
         <meta name="description" content={lessonData.description} />
       </Head>
 
-      <RWELessonLayout
+      <TutorialLessonLayout
         toc={toc}
         source={source}
         components={components}
@@ -83,7 +83,7 @@ export default function LessonPage({
         lessonData={lessonData}
       />
 
-      <RWENextLessonBtn path={nextLesson} />
+      <TutorialNextLessonBtn path={nextLesson} />
     </Layout>
   )
 }
