@@ -10,28 +10,19 @@ import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
-import LessonLayout from "../../components/Lesson/LessonLayout"
-import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
+import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELessonLayout"
 import apiLink from "../../components/Markdown/apiLink"
-import { Lesson, LessonTableOfContents } from "common"
+import { LessonTableOfContents, Lesson } from "common"
 import {
   TUTORIALS_PATH,
   allTutorialsFilePaths,
   getToCForMarkdown,
+  getRealWorldExamplePath,
 } from "../../utils/mdxUtils"
-import { isLessonCompleted } from "../../utils/machineUtils"
 import tutorialsJson from "../../data/tutorials.json"
-import { useActor } from "@xstate/react"
 
-const CompleteLessonBtn = dynamic(
-  () => import("../../components/Lesson/CompleteLessonBtn"),
-  {
-    ssr: false,
-  }
-)
-
-const SkipChallenge = dynamic(
-  () => import("../../components/Lesson/SkipChallenge"),
+const RWENextLessonBtn = dynamic(
+  () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
   {
     ssr: false,
   }
@@ -60,8 +51,7 @@ type Props = {
   sectionTitle: string
   lessonPath: string
   tutorialsJson: object
-  courses: []
-  course: string
+  sections: string[]
 }
 
 export default function LessonPage({
@@ -73,15 +63,12 @@ export default function LessonPage({
   sectionTitle,
   lessonPath,
   tutorialsJson,
-  courses,
-  course,
+  sections,
 }: Props) {
-  useActor(progressService)
-
   return (
     <Layout
       content={tutorialsJson}
-      courses={courses}
+      courses={sections}
       progressService={progressService}
     >
       <Head>
@@ -89,54 +76,30 @@ export default function LessonPage({
         <meta name="description" content={lessonData.description} />
       </Head>
 
-      <LessonLayout
+      <RWELessonLayout
         toc={toc}
         source={source}
         components={components}
         sectionLessons={sectionLessons}
-        sectionTitle={sectionTitle}
         progressService={progressService}
-        lessonPath={lessonPath}
         lessonData={lessonData}
-        course={course}
       />
 
-      {(!lessonData.challenges ||
-        progressService.state.context.disableChallenges) && (
-        <CompleteLessonBtn
-          progressService={progressService}
-          nextLessonPath={nextLesson}
-          lessonPath={lessonPath}
-        />
-      )}
-
-      {lessonData.challenges &&
-        progressService.state.context.disableChallenges == false && (
-          <>
-            <MCChallenge
-              progressService={progressService}
-              lessonData={lessonData}
-              lessonPath={lessonPath}
-              path={nextLesson}
-              isCompleted={isLessonCompleted(progressService, lessonPath)}
-            />
-          </>
-        )}
-
-      {lessonData.challenges && (
-        <SkipChallenge progressService={progressService} />
-      )}
+      <RWENextLessonBtn path={nextLesson} />
     </Layout>
   )
 }
 
 export const getStaticProps = async ({ params }) => {
-  const courses = Object.keys(tutorialsJson)
-  const contentFilePath = path.join(
-    TUTORIALS_PATH,
-    `${params.course}/${params.slug}.mdx`
+  const sections = Object.keys(tutorialsJson)
+  const contentFilePath = getRealWorldExamplePath(
+    path.join(TUTORIALS_PATH, `/**/${params.slug}.mdx`)
   )
-  const source = fs.readFileSync(contentFilePath)
+  const realWorldExampleDirectory = path.dirname(contentFilePath[0]).split("/")
+  const section =
+    realWorldExampleDirectory[realWorldExampleDirectory.length - 1]
+
+  const source = fs.readFileSync(contentFilePath[0])
   const { content, data } = matter(source)
   const toc: LessonTableOfContents[] = getToCForMarkdown(content)
   const mdxSource = await serialize(content, {
@@ -148,11 +111,9 @@ export const getStaticProps = async ({ params }) => {
     },
     scope: data,
   })
-  const lessonData = find(
-    { slug: params.slug },
-    tutorialsJson[params.course].lessons
-  )
-  const { title, lessons } = tutorialsJson[params.course]
+  const lessonData = find({ slug: params.slug }, tutorialsJson[section].lessons)
+  const { title, lessons } = tutorialsJson[section]
+
   const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
   let nextLesson
 
@@ -171,10 +132,9 @@ export const getStaticProps = async ({ params }) => {
       sectionLessons: lessons,
       nextLesson,
       sectionTitle: title,
-      lessonPath: `${params.course}/${params.slug}`,
+      lessonPath: `${section}/${params.slug}`,
       tutorialsJson,
-      courses,
-      course: params.course,
+      sections,
     },
   }
 }
@@ -185,11 +145,9 @@ export const getStaticPaths = async () => {
     .map((path) => path.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js
     .map((filePath) => {
-      const [course, slug] = filePath.split("/")
-      return { params: { slug, course } }
+      const [section, slug] = filePath.split("/")
+      return { params: { slug, section } }
     })
-
-  console.log(paths)
 
   return {
     paths,

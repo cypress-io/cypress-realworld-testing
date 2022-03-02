@@ -77,7 +77,7 @@ export default function TutorialsProgress({
                 {/* Lesson Title */}
                 <span className="ml-2 flex min-w-0 flex-row lg:ml-4">
                   <span className="font-normal">
-                    <Link href={`/${course}/${lesson.slug}`}>
+                    <Link href={`/tutorials/${lesson.slug}`}>
                       <a data-test={`lesson-progress-link-${index}`}>
                         {lesson.title}
                       </a>
