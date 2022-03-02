@@ -85,15 +85,15 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export async function getStaticPaths() {
-  const courses = Object.keys(coursesJson)
-  const paths = courses.map((course) => {
-    const { title, lessons } = coursesJson[course]
-    return { params: { course, lessons, title } }
-  })
+// export async function getStaticPaths() {
+//   const courses = Object.keys(coursesJson)
+//   const paths = courses.map((course) => {
+//     const { title, lessons } = coursesJson[course]
+//     return { params: { course, lessons, title } }
+//   })
 
-  return {
-    paths,
-    fallback: false,
-  }
-}
+//   return {
+//     paths,
+//     fallback: false,
+//   }
+// }
