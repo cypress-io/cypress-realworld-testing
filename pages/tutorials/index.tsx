@@ -1,20 +1,22 @@
 import Head from "next/head"
 import Layout from "@/components/Layout"
 import HomeHero from "@/components/Home/HomeHero"
-import CourseSelector from "@/components/Tutorials/CourseSelector"
+import Tutorials from "@/components/Tutorials/Tutorials"
+import coursesJson from "../../data/courses.json"
 import tutorialsJson from "../../data/tutorials.json"
 import { progressService } from "../../machines/progressService"
 
 type Props = {
   content: object
-  courses: string[]
+  sections: string[]
+  tutorials: string[]
 }
 
-export default function Home({ content, courses }: Props) {
+export default function Home({ content, sections, tutorials }: Props) {
   return (
     <Layout
       content={content}
-      courses={courses}
+      courses={sections}
       progressService={progressService}
     >
       <Head>
@@ -25,23 +27,24 @@ export default function Home({ content, courses }: Props) {
         />
       </Head>
 
-      {/* <HomeHero /> */}
-      <CourseSelector
-        title="Tutorials"
-        courses={courses}
-        content={content}
+      <Tutorials
+        sections={tutorials}
+        content={tutorialsJson}
         progressService={progressService}
       />
     </Layout>
   )
 }
 
-export const getStaticProps = async ({}) => {
-  const courses = Object.keys(tutorialsJson)
+export const getStaticProps = async () => {
+  const sections = Object.keys(coursesJson)
+  const tutorials = Object.keys(tutorialsJson)
   return {
     props: {
-      content: tutorialsJson,
-      courses,
+      content: coursesJson,
+      sections,
+      tutorialsJson,
+      tutorials,
     },
   }
 }

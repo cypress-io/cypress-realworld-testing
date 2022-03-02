@@ -18,18 +18,18 @@ export default function LessonSidebar({ navigation, lessons }: Props) {
         <Menu>
           {lessons.map((lesson, index) => (
             <div key={index}>
-              {!isCurrentPage(`/real-world-examples/${lesson.slug}`) && (
+              {!isCurrentPage(`/tutorials/${lesson.slug}`) && (
                 <MenuItem>
                   <a
                     data-test={`real-world-lesson-${index}`}
-                    href={`/real-world-examples/${lesson.slug}`}
+                    href={`/tutorials/${lesson.slug}`}
                   >
                     {lesson.title}
                   </a>
                 </MenuItem>
               )}
 
-              {isCurrentPage(`/real-world-examples/${lesson.slug}`) && (
+              {isCurrentPage(`/tutorials/${lesson.slug}`) && (
                 <SubMenu title={lesson.title} defaultOpen={true}>
                   {navigation.map((item) => (
                     <MenuItem key={item.slug}>

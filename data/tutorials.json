@@ -3,7 +3,7 @@
     "title": "How to Build and Test a Next.js and Shopify Store",
     "slug": "how-to-build-and-test-a-nextjs-and-shopify-store",
     "description": "In this tutorial, we will be building a developer swag store powered by Shopify with a custom Next.js front-end.",
-    "image": "/images/courses/todo-mvc.png",
+    "image": "/images/tutorials/next-js-and-shopify-store/creating-the-next-js-app/Screen_Shot_2021-12-16_at_10.04.09_AM.png",
     "learnFeatures": [
       "How to create a Shopify Store with the Storefront API and Next.js",
       "How to test our store with Cypress",
