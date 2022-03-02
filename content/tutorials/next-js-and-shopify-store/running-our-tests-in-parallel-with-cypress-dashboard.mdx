@@ -1,18 +1,16 @@
 # Running Our Tests in Parallel with Cypress Dashboard
 
-## Running Our Tests in Parallel with the Cypress Dashboard
-
 In this lesson, we will learn how to integrate the [Cypress Dashboard](https://www.cypress.io/dashboard/) with GitHub Actions so that our tests will run in parallel. The Dashboard will also provide us with greater insights into our tests which will come in handy anytime our tests fail.
 
 You will need to signup for a free account over at [cypress.io/dashboard](https://www.cypress.io/dashboard/). We recommend using your GitHub account to register.
 
 After creating your account and logging in, you will need to create your first project.
 
-![Screen Shot 2021-12-17 at 9.25.02 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.25.02_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.25.02_AM.png)
 
 Give your project a name and select GitHub Actions as the CI provider.
 
-![Screen Shot 2021-12-17 at 9.25.51 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.25.51_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.25.51_AM.png)
 
 Next, we will need to copy the `projectID` into the `cypress.json` file at the root of the repo.
 
@@ -25,15 +23,15 @@ Next, we will need to copy the `projectID` into the `cypress.json` file at the r
 }
 ```
 
-![Screen Shot 2021-12-17 at 9.26.57 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.26.57_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.26.57_AM.png)
 
 Then we will need to copy the record key and add it to GitHub secrets.
 
-![Screen Shot 2021-12-17 at 9.28.22 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.28.22_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.28.22_AM.png)
 
-![Screen Shot 2021-12-17 at 9.28.34 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.28.34_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.28.34_AM.png)
 
-![Screen Shot 2021-12-17 at 9.29.12 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.29.12_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.29.12_AM.png)
 
 Finally, we will need to add some environment variables to the GitHub Actions config file.
 
@@ -45,7 +43,7 @@ GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 We also need to add `record: true` underneath the `wait-on:` directive. This will tell the dashboard to record our test runs.
 
-![Screen Shot 2021-12-17 at 9.36.28 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.36.28_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.36.28_AM.png)
 
 The entire GitHub Actions workflow file should look like this:
 
@@ -67,7 +65,7 @@ jobs:
           browser: chrome
           build: npm run build
           start: npm run start
-          wait-on: 'http://localhost:3000'
+          wait-on: "http://localhost:3000"
           record: true
         env:
           COMMERCE_PROVIDER: ${{ secrets.COMMERCE_PROVIDER }}
@@ -90,17 +88,17 @@ git push origin github-actions-cypress-tests
 
 If you check the Cypress dashboard you should see the latest runs.
 
-![Screen Shot 2021-12-17 at 9.41.53 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.41.53_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.41.53_AM.png)
 
 After clicking on it, you can then inspect the test results.
 
-![Screen Shot 2021-12-17 at 9.42.36 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_9.42.36_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.42.36_AM.png)
 
 Now that our tests are hooked up to the dashboard we can easily inspect each test whenever there is a failure. The dashboard will provide a screenshot of the exact point of failure and even a video that we can watch to see exactly where and why our tests failed.
 
 ## Running our Tests in Parallel
 
-In order to have our tests run in parallel, we have to make some changes to our GitHub Actions config file. We will be splitting the config into two separate jobs. The first job will be responsible for building the Next.js application and caching it. The second job will execute our tests in parallel across multiple machines. 
+In order to have our tests run in parallel, we have to make some changes to our GitHub Actions config file. We will be splitting the config into two separate jobs. The first job will be responsible for building the Next.js application and caching it. The second job will execute our tests in parallel across multiple machines.
 
 We are doing this because our tests will be run on multiple machines, and we do not want each machine to have to install our application and its dependencies on every machine. Instead, we will have a single install job that caches our built application and its dependencies which can then be referenced and used by the machines running our tests. Doing it this way will save a significant amount of time as our dependencies and application will only need to be installed and built once.
 
@@ -124,7 +122,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           runTests: false
-          
+
       - run: npm run build
         env:
           COMMERCE_PROVIDER: ${{ secrets.COMMERCE_PROVIDER }}
@@ -157,7 +155,7 @@ Next, we use the official [Cypress GitHub Action](https://github.com/cypress-io/
     runTests: false
 ```
 
-Then, we build our application and pass in the necessary environment variables. Our application needs these variables to access our Shopify store so that our pages are built with the products in our Shopify store. 
+Then, we build our application and pass in the necessary environment variables. Our application needs these variables to access our Shopify store so that our pages are built with the products in our Shopify store.
 
 ```yaml
 - run: npm run build
@@ -184,44 +182,44 @@ Next, we will create the test job which will run our tests. This job is responsi
 
 ```yaml
 ui-chrome-tests:
-    runs-on: ubuntu-latest
-    needs: install
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+  runs-on: ubuntu-latest
+  needs: install
+  strategy:
+    fail-fast: false
+    matrix:
+      containers: [1, 2, 3]
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v2
-        with:
-          name: build
-          path: build
+    - name: Download the build folders
+      uses: actions/download-artifact@v2
+      with:
+        name: build
+        path: build
 
-      - name: "Chrome E2E Tests"
-        uses: cypress-io/github-action@v2
-        with:
-          start: npm run start
-          wait-on: "http://localhost:3000"
-          browser: chrome
-          record: true
-          parallel: true
-          spec: cypress/integration/*
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: "Chrome E2E Tests"
+      uses: cypress-io/github-action@v2
+      with:
+        start: npm run start
+        wait-on: "http://localhost:3000"
+        browser: chrome
+        record: true
+        parallel: true
+        spec: cypress/integration/*
+      env:
+        CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
- Let’s break this down and see how it works.
+Let’s break this down and see how it works.
 
 First, we give our job a name, “ui-chome-tests” and tell GitHub Actions to run this job on the latest version of Ubuntu. We also specify that this job is dependent upon our “install” job.
 
 ```yaml
 ui-chrome-tests:
-    runs-on: ubuntu-latest
-    needs: install
+  runs-on: ubuntu-latest
+  needs: install
 ```
 
 Next, we tell GitHub Actions our strategy for parallelization. The `fail-fast: false` will prevent other machines running in parallel from being canceled if one of our tests fails. If one of our tests fails in one of the machines, we do not want the other machines currently running in parallel to be canceled because of it. Only the machine with the failing test should be canceled.
@@ -230,9 +228,9 @@ The matrix directive tells GitHub how many containers we would like to use, whic
 
 ```yaml
 strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3]
+  fail-fast: false
+  matrix:
+    containers: [1, 2, 3]
 ```
 
 Next, we use the GitHub Checkout action again, to check out our repo’s code into each container.
@@ -289,7 +287,7 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           runTests: false
-          
+
       - run: npm run build
         env:
           COMMERCE_PROVIDER: ${{ secrets.COMMERCE_PROVIDER }}
@@ -302,7 +300,7 @@ jobs:
           name: build
           if-no-files-found: error
           path: build
-  
+
   ui-chrome-tests:
     runs-on: ubuntu-latest
     needs: install
@@ -336,20 +334,20 @@ jobs:
 
 Now that we have split up our workflow into multiple jobs, the install job will run first.
 
-![Screen Shot 2021-12-17 at 10.09.51 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_10.09.51_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_10.09.51_AM.png)
 
 Once the install job is complete our tests will be run in parallel on multiple machines.
 
-![Screen Shot 2021-12-17 at 10.13.33 AM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_10.13.33_AM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_10.13.33_AM.png)
 
 All of our tests are passing and finished in a fraction of the time since we have them running in parallel now.
 
-![Screen Shot 2021-12-17 at 1.36.55 PM.png](Running%20Ou%20fcd81/Screen_Shot_2021-12-17_at_1.36.55_PM.png)
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_1.36.55_PM.png)
 
 ## Real World App
 
-![rwa-readme-screenshot.png](Running%20Ou%20fcd81/rwa-readme-screenshot.png)
+![rwa-readme-screenshot.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/rwa-readme-screenshot.png)
 
-If you would like to see how the dashboard integrates with a real-world application, check out the [Real World](https://github.com/cypress-io/cypress-realworld-app) App created by the Cypress team. The Real World App (RWA) is a payment application to demonstrate **real-world** usage of [Cypress](https://cypress.io/) testing methods, patterns, and workflows. The Cypress dashboard for this application is open to the public so feel free to inspect both old and new PR’s to see how things work together.  
+If you would like to see how the dashboard integrates with a real-world application, check out the [Real World](https://github.com/cypress-io/cypress-realworld-app) App created by the Cypress team. The Real World App (RWA) is a payment application to demonstrate **real-world** usage of [Cypress](https://cypress.io/) testing methods, patterns, and workflows. The Cypress dashboard for this application is open to the public so feel free to inspect both old and new PR’s to see how things work together.
 
 [https://github.com/cypress-io/cypress-realworld-app](https://github.com/cypress-io/cypress-realworld-app/blob/develop/.github/workflows/main.yml)

@@ -60,8 +60,6 @@ export default function LessonPage({
   lessonData,
   sectionLessons,
   nextLesson,
-  sectionTitle,
-  lessonPath,
   tutorialsJson,
   sections,
 }: Props) {
