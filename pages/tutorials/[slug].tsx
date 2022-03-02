@@ -15,12 +15,12 @@ import MCChallenge from "../../components/Lesson/MultipleChoiceChallenge"
 import apiLink from "../../components/Markdown/apiLink"
 import { Lesson, LessonTableOfContents } from "common"
 import {
-  CONTENT_PATH,
-  allContentFilePaths,
+  TUTORIALS_PATH,
+  allTutorialsFilePaths,
   getToCForMarkdown,
 } from "../../utils/mdxUtils"
 import { isLessonCompleted } from "../../utils/machineUtils"
-import coursesJson from "../../data/courses.json"
+import tutorialsJson from "../../data/tutorials.json"
 import { useActor } from "@xstate/react"
 
 const CompleteLessonBtn = dynamic(
@@ -59,7 +59,7 @@ type Props = {
   nextLesson: string
   sectionTitle: string
   lessonPath: string
-  coursesJson: object
+  tutorialsJson: object
   courses: []
   course: string
 }
@@ -72,7 +72,7 @@ export default function LessonPage({
   nextLesson,
   sectionTitle,
   lessonPath,
-  coursesJson,
+  tutorialsJson,
   courses,
   course,
 }: Props) {
@@ -80,7 +80,7 @@ export default function LessonPage({
 
   return (
     <Layout
-      content={coursesJson}
+      content={tutorialsJson}
       courses={courses}
       progressService={progressService}
     >
@@ -131,9 +131,9 @@ export default function LessonPage({
 }
 
 export const getStaticProps = async ({ params }) => {
-  const courses = Object.keys(coursesJson)
+  const courses = Object.keys(tutorialsJson)
   const contentFilePath = path.join(
-    CONTENT_PATH,
+    TUTORIALS_PATH,
     `${params.course}/${params.slug}.mdx`
   )
   const source = fs.readFileSync(contentFilePath)
@@ -150,9 +150,9 @@ export const getStaticProps = async ({ params }) => {
   })
   const lessonData = find(
     { slug: params.slug },
-    coursesJson[params.course].lessons
+    tutorialsJson[params.course].lessons
   )
-  const { title, lessons } = coursesJson[params.course]
+  const { title, lessons } = tutorialsJson[params.course]
   const nextLessonIndex = findIndex({ slug: params.slug }, lessons) + 1
   let nextLesson
 
@@ -172,7 +172,7 @@ export const getStaticProps = async ({ params }) => {
       nextLesson,
       sectionTitle: title,
       lessonPath: `${params.course}/${params.slug}`,
-      coursesJson,
+      tutorialsJson,
       courses,
       course: params.course,
     },
@@ -180,7 +180,7 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const paths = allContentFilePaths
+  const paths = allTutorialsFilePaths
     // Remove file extensions for page paths
     .map((path) => path.replace(/\.mdx?$/, ""))
     // Map the path into the static paths object required by Next.js
@@ -188,6 +188,8 @@ export const getStaticPaths = async () => {
       const [course, slug] = filePath.split("/")
       return { params: { slug, course } }
     })
+
+  console.log(paths)
 
   return {
     paths,

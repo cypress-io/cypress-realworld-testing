@@ -9,6 +9,7 @@ export const REAL_WORLD_EXAMPLES_PATH = path.join(
   process.cwd(),
   "content/real-world-examples"
 )
+export const TUTORIALS_PATH = path.join(process.cwd(), "content/tutorials")
 
 export const contentFilePaths = fs
   .readdirSync(CONTENT_PATH)
@@ -17,6 +18,11 @@ export const contentFilePaths = fs
 
 export const realWorldExamplesFilePaths = fs
   .readdirSync(REAL_WORLD_EXAMPLES_PATH)
+  // Only include md(x) files
+  .filter((path) => /\.mdx?$/.test(path))
+
+export const tutorialsFilePaths = fs
+  .readdirSync(TUTORIALS_PATH)
   // Only include md(x) files
   .filter((path) => /\.mdx?$/.test(path))
 
@@ -29,6 +35,11 @@ export const allRealWorldExamplesFilePaths = glob
   .sync("content/real-world-examples/**/*")
   .filter((path) => /\.mdx?$/.test(path))
   .map((path) => path.replace(/^content\/real-world-examples\//, ""))
+
+export const allTutorialsFilePaths = glob
+  .sync("content/tutorials/**/*")
+  .filter((path) => /\.mdx?$/.test(path))
+  .map((path) => path.replace(/^content\/tutorials\//, ""))
 
 export const getRealWorldExamplePath = (filePath: string) => {
   return glob.sync(filePath)

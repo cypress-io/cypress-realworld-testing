@@ -3,13 +3,17 @@ import { RadioGroup } from "@headlessui/react"
 import Image from "next/image"
 import dynamic from "next/dynamic"
 
-const HomeProgress = dynamic(() => import("./Home/HomeProgress"), {})
+const TutorialsProgress = dynamic(
+  () => import("../Tutorials/TutorialProgress"),
+  {}
+)
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
 type Props = {
+  title: string
   content: object
   courses: string[]
   progressService: object
@@ -118,7 +122,7 @@ export default function CourseSelector({
         <main className="course-progress lg:col-span-6">
           <div className="relative overflow-hidden bg-white">
             <div className="relative lg:px-8">
-              <HomeProgress
+              <TutorialsProgress
                 course={selected}
                 content={content[selected]}
                 progressService={progressService}

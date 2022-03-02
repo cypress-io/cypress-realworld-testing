@@ -1,11 +1,8 @@
 import Head from "next/head"
 import Layout from "@/components/Layout"
 import HomeHero from "@/components/Home/HomeHero"
-import HomeFeatures from "@/components/Home/HomeFeatures"
-import CourseSelector from "@/components/CourseSelector"
-import HomeRealWorldExamples from "@/components/Home/HomeRealWorldExamples"
+import CourseSelector from "@/components/Tutorials/CourseSelector"
 import tutorialsJson from "../../data/tutorials.json"
-import realWorldExamples from "../../data/real-world-examples.json"
 import { progressService } from "../../machines/progressService"
 
 type Props = {
@@ -35,8 +32,6 @@ export default function Home({ content, courses }: Props) {
         content={content}
         progressService={progressService}
       />
-      <HomeFeatures />
-      <HomeRealWorldExamples />
     </Layout>
   )
 }
@@ -47,7 +42,6 @@ export const getStaticProps = async ({}) => {
     props: {
       content: tutorialsJson,
       courses,
-      realWorldExamples,
     },
   }
 }
