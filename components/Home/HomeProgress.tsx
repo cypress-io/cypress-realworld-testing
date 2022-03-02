@@ -35,9 +35,7 @@ export default function HomeProgress({
             src={`/images/home/course-icons/book-icon.svg`}
             alt="book icon"
           />
-          <p className="py-6 font-bold text-gray-800">
-            IN THIS COURSE YOU&apos;LL LEARN
-          </p>
+          <p className="py-6 font-bold text-gray-800">YOU WILL LEARN</p>
 
           <div className="font-normal text-gray-600">
             <dl className="">
