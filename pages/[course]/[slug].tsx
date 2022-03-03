@@ -131,6 +131,7 @@ export default function LessonPage({
 }
 
 export const getStaticProps = async ({ params }) => {
+  console.log(params)
   const courses = Object.keys(coursesJson)
   const contentFilePath = path.join(
     CONTENT_PATH,

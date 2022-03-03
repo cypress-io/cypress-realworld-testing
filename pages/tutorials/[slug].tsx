@@ -10,7 +10,7 @@ import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
-import TutorialLessonLayout from "@/components/Tutorials/Lesson/TutorialLessonLayout"
+import LessonLayout from "@/components/Lesson/LessonLayout"
 
 import apiLink from "../../components/Markdown/apiLink"
 import { LessonTableOfContents, Lesson } from "common"
@@ -22,8 +22,8 @@ import {
 } from "../../utils/mdxUtils"
 import tutorialsJson from "../../data/tutorials.json"
 
-const TutorialNextLessonBtn = dynamic(
-  () => import("@/components/Tutorials/Lesson/TutorialNextLessonBtn"),
+const CompleteLessonBtn = dynamic(
+  () => import("../../components/Lesson/CompleteLessonBtn"),
   {
     ssr: false,
   }
@@ -53,14 +53,16 @@ type Props = {
   lessonPath: string
   tutorialsJson: object
   sections: string[]
+  course: string
 }
 
-export default function LessonPage({
+export default function TutorialLessonPage({
   source,
   toc,
   lessonData,
   sectionLessons,
   nextLesson,
+  lessonPath,
   tutorialsJson,
   sections,
 }: Props) {
@@ -75,16 +77,23 @@ export default function LessonPage({
         <meta name="description" content={lessonData.description} />
       </Head>
 
-      <TutorialLessonLayout
+      <LessonLayout
         toc={toc}
         source={source}
         components={components}
         sectionLessons={sectionLessons}
+        sectionTitle="Tutorials"
         progressService={progressService}
+        lessonPath={lessonPath}
         lessonData={lessonData}
+        course="tutorials"
       />
 
-      <TutorialNextLessonBtn path={nextLesson} />
+      <CompleteLessonBtn
+        progressService={progressService}
+        nextLessonPath={nextLesson}
+        lessonPath={lessonPath}
+      />
     </Layout>
   )
 }
@@ -130,8 +139,7 @@ export const getStaticProps = async ({ params }) => {
       lessonData,
       sectionLessons: lessons,
       nextLesson,
-      sectionTitle: title,
-      lessonPath: `${section}/${params.slug}`,
+      lessonPath: `tutorials/${params.slug}`,
       tutorialsJson,
       sections,
     },
