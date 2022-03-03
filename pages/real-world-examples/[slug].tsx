@@ -10,7 +10,7 @@ import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
-import RWELessonLayout from "../../components/RealWorldExamples/Lesson/RWELessonLayout"
+import LessonLayout from "@/components/Lesson/LessonLayout"
 import apiLink from "../../components/Markdown/apiLink"
 import { LessonTableOfContents, Lesson } from "common"
 import {
@@ -21,8 +21,8 @@ import {
 } from "../../utils/mdxUtils"
 import rweJson from "../../data/real-world-examples.json"
 
-const RWENextLessonBtn = dynamic(
-  () => import("../../components/RealWorldExamples/Lesson/RWENextLessonBtn"),
+const CompleteLessonBtn = dynamic(
+  () => import("../../components/Lesson/CompleteLessonBtn"),
   {
     ssr: false,
   }
@@ -60,7 +60,6 @@ export default function LessonPage({
   lessonData,
   sectionLessons,
   nextLesson,
-  sectionTitle,
   lessonPath,
   rweJson,
   sections,
@@ -76,16 +75,23 @@ export default function LessonPage({
         <meta name="description" content={lessonData.description} />
       </Head>
 
-      <RWELessonLayout
+      <LessonLayout
         toc={toc}
         source={source}
         components={components}
         sectionLessons={sectionLessons}
+        sectionTitle="Real World Examples"
         progressService={progressService}
+        lessonPath={lessonPath}
         lessonData={lessonData}
+        course="real-world-examples"
       />
 
-      <RWENextLessonBtn path={nextLesson} />
+      <CompleteLessonBtn
+        progressService={progressService}
+        nextLessonPath={nextLesson}
+        lessonPath={lessonPath}
+      />
     </Layout>
   )
 }
@@ -131,8 +137,7 @@ export const getStaticProps = async ({ params }) => {
       lessonData,
       sectionLessons: lessons,
       nextLesson,
-      sectionTitle: title,
-      lessonPath: `${section}/${params.slug}`,
+      lessonPath: `real-world-examples/${params.slug}`,
       rweJson,
       sections,
     },

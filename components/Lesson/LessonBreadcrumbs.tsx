@@ -20,8 +20,6 @@ export default function Breadcrumbs({
 }: Props) {
   const [sectionSlug] = lessonPath.split("/")
 
-  console.log(sectionTitle)
-
   return (
     <nav
       className="flex border-b border-gray-200 bg-white"

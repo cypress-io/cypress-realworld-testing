@@ -53,7 +53,6 @@ type Props = {
   lessonPath: string
   tutorialsJson: object
   sections: string[]
-  course: string
 }
 
 export default function TutorialLessonPage({
