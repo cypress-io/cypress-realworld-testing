@@ -2,6 +2,7 @@
   Note: These tests rely upon local storage state from previous tests,
   so make sure to run all of them at once and in order
 */
+import { isMobile } from "../support/utils"
 import coursesJson from "../../data/courses.json"
 const { _ } = Cypress
 const sectionSlug = "cypress-fundamentals"
@@ -46,7 +47,9 @@ describe("Progress State & Local Storage", () => {
   it("all of the lesson steps, on the homepage, for the first completed course are filled and completed", () => {
     cy.visit("/")
 
-    cy.getBySel("course-2").click()
+    if (!isMobile()) {
+      cy.getBySel("course-2").click()
+    }
 
     cy.getBySel("course-progress").within(() => {
       _.each(lessons, (lesson, index) => {
