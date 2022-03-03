@@ -34,6 +34,36 @@ export default function LessonCourseProgress({
         <Menu>
           {lessons.map((lesson, index) => (
             <div key={index}>
+              {isCurrentPage(`/${course}/${lesson.slug}`) &&
+                isLessonCompleted(
+                  progressService,
+                  `${course}/${lesson.slug}`
+                ) && (
+                  <MenuItem icon={<CompletedLesson index={index} />}>
+                    <a
+                      data-test={`sidebar-toc-link-${index}`}
+                      href={`/${course}/${lesson.slug}`}
+                    >
+                      {lesson.title}
+                    </a>
+                  </MenuItem>
+                )}
+
+              {isCurrentPage(`/${course}/${lesson.slug}`) &&
+                !isLessonCompleted(
+                  progressService,
+                  `${course}/${lesson.slug}`
+                ) && (
+                  <MenuItem icon={<IncompleteLesson index={index} />}>
+                    <a
+                      data-test={`sidebar-toc-link-${index}`}
+                      href={`/${course}/${lesson.slug}`}
+                    >
+                      {lesson.title}
+                    </a>
+                  </MenuItem>
+                )}
+
               {!isCurrentPage(`/${course}/${lesson.slug}`) &&
                 isLessonCompleted(
                   progressService,
