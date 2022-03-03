@@ -6,7 +6,7 @@ describe("Tutorials Landing Page", function () {
     cy.visit("/tutorials")
   })
 
-  it("renders all of the TutorialsJson titles & lessons", function () {
+  it("renders all of the tutorials lessons", function () {
     const tutorials = Object.keys(tutorialsJson)
 
     _.each(tutorials, (lesson, index) => {
