@@ -4,10 +4,6 @@ import { isLessonCompleted } from "../../utils/machineUtils"
 import { Course } from "common"
 import { CheckIcon } from "@heroicons/react/outline"
 
-const ProgressLine = dynamic(() => import("../Progress/ProgressLine"), {
-  ssr: false,
-})
-
 const CompletedLesson = dynamic(() => import("../Progress/CompletedLesson"), {
   ssr: false,
 })

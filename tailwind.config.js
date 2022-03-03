@@ -10,6 +10,7 @@ module.exports = {
       backgroundImage: {
         "course-hero": "url('/images/course-page/course-hero.svg')",
         "home-hero": "url('/images/home/hero/hero-bg.png')",
+        "rwe-hero": "url('/images/real-world-examples/hero/hero-bg.svg')",
         "home-features": "url('/images/home/features-bg.png')",
       },
 
