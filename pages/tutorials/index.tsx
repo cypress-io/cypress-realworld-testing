@@ -1,6 +1,6 @@
 import Head from "next/head"
 import Layout from "@/components/Layout"
-import HomeHero from "@/components/Home/HomeHero"
+import TutorialsHero from "@/components/Tutorials/TutorialsHero"
 import Tutorials from "@/components/Tutorials/Tutorials"
 import coursesJson from "../../data/courses.json"
 import tutorialsJson from "../../data/tutorials.json"
@@ -26,6 +26,8 @@ export default function Home({ content, sections, tutorials }: Props) {
           content="Learn from top industry experts and level-up your testing knowledge - for free."
         />
       </Head>
+
+      <TutorialsHero />
 
       <Tutorials
         sections={tutorials}
