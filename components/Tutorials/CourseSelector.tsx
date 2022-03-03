@@ -122,11 +122,7 @@ export default function CourseSelector({
         <main className="course-progress lg:col-span-6">
           <div className="relative overflow-hidden bg-white">
             <div className="relative lg:px-8">
-              <TutorialsProgress
-                course={selected}
-                content={content[selected]}
-                progressService={progressService}
-              />
+              <TutorialsProgress content={content[selected]} />
             </div>
           </div>
         </main>
