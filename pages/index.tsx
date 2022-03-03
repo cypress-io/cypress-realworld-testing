@@ -3,6 +3,7 @@ import Layout from "../components/Layout"
 import HomeHero from "../components/Home/HomeHero"
 import HomeFeatures from "../components/Home/HomeFeatures"
 import HomeCoursesLayout from "../components/Home/HomeCoursesLayout"
+import HomeCoursesLayoutMobile from "../components/Home/HomeCoursesLayoutMobile"
 import HomeRealWorldExamples from "../components/Home/HomeRealWorldExamples"
 import coursesJson from "../data/courses.json"
 import realWorldExamples from "../data/real-world-examples.json"
@@ -29,7 +30,14 @@ export default function Home({ content, courses }: Props) {
       </Head>
 
       <HomeHero />
+
       <HomeCoursesLayout
+        courses={courses}
+        content={content}
+        progressService={progressService}
+      />
+
+      <HomeCoursesLayoutMobile
         courses={courses}
         content={content}
         progressService={progressService}
