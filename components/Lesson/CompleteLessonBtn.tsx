@@ -25,7 +25,7 @@ export default function NextLessonBtn({
           })
         }}
       >
-        {nextLessonPath ? "Next Lesson" : "Complete Course"}
+        {nextLessonPath ? "Next Lesson" : "Complete"}
       </a>
     </div>
   )
