@@ -8,7 +8,7 @@ export default function Tutorials({ sections, content, progressService }) {
   return (
     <div className="relative overflow-hidden bg-white py-8 pb-32">
       {sections.map((section, index) => (
-        <div key={section} data-test={`real-world-example-${index}`}>
+        <div key={section} data-test={`tutorial-${index}`}>
           <div className="relative">
             <div className="lg:mx-auto lg:max-w-5xl lg:px-8">
               <div className="mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-8">

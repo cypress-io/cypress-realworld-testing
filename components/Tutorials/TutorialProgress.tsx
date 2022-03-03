@@ -9,7 +9,7 @@ export default function TutorialProgress({ content }) {
         {content?.lessons.map((lesson, index) => (
           <a
             href={`/tutorials/${lesson.slug}`}
-            data-test={`real-world-lesson-${index}`}
+            data-test={`tutorial-lesson-${index}`}
             key={index}
           >
             <li data-test={`lesson-${index}`} className="pb-10">
