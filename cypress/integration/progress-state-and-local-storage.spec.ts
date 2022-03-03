@@ -47,8 +47,10 @@ describe("Progress State & Local Storage", () => {
   it("all of the lesson steps, on the homepage, for the first completed course are filled and completed", () => {
     cy.visit("/")
 
-    if (!isMobile()) {
-      cy.getBySel("course-2").click()
+    if (isMobile()) {
+      cy.getBySel(`mobile-course-2`).click()
+    } else {
+      cy.getBySel(`course-2`).click()
     }
 
     cy.getBySel("course-progress").within(() => {

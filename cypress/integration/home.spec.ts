@@ -13,7 +13,9 @@ describe("RWT Home", function () {
     _.each(courses, (course, index) => {
       const lessons = coursesJson[course].lessons
 
-      if (!isMobile()) {
+      if (isMobile()) {
+        cy.getBySel(`mobile-course-${index}`).click()
+      } else {
         cy.getBySel(`course-${index}`).click()
       }
 

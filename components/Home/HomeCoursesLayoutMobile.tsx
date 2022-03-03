@@ -41,7 +41,10 @@ export default function HomeCoursesLayoutMobile({
             <Disclosure key={index}>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className="flex w-full items-center justify-between border-b-2 bg-white px-4 py-6 text-left text-lg font-medium text-gray-900 focus:outline-none focus-visible:ring">
+                  <Disclosure.Button
+                    className="flex w-full items-center justify-between border-b-2 bg-white px-4 py-6 text-left text-lg font-medium text-gray-900 focus:outline-none focus-visible:ring"
+                    data-test={`mobile-course-${index}`}
+                  >
                     <Image
                       className="h-8 w-auto sm:h-10"
                       src={`/images/home/course-icons/${course}.svg`}
