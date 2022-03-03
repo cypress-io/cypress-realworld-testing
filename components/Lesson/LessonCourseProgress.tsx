@@ -1,11 +1,10 @@
 import dynamic from "next/dynamic"
-import { LessonTableOfContents, Lesson } from "common"
+import { Lesson } from "common"
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
 import { isLessonCompleted } from "../../utils/machineUtils"
 import "react-pro-sidebar/dist/css/styles.css"
 
 type Props = {
-  navigation: LessonTableOfContents[]
   course: string
   lessons: Lesson[]
   progressService: object
@@ -23,14 +22,14 @@ const isCurrentPage = (lessonPath) => {
   return window.location.pathname === lessonPath
 }
 
-export default function LessonSidebar({
-  navigation,
+export default function LessonCourseProgress({
   course,
   lessons,
   progressService,
 }: Props) {
   return (
     <div data-test="sidebar">
+      <p className="mb-4 font-semibold">Course Progress</p>
       <ProSidebar>
         <Menu>
           {lessons.map((lesson, index) => (
@@ -63,52 +62,6 @@ export default function LessonSidebar({
                       {lesson.title}
                     </a>
                   </MenuItem>
-                )}
-
-              {isCurrentPage(`/${course}/${lesson.slug}`) &&
-                isLessonCompleted(
-                  progressService,
-                  `${course}/${lesson.slug}`
-                ) && (
-                  <SubMenu
-                    title={lesson.title}
-                    defaultOpen={true}
-                    icon={<CompletedLesson index={index} />}
-                  >
-                    {navigation.map((item) => (
-                      <MenuItem key={item.slug}>
-                        <a
-                          data-test="sidebar-submenu-toc-link"
-                          href={`#${item.slug}`}
-                        >
-                          {item.content}
-                        </a>
-                      </MenuItem>
-                    ))}
-                  </SubMenu>
-                )}
-
-              {isCurrentPage(`/${course}/${lesson.slug}`) &&
-                !isLessonCompleted(
-                  progressService,
-                  `${course}/${lesson.slug}`
-                ) && (
-                  <SubMenu
-                    title={lesson.title}
-                    defaultOpen={true}
-                    icon={<IncompleteLesson index={index} />}
-                  >
-                    {navigation.map((item) => (
-                      <MenuItem key={item.slug}>
-                        <a
-                          data-test="sidebar-submenu-toc-link"
-                          href={`#${item.slug}`}
-                        >
-                          {item.content}
-                        </a>
-                      </MenuItem>
-                    ))}
-                  </SubMenu>
                 )}
             </div>
           ))}

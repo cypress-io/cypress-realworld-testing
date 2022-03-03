@@ -1,11 +1,12 @@
-import LessonBreadcrumbs from "./LessonBreadcrumbs"
 import { MDXRemote } from "next-mdx-remote"
 import Script from "next/script"
 import dynamic from "next/dynamic"
 import { Lesson, LessonTableOfContents } from "common"
 import { MDXRemoteSerializeResult } from "next-mdx-remote"
+import LessonBreadcrumbs from "./LessonBreadcrumbs"
+import LessonTOC from "./LessonTOC"
 
-const LessonSidebar = dynamic(() => import("./LessonSidebar"), {
+const LessonCourseProgress = dynamic(() => import("./LessonCourseProgress"), {
   ssr: false,
 })
 
@@ -40,36 +41,39 @@ export default function LessonLayout({
         lessonData={lessonData}
       />
 
-      <div className="mt-20 min-h-screen">
-        <div className="py-6">
-          <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
-            {/* Table of Content */}
-            <div className="lg:col-span-3 xl:col-span-3">
-              <div className="sticky top-6">
-                <p className="mb-4 font-semibold">ON THIS PAGE</p>
-                <LessonSidebar
-                  navigation={toc}
-                  course={course}
-                  lessons={sectionLessons}
-                  progressService={progressService}
-                />
-              </div>
+      <div className="py-6">
+        <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-screen-2xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+          <div className="hidden lg:col-span-3 lg:block xl:col-span-2">
+            {/* Course Progress */}
+            <div
+              aria-label="Sidebar"
+              className="sticky top-6 divide-y divide-gray-300"
+            >
+              <LessonCourseProgress
+                course={course}
+                lessons={sectionLessons}
+                progressService={progressService}
+              />
             </div>
-
-            {/* Content */}
-            <main className="lesson-content lg:col-span-9 xl:col-span-7">
-              <div className="relative overflow-hidden bg-white">
-                <div className="relative px-4 sm:px-6 lg:px-8">
-                  <div className="prose prose-lg prose-indigo mx-auto text-gray-500">
-                    <MDXRemote {...source} components={components} />
-                  </div>
-                </div>
-              </div>
-            </main>
           </div>
+
+          {/* Main Content */}
+          <main className="lg:col-span-9 xl:col-span-8">
+            <div className="prose prose-lg prose-indigo mx-auto px-4 text-gray-500 sm:px-0">
+              <MDXRemote {...source} components={components} />
+            </div>
+          </main>
+
+          {/* Table of Contents */}
+          <aside className="hidden xl:col-span-2 xl:block">
+            <div className="sticky top-6 space-y-4">
+              <LessonTOC navigation={toc} />
+            </div>
+          </aside>
         </div>
       </div>
 
+      {/* Modal/Lightbox */}
       <div id="modal" data-test="lesson-modal">
         <div className="modal-content">
           <span className="close">&times;</span>
@@ -79,7 +83,7 @@ export default function LessonLayout({
 
       <Script id="show-banner" strategy="afterInteractive">
         {`
-          const images = document.querySelectorAll(".lesson-content img")
+          const images = document.querySelectorAll(".prose img")
           const modal = document.getElementById("modal")
           const modalImg = document.querySelector("#modal .modal-content img")
           const modalClose = document.querySelector("#modal .modal-content .close")
