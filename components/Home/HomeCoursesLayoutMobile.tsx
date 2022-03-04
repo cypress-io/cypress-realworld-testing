@@ -25,8 +25,8 @@ export default function HomeCoursesLayoutMobile({
   const [selected, setSelected] = useState(courses[0])
 
   return (
-    <>
-      <div className="features mx-auto w-full px-8 lg:hidden lg:py-28 lg:px-44">
+    <div className="lg:hidden">
+      <div className="features mx-auto w-full px-8  lg:py-28 lg:px-44">
         <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-full lg:px-8">
           <h3 className="mt-2 py-8 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:mb-24">
             Courses
@@ -72,6 +72,6 @@ export default function HomeCoursesLayoutMobile({
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }
