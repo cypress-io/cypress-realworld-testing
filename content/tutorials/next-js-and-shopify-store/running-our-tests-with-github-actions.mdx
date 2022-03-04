@@ -1,0 +1,347 @@
+# Running Our Tests with GitHub Actions
+
+Now that we have a few tests written for our Next.js store, let's setup [GitHub Actions](https://github.com/features/actions) to run our Cypress tests against our app every time we make a pull request. This way we can be sure that our latest changes have not broken anything within the app.
+
+## Configuring GitHub Actions
+
+Now that our repo is up on GitHub, we will need to create a GitHub actions config file.
+
+Create a new file called `.github/workflows/main.yml`
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.22.23_PM.png)
+
+Next we will give our workflow a name:
+
+```yaml
+name: E2E on Chrome
+```
+
+Then tell GitHub when to run this action:
+
+```yaml
+name: E2E on Chrome
+
+on: [push]
+```
+
+The `on:` directive tells GitHub to run this workflow each time a push is made to our repo. This way, each time we push up a new branch and create a new pull request, this GitHub Action Workflow will run.
+
+Next, we will setup the job we want to run:
+
+```yaml
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+```
+
+We have a single `install:` job which will run on the latest version of Ubuntu. Then underneath the `steps:` directive we are using the [actions/checkout GitHub Action](https://github.com/actions/checkout). "This action checks-out your repository under `$GITHUB_WORKSPACE`, so your workflow can access it."
+
+Next, we will have our GitHub Actions Workflow use the official [cypress-io/github-action](https://github.com/cypress-io/github-action)
+
+```yaml
+- name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          build: npm run build
+          start: npm run start
+          wait-on: 'http://localhost:3000'
+```
+
+[`cypress-io/github-action`](https://github.com/cypress-io/github-action) is the official GitHub Action created by Cypress. Under the `with:` directive we are telling Cypress to run our tests inside of the chrome browser. We then run the `npm run build` and `npm run start` scripts located in our projects `package.json` file. These two commands will build a production version of our app and then serve that build with a local development server respectively. The `wait-on:` directive tells Cypress to make sure that `[http://localhost:3000](http://localhost:3000)` is up and running before it runs our tests.
+
+You can find the documentation for this action [here](https://github.com/cypress-io/github-action).
+
+Finally, we need to pass in our env variables we currently live in the `.env.local` file.
+
+```yaml
+env:
+  COMMERCE_PROVIDER: ${{ secrets.COMMERCE_PROVIDER }}
+  NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN }}
+  NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN }}
+```
+
+The entire GitHub Actions Workflow config file should look like this:
+
+```yaml
+name: E2E on Chrome
+
+on: [push]
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          build: npm run build
+          start: npm run start
+          wait-on: "http://localhost:3000"
+        env:
+          COMMERCE_PROVIDER: ${{ secrets.COMMERCE_PROVIDER }}
+          NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN }}
+          NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN }}
+```
+
+Now we need to add the values for these environment variables within GitHub so that our workflow has access to them.
+
+## Adding GitHub Secrets
+
+At the top of your repo in GitHub, click on "Settings"
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.34.47_PM.png)
+
+In the left sidebar, click on "Secrets"
+
+Then click on the "New repository secret" button in the top right.
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.35.35_PM.png)
+
+Now you can just add the key and value of the three env variables within the `.env.local` file.
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.37.05_PM.png)
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.37.20_PM.png)
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.37.35_PM.png)
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.37.42_PM.png)
+
+Next, within your terminal, checkout a new branch in git.
+
+```bash
+git checkout -b github-actions-cypress-tests
+```
+
+Add your changes and push up your branch
+
+```bash
+git add .
+git commit -m "created GitHub Actions Workflow Config"
+git push origin github-actions-cypress-tests
+```
+
+After your new branch has been pushed up, click on the "Code" link at the top of your repo.
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.41.22_PM.png)
+
+Then click on the "Compare & pull request" button to create a new PR.
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.41.28_PM.png)
+
+Then click "Create pull request"
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.42.47_PM.png)
+
+You will now see the GitHub Actions workflow running. If you click on "Details" you can watch all of the steps inside of the workflow run.
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.43.33_PM.png)
+
+You will see that one of our tests has failed.
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.45.10_PM.png)
+
+It looks like Cypress could not find our product on the search results page. Let's run this test locally and make sure it is passing.
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.49.08_PM.png)
+
+We know that this test was passing locally, so why is it failing in CI?
+
+Our error says the following:
+
+> AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-test="product-tag"]`, but never found it.
+
+So it seems like the first part of our test is working, but once we get to the search results page it cannot find the `product-tag` element. We will add some `data-test` attributes to the `components/product/ProductCard.tsx` component. Around line `73`
+
+```jsx
+{
+  !noNameTag && (
+    <div className={s.header} data-test="product-card">
+      <h3 className={s.name}>
+        <span data-test="product-name">{product.name}</span>
+      </h3>
+      <div className={s.price} data-test="product-price">
+        {`${price} ${product.price?.currencyCode}`}
+      </div>
+    </div>
+  )
+}
+```
+
+The entire component file should look like this:
+
+```jsx
+import { FC } from 'react'
+import cn from 'classnames'
+import Link from 'next/link'
+import type { Product } from '@commerce/types/product'
+import s from './ProductCard.module.css'
+import Image, { ImageProps } from 'next/image'
+import WishlistButton from '@components/wishlist/WishlistButton'
+import usePrice from '@framework/product/use-price'
+import ProductTag from '../ProductTag'
+
+interface Props {
+  className?: string
+  product: Product
+  noNameTag?: boolean
+  imgProps?: Omit<ImageProps, 'src' | 'layout' | 'placeholder' | 'blurDataURL'>
+  variant?: 'default' | 'slim' | 'simple'
+}
+
+const placeholderImg = '/product-img-placeholder.svg'
+
+const ProductCard: FC<Props> = ({
+  product,
+  imgProps,
+  className,
+  noNameTag = false,
+  variant = 'default',
+}) => {
+  const { price } = usePrice({
+    amount: product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode: product.price.currencyCode!,
+  })
+
+  const rootClassName = cn(
+    s.root,
+    { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
+    className
+  )
+
+  return (
+    <Link href={`/product/${product.slug}`}>
+      <a className={rootClassName} aria-label={product.name}>
+        {variant === 'slim' && (
+          <>
+            <div className={s.header}>
+              <span>{product.name}</span>
+            </div>
+            {product?.images && (
+              <div>
+                <Image
+                  quality="85"
+                  src={product.images[0]?.url || placeholderImg}
+                  alt={product.name || 'Product Image'}
+                  height={320}
+                  width={320}
+                  layout="fixed"
+                  {...imgProps}
+                />
+              </div>
+            )}
+          </>
+        )}
+
+        {variant === 'simple' && (
+          <>
+            {process.env.COMMERCE_WISHLIST_ENABLED && (
+              <WishlistButton
+                className={s.wishlistButton}
+                productId={product.id}
+                variant={product.variants[0]}
+              />
+            )}
+            {!noNameTag && (
+              <div className={s.header} data-test="product-card">
+                <h3 className={s.name}>
+                  <span data-test="product-name">{product.name}</span>
+                </h3>
+                <div className={s.price} data-test="product-price">
+                  {`${price} ${product.price?.currencyCode}`}
+                </div>
+              </div>
+            )}
+            <div className={s.imageContainer}>
+              {product?.images && (
+                <div>
+                  <Image
+                    alt={product.name || 'Product Image'}
+                    className={s.productImage}
+                    src={product.images[0]?.url || placeholderImg}
+                    height={540}
+                    width={540}
+                    quality="85"
+                    layout="responsive"
+                    {...imgProps}
+                  />
+                </div>
+              )}
+            </div>
+          </>
+        )}
+
+        {variant === 'default' && (
+          <>
+            {process.env.COMMERCE_WISHLIST_ENABLED && (
+              <WishlistButton
+                className={s.wishlistButton}
+                productId={product.id}
+                variant={product.variants[0] as any}
+              />
+            )}
+            <ProductTag
+              name={product.name}
+              price={`${price} ${product.price?.currencyCode}`}
+            />
+            <div className={s.imageContainer}>
+              {product?.images && (
+                <div>
+                  <Image
+                    alt={product.name || 'Product Image'}
+                    className={s.productImage}
+                    src={product.images[0]?.url || placeholderImg}
+                    height={540}
+                    width={540}
+                    quality="85"
+                    layout="responsive"
+                    {...imgProps}
+                  />
+                </div>
+              )}
+            </div>
+          </>
+        )}
+      </a>
+    </Link>
+  )
+}
+
+export default ProductCard
+```
+
+And update our test to be the following:
+
+```jsx
+it("the search bar returns the correct search results", () => {
+  cy.getBySel("search-input").eq(0).type("linux{enter}")
+
+  cy.get('[data-test="product-card"]').within(() => {
+    cy.get('[data-test="product-name"]').should("contain", "Linux Shirt")
+    cy.get('[data-test="product-price"]').should("contain", "$25.00 USD")
+  })
+})
+```
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_2.10.23_PM.png)
+
+Now let's push up these changes and see if our tests will pass now in CI.
+
+```jsx
+git add .
+git commit -m "updated search results test and added data-test attributes to ProductCard component"
+git push origin github-actions-cypress-tests
+```
+
+Now all of our tests are passing.
+
+![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_2.14.31_PM.png)

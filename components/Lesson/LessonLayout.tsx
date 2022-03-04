@@ -41,7 +41,7 @@ export default function LessonLayout({
         lessonData={lessonData}
       />
 
-      <div className="py-6">
+      <div className="py-6 pt-16">
         <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-screen-2xl lg:grid-cols-12 lg:gap-8 lg:px-8">
           <div className="hidden lg:col-span-3 lg:block xl:col-span-2">
             {/* Course Progress */}

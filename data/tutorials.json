@@ -1,0 +1,45 @@
+{
+  "next-js-and-shopify-store": {
+    "title": "How to Build and Test a Next.js and Shopify Store",
+    "slug": "how-to-build-and-test-a-nextjs-and-shopify-store",
+    "description": "In this tutorial, we will be building a developer swag store powered by Shopify with a custom Next.js front-end.",
+    "image": "/images/tutorials/next-js-and-shopify-store/creating-the-next-js-app/Screen_Shot_2021-12-16_at_10.04.09_AM.png",
+    "learnFeatures": [
+      "How to create a Shopify Store with the Storefront API and Next.js",
+      "How to test our store with Cypress",
+      "How to run our Cypress tests in continuous integration with GitHub Actions"
+    ],
+    "lessons": [
+      {
+        "title": "Creating a Shopify Partners Store",
+        "slug": "creating-a-shopify-partners-store",
+        "description": "How to create a Shopify store with the Storefront API"
+      },
+      {
+        "title": "Creating the Next.js App",
+        "slug": "creating-the-next-js-app",
+        "description": "How to create our custom store front with Next.js"
+      },
+      {
+        "title": "Writing End-to-End Tests with Cypress",
+        "slug": "writing-end-to-end-tests-with-cypress",
+        "description": "How to write end to end tests for our store with Cypress"
+      },
+      {
+        "title": "Running Our Tests with GitHub Actions",
+        "slug": "running-our-tests-with-github-actions",
+        "description": "How to run our tests in continuous integration with GitHub Actions"
+      },
+      {
+        "title": "Running Our Tests in Parallel with Cypress Dashboard",
+        "slug": "running-our-tests-in-parallel-with-cypress-dashboard",
+        "description": "How to run our tests in parallel using the Cypress Dashboard"
+      },
+      {
+        "title": "Deploying to Vercel",
+        "slug": "deploying-to-vercel",
+        "description": "How to deploy our store to Vercel"
+      }
+    ]
+  }
+}

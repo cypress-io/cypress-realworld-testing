@@ -68,6 +68,8 @@ export default function HomeHero() {
                         Get Course Updates
                       </button>
                     </div>
+
+                    <p className="pt-8">Last Updated: </p>
                   </div>
                 </div>
 

@@ -22,8 +22,8 @@ describe("Lesson Pages", () => {
   })
 
   context("Table of Contents", () => {
-    it("the TOC links to the correct content section when clicked", () => {
-      if (!isMobile()) {
+    if (!isMobile()) {
+      it("the TOC links to the correct content section when clicked", () => {
         cy.getBySel("toc-sidebar").within(() => {
           cy.getBySel("toc-link").each(($link, index) => {
             const href = $link.attr("href")
@@ -37,8 +37,8 @@ describe("Lesson Pages", () => {
             })
           })
         })
-      }
-    })
+      })
+    }
 
     it("links to the correct content lesson when clicked", () => {
       cy.visit(
