@@ -75,20 +75,21 @@ export default function HomeProgress({
                 ) && <IncompleteLesson index={index} />}
 
                 {/* Lesson Title */}
-                <span className="ml-2 flex min-w-0 flex-row lg:ml-4">
-                  <span className="font-normal">
+                <span className="ml-2 flex  w-full flex-row lg:ml-4">
+                  <span className="grow font-normal">
                     <Link href={`/${course}/${lesson.slug}`}>
                       <a data-test={`lesson-progress-link-${index}`}>
                         {lesson.title}
                       </a>
                     </Link>
                   </span>
+
+                  <img
+                    className="mr-4"
+                    src={`/images/home/course-icons/course-play-icon.svg`}
+                    alt=""
+                  />
                 </span>
-                <img
-                  className="absolute right-8 hidden lg:inline-block"
-                  src={`/images/home/course-icons/course-play-icon.svg`}
-                  alt=""
-                />
               </div>
             </li>
           ))}

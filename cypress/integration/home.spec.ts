@@ -1,3 +1,4 @@
+import { isMobile } from "../support/utils"
 import coursesJson from "../../data/courses.json"
 const { _ } = Cypress
 
@@ -12,7 +13,11 @@ describe("RWT Home", function () {
     _.each(courses, (course, index) => {
       const lessons = coursesJson[course].lessons
 
-      cy.getBySel(`course-${index}`).click()
+      if (isMobile()) {
+        cy.getBySel(`mobile-course-${index}`).click()
+      } else {
+        cy.getBySel(`course-${index}`).click()
+      }
 
       cy.getBySel("course-progress").within(() => {
         _.each(lessons, (lesson, index) => {
