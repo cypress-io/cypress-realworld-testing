@@ -26,7 +26,7 @@ export default function Footer() {
       <hr />
       <footer className="bg-indigo-500 p-4 md:p-0">
         {/* Email Subscription */}
-        <div className="py-8 lg:mx-auto lg:flex lg:max-w-7xl lg:items-center lg:justify-center xl:mt-0">
+        {/* <div className="py-8 lg:mx-auto lg:flex lg:max-w-7xl lg:items-center lg:justify-center xl:mt-0">
           <div>
             <h3 className="mr-10 text-center text-xl tracking-wider text-gray-50 lg:text-left">
               Get course updates to your inbox
@@ -54,7 +54,7 @@ export default function Footer() {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
 
         <hr />
 
