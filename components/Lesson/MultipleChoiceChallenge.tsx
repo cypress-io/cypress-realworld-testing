@@ -35,7 +35,7 @@ export default function LessonChallenge({
   return (
     <>
       <hr className="mb-6" />
-      <div data-test="multiple-choice-challenge" className="py-12">
+      <div data-test="multiple-choice-challenge" className="pt-12 pb-20">
         <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
           <div className="text-center lg:col-span-3 xl:col-span-2">
             <p className="text-base text-gray-800">Unlock the next lesson</p>
