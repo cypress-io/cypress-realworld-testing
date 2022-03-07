@@ -124,7 +124,7 @@ export default function Header({ content, courses, progressService }: Props) {
               </Link>
             </div>
             <div className="md:hidden">
-              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
@@ -200,7 +200,7 @@ export default function Header({ content, courses, progressService }: Props) {
                       <Popover.Button
                         className={classNames(
                           open ? "text-gray-900" : "text-gray-500",
-                          "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                          "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         )}
                       >
                         <span>Resources</span>
@@ -241,7 +241,7 @@ export default function Header({ content, courses, progressService }: Props) {
                                         className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
                                       >
                                         <item.icon
-                                          className="h-6 w-6 flex-shrink-0 text-blue-500"
+                                          className="h-6 w-6 flex-shrink-0 text-indigo-500"
                                           aria-hidden="true"
                                         />
                                         <span className="ml-4">
@@ -264,7 +264,7 @@ export default function Header({ content, courses, progressService }: Props) {
                                         className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
                                       >
                                         <item.icon
-                                          className="h-6 w-6 flex-shrink-0 text-blue-500"
+                                          className="h-6 w-6 flex-shrink-0 text-indigo-500"
                                           aria-hidden="true"
                                         />
                                         <span className="ml-4">
