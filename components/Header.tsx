@@ -168,13 +168,12 @@ export default function Header({ content, courses, progressService }: Props) {
                                   href={`/${coursesJson[course].slug}`}
                                   className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
                                 >
-                                  <Image
-                                    className="h-8 w-auto sm:h-10"
+                                  {/* <Image
                                     src={`/images/home/course-icons/${course}.svg`}
-                                    alt="Cypress Logo"
+                                    alt="Course Icon"
                                     height={50}
                                     width={50}
-                                  />
+                                  /> */}
                                   <div className="ml-4">
                                     <p className="text-base font-medium text-gray-900">
                                       {`${index + 1}. ${
