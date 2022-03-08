@@ -103,7 +103,7 @@ export default function MobileProgressMenu({
               <div>
                 <Link href="/real-world-examples">
                   <a>
-                    <span className="sr-only">Workflow</span>
+                    <span className="sr-only">Real World Examples</span>
                     <Image
                       className="h-8 w-auto sm:h-10"
                       src="https://raw.githubusercontent.com/cypress-io/cypress-realworld-app/develop/public/img/rwa-readme-screenshot.png"
@@ -119,6 +119,31 @@ export default function MobileProgressMenu({
                   <Link href="/real-world-examples">
                     <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                       Real World Examples
+                    </a>
+                  </Link>
+                </div>
+              </div>
+
+              <hr className="my-8" />
+              <div>
+                <Link href="/tutorials">
+                  <a>
+                    <span className="sr-only">Tutorials</span>
+                    <Image
+                      className="h-8 w-auto sm:h-10"
+                      src="/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.25.15_AM.png"
+                      alt="Cypress Logo"
+                      height={153}
+                      width={358}
+                    />
+                  </a>
+                </Link>
+              </div>
+              <div className="relative overflow-hidden bg-white pt-16">
+                <div className="mx-auto max-w-lg">
+                  <Link href="/tutorials">
+                    <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                      Tutorials
                     </a>
                   </Link>
                 </div>
