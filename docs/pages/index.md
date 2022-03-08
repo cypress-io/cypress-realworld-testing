@@ -8,30 +8,13 @@ This is the index/home page of the app, i.e., `/`
 
 ## \_app.tsx
 
-This page acts like a "layout" page and wraps all of the other pages within the app
-
-```js{11}
-function MyApp({ Component, pageProps }) {
-  return (
-    <>
-      <Head>
-        <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css"
-          rel="stylesheet"
-        />
-      </Head>
-      <Component {...pageProps} />
-    </>
-  )
-}
-```
+This page acts like a "layout" page and wraps all of the other pages within the app.
 
 The `<Component {...pageProps} />` on line `11` is where the other pages are passed into this special component and rendered.
 
-## [section]/
+## [course]/
 
-This is a special directory that Next.js uses for [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes). There are two pages within this directory.
+This is a special directory that Next.js uses for [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes) and is responsible for rendering the course pages. There are two pages within this directory.
 
 1. `index.tsx` - is reponsible for rendering all of the course landing pages, i.e.,
 
@@ -46,11 +29,17 @@ This is a special directory that Next.js uses for [dynamic routes](https://nextj
 
 This is a special directory that Next.js uses for [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes). There are two pages within this directory.
 
-1. `index.tsx` - is reponsible for rendering the real world examples landing page, i.e.,
-
-- `/real-world-examples`.
+1. `index.tsx` - is reponsible for rendering the real world examples landing page, i.e., `/real-world-examples`.
 
 2. `[slug].tsx` - is a [dynamic page](https://nextjs.org/docs/basic-features/pages) and is responsible for rendering all of the real world example pages, i.e., `/real-world-examples/authentication-overview-and-setup`.
+
+## tutorials/
+
+This is a special directory that Next.js uses for [dynamic routes](https://nextjs.org/docs/routing/dynamic-routes). There are two pages within this directory.
+
+1. `index.tsx` - is reponsible for rendering the tutorials landing page, i.e., `/tutorials`.
+
+2. `[slug].tsx` - is a [dynamic page](https://nextjs.org/docs/basic-features/pages) and is responsible for rendering all of the tutorial lesson pages, i.e., `/tutorials/creating-a-shopify-partners-store`.
 
 ## getStaticProps()
 
