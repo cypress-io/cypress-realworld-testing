@@ -98,3 +98,9 @@ input[type="search"]:focus {
   overflow: visible !important;
   white-space: inherit !important;
 }
+
+/* * {
+  background: #000 !important;
+  color: #0f0 !important;
+  outline: solid #f00 1px !important;
+} */
