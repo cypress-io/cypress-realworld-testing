@@ -15,7 +15,7 @@ const navigation = {
     },
     {
       name: "GitHub",
-      href: "https://github.com/cypress-io/cypress",
+      href: "https://github.com/cypress-io/cypress-realworld-testing",
     },
   ],
 }
