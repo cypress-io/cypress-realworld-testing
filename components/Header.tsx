@@ -139,6 +139,7 @@ export default function Header({ content, courses, progressService }: Props) {
                           open ? "text-gray-900" : "text-gray-500",
                           "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         )}
+                        data-test="courses-dropdown"
                       >
                         <span>Courses</span>
                         <ChevronDownIcon
@@ -159,7 +160,10 @@ export default function Header({ content, courses, progressService }: Props) {
                         leaveFrom="opacity-100 translate-y-0"
                         leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2">
+                        <Popover.Panel
+                          className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2"
+                          data-test="courses-dropdown-menu"
+                        >
                           <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                             <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                               {coursesJsonCourses.map((course, index) => (
