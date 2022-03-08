@@ -6,11 +6,15 @@ Contains all of the React components used in the app.
 
 ### /content
 
-Contains all of the markdown files for the course lesson pages and real world examples
+Contains all of the markdown files for the course lesson pages, real world examples, and tutorials
 
 ### /cypress
 
 Contains everything necessary for our Cypress E2E tests
+
+### /data
+
+Contains all of the data for the courses, real world examples and tutorials
 
 ### /docs
 
@@ -47,11 +51,3 @@ TypeScript Type defintion files
 ### /utils
 
 Helpful utility methods and functions
-
-### ./learn.json
-
-Contains all of the data for the courses
-
-### ./real-world-examples.json
-
-Contains all of the data for the real world examples
