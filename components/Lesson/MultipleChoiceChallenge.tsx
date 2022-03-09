@@ -35,18 +35,16 @@ export default function LessonChallenge({
   return (
     <>
       <hr className="mb-6" />
-      <div data-test="multiple-choice-challenge" className="bg-teal-500 py-12">
+      <div data-test="multiple-choice-challenge" className="pt-12 pb-20">
         <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
           <div className="text-center lg:col-span-3 xl:col-span-2">
-            <p className="text-base font-semibold text-gray-50">
-              Unlock the next lesson
-            </p>
+            <p className="text-base text-gray-800">Unlock the next lesson</p>
           </div>
 
           <div className="lesson-content lg:col-span-9 xl:col-span-7">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="text-center">
-                <p className="mt-6 text-3xl font-extrabold leading-8 tracking-tight text-jade-100 sm:text-4xl">
+                <p className="mt-6 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-3xl">
                   {lessonData.challenges[0].question}
                 </p>
               </div>
@@ -66,7 +64,7 @@ export default function LessonChallenge({
                               isIncorrectAnswer(index)
                                 ? "text-gray-300 focus:ring-gray-300"
                                 : ""
-                            } h-8 w-8 rounded border-gray-300 text-blue-600 focus:ring-blue-500`}
+                            } h-8 w-8 rounded border-gray-300 text-indigo-500 focus:ring-indigo-500`}
                             onClick={() => {
                               setAnswerChecked((prev) => [...prev, index])
                               progressSend({
@@ -84,7 +82,7 @@ export default function LessonChallenge({
                             isIncorrectAnswer(index)
                               ? "text-gray-300 line-through"
                               : ""
-                          } ml-16 text-lg font-medium leading-6 text-gray-50`}
+                          } ml-16 text-lg font-medium leading-6 text-gray-700`}
                         >
                           {answer}
                         </label>

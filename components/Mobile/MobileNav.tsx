@@ -99,29 +99,28 @@ export default function MobileProgressMenu({
                   progressService={progressService}
                 />
               </div>
+
               <hr className="my-8" />
               <div>
                 <Link href="/real-world-examples">
                   <a>
-                    <span className="sr-only">Workflow</span>
-                    <Image
-                      className="h-8 w-auto sm:h-10"
-                      src="https://raw.githubusercontent.com/cypress-io/cypress-realworld-app/develop/public/img/rwa-readme-screenshot.png"
-                      alt="Cypress Logo"
-                      height={153}
-                      width={358}
-                    />
+                    <span className="sr-only">Real World Examples</span>
                   </a>
                 </Link>
               </div>
-              <div className="relative overflow-hidden bg-white pt-16">
-                <div className="mx-auto max-w-lg">
-                  <Link href="/real-world-examples">
-                    <a className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                      Real World Examples
-                    </a>
-                  </Link>
-                </div>
+
+              <div className="">
+                <Link href="/real-world-examples">
+                  <a className="block pb-4 text-base font-medium text-gray-900 hover:text-gray-700">
+                    Real World Examples
+                  </a>
+                </Link>
+
+                <Link href="/tutorials">
+                  <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                    Tutorials
+                  </a>
+                </Link>
               </div>
             </div>
           </div>

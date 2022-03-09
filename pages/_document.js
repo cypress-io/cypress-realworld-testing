@@ -8,7 +8,16 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
+            rel="preconnect"
+            href="https://8V1MWQUQBN-dsn.algolia.net"
+            crossOrigin=""
+          />
+          <link
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css"
             rel="stylesheet"
           />
           <script

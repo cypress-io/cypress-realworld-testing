@@ -54,22 +54,20 @@ export default function HomeHero() {
                     </div>
 
                     <div className="mt-10 sm:mt-12">
-                      <button
-                        type="button"
+                      <a
                         className="inline-flex items-center rounded-md bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        href="#courses"
                       >
                         Start Learning
-                      </button>
+                      </a>
 
-                      <button
+                      {/* <button
                         type="button"
                         className="ml-2 inline-flex items-center rounded-md bg-white px-4 py-2 text-base font-medium text-indigo-500 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:ml-6"
                       >
                         Get Course Updates
-                      </button>
+                      </button> */}
                     </div>
-
-                    <p className="pt-8">Last Updated: </p>
                   </div>
                 </div>
 

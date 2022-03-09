@@ -56,44 +56,41 @@ export default function HomeProgress({
           </div>
         </div>
 
-        <ol className="overflow-hidden">
+        <div className="overflow-hidden">
           {content?.lessons.map((lesson, index) => (
-            <li
-              data-test={`lesson-${index}`}
-              key={lesson.title}
-              className="relative mb-6 rounded border py-4 pl-4 lg:py-6"
-            >
-              <div className="relative flex items-center">
-                {isLessonCompleted(
-                  progressService,
-                  `${course}/${lesson.slug}`
-                ) && <CompletedLesson index={index} />}
+            <Link href={`/${course}/${lesson.slug}`} key={lesson.title}>
+              <a data-test={`lesson-progress-link-${index}`}>
+                <div
+                  data-test={`lesson-${index}`}
+                  className="relative mb-6 rounded border py-4 pl-4 lg:py-6"
+                >
+                  <div className="relative flex items-center">
+                    {isLessonCompleted(
+                      progressService,
+                      `${course}/${lesson.slug}`
+                    ) && <CompletedLesson index={index} />}
 
-                {!isLessonCompleted(
-                  progressService,
-                  `${course}/${lesson.slug}`
-                ) && <IncompleteLesson index={index} />}
+                    {!isLessonCompleted(
+                      progressService,
+                      `${course}/${lesson.slug}`
+                    ) && <IncompleteLesson index={index} />}
 
-                {/* Lesson Title */}
-                <span className="ml-2 flex  w-full flex-row lg:ml-4">
-                  <span className="grow font-normal">
-                    <Link href={`/${course}/${lesson.slug}`}>
-                      <a data-test={`lesson-progress-link-${index}`}>
-                        {lesson.title}
-                      </a>
-                    </Link>
-                  </span>
+                    {/* Lesson Title */}
+                    <span className="ml-2 flex  w-full flex-row lg:ml-4">
+                      <span className="grow font-normal">{lesson.title}</span>
 
-                  <img
-                    className="mr-4"
-                    src={`/images/home/course-icons/course-play-icon.svg`}
-                    alt=""
-                  />
-                </span>
-              </div>
-            </li>
+                      <img
+                        className="mr-4"
+                        src={`/images/home/course-icons/course-play-icon.svg`}
+                        alt=""
+                      />
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </Link>
           ))}
-        </ol>
+        </div>
       </nav>
     </>
   )

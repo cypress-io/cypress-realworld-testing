@@ -1,5 +1,9 @@
 # Utils
 
+## googleAnalytics.ts
+
+Contains a couple of functions to help with Google Analytics tracking.
+
 ## machineUtils.ts
 
 Contains several utility methods used for fetching lesson data and state from `machines/progressMachine.ts`

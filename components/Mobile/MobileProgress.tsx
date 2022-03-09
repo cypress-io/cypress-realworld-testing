@@ -79,7 +79,7 @@ export default function MobileProgress({
               {/* Lesson Title */}
               <span className="ml-4 flex min-w-0 flex-col">
                 <span className="text-xs font-semibold uppercase tracking-wide">
-                  <a href={`${course}/${lesson.slug}`}>{lesson.title}</a>
+                  <a href={`/${course}/${lesson.slug}`}>{lesson.title}</a>
                 </span>
               </span>
             </div>

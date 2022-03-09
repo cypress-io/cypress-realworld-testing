@@ -13,10 +13,17 @@ import {
   MenuIcon,
   ChatAltIcon,
   FilmIcon,
+  PlayIcon,
+  PhoneIcon,
   CodeIcon,
   NewspaperIcon,
   UserGroupIcon,
   TemplateIcon,
+  ChartBarIcon,
+  CursorClickIcon,
+  RefreshIcon,
+  ShieldCheckIcon,
+  ViewGridIcon,
 } from "@heroicons/react/outline"
 import { ChevronDownIcon } from "@heroicons/react/solid"
 
@@ -67,7 +74,7 @@ const resources = [
   },
   {
     name: "GitHub",
-    href: "https://github.com/cypress-io/cypress",
+    href: "https://github.com/cypress-io/cypress-realworld-testing",
     icon: CodeIcon,
   },
 ]
@@ -117,20 +124,20 @@ export default function Header({ content, courses, progressService }: Props) {
               </Link>
             </div>
             <div className="md:hidden">
-              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+              <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon className="h-6 w-6" aria-hidden="true" />
               </Popover.Button>
             </div>
             <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
-              <Popover.Group as="nav" className="flex space-x-10">
-                <Popover>
+              <Popover.Group as="nav" className="hidden space-x-10 md:flex">
+                <Popover className="relative">
                   {({ open }) => (
                     <>
                       <Popover.Button
                         className={classNames(
                           open ? "text-gray-900" : "text-gray-500",
-                          "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                          "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         )}
                         data-test="courses-dropdown"
                       >
@@ -147,43 +154,43 @@ export default function Header({ content, courses, progressService }: Props) {
                       <Transition
                         as={Fragment}
                         enter="transition ease-out duration-200"
-                        enterFrom="opacity-0 -translate-y-1"
+                        enterFrom="opacity-0 translate-y-1"
                         enterTo="opacity-100 translate-y-0"
                         leave="transition ease-in duration-150"
                         leaveFrom="opacity-100 translate-y-0"
-                        leaveTo="opacity-0 -translate-y-1"
+                        leaveTo="opacity-0 translate-y-1"
                       >
-                        <Popover.Panel className="absolute inset-x-0 top-full z-10 hidden transform bg-white shadow-lg md:block">
-                          <div
-                            className="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
-                            data-test="courses-dropdown-menu"
-                          >
-                            {coursesJsonCourses.map((course, index) => (
-                              <a
-                                key={coursesJson[course].slug}
-                                href={`/${coursesJson[course].slug}`}
-                                className="-m-3 flex flex-col justify-between rounded-lg p-3 hover:bg-gray-50"
-                              >
-                                <div className="flex md:h-full lg:flex-col">
-                                  <div className="ml-4 md:flex md:flex-1 md:flex-col md:justify-between lg:ml-0 lg:mt-4">
-                                    <div>
-                                      <p className="text-base font-medium text-gray-900">
-                                        {`${index + 1}. ${
-                                          coursesJson[course].title
-                                        }`}
-                                      </p>
-                                      <p className="mt-1 text-sm text-gray-500">
-                                        {coursesJson[course].description}
-                                      </p>
-                                    </div>
-                                    <p className="mt-2 text-sm font-medium text-blue-500 lg:mt-4">
-                                      Get Started{" "}
-                                      <span aria-hidden="true">&rarr;</span>
+                        <Popover.Panel
+                          className="absolute z-10 -ml-4 mt-3 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2"
+                          data-test="courses-dropdown-menu"
+                        >
+                          <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                              {coursesJsonCourses.map((course, index) => (
+                                <a
+                                  key={coursesJson[course].slug}
+                                  href={`/${coursesJson[course].slug}`}
+                                  className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                                >
+                                  {/* <Image
+                                    src={`/images/home/course-icons/${course}.svg`}
+                                    alt="Course Icon"
+                                    height={50}
+                                    width={50}
+                                  /> */}
+                                  <div className="ml-4">
+                                    <p className="text-base font-medium text-gray-900">
+                                      {`${index + 1}. ${
+                                        coursesJson[course].title
+                                      }`}
+                                    </p>
+                                    <p className="mt-1 text-sm text-gray-500">
+                                      {coursesJson[course].description}
                                     </p>
                                   </div>
-                                </div>
-                              </a>
-                            ))}
+                                </a>
+                              ))}
+                            </div>
                           </div>
                         </Popover.Panel>
                       </Transition>
@@ -197,7 +204,7 @@ export default function Header({ content, courses, progressService }: Props) {
                       <Popover.Button
                         className={classNames(
                           open ? "text-gray-900" : "text-gray-500",
-                          "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                          "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         )}
                       >
                         <span>Resources</span>
@@ -238,7 +245,7 @@ export default function Header({ content, courses, progressService }: Props) {
                                         className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
                                       >
                                         <item.icon
-                                          className="h-6 w-6 flex-shrink-0 text-blue-500"
+                                          className="h-6 w-6 flex-shrink-0 text-indigo-500"
                                           aria-hidden="true"
                                         />
                                         <span className="ml-4">
@@ -261,7 +268,7 @@ export default function Header({ content, courses, progressService }: Props) {
                                         className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
                                       >
                                         <item.icon
-                                          className="h-6 w-6 flex-shrink-0 text-blue-500"
+                                          className="h-6 w-6 flex-shrink-0 text-indigo-500"
                                           aria-hidden="true"
                                         />
                                         <span className="ml-4">

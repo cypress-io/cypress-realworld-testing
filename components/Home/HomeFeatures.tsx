@@ -46,10 +46,10 @@ export default function HomeFeatures() {
           What you&apos;ll learn
         </p>
         <div className="mt-12">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid auto-rows-fr grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div key={feature.name} className="pt-6">
-                <div className="rounded-lg bg-gray-50 px-6 py-8">
+                <div className="h-full rounded-lg bg-gray-50 px-6 py-8">
                   <Image
                     className="h-8 w-auto sm:h-10"
                     src={`/images/home/course-icons/book-icon.svg`}
