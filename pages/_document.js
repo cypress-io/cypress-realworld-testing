@@ -16,7 +16,7 @@ class MyDocument extends Document {
           />
           <meta
             name="twitter:image"
-            content="/images/social/twitter-card.jpg"
+            content="https://cypress-realworld-testing-git-twitter-cards-cypress-io.vercel.app/images/social/twitter-card.jpg"
           />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
