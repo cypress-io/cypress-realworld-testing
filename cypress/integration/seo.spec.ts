@@ -20,7 +20,7 @@ describe("SEO titles and descriptions", function () {
     cy.get('head meta[name="twitter:image"]').should(
       "have.attr",
       "content",
-      "/images/social/twitter-card.jpg"
+      "https://learn.cypress.io/images/social/twitter-card.jpg"
     )
   })
   it("The homepage has the correct meta title and description", function () {
