@@ -16,7 +16,7 @@ class MyDocument extends Document {
           />
           <meta
             name="twitter:image"
-            content="/images/social/twitter-card.png"
+            content="https://learn.cypress.io/images/social/twitter-card.png"
           />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
