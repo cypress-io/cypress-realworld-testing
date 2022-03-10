@@ -25,7 +25,7 @@ export default function Home({ content, courses }: Props) {
         <title>Real World Testing with Cypress</title>
         <meta
           name="description"
-          content="Learn from top industry experts and level-up your testing knowledge - for free."
+          content="Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications with Cypress"
         />
       </Head>
 
