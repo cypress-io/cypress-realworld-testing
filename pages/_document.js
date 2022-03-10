@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="twitter:card" content="summary_large_card" />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:title"
             content="Real World Testing with Cypress"
