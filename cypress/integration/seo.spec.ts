@@ -2,6 +2,27 @@ import coursesJson from "../../data/courses.json"
 import rweJson from "../../data/real-world-examples.json"
 
 describe("SEO titles and descriptions", function () {
+  it("renders twitter card meta tags", function () {
+    cy.visit("/")
+
+    cy.get('head meta[name="twitter:title"]').should(
+      "have.attr",
+      "content",
+      "Real World Testing with Cypress"
+    )
+
+    cy.get('head meta[name="twitter:description"]').should(
+      "have.attr",
+      "content",
+      "Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications with Cypress"
+    )
+
+    cy.get('head meta[name="twitter:image"]').should(
+      "have.attr",
+      "content",
+      "/images/social/twitter-card.png"
+    )
+  })
   it("The homepage has the correct meta title and description", function () {
     cy.visit("/")
 
@@ -10,7 +31,7 @@ describe("SEO titles and descriptions", function () {
     cy.get('head meta[name="description"]').should(
       "have.attr",
       "content",
-      "Learn from top industry experts and level-up your testing knowledge - for free."
+      "Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications with Cypress"
     )
   })
 
