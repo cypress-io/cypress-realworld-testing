@@ -5,6 +5,20 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name="twitter:card" content="summary" />
+          <meta
+            name="twitter:title"
+            content="Real World Testing with Cypress"
+          />
+          <meta
+            name="twitter:description"
+            content="Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications with Cypress"
+          />
+          <meta
+            name="twitter:image"
+            content="/images/social/twitter-card.png"
+          />
+
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
