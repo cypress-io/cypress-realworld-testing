@@ -5,7 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:title"
             content="Real World Testing with Cypress"
@@ -16,7 +16,7 @@ class MyDocument extends Document {
           />
           <meta
             name="twitter:image"
-            content="https://learn.cypress.io/images/social/twitter-card.png"
+            content="/images/social/twitter-card.png"
           />
 
           <link rel="preconnect" href="https://fonts.googleapis.com" />
