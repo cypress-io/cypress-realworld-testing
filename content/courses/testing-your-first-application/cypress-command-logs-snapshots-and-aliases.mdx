@@ -164,23 +164,19 @@ Now the test runner states explicitly that our <apiLink apiName="get" displayNam
 
 ## Snapshot
 
-Before we wrap up this lesson, we would like to introduce you to the `.snapshot()` method. Currently, when you click on our custom **createDefaultTodos** command in the test runner, you will see the following.
-
-![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.52.41_AM.png)
-
-There isn't any UI on the right-hand side, even though the runner says "DOM Snapshot (pinned)" at the bottom. The reason being is that we have not told Cypress to specifically take a snapshot of the DOM in our custom command. We can easily update our command like so to get what we need.
+Before we wrap up this lesson, we would like to introduce you to the `.snapshot()` method which we are using in our custom command.
 
 ```js
-cy.get(".todo-list li", { log: false }).then((listItems) => {
-  cmd.set({ el: listItems }).snapshot().end()
-})
+cmd.set({ el: listItems }).snapshot().end()
 ```
 
-After saving the file, you should now see the following:
+The `.snapshot()` command tells Cypress to take a snapshot of the `listItems` DOM elements.
+
+Back in the Cypress UI, you should see the following when you click on "create default todos" in the command log:
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.54.26_AM.png)
 
-Next to the "DOM Snapshot (pinned)," you will see two buttons with a 1 and 2, respectively. Button 1 is selected by default and doesn't display anything. However, clicking on button two will show a snapshot of the DOM with our three newly created todos.
+Next to the "DOM Snapshot (pinned)," you will see two buttons with a 1 and 2, respectively. Button 1 is selected by default and doesn't display anything. However, clicking on button 2 will show a snapshot of the DOM with our three newly created todos.
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.54.29_AM.png)
 
