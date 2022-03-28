@@ -107,12 +107,12 @@ cy.get(".todo-list li", { log: false })
 ```
 
 Next, we are putting those elements
-into a variable called `$listItems` which we then `.set()` on our `Cypress.log()`
+into a variable called `listItems` which we then `.set()` on our `Cypress.log()`
 . Finally, we use <apiLink apiName="end" displayName="cy.end()" /> to let Cypress
 know that our command is finished.
 
 ```js
-.then(function ($listItems) {
+.then(function (listItems) {
       cmd.set({ el: listItems }).snapshot().end()
     })
 ```
