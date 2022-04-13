@@ -67,7 +67,7 @@ export default function LessonLayout({
           {/* Table of Contents */}
           <aside className="hidden xl:col-span-2 xl:block">
             <div className="sticky top-6 space-y-4">
-              <LessonTOC navigation={toc} />
+              <LessonTOC navigation={toc} lessonPath={lessonPath} />
             </div>
           </aside>
         </div>
