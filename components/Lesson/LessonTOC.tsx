@@ -12,6 +12,12 @@ type Props = {
 export default function LessonTOC({ navigation, lessonPath }: Props) {
   const [sectionSlug, lessonSlug] = lessonPath.split("/")
 
+  const isRWEExample = () => {
+    return lessonPath.includes("real-world-examples")
+  }
+
+  console.log(isRWEExample())
+
   return (
     <>
       <p className="mb-4 font-semibold">ON THIS PAGE</p>
@@ -34,7 +40,9 @@ export default function LessonTOC({ navigation, lessonPath }: Props) {
         ))}
 
         <a
-          href={`https://github.com/cypress-io/cypress-realworld-testing/blob/main/content/courses/${sectionSlug}/${lessonSlug}.mdx`}
+          href={`https://github.com/cypress-io/cypress-realworld-testing/blob/main/content/${
+            isRWEExample() ? "real-world-examples" : "courses"
+          }/${sectionSlug}/${lessonSlug}.mdx`}
           className="flex"
         >
           <svg
