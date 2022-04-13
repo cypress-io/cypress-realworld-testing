@@ -7,7 +7,7 @@ function classNames(...classes) {
 type Props = {
   navigation: LessonTableOfContents[]
   lessonPath: string
-  section: string
+  section?: string
 }
 
 export default function LessonTOC({ navigation, lessonPath, section }: Props) {

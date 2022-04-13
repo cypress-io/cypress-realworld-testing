@@ -20,7 +20,7 @@ type Props = {
   lessonPath: string
   lessonData: Lesson
   course: string
-  section: string
+  section?: string
 }
 
 export default function LessonLayout({
