@@ -20,6 +20,7 @@ type Props = {
   lessonPath: string
   lessonData: Lesson
   course: string
+  section: string
 }
 
 export default function LessonLayout({
@@ -32,6 +33,7 @@ export default function LessonLayout({
   lessonPath,
   lessonData,
   course,
+  section,
 }: Props) {
   return (
     <>
@@ -67,7 +69,11 @@ export default function LessonLayout({
           {/* Table of Contents */}
           <aside className="hidden xl:col-span-2 xl:block">
             <div className="sticky top-6 space-y-4">
-              <LessonTOC navigation={toc} lessonPath={lessonPath} />
+              <LessonTOC
+                navigation={toc}
+                lessonPath={lessonPath}
+                section={section}
+              />
             </div>
           </aside>
         </div>

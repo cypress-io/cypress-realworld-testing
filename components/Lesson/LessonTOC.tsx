@@ -7,16 +7,17 @@ function classNames(...classes) {
 type Props = {
   navigation: LessonTableOfContents[]
   lessonPath: string
+  section: string
 }
 
-export default function LessonTOC({ navigation, lessonPath }: Props) {
+export default function LessonTOC({ navigation, lessonPath, section }: Props) {
   const [sectionSlug, lessonSlug] = lessonPath.split("/")
+
+  console.log(sectionSlug)
 
   const isRWEExample = () => {
     return lessonPath.includes("real-world-examples")
   }
-
-  console.log(isRWEExample())
 
   return (
     <>
@@ -41,8 +42,10 @@ export default function LessonTOC({ navigation, lessonPath }: Props) {
 
         <a
           href={`https://github.com/cypress-io/cypress-realworld-testing/blob/main/content/${
-            isRWEExample() ? "real-world-examples" : "courses"
-          }/${sectionSlug}/${lessonSlug}.mdx`}
+            isRWEExample()
+              ? `real-world-examples/${section}/${lessonSlug}.mdx`
+              : `courses/${sectionSlug}/${lessonSlug}.mdx`
+          }`}
           className="flex"
         >
           <svg
