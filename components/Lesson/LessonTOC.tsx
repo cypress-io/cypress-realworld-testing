@@ -13,8 +13,6 @@ type Props = {
 export default function LessonTOC({ navigation, lessonPath, section }: Props) {
   const [sectionSlug, lessonSlug] = lessonPath.split("/")
 
-  console.log(sectionSlug)
-
   const isRWEExample = () => {
     return lessonPath.includes("real-world-examples")
   }
