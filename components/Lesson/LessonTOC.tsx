@@ -6,9 +6,17 @@ function classNames(...classes) {
 
 type Props = {
   navigation: LessonTableOfContents[]
+  lessonPath: string
+  section?: string
 }
 
-export default function LessonTOC({ navigation }: Props) {
+export default function LessonTOC({ navigation, lessonPath, section }: Props) {
+  const [sectionSlug, lessonSlug] = lessonPath.split("/")
+
+  const isRWEExample = () => {
+    return lessonPath.includes("real-world-examples")
+  }
+
   return (
     <>
       <p className="mb-4 font-semibold">ON THIS PAGE</p>
@@ -29,6 +37,31 @@ export default function LessonTOC({ navigation }: Props) {
             <span>{item.content}</span>
           </a>
         ))}
+
+        <a
+          href={`https://github.com/cypress-io/cypress-realworld-testing/blob/main/content/${
+            isRWEExample()
+              ? `real-world-examples/${section}/${lessonSlug}.mdx`
+              : `courses/${sectionSlug}/${lessonSlug}.mdx`
+          }`}
+          className="flex"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+            />
+          </svg>
+          <span className="ml-2">edit this page</span>
+        </a>
       </nav>
     </>
   )

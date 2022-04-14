@@ -52,6 +52,7 @@ type Props = {
   lessonPath: string
   rweJson: object
   sections: string[]
+  section: string
 }
 
 export default function LessonPage({
@@ -63,6 +64,7 @@ export default function LessonPage({
   lessonPath,
   rweJson,
   sections,
+  section,
 }: Props) {
   return (
     <Layout
@@ -85,6 +87,7 @@ export default function LessonPage({
         lessonPath={lessonPath}
         lessonData={lessonData}
         course="real-world-examples"
+        section={section}
       />
 
       <CompleteLessonBtn
@@ -101,6 +104,7 @@ export const getStaticProps = async ({ params }) => {
   const contentFilePath = getRealWorldExamplePath(
     path.join(REAL_WORLD_EXAMPLES_PATH, `/**/${params.slug}.mdx`)
   )
+
   const realWorldExampleDirectory = path.dirname(contentFilePath[0]).split("/")
   const section =
     realWorldExampleDirectory[realWorldExampleDirectory.length - 1]
@@ -140,6 +144,7 @@ export const getStaticProps = async ({ params }) => {
       lessonPath: `real-world-examples/${params.slug}`,
       rweJson,
       sections,
+      section,
     },
   }
 }
