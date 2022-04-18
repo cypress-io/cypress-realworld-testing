@@ -22,6 +22,7 @@ import {
 import { isLessonCompleted } from "../../utils/machineUtils"
 import coursesJson from "../../data/courses.json"
 import { useActor } from "@xstate/react"
+import Pre from "@/components/Pre"
 
 const CompleteLessonBtn = dynamic(
   () => import("../../components/Lesson/CompleteLessonBtn"),
@@ -49,6 +50,7 @@ const components = {
   //TestComponent: dynamic(() => import('../../components/TestComponent')),
   Head,
   apiLink,
+  pre: Pre,
 }
 
 type Props = {
