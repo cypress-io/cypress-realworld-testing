@@ -20,6 +20,7 @@ import {
   getRealWorldExamplePath,
 } from "../../utils/mdxUtils"
 import rweJson from "../../data/real-world-examples.json"
+import CopyToClipboard from "@/components/CopyToClipboard"
 
 const CompleteLessonBtn = dynamic(
   () => import("../../components/Lesson/CompleteLessonBtn"),
@@ -40,6 +41,7 @@ const components = {
   //TestComponent: dynamic(() => import('../../components/TestComponent')),
   Head,
   apiLink,
+  pre: CopyToClipboard,
 }
 
 type Props = {
