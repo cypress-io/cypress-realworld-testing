@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [Notifications Overview & Setup](/real-world-examples/notifications-overview-and-setup) lesson first.
 
 ```js
-it("renders an empty notifications state", function () {
+it("renders an empty notifications state", () => {
   cy.intercept("GET", "/notifications", []).as("notifications")
 
   cy.loginByXstate(ctx.userA.username)

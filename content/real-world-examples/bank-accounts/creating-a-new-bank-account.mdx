@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [Bank Accounts Overview & Setup](/real-world-examples/bank-accounts-overview-and-setup) lesson first.
 
 ```js
-it("creates a new bank account", function () {
+it("creates a new bank account", () => {
   cy.wait("@getNotifications")
   if (isMobile()) {
     cy.getBySel("sidenav-toggle").click()

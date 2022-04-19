@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [Authentication Overview & Setup](/real-world-examples/authentication-overview-and-setup) lesson first.
 
 ```js
-it("should redirect unauthenticated user to signin page", function () {
+it("should redirect unauthenticated user to signin page", () => {
   cy.visit("/personal")
   cy.location("pathname").should("equal", "/signin")
 })

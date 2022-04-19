@@ -58,8 +58,8 @@ Cypress.Commands.add("loginByApi", (username, password) => {
 In this example, we use a custom command called `cy.loginByApi()`, which accepts a username and password and then sends a post request to our API login route. Now within our tests, we can call this command, passing in a username and password.
 
 ```js
-describe("POST /login", function () {
-  it("login as user", function () {
+describe("POST /login", () => {
+  it("login as user", () => {
     cy.loginByApi("jdoe", "password123").then((response) => {
       expect(response.status).to.eq(200)
     })

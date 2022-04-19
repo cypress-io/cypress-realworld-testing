@@ -9,7 +9,7 @@ Let's break down what is happening within the `beforeEach()` as it is essential 
 ```js
 const ctx = {} as NotificationsCtx;
 
-  beforeEach(function () {
+  beforeEach(() => {
     cy.task("db:seed");
 
     cy.intercept("GET", "/notifications*").as("getNotifications");

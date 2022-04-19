@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [Transaction View Overview & Setup](/real-world-examples/transaction-view-overview-and-setup) lesson first.
 
 ```js
-it("rejects a transaction request", function () {
+it("rejects a transaction request", () => {
     cy.visit(`/transaction/${ctx.transactionRequest!.id}`);
     cy.wait("@getTransaction");
 

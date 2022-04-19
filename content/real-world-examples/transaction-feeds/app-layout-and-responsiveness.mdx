@@ -3,8 +3,8 @@
 Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](/real-world-examples/transaction-feeds-overview-and-setup) lesson first.
 
 ```js
-describe("app layout and responsiveness", function () {
-  it("toggles the navigation drawer", function () {
+describe("app layout and responsiveness", () => {
+  it("toggles the navigation drawer", () => {
     cy.wait("@notifications")
     cy.wait("@publicTransactions")
     if (isMobile()) {

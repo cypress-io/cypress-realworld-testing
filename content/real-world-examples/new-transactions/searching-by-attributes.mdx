@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [New Transaction Overview & Setup](/real-world-examples/new-transaction-overview-and-setup) lesson first.
 
 ```js
-context("searches for a user by attribute", function () {
+context("searches for a user by attribute", () => {
     const searchAttrs: (keyof User)[] = [
       "firstName",
       "lastName",
@@ -12,13 +12,13 @@ context("searches for a user by attribute", function () {
       "phoneNumber",
     ];
 
-    beforeEach(function () {
+    beforeEach(() => {
       cy.getBySelLike("new-transaction").click();
       cy.wait("@allUsers");
     });
 
     searchAttrs.forEach((attr: keyof User) => {
-      it(attr, function () {
+      it(attr, () => {
         const targetUser = ctx.allUsers![2];
 
         cy.log(`Searching by **${attr}**`);
@@ -66,7 +66,7 @@ const searchAttrs: (keyof User)[] = [
 Next we have a `beforeEach()` hook that clicks on the "New" transaction button and waits for our `@allUsers` intercept. Remember, this intercept occurs in the `beforeEach()` hook at the top of this spec file.
 
 ```js
-beforeEach(function () {
+beforeEach(() => {
   cy.getBySelLike("new-transaction").click()
   cy.wait("@allUsers")
 })
@@ -78,7 +78,7 @@ Then, we are looping through the `searchAttrs` array to dynamically create our t
 
 ```js
 searchAttrs.forEach((attr: keyof User) => {
-      it(attr, function () {
+      it(attr, () => {
         const targetUser = ctx.allUsers![2];
 
         cy.log(`Searching by **${attr}**`);
@@ -110,7 +110,7 @@ searchAttrs.forEach((attr: keyof User) => {
 Within our `.forEach()`, you can see that the first thing we do is create our `.it()` test and pass in the attribute as the test name.
 
 ```js
-it(attr, function () {
+it(attr, () => {
 
 // ...
 

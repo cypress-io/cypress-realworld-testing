@@ -99,7 +99,7 @@ The environment variable `mobileViewportWidthBreakpoint` is located within the `
 In our tests, we can use this function to determine if the tests are being executed within our mobile viewport and react accordingly using a conditional.
 
 ```js
-it("should remember a user for 30 days after login", function () {
+it("should remember a user for 30 days after login", () => {
   cy.database("find", "users").then((user: User) => {
     cy.login(user.username, "s3cret", { rememberUser: true })
   })

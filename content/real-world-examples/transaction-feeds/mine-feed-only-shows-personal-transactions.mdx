@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](/real-world-examples/transaction-feeds-overview-and-setup) lesson first.
 
 ```js
-it("mine feed only shows personal transactions", function () {
+it("mine feed only shows personal transactions", () => {
       cy.database("filter", "contacts", { userId: ctx.user!.id }).then((contacts: Contact[]) => {
         ctx.contactIds = contacts.map((contact) => contact.contactUserId);
       });
