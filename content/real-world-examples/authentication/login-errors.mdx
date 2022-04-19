@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [Authentication Overview & Setup](/real-world-examples/authentication-overview-and-setup) lesson first.
 
 ```js
-it("should display login errors", function () {
+it("should display login errors", () => {
   cy.visit("/")
 
   cy.getBySel("signin-username").type("User").find("input").clear().blur()

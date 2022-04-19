@@ -9,8 +9,8 @@ Let's look at one of the API tests from the RWA to understand better how to test
 ```js
 // cypress/tests/api/api-users.spec.ts
 
-context("GET /users", function () {
-  it("gets a list of users", function () {
+context("GET /users", () => {
+  it("gets a list of users", () => {
     cy.request("GET", "/users").then((response) => {
       expect(response.status).to.eq(200)
       expect(response.body.results).length.to.be.greaterThan(1)

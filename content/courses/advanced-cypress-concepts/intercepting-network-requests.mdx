@@ -27,7 +27,7 @@ cy.wait("@signup")
 Sometimes you may need to override and already existing intercept by using a **fixture** to **mock** the response data. Let's look at an example from the [Real World App](https://github.com/cypress-io/cypress-realworld-app/blob/develop/cypress/tests/ui/transaction-feeds.spec.ts).
 
 ```js
-beforeEach(function () {
+beforeEach(() => {
   // ...
 
   cy.intercept("GET", "/transactions/public*").as("publicTransactions")

@@ -9,7 +9,7 @@ Let's breakdown what is happening within the `beforeEach()` as it is important t
 ## beforeEach()
 
 ```js
-beforeEach(function () {
+beforeEach(() => {
   cy.task("db:seed")
 
   cy.intercept("PATCH", "/users/*").as("updateUser")

@@ -3,8 +3,8 @@
 Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](/real-world-examples/transaction-feeds-overview-and-setup) lesson first.
 
 ```js
-describe("renders and paginates all transaction feeds", function () {
-    it("renders transactions item variations in feed", function () {
+describe("renders and paginates all transaction feeds", () => {
+    it("renders transactions item variations in feed", () => {
       cy.intercept("GET", "/transactions/public*", {
         headers: {
           "X-Powered-By": "Express",
@@ -91,7 +91,7 @@ describe("renders and paginates all transaction feeds", function () {
     });
 
     _.each(feedViews, (feed, feedName) => {
-      it(`paginates ${feedName} transaction feed`, function () {
+      it(`paginates ${feedName} transaction feed`, () => {
         cy.getBySelLike(feed.tab)
           .click()
           .should("have.class", "Mui-selected")

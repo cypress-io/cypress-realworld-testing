@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [Transaction Feeds Overview & Setup](/real-world-examples/transaction-feeds-overview-and-setup) lesson first.
 
 ```js
-describe("filters transaction feeds by date range", function () {
+describe("filters transaction feeds by date range", () => {
   if (isMobile()) {
     it("closes date range picker modal", () => {
       cy.getBySelLike("filter-date-range-button").click({ force: true })
@@ -16,7 +16,7 @@ describe("filters transaction feeds by date range", function () {
   }
 
   _.each(feedViews, (feed, feedName) => {
-    it(`filters ${feedName} transaction feed by date range`, function () {
+    it(`filters ${feedName} transaction feed by date range`, () => {
       cy.database("find", "transactions").then((transaction: Transaction) => {
         const dateRangeStart = startOfDay(new Date(transaction.createdAt))
         const dateRangeEnd = endOfDayUTC(addDays(dateRangeStart, 1))
@@ -69,7 +69,7 @@ describe("filters transaction feeds by date range", function () {
       })
     })
 
-    it(`does not show ${feedName} transactions for out of range date limits`, function () {
+    it(`does not show ${feedName} transactions for out of range date limits`, () => {
       const dateRangeStart = startOfDay(new Date(2014, 1, 1))
       const dateRangeEnd = endOfDayUTC(addDays(dateRangeStart, 1))
 
@@ -140,7 +140,7 @@ _.each(feedViews, (feed, feedName) => {
 We then create a test for each `feedView` dynamically.
 
 ```js
-it.only(`filters ${feedName} transaction feed by date range`, function () {
+it.only(`filters ${feedName} transaction feed by date range`, () => {
 ```
 
 Next, we use a custom Cypress command `cy.database()` to find some transactions from the database.
@@ -205,8 +205,8 @@ transactions.forEach(({ createdAt }) => {
       start: startOfDayUTC(dateRangeStart),
       end: dateRangeEnd,
     }),
-    `transaction created date (${createdAtDate.toISOString()}) 
-                  is within ${dateRangeStart.toISOString()} 
+    `transaction created date (${createdAtDate.toISOString()})
+                  is within ${dateRangeStart.toISOString()}
                   and ${dateRangeEnd.toISOString()}`
   ).to.equal(true)
 })

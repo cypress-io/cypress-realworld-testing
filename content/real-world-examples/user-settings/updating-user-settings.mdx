@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [User Settings Overview & Setup](/real-world-examples/user-settings-overview-and-setup) lesson first.
 
 ```js
-it("updates first name, last name, email and phone number", function () {
+it("updates first name, last name, email and phone number", () => {
   cy.getBySelLike("firstName").clear().type("New First Name")
   cy.getBySelLike("lastName").clear().type("New Last Name")
   cy.getBySelLike("email").clear().type("email@email.com")

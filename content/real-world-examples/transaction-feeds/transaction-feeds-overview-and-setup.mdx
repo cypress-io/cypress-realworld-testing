@@ -40,7 +40,7 @@ The `feedViews` object contains various information for the different views depe
 ## beforeEach()
 
 ```js
-beforeEach(function () {
+beforeEach(() => {
   cy.task("db:seed")
 
   cy.intercept("GET", "/notifications").as("notifications")

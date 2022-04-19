@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [Bank Accounts Overview & Setup](/real-world-examples/bank-accounts-overview-and-setup) lesson first.
 
 ```js
-it("renders an empty bank account list state with onboarding modal", function () {
+it("renders an empty bank account list state with onboarding modal", () => {
   cy.wait("@getNotifications")
   cy.intercept("POST", apiGraphQL, (req) => {
     const { body } = req
