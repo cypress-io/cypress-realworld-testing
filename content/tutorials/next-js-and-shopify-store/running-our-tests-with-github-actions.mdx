@@ -157,7 +157,11 @@ We know that this test was passing locally, so why is it failing in CI?
 
 Our error says the following:
 
-> AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-test="product-tag"]`, but never found it.
+:::warning
+
+AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-test="product-tag"]`, but never found it.
+
+:::
 
 So it seems like the first part of our test is working, but once we get to the search results page it cannot find the `product-tag` element. We will add some `data-test` attributes to the `components/product/ProductCard.tsx` component. Around line `73`
 
