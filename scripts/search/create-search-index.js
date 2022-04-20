@@ -25,6 +25,7 @@ import { unslugify } from "unslugify"
       let lessonFilePath
       const coursesFilePathRegex = new RegExp("/courses/")
       const RWEFilePathRegex = new RegExp("/real-world-examples/")
+      const TutorialsilePathRegex = new RegExp("/tutorials/")
 
       if (coursesFilePathRegex.test(contentFilePaths[i])) {
         const pathArray = contentFilePaths[i].split("/")
@@ -37,6 +38,13 @@ import { unslugify } from "unslugify"
         const pathArray = contentFilePaths[i].split("/")
         const lesson = pathArray.slice(-1)[0].replace(/.mdx/, "")
         lessonFilePath = `/real-world-examples/${lesson}`
+      }
+
+      if (TutorialsilePathRegex.test(contentFilePaths[i])) {
+        const pathArray = contentFilePaths[i].split("/")
+        const lesson = pathArray.slice(-1)[0].replace(/.mdx/, "")
+        lessonFilePath = `/tutorials/${lesson}`
+        console.log(lessonFilePath)
       }
 
       index.push({
