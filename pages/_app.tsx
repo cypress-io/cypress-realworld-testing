@@ -2,7 +2,6 @@ import "tailwindcss/tailwind.css"
 import "../styles/global.css"
 import { useEffect } from "react"
 import { useRouter } from "next/router"
-import * as FullStory from "@fullstory/browser"
 import * as ga from "../utils/googleAnalytics"
 
 function MyApp({ Component, pageProps }) {
@@ -22,14 +21,6 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange)
     }
   }, [router.events])
-
-  // @ts-ignore
-  if (typeof window !== "undefined" && !window.Cypress) {
-    // eslint-disable-next-line
-    useEffect(() => {
-      FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
-    }, [])
-  }
 
   return (
     <>
