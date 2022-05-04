@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   if (typeof window !== "undefined" && !window.Cypress) {
     // eslint-disable-next-line
     useEffect(() => {
-      FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
+      // FullStory.init({ orgId: process.env.NEXT_PUBLIC_FULL_STORY_ORG_ID })
     }, [])
   }
 
