@@ -22,10 +22,12 @@ export default function Home({ content, courses }: Props) {
       progressService={progressService}
     >
       <Head>
-        <title>Real World Testing with Cypress</title>
+        <title>
+          Learn E2E Testing from the Experts | Cypress Testing Tools
+        </title>
         <meta
           name="description"
-          content="Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications with Cypress"
+          content="Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications and E2E testing with Cypress"
         />
       </Head>
 
