@@ -45,10 +45,10 @@ Or, you could use an actual user from your database.
 ## Using data from remote systems (API, database, etc.) to drive seed data and tests
 
 ```js
-describe("Notifications", function () {
+describe("Notifications", () => {
   const ctx = {}
 
-  beforeEach(function () {
+  beforeEach(() => {
     // ...
 
     cy.database("filter", "users").then((users) => {

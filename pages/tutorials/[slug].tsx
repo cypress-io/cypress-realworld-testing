@@ -8,6 +8,7 @@ import path from "path"
 import { find, findIndex } from "lodash/fp"
 import rehypeSlug from "rehype-slug"
 import rehypePrism from "@mapbox/rehype-prism"
+import remarkAdmonitions from "remark-admonitions"
 import { progressService } from "../../machines/progressService"
 import Layout from "../../components/Layout"
 import LessonLayout from "@/components/Lesson/LessonLayout"
@@ -21,6 +22,7 @@ import {
   getRealWorldExamplePath,
 } from "../../utils/mdxUtils"
 import tutorialsJson from "../../data/tutorials.json"
+import CopyToClipboard from "@/components/CopyToClipboard"
 
 const CompleteLessonBtn = dynamic(
   () => import("../../components/Lesson/CompleteLessonBtn"),
@@ -41,6 +43,7 @@ const components = {
   //TestComponent: dynamic(() => import('../../components/TestComponent')),
   Head,
   apiLink,
+  pre: CopyToClipboard,
 }
 
 type Props = {
@@ -112,7 +115,7 @@ export const getStaticProps = async ({ params }) => {
   const mdxSource = await serialize(content, {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
-      remarkPlugins: [],
+      remarkPlugins: [remarkAdmonitions],
       // @ts-ignore
       rehypePlugins: [rehypeSlug, rehypePrism],
     },

@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [New Transaction Overview & Setup](/real-world-examples/new-transaction-overview-and-setup) lesson first.
 
 ```js
-it("submits a transaction payment and verifies the deposit for the receiver", function () {
+it("submits a transaction payment and verifies the deposit for the receiver", () => {
   cy.getBySel("nav-top-new-transaction").click();
 
   const transactionPayload = {

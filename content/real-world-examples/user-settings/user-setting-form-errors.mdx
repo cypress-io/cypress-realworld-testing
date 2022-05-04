@@ -3,7 +3,7 @@
 Before continuing, make sure you have read the [User Settings Overview & Setup](/real-world-examples/user-settings-overview-and-setup) lesson first.
 
 ```js
-it("should display user setting form errors", function () {
+it("should display user setting form errors", () => {
   ;["first", "last"].forEach((field) => {
     cy.getBySelLike(`${field}Name-input`).type("Abc").clear().blur()
     cy.get(`#user-settings-${field}Name-input-helper-text`)

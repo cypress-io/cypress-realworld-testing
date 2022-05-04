@@ -27,7 +27,7 @@ cy.wait("@signup")
 Sometimes you may need to override and already existing intercept by using a **fixture** to **mock** the response data. Let's look at an example from the [Real World App](https://github.com/cypress-io/cypress-realworld-app/blob/develop/cypress/tests/ui/transaction-feeds.spec.ts).
 
 ```js
-beforeEach(function () {
+beforeEach(() => {
   // ...
 
   cy.intercept("GET", "/transactions/public*").as("publicTransactions")
@@ -38,7 +38,7 @@ beforeEach(function () {
 
 In this example, we intercept any **GET** request to any route that matches **/transactions/public\***. We are doing this in a `beforeEach()`, which means this intercept will run before every test.
 
-Later on, In one of our tests, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept and override this same **GET** and route but using a [fixture](https://docs.cypress.io/guides/guides/network-requests#Fixtures) to mock the response.
+Later on, in one of our tests, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to intercept and override this same **GET** and route but using a [fixture](https://docs.cypress.io/guides/guides/network-requests#Fixtures) to mock the response.
 
 ```js
 cy.intercept("GET", "/transactions/public*", {
