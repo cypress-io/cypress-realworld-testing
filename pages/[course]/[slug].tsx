@@ -88,7 +88,7 @@ export default function LessonPage({
       progressService={progressService}
     >
       <Head>
-        <title>{lessonData.title} | Real World Testing with Cypress</title>
+        <title>{lessonData.title} | Cypress Testing Tools</title>
         <meta name="description" content={lessonData.description} />
       </Head>
 

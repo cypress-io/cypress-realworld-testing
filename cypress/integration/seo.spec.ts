@@ -26,12 +26,15 @@ describe("SEO titles and descriptions", function () {
   it("The homepage has the correct meta title and description", function () {
     cy.visit("/")
 
-    cy.title().should("eq", "Real World Testing with Cypress")
+    cy.title().should(
+      "eq",
+      "Learn E2E Testing from the Experts | Cypress Testing Tools"
+    )
 
     cy.get('head meta[name="description"]').should(
       "have.attr",
       "content",
-      "Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications with Cypress"
+      "Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications and E2E testing with Cypress"
     )
   })
 
@@ -41,7 +44,7 @@ describe("SEO titles and descriptions", function () {
     const title = coursesJson["cypress-fundamentals"].title
     const description = coursesJson["cypress-fundamentals"].description
 
-    cy.title().should("eq", `${title} | Real World Testing with Cypress`)
+    cy.title().should("eq", `${title} | Cypress Testing Tools`)
 
     cy.get('head meta[name="description"]').should(
       "have.attr",
@@ -57,7 +60,7 @@ describe("SEO titles and descriptions", function () {
     const description =
       coursesJson["testing-foundations"].lessons[0].description
 
-    cy.title().should("eq", `${title} | Real World Testing with Cypress`)
+    cy.title().should("eq", `${title} | Cypress Testing Tools`)
 
     cy.get('head meta[name="description"]').should(
       "have.attr",
@@ -69,15 +72,12 @@ describe("SEO titles and descriptions", function () {
   it("The Real World Example page has the correct meta title and description", function () {
     cy.visit("/real-world-examples")
 
-    cy.title().should(
-      "eq",
-      "Real World Examples | Real World Testing with Cypress"
-    )
+    cy.title().should("eq", "Real World Examples | Cypress Testing Tools")
 
     cy.get('head meta[name="description"]').should(
       "have.attr",
       "content",
-      "Test examples from a payment application that demonstrate real-world usage of Cypress testing methods, patterns, and workflows."
+      "Testing method examples from a payment application that demonstrate real-world usage of Cypress testing methods, patterns, and workflows."
     )
   })
 
@@ -87,7 +87,7 @@ describe("SEO titles and descriptions", function () {
     const title = rweJson["authentication"].lessons[1].title
     const description = rweJson["authentication"].lessons[1].description
 
-    cy.title().should("eq", `${title} | Real World Testing with Cypress`)
+    cy.title().should("eq", `${title} | Cypress Testing Tools`)
 
     cy.get('head meta[name="description"]').should(
       "have.attr",

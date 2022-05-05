@@ -17,8 +17,8 @@ export default function HomeHero() {
                       Real World Testing with Cypress
                     </h1>
                     <p className="mt-3 text-base text-jade-700 sm:mt-5 sm:text-xl lg:text-lg xl:text-2xl">
-                      Learn from top industry experts and level-up your testing
-                      knowledge &mdash; for free!
+                      Learn from top industry experts and level-up your e2e
+                      testing knowledge — for free!
                     </p>
 
                     {/* Features */}

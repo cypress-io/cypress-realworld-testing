@@ -16,7 +16,7 @@
         "description": "Our recommended approach to testing web applications"
       },
       {
-        "title": "Custom Cypress Commands",
+        "title": "Custom Cypress Command Examples",
         "slug": "custom-cypress-commands",
         "description": "A detailed explanation of all the custom Cypress Commands used in the app"
       }
