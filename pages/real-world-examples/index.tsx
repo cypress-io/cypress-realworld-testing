@@ -24,7 +24,7 @@ export default function Home({ content, sections, rWESections }: Props) {
         <title>Real World Examples | Real World Testing with Cypress</title>
         <meta
           name="description"
-          content="Test examples from a payment application that demonstrate real-world usage of Cypress testing methods, patterns, and workflows."
+          content="Testing method examples from a payment application that demonstrate real-world usage of Cypress testing methods, patterns, and workflows."
         />
       </Head>
 

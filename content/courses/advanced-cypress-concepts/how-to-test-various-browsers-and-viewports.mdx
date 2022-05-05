@@ -1,4 +1,4 @@
-# How to Test Various Browsers & Viewports
+# Viewport and Browser Testing Tips
 
 ## Different Browsers
 
@@ -6,7 +6,7 @@ Running all of your tests within [multiple browsers](https://docs.cypress.io/gui
 
 You can also configure Cypress to run your tests within a specific window size with custom configurations. A great example of how to do this is in the [Real World App (RWA)](https://github.com/cypress-io/cypress-realworld-app). If you look at the [GitHub Actions workflow](https://github.com/cypress-io/cypress-realworld-app/blob/develop/.github/workflows/main.yml), we will run the tests within the RWA in Chrome Desktop, Chrome Mobile, Firefox Desktop, and Firefox Mobile.
 
-We can tell Cypress to use a specific browser by specifying the browser we want with the browser key like so:
+We can tell Cypress to use a specific browser for testing by specifying the browser we want like so:
 
 ```yaml
 browser: Firefox

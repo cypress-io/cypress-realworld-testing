@@ -40,7 +40,7 @@ export default function SectionPage({
       progressService={progressService}
     >
       <Head>
-        <title>{title} | Real World Testing with Cypress</title>
+        <title>{title} | Cypress Testing Tools</title>
         <meta name="description" content={description} />
       </Head>
 

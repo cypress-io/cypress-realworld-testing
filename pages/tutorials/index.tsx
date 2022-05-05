@@ -23,7 +23,7 @@ export default function Home({ content, sections, tutorials }: Props) {
         <title>Tutorials | Real World Testing with Cypress</title>
         <meta
           name="description"
-          content="Learn from top industry experts and level-up your testing knowledge - for free."
+          content="Learn software testing from top industry experts and level-up your testing knowledge - for free."
         />
       </Head>
 
