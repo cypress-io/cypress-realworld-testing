@@ -26,7 +26,10 @@ describe("SEO titles and descriptions", function () {
   it("The homepage has the correct meta title and description", function () {
     cy.visit("/")
 
-    cy.title().should("eq", "Real World Testing with Cypress")
+    cy.title().should(
+      "eq",
+      "Learn E2E Testing from the Experts | Cypress Testing Tools"
+    )
 
     cy.get('head meta[name="description"]').should(
       "have.attr",
@@ -74,7 +77,7 @@ describe("SEO titles and descriptions", function () {
     cy.get('head meta[name="description"]').should(
       "have.attr",
       "content",
-      "Test examples from a payment application that demonstrate real-world usage of Cypress testing methods, patterns, and workflows."
+      "Testing method examples from a payment application that demonstrate real-world usage of Cypress testing methods, patterns, and workflows."
     )
   })
 
