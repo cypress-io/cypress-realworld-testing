@@ -34,7 +34,7 @@ describe("SEO titles and descriptions", function () {
     cy.get('head meta[name="description"]').should(
       "have.attr",
       "content",
-      "Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications with Cypress"
+      "Real World Testing with Cypress is a four-course curriculum that teaches everything you need to know about testing modern web applications and E2E testing with Cypress"
     )
   })
 
