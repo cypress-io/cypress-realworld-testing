@@ -21,7 +21,7 @@ export default function Home({ content, sections, rWESections }: Props) {
       progressService={progressService}
     >
       <Head>
-        <title>Real World Examples | Real World Testing with Cypress</title>
+        <title>Real World Examples | Cypress Testing Tools</title>
         <meta
           name="description"
           content="Testing method examples from a payment application that demonstrate real-world usage of Cypress testing methods, patterns, and workflows."
