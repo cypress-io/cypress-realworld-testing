@@ -2,15 +2,15 @@
 
 ## Installing Cypress
 
-Before we can begin writing our tests, we first need to install Cypress into our project. You can find more details about the installation process [here](https://docs.cypress.io/guides/getting-started/installing-cypress).
+Sebelum kita dapat mulai menulis pengujian kita, pertama-tama kita perlu menginstal Cypress ke dalam proyek kita. Anda dapat menemukan detail lebih lanjut tentang proses instalasi [here](https://docs.cypress.io/guides/getting-started/installing-cypress).
 
-We can add Cypress to our project with the following command:
+Kita dapat menambahkan Cypress ke proyek kita dengan perintah berikut:
 
 ```bash
 yarn add cypress -D
 ```
 
-Next we will add a custom npm script so we can launch Cypress easily. The entire "scripts" object within **package.json** should look like this:
+Selanjutnya kita akan menambahkan skrip npm khusus sehingga kita dapat meluncurkan Cypress dengan mudah. Seluruh objek "skrip" dalam **package.json** akan terlihat seperti ini:
 
 ```json
 "scripts": {
@@ -19,11 +19,11 @@ Next we will add a custom npm script so we can launch Cypress easily. The entire
 },
 ```
 
-Before we run our new script, make sure also to have the application running in a separate terminal window. It is vital to have the application up and running as Cypress cannot execute any tests without it.
+Sebelum kami menjalankan skrip baru kami, pastikan juga untuk menjalankan aplikasi di jendela terminal terpisah. Sangat penting untuk menjalankan dan menjalankan aplikasi karena Cypress tidak dapat menjalankan tes apa pun tanpanya.
 
-If you are using VSCode, you can open the built-in terminal with (Ctrl+` on Mac/Win). Or you can click on View > Terminal in the menu at the top.
+Jika Anda menggunakan VSCode, Anda dapat membuka terminal bawaan dengan (Ctrl+` pada Mac/Win). Atau Anda dapat mengklik View > Terminal pada menu di bagian atas.
 
-In your terminal enter the following command to start the app.
+Di terminal Anda, masukkan perintah berikut untuk memulai aplikasi.
 
 ```bash
 yarn start
@@ -31,7 +31,7 @@ yarn start
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-09-17_at_10.09.16_AM.png)
 
-Let's now start Cypress so that it can create the directories and files within our project.
+Sekarang mari kita mulai Cypress sehingga dapat membuat direktori dan file dalam proyek kita.
 
 ```bash
 yarn cypress:open
@@ -39,39 +39,39 @@ yarn cypress:open
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-09-17_at_10.09.40_AM.png)
 
-Make sure to keep Cypress running through the duration of this lesson.
+Pastikan Cypress tetap berjalan selama durasi pelajaran ini.
 
-When Cypress first launches, it will display some helpful information on a screen like this:
+Saat pertama kali diluncurkan, Cypress akan menampilkan beberapa informasi bermanfaat di layar seperti ini:
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_9.47.49_AM.png)
 
-Click on the green "Ok, got it!" button to close the modal.
+Klik pada hijau "Ok, mengerti!" tombol untuk menutup modal.
 
-Cypress automatically creates several example spec files for you. If this is your first time using Cypress, we highly recommend that you click on some of them to see the Cypress test runner in action. You can find them within **cypress/integration/examples**.
+Cypress secara otomatis membuat beberapa contoh file spesifikasi untuk Anda. Jika ini adalah pertama kalinya Anda menggunakan Cypress, kami sangat menyarankan Anda mengklik beberapa di antaranya untuk melihat pelari uji Cypress beraksi. Anda dapat menemukannya di **cypress/integration/examples**.
 
-Don't worry if you don't understand them yet or feel a bit overwhelmed. We will be writing our own tests shortly, and we will explain every line of code along the way.
+Jangan khawatir jika Anda belum memahaminya atau merasa sedikit kewalahan. Kami akan segera menulis tes kami sendiri, dan kami akan menjelaskan setiap baris kode di sepanjang jalan.
 
 ## Selecting a browser
 
-You can select which browser Cypress should use in the upper right-hand corner. Cypress will automatically detect all of the installed browsers on your machine, so choose whichever you would like for it to use.
+Anda dapat memilih browser mana yang harus digunakan Cypress di sudut kanan atas. Cypress akan secara otomatis mendeteksi semua browser yang diinstal pada mesin Anda, jadi pilih mana yang Anda inginkan untuk digunakan.
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_9.56.26_AM.png)
 
 ## Writing our first test
 
-Now that we have Cypress installed and working let's write our first test for our todo application.
+Sekarang setelah Cypress terinstal dan berfungsi, mari kita tulis pengujian pertama untuk aplikasi todo kita.
 
-Create a new file called **app.spec.js** within the **cypress/integration** directory.
+Buat file baru bernama **app.spec.js** dalam direktori **cypress/integration**.
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.02.58_AM.png)
 
-Inside that file, we will use the `describe()` function to help us organize our tests. Let's use it to create a describe block called "React TodoMVC."
+Di dalam file itu, kita akan menggunakan fungsi `describe()` untuk membantu kita mengatur pengujian kita. Mari kita gunakan untuk membuat blok deskripsi yang disebut "React TodoMVC."
 
 ```js
 describe("React TodoMVC", () => {})
 ```
 
-Within that describe block, we will write our tests using the `it()` function. For our first test, let's write a test to assert that we can add a single todo.
+Di dalam blok deskripsi itu, kami akan menulis pengujian kami menggunakan fungsi `it()`. Untuk pengujian pertama kita, mari kita tulis sebuah tes untuk menegaskan bahwa kita dapat menambahkan satu todo.
 
 ```js
 describe("React TodoMVC", () => {
@@ -79,31 +79,31 @@ describe("React TodoMVC", () => {
 })
 ```
 
-Within the body of our `it()` function is where we write the code necessary for our test to run. Before we begin to do that, let's take a step back and think through all of the steps necessary to add a single todo.
+Di dalam tubuh fungsi `it()` kami adalah tempat kami menulis kode yang diperlukan untuk menjalankan pengujian kami. Sebelum kita mulai melakukannya, mari kita mundur selangkah dan memikirkan semua langkah yang diperlukan untuk menambahkan satu todo.
 
-Open the app in your browser and note all of the steps you need to perform to add a single todo.
+Buka aplikasi di browser Anda dan catat semua langkah yang perlu Anda lakukan untuk menambahkan satu todo.
 
-1. We need to focus on the input field.
-2. We need to enter in the name of our todo.
-3. We need to press the enter key to add our todo.
+1. Kita perlu fokus pada bidang input.
+2. Kita harus memasukkan nama todo kita.
+3. Kita perlu menekan tombol enter untuk menambahkan todo kita.
 
-Now let's write out these steps into our test.
+Sekarang mari kita tuliskan langkah-langkah ini ke dalam pengujian kita.
 
-Before having Cypress click into the input field, we first need to grab the input field element from the [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model), so Cypress knows which element to click.
+Sebelum Cypress mengklik kolom input, pertama-tama kita harus mengambil elemen kolom input dari [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model), jadi Cypress tahu elemen mana yang harus diklik.
 
-If we inspect the element with our browser's dev tools, we will notice that the input field has a class of **new-todo** .
+Jika kita memeriksa elemen dengan alat dev browser kita, kita akan melihat bahwa bidang input memiliki kelas **new-todo** .
 
 ```js
 <input class="new-todo" placeholder="What needs to be done?" data-reactid=".0.0.1">
 ```
 
-Therefore we can <apiLink apiName="get" displayName="cy.get()" /> this element like so:
+Oleh karena itu kita dapat <apiLink apiName="get" displayName="cy.get()" /> elemen ini seperti ini:
 
 ```js
 cy.get(".new-todo")
 ```
 
-So our entire test file should now look like this:
+Jadi seluruh file pengujian kami sekarang akan terlihat seperti ini:
 
 ```js
 describe("React TodoMVC", () => {
@@ -113,19 +113,19 @@ describe("React TodoMVC", () => {
 })
 ```
 
-When Cypress launches, you will see several example files, so toggle the small arrow to the left of the **examples** folder to collapse that folder. You can also click the "COLLAPSE ALL" button to collapse everything.
+Saat Cypress diluncurkan, Anda akan melihat beberapa file contoh, jadi alihkan panah kecil di sebelah kiri folder **examples** untuk menciutkan folder tersebut. Anda juga dapat mengklik tombol "COLLAPSE ALL" untuk menutup semuanya.
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.20.05_AM.png)
 
-Now click on the **app.spec.js** file to launch the file containing our test.
+Sekarang klik file **app.spec.js** untuk meluncurkan file yang berisi pengujian kami.
 
-You should see an error like this:
+Anda akan melihat kesalahan seperti ini:
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.20.58_AM.png)
 
-Cypress is telling us that it is unable to <apiLink apiName="get" displayName="cy.get()" /> our input element with the class of **.new-todo**. If you look at the right side of Cypress, you will see a message that says, "This is the default blank page," with some hints about what to do. This is just a blank page that Cypress opens when it doesn't know where to go, but we want Cypress to open our todo application. Let's go back to our test and tell Cypress how to navigate to our app.
+Cypress memberi tahu kita bahwa ia tidak dapat <apiLink apiName="get" displayName="cy.get()" /> elemen input kita dengan kelas **.new-todo**. Jika Anda melihat sisi kanan Cypress, Anda akan melihat pesan yang mengatakan, "Ini adalah halaman kosong default," dengan beberapa petunjuk tentang apa yang harus dilakukan. Ini hanyalah halaman kosong yang Cypress buka ketika tidak tahu harus ke mana, tetapi kami ingin Cypress membuka aplikasi todo kami. Mari kembali ke pengujian kami dan beri tahu Cypress cara menavigasi ke aplikasi kami.
 
-We can use the <apiLink apiName="visit" displayName="cy.visit()" /> method to tell Cypress which URL to visit:
+Kita dapat menggunakan metode <apiLink apiName="visit" displayName="cy.visit()" /> untuk memberi tahu Cypress URL mana yang akan dikunjungi:
 
 ```js
 describe("React TodoMVC", () => {
@@ -136,33 +136,33 @@ describe("React TodoMVC", () => {
 })
 ```
 
-Cypress provides an excellent developer experience in that each time we save our test file, the runner will automatically re-run all of our tests. So after saving our file, you should now see the following:
+Cypress memberikan pengalaman pengembang yang sangat baik karena setiap kali kami menyimpan file pengujian kami, runner akan secara otomatis menjalankan kembali semua pengujian kami. Jadi setelah menyimpan file kami, Anda sekarang akan melihat yang berikut:
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.25.30_AM.png)
 
-The green checkmark in the Cypress Command Log, on the left side of the screen, means that Cypress has successfully found the input with the class of **new-todo**.
+Tanda centang hijau di Cypress Command Log, di sisi kiri layar, berarti Cypress telah berhasil menemukan input dengan kelas **new-todo**.
 
-Next, we need to enter the name of our todo. We can do that using the <apiLink apiName="type" displayName="cy.type()" /> method and passing in a string of what we would like Cypress to type into the input.
+Selanjutnya, kita perlu memasukkan nama todo kita. Kita bisa melakukannya menggunakan metode <apiLink apiName="type" displayName="cy.type()" /> dan meneruskan string yang kita ingin Cypress ketikkan ke input.
 
 ```js
 cy.get(".new-todo").type("Buy Milk")
 ```
 
-After saving our file, Cypress will re-run our test, and you should see the following:
+Setelah menyimpan file kami, Cypress akan menjalankan kembali pengujian kami, dan Anda akan melihat yang berikut:
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.27.18_AM.png)
 
-Next, we need to simulate the user pressing the **enter** key to add the todo.
+Selanjutnya, kita perlu mensimulasikan pengguna menekan tombol **enter** untuk menambahkan todo.
 
 ```js
 cy.get(".new-todo").type("Buy Milk{enter}")
 ```
 
-By adding `{enter}` inside of our <apiLink apiName="type" displayName="cy.type()" /> function, Cypress will press the enter key after it has finished typing "Buy Milk"
+Dengan menambahkan `{enter}` di dalam fungsi <apiLink apiName="type" displayName="cy.type()" /> kami, Cypress akan menekan tombol enter setelah selesai mengetik "Beli Susu"
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.29.13_AM.png)
 
-So our entire test file should like this so far:
+Jadi seluruh file pengujian kami sejauh ini akan seperti ini:
 
 ```js
 describe("React TodoMVC", () => {
@@ -173,15 +173,15 @@ describe("React TodoMVC", () => {
 })
 ```
 
-With just a few lines of code, we have written our first test that confirms that we can add a single todo to our application.
+Dengan hanya beberapa baris kode, kami telah menulis pengujian pertama kami yang mengonfirmasi bahwa kami dapat menambahkan satu todo ke aplikasi kami.
 
-Before we wrap this up, however, I want you to think about this question, "How do we know only a single todo has been added?" Our test confirms that we can add a single todo, but how do we know for sure that only a single todo exists? We need a way to assert that only a single todo can be added. Let's see how we can do this.
+Namun, sebelum kita menyelesaikannya, saya ingin Anda memikirkan pertanyaan ini, "Bagaimana kita tahu hanya satu todo yang ditambahkan?" Pengujian kami mengonfirmasi bahwa kami dapat menambahkan satu todo, tetapi bagaimana kami tahu pasti bahwa hanya ada satu todo? Kami membutuhkan cara untuk menegaskan bahwa hanya satu todo yang dapat ditambahkan. Mari kita lihat bagaimana kita bisa melakukan ini.
 
-First, let's use our dev tools to inspect our newly added todo.
+Pertama, mari gunakan alat dev kami untuk memeriksa tugas yang baru ditambahkan.
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.37.43_AM.png)
 
-We can see that our todos are added as `<li>` elements. Knowing this, we can make an assertion that only a single `<li>` element exists within our todo app like so:
+Kita dapat melihat bahwa todo kita ditambahkan sebagai elemen `<li>`. Mengetahui hal ini, kita dapat membuat pernyataan bahwa hanya satu elemen `<li>` yang ada dalam aplikasi todo kita seperti:
 
 ```js
 describe("React TodoMVC", () => {
@@ -197,21 +197,21 @@ describe("React TodoMVC", () => {
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.40.23_AM.png)
 
-Let's break down what this line of code is doing.
+Mari kita uraikan apa yang dilakukan baris kode ini.
 
 ```js
 cy.get(".todo-list li")
 ```
 
-First, we are getting all of the `<li>` child elements of the **.todo-list** element. This will return an array of all of the child elements that it finds, which in our case should only be 1.
+Pertama, kita mendapatkan semua elemen turunan `<li>` dari elemen **.todo-list**. Ini akan mengembalikan larik semua elemen anak yang ditemukannya, yang dalam kasus kita seharusnya hanya 1.
 
-We then assert that this array should have a length of 1 element.
+Kami kemudian menegaskan bahwa array ini harus memiliki panjang 1 elemen.
 
 ```js
 cy.get(".todo-list li").should("have.length", 1)
 ```
 
-Let's update our test to add two todos to see if our assertion now fails.
+Mari perbarui pengujian kita untuk menambahkan dua todos untuk melihat apakah pernyataan kita sekarang gagal.
 
 ```js
 describe("React TodoMVC", () => {
@@ -224,11 +224,11 @@ describe("React TodoMVC", () => {
 })
 ```
 
-Our assertion fails because we have more than one todo now.
+Pernyataan kami gagal karena kami memiliki lebih dari satu tugas sekarang.
 
 ![](/images/testing-your-first-application/installing-cypress-and-writing-our-first-test/Screen_Shot_2021-06-25_at_10.48.50_AM.png)
 
-We can also simplify this code by chaining both of our <apiLink apiName="type" displayName="cy.type()" /> functions together like so:
+Kami juga dapat menyederhanakan kode ini dengan menggabungkan kedua fungsi <apiLink apiName="type" displayName="cy.type()" /> kami seperti berikut:
 
 ```js
 describe("React TodoMVC", () => {
@@ -240,9 +240,9 @@ describe("React TodoMVC", () => {
 })
 ```
 
-This is just a handy way of not getting the same element multiple times, and it also cleans up our test a little bit.
+Ini hanyalah cara praktis untuk tidak mendapatkan elemen yang sama beberapa kali, dan ini juga sedikit membersihkan pengujian kami.
 
-Now let's update our test so that we are only adding a single todo and everything passes.
+Sekarang mari perbarui pengujian kita sehingga kita hanya menambahkan satu tugas dan semuanya berlalu.
 
 ```js
 describe("React TodoMVC", () => {

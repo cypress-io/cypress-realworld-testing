@@ -1,10 +1,10 @@
 # Cypress Command Logs, Snapshots and Aliases
 
-When writing custom [Cypress commands](https://docs.cypress.io/api/cypress-api/custom-commands), it is often helpful to output custom messages and information to the test runner with logging. Since Cypress commands are an abstraction, having proper logging reminds you of the context and purpose of the custom command.
+Saat menulis [Cypress Command](https://docs.cypress.io/api/cypress-api/custom-commands) khusus, sering kali membantu untuk menampilkan pesan dan informasi khusus ke runner pengujian dengan logging. Karena Cypress Command adalah abstraksi, memiliki pencatatan yang tepat akan mengingatkan Anda tentang konteks dan tujuan dari perintah kustom.
 
-To learn how to utilize `Cypress.log()`, we will update our **createDefaultTodos** command to log some helpful information.
+Untuk mempelajari cara menggunakan `Cypress.log()`, kami akan memperbarui perintah **createDefaultTodos** kami untuk mencatat beberapa informasi yang berguna.
 
-Before we do that, let's update our test file to only run our **adds three todos** test. You can easily do this by appending `.only()` to our test, like so:
+Sebelum melakukannya, mari perbarui file pengujian agar hanya menjalankan pengujian **tambahkan tiga hal**. Anda dapat dengan mudah melakukan ini dengan menambahkan `.only()` ke pengujian kami, seperti:
 
 ```js
 it.only("adds three todos", () => {
@@ -13,11 +13,11 @@ it.only("adds three todos", () => {
 })
 ```
 
-This will tell Cypress only to execute this test in our file. You can add `.only()` to multiple tests if you like.
+Ini akan memberi tahu Cypress hanya untuk menjalankan tes ini di file kami. Anda dapat menambahkan `.only()` ke beberapa pengujian jika Anda mau.
 
-Save the file, and now Cypress is only running this specific test.
+Simpan file, dan sekarang Cypress hanya menjalankan tes khusus ini.
 
-We are going to be updating our command by adding the following to it:
+Kami akan memperbarui perintah kami dengan menambahkan yang berikut ini:
 
 ```js
 Cypress.log({
@@ -30,16 +30,16 @@ Cypress.log({
 })
 ```
 
-Before we do, however, let's go over what this is doing.
+Namun, sebelum kita melakukannya, mari kita bahas apa yang sedang dilakukan.
 
-First, we are passing an object to `Cypress.log()` with a name and `consoleProps()`. The `consoleProps()` function allows us to create our custom message that will be printed to our browser's console whenever we click on it within the test runner. We will see this in action shortly.
+Pertama, kita meneruskan objek ke `Cypress.log()` dengan nama dan `consoleProps()`. Fungsi `consoleProps()` memungkinkan kita membuat pesan khusus yang akan dicetak ke konsol browser setiap kali kita mengkliknya di dalam test runner. Kita akan melihat ini dalam tindakan segera.
 
-Now let's update our custom command in **cypress/support/commands.js** , with our log.
+Sekarang mari perbarui perintah khusus kita di **cypress/support/commands.js** , dengan log kita.
 
 ```js
 Cypress.Commands.add("createDefaultTodos", () => {
-  const TODO_ITEM_ONE = "Buy Milk"
-  const TODO_ITEM_TWO = "Pay Rent"
+  const TODO_ITEM_ONE = "Beli Susu"
+  const TODO_ITEM_TWO = "Bayar Sewa"
   const TODO_ITEM_THREE = "Pickup Dry Cleaning"
 
   Cypress.log({
@@ -58,19 +58,19 @@ Cypress.Commands.add("createDefaultTodos", () => {
 })
 ```
 
-After saving the file, you should see the following in the test runner:
+Setelah menyimpan file, Anda akan melihat yang berikut ini di test runner:
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.18.03_AM.png)
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.19.14_AM.png)
 
-You will see the name we passed to `Cypress.log()` at the top of our test body, and after clicking on it, you should see our custom message printed out to the dev console.
+Anda akan melihat nama yang kami berikan ke `Cypress.log()` di bagian atas badan pengujian kami, dan setelah mengkliknya, Anda akan melihat pesan khusus kami dicetak ke konsol dev.
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.20.24_AM.png)
 
-This is a handy way of providing additional information and context for what our custom command is doing.
+Ini adalah cara praktis untuk memberikan informasi dan konteks tambahan untuk apa yang dilakukan perintah khusus kami.
 
-If you look on the left hand side of the runner, within the test body, you will see some output that we don't actually need anymore. For instance, we don't need the runner to log out each time it types a new todo. We are already providing this information in our custom log message. We can prevent this output by passing `{ log: false }` like so:
+Jika Anda melihat ke sisi kiri pelari, di dalam badan uji, Anda akan melihat beberapa keluaran yang sebenarnya tidak kita perlukan lagi. Misalnya, kita tidak perlu pelari untuk logout setiap kali ia mengetik todo baru. Kami sudah memberikan informasi ini dalam pesan log kustom kami. Kita dapat mencegah keluaran ini dengan meneruskan `{ log: false }` seperti:
 
 ```js
 cy.get(".new-todo", { log: false })
@@ -79,37 +79,37 @@ cy.get(".new-todo", { log: false })
   .type(`${TODO_ITEM_THREE}{enter}`, { log: false })
 ```
 
-Save the file, and now the output should be much cleaner.
+Simpan file, dan sekarang hasilnya akan jauh lebih bersih.
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.25.26_AM.png)
 
 ## Aliases
 
-[Aliases in Cypress](https://docs.cypress.io/guides/core-concepts/variables-and-aliases) provide a way for you to reference something later on in your test. You can think of it as a variable where you store something to use later on. Within our custom command to **createDefaultTodos**, we can return our newly created todos from the command, which we can then access as an alias within our test. Aliases can be used for all sorts of things, but in our case, we want to alias the todo elements or `<li>` from the DOM. This will make more sense when we break down the code involved and update our test to use this alias.
+[Alias ​​di Cypress](https://docs.cypress.io/guides/core-concepts/variables-and-aliases) menyediakan cara bagi Anda untuk merujuk sesuatu nanti dalam pengujian Anda. Anda dapat menganggapnya sebagai variabel tempat Anda menyimpan sesuatu untuk digunakan nanti. Dalam perintah khusus kami ke **createDefaultTodos**, kami dapat mengembalikan todos yang baru dibuat dari perintah, yang kemudian dapat kami akses sebagai alias dalam pengujian kami. Alias ​​​​dapat digunakan untuk segala macam hal, tetapi dalam kasus kami, kami ingin alias elemen todo atau `<li>` dari DOM. Ini akan lebih masuk akal ketika kami memecah kode yang terlibat dan memperbarui pengujian kami untuk menggunakan alias ini.
 
-The first thing we want to do is store our newly created log into a variable.
+Hal pertama yang ingin kita lakukan adalah menyimpan log yang baru kita buat ke dalam sebuah variabel.
 
 ```js
-let cmd = Cypress.log({
-  name: "create default todos",
-  consoleProps() {
-    return {
-      "Inserted Todos": [TODO_ITEM_ONE, TODO_ITEM_TWO, TODO_ITEM_THREE],
+biarkan cmd = Cypress.log({
+  nama: "buat todos default",
+  alat peraga konsol() {
+    kembali {
+      "Todos yang Disisipkan": [TODO_ITEM_ONE, TODO_ITEM_TWO, TODO_ITEM_THREE],
     }
   },
 })
 ```
 
-Then, we get all of the **.todo-list** `<li>` elements, which are the three todos. We are also turning off logging for <apiLink apiName="get" displayName="cy.get()" /> in the test runner.
+Kemudian, kita mendapatkan semua elemen **.todo-list** `<li>`, yang merupakan tiga todo. Kami juga menonaktifkan logging untuk <apiLink apiName="get" displayName="cy.get()" /> di test runner.
 
 ```js
 cy.get(".todo-list li", { log: false })
 ```
 
-Next, we are putting those elements
-into a variable called `listItems` which we then `.set()` on our `Cypress.log()`
-. Finally, we use <apiLink apiName="end" displayName="cy.end()" /> to let Cypress
-know that our command is finished.
+Selanjutnya, kami menempatkan elemen-elemen itu
+menjadi variabel yang disebut `listItems` yang kemudian kita `.set()` pada `Cypress.log()` kita.
+Terakhir, kami menggunakan <apiLink apiName="end" displayName="cy.end()" /> untuk membiarkan Cypress
+tahu bahwa perintah kita sudah selesai.
 
 ```js
 .then(function (listItems) {
@@ -117,7 +117,7 @@ know that our command is finished.
     })
 ```
 
-The entire command looks like this:
+Seluruh perintah terlihat seperti ini:
 
 ```js
 Cypress.Commands.add("createDefaultTodos", () => {
@@ -145,9 +145,9 @@ Cypress.Commands.add("createDefaultTodos", () => {
 })
 ```
 
-Our test should still pass after saving the file, but nothing has changed, as we are not using our todo items as an alias. Let's update one of our tests to take advantage of this alias.
+Pengujian kita harus tetap lulus setelah menyimpan file, tetapi tidak ada yang berubah, karena kita tidak menggunakan item todo sebagai alias. Mari perbarui salah satu pengujian kami untuk memanfaatkan alias ini.
 
-We will be updating our test called **adds three todos** like so:
+Kami akan memperbarui pengujian kami yang disebut **adds three todos** seperti:
 
 ```js
 it.only("adds three todos", () => {
@@ -156,30 +156,30 @@ it.only("adds three todos", () => {
 })
 ```
 
-After saving the file, our test is still passing, and the runner has also logged our new alias.
+Setelah menyimpan file, pengujian kami masih lulus, dan pelari juga telah mencatat alias baru kami.
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.48.45_AM.png)
 
-Now the test runner states explicitly that our <apiLink apiName="get" displayName="cy.get()" /> is getting **@todos** which is the alias we just created.
+Sekarang test runner menyatakan secara eksplisit bahwa <apiLink apiName="get" displayName="cy.get()" /> kami mendapatkan **@todos** yang merupakan alias yang baru saja kami buat.
 
 ## Snapshot
 
-Before we wrap up this lesson, we would like to introduce you to the `.snapshot()` method which we are using in our custom command.
+Sebelum mengakhiri pelajaran ini, kami ingin memperkenalkan Anda pada metode `.snapshot()` yang kami gunakan dalam perintah khusus kami.
 
 ```js
 cmd.set({ el: listItems }).snapshot().end()
 ```
 
-The `.snapshot()` command tells Cypress to take a snapshot of the `listItems` DOM elements.
+Perintah `.snapshot()` memberitahu Cypress untuk mengambil snapshot dari elemen DOM `listItems`.
 
-Back in the Cypress UI, you should see the following when you click on "create default todos" in the command log:
+Kembali ke UI Cypress, Anda akan melihat yang berikut ini ketika Anda mengklik "buat todos default" di log perintah:
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.54.26_AM.png)
 
-Next to the "DOM Snapshot (pinned)," you will see two buttons with a 1 and 2, respectively. Button 1 is selected by default and doesn't display anything. However, clicking on button 2 will show a snapshot of the DOM with our three newly created todos.
+Di sebelah "Snapshot DOM (disematkan)", Anda akan melihat dua tombol dengan angka 1 dan 2. Tombol 1 dipilih secara default dan tidak menampilkan apa pun. Namun, mengklik tombol 2 akan menampilkan snapshot DOM dengan tiga todos yang baru dibuat.
 
 ![](/images/testing-your-first-application/cypress-command-logs-snapshots-and-aliases/Screen_Shot_2021-06-28_at_10.54.29_AM.png)
 
 ## Practice
 
-Now that you have seen how aliases work, try it on your own. Update the **should append new items to the bottom of the list** test to use an alias as we did in the **adds three todos** test.
+Sekarang setelah Anda melihat cara kerja alias, coba sendiri. Perbarui pengujian **harus menambahkan item baru ke bagian bawah daftar** untuk menggunakan alias seperti yang kita lakukan dalam pengujian **menambahkan tiga hal**.

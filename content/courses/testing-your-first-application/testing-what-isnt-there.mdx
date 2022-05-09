@@ -1,18 +1,18 @@
 # Testing what isn't there
 
-Up until this point, we have been writing tests and assertions to make sure that things are displayed correctly. For instance, the **should append new items to the bottom of the list** test makes sure that our todos are listed in the correct order and that the todo count text is correct.
+Sampai saat ini, kami telah menulis tes dan pernyataan untuk memastikan bahwa segala sesuatunya ditampilkan dengan benar. Misalnya, pengujian **harus menambahkan item baru ke bagian bawah daftar** memastikan bahwa todos kami terdaftar dalam urutan yang benar dan teks penghitungan todo sudah benar.
 
-This is all well and good, but it is also important to write tests to ensure that things are _not_ shown when they are not supposed to be. So, in addition to testing the positive case, make sure also to test the negative.
+Ini semua baik dan bagus, tetapi juga penting untuk menulis tes untuk memastikan bahwa segala sesuatunya _not_ ditampilkan ketika tidak seharusnya. Jadi, selain tes kasus positif, pastikan juga tes negatifnya.
 
-This will make more sense when we write our first "negative" test. For instance, when a todo is added to the application, a `<footer>` is appended to the bottom of the app. When there are no todos, the `<footer>` is removed.
+Ini akan lebih masuk akal ketika kita menulis tes "negatif" pertama kita. Misalnya, saat todo ditambahkan ke aplikasi, `<footer>` ditambahkan ke bagian bawah aplikasi. Jika tidak ada todos, `<footer>` akan dihapus.
 
-Let's write a test to ensure that the `<footer>` is not visible to our users when there are no todos.
+Mari kita tulis tes untuk memastikan bahwa `<footer>` tidak terlihat oleh pengguna kami saat tidak ada todos.
 
 ```js
 it("does NOT display the footer when there are no todos", () => {})
 ```
 
-Now let's grab the `<footer>` element and write an assertion that it does not exist when there are no todos.
+Sekarang mari ambil elemen `<footer>` dan tulis pernyataan bahwa elemen tersebut tidak ada jika tidak ada todos.
 
 ```js
 cy.get(".footer").should("not.exist")
@@ -20,15 +20,15 @@ cy.get(".footer").should("not.exist")
 
 ![](/images/testing-your-first-application/testing-what-isnt-there/Screen_Shot_2021-06-25_at_2.33.00_PM.png)
 
-Great, our test is passing. Let's also think of some other elements that should not exist when there are no todos.
+Bagus, ujian kita lulus. Mari kita juga memikirkan beberapa elemen lain yang seharusnya tidak ada ketika tidak ada todos.
 
-Another element that should not exist is our **.todo-list** element. Let's write another assertion to ensure that this does not exist if there are no todos.
+Elemen lain yang seharusnya tidak ada adalah elemen **.todo-list** kita. Mari kita tulis pernyataan lain untuk memastikan bahwa ini tidak ada jika tidak ada todos.
 
 ```js
 cy.get(".todo-list").should("not.exist")
 ```
 
-Since we are now checking for multiple elements, let's update our test name to be more explicit.
+Karena kita sekarang memeriksa beberapa elemen, mari perbarui nama pengujian kita menjadi lebih eksplisit.
 
 ```js
 it("does NOT display the footer or todo-list when there are no todos", () => {
@@ -39,10 +39,10 @@ it("does NOT display the footer or todo-list when there are no todos", () => {
 
 ## Practice
 
-For additional practice checkout the **cypress/integration/practice/practice.spec.js** file in the TodoMVC repo. This file contains several tests, with helpful comments, to help you put into practice all of the concepts you have learned so far.
+Untuk latihan tambahan, periksa file **cypress/integration/practice/practice.spec.js** di repo TodoMVC. File ini berisi beberapa tes, dengan komentar yang bermanfaat, untuk membantu Anda mempraktikkan semua konsep yang telah Anda pelajari sejauh ini.
 
-Should you get stuck or need some help, all of the answers are provided within **cypress/integration/final/practice.spec.js**
+Jika Anda buntu atau butuh bantuan, semua jawaban tersedia di **cypress/integration/final/practice.spec.js**
 
 ## Wrap Up
 
-Congrats! You have finished the first course of Real World Testing with Cypress. In the next course you will learn all of the fundamentals you need to write great tests.
+Selamat! Anda telah menyelesaikan kursus pertama Pengujian Dunia Nyata dengan Cypress. Dalam kursus berikutnya Anda akan mempelajari semua dasar yang Anda butuhkan untuk menulis tes yang bagus.
