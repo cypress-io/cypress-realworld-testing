@@ -1,30 +1,33 @@
 # Creating a Shopify Partners Store
 
-The first thing you will need is a [Shopify Partners Account](https://www.shopify.com/partners). It is completely free to sign up. The Shopify Partners account will allow us to create as many development stores as we need for free, which is exactly what we want. You do not want to sign up for the Shopify Trial found on their home page.
+The first thing you will need is a [Shopify Partners Account](https://www.shopify.com/partners). It is completely free to sign up. The Shopify Partners account will allow us to create as many development stores as we need for free, which is exactly what we want.
+
+:::info
+You do not want to sign up for the Shopify Trial found on their home page.
+:::
 
 Once you have created your account, you should land on the Shopify Partners dashboard.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.11.22_AM.png)
+![Screen Shot 2021-12-16 at 9.11.22 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.11.22_AM.png)
 
 Click on the Stores link in the left sidebar and then click on the "Add store" button.
 
-<aside>
-💡 You will need to confirm your email address before you are able to create a store so make sure you do that first
+:::info
+You will need to confirm your email address before you are able to create a store so make sure you do that first
+:::
 
-</aside>
-
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.12.22_AM.png)
+![Screen Shot 2021-12-16 at 9.12.22 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.12.22_AM.png)
 
 Click on "Development store"
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.13.49_AM.png)
+![Screen Shot 2021-12-16 at 9.13.49 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.13.49_AM.png)
 
 Then proceed to fill out the "Login information" section.
 
 - Your store will need to have a unique url
 - We won't need the password for this tutorial, but you have to add one to create your store. It doesn't have to be anything fancy or complex as this is just a demo store.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.14.40_AM.png)
+![Screen Shot 2021-12-16 at 9.14.40 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.14.40_AM.png)
 
 Leave "Developer preview" unchecked as we do not need any unreleased features for this tutorial. Also make sure to fill out a real address for your store. I simply used my home address.
 
@@ -32,11 +35,11 @@ Leave "Developer preview" unchecked as we do not need any unreleased features fo
 
 For the "Store purpose," check "I'm just playing around" and then click on the purple save button.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.21.15_AM.png)
+![Screen Shot 2021-12-16 at 9.21.15 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.21.15_AM.png)
 
 Shopify will then create you store and take you to your store's dashboard.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.25.15_AM.png)
+![Screen Shot 2021-12-16 at 9.25.15 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.25.15_AM.png)
 
 ## Adding Products
 
@@ -44,13 +47,13 @@ Since we are creating a developer swag store, we are going to need some swag for
 
 Once you have the images of your products, click on the "Add product" button on your store's dashboard.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.29.38_AM.png)
+![Screen Shot 2021-12-16 at 9.29.38 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.29.38_AM.png)
 
 Make sure to mark the "Product status" as active.
 
 Here is a screenshot of the entire "Add product" screen with all of the information filled out. If you don't know what all of these fields are, just fill them out as I have in this screenshot.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_09.33.23.png)
+![screencapture-nextjs-ecommerce-demo-2-myshopify-admin-products-new-2022-05-09-10_20_06.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/screencapture-nextjs-ecommerce-demo-2-myshopify-admin-products-new-2022-05-09-10_20_06.png)
 
 When all of the fields are filled, click Save.
 
@@ -58,40 +61,58 @@ Repeat this for all of your products.
 
 Once all of your products have been added, you should see something like this on the product screen. You can find the products page by clicking on the "Products" link in the left sidebar.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.38.02_AM.png)
+![Screen Shot 2022-05-09 at 10.24.07 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.24.07_AM.png)
 
 Make sure that all of your products have a Status of "Active."
 
 ## Storefront API
 
-Since we will be using a custom Next.js frontend for our shop, we need to install the [Storefront API](https://shopify.dev/api/storefront) from shopify within our store.
+Since we will be using a custom Next.js frontend for our shop, we need to install the [Storefront API](https://shopify.dev/api/storefront) from Shopify within our store.
 
 Click on "Apps" in the left side bar.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.41.06_AM.png)
+![Screen Shot 2021-12-16 at 9.41.06 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.41.06_AM.png)
 
 At the bottom of this page, click on the link that says, "Manage private apps."
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.42.00_AM.png)
+![screencapture-nextjs-ecommerce-demo-2-myshopify-admin-apps-2022-05-09-10_25_47.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/screencapture-nextjs-ecommerce-demo-2-myshopify-admin-apps-2022-05-09-10_25_47.png)
 
-Click on the "Enable private app development" button.
+Click on the "Develop apps for your store" button.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.42.29_AM.png)
+![Screen Shot 2021-12-16 at 9.42.29 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.42.29_AM.png)
 
-Make sure to check all of the checkboxes and then click the "Enable private app development" button.
+Then click the "Allow custom app development" button.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.43.45_AM.png)
+![Screen Shot 2022-05-09 at 10.26.40 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.26.40_AM.png)
 
-Then click on the "Create private app" button.
+![Screen Shot 2022-05-09 at 10.27.24 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.27.24_AM.png)
 
-Fill out the form and enable the following checkboxes and features for the Storefront API.
+Then click on the "Create an app" button.
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_09.45.53.png)
+![Screen Shot 2022-05-09 at 10.27.57 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.27.57_AM.png)
 
-Once you click on the Save button, your API token will be generated.
+Give your app a name and click “Create app”
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.47.03_AM.png)
+![Screen Shot 2022-05-09 at 10.28.17 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.28.17_AM.png)
 
-![](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2021-12-16_at_9.47.37_AM.png)
+Next, click on the “Configure Storefront API scopes” button.
+
+![Screen Shot 2022-05-09 at 10.30.54 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.30.54_AM.png)
+
+For our demo I am going to give our full access, so make sure to check all of the checkboxes. I ignored the “iOS & Android Buy SDK” options.
+
+![screencapture-nextjs-ecommerce-demo-2-myshopify-admin-apps-development-6894609-configuration-storefront-api-integration-2022-05-09-10_31_55.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/screencapture-nextjs-ecommerce-demo-2-myshopify-admin-apps-development-6894609-configuration-storefront-api-integration-2022-05-09-10_31_55.png)
+
+Then click on Save
+
+Next, you need to click on the “API credentials” tab. Then click “Install app.”
+
+![Screen Shot 2022-05-09 at 10.34.23 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.34.23_AM.png)
+
+![Screen Shot 2022-05-09 at 10.34.42 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.34.42_AM.png)
+
+You will be given your Storefront API access token.
+
+![Screen Shot 2022-05-09 at 10.35.20 AM.png](/images/tutorials/next-js-and-shopify-store/creating-a-shopify-partners-store/Screen_Shot_2022-05-09_at_10.35.20_AM.png)
 
 We will need to use this API token in order to have our Next.js application retrieve our products from Shopify.
