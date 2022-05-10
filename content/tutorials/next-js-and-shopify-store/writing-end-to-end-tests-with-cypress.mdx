@@ -367,7 +367,7 @@ describe("Header", () => {
 
 ![Screen Shot 2022-05-09 at 11.16.14 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.16.14_AM.png)
 
-## Aside - baseUrl and Cypress Custom Commands
+## baseUrl and Cypress Custom Commands
 
 Instead of having to write `cy.visit('http://localhost:3000')` to tell Cypress to go to the home page, we can tell Cypress our applications `baseUrl` and then simply use `cy.visit('/')` instead.
 
@@ -487,7 +487,7 @@ describe("Header", () => {
 })
 ```
 
-## Aside - beforeEach hooks
+## beforeEach() hooks
 
 You will notice that within each test, we have to specifically tell Cypress where to navigate in our app before our test can be executed. We can remove this duplication by using a `beforeEach()` hook. This hook will run any code we put inside of it before each test is run, hence the name `beforeEach()`
 
@@ -593,12 +593,11 @@ it('the search bar returns the correct search results', () => {
   })
 ```
 
-<aside>
-💡 This search component is actually in the DOM twice, one for desktop and one for mobile. By using `.eq(0)` we are grabbing the one for desktop.
+:::tip
+This search component is actually in the DOM twice, one for desktop and one for mobile. By using `.eq(0)` we are grabbing the one for desktop.
+:::
 
-</aside>
-
-## Aside - `.only()`
+## only()
 
 Since, we now have two tests in this file, Cypress will always run both tests each time we save. We can use `.only()` to have it only run a single one like so:
 
