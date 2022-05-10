@@ -32,7 +32,7 @@ This method involves using Cypress to drive the UI to generate the data you need
 
 **Cons**
 
-- Take's a long time
+- Takes a long time
 - Your spec files could potentially rely upon each other, which is an anti-pattern
 - Data initialization is less resilient because you don't have a way of knowing if the data exists
 - If your tests fail, your data will not be created, and any subsequent tests that rely upon the creation of this data will also fail.
