@@ -1,5 +1,7 @@
 # Running Our Tests with GitHub Actions
 
+# GitHub Actions
+
 Now that we have a few tests written for our Next.js store, let's setup [GitHub Actions](https://github.com/features/actions) to run our Cypress tests against our app every time we make a pull request. This way we can be sure that our latest changes have not broken anything within the app.
 
 ## Configuring GitHub Actions
@@ -8,7 +10,7 @@ Now that our repo is up on GitHub, we will need to create a GitHub actions confi
 
 Create a new file called `.github/workflows/main.yml`
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.22.23_PM.png)
+![Screen Shot 2022-05-09 at 1.05.14 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2022-05-09_at_1.05.14_PM.png)
 
 Next we will give our workflow a name:
 
@@ -29,6 +31,10 @@ The `on:` directive tells GitHub to run this workflow each time a push is made t
 Next, we will setup the job we want to run:
 
 ```yaml
+name: E2E on Chrome
+
+on: [push]
+
 jobs:
   install:
     runs-on: ubuntu-latest
@@ -42,27 +48,38 @@ We have a single `install:` job which will run on the latest version of Ubuntu. 
 Next, we will have our GitHub Actions Workflow use the official [cypress-io/github-action](https://github.com/cypress-io/github-action)
 
 ```yaml
-- name: Cypress run
-        uses: cypress-io/github-action@v2
+name: E2E on Chrome
+
+on: [push]
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v3
         with:
+          project: ./site
           browser: chrome
-          build: npm run build
-          start: npm run start
-          wait-on: 'http://localhost:3000'
+          build: yarn build
+          start: yarn start
+          wait-on: "http://localhost:3000"
 ```
 
-[`cypress-io/github-action`](https://github.com/cypress-io/github-action) is the official GitHub Action created by Cypress. Under the `with:` directive we are telling Cypress to run our tests inside of the chrome browser. We then run the `npm run build` and `npm run start` scripts located in our projects `package.json` file. These two commands will build a production version of our app and then serve that build with a local development server respectively. The `wait-on:` directive tells Cypress to make sure that `[http://localhost:3000](http://localhost:3000)` is up and running before it runs our tests.
+[cypress-io/github-action](https://github.com/cypress-io/github-action) is the official GitHub Action created by Cypress. Under the `with:` directive we are telling Cypress to:
+
+- `project:` Look for Cypress and our tests inside of the `site/` directory.
+- `browser:` run our tests inside of the chrome browser.
+- `build:` run the build script in the `package.json` in the root of the repo which builds the production version of our Next.js application.
+- `start:` run the start script in the `package.json` in the root of the repo which serves the production build of our application with a local dev server.
+- `wait-on:` tells Cypress to make sure that `[http://localhost:3000](http://localhost:3000)` is up and running before it runs our tests.
 
 You can find the documentation for this action [here](https://github.com/cypress-io/github-action).
 
 Finally, we need to pass in our env variables we currently live in the `.env.local` file.
-
-```yaml
-env:
-  COMMERCE_PROVIDER: ${{ secrets.COMMERCE_PROVIDER }}
-  NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN }}
-  NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN }}
-```
 
 The entire GitHub Actions Workflow config file should look like this:
 
@@ -79,41 +96,38 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v3
         with:
+          project: ./site
           browser: chrome
-          build: npm run build
-          start: npm run start
+          build: yarn build
+          start: yarn start
           wait-on: "http://localhost:3000"
         env:
           COMMERCE_PROVIDER: ${{ secrets.COMMERCE_PROVIDER }}
-          NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN }}
           NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN }}
+          NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: ${{ secrets.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN }}
 ```
 
-Now we need to add the values for these environment variables within GitHub so that our workflow has access to them.
+Now we need to add the values for these environment variables in our GitHub repo so that our workflow has access to them.
 
 ## Adding GitHub Secrets
 
 At the top of your repo in GitHub, click on "Settings"
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.34.47_PM.png)
+In the left sidebar, click on "Secrets" then “Actions”
 
-In the left sidebar, click on "Secrets"
+![screencapture-github-robertguss-vercel-commerce-settings-secrets-actions-2022-05-09-13_14_07.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/screencapture-github-robertguss-vercel-commerce-settings-secrets-actions-2022-05-09-13_14_07.png)
 
 Then click on the "New repository secret" button in the top right.
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.35.35_PM.png)
+![Screen Shot 2021-12-16 at 1.35.35 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.35.35_PM.png)
 
 Now you can just add the key and value of the three env variables within the `.env.local` file.
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.37.05_PM.png)
+![screencapture-github-robertguss-vercel-commerce-settings-secrets-actions-2022-05-09-14_17_35.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/screencapture-github-robertguss-vercel-commerce-settings-secrets-actions-2022-05-09-14_17_35.png)
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.37.20_PM.png)
-
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.37.35_PM.png)
-
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.37.42_PM.png)
+## Running our Tests in GitHub Actions
 
 Next, within your terminal, checkout a new branch in git.
 
@@ -125,43 +139,46 @@ Add your changes and push up your branch
 
 ```bash
 git add .
-git commit -m "created GitHub Actions Workflow Config"
+git commit -m "added cypress tests and GitHub action config"
 git push origin github-actions-cypress-tests
 ```
 
 After your new branch has been pushed up, click on the "Code" link at the top of your repo.
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.41.22_PM.png)
+![Screen Shot 2021-12-16 at 1.41.22 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.41.22_PM.png)
 
 Then click on the "Compare & pull request" button to create a new PR.
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.41.28_PM.png)
+<aside>
+💡 Make sure you are making the PR against your forked repo and not the main Vercel/commerce repo
+
+</aside>
+
+![Screen Shot 2021-12-16 at 1.41.28 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.41.28_PM.png)
 
 Then click "Create pull request"
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.42.47_PM.png)
+![Screen Shot 2021-12-16 at 1.42.47 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.42.47_PM.png)
+
+## GitHub Actions in Action
 
 You will now see the GitHub Actions workflow running. If you click on "Details" you can watch all of the steps inside of the workflow run.
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.43.33_PM.png)
+![Screen Shot 2021-12-16 at 1.43.33 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.43.33_PM.png)
 
 You will see that one of our tests has failed.
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.45.10_PM.png)
+![Screen Shot 2021-12-16 at 1.45.10 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.45.10_PM.png)
 
 It looks like Cypress could not find our product on the search results page. Let's run this test locally and make sure it is passing.
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.49.08_PM.png)
+![Screen Shot 2021-12-16 at 1.49.08 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_1.49.08_PM.png)
 
 We know that this test was passing locally, so why is it failing in CI?
 
 Our error says the following:
 
-:::warning
-
-AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-test="product-tag"]`, but never found it.
-
-:::
+> AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-test="product-tag"]`, but never found it.
 
 So it seems like the first part of our test is working, but once we get to the search results page it cannot find the `product-tag` element. We will add some `data-test` attributes to the `components/product/ProductCard.tsx` component. Around line `73`
 
@@ -184,7 +201,7 @@ The entire component file should look like this:
 
 ```jsx
 import { FC } from 'react'
-import cn from 'classnames'
+import cn from 'clsx'
 import Link from 'next/link'
 import type { Product } from '@commerce/types/product'
 import s from './ProductCard.module.css'
@@ -326,6 +343,8 @@ export default ProductCard
 And update our test to be the following:
 
 ```jsx
+// header.spec.js
+
 it("the search bar returns the correct search results", () => {
   cy.getBySel("search-input").eq(0).type("linux{enter}")
 
@@ -336,11 +355,11 @@ it("the search bar returns the correct search results", () => {
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_2.10.23_PM.png)
+![Screen Shot 2021-12-16 at 2.10.23 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_2.10.23_PM.png)
 
 Now let's push up these changes and see if our tests will pass now in CI.
 
-```jsx
+```bash
 git add .
 git commit -m "updated search results test and added data-test attributes to ProductCard component"
 git push origin github-actions-cypress-tests
@@ -348,4 +367,8 @@ git push origin github-actions-cypress-tests
 
 Now all of our tests are passing.
 
-![](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_2.14.31_PM.png)
+![Screen Shot 2021-12-16 at 2.14.31 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-with-github-actions/Screen_Shot_2021-12-16_at_2.14.31_PM.png)
+
+## Summary
+
+In this lesson we learned how to integrate Cypress with GitHub Actions so that our tests will run against every PR we make in our repo. We also learned how to fix a broken test by adding some additional `data-test` attributes to one of our app’s components.

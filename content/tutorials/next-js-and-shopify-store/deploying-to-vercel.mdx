@@ -4,39 +4,41 @@ In this final section of our tutorial, we are going to be learning how to deploy
 
 First, if you do not already have a free account with Vercel, you will need to create one at [https://vercel.com/signup](https://vercel.com/signup). We recommend using your GitHub account to do so.
 
-![](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/Screen_Shot_2022-01-03_at_12.03.35_PM.png)
+Once you are logged in, click on the “New Project” button. You will then be presented with a screen where you can import your Git Repository.
 
-Once you are logged in, click on the “New Project” button. You will then be presented with a screen where you can import your Git Repository. Find your repo and click the blue “Import” button next to it.
+![screencapture-vercel-new-2022-05-09-15_48_28.png](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/screencapture-vercel-new-2022-05-09-15_48_28.png)
 
-![](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/Screen_Shot_2022-01-03_at_12.06.05_PM.png)
+Find your repo and click the blue “Import” button next to it.
 
-Vercel will automatically detect that we are using Next.js and setup the build and output settings for us. However, we modified the name of the build directory so we will need to update that. Click on the “Build and Output Settings dropdown” and then toggle the “Override” next to the “Output Directory”
+![screencapture-vercel-new-2022-05-09-15_45_28.png](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/screencapture-vercel-new-2022-05-09-15_45_28.png)
 
-![](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/Screen_Shot_2022-01-03_at_12.08.56_PM.png)
+For the “Framework Preset” select “Next.js”
 
-Next, we will need to add our environment variables. Toggle the “Environment Variables” dropdown. Then add each environment variable within the `.env.local` in the root of the project repo. For reference, mine looks like this:
+Since this is a “monorepo” we have to tell Vercel which directory we wish to deploy. Click on the “EDIT” button next to the “Root Directory.” Then select the “site” directory.
 
-```yaml
-COMMERCE_PROVIDER=shopify
-NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN=b59e6b070be0eba9e59d5f19255e44e6
-NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN=nextjs-ecommerce-demo.myshopify.com
+![Screen Shot 2022-05-09 at 3.49.59 PM.png](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/Screen_Shot_2022-05-09_at_3.49.59_PM.png)
+
+Since we are in a monorepo, we have to override the build command with the following:
+
+```bash
+cd .. && yarn build
 ```
 
-You will have to add each variable one at a time. Once all of them have been added, it should look like this:
+Finally, we need to add all of the environment variables from our `site/.env.local` file.
 
-![](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/Screen_Shot_2022-01-03_at_12.12.17_PM.png)
+Here is what all of my settings look like.
 
-Finally, click on the “Deploy” button. If you have done everything correctly, you should be presented with a Congratulations screen.
+![screencapture-vercel-new-import-2022-05-10-09_59_33.png](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/screencapture-vercel-new-import-2022-05-10-09_59_33.png)
 
-![](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/Screen_Shot_2022-01-03_at_12.15.00_PM.png)
+Click on the “Deploy” button.
+
+If you have done everything correctly, you should be presented with a Congratulations screen.
+
+![screencapture-vercel-new-success-2022-05-10-10_01_28.png](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/screencapture-vercel-new-success-2022-05-10-10_01_28.png)
 
 After clicking on the “Go to Dashboard” button you will be taken to the dashboard of your application.
 
-![](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/Screen_Shot_2022-01-03_at_12.15.58_PM.png)
-
 You can then click on the “Visit” button to see your live application.
-
-![](/images/tutorials/next-js-and-shopify-store/deploying-to-vercel/Screen_Shot_2022-01-03_at_12.15.36_PM.png)
 
 ## Wrap Up
 

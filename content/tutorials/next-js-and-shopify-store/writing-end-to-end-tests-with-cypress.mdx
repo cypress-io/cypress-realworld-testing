@@ -6,35 +6,54 @@ Now that our store is up and running, we are going to install Cypress so that we
 
 You can find our more about Cypress and how to install it on our [docs site](https://docs.cypress.io/guides/getting-started/installing-cypress).
 
-Enter the following in your terminal.
+`cd` into the `site/` directory and then install Cypress.
 
 ```bash
-npm install cypress --save-dev
+cd site
+yarn add cypress --save-dev
 ```
 
 Open up the `package.json` file and add the following scripts.
 
 ```json
 "scripts": {
+		// ...
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
-    // ...
+    "cypress:run": "cypress run"
 }
 ```
 
-Next, run the `cypress:open` command to launch Cypress. Make sure you have the Next.js development server running in another terminal window or tab.
+The entire `"scripts"` object should look like this:
 
-```bash
-npm run dev
+```json
+"scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "analyze": "BUNDLE_ANALYZE=both next build",
+    "lint": "next lint",
+    "prettier-fix": "prettier --write .",
+    "find:unused": "npx next-unused",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
 ```
 
+Make sure you have the Next.js development server running in another terminal window or tab.
+
 ```bash
-npm run cypress:open
+yarn dev
+```
+
+Next, run the `cypress:open` command to launch Cypress in another terminal window or tab.
+
+```bash
+yarn cypress:open
 ```
 
 Cypress should launch and look like this:
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.09.25_AM.png)
+![Screen Shot 2021-12-16 at 10.09.25 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.09.25_AM.png)
 
 Cypress by default creates several example spec files for demonstration purposes. In the blue alert at the top click on the "No thanks, delete example files" link. This will delete all of the default spec files that Cypress installs upon first launching it.
 
@@ -42,7 +61,7 @@ Cypress by default creates several example spec files for demonstration purposes
 
 Create a new spec file within `cypress/integration` and called it `home.spec.js`
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.12.54_AM.png)
+![Screen Shot 2022-05-09 at 11.00.19 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.00.19_AM.png)
 
 Next we will create a `describe()` method like so:
 
@@ -50,7 +69,11 @@ Next we will create a `describe()` method like so:
 describe("Home Page", () => {})
 ```
 
-Now that our spec file is setup, we can begin to write our first test. Before we do that however, let's take a minute to think through what we need to test. To do this, we should be asking ourselves some questions like, "What are the most important features of this application?" For example, in the case of our dev swag store, one of the most important features is the ability to purchase swag. Before we can do that however, our products need to be displayed in our store from Shopify. So, let's write a test that confirms that all of our products are being displayed in our store.
+Now that our spec file is setup, we can begin to write our first test.
+
+Before we do that however, let's take a minute to think through what we need to test. We should be asking ourselves some questions like, "What are the most important features of this application?" In the case of our dev swag store, one of the most important features is the ability to purchase swag. Before we can make a purchase, however, our products need to be displayed in our store from Shopify.
+
+Let's write a test that confirms that all of our products are being displayed in our store.
 
 Update `home.spec.js` with the following:
 
@@ -94,7 +117,7 @@ Now that we have that covered, let's update one of the components displayed on o
 Open that component up in your editor and paste the following.
 
 ```jsx
-import cn from 'classnames'
+import cn from 'clsx'
 import { inherits } from 'util'
 import s from './ProductTag.module.css'
 
@@ -115,7 +138,6 @@ const ProductTag: React.FC<ProductTagProps> = ({
     <div className={cn(s.root, className)} data-test="product-tag">
       <h3 className={s.name}>
         <span
-
           className={cn({ [s.fontsizing]: fontSize < 32 })}
           style={{
             fontSize: `${fontSize}px`,
@@ -126,7 +148,9 @@ const ProductTag: React.FC<ProductTagProps> = ({
           {name}
         </span>
       </h3>
-      <div className={s.price} data-test="product-price">{price}</div>
+      <div className={s.price} data-test="product-price">
+        {price}
+      </div>
     </div>
   )
 }
@@ -148,7 +172,9 @@ Notice how we have added three of these `data-test` attributes:
     lineHeight: `${fontSize}px`,
   }}
   data-test="product-name"
-></span>
+>
+  {name}
+</span>
 ```
 
 ```jsx
@@ -174,15 +200,15 @@ describe("Home Page", () => {
 
 Now let's run Cypress to make sure everything is working so far.
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.37.11_AM.png)
+![Screen Shot 2022-05-09 at 11.08.12 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.08.12_AM.png)
 
 Click on the `home.spec.js` file to launch Cypress and run our test.
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.37.56_AM.png)
+![Screen Shot 2022-05-09 at 11.08.26 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.08.26_AM.png)
 
 So far so good.
 
-We currently have three products and so when we use `cy.get('[data-test="product-tag"]')` Cypress will return all three of our products. We only want the first one, so we can use the [cy.eq()](https://docs.cypress.io/api/commands/eq) to grab it.
+We currently have three products and so when we use `cy.get('[data-test="product-tag"]')` Cypress will return all of our products. We only want the first one, so we can use the [cy.eq()](https://docs.cypress.io/api/commands/eq) to grab it.
 
 ```jsx
 cy.get('[data-test="product-tag"]').eq(0)
@@ -197,7 +223,7 @@ describe("Home Page", () => {
     cy.get('[data-test="product-tag"]')
       .eq(0)
       .within(() => {
-        cy.get('[data-test="product-name"]').should("contain", "Code Shirt")
+        cy.get('[data-test="product-name"]').should("contain", "Star Wars")
         cy.get('[data-test="product-price"]').should("contain", "$25.00 USD")
       })
   })
@@ -206,7 +232,7 @@ describe("Home Page", () => {
 
 By using `.within()` we are limiting the scope of the subsequent `cy.get()` commands. Otherwise, `cy.get()` will search through the entire `document`. Since we know that the product name and price are children of the "product tag" we can limit the scope in which Cypress looks to find these elements.
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.52.20_AM.png)
+![Screen Shot 2022-05-09 at 11.10.10 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.10.10_AM.png)
 
 Now that we know our first product is displayed properly, let's confirm the other two. We can simply copy and past the first part of our test for the first product and modify the product name and title for the other products.
 
@@ -217,31 +243,28 @@ describe("Home Page", () => {
     cy.get('[data-test="product-tag"]')
       .eq(0)
       .within(() => {
-        cy.get('[data-test="product-name"]').should("contain", "Code Shirt")
+        cy.get('[data-test="product-name"]').should("contain", "Star Wars")
         cy.get('[data-test="product-price"]').should("contain", "$25.00 USD")
       })
 
     cy.get('[data-test="product-tag"]')
       .eq(1)
       .within(() => {
-        cy.get('[data-test="product-name"]').should(
-          "contain",
-          "Dev Sticker Pack"
-        )
-        cy.get('[data-test="product-price"]').should("contain", "$5.00 USD")
+        cy.get('[data-test="product-name"]').should("contain", "SQL")
+        cy.get('[data-test="product-price"]').should("contain", "$25.00 USD")
       })
 
     cy.get('[data-test="product-tag"]')
       .eq(2)
       .within(() => {
-        cy.get('[data-test="product-name"]').should("contain", "Linux Shirt")
+        cy.get('[data-test="product-name"]').should("contain", "Code")
         cy.get('[data-test="product-price"]').should("contain", "$25.00 USD")
       })
   })
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.55.01_AM.png)
+![Screen Shot 2022-05-09 at 11.11.50 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.11.50_AM.png)
 
 Great all of our products are displaying the correct name and price!
 
@@ -255,7 +278,7 @@ First, create a new spec file in `cypress/integration` called `header.spec.js` a
 describe("Header", () => {})
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.58.01_AM.png)
+![Screen Shot 2022-05-09 at 11.12.35 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.12.35_AM.png)
 
 First, let's write a test to make sure that the links in the header go to the correct pages.
 
@@ -286,8 +309,8 @@ interface NavbarProps {
 
 const Navbar: FC<NavbarProps> = ({ links }) => (
   <NavbarRoot>
-    <Container>
-      <div className={s.nav} data-test="navbar">
+    <Container clean className="mx-auto max-w-8xl px-6">
+      <div className={s.nav}>
         <div className="flex items-center flex-1">
           <Link href="/">
             <a className={s.logo} aria-label="Logo" data-test="logo">
@@ -296,11 +319,15 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
           </Link>
           <nav className={s.navMenu}>
             <Link href="/search">
-              <a className={s.link} data-test="nav-link-search">All</a>
+              <a className={s.link} data-test="nav-link-search">
+                All
+              </a>
             </Link>
             {links?.map((l) => (
               <Link href={l.href} key={l.href}>
-                <a className={s.link} data-test="nav-link-home-page">{l.label}</a>
+                <a className={s.link} data-test="nav-link-home-page">
+                  {l.label}
+                </a>
               </Link>
             ))}
           </nav>
@@ -333,13 +360,16 @@ describe("Header", () => {
   it("links to the correct pages", () => {
     cy.visit("http://localhost:3000")
     cy.get('[data-test="logo"]').click()
+    cy.location("pathname").should("eq", "/")
   })
 })
 ```
 
+![Screen Shot 2022-05-09 at 11.16.14 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.16.14_AM.png)
+
 ## Aside - baseUrl and Cypress Custom Commands
 
-Instead of having to write `cy.visit('http://localhost:3000')` to tell Cypress to go to the home page, we can tell Cypress our applications `baseUrl` and then simply use `cy.visit('/')`
+Instead of having to write `cy.visit('http://localhost:3000')` to tell Cypress to go to the home page, we can tell Cypress our applications `baseUrl` and then simply use `cy.visit('/')` instead.
 
 Within the `cypress.json` file in the root of the repo, add the following:
 
@@ -349,7 +379,7 @@ Within the `cypress.json` file in the root of the repo, add the following:
 }
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.16.26_AM.png)
+![Screen Shot 2021-12-16 at 11.16.26 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.16.26_AM.png)
 
 Now you can update our test like so:
 
@@ -358,13 +388,14 @@ describe("Header", () => {
   it("links to the correct pages", () => {
     cy.visit("/")
     cy.get('[data-test="logo"]').click()
+    cy.location("pathname").should("eq", "/")
   })
 })
 ```
 
 Our test is still passing
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.17.42_AM.png)
+![Screen Shot 2022-05-09 at 11.17.31 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.17.31_AM.png)
 
 Next, instead of having to write `cy.get('[data-test="logo"]')` we can simplify this as well with a custom Cypress command.
 
@@ -376,24 +407,9 @@ Cypress.Commands.add("getBySel", (selector, ...args) => {
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.19.04_AM.png)
+![Screen Shot 2021-12-16 at 11.19.04 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.19.04_AM.png)
 
 Now we can update our test like so:
-
-```jsx
-describe("Header", () => {
-  it("links to the correct pages", () => {
-    cy.visit("/")
-    cy.getBySel("logo").click()
-  })
-})
-```
-
-And our test is still passing.
-
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.17.42_AM%201.png)
-
-After we click on the logo, we can see visually in the Cypress test runner that it loads the home page, but we need to write an assertion that verifies that this indeed is happening. We can do this like so:
 
 ```jsx
 describe("Header", () => {
@@ -405,7 +421,9 @@ describe("Header", () => {
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.25.25_AM.png)
+And our test is still passing.
+
+![Screen Shot 2022-05-09 at 11.18.13 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.18.13_AM.png)
 
 Now let's do the same for the other links in the header.
 
@@ -427,7 +445,7 @@ describe("Header", () => {
 
 When we re-run our test we see that it is failing, why?
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.28.45_AM.png)
+![Screen Shot 2021-12-16 at 11.28.45 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.28.45_AM.png)
 
 If we look closely at our application, we can see that those links do not appear in the header. This is because Cypress by default opens the viewport to "1000x660" which is too narrow. One of the breakpoints in our Next.js application is hiding these links when it is 1000px wide. We can modify the default viewport size by adding the following to the `cypress.json` file.
 
@@ -441,7 +459,7 @@ If we look closely at our application, we can see that those links do not appear
 
 Now our test should be passing
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.31.40_AM.png)
+![Screen Shot 2022-05-09 at 11.23.25 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.23.25_AM.png)
 
 ## Testing the Search Bar
 
@@ -471,7 +489,7 @@ describe("Header", () => {
 
 ## Aside - beforeEach hooks
 
-You will notice that within each test, we have to specifically tell Cypress where to navigate in our app before our test can be executed. We can simplify this duplication by using a `beforeEach()` hook. This hook will run any code we put inside of it before each test is run, hence the name `beforeEach()`
+You will notice that within each test, we have to specifically tell Cypress where to navigate in our app before our test can be executed. We can remove this duplication by using a `beforeEach()` hook. This hook will run any code we put inside of it before each test is run, hence the name `beforeEach()`
 
 ```jsx
 describe("Header", () => {
@@ -500,7 +518,7 @@ Within `components/common/Searchbar/Searchbar.tsx` update the `<input>` element 
 
 ```jsx
 import { FC, memo, useEffect } from 'react'
-import cn from 'classnames'
+import cn from 'clsx'
 import s from './Searchbar.module.css'
 import { useRouter } from 'next/router'
 
@@ -565,9 +583,14 @@ export default memo(Searchbar)
 Now we can `.get()` the search bar like so:
 
 ```jsx
-it("the search bar returns the correct search results", () => {
-  cy.getBySel("search-input").eq(0)
-})
+// header.spec.js
+
+it('links to the correct pages', () => {
+// ...
+
+it('the search bar returns the correct search results', () => {
+    cy.getBySel('search-input').eq(0)
+  })
 ```
 
 <aside>
@@ -585,13 +608,13 @@ it.only("the search bar returns the correct search results", () => {
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.41.10_AM.png)
+![Screen Shot 2022-05-09 at 11.26.36 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.26.36_AM.png)
 
-Let's try to search for the "Linux shirt" by typing in the word "linux"
+Let's try to search for the "Star Wars" by typing in the word "star"
 
 ```jsx
 it.only("the search bar returns the correct search results", () => {
-  cy.getBySel("search-input").eq(0).type("linux")
+  cy.getBySel("search-input").eq(0).type("star")
 })
 ```
 
@@ -599,26 +622,26 @@ We can also simulate pressing the enter key like so:
 
 ```jsx
 it.only("the search bar returns the correct search results", () => {
-  cy.getBySel("search-input").eq(0).type("linux{enter}")
+  cy.getBySel("search-input").eq(0).type("star{enter}")
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.45.20_AM.png)
+![Screen Shot 2022-05-09 at 11.29.01 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.29.01_AM.png)
 
 Now let's confirm that the correct product is displayed in the search results. We can borrow some of the same code we used in our `home.spec.js` test.
 
 ```jsx
 it.only("the search bar returns the correct search results", () => {
-  cy.getBySel("search-input").eq(0).type("linux{enter}")
+  cy.getBySel("search-input").eq(0).type("star{enter}")
 
   cy.get('[data-test="product-tag"]').within(() => {
-    cy.get('[data-test="product-name"]').should("contain", "Linux Shirt")
+    cy.get('[data-test="product-name"]').should("contain", "Star Wars")
     cy.get('[data-test="product-price"]').should("contain", "$25.00 USD")
   })
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.48.19_AM.png)
+![Screen Shot 2022-05-09 at 11.29.42 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.29.42_AM.png)
 
 ## Testing the Shopping Cart
 
@@ -634,7 +657,7 @@ describe("Shopping Cart", () => {
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.53.25_AM.png)
+![Screen Shot 2022-05-09 at 11.30.25 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.30.25_AM.png)
 
 First, we will need to click on a product to add it to the cart.
 
@@ -647,7 +670,7 @@ describe("Shopping Cart", () => {
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.54.53_AM.png)
+![Screen Shot 2022-05-09 at 11.30.59 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.30.59_AM.png)
 
 Next, we will need to click on the "Add to Cart" button.
 
@@ -663,7 +686,7 @@ describe("Shopping Cart", () => {
 
 Notice how we are getting the element by using the `aria-label` attribute.
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.59.07_AM.png)
+![Screen Shot 2022-05-09 at 11.31.26 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.31.26_AM.png)
 
 Now we just need to confirm that our shopping cart has our item in it.
 
@@ -678,4 +701,17 @@ describe("Shopping Cart", () => {
 })
 ```
 
-![](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_12.01.17_PM.png)
+![Screen Shot 2022-05-09 at 11.31.51 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.31.51_AM.png)
+
+## Conclusion
+
+In this lesson, we learned how to install Cypress and how to write several different tests to ensure that our store is working as expected. We also learned how to customize the Cypress test runner within the `cypress.json` file as well has how to use custom Cypress commands.
+
+## Practice
+
+Now would be a great time for you to practice writing more Cypress tests. Here are some ideas for tests you could write.
+
+- Write a test that confirms the shopping cart can contain multiple items.
+- Write a test that confirms your images have the correct `alt` tags.
+- Write a test that confirms the “Accept Cookies” popup displays on the bottom of the page.
+- Write a test that confirms the language selector in the footer, navigates to the correct page.
