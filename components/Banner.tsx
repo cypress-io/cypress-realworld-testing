@@ -14,7 +14,7 @@ export default function Banner() {
               />
             </span>
             <p className="ml-3 truncate font-medium text-white">
-              <span className="md:hidden">We announced a new product!</span>
+              <span className="md:hidden">Cypress 10 Updates</span>
               <span className="hidden md:inline">
                 Cypress 10 Content Updates &amp; GitHub Discussions
               </span>
