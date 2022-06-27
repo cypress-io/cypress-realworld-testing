@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic"
 import Head from "next/head"
 import Header from "./Header"
+import Banner from "./Banner"
 
 const Footer = dynamic(() => import("./Footer"), {
   ssr: false,
@@ -25,6 +26,7 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Banner />
       <Header
         content={content}
         courses={courses}
