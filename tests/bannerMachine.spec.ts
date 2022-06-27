@@ -8,9 +8,7 @@ describe("banner machine", () => {
   let bannerService
 
   beforeEach(() => {
-    bannerService = interpret(bannerMachine).onTransition((state) =>
-      console.log(state.value)
-    )
+    bannerService = interpret(bannerMachine)
 
     bannerService.start()
     expect(bannerService.state.value).to.equal("show")
