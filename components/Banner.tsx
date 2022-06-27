@@ -1,7 +1,9 @@
-/* This example requires Tailwind CSS v2.0+ */
+import { useActor } from "@xstate/react"
 import { SpeakerphoneIcon, XIcon } from "@heroicons/react/outline"
 
-export default function Banner() {
+export default function Banner({ bannerService }) {
+  const [, bannerSend] = useActor(bannerService)
+
   return (
     <div className="bg-indigo-600">
       <div className="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
@@ -34,6 +36,11 @@ export default function Banner() {
             <button
               type="button"
               className="-mr-1 flex rounded-md p-2 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
+              onClick={() => {
+                bannerSend({
+                  type: "HIDE_BANNER",
+                })
+              }}
             >
               <span className="sr-only">Dismiss</span>
               <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
