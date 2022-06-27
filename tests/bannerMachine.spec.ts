@@ -1,8 +1,6 @@
 import { expect } from "chai"
 import { interpret } from "xstate"
 import { bannerMachine } from "../machines/bannerMachine"
-import { MultipleChoicePayload } from "common"
-import { isLessonCompleted } from "../utils/machineUtils"
 
 describe("banner machine", () => {
   let bannerService
