@@ -62,7 +62,9 @@ To learn more about custom commands you can [check out our docs](https://docs.cy
 
 ## Testing forms
 
-One of the most common things you will find yourself writing tests for in any web application are forms. Since that is the case, we are going to spend the rest of this lesson discussing how to write tests for them. In our course application, in the hero section of the home page, we have a single input field and button that allows users to signup for our newsletter.
+One of the most common things you will find yourself writing tests for in any web application are forms. Since that is the case, we are going to spend the rest of this lesson discussing how to write tests for them.
+
+In our course application, in the hero section of the home page, we have a single input field and button that allows users to signup for our newsletter.
 
 ![Screen Shot 2022-07-11 at 9.23.22 AM.png](/images/testing-your-first-application/how-to-test-forms-and-custom-cypress-commands/Screen_Shot_2022-07-11_at_9.23.22_AM.png)
 
@@ -81,11 +83,13 @@ Before we begin writing tests for this form, let’s discuss all of the various 
 
 As you can see, this simple form is quite complicated once you begin to think through all of the various scenarios and states a user can experience.
 
-## Unhappy vs happy paths
+## Aside: Happy vs unhappy paths
 
 As we are considering the various scenarios and states a user can experience with our newsletter signup form, we wanted to discuss the topic of “unhappy” vs “happy” paths. This idea is very important when learning how to write tests for your application. When you are considering what to test and which tests you need to write it is important to not only include the “happy” paths, or the paths that a user can take that lead to successful results.
 
-You also need to take into consideration the “unhappy” paths or the paths a user can take that could get them into trouble, throw an error, cause your application to crash, etc. You should also be writing tests to make sure a malicious user cannot get access to information that is private, perform an XSS attack, and more. These are just some of the things you need to be considering as you are testing your application. Remember the internet is exposed and open to the entire world, and some of the users of our application may have ill intent and wish to exploit or “hack” your application for nefarious reasons. Make sure to write tests to try and protect your application and your user's private data from being exposed to the wrong people.
+You also need to take into consideration the “unhappy” paths or the paths a user can take that could get them into trouble, throw an error, cause your application to crash, etc. You should also be writing tests to make sure a malicious user cannot get access to information that is private, perform an XSS attack, and more. These are just some of the things you need to be considering as you are testing your application.
+
+Remember the internet is open to the entire world, and some of the users of our application may have ill intent and wish to exploit or “hack” your application for nefarious reasons. Make sure to write tests to try and protect your application and your user's private data from being exposed to the wrong people.
 
 ## Test: Users can successfully subscribe
 
@@ -107,7 +111,7 @@ describe("Newsletter Subscribe Form", () => {
 })
 ```
 
-Notice that right off the bat, I am adding a `beforeEach()` hook which we discussed in the previous lesson. The reason for doing this is that I know every single test in this file is going to need to navigate to the homepage of our application since that is where this form is.
+Notice that right off the bat, we are adding a `beforeEach()` hook which we discussed in the previous lesson. The reason for doing this is that every single test in this file is going to need to navigate to the homepage of our application since that is where this form is.
 
 The first thing we need to do is get the email input field of our form like so:
 
@@ -125,10 +129,9 @@ describe("Newsletter Subscribe Form", () => {
 
 Let’s run this new spec file and make sure things are working properly.
 
-<aside>
-💡 Remember that you need to have both the local dev server `npm run dev` and cypress running at the same time `npx cypress open` and in separate terminal windows or tabs.
-
-</aside>
+:::info
+Remember that you need to have both the local dev server `npm run dev` and cypress running at the same time `npx cypress open` and in separate terminal windows or tabs.
+:::
 
 ![Screen Shot 2022-07-11 at 10.09.18 AM.png](/images/testing-your-first-application/how-to-test-forms-and-custom-cypress-commands/Screen_Shot_2022-07-11_at_10.09.18_AM.png)
 
@@ -274,13 +277,17 @@ First, we are getting the input field and then type in our invalid email address
 
 For our final test in this lesson, we are going to ask you to write it all on your own for practice. For this test, you are going to write a test to make sure that users cannot sign up for our newsletter if they are already subscribed.
 
-You need to use the email address “[john@example.com](mailto:john@example.com)” otherwise your test will not pass.
+:::tip
+You need to use the email address **john@example.com** otherwise your test will not pass.
+:::
 
 Before you begin writing the test, enter in this email address into the app and try to submit it. See what happens and make note of the error message that is displayed.
 
 If you get stuck, make sure to take a look at the previous two tests we have already written for some ideas.
 
-Here is the final answer:
+## Practice Answer
+
+<Disclosure>
 
 ```jsx
 it("does NOT allow already subscribed email addresses", () => {
@@ -291,6 +298,42 @@ it("does NOT allow already subscribed email addresses", () => {
     .contains("already exists. Please use a different email address.")
 })
 ```
+
+</Disclosure>
+
+## Final Spec file
+
+<Disclosure>
+
+```js
+describe("Newsletter Subscribe Form", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000")
+  })
+
+  it("allows users to subscribe to the email list", () => {
+    cy.getByData("email-input").type("tom@aol.com")
+    cy.getByData("submit-button").click()
+    cy.getByData("success-message").should("exist").contains("tom@aol.com")
+  })
+
+  it("does NOT allow a invalid email address", () => {
+    cy.getByData("email-input").type("tom")
+    cy.getByData("submit-button").click()
+    cy.getByData("success-message").should("not.exist")
+  })
+
+  it("does NOT allow already subscribed email addresses", () => {
+    cy.getByData("email-input").type("john@example.com")
+    cy.getByData("submit-button").click()
+    cy.getByData("server-error-message")
+      .should("exist")
+      .contains("already exists. Please use a different email address.")
+  })
+})
+```
+
+</Disclosure>
 
 ## Wrap Up
 
