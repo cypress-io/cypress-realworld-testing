@@ -76,7 +76,7 @@ Also, when you are running your tests in headless mode, which is how then will r
 
 Notice how all of the tests related to the hero section are nested underneath the “Hero section” heading. This too makes it very easy to understand which tests are for what at a quick glance.
 
-## Context: course section
+## Test: Courses section
 
 Now that we understand how context works, let’s create a new context for the courses section of our home page.
 
@@ -134,17 +134,15 @@ context("Courses section", () => {
 
 ![Screen Shot 2022-07-12 at 8.57.15 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_8.57.15_AM.png)
 
-If we run our test, you will see that Cypress has found four `<a>` tags within the `<div data-test="course-0">` element. In a previous test, we used [eq](https://docs.cypress.io/api/commands/eq) to select a specific element from the returned array, inside of “the features on the homepage are correct” test.
+If we run our test, you will see that Cypress has found four `<a>` tags within the `<div data-test="course-0">` element. In a previous test, we used [eq](https://docs.cypress.io/api/commands/eq) to select a specific element from the returned array. So let’s update our test to use the eq command and select the last element in the array which is our button.
 
 ```jsx
-it("the features on the homepage are correct", () => {
-  cy.get("dt").eq(0).contains("4 Courses")
-  cy.get("dt").eq(1).contains("25+ Lessons")
-  cy.get("dt").eq(2).contains("Free and Open Source")
+context("Courses section", () => {
+  it.only("Course: Testing Your First Next.js Application", () => {
+    cy.getByData("course-0").find("a").eq(3)
+  })
 })
 ```
-
-So let’s update our test to use the eq command and select the last element in the array which is our button.
 
 ![Screen Shot 2022-07-12 at 9.00.12 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_9.00.12_AM.png)
 
@@ -172,7 +170,7 @@ cy.getByData("course-0").find("a").eq(3).click()
 
 This is quite brittle and should only be used sparingly. If a lesson is added or removed from our course, our test is going to break since we are relying upon the specific ordering of the elements returned in this array.
 
-To sum all of this up, use `data` attributes whenever possible, otherwise, your tests can be quite brittle and break in the future.
+So remember to use `data` attributes whenever possible, otherwise, your tests can be quite brittle and break in the future.
 
 ## Testing the correct URL or pathname
 
@@ -193,43 +191,6 @@ We are using the [location](https://docs.cypress.io/api/commands/location) API t
 
 Congrats! You have now learned how to write tests that span multiple pages.
 
-## Final spec file
-
-Here is the entire spec file so far:
-
-```jsx
-describe("Home page", () => {
-  beforeEach(() => {
-    cy.visit("http://localhost:3000")
-  })
-
-  context("Hero section", () => {
-    it("the h1 contains the correct text", () => {
-      cy.getByData("hero-heading").contains(
-        "Testing Next.js Applications with Cypress"
-      )
-    })
-
-    it("the features on the homepage are correct", () => {
-      cy.get("dt").eq(0).contains("4 Courses")
-      cy.get("dt").eq(1).contains("25+ Lessons")
-      cy.get("dt").eq(2).contains("Free and Open Source")
-    })
-  })
-
-  context("Courses section", () => {
-    it("Course: Testing Your First Next.js Application", () => {
-      cy.getByData("course-0").find("a").eq(3).click()
-      cy.location("pathname").should("eq", "/testing-your-first-application")
-    })
-  })
-})
-```
-
-![Screen Shot 2022-07-12 at 9.13.32 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_9.13.32_AM.png)
-
-It is always a good idea to re-run all of the tests in your spec file to make sure everything is still passing after you have finished writing a new test.
-
 ## Practice
 
 Now it is time for you to put what you have just learned into practice. Write two additional tests, one for each course on the home page, and verify that the “Get started” button links to the correct course page.
@@ -249,7 +210,34 @@ If you get stuck the answers are provided below.
 
 ## Practice Answers
 
+<Disclosure>
+
 ```jsx
+context("Courses section", () => {
+  it("Course: Testing Your First Next.js Application", () => {
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+  })
+
+  it("Course: Testing Foundations", () => {
+    cy.getByData("course-1").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-foundations")
+  })
+
+  it("Course: Cypress Fundamentals", () => {
+    cy.getByData("course-2").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/cypress-fundamentals")
+  })
+})
+```
+
+</Disclosure>
+
+## Final Spec file
+
+<Disclosure>
+
+```js
 describe("Home page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
@@ -287,6 +275,8 @@ describe("Home page", () => {
   })
 })
 ```
+
+</Disclosure>
 
 ## Wrap Up
 
