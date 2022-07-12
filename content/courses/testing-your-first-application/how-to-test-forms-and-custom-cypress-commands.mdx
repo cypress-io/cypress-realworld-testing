@@ -10,7 +10,7 @@ cy.get("[data-test='hero-heading']")
 
 While this is perfectly valid, wouldn’t it be nice if we could clean up this syntax; making our tests easier to write, read and reason about?
 
-To do this, we can write our own [custom Cypress command](https://docs.cypress.io/api/cypress-api/custom-commands). A custom Cypress command is essentially just a function that we can use throughout our tests. What a custom command allows us to do is to reuse code or functionality across all of our Cypress spec files.
+To do this, we can write our own [custom Cypress command](https://docs.cypress.io/api/cypress-api/custom-commands). What a custom command allows us to do is to reuse code or functionality across all of our Cypress spec files.
 
 For our use case, we want to create a custom Cypress command that will allow us to “get” `data-test` attributes more easily. To do this, we need to add our custom command to the `cypress/support/commands.ts` file.
 
@@ -54,11 +54,11 @@ Now if we launch cypress and run our test should still be passing.
 
 In case that explanation went to fast or was not very clear, we have created a short video that explains in-depth how our custom Cypress command works.
 
-[https://youtu.be/5F7t9IPoUvo](https://youtu.be/5F7t9IPoUvo)
+<YouTube id="5F7t9IPoUvo" />
 
 Throughout the rest of this course, we will be using this custom Cypress command to get our elements for testing. Custom Cypress commands are extremely powerful and useful. You will find yourself writing them all the time once you gain more experience with Cypress.
 
-To learn more you can [check out our docs](https://docs.cypress.io/api/cypress-api/custom-commands).
+To learn more about custom commands you can [check out our docs](https://docs.cypress.io/api/cypress-api/custom-commands).
 
 ## Testing forms
 
