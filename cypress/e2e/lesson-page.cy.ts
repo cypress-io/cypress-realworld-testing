@@ -41,25 +41,23 @@ describe("Lesson Pages", () => {
     }
 
     it("links to the correct content lesson when clicked", () => {
-      cy.visit(
-        "/testing-your-first-application/todomvc-app-install-and-overview"
-      )
+      cy.visit("/testing-your-first-application/app-install-and-overview")
       cy.getBySel("sidebar-toc-link-1").click({ force: true })
       cy.location("pathname").should(
         "eq",
-        "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
+        "/testing-your-first-application/installing-cypress-and-writing-your-first-test"
       )
 
       cy.getBySel("sidebar-toc-link-2").click({ force: true })
       cy.location("pathname").should(
         "eq",
-        "/testing-your-first-application/setting-up-data-before-each-test"
+        "/testing-your-first-application/how-to-test-forms-and-custom-cypress-commands"
       )
 
       cy.getBySel("sidebar-toc-link-4").click({ force: true })
       cy.location("pathname").should(
         "eq",
-        "/testing-your-first-application/cypress-command-logs-snapshots-and-aliases"
+        "/testing-your-first-application/how-to-test-user-journeys"
       )
     })
   })
