@@ -520,6 +520,8 @@ If you get stuck, the answer is below.
 
 ## Practice Answers
 
+<Disclosure>
+
 ```jsx
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
@@ -538,12 +540,14 @@ describe("home page", () => {
 })
 ```
 
+</Disclosure>
+
 ## beforeEach hook and refactoring our tests
 
 Whew! We have covered a lot of material in this lesson, and we are almost done. Before we finish we wanted to introduce to you the concept of hooks. If you take a look at the two tests within our spec file, we are using
 
 ```js
-cy.visit("http://localhost:3000")`
+cy.visit("http://localhost:3000")
 ```
 
 in both of our tests. This is not a big deal since we only have two tests, but again what happens when you have dozens of tests in this file?
