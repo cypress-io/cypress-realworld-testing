@@ -28,10 +28,9 @@ Next, Cypress is going to let you know the various files it is going to create f
 
 Next, you will be presented with the “Choose a Browser” screen. You may have different options available depending upon which browsers you have installed on your computer. For this course, we are going to be running all of our tests inside of the “Chrome” browser.
 
-<aside>
-💡 If you do not see “Chrome” as an option, that means you do not have it installed. You can download it [here](https://www.google.com/chrome/). Once you install it, you will need to re-launch Cypress.
-
-</aside>
+:::info
+If you do not see “Chrome” as an option, that means you do not have it installed. You can download it [here](https://www.google.com/chrome/). Once you install it, you will need to re-launch Cypress.
+:::
 
 Click on “Chrome” and then the “Start E2E Testing in Chrome” button.
 
@@ -57,11 +56,13 @@ Then click on the “Okay, run the spec” button.
 
 ![Screen Shot 2022-06-28 at 9.03.51 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.03.51_AM.png)
 
-Cypress will then run our spec against our “Kitchen Sink” application. Now that we have created our spec file, we need to update it with a test for our course application.
+Cypress will then run our spec against our [Kitchen Sink](https://example.cypress.io/) application.
+
+Now that we have created our spec file, we need to update it for our course application.
 
 ## Breaking down the home spec file
 
-Open the **cypress/e2e/home.cy.ts** file in VSCode.
+Open the `cypress/e2e/home.cy.ts` file in VSCode.
 
 ![Screen Shot 2022-06-28 at 9.06.55 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.06.55_AM.png)
 
@@ -81,7 +82,7 @@ On the first line, we see what is commonly referred to as a “describe block.�
 describe("empty spec", () => {})
 ```
 
-The `describe()` function takes two arguments, first is a string which is a description of the tests contained within it and the next is an [anonymous function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions) or a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function). Since this file is going to contain tests for our home page, let’s update this to say “home page.”
+The `describe()` function takes two arguments. The first is a string which is a description of the tests contained within it. The second is a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function). Since this file is going to contain tests for our home page, let’s update this to say “home page.”
 
 ```jsx
 describe("home page", () => {
@@ -91,7 +92,11 @@ describe("home page", () => {
 })
 ```
 
-Next, within the body of our `describe()` is what is commonly referred to as an “it block.” This is our actual test. Each time you see `it()` within a given spec file that is a single test. It takes the exact same arguments as the `describe()` function, first a string and then a callback function. Let’s update the string to the following.
+Next, within the body of our `describe()` is what is commonly referred to as an “it block.”
+
+This is our actual test.
+
+Each time you see `it()` within a given spec file that is a single test. It takes the exact same arguments as the `describe()` function, first a string and then a callback function. Let’s update the string to the following.
 
 ```jsx
 describe("home page", () => {
@@ -105,9 +110,9 @@ For our first test, we are going to be writing a test that asserts that the `h1`
 
 ![Screen Shot 2022-06-28 at 9.15.48 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.15.48_AM.png)
 
-Finally, we see `cy.visit()` within the body of our `it()` block. This is Cypress-specific code. The `cy` is an object which contains all of the various methods and functionality specific to Cypress.
+Finally, we see [cy.visit()](https://docs.cypress.io/api/commands/visit) within the body of our `it()` block.
 
-[.visit()](https://docs.cypress.io/api/commands/visit) is a command that tells Cypress where to execute our tests. We are going to be running our application locally on [localhost:3000](https://docs.cypress.io/api/commands/visit) so let’s update the `cy.visit()` with the correct address.
+[visit](https://docs.cypress.io/api/commands/visit) is a command that tells Cypress where to execute our tests. We are going to be running our application locally on [localhost:3000](https://docs.cypress.io/api/commands/visit) so let’s update the `cy.visit()` with the correct address.
 
 ```jsx
 describe("home page", () => {
@@ -119,11 +124,14 @@ describe("home page", () => {
 
 Now let’s run our test.
 
+:::info
 Remember, to launch Cypress enter the following in your terminal.
 
 ```jsx
 npx cypress open
 ```
+
+:::
 
 ![Screen Shot 2022-06-28 at 9.21.56 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.21.56_AM.png)
 
@@ -192,7 +200,9 @@ describe("home page", () => {
 })
 ```
 
+:::tip
 After saving our spec file, Cypress will automatically re-run all of our tests within this file. This allows us to quickly iterate and verify that our tests are working correctly.
+:::
 
 ![Screen Shot 2022-06-28 at 10.07.53 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_10.07.53_AM.png)
 
@@ -260,13 +270,15 @@ What do we mean?
 
 Typically, classes and IDs are used for styling and for targeting elements with JavaScript. Both classes and IDs tend to change over time, which means that if you are using them in your tests, your tests will break.
 
-To prevent this from happening, we recommend using `data-` attributes on your elements. In this course, we will be using `data-test` attributes specifically. This way we have attributes that are solely used for testing purposes which means they are not going to change if the design or your site or page changes in the future since we are not relying upon class names or IDs.
+To prevent this from happening, we recommend using `data` attributes on your elements. In this course, we will be using `data-test` attributes, specifically. This way we have attributes that are used solely for testing purposes. They are not going to change if the design of your site changes in the future since we are not relying upon class names or IDs.
 
+:::tip
 If you would like to learn more about this topic you can read some of our best practices over on our docs site [here](https://docs.cypress.io/guides/references/best-practices#Selecting-Elements).
+:::
 
 ## Updating our get selector
 
-Now that you have learned about using `data-` specific test attributes on elements, let’s now update our test to see how this works in practice.
+Now that you have learned about using `data` specific test attributes on elements, let’s now update our test to see how this works in practice.
 
 Currently our test looks like this:
 
@@ -345,30 +357,13 @@ If we use dev tools to inspect one of these features, we will see the following 
 </div>
 ```
 
-There doesn’t seem to be any `data-test` attributes or anything very specific we can use within `cy.get()` to get these elements. While we always recommend using `data-` attributes whenever possible, sometimes you do not have access to the underlying HTML markup.
+There doesn’t seem to be any `data-test` attributes or anything very specific we can use within `cy.get()` to get these elements. While we always recommend using `data` attributes whenever possible, sometimes you do not have access to the underlying HTML markup.
 
-For instance, let’s say you are using a 3rd party component library. Typically you do not have the ability to modify the underlying HTML markup and custom attributes to the elements, so what do you do in that case?
-
-If though we can easily modify the HTML markup in our application, since we have the code running on our computers locally, let’s pretend, for now, that we don’t.
+For instance, let’s say you are using a 3rd party component library. Typically you do not have the ability to modify the underlying HTML markup and add custom attributes to the elements, so what do you do in that case?
 
 What is the best approach for getting these elements?
 
-If we inspect the HTML again, we can see that there is some uncommon HTML elements in use like the `<dt>` element. Let’s write another test and use `cy.get("dt")` and see what happens.
-
-```jsx
-describe("home page", () => {
-  it("the h1 contains the correct text", () => {
-    cy.visit("http://localhost:3000")
-    cy.get("[data-test='hero-heading']").contains(
-      "Testing Next.js Applications with Cypress"
-    )
-  })
-
-  it("the features on the homepage are correct", () => {})
-})
-```
-
-You will see that we have created a new test and added it just below our first test.
+Let's create a new test and add it just below our first test.
 
 ```jsx
 it("the features on the homepage are correct", () => {})
@@ -382,9 +377,15 @@ it("the features on the homepage are correct", () => {
 })
 ```
 
-Notice that within each test, we have to specifically tell Cypress where to navigate to in our application. Let’s run our test and make sure everything is passing.
+:::info
+Notice that within each test, we have to specifically tell Cypress where to navigate to in our application.
+:::
+
+Let’s run our test and make sure everything is passing.
 
 ![Screen Shot 2022-06-28 at 2.49.56 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.49.56_PM.png)
+
+## Using only to run a single test
 
 Now that we have two tests, each time we save our file, Cypress is going to re-run all of the tests in this file. This is ok when you only have a few tests, but what if we had dozens of tests in this single spec file? Each time we saved we would have to wait until Cypress finished running all of our tests. This is not ideal especially when we are really only concerned with the current test we are writing.
 
@@ -405,7 +406,11 @@ describe("home page", () => {
 })
 ```
 
-By adding `.only()` after the `it` we are telling Cypress to only run this specific test. This does work for multiple tests, so if you want to only run certain tests, just add `.only()` after the `it` for each test you wish to run.
+By adding `.only()` after the `it` we are telling Cypress to only run this specific test.
+
+:::tip
+This does work for multiple tests, so if you want to only run certain tests, just add `.only()` after the `it` for each test you wish to run.
+:::
 
 ![Screen Shot 2022-06-28 at 2.52.22 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.52.22_PM.png)
 
@@ -432,7 +437,11 @@ We see that an array was returned with three elements in it, all of which are `<
 
 So how then do we get just one of these `<dt>` elements? Specifically, we want to get the first one and make sure that the text says, “4 Courses”
 
-Well since we are getting back an array, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within an array of elements, which is exactly what we want. Remember that arrays start their indexes at 0, so the first element we want is 0 and not 1.
+Well since we are getting back an array, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within an array of elements, which is exactly what we want.
+
+:::info
+Remember that arrays start their indexes at 0, so the first element we want is 0 **not** 1.
+:::
 
 Update your test to the following:
 
@@ -497,7 +506,9 @@ describe("home page", () => {
 
 ## Practice
 
-We still need to write assertions for the remaining two features, which we are going to ask you to write right now for practice. Pay close attention to this line
+We still need to write two additional assertions for the remaining two features, which we are going to ask you to write for practice.
+
+Pay close attention to this line
 
 ```jsx
 cy.get("dt").eq(0).contains("4 Courses")
@@ -529,9 +540,17 @@ describe("home page", () => {
 
 ## beforeEach hook and refactoring our tests
 
-Whew! We have covered a lot of material in this lesson, and we are almost done. Before we finish we wanted to introduce to you the concept of hooks. If you take a look at the two tests within our spec file, we are using `cy.visit("[http://localhost:3000](http://localhost:3000/)")` in both of our tests. This is not a big deal since we only have two tests, but again what happens when you have dozens of tests in this file.
+Whew! We have covered a lot of material in this lesson, and we are almost done. Before we finish we wanted to introduce to you the concept of hooks. If you take a look at the two tests within our spec file, we are using
 
-We can simplify this and put the `cy.visit()` in a single spot called a [beforEach() hook](https://mochajs.org/#hooks). This is a function that will get called “before each” test is run, which is exactly what we want. Update your test to look like the following:
+```js
+cy.visit("http://localhost:3000")`
+```
+
+in both of our tests. This is not a big deal since we only have two tests, but again what happens when you have dozens of tests in this file?
+
+We can simplify this and put the `cy.visit()` in a single spot called a [beforEach() hook](https://mochajs.org/#hooks). This is a function that will get called “before each” test is run, which is exactly what we want.
+
+Update your test to look like the following:
 
 ```jsx
 describe("home page", () => {
