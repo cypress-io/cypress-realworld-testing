@@ -10,15 +10,17 @@ In a [future lesson](https://learn.cypress.io/testing-foundations/knowing-what-t
 
 For example, in the context of our course application:
 
-1. A user lands on the home page and finds one of the courses,
-2. They click on the “Get started” button and are taken to the course landing page
-3. They click on the “Start Course” button and are taken to the first lesson of that course
+1. A user lands on the home page and finds one of the courses.
+2. They click on the “Get started” button and are taken to the course landing page.
+3. They click on the “Start Course” button and are taken to the first lesson of that course.
 4. They read the lesson and complete the quiz at the bottom.
 5. After answering the quiz correctly, they click on the “Next Lesson” button and are taken to the next lesson.
 
-Now that we understand what a user journey is, and how a user of our course application might behave, we can now write a single test that verifies all of these steps are working correctly.
+Now that we understand what a user journey is, and how a user of our course application might behave, we can now write a single test that verifies that all of these steps are working correctly.
 
+:::info
 What makes a user journey test so valuable is the fact that you are testing every aspect of your system and application within a single test.
+:::
 
 ## Writing our user journey test
 
@@ -103,10 +105,9 @@ describe("User Journey", () => {
 
 Then we need to complete the quiz at the bottom of the page.
 
-<aside>
-💡 In this demo application, all of the answers are true.
-
-</aside>
+:::info
+In this demo application, all of the answers are true.
+:::
 
 ```jsx
 describe("User Journey", () => {
