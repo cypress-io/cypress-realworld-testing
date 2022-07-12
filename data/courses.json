@@ -2,43 +2,38 @@
   "testing-your-first-application": {
     "title": "Testing Your First Application",
     "slug": "testing-your-first-application",
-    "description": "How to test a simple TodoMVC app with Cypress.",
-    "image": "/images/courses/todo-mvc.png",
+    "description": "How to test your first application with Cypress.",
+    "image": "/images/courses/course-app.png",
     "learnFeatures": [
-      "How to write Cypress tests",
-      "How to install and use Cypress",
+      "How to install Cypress",
+      "How to write Cypress E2E tests",
       "How to create custom Cypress commands"
     ],
     "lessons": [
       {
-        "title": "TodoMVC App Install and Overview",
-        "slug": "todomvc-app-install-and-overview",
-        "description": "How to install the TodoMVC application and get it up and running."
+        "title": "App Install and Overview",
+        "slug": "app-install-and-overview",
+        "description": "How to install the course application and get it up and running."
       },
       {
-        "title": "Installing Cypress and writing our first test",
-        "slug": "installing-cypress-and-writing-our-first-test",
-        "description": "How to install Cypress E2E testing and write your first end to end test."
+        "title": "Installing Cypress and writing your first test",
+        "slug": "installing-cypress-and-writing-your-first-test",
+        "description": "How to install Cypress and write your first end to end test."
       },
       {
-        "title": "Setting up Data Before Each Test",
-        "slug": "setting-up-data-before-each-test",
-        "description": "How to utilize the beforeEach hook to setup data before each test."
+        "title": "How to test forms and custom Cypress commands",
+        "slug": "how-to-test-forms-and-custom-cypress-commands",
+        "description": "How to test forms and create custom Cypress commands."
       },
       {
-        "title": "How to use Cypress Commands",
-        "slug": "how-to-use-cypress-commands",
-        "description": "How to use custom Cypress commands to simplify your test code."
+        "title": "How to test multiple pages",
+        "slug": "how-to-test-multiple-pages",
+        "description": "How to test multiple pages"
       },
       {
-        "title": "Cypress Command Logs, Snapshots and Aliases",
-        "slug": "cypress-command-logs-snapshots-and-aliases",
-        "description": "How Cypress Command Logs, Snapshots and Aliases work."
-      },
-      {
-        "title": "Testing what's not there",
-        "slug": "testing-what-isnt-there",
-        "description": "Learn how to test the 'Unhappy Paths' by ensuring certain elements do not exist on the page."
+        "title": "How to test user journeys",
+        "slug": "how-to-test-user-journeys",
+        "description": "Learn what user journey's are and how to write tests for them."
       }
     ]
   },

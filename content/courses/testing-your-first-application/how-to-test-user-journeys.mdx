@@ -1,0 +1,206 @@
+# How to test user journeys
+
+In this final lesson, we are going to introduce you to the concept of “user journeys” and how to write tests for them.
+
+## What are user journeys?
+
+User journeys are the essential paths a user of your application takes.
+
+In a [future lesson](https://learn.cypress.io/testing-foundations/knowing-what-to-test), we go into greater detail about what a user journey is, but we wanted to introduce you to this concept right from the start since it is incredibly valuable for testing.
+
+For example, in the context of our course application: 
+
+1. A user lands on the home page and finds one of the courses, 
+2. They click on the “Get started” button and are taken to the course landing page
+3. They click on the “Start Course” button and are taken to the first lesson of that course
+4. They read the lesson and complete the quiz at the bottom.
+5. After answering the quiz correctly, they click on the “Next Lesson” button and are taken to the next lesson.
+
+Now that we understand what a user journey is, and how a user of our course application might behave, we can now write a single test that verifies all of these steps are working correctly.
+
+What makes a user journey test so valuable is the fact that you are testing every aspect of your system and application within a single test.
+
+## Writing our user journey test
+
+First, let’s create a new test called `cypress/e2e/user-journey.cy.ts`
+
+```jsx
+describe('User Journey', () => {
+  it('a user can find a course on the home page and complete the courses lessons', () => {
+    
+  });
+});
+```
+
+First, we need to visit the home page of our application.
+
+```jsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 10.08.54 AM.png](How%20to%20test%20user%20journeys%209c8f6c307d5d4301978f034b85fdd262/Screen_Shot_2022-07-12_at_10.08.54_AM.png)
+
+Next, we need to get the “Get started” button of one of our courses
+
+```jsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+    cy.getByData("course-0").find("a").eq(3).click()
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 10.09.49 AM.png](How%20to%20test%20user%20journeys%209c8f6c307d5d4301978f034b85fdd262/Screen_Shot_2022-07-12_at_10.09.49_AM.png)
+
+Then we will write an assertion that the “Get started” button has navigated the user to the correct course page.
+
+```jsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+  })
+})
+```
+
+Next, we need to get the “Start Course” button and click on it.
+
+```jsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("next-lesson-button").click()
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 10.11.21 AM.png](How%20to%20test%20user%20journeys%209c8f6c307d5d4301978f034b85fdd262/Screen_Shot_2022-07-12_at_10.11.21_AM.png)
+
+We will then write another assertion to verify that the “Start Course” button has navigated our user to the correct lesson page.
+
+```jsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("next-lesson-button").click()
+    cy.location("pathname").should(
+      "eq",
+      "/testing-your-first-application/app-install-and-overview"
+    )
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 10.12.09 AM.png](How%20to%20test%20user%20journeys%209c8f6c307d5d4301978f034b85fdd262/Screen_Shot_2022-07-12_at_10.12.09_AM.png)
+
+Then we need to complete the quiz at the bottom of the page. 
+
+<aside>
+💡 In this demo application, all of the answers are true.
+
+</aside>
+
+```jsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("next-lesson-button").click()
+    cy.location("pathname").should(
+      "eq",
+      "/testing-your-first-application/app-install-and-overview"
+    )
+    cy.getByData("challenge-answer-0").click()
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 10.12.54 AM.png](How%20to%20test%20user%20journeys%209c8f6c307d5d4301978f034b85fdd262/Screen_Shot_2022-07-12_at_10.12.54_AM.png)
+
+We then want to assert that the “Next Lesson” button has appeared on the page and then click it.
+
+```jsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("next-lesson-button").click()
+    cy.location("pathname").should(
+      "eq",
+      "/testing-your-first-application/app-install-and-overview"
+    )
+    cy.getByData("challenge-answer-0").click()
+    cy.getByData("next-lesson-button").should("exist").click()
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 10.13.42 AM.png](How%20to%20test%20user%20journeys%209c8f6c307d5d4301978f034b85fdd262/Screen_Shot_2022-07-12_at_10.13.42_AM.png)
+
+Finally, we write our final assertion that verifies that the “Next Lesson” takes the user to the correct lesson page.
+
+```jsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("next-lesson-button").click()
+    cy.location("pathname").should(
+      "eq",
+      "/testing-your-first-application/app-install-and-overview"
+    )
+    cy.getByData("challenge-answer-0").click()
+    cy.getByData("next-lesson-button").should("exist").click()
+    cy.location("pathname").should(
+      "eq",
+      "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
+    )
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 10.14.14 AM.png](How%20to%20test%20user%20journeys%209c8f6c307d5d4301978f034b85fdd262/Screen_Shot_2022-07-12_at_10.14.14_AM.png)
+
+## Final code
+
+```tsx
+describe("User Journey", () => {
+  it("a user can find a course on the home page and complete the courses lessons", () => {
+    cy.visit("http://localhost:3000")
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("next-lesson-button").click()
+    cy.location("pathname").should(
+      "eq",
+      "/testing-your-first-application/app-install-and-overview"
+    )
+    cy.getByData("challenge-answer-0").click()
+    cy.getByData("next-lesson-button").should("exist").click()
+    cy.location("pathname").should(
+      "eq",
+      "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
+    )
+  })
+})
+```
+
+## Wrap Up
+
+In this lesson, you learned what a user journey is and why they are so valuable for testing. Then you learned about a possible user journey a user of our course application can take. Finally, we wrote a single test that covered and verified all of the steps in our user journey.
+
+Congrats on completing the first course 🎉
+
+You are now prepared to take the next course, [Testing Foundations](https://learn.cypress.io/testing-foundations).
