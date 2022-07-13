@@ -45,7 +45,7 @@ module.exports = {
         permanent: true,
       },
       {
-        source: "testing-your-first-application/how-to-use-cypress-commands",
+        source: "/testing-your-first-application/how-to-use-cypress-commands",
         destination:
           "/testing-your-first-application/how-to-test-forms-and-custom-cypress-commands",
         permanent: true,
