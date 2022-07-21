@@ -173,9 +173,19 @@ describe("User Journey", () => {
 
 ![Screen Shot 2022-07-12 at 10.14.14 AM.png](/images/testing-your-first-application/how-to-test-user-journeys/Screen_Shot_2022-07-12_at_10.14.14_AM.png)
 
-## Final code
+## Practice
 
-```tsx
+Now it is time for you to put what you have just learned into practice. Finish writing this user journey test so that the user completes all of the lessons in the first course.
+
+Once they have, the next lesson button that appears after completing the final quiz should say "Complete course" and then take them to the home page.
+
+If you get stuck the answers are provided below.
+
+## Practice Answers
+
+<Disclosure>
+
+```jsx
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -186,15 +196,29 @@ describe("User Journey", () => {
       "eq",
       "/testing-your-first-application/app-install-and-overview"
     )
+
     cy.getByData("challenge-answer-0").click()
     cy.getByData("next-lesson-button").should("exist").click()
     cy.location("pathname").should(
       "eq",
       "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
     )
+
+    cy.getByData("challenge-answer-0").click()
+    cy.getByData("next-lesson-button").should("exist").click()
+    cy.location("pathname").should(
+      "eq",
+      "/testing-your-first-application/setting-up-data-before-each-test"
+    )
+    cy.getByData("challenge-answer-0").click()
+    cy.getByData("next-lesson-button").should("exist").click()
+
+    cy.location("pathname").should("eq", "/")
   })
 })
 ```
+
+</Disclosure>
 
 ## Wrap Up
 
@@ -202,4 +226,4 @@ In this lesson, you learned what a user journey is and why they are so valuable 
 
 Congrats on completing the first course 🎉
 
-You are now prepared to take the next course, [Testing Foundations](https://learn.cypress.io/testing-foundations).
+You are now prepared to take the next course, [Testing Foundations](/testing-foundations).
