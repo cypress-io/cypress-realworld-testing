@@ -1,40 +1,33 @@
 describe("Complete Lesson Button", () => {
   it("Links to the correct lesson when clicked", () => {
-    cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
+    cy.visit("/testing-your-first-application/app-install-and-overview")
     cy.getBySel("next-lesson-button").should("not.exist")
     cy.getBySel("complete-lesson-button").should("exist").click()
 
     cy.location("pathname").should(
       "eq",
-      "/testing-your-first-application/installing-cypress-and-writing-our-first-test"
+      "/testing-your-first-application/installing-cypress-and-writing-your-first-test"
     )
     cy.getBySel("next-lesson-button").should("not.exist")
     cy.getBySel("complete-lesson-button").should("exist").click()
 
     cy.location("pathname").should(
       "eq",
-      "/testing-your-first-application/setting-up-data-before-each-test"
+      "/testing-your-first-application/how-to-test-forms-and-custom-cypress-commands"
     )
     cy.getBySel("next-lesson-button").should("not.exist")
     cy.getBySel("complete-lesson-button").should("exist").click()
 
     cy.location("pathname").should(
       "eq",
-      "/testing-your-first-application/how-to-use-cypress-commands"
+      "/testing-your-first-application/how-to-test-multiple-pages"
     )
     cy.getBySel("next-lesson-button").should("not.exist")
     cy.getBySel("complete-lesson-button").should("exist").click()
 
     cy.location("pathname").should(
       "eq",
-      "/testing-your-first-application/cypress-command-logs-snapshots-and-aliases"
-    )
-    cy.getBySel("next-lesson-button").should("not.exist")
-    cy.getBySel("complete-lesson-button").should("exist").click()
-
-    cy.location("pathname").should(
-      "eq",
-      "/testing-your-first-application/testing-what-isnt-there"
+      "/testing-your-first-application/how-to-test-user-journeys"
     )
     cy.getBySel("next-lesson-button").should("not.exist")
     cy.getBySel("complete-lesson-button").should("exist").click()
@@ -43,7 +36,7 @@ describe("Complete Lesson Button", () => {
   })
 
   it("only shows on 'testing your first application' lesson pages", () => {
-    cy.visit("/testing-your-first-application/todomvc-app-install-and-overview")
+    cy.visit("/testing-your-first-application/app-install-and-overview")
     cy.getBySel("next-lesson-button").should("not.exist")
     cy.getBySel("complete-lesson-button").should("exist")
 

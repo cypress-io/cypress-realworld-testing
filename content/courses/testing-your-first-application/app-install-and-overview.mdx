@@ -1,0 +1,146 @@
+# App Installation & Overview
+
+<YouTube id="-dgsVek-5sE" />
+
+## Intro
+
+Welcome to the Testing your first application course. In this course, we are going to learn how to install Cypress, how to write end-to-end tests and some best practices along the way.
+
+:::info
+Before we begin, this content was written with the assumption that you know the basics of HTML, CSS, and JavaScript. It is ok if you have never used Cypress before. We will teach you everything you need to know.
+
+:::
+
+## Installing the application
+
+You are going to need to download or clone a copy of the application onto your computer to follow along.
+
+There are a couple of different ways you can do this.
+
+### Cloning with Git
+
+If you are familiar with Git and already have it installed the easiest way to clone [the repo](https://github.com/cypress-io/cypress-realworld-testing-course-app/tree/start) is to run this command in your terminal.
+
+:::info
+Running this command will download the repo on the “start” branch. It is very important you are on the “start” branch and **not** on master.
+:::
+
+```bash
+git clone --branch start git@github.com:cypress-io/cypress-realworld-testing-course-app.git
+```
+
+### Downloading a zip file
+
+If you are not familiar with Git or don’t have it installed, you can easily download a zip file of the repo [here](https://github.com/cypress-io/cypress-realworld-testing-course-app/tree/start).
+
+:::info
+You want to make sure you are on the “start” branch. The link provided should do this for you automatically, but you should double-check anyways.
+:::
+
+![Screen Shot 2022-06-27 at 4.05.46 PM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-27_at_4.05.46_PM.png)
+
+:::tip
+You can click on the images to enlarge them.
+:::
+
+Next, click on the green “Code” button and then click on “Download ZIP.” This will download a zip file of the repo onto your computer which you will then need to unzip.
+
+![Screen Shot 2022-06-27 at 3.54.47 PM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-27_at_3.54.47_PM.png)
+
+## Installing the application
+
+Now that you have either cloned the repo or downloaded it, you will need to install all of the npm packages and dependencies. You will need to install [NodeJS](https://nodejs.org/en/) if you don’t have it already installed on your computer. You want to make sure that you download the “LTS” version of Node and not the “Current” version.
+
+This repo will be updated regularly to support the latest LTS versions only.
+
+## VSCode
+
+Now that we have Node installed, we are going to need to open the repo in a text editor. In this tutorial, we will be using [VSCode](https://code.visualstudio.com/). You are free to use any text editor you like, but we highly recommend using [VSCode](https://code.visualstudio.com/).
+
+Within VSCode, you can open the repo via File > Open Folder
+
+![Screen Shot 2022-06-28 at 8.12.25 AM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-28_at_8.12.25_AM.png)
+
+Now that you have the application opened inside of VSCode we can use the built-in terminal to install our NPM packages.
+
+You can open the terminal via Terminal > New Terminal
+
+![Screen Shot 2022-06-28 at 8.14.01 AM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-28_at_8.14.01_AM.png)
+
+![Screen Shot 2022-06-28 at 8.14.17 AM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-28_at_8.14.17_AM.png)
+
+## Installing our NPM dependencies
+
+Before we install our dependencies let’s make sure we are running the correct version of NodeJS.
+
+In the terminal type the following and then press enter
+
+```bash
+node -v
+```
+
+The terminal should output the same version as the LTS version of NodeJS you downloaded.
+
+![Screen Shot 2022-06-28 at 8.16.50 AM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-28_at_8.16.50_AM.png)
+
+Then type the following to install all of our NPM dependencies.
+
+```bash
+npm install
+```
+
+![Screen Shot 2022-06-28 at 8.19.48 AM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-28_at_8.19.48_AM.png)
+
+## Starting the application
+
+Now that we have all of our application dependencies installed, we can start the application with the following command.
+
+```bash
+npm run dev
+```
+
+![Screen Shot 2022-06-28 at 8.21.11 AM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-28_at_8.21.11_AM.png)
+
+Then you can open your web browser and enter [localhost:300](http://localhost:300)0 in the address bar to see the app.
+
+![Screen Shot 2022-06-28 at 8.22.10 AM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-28_at_8.22.10_AM.png)
+
+## App Overview
+
+The application we are going to be testing is a course application. Its behavior and functionality are virtually identical to the official [Real World Testing with Cypress](https://learn.cypress.io/) site you are currently reading this on.
+
+Before we begin writing tests for this app, it is helpful to have a basic understanding of the pages and functionality.
+
+### Home Page
+
+![screencapture-localhost-3000-2022-06-28-08_25_02.png](/images/testing-your-first-application/app-install-and-overview/screencapture-localhost-3000-2022-06-28-08_25_02.png)
+
+The home page is a basic landing page that showcases the three courses of our app. Each course is listed with the lessons contained within each course and also a “Get started” button. Clicking on this button will take you to the course’s landing page.
+
+### Course Page
+
+![screencapture-localhost-3000-testing-your-first-application-2022-06-28-08_31_47.png](/images/testing-your-first-application/app-install-and-overview/screencapture-localhost-3000-testing-your-first-application-2022-06-28-08_31_47.png)
+
+The course page provides some additional information and details about the specific course and also lists all of the lessons contained within it on the left-hand side. The small circle to the left of each lesson indicates whether or not the lesson has been completed or not. When a lesson has been completed, the circle will be filled in, like so:
+
+![Screen Shot 2022-06-28 at 8.33.22 AM.png](/images/testing-your-first-application/app-install-and-overview/Screen_Shot_2022-06-28_at_8.33.22_AM.png)
+
+You will notice in this screenshot that the text of our button has changed from “Start Course” to “Next Lesson” since we have completed the first lesson. This button is dynamic and will update the text and link to the next lesson automatically. Clicking on the button will take you to the lesson page.
+
+### Lesson page
+
+![screencapture-localhost-3000-testing-your-first-application-app-install-and-overview-2022-06-28-08_36_52.png](/images/testing-your-first-application/app-install-and-overview/screencapture-localhost-3000-testing-your-first-application-app-install-and-overview-2022-06-28-08_36_52.png)
+
+The lesson page contains the content of the lesson in the middle section. On the left-hand side is the table of contents for the lesson which are links that when clicked jump to that section in the content. On the right-hand side is a progress indicator showing how many lessons in the course are complete or incomplete.
+
+At the very bottom of each lesson is a quiz. In this application, the correct answer is always “True.” After clicking on the correct answer, a “Next Lesson” button appears and the lesson is marked as completed in the right-hand progress indicator.
+
+![screencapture-localhost-3000-testing-your-first-application-app-install-and-overview-2022-06-28-08_39_49.png](/images/testing-your-first-application/app-install-and-overview/screencapture-localhost-3000-testing-your-first-application-app-install-and-overview-2022-06-28-08_39_49.png)
+
+## Wrap up
+
+In this lesson, you learned how to install the course application either via Git or by downloading a zip file. Next, you learned how to install NodeJS, VSCode, and the application dependencies via NPM. After installing everything, you learned how to launch the app’s dev server on `localhost:3000`
+
+Finally, you learned the various pages and functionality of the app. You should now have a basic understanding of what the app is, how it works, some of its core functionality, etc.
+
+In the next lesson, you will learn how to install Cypress and how to write tests for the course app.

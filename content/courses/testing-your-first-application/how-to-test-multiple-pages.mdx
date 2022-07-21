@@ -1,0 +1,289 @@
+# How to test multiple pages
+
+<YouTube id="ZyalhygcSRw" />
+
+In this lesson, we are going to learn how to write tests that span multiple pages. This is extremely common when writing E2E tests as oftentimes you need to click on a button or a link that navigates to a new page.
+
+In the context of our course application, on the home page, there is a section for each course, like so:
+
+![Screen Shot 2022-07-12 at 8.25.04 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_8.25.04_AM.png)
+
+:::tip
+You can click on the images to enlarge them.
+:::
+
+The “Get started” button links to the course page and provides more details about the lessons contained within that course.
+
+![screencapture-localhost-3000-testing-your-first-application-2022-07-12-08_25_51.png](/images/testing-your-first-application/how-to-test-multiple-pages/screencapture-localhost-3000-testing-your-first-application-2022-07-12-08_25_51.png)
+
+## Writing our multiple page test
+
+Now that we understand how these “Get started” buttons work on the home page, let’s write some tests for them. We will be writing these tests in the `home.cy.ts` spec file.
+
+Our spec file up until this point looks like the following:
+
+```jsx
+describe("home page", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000")
+  })
+
+  it("the h1 contains the correct text", () => {
+    cy.getByData("hero-heading").contains(
+      "Testing Next.js Applications with Cypress"
+    )
+  })
+
+  it("the features on the homepage are correct", () => {
+    cy.get("dt").eq(0).contains("4 Courses")
+    cy.get("dt").eq(1).contains("25+ Lessons")
+    cy.get("dt").eq(2).contains("Free and Open Source")
+  })
+})
+```
+
+## Aside: organizing tests with context
+
+Currently, all of the tests within the `home.cy.ts` spec file are related to the hero section of our home page. We are now about to write tests for an entirely different section of our home page. While we could just go ahead and start writing our tests, wouldn’t it be easier if we could group related tests together? We can do this using context.
+
+What the context method does is allow us to group related tests together making our spec file easier to read. Here is what our updated spec file looks like when we use context.
+
+```jsx
+describe("home page", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000")
+  })
+
+  context("Hero section", () => {
+    it("the h1 contains the correct text", () => {
+      cy.getByData("hero-heading").contains(
+        "Testing Next.js Applications with Cypress"
+      )
+    })
+
+    it("the features on the homepage are correct", () => {
+      cy.get("dt").eq(0).contains("4 Courses")
+      cy.get("dt").eq(1).contains("25+ Lessons")
+      cy.get("dt").eq(2).contains("Free and Open Source")
+    })
+  })
+})
+```
+
+As you can see by using context we can wrap all of the tests related to the hero section of our home page together which makes it quick and easy for anyone reading this spec file to know that these tests are for the hero section of our home page.
+
+If we run our tests, everything is still passing.
+
+![Screen Shot 2022-07-12 at 8.34.26 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_8.34.26_AM.png)
+
+Also, when you are running your tests in headless mode, which is how then will run in Continuous Integration, you will see the following in the output.
+
+![Screen Shot 2022-07-12 at 8.36.33 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_8.36.33_AM.png)
+
+Notice how all of the tests related to the hero section are nested underneath the “Hero section” heading. This too makes it very easy to understand which tests are for what at a quick glance.
+
+## Test: Courses section
+
+Now that we understand how context works, let’s create a new context for the courses section of our home page.
+
+```jsx
+describe("Home page", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000")
+  })
+
+  context("Hero section", () => {
+    it("the h1 contains the correct text", () => {
+      cy.getByData("hero-heading").contains(
+        "Testing Next.js Applications with Cypress"
+      )
+    })
+
+    it("the features on the homepage are correct", () => {
+      cy.get("dt").eq(0).contains("4 Courses")
+      cy.get("dt").eq(1).contains("25+ Lessons")
+      cy.get("dt").eq(2).contains("Free and Open Source")
+    })
+  })
+
+  context("Courses section", () => {})
+})
+```
+
+Next, we will create a new test for the first course, “Testing Your First Next.js Application.”
+
+```jsx
+// ...
+
+context("Courses section", () => {
+  it("Course: Testing Your First Next.js Application", () => {})
+})
+```
+
+Now, we need to get the “Get started” button, however, there is a slight problem. The “Get started” buttons do not have a `data-test` attribute on them. Since we have access to our application's source code, we could easily add them, however, what do we do if we don’t? If we inspect the DOM, with our browser’s dev tools, we can see that each course is wrapped in the following markup.
+
+![Screen Shot 2022-07-12 at 8.50.32 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_8.50.32_AM.png)
+
+```html
+<div data-test="course-0"></div>
+```
+
+We are now going to learn a new Cypress command that allows us to narrow down the scope in which Cypress looks for an element. We can tell Cypress to [find](https://docs.cypress.io/api/commands/find) elements that are within this element, ie: the elements direct children.
+
+```jsx
+context("Courses section", () => {
+  it.only("Course: Testing Your First Next.js Application", () => {
+    cy.getByData("course-0").find("a")
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 8.57.15 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_8.57.15_AM.png)
+
+If we run our test, you will see that Cypress has found four `<a>` tags within the `<div data-test="course-0">` element. In a previous test, we used [eq](https://docs.cypress.io/api/commands/eq) to select a specific element from the returned array. So let’s update our test to use the eq command and select the last element in the array which is our button.
+
+```jsx
+context("Courses section", () => {
+  it.only("Course: Testing Your First Next.js Application", () => {
+    cy.getByData("course-0").find("a").eq(3)
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 9.00.12 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_9.00.12_AM.png)
+
+Now that we have our button, all that is left to do is to click on it.
+
+```jsx
+context("Courses section", () => {
+  it.only("Course: Testing Your First Next.js Application", () => {
+    cy.getByData("course-0").find("a").eq(3).click()
+  })
+})
+```
+
+![Screen Shot 2022-07-12 at 9.01.18 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_9.01.18_AM.png)
+
+As you can see we have successfully clicked on our button and navigated to the course page.
+
+## Reminder: best practices
+
+Remember, how in a previous lesson we stressed the importance of using `data` attributes for your tests. Ideally, they should always be used, but sometimes you are unable to make modifications to the markup, and as a result, you need to do things like this:
+
+```jsx
+cy.getByData("course-0").find("a").eq(3).click()
+```
+
+This is quite brittle and should only be used sparingly. If a lesson is added or removed from our course, our test is going to break since we are relying upon the specific ordering of the elements returned in this array.
+
+So remember to use `data` attributes whenever possible, otherwise, your tests can be quite brittle and break in the future.
+
+## Testing the correct URL or pathname
+
+Now that we have successfully clicked on our button and navigated to our course page, let’s write an assertion that verifies the button navigates to the correct page. We can do this by writing an assertion that verifies that the URL of our course page is correct like so:
+
+```jsx
+context("Courses section", () => {
+  it.only("Course: Testing Your First Next.js Application", () => {
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+  })
+})
+```
+
+We are using the [location](https://docs.cypress.io/api/commands/location) API to get the “pathname” which is the URL of our application. Then we write our assertion to make sure that it equals the correct URL or path.
+
+![Screen Shot 2022-07-12 at 9.10.40 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_9.10.40_AM.png)
+
+Congrats! You have now learned how to write tests that span multiple pages.
+
+## Practice
+
+Now it is time for you to put what you have just learned into practice. Write two additional tests, one for each course on the home page, and verify that the “Get started” button links to the correct course page.
+
+Hint: You can copy and paste the test we just wrote:
+
+```jsx
+it("Course: Testing Your First Next.js Application", () => {
+  cy.getByData("course-0").find("a").eq(3).click()
+  cy.location("pathname").should("eq", "/testing-your-first-application")
+})
+```
+
+and make slight modifications for each course and course page.
+
+If you get stuck the answers are provided below.
+
+## Practice Answers
+
+<Disclosure>
+
+```jsx
+context("Courses section", () => {
+  it("Course: Testing Your First Next.js Application", () => {
+    cy.getByData("course-0").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-your-first-application")
+  })
+
+  it("Course: Testing Foundations", () => {
+    cy.getByData("course-1").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/testing-foundations")
+  })
+
+  it("Course: Cypress Fundamentals", () => {
+    cy.getByData("course-2").find("a").eq(3).click()
+    cy.location("pathname").should("eq", "/cypress-fundamentals")
+  })
+})
+```
+
+</Disclosure>
+
+## Final Spec file
+
+<Disclosure>
+
+```js
+describe("Home page", () => {
+  beforeEach(() => {
+    cy.visit("http://localhost:3000")
+  })
+
+  context("Hero section", () => {
+    it("the h1 contains the correct text", () => {
+      cy.getByData("hero-heading").contains(
+        "Testing Next.js Applications with Cypress"
+      )
+    })
+
+    it("the features on the homepage are correct", () => {
+      cy.get("dt").eq(0).contains("4 Courses")
+      cy.get("dt").eq(1).contains("25+ Lessons")
+      cy.get("dt").eq(2).contains("Free and Open Source")
+    })
+  })
+
+  context("Courses section", () => {
+    it("Course: Testing Your First Next.js Application", () => {
+      cy.getByData("course-0").find("a").eq(3).click()
+      cy.location("pathname").should("eq", "/testing-your-first-application")
+    })
+
+    it("Course: Testing Foundations", () => {
+      cy.getByData("course-1").find("a").eq(3).click()
+      cy.location("pathname").should("eq", "/testing-foundations")
+    })
+
+    it("Course: Cypress Fundamentals", () => {
+      cy.getByData("course-2").find("a").eq(3).click()
+      cy.location("pathname").should("eq", "/cypress-fundamentals")
+    })
+  })
+})
+```
+
+</Disclosure>
+
+## Wrap Up
+
+In this lesson, you learned how to write tests for multiple pages. You learned how to narrow down the scope in which Cypress looks for elements using the [find](https://docs.cypress.io/api/commands/find) command. You also learned how to write assertions against URLs using the [location](https://docs.cypress.io/api/commands/location) command.

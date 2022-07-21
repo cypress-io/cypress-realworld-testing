@@ -24,6 +24,8 @@ import { isLessonCompleted } from "../../utils/machineUtils"
 import coursesJson from "../../data/courses.json"
 import { useActor } from "@xstate/react"
 import CopyToClipboard from "@/components/CopyToClipboard"
+import Disclosure from "@/components/Disclosure"
+import YouTube from "@/components/YouTube"
 
 const CompleteLessonBtn = dynamic(
   () => import("../../components/Lesson/CompleteLessonBtn"),
@@ -52,6 +54,8 @@ const components = {
   Head,
   apiLink,
   pre: CopyToClipboard,
+  Disclosure,
+  YouTube,
 }
 
 type Props = {
