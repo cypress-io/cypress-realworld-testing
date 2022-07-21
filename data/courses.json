@@ -246,7 +246,7 @@
     "title": "Advanced Cypress Testing Concepts",
     "slug": "advanced-cypress-concepts",
     "description": "Some of the more advanced Cypress testing concepts that take your tests to the next level.",
-    "image": "/images/courses/pay-app.png",
+    "image": "/images/courses/pay-app.jpg",
     "learnFeatures": [
       "How to debug test failures",
       "Database initialization and seeding",
