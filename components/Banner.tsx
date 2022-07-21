@@ -17,14 +17,12 @@ export default function Banner({ bannerService }) {
             </span>
             <p className="ml-3 truncate font-medium text-white">
               <span className="md:hidden">Cypress 10 Updates</span>
-              <span className="hidden md:inline">
-                Cypress 10 Content Updates &amp; GitHub Discussions
-              </span>
+              <span className="hidden md:inline">New course announcement</span>
             </p>
           </div>
           <div className="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto">
             <a
-              href="https://github.com/cypress-io/cypress-realworld-testing/discussions"
+              href="https://github.com/cypress-io/cypress-realworld-testing/discussions/153"
               className="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50"
               target="_blank"
               rel="noreferrer"
