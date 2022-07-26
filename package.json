@@ -84,6 +84,6 @@
     "typescript": "^4.3.5",
     "unslugify": "^1.0.2",
     "url-loader": "^4.1.1",
-    "vuepress": "^1.8.2"
+    "vuepress": "^1.9.7"
   }
 }
