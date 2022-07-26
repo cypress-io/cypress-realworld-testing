@@ -1,5 +1,7 @@
 # Command Chaining
 
+<YouTube id="WHDvViZazWI" />
+
 It's important to understand the mechanism Cypress uses to chain commands together. It manages a Promise chain on your behalf, with each command yielding a 'subject' to the following command until the chain ends or there is an error. The developer should not need to use Promises directly, but understanding how they work is helpful.
 
 For example, a chain of Cypress commands looks like this:
