@@ -22,24 +22,6 @@ describe("Lesson Pages", () => {
   })
 
   context("Table of Contents", () => {
-    if (!isMobile()) {
-      it("the TOC links to the correct content section when clicked", () => {
-        cy.getBySel("toc-sidebar").within(() => {
-          cy.getBySel("toc-link").each(($link, index) => {
-            const href = $link.attr("href")
-            cy.wrap($link).click()
-
-            cy.window().then(($window) => {
-              expect($window.scrollY).to.be.closeTo(
-                Math.ceil(cy.$$(`${href}`).offset().top),
-                5
-              )
-            })
-          })
-        })
-      })
-    }
-
     it("links to the correct content lesson when clicked", () => {
       cy.visit("/testing-your-first-application/app-install-and-overview")
       cy.getBySel("sidebar-toc-link-1").click({ force: true })
