@@ -197,19 +197,6 @@
         ]
       },
       {
-        "title": "Cypress UI Overview",
-        "slug": "cypress-ui-overview",
-        "description": "An overview of the Cypress test runner UI.",
-        "challenges": [
-          {
-            "challengeType": "multiple-choice",
-            "question": "The selector playground allows you to copy the cypress command to cy.get() an element in your app",
-            "answers": ["True", "False"],
-            "correctAnswerIndex": 0
-          }
-        ]
-      },
-      {
         "title": "How to Debug Failing Tests",
         "slug": "how-to-debug-failing-tests",
         "description": "Best practices and tips on how to debug failing tests.",
