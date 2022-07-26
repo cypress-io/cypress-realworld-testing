@@ -3,7 +3,7 @@ import { isMobile } from "../support/utils"
 
 describe("Lesson Pages", () => {
   beforeEach(() => {
-    cy.visit("/cypress-fundamentals/cypress-ui-overview")
+    cy.visit("/cypress-fundamentals/how-to-debug-failing-tests")
   })
 
   it("shows the challenge", () => {
