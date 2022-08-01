@@ -277,14 +277,14 @@ describe("Newsletter Subscribe Form", () => {
     cy.getByData("success-message").should("exist").contains("tom@aol.com")
   })
 
-  it("does NOT allow a invalid email address", () => {})
+  it("does NOT allow an invalid email address", () => {})
 })
 ```
 
 We can then copy and paste the contents from our previous test and make a slight modification.
 
 ```jsx
-it("does NOT allow a invalid email address", () => {
+it("does NOT allow an invalid email address", () => {
   cy.getByData("email-input").type("tom")
   cy.getByData("submit-button").click()
   cy.getByData("success-message").should("not.exist")
@@ -339,7 +339,7 @@ describe("Newsletter Subscribe Form", () => {
     cy.getByData("success-message").should("exist").contains("tom@aol.com")
   })
 
-  it("does NOT allow a invalid email address", () => {
+  it("does NOT allow an invalid email address", () => {
     cy.getByData("email-input").type("tom")
     cy.getByData("submit-button").click()
     cy.getByData("success-message").should("not.exist")
