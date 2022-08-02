@@ -58,7 +58,7 @@
     "@types/lodash": "^4.14.172",
     "@types/mocha": "^9.0.0",
     "@types/react": "^17.0.15",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^10.4.8",
     "chai": "^4.3.4",
     "cypress": "^10.3.0",
     "eslint": "^7.32.0",
