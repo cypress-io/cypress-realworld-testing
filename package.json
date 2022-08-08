@@ -51,7 +51,7 @@
     "react-slick": "^0.28.1",
     "rehype-slug": "^5.0.0",
     "remark-admonitions": "^1.2.1",
-    "xstate": "^4.23.1"
+    "xstate": "^4.33.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.21",
