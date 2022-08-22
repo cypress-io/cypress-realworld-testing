@@ -31,7 +31,7 @@
   "dependencies": {
     "@docsearch/react": "^3.0.0-alpha.41",
     "@headlessui/react": "^1.6.6",
-    "@heroicons/react": "^1.0.3",
+    "@heroicons/react": "^1.0.6",
     "@mapbox/rehype-prism": "^0.8.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.4.0",
