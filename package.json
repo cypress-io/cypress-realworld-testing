@@ -29,7 +29,7 @@
     "update-algolia-index": "yarn create-search-index && ts-node scripts/updateAlgoliaIndex.ts"
   },
   "dependencies": {
-    "@docsearch/react": "^3.0.0-alpha.41",
+    "@docsearch/react": "^3.2.1",
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^1.0.3",
     "@mapbox/rehype-prism": "^0.8.0",
@@ -61,11 +61,11 @@
     "chai": "^4.3.4",
     "cypress": "^10.5.0",
     "eslint": "^7.32.0",
-    "eslint-config-next": "^12.2.4",
+    "eslint-config-next": "^12.2.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gray-matter": "^4.0.3",
-    "husky": "^7.0.1",
+    "husky": "^8.0.1",
     "markdown-toc-unlazy": "^1.0.1",
     "mocha": "^9.0.3",
     "next-mdx-remote": "^3.0.4",
