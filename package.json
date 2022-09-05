@@ -33,7 +33,7 @@
     "@headlessui/react": "^1.6.6",
     "@heroicons/react": "^2.0.8",
     "@mapbox/rehype-prism": "^0.8.0",
-    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.0",
     "@types/glob": "^7.2.0",
