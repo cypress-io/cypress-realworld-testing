@@ -18,7 +18,7 @@ Or maybe you want to get the property from an object and make an assertion.
 cy.wrap({ age: 52 }).its("age").should("eq", 52) // true
 ```
 
-In the example in the Invoke section above, we are using <apiLink apiName="its" displayName=".its()" /> to grab the `results` from the `@publicTransactions` alias, which is an intercepted network request.
+In the example in the Invoke section below, we are using <apiLink apiName="its" displayName=".its()" /> to grab the `results` from the `@publicTransactions` alias, which is an intercepted network request.
 
 ```js
 it("first five items belong to contacts in public feed", () => {
