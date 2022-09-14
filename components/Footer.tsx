@@ -11,7 +11,7 @@ const navigation = {
     },
     {
       name: "Discord",
-      href: "https://discord.gg/cMjUZg7",
+      href: "https://discord.com/invite/cypress",
     },
     {
       name: "GitHub",
