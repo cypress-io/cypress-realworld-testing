@@ -19,12 +19,6 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Cypress install only
-        uses: cypress-io/github-action@v2
-        with:
-          runTests: false
-          headless: true
-
       - name: build and run webapp
         run: |
           yarn install
