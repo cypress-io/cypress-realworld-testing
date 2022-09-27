@@ -31,10 +31,6 @@ jobs:
       - name: cypress test run
         run: yarn cypress:run
 
-      - name: archive screenshots
-        working-directory: cypress
-        run: tar zcvf screenshots.tar.gz screenshots
-
 
       - name: upload files
         uses: softprops/action-gh-release@v1
