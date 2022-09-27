@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '16'
 
-      - uses: enable yarn
+      - name: enable yarn
         run: corepack enable
 
       - name: build and run webapp
