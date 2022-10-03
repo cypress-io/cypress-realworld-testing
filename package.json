@@ -61,7 +61,7 @@
     "chai": "^4.3.4",
     "cypress": "^10.5.0",
     "eslint": "^7.32.0",
-    "eslint-config-next": "^12.2.5",
+    "eslint-config-next": "^12.3.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gray-matter": "^4.0.3",
