@@ -50,6 +50,7 @@ it("comments on a transaction", () => {
     cy.getBySelLike("comments-list").children().should("have.length", comments.length);
     cy.visualSnapshot("Comment on Transaction");
   });
+  );
 ```
 
 ## Practice
