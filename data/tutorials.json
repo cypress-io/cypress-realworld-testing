@@ -31,9 +31,9 @@
         "description": "How to run our tests in continuous integration with GitHub Actions"
       },
       {
-        "title": "Running Our Tests in Parallel with Cypress Dashboard",
+        "title": "Running Our Tests in Parallel with Cypress Cloud",
         "slug": "running-our-tests-in-parallel-with-cypress-dashboard",
-        "description": "How to run our tests in parallel using the Cypress Dashboard"
+        "description": "How to run our tests in parallel using the Cypress Cloud"
       },
       {
         "title": "Deploying to Vercel",
