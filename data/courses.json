@@ -255,7 +255,7 @@
         "challenges": [
           {
             "challengeType": "multiple-choice",
-            "question": "The Cypress dashboard provides automatic parallelization and load balancing for your tests.",
+            "question": "Cypress Cloud provides automatic parallelization and load balancing for your tests.",
             "answers": ["True", "False"],
             "correctAnswerIndex": 0
           }

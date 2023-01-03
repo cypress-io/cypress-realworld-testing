@@ -1,8 +1,8 @@
-# Running Our Tests in Parallel with Cypress Dashboard
+# Running Our Tests in Parallel with Cypress Cloud
 
-In this lesson, we will learn how to integrate the [Cypress Dashboard](https://www.cypress.io/dashboard/) with GitHub Actions so that our tests will run in parallel. The Dashboard will also provide us with greater insights into our tests which will come in handy anytime our tests fail.
+In this lesson, we will learn how to integrate [Cypress Cloud](https://www.cypress.io/cloud/) with GitHub Actions so that our tests will run in parallel. Cypress Cloud will also provide us with greater insights into our tests which will come in handy anytime our tests fail.
 
-You will need to signup for a free account over at [cypress.io/dashboard](https://www.cypress.io/dashboard/). We recommend using your GitHub account to register.
+You will need to signup for a free account over at [cypress.io/cloud](https://www.cypress.io/cloud/). We recommend using your GitHub account to register.
 
 After creating your account and logging in, you will need to create your first project.
 
@@ -43,7 +43,7 @@ CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-We also need to add `record: true` underneath the `wait-on:` directive. This will tell the dashboard to record our test runs.
+We also need to add `record: true` underneath the `wait-on:` directive. This will tell Cypress Cloud to record our test runs.
 
 The entire GitHub Actions workflow file should look like this:
 
@@ -77,7 +77,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-Note that we are passing the `GITHUB_TOKEN` as well. This does not need to be in our GitHub secrets, GitHub will handle this for us. It is used by the dashboard to detect a build vs a re-run build.
+Note that we are passing the `GITHUB_TOKEN` as well. This does not need to be in our GitHub secrets, GitHub will handle this for us. It is used by Cypress Cloud to detect a build vs a re-run build.
 
 Save your changes and push them up to GitHub.
 
@@ -87,7 +87,7 @@ git commit -m "added Cypress dashboard projectID and env vars to GHA config"
 git push origin github-actions-cypress-tests
 ```
 
-If you check the Cypress dashboard you should see the latest runs.
+If you check Cypress Cloud you should see the latest runs.
 
 ![Screen Shot 2021-12-17 at 9.41.53 AM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.41.53_AM.png)
 
@@ -95,7 +95,7 @@ After clicking on it, you can then inspect the test results.
 
 ![Screen Shot 2021-12-17 at 9.42.36 AM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2021-12-17_at_9.42.36_AM.png)
 
-Now that our tests are hooked up to the dashboard we can easily inspect each test whenever there is a failure. The dashboard will provide a screenshot of the exact point of failure and even a video that we can watch to see exactly where and why our tests failed.
+Now that our tests are hooked up to Cypress Cloud we can easily inspect each test whenever there is a failure. Cypress Cloud will provide a screenshot of the exact point of failure and even a video that we can watch to see exactly where and why our tests failed.
 
 ## Running our Tests in Parallel
 
@@ -286,10 +286,10 @@ All of our tests are passing and finished in a fraction of the time since we hav
 
 ![rwa-readme-screenshot.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/rwa-readme-screenshot.png)
 
-If you would like to see how the dashboard integrates with a real-world application, check out the [Real World App](https://github.com/cypress-io/cypress-realworld-app) created by the Cypress team. The [Real World App](https://github.com/cypress-io/cypress-realworld-app) (RWA) is a payment application that demonstrates **real-world** usage of Cypress testing methods, patterns, and workflows. The Cypress dashboard for this application is open to the public so feel free to inspect any PR to see how it integrates with the Dashboard.
+If you would like to see how Cypress Cloud integrates with a real-world application, check out the [Real World App](https://github.com/cypress-io/cypress-realworld-app) created by the Cypress team. The [Real World App](https://github.com/cypress-io/cypress-realworld-app) (RWA) is a payment application that demonstrates **real-world** usage of Cypress testing methods, patterns, and workflows. Cypress Cloud for this application is open to the public so feel free to inspect any PR to see how it integrates with Cypress Cloud.
 
 [https://github.com/cypress-io/cypress-realworld-app](https://github.com/cypress-io/cypress-realworld-app/blob/develop/.github/workflows/main.yml)
 
 ## Summary
 
-In this lesson, we learned how to send our tests to the Cypress Dashboard. Then we learned how to configure our GitHub Action to run our tests in parallel with the Dashboard.
+In this lesson, we learned how to send our tests to Cypress Cloud. Then we learned how to configure our GitHub Action to run our tests in parallel with Cypress Cloud.

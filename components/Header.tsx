@@ -44,8 +44,8 @@ const company = [
     icon: NewspaperIcon,
   },
   {
-    name: "Dashboard",
-    href: "https://www.cypress.io/dashboard",
+    name: "Cypress Cloud",
+    href: "https://www.cypress.io/cloud",
     icon: TemplateIcon,
   },
   {
