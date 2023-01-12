@@ -37,7 +37,7 @@ const company = [
     href: "https://www.cypress.io/",
     icon: InformationCircleIcon,
   },
-  { name: "Careers", href: "https://www.cypress.io/jobs", icon: BriefcaseIcon },
+  { name: "Careers", href: "https://www.cypress.io/careers/", icon: BriefcaseIcon },
   {
     name: "Blog",
     href: "https://www.cypress.io/blog/",
@@ -83,7 +83,7 @@ const updates = [
   {
     id: 1,
     name: "We're Hiring",
-    href: "https://www.cypress.io/jobs/",
+    href: "https://www.cypress.io/careers/",
     preview: "Want to help create something innovative? Join our team!",
   },
 ]
