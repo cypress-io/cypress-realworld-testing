@@ -28,7 +28,7 @@ Cypress.Commands.add("getByData", (selector) => {
 
 :::warning
 
-Since we are using TypeScript, you may get some errors from the compiler saying that it is unable to detect the types in our custom command. You can fix this, by creating the file `cypress/support/index.ts` and adding the following:
+Since we are using TypeScript, you may get some errors from the compiler saying that it is unable to detect the types in our custom command. You can fix this, by updating the file `cypress/global.d.ts` and adding the following:
 
 :::
 
@@ -37,7 +37,8 @@ Since we are using TypeScript, you may get some errors from the compiler saying 
 
 declare namespace Cypress {
   interface Chainable {
-    getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>
+    //...
+    getByData(dataTestAttribute: string): Chainable<Element>
   }
 }
 ```
