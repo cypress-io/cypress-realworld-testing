@@ -1,13 +1,7 @@
 version: 2.1
 
 orbs:
-  cypress: cypress-io/cypress@1.28.0
-
-executors:
-  with-chrome-and-firefox:
-    docker:
-      - image: "cypress/browsers:node16.14.2-slim-chrome100-ff99-edge"
-    resource_class: medium+
+  cypress: cypress-io/cypress@3
 
 jobs:
   update-algolia-index:
@@ -20,51 +14,26 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      - cypress/install:
-          name: "Setup Linux"
-          yarn: true
-          executor: with-chrome-and-firefox
-          build: "yarn build"
-          post-steps:
-            - run:
-                name: Print machine info ℹ️
-                command: yarn cypress info
-            - run:
-                name: Check Types
-                command: yarn types
-            - run:
-                name: Lint Files
-                command: yarn lint
-            - run:
-                name: Run Unit Tests
-                command: yarn test:unit
-
-      # Run E2E tests in Chrome
       - cypress/run:
-          name: "UI Tests - Chrome"
-          browser: chrome
-          executor: with-chrome-and-firefox
-          wait-on: "http://localhost:3000"
-          yarn: true
-          start: yarn start
-          requires:
-            - Setup Linux
+          package-manager: "yarn"
+          install-browsers: true
+          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit"
+          start-command: "yarn start"
+          cypress-command: "npx cypress run --browser chrome"
           post-steps:
             - run:
                 name: Check for Broken Links
-                command: yarn check:links
-
-      # Run E2E tests in Chrome with mobile viewport
+                command: "yarn check:links"
       - cypress/run:
-          name: "UI Tests - Chrome - Mobile"
-          browser: chrome
-          config: "viewportWidth=375,viewportHeight=667"
-          executor: with-chrome-and-firefox
-          wait-on: "http://localhost:3000"
-          yarn: true
-          start: yarn start
-          requires:
-            - Setup Linux
+          package-manager: "yarn"
+          install-browsers: true
+          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit"
+          start-command: "yarn start"
+          cypress-command: "npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667"
+          post-steps:
+            - run:
+                name: Check for Broken Links
+                command: "yarn check:links"
 
   nightly:
     triggers:
