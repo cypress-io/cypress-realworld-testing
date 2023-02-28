@@ -33,9 +33,9 @@ export default function Layout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {bannerService.state.context.displayBanner && (
+      {/* {bannerService.state.context.displayBanner && (
         <Banner bannerService={bannerService} />
-      )}
+      )} */}
 
       <Header
         content={content}
