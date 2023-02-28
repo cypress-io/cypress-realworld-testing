@@ -17,7 +17,7 @@ workflows:
       - cypress/run:
           package-manager: "yarn"
           install-browsers: true
-          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit"
+          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
           start-command: "yarn start"
           cypress-command: "npx cypress run --browser chrome"
           post-steps:
@@ -27,7 +27,7 @@ workflows:
       - cypress/run:
           package-manager: "yarn"
           install-browsers: true
-          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit"
+          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
           start-command: "yarn start"
           cypress-command: "npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667"
           post-steps:
