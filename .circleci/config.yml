@@ -15,6 +15,7 @@ workflows:
   build-and-test:
     jobs:
       - cypress/run:
+          name: "UI Tests - Chrome"
           package-manager: "yarn"
           install-browsers: true
           post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
@@ -25,6 +26,7 @@ workflows:
                 name: Check for Broken Links
                 command: "yarn check:links"
       - cypress/run:
+          name: "UI Tests - Chrome - Mobile"
           package-manager: "yarn"
           install-browsers: true
           post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
