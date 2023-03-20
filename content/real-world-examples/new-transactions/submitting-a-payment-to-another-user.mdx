@@ -77,7 +77,7 @@ cy.getBySelLike("new-transaction").click()
 
 ![](/images/real-world-examples/new-transactions/submitting-a-payment-to-another-user/Screen_Shot_2021-09-14_at_3.56.39_PM.png)
 
-We then on our aliased intercept `@allUsers`. Remember, this happens in the `beforeEach()` hook before this test is run.
+We then wait on our aliased intercept `@allUsers`. Remember, this happens in the `beforeEach()` hook before this test is run.
 
 ```js
 cy.wait("@allUsers")
