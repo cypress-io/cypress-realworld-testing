@@ -18,15 +18,15 @@ yarn install
 yarn dev # starts dev server
 ```
 
-## Documenation
+## Documentation
 
-Documenation lives inside of the `/docs` folder and is powered by [VuePress](https://vuepress.vuejs.org). The best way to view the docs is by running the following command.
+Documentation lives inside of the `/docs` folder and is powered by [VuePress](https://vuepress.vuejs.org). The best way to view the docs is by running the following command.
 
 ```bash
 yarn docs:dev
 ```
 
-This will spin up a local sever and serve the docs site.
+This will spin up a local server and serve the docs site.
 
 ## Unit Tests
 
