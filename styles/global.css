@@ -216,3 +216,8 @@ input[type="search"]:focus {
   stroke: #f1c40f;
   fill: #f1c40f;
 }
+
+/* hides the osano widget */
+.osano-cm-widget {
+  display: none;
+}

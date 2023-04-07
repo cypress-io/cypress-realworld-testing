@@ -73,6 +73,18 @@ export default function Footer() {
                 </a>
               </div>
             ))}
+            <div className="px-5 py-2">
+              <a
+                className="text-base text-gray-50 hover:text-gray-900 cursor-pointer"
+                onClick={() =>
+                  (window as any).Osano.cm.showDrawer(
+                    "osano-cm-dom-info-dialog-open"
+                  )
+                }
+              >
+                Cookie Preferences
+              </a>
+            </div>
           </nav>
           <p className="mt-8 text-center text-base text-gray-50">
             &copy; {`${new Date().getFullYear()}`} Cypress. All rights reserved.
