@@ -16,21 +16,21 @@ Now that we have Cypress installed, we can launch it with:
 npx cypress open
 ```
 
-![Screen Shot 2022-06-28 at 8.53.33 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_8.53.33_AM.png)
+![Choose testing type](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/choose_testing_type.jpg)
 
 :::tip
 You can click on the images to enlarge them.
 :::
 
-With the latest release of Cypress v10, we are now presented with the ability to write E2E or component tests. In this course, we are going to focus solely on E2E tests. Components tests will be covered in another course.
+With the Cypress 10 and later, we are now presented with the ability to write E2E or component tests. In this course, we are going to focus solely on E2E tests. Components tests will be covered in another course.
 
 Click on the “E2E Testing” button on the left to get started.
 
-![Screen Shot 2022-06-28 at 8.54.57 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_8.54.57_AM.png)
+![Configuration files](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/configuration_files.jpg)
 
 Next, Cypress is going to let you know the various files it is going to create for you to get everything properly configured for e2e testing. Click on the “Continue” button at the bottom.
 
-![Screen Shot 2022-06-28 at 8.55.49 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_8.55.49_AM.png)
+![Choose a browser](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/choose_a_browser.jpg)
 
 Next, you will be presented with the “Choose a Browser” screen. You may have different options available depending upon which browsers you have installed on your computer. For this course, we are going to be running all of our tests inside of the “Chrome” browser.
 
@@ -40,17 +40,15 @@ If you do not see “Chrome” as an option, that means you do not have it insta
 
 Click on “Chrome” and then the “Start E2E Testing in Chrome” button.
 
-![Screen Shot 2022-06-28 at 8.59.15 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_8.59.15_AM.png)
+![Create your first spec](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/create_your_first_spec.jpg)
 
-![Screen Shot 2022-06-28 at 8.59.50 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_8.59.50_AM.png)
+Cypress will then launch and ask us to create our first spec since we don't have any test files created yet.
 
-Cypress will then launch and ask us to create our first spec since we don’t have any test files created yet.
+Click on the “Create new spec” button.
 
-Click on the “Create a new empty spec” button.
+![Create spec](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/create_spec.jpg)
 
-![Screen Shot 2022-06-28 at 9.02.41 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.02.41_AM.png)
-
-We are going to be writing tests for the application’s home page so let’s rename this file to “home.cy.ts”
+We are going to be writing tests for the application's home page so let's rename this file to “home.cy.ts”
 
 ![Screen Shot 2022-06-28 at 9.03.26 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.03.26_AM.png)
 
@@ -72,7 +70,7 @@ Open the `cypress/e2e/home.cy.ts` file in VSCode.
 
 ![Screen Shot 2022-06-28 at 9.06.55 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.06.55_AM.png)
 
-This is the default test that Cypress created for us when we asked it to create our spec file for us. We need to update it to run tests against our course application, but before we do that, let’s break down the code that is in this file.
+This is the default test that Cypress created when we asked it to create our spec file. We need to update it to run tests against our course application, but before we do that, let's break down the code that is in this file.
 
 ```jsx
 describe("empty spec", () => {
@@ -88,7 +86,7 @@ On the first line, we see what is commonly referred to as a “describe block.�
 describe("empty spec", () => {})
 ```
 
-The `describe()` function takes two arguments. The first is a string which is a description of the tests contained within it. The second is a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function). Since this file is going to contain tests for our home page, let’s update this to say “home page.”
+The `describe()` function takes two arguments. The first is a string which is a description of the tests contained within it. The second is a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function). Since this file is going to contain tests for our home page, let's update this to say “home page.”
 
 ```jsx
 describe("home page", () => {
@@ -102,7 +100,7 @@ Next, within the body of our `describe()` is what is commonly referred to as an 
 
 This is our actual test.
 
-Each time you see `it()` within a given spec file that is a single test. It takes the exact same arguments as the `describe()` function, first a string and then a callback function. Let’s update the string to the following.
+Each time you see `it()` within a given spec file that is a single test. It takes the exact same arguments as the `describe()` function, first a string and then a callback function. Let's update the string to the following.
 
 ```jsx
 describe("home page", () => {
@@ -118,7 +116,7 @@ For our first test, we are going to be writing a test that asserts that the `h1`
 
 Finally, we see [cy.visit()](https://docs.cypress.io/api/commands/visit) within the body of our `it()` block.
 
-[visit](https://docs.cypress.io/api/commands/visit) is a command that tells Cypress where to execute our tests. We are going to be running our application locally on [localhost:3000](https://docs.cypress.io/api/commands/visit) so let’s update the `cy.visit()` with the correct address.
+[visit](https://docs.cypress.io/api/commands/visit) is a command that tells Cypress where to execute our tests. We are going to be running our application locally on [localhost:3000](https://docs.cypress.io/api/commands/visit) so let's update the `cy.visit()` with the correct address.
 
 ```jsx
 describe("home page", () => {
@@ -128,7 +126,7 @@ describe("home page", () => {
 })
 ```
 
-Now let’s run our test.
+Now let's run our test.
 
 :::info
 Remember, to launch Cypress enter the following in your terminal.
@@ -159,13 +157,13 @@ You should see the following.
 
 ## Debugging our first error
 
-Cypress is throwing an error and says that it cannot load **localhost:3000**. The reason this is happening is that our applications dev server is not running. When running our Cypress tests we always need to have our application's local dev server running, otherwise, we are going to see this error.
+Cypress is throwing an error and says that it cannot load **localhost:3000**. The reason this is happening is that our applications dev server is not running. When running our Cypress tests we always need to have our application running, otherwise, we are going to see this error.
 
 Since Cypress is currently running in our terminal like so:
 
 ![Screen Shot 2022-06-28 at 9.25.52 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.25.52_AM.png)
 
-We need to open another terminal window to run our application’s dev server. You can do this in VSCode via the Terminal > New Terminal in the menu bar at the top.
+We need to open another terminal window to run our application's dev server. You can do this in VSCode via the Terminal > New Terminal in the menu bar at the top.
 
 ![Screen Shot 2022-06-28 at 9.26.20 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.26.20_AM.png)
 
@@ -189,7 +187,7 @@ Or you can use the keyboard shortcut of `r` and that will do the same thing. Onc
 
 ## Testing the h1 on the home page
 
-Now that we understand the basic makeup of a spec file and a test, let’s write our test that verifies the `h1` on the home page contains the correct text.
+Now that we understand the basic makeup of a spec file and a test, let's write our test that verifies the `h1` on the home page contains the correct text.
 
 The first thing we need to do is tell Cypress which element to get, which in this case is the `h1`
 
@@ -244,7 +242,7 @@ Congratulations! You just wrote your first Cypress E2E test 🎉
 
 <YouTube id="WHDvViZazWI" />
 
-Let’s briefly discuss what is happening on this line:
+Let's briefly discuss what is happening on this line:
 
 ```jsx
 cy.get("h1").contains("Testing Next.js Applications with Cypress")
@@ -286,7 +284,7 @@ If you would like to learn more about this topic you can read some of our best p
 
 ## Updating our get selector
 
-Now that you have learned about using `data` specific test attributes on elements, let’s now update our test to see how this works in practice.
+Now that you have learned about using `data` specific test attributes on elements, let's now update our test to see how this works in practice.
 
 Currently our test looks like this:
 
@@ -329,7 +327,7 @@ If we save our test, we should see it is still passing.
 
 ![Screen Shot 2022-06-28 at 2.31.52 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.31.52_PM.png)
 
-Now you may be thinking that `cy.get("[data-test='hero-heading']")` is pretty ugly and verbose. That is a lot of typing and not exactly the prettiest syntax. This may be ok for now since we only have one test, but imagine if we have hundreds of tests and we are using `cy.get()` hundreds of times.
+Now you may be thinking that `cy.get("[data-test='hero-heading']")` is fairly verbose. This may be ok for now since we only have one test, but imagine if we have hundreds of tests and we are using `cy.get()` hundreds of times.
 
 We are going to clean this up soon and make it easier to work with `data-test` attributes in the next lesson when we teach you about custom Cypress commands. So just hold on tight for a little bit longer.
 
@@ -367,17 +365,11 @@ If we use dev tools to inspect one of these features, we will see the following 
 
 There doesn’t seem to be any `data-test` attributes or anything very specific we can use within `cy.get()` to get these elements. While we always recommend using `data` attributes whenever possible, sometimes you do not have access to the underlying HTML markup.
 
-For instance, let’s say you are using a 3rd party component library. Typically you do not have the ability to modify the underlying HTML markup and add custom attributes to the elements, so what do you do in that case?
+For instance, let's say you are using a 3rd party component library. Typically you do not have the ability to modify the underlying HTML markup and add custom attributes to the elements, so what do you do in that case?
 
 What is the best approach for getting these elements?
 
 Let's create a new test and add it just below our first test.
-
-```jsx
-it("the features on the homepage are correct", () => {})
-```
-
-Next, we need to tell Cypress the URL to test.
 
 ```jsx
 it("the features on the homepage are correct", () => {
@@ -389,7 +381,7 @@ it("the features on the homepage are correct", () => {
 Notice that within each test, we have to specifically tell Cypress where to navigate to in our application.
 :::
 
-Let’s run our test and make sure everything is passing.
+Let's run our test and make sure everything is passing.
 
 ![Screen Shot 2022-06-28 at 2.49.56 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.49.56_PM.png)
 
@@ -417,14 +409,14 @@ describe("home page", () => {
 By adding `.only()` after the `it` we are telling Cypress to only run this specific test.
 
 :::tip
-This does work for multiple tests, so if you want to only run certain tests, just add `.only()` after the `it` for each test you wish to run.
+You can add `.only()` to multiple tests, and only those tests will run.
 :::
 
 ![Screen Shot 2022-06-28 at 2.52.22 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.52.22_PM.png)
 
 As you can see only the features test is being executed by Cypress now.
 
-Next, let’s use `cy.get()` to get the `<dt>` element and see what happens.
+Next, let's use `cy.get()` to get the `<dt>` element and see what happens.
 
 ```jsx
 it.only("the features on the homepage are correct", () => {
@@ -493,6 +485,14 @@ it.only("the features on the homepage are correct", () => {
 ```
 
 ![Screen Shot 2022-06-28 at 3.04.03 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_3.04.03_PM.png)
+
+:::tip
+You can also pass regular expressions into the contains method. So if you wanted to make a case insensitive comparison using regex, you could use:
+
+```jsx
+cy.get("dt").eq(0).contains(/4 courses/i)
+```
+:::
 
 Here is our entire spec file so far:
 

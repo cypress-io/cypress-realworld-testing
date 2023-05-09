@@ -18,7 +18,7 @@ The “Get started” button links to the course page and provides more details 
 
 ## Writing our multiple page test
 
-Now that we understand how these “Get started” buttons work on the home page, let’s write some tests for them. We will be writing these tests in the `home.cy.ts` spec file.
+Now that we understand how these “Get started” buttons work on the home page, let's write some tests for them. We will be writing these tests in the `home.cy.ts` spec file.
 
 Our spec file up until this point looks like the following:
 
@@ -84,7 +84,7 @@ Notice how all of the tests related to the hero section are nested underneath th
 
 ## Test: Courses section
 
-Now that we understand how context works, let’s create a new context for the courses section of our home page.
+Now that we understand how context works, let's create a new context for the courses section of our home page.
 
 ```jsx
 describe("Home page", () => {
@@ -140,53 +140,45 @@ context("Courses section", () => {
 
 ![Screen Shot 2022-07-12 at 8.57.15 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_8.57.15_AM.png)
 
-If we run our test, you will see that Cypress has found four `<a>` tags within the `<div data-test="course-0">` element. In a previous test, we used [eq](https://docs.cypress.io/api/commands/eq) to select a specific element from the returned array. So let’s update our test to use the eq command and select the last element in the array which is our button.
+If we run our test, you will see that Cypress has found four `<a>` tags within the `<div data-test="course-0">` element. In a previous test, we used [eq](https://docs.cypress.io/api/commands/eq) to select a specific element from the returned array. However, using the `eq` method here would lead to a brittle test if a lesson is added or removed from the course.
+
+Instead, we can use [contains](https://docs.cypress.io/api/commands/eq) method that we also used previously. We can look for the text 'Getting started', which will select the `<a>` tag we want:
 
 ```jsx
 context("Courses section", () => {
   it.only("Course: Testing Your First Next.js Application", () => {
-    cy.getByData("course-0").find("a").eq(3)
+    cy.getByData("course-0").find("a").contains("Get started")
   })
 })
 ```
-
-![Screen Shot 2022-07-12 at 9.00.12 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_9.00.12_AM.png)
 
 Now that we have our button, all that is left to do is to click on it.
 
 ```jsx
 context("Courses section", () => {
   it.only("Course: Testing Your First Next.js Application", () => {
-    cy.getByData("course-0").find("a").eq(3).click()
+    cy.getByData("course-0").find("a").contains("Get started").click()
   })
 })
 ```
+
+:::tip
+Remember to follow the [best practices](https://docs.cypress.io/guides/references/best-practices#Selecting-Elements) for selecting elements when possible. Sometimes it's not possible (like above), so use a method that won't be brittle if the markup or data in the HTML changes.
+:::
 
 ![Screen Shot 2022-07-12 at 9.01.18 AM.png](/images/testing-your-first-application/how-to-test-multiple-pages/Screen_Shot_2022-07-12_at_9.01.18_AM.png)
 
 As you can see we have successfully clicked on our button and navigated to the course page.
 
-## Reminder: best practices
-
-Remember, how in a previous lesson we stressed the importance of using `data` attributes for your tests. Ideally, they should always be used, but sometimes you are unable to make modifications to the markup, and as a result, you need to do things like this:
-
-```jsx
-cy.getByData("course-0").find("a").eq(3).click()
-```
-
-This is quite brittle and should only be used sparingly. If a lesson is added or removed from our course, our test is going to break since we are relying upon the specific ordering of the elements returned in this array.
-
-So remember to use `data` attributes whenever possible, otherwise, your tests can be quite brittle and break in the future.
-
 ## Testing the correct URL or pathname
 
-Now that we have successfully clicked on our button and navigated to our course page, let’s write an assertion that verifies the button navigates to the correct page. We can do this by writing an assertion that verifies that the URL of our course page is correct like so:
+Now that we have successfully clicked on our button and navigated to our course page, let's write an assertion that verifies the button navigates to the correct page. We can do this by writing an assertion that verifies that the URL of our course page is correct like so:
 
 ```jsx
 context("Courses section", () => {
   it.only("Course: Testing Your First Next.js Application", () => {
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains("Get started").click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
   })
 })
 ```
@@ -205,8 +197,8 @@ Hint: You can copy and paste the test we just wrote:
 
 ```jsx
 it("Course: Testing Your First Next.js Application", () => {
-  cy.getByData("course-0").find("a").eq(3).click()
-  cy.location("pathname").should("eq", "/testing-your-first-application")
+  cy.getByData("course-0").find("a").contains("Get started").click()
+  cy.location("pathname").should("equal", "/testing-your-first-application")
 })
 ```
 
@@ -221,18 +213,18 @@ If you get stuck the answers are provided below.
 ```jsx
 context("Courses section", () => {
   it("Course: Testing Your First Next.js Application", () => {
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains("Get started").click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
   })
 
   it("Course: Testing Foundations", () => {
-    cy.getByData("course-1").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-foundations")
+    cy.getByData("course-1").find("a").contains("Get started").click()
+    cy.location("pathname").should("equal", "/testing-foundations")
   })
 
   it("Course: Cypress Fundamentals", () => {
-    cy.getByData("course-2").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/cypress-fundamentals")
+    cy.getByData("course-2").find("a").contains("Get started").click()
+    cy.location("pathname").should("equal", "/cypress-fundamentals")
   })
 })
 ```
@@ -241,7 +233,7 @@ context("Courses section", () => {
 
 ## Final Spec file
 
-<Disclosure>
+<Disclosure text="Final Spec File Code">
 
 ```js
 describe("Home page", () => {
@@ -265,17 +257,17 @@ describe("Home page", () => {
 
   context("Courses section", () => {
     it("Course: Testing Your First Next.js Application", () => {
-      cy.getByData("course-0").find("a").eq(3).click()
+      cy.getByData("course-0").find("a").contains("Get started").click()
       cy.location("pathname").should("eq", "/testing-your-first-application")
     })
 
     it("Course: Testing Foundations", () => {
-      cy.getByData("course-1").find("a").eq(3).click()
+      cy.getByData("course-1").find("a").contains("Get started").click()
       cy.location("pathname").should("eq", "/testing-foundations")
     })
 
     it("Course: Cypress Fundamentals", () => {
-      cy.getByData("course-2").find("a").eq(3).click()
+      cy.getByData("course-2").find("a").contains("Get started").click()
       cy.location("pathname").should("eq", "/cypress-fundamentals")
     })
   })
