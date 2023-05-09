@@ -9,7 +9,7 @@ Real World Testing with Cypress is a free and open source testing curriculum bui
 ## Installation
 
 ```bash
-git clone git@github.com:cypress-io/cypress-realworld-testing.git
+git clone https://github.com/cypress-io/cypress-realworld-testing.git
 
 cd cypress-realworld-testing
 
