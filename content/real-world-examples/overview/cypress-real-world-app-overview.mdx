@@ -14,7 +14,9 @@ git clone https://github.com/cypress-io/cypress-realworld-app.git
 
 It might be best to first fork a copy of the repo and then clone the forked version.
 
-Note: The Cypress Real World App uses [Yarn](https://yarnpkg.com/) to manage its dependencies. Please install [Yarn](https://yarnpkg.com/) on your computer as installing with npm may lead to issues running the application.
+Note: The Cypress Real World App uses [Yarn](https://yarnpkg.com/) to manage its dependencies. Please install [Yarn Classic (version 1)](https://yarnpkg.com/) on your computer as attempting to execute `npm install` in this repository will fail. Please also ensure that you are using the Node.js version specified in the [.node-version](https://github.com/cypress-io/cypress-realworld-app/blob/develop/.node-version) file of [cypress-io/cypress-realworld-app](https://github.com/cypress-io/cypress-realworld-app). Yarn Classic checks for a compatible version of Node.js at installation time.
+
+Refer to the [**README.md**](https://github.com/cypress-io/cypress-realworld-app/blob/develop/README.md) file in the repo for additional information and instructions.
 
 Once cloned, change into the **cypress-realworld-app** directory and install all of the npm dependencies using Yarn.
 
@@ -32,7 +34,7 @@ Once the application is up and running, a browser window should open a new tab t
 
 ![](/images/real-world-examples/overview/cypress-real-world-app-overview/Screen_Shot_2021-06-28_at_11.32.22_AM.png)
 
-Refer to the **README.md** file in the repo for additional information and instructions.
+
 
 We provide a set of default users in the database, or you can create your own account. We recommend you first log in with one of the default users to see some of the sample data seeded in the app.
 
