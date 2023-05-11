@@ -26,7 +26,7 @@ What makes a user journey test so valuable is the fact that you are testing ever
 
 ## Writing our user journey test
 
-First, let’s create a new test called `cypress/e2e/user-journey.cy.ts`
+First, let's create a new test called `cypress/e2e/user-journey.cy.ts`
 
 ```jsx
 describe("User Journey", () => {
@@ -56,7 +56,7 @@ Next, we need to get the “Get started” button of one of our courses
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
-    cy.getByData("course-0").find("a").eq(3).click()
+    cy.getByData("course-0").find("a").contains('Get started').click()
   })
 })
 ```
@@ -69,8 +69,8 @@ Then we will write an assertion that the “Get started” button has navigated 
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains('Get started').click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
   })
 })
 ```
@@ -81,8 +81,8 @@ Next, we need to get the “Start Course” button and click on it.
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains('Get started').click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
   })
 })
@@ -96,8 +96,8 @@ We will then write another assertion to verify that the “Start Course” butto
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains('Get started').click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
     cy.location("pathname").should(
       "eq",
@@ -119,8 +119,8 @@ In this demo application, all of the answers are true.
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains('Get started').click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
     cy.location("pathname").should(
       "eq",
@@ -139,8 +139,8 @@ We then want to assert that the “Next Lesson” button has appeared on the pag
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains('Get started').click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
     cy.location("pathname").should(
       "eq",
@@ -160,8 +160,8 @@ Finally, we write our final assertion that verifies that the “Next Lesson” t
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains('Get started').click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
     cy.location("pathname").should(
       "eq",
@@ -195,8 +195,8 @@ If you get stuck the answers are provided below.
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
-    cy.getByData("course-0").find("a").eq(3).click()
-    cy.location("pathname").should("eq", "/testing-your-first-application")
+    cy.getByData("course-0").find("a").contains('Get started').click()
+    cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
     cy.location("pathname").should(
       "eq",
@@ -219,7 +219,7 @@ describe("User Journey", () => {
     cy.getByData("challenge-answer-0").click()
     cy.getByData("next-lesson-button").should("exist").click()
 
-    cy.location("pathname").should("eq", "/")
+    cy.location("pathname").should("equal", "/")
   })
 })
 ```
