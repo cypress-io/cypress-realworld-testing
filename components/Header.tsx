@@ -69,7 +69,7 @@ const resources = [
   },
   {
     name: "Discord",
-    href: "https://discord.gg/cMjUZg7",
+    href: "https://discord.com/invite/cypress",
     icon: ChatAltIcon,
   },
   {
