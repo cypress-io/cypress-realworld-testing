@@ -32,27 +32,27 @@ This example comes from the [Real World App](https://github.com/cypress-io/cypre
 Here is another example where we use [Array.forEach()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) to iterate over an array.
 
 ```js
-const people = ['moe', 'curly', 'larry'];
+const people = ["moe", "curly", "larry"]
 // Use method from lodash to get a person to use in a comment
-const transactions = [{ id: 1 }];
+const transactions = [{ id: 1 }]
 _.each(transactions, () => {
-  it('comments on a transaction', () => {
-    cy.getBySelLike('transaction-item').first().click();
-    cy.wait('@getTransaction');
+  it("comments on a transaction", () => {
+    cy.getBySelLike("transaction-item").first().click()
+    cy.wait("@getTransaction")
 
-    const comments = ['Thank you!', 'Appreciate it.'];
+    const comments = ["Thank you!", "Appreciate it."]
 
     comments.forEach((comment, index) => {
-      cy.getBySelLike('comment-input').type(`${comment}{enter}`);
-      cy.getBySelLike('comments-list').children().eq(index).contains(comment);
-    });
+      cy.getBySelLike("comment-input").type(`${comment}{enter}`)
+      cy.getBySelLike("comments-list").children().eq(index).contains(comment)
+    })
 
-    cy.getBySelLike('comments-list')
+    cy.getBySelLike("comments-list")
       .children()
-      .should('have.length', comments.length);
-    cy.visualSnapshot('Comment on Transaction');
-  });
-});
+      .should("have.length", comments.length)
+    cy.visualSnapshot("Comment on Transaction")
+  })
+})
 ```
 
 ## Practice
