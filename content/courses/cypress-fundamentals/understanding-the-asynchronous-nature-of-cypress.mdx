@@ -23,9 +23,9 @@ Cypress commands are asynchronous and get queued for execution at a later time. 
 
 So if a command does not **return** a subject but instead **yields** it, how can you interact with the subject directly? You can interact with a subject directly by using <apiLink apiName="then" displayName=".then()" />.
 
-`.then()` behaves similarly to Promises in JavaScript. However, <apiLink apiName="then" displayName=".then()" /> is a Cypress command, **not a Promise**. This means you cannot use things like **async/await** within your Cypress tests.
+`.then()` behaves similarly to Promises in JavaScript. However, <apiLink apiName="then" displayName=".then()" /> is a Cypress command, **not a Promise**. This means you cannot use things like **async/await** within your Cypress tests.
 
-Whatever is returned from the callback function becomes the new subject and will flow into the following command (except for `undefined`).
+Whatever is returned from the callback function becomes the new subject and will flow into the following command (except for `undefined`).
 
 ```js
 cy.get("button").then(($btn) => {
@@ -35,11 +35,9 @@ cy.get("button").then(($btn) => {
 })
 ```
 
-When `undefined` is returned by the callback function, the subject will not be modified and will instead carry over to the next command.
+When `undefined` is returned by the callback function, the subject will not be modified and will instead carry over to the next command.
 
-Just like Promises, you can return any compatible "thenable" (anything that has a <apiLink apiName="then" displayName=".then()" /> interface), and Cypress will wait for that to resolve before continuing forward through the chain of commands.
-
-If you're familiar with [native Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises), the Cypress <apiLink apiName="then" displayName=".then()" /> works the same way.
+Just like Promises, you can return any compatible "thenable" (anything that has a <apiLink apiName="then" displayName=".then()" /> interface), and Cypress will wait for that to resolve before continuing forward through the chain of commands. This behavior is similar to [native Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises).
 
 ## .wrap()
 
@@ -55,7 +53,7 @@ cy.get("button").then(($btn) => {
 })
 ```
 
-In this example, we are first getting the `<button>` HTML element. Our subject, which in this case is the `<button>` HTML element is yielded from <apiLink apiName="get" displayName="cy.get()" /> to <apiLink apiName="then" displayName=".then()" />. We can then access the subject as the variable`$btn` , but first need to `.wrap()` it to perform whatever operations or assertions we would like on it.
+In this example, we are first getting the `<button>` HTML element. Our subject, which in this case is the `<button>` HTML element is yielded from <apiLink apiName="get" displayName="cy.get()" /> to <apiLink apiName="then" displayName=".then()" />. We can then access the subject as the variable `$btn` , but first need to `.wrap()` it to perform whatever operations or assertions we would like on it.
 
 Before our assertion, which in this case is `.should('not.have.class', cls)` we first need Cypress to <apiLink apiName="click" displayName=".click()" /> the button. For Cypress to click on our `$btn`, we must first wrap it with <apiLink apiName="wrap" displayName="cy.wrap()" /> to provide the proper context for Cypress to perform the click.
 
