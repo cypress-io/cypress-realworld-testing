@@ -560,7 +560,7 @@ cy.visit("http://localhost:3000")
 
 in both of our tests. This is not a big deal since we only have two tests, but again what happens when you have dozens of tests in this file?
 
-We can simplify this and put the `cy.visit()` in a single spot called a [beforEach() hook](https://mochajs.org/#hooks). This is a function that will get called “before each” test is run, which is exactly what we want.
+We can simplify this and put the `cy.visit()` in a single spot called a [beforeEach() hook](https://mochajs.org/#hooks). This is a function that will get called “before each” test is run, which is exactly what we want.
 
 Update your test to look like the following:
 
