@@ -22,6 +22,7 @@ export default function Home({ content, courses }: Props) {
       progressService={progressService}
     >
       <Head>
+        <script src="https://cmp.osano.com/AzqisZTSBrMdc3qLt/bb12d637-24a5-47ce-8788-92e13ca795cf/osano.js"></script>
         <title>
           Learn E2E Testing from the Experts | Cypress Testing Tools
         </title>

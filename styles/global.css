@@ -56,6 +56,7 @@
 
 .prose img {
   cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 /*
@@ -215,4 +216,9 @@ input[type="search"]:focus {
 .admonition-note .admonition-icon svg {
   stroke: #f1c40f;
   fill: #f1c40f;
+}
+
+/* hides the osano widget */
+.osano-cm-widget {
+  display: none;
 }

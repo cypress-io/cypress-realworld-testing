@@ -16,33 +16,23 @@ To do this, we can write our own [custom Cypress command](https://docs.cypress.i
 
 For our use case, we want to create a custom Cypress command that will allow us to “get” `data-test` attributes more easily. To do this, we need to add our custom command to the `cypress/support/commands.ts` file.
 
-By default, this file will contain a bunch of code comments that provide some instructions on how to create a custom command. Delete all of the code comments within this file, and update **the entire file** to the following:
+By default, this file will contain a bunch of code comments that provide some instructions on how to create a custom command. Add the following to the file:
 
 ```jsx
-/// <reference types="cypress" />
+declare namespace Cypress {
+  interface Chainable {
+    getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>
+  }
+}
 
 Cypress.Commands.add("getByData", (selector) => {
   return cy.get(`[data-test=${selector}]`)
 })
 ```
 
-:::warning
+Since we are using TypeScript, we must add the type definition for our custom command. We extend the `Chainable` interface from the `Cypress` namespace, which allows us to use (and provide code completion) for the `getByData()` method off of the `cy` object.
 
-Since we are using TypeScript, you may get some errors from the compiler saying that it is unable to detect the types in our custom command. You can fix this, by creating the file `cypress/support/index.ts` and adding the following:
-
-:::
-
-```ts
-/// <reference types="cypress" />
-
-declare namespace Cypress {
-  interface Chainable {
-    getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>
-  }
-}
-```
-
-This custom command called “getByData” will allow us to pass in the value only of any `data-test` attribute, like so:
+After that, we add a custom command called “getByData” which will allow us to pass in the value only of any `data-test` attribute, like so:
 
 ```jsx
 cy.getByData("hero-heading")
@@ -54,7 +44,7 @@ instead of:
 cy.get("[data-test='hero-heading']")
 ```
 
-Now that we have created our custom command, let’s refactor our `cypress/e2e/home.cy.ts` test to use it and make sure our test is still passing.
+Now that we have created our custom command, let's refactor our `cypress/e2e/home.cy.ts` test to use it and make sure our test is still passing.
 
 ```jsx
 // home.cy.ts
@@ -78,7 +68,7 @@ In case that explanation went too fast or was not very clear, we have created a 
 
 <YouTube id="5F7t9IPoUvo" />
 
-Throughout the rest of this course, we will be using this custom Cypress command to get our elements for testing. Custom Cypress commands are extremely powerful and useful. You will find yourself writing them all the time once you gain more experience with Cypress.
+Throughout the rest of this course, we will be using this custom Cypress command to get our elements for testing. Custom Cypress commands are powerful and useful. You will find yourself writing them all the time once you gain more experience with Cypress.
 
 To learn more about custom commands you can [check out our docs](https://docs.cypress.io/api/cypress-api/custom-commands).
 
@@ -94,7 +84,7 @@ On the surface, this simple form may seem like an easy thing to test, after all,
 
 Not so fast.
 
-Before we begin writing tests for this form, let’s discuss all of the various scenarios our users can experience with this “simple” form.
+Before we begin writing tests for this form, let's discuss all of the various scenarios our users can experience with this “simple” form.
 
 1. How do we know if a user has successfully subscribed to our newsletter?
 2. What if a user enters a bad email?
@@ -117,7 +107,7 @@ Remember the internet is open to the entire world, and some of the users of our 
 
 In the context of our newsletter signup form, an example of a “happy path” would be when a user enters a valid email address and is able to successfully sign up for our newsletter. An example of an “unhappy path” is when a user enters a bad email and is unable to signup for our newsletter.
 
-Now that we have a better understanding of some of the various scenarios a user can experience with our form, let’s write some tests for them.
+Now that we have a better understanding of some of the various scenarios a user can experience with our form, let's write some tests for them.
 
 First, we will write a test that confirms that a user is able to successfully signup for our newsletter.
 
@@ -149,7 +139,7 @@ describe("Newsletter Subscribe Form", () => {
 })
 ```
 
-Let’s run this new spec file and make sure things are working properly.
+Let's run this new spec file and make sure things are working properly.
 
 :::info
 Remember that you need to have both the local dev server `npm run dev` and cypress running at the same time `npx cypress open` and in separate terminal windows or tabs.
@@ -157,7 +147,7 @@ Remember that you need to have both the local dev server `npm run dev` and cypre
 
 ![Screen Shot 2022-07-11 at 10.09.18 AM.png](/images/testing-your-first-application/how-to-test-forms-and-custom-cypress-commands/Screen_Shot_2022-07-11_at_10.09.18_AM.png)
 
-Now that we know things are working properly, let’s continue writing our test.
+Now that we know things are working properly, let's continue writing our test.
 
 We have the email input element, and now we need to type in a valid email. We can do this by chaining the [type](https://docs.cypress.io/api/commands/type) method like so:
 
@@ -171,7 +161,7 @@ Back in the Cypress app, we can inspect the type method and see the state of our
 
 ![Screen Shot 2022-07-11 at 10.15.09 AM.png](/images/testing-your-first-application/how-to-test-forms-and-custom-cypress-commands/Screen_Shot_2022-07-11_at_10.15.09_AM.png)
 
-Cypress offers “time travel debugging” which is an incredibly powerful way of inspecting exactly what is going on inside of our tests. By clicking on the “type” step we can then click on “before” and “after” and see the state of our app before we type into the input field and after we type into the input field.
+Cypress offers “time travel debugging” which is a powerful way of inspecting exactly what is going on inside of our tests. By clicking on the “type” step we can then click on “before” and “after” and see the state of our app before we type into the input field and after we type into the input field.
 
 Before:
 
@@ -192,9 +182,9 @@ it("allows users to subscribe to the email list", () => {
 
 ![Screen Shot 2022-07-11 at 10.18.49 AM.png](/images/testing-your-first-application/how-to-test-forms-and-custom-cypress-commands/Screen_Shot_2022-07-11_at_10.18.49_AM.png)
 
-In the Cypress app, we can see a success message displayed to the user letting them know that they have subscribed successfully. Let’s write an assertion to make sure that this message appears after successful submission.
+In the Cypress app, we can see a success message displayed to the user letting them know that they have subscribed successfully. Let's write an assertion to make sure that this message appears after successful submission.
 
-First, let’s get the success message element on the page.
+First, let's get the success message element on the page.
 
 ```jsx
 it("allows users to subscribe to the email list", () => {
@@ -259,7 +249,7 @@ Once you click on the “selector playground” button you can then select any e
 
 ## Test: Invalid email address
 
-For our next test, let’s write a test for one of the “unhappy paths,” by making sure that our form does not accept an invalid email address.
+For our next test, let's write a test for one of the “unhappy paths,” by making sure that our form does not accept an invalid email address.
 
 Add a new test like so:
 
@@ -300,7 +290,7 @@ First, we are getting the input field and then type in our invalid email address
 For our final test in this lesson, we are going to ask you to write it all on your own for practice. For this test, you are going to write a test to make sure that users cannot sign up for our newsletter if they are already subscribed.
 
 :::tip
-You need to use the email address **john@example.com** otherwise your test will not pass.
+For this test, use the email address **john@example.com**, which is an already subscribed email. Using another email the test will not pass.
 :::
 
 Before you begin writing the test, enter in this email address into the app and try to submit it. See what happens and make note of the error message that is displayed.
@@ -325,7 +315,7 @@ it("does NOT allow already subscribed email addresses", () => {
 
 ## Final Spec file
 
-<Disclosure>
+<Disclosure text="Final Spec File Code">
 
 ```js
 describe("Newsletter Subscribe Form", () => {
