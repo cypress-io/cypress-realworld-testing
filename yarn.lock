@@ -12555,10 +12555,10 @@ unset-value@^1.0.0:
     has-value "^0.3.1"
     isobject "^3.0.0"
 
-unslugify@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/unslugify/-/unslugify-1.0.2.tgz#47fe432ad6dad6de1a1cc94c62fb7f4bf52afbf3"
-  integrity sha512-BgxXV5mZCqydTEQzNqUPilmwvFW2v/CIHqcl7xLVNjLPpR0lOs0yuHbQs76JT2v/7M88rWG5Jn7CKNCQBd00uA==
+unslugify@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/unslugify/-/unslugify-1.0.3.tgz#8880178849a31c341a75a7b1d6116f3a9d524031"
+  integrity sha512-++0h3LmMT0Xx8o7mMOkZEWxpPnBwuogCIB8+E9ivSQu0SLNSbxPtYubftw1r+8OSMMmSPwQz8fZKRJ6NShdjHg==
 
 untildify@^4.0.0:
   version "4.0.0"
