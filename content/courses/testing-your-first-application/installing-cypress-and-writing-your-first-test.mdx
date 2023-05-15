@@ -100,7 +100,7 @@ Next, within the body of our `describe()` is what is commonly referred to as an 
 
 This is our actual test.
 
-Each time you see `it()` within a given spec file that is a single test. It takes the exact same arguments as the `describe()` function, first a string and then a callback function. Let's update the string to the following.
+Each time you see `it()` within a given spec file that is a single test. It takes the exact same arguments as the `describe()` function: first a string and then a callback function. Let’s update the string to the following:
 
 ```jsx
 describe("home page", () => {
@@ -110,7 +110,7 @@ describe("home page", () => {
 })
 ```
 
-For our first test, we are going to be writing a test that asserts that the `h1` on the home page contains the correct text. Which is highlighted in the screenshot below
+For our first test, we are going to be writing a test that asserts that the `h1` on the home page contains the correct text (which is highlighted in the screenshot below).
 
 ![Screen Shot 2022-06-28 at 9.15.48 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.15.48_AM.png)
 
@@ -157,7 +157,7 @@ You should see the following.
 
 ## Debugging our first error
 
-Cypress is throwing an error and says that it cannot load **localhost:3000**. The reason this is happening is that our applications dev server is not running. When running our Cypress tests we always need to have our application running, otherwise, we are going to see this error.
+Cypress is throwing an error and says that it cannot load **localhost:3000**. The reason this is happening is that our application's dev server is not running. When running our Cypress tests we always need to have our application's local dev server running. Otherwise, we are going to see this error.
 
 Since Cypress is currently running in our terminal like so:
 
@@ -171,7 +171,7 @@ This will open a new terminal window within VSCode and a small sidebar on the ri
 
 ![Screen Shot 2022-06-28 at 9.26.49 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.26.49_AM.png)
 
-Within this new terminal window, type the following to start our applications dev server.
+Within this new terminal window, type the following to start our applications dev server:
 
 ```bash
 npm run dev
@@ -189,7 +189,7 @@ Or you can use the keyboard shortcut of `r` and that will do the same thing. Onc
 
 Now that we understand the basic makeup of a spec file and a test, let's write our test that verifies the `h1` on the home page contains the correct text.
 
-The first thing we need to do is tell Cypress which element to get, which in this case is the `h1`
+The first thing we need to do is tell Cypress which element to get, which in this case is the `h1`.
 
 Typically a page should only have a single `h1` if they are following SEO best practices, which is true of our application. This means we can get our `h1` like so.
 
@@ -210,7 +210,7 @@ After saving our spec file, Cypress will automatically re-run all of our tests w
 
 ![Screen Shot 2022-06-28 at 10.07.53 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_10.07.53_AM.png)
 
-You will see on the left-hand side of the Cypress command log, all of the steps Cypress is taking during our test.
+You will see on the left-hand side of the Cypress command log all of the steps Cypress is taking during our test.
 
 - Step 1 is when we use `cy.visit()` to visit the application’s home page.
 - Step 2 is when we use `cy.get()` to get the `h1` on the home page.
@@ -266,11 +266,11 @@ In our first test we are getting the `h1` element by simply passing in the eleme
 cy.get("h1")
 ```
 
-While this obviously works, because our test is passing, this is not ideal.
+While this obviously works (because our test is passing), this is not ideal.
 
 Why?
 
-If you take a look at the [get command API documentation](https://docs.cypress.io/api/commands/get) you will see it accepts a variety of different things. You can pass in HTML elements, classes like `.button`, or IDs like `#button` . However, at Cypress, we believe it is important to use things that do not change.
+If you take a look at the [get command API documentation](https://docs.cypress.io/api/commands/get) you will see it accepts a variety of different things. You can pass in HTML elements, classes like `.button`, or IDs like `#button`. However, at Cypress, we believe it is important to use things that do not change.
 
 What do we mean?
 
@@ -329,7 +329,7 @@ If we save our test, we should see it is still passing.
 
 Now you may be thinking that `cy.get("[data-test='hero-heading']")` is fairly verbose. This may be ok for now since we only have one test, but imagine if we have hundreds of tests and we are using `cy.get()` hundreds of times.
 
-We are going to clean this up soon and make it easier to work with `data-test` attributes in the next lesson when we teach you about custom Cypress commands. So just hold on tight for a little bit longer.
+We are going to clean this up soon and make it easier to work with `data-test` attributes in the next lesson when we teach you about custom Cypress commands. Hold on tight for a little bit longer!
 
 ## Testing the course features
 
@@ -337,7 +337,7 @@ Next, we are going to write one more test in this lesson that verifies the featu
 
 ![Screen Shot 2022-06-28 at 2.37.45 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.37.45_PM.png)
 
-If we use dev tools to inspect one of these features, we will see the following HTML markup.
+If we use dev tools to inspect one of these features, we will see the following HTML markup:
 
 ```html
 <div class="relative mb-6">
@@ -365,7 +365,7 @@ If we use dev tools to inspect one of these features, we will see the following 
 
 There doesn’t seem to be any `data-test` attributes or anything very specific we can use within `cy.get()` to get these elements. While we always recommend using `data` attributes whenever possible, sometimes you do not have access to the underlying HTML markup.
 
-For instance, let's say you are using a 3rd party component library. Typically you do not have the ability to modify the underlying HTML markup and add custom attributes to the elements, so what do you do in that case?
+For instance, let’s say you are using a 3rd party component library. Typically you do not have the ability to modify the underlying HTML markup and add custom attributes to the elements. What do you do in that case?
 
 What is the best approach for getting these elements?
 
@@ -435,9 +435,9 @@ You can see this in even greater detail by clicking on the step and then opening
 
 We see that an array was returned with three elements in it, all of which are `<dt>` HTML elements.
 
-So how then do we get just one of these `<dt>` elements? Specifically, we want to get the first one and make sure that the text says, “4 Courses”
+So how then do we get just one of these `<dt>` elements? Specifically, we want to get the first one and make sure that the text says “4 Courses”.
 
-Well since we are getting back an array, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within an array of elements, which is exactly what we want.
+Since we are getting back an array, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within an array of elements, which is exactly what we want.
 
 :::info
 Remember that arrays start their indexes at 0, so the first element we want is 0 **not** 1.
@@ -475,7 +475,7 @@ We did this on purpose to draw your attention to the fact that `contains()` is c
 
 But our site says “4 Courses” where courses is spelled with a capital C.
 
-Update your test to the following to get things passing again.
+Update your test to the following to get things passing again:
 
 ```jsx
 it.only("the features on the homepage are correct", () => {
@@ -552,7 +552,7 @@ describe("home page", () => {
 
 ## beforeEach hook and refactoring our tests
 
-Whew! We have covered a lot of material in this lesson, and we are almost done. Before we finish we wanted to introduce to you the concept of hooks. If you take a look at the two tests within our spec file, we are using
+Whew! We have covered a lot of material in this lesson and we are almost done. Before we finish we wanted to introduce to you the concept of hooks. If you take a look at the two tests within our spec file, we are using
 
 ```js
 cy.visit("http://localhost:3000")
