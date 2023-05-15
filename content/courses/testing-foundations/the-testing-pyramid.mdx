@@ -20,13 +20,19 @@ So again, you are simply testing that given a set of inputs into this function, 
 
 ## Integration tests
 
-The point of integration testing is to ensure that individual pieces or units within an application work together as expected.
+Integration testing aims to ensure that individual pieces or units within an application work together as expected.
 
 Unlike unit tests, which should always be independent, integration tests are fundamentally dependent. Their entire purpose is to test the dependencies of pieces within a system are working together correctly.
 
 So the distinction between a unit test and an integration test is that unit tests test things in isolation, and integration tests, are testing portions of your application that are related to one another, never in isolation.
 
-Integration tests are great for when you are building a new application from scratch or an application or feature that does not have a UI yet. However, once you have a UI, that is when you should be writing end to end (E2E) tests.
+## Component tests
+
+Modern front-end libraries allow you to build out your applications using components. A component is a small, functional bit of user interface. At the smallest level, a component could be something as simple as a button, label, or input box. You can then start composing small components into larger ones for more complicated functionality, like a login form or shopping cart order summary.
+
+Component testing is another testing type that allows you to test a component in isolation, away from the rest of the system. Because of this, component tests share many of the same characteristics as unit and integration tests. They are typically easier to set up and faster to execute. Since they have fewer moving parts, they are more flake resistant.
+
+Component tests allow you to test complex UI outside of where that UI lives in the application, which makes it ideal for particular scenarios and edge cases. However, since they don't interact with the rest of the system, they can't be relied on to quantify overall application health, and that is where end-to-end tests come in.
 
 ## End to End tests
 
