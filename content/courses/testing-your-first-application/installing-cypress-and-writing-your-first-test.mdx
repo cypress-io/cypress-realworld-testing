@@ -73,7 +73,7 @@ Open the `cypress/e2e/home.cy.ts` file in VSCode.
 This is the default test that Cypress created when we asked it to create our spec file. We need to update it to run tests against our course application, but before we do that, let's break down the code that is in this file.
 
 ```jsx
-describe("empty spec", () => {
+describe("template spec", () => {
   it("passes", () => {
     cy.visit("https://example.cypress.io")
   })
@@ -83,7 +83,7 @@ describe("empty spec", () => {
 On the first line, we see what is commonly referred to as a “describe block.”
 
 ```jsx
-describe("empty spec", () => {})
+describe("template spec", () => {})
 ```
 
 The `describe()` function takes two arguments. The first is a string which is a description of the tests contained within it. The second is a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function). Since this file is going to contain tests for our home page, let's update this to say “home page.”
