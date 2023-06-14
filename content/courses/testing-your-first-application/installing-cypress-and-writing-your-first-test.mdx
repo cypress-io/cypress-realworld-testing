@@ -389,7 +389,7 @@ Let's run our test and make sure everything is passing.
 
 Now that we have two tests, each time we save our file, Cypress is going to re-run all of the tests in this file. This is ok when you only have a few tests, but what if we had dozens of tests in this single spec file? Each time we saved we would have to wait until Cypress finished running all of our tests. This is not ideal especially when we are really only concerned with the current test we are writing.
 
-We can tell Cypress to only run a specific test but using `it.only()` like so:
+We can tell Cypress to only run a specific test by using `it.only()` like so:
 
 ```jsx
 describe("home page", () => {
