@@ -65,7 +65,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gray-matter": "^4.0.3",
-    "husky": "^8.0.1",
+    "husky": "^8.0.3",
     "markdown-toc-unlazy": "^1.0.1",
     "mocha": "^10.0.0",
     "next-mdx-remote": "^3.0.4",
