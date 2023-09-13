@@ -217,7 +217,7 @@ describe("User Journey", () => {
       "/testing-your-first-application/setting-up-data-before-each-test"
     )
     cy.getByData("challenge-answer-0").click()
-    cy.getByData("next-lesson-button").should("exist").click()
+    cy.getByData("next-lesson-button").should("exist").contains("Complete Course").click()
 
     cy.location("pathname").should("equal", "/")
   })
