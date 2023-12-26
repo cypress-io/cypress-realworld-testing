@@ -73,6 +73,7 @@ input[type="search"]:focus {
 
 .pro-sidebar {
   width: 100% !important;
+  min-width: auto;
 }
 
 .pro-sidebar .pro-arrow-wrapper {
