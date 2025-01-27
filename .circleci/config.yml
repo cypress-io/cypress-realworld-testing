@@ -15,6 +15,8 @@ jobs:
     steps:
       - checkout
       - run: yarn install
+      - run: yarn types
+      - run: yarn lint
       - run: yarn test:unit
 
 workflows:
@@ -28,7 +30,7 @@ workflows:
           name: "UI Tests - Chrome"
           package-manager: "yarn"
           install-browsers: true
-          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
+          post-install: "yarn cypress info && yarn build"
           start-command: "yarn start"
           cypress-command: |
             if [[ -v CYPRESS_RECORD_KEY ]]; then
@@ -45,7 +47,7 @@ workflows:
           name: "UI Tests - Chrome - Mobile"
           package-manager: "yarn"
           install-browsers: true
-          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
+          post-install: "yarn cypress info && yarn build"
           start-command: "yarn start"
           cypress-command: |
             if [[ -v CYPRESS_RECORD_KEY ]]; then
