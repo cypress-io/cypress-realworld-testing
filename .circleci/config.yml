@@ -10,9 +10,18 @@ jobs:
       - checkout
       - run: yarn install
       - run: yarn update-algolia-index
+  unit-tests:
+    executor: cypress/default
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn test:unit
 
 workflows:
-  build-and-test:
+  run-unit-tests:
+    jobs:
+      - unit-tests
+  build-and-cypress-test:
     jobs:
       - cypress/run:
           name: "UI Tests - Chrome"
