@@ -23,13 +23,20 @@ workflows:
       - unit-tests
   build-and-cypress-test:
     jobs:
+      
       - cypress/run:
           name: "UI Tests - Chrome"
           package-manager: "yarn"
           install-browsers: true
           post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
           start-command: "yarn start"
-          cypress-command: "npx cypress run --browser chrome"
+          cypress-command: |
+            if [[ -v CYPRESS_RECORD_KEY ]]; then
+              # internal PR
+              npx cypress run --browser chrome --parallel --record --key $CYPRESS_RECORD_KEY
+            else
+              npx cypress run --browser chrome
+            fi
           post-steps:
             - run:
                 name: Check for Broken Links
@@ -40,7 +47,13 @@ workflows:
           install-browsers: true
           post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
           start-command: "yarn start"
-          cypress-command: "npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667"
+          cypress-command: |
+            if [[ -v CYPRESS_RECORD_KEY ]]; then
+              # internal PR
+              npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667 --parallel --record --key $CYPRESS_RECORD_KEY
+            else
+              npx cypress run --browser chrome
+            fi
           post-steps:
             - run:
                 name: Check for Broken Links
