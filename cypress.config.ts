@@ -4,6 +4,7 @@ export default defineConfig({
   projectId: 'a6xq37',
   viewportHeight: 1000,
   viewportWidth: 1400,
+  blockHosts: ['*.osano.com'], // blocking the cookie popup from tests
   env: {
     mobileViewportWidthBreakpoint: 414,
   },

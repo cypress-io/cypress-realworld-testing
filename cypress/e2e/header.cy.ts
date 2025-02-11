@@ -5,11 +5,14 @@ const courses = Object.keys(coursesJson)
 
 const verifyCourseLinks = (path) => {
   cy.visit(path)
+  cy.location("pathname").should("eq", path)
   cy.getBySel("courses-dropdown").click()
-  cy.getBySel("courses-dropdown-menu").within(() => {
+  cy.get("[data-test=courses-dropdown-menu]").within(() => {
     _.each(courses, (course, index) => {
-      const title = coursesJson[course].title
-      cy.get("a").its(index).contains(title)
+      const title: string = coursesJson[course].title
+      cy.contains('a', title)
+      .should('have.attr', 'href')
+      .and('include', coursesJson[course].slug)
     })
   })
 }
