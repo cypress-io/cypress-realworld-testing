@@ -5,14 +5,14 @@ export default function RWEHero() {
     <>
       <div className="relative overflow-hidden">
         <main>
-          <div className="bg-jade-300 bg-course-hero bg-cover bg-center bg-no-repeat py-28">
-            <div className="mx-auto w-full lg:pl-8">
+          <div className="bg-center bg-no-repeat bg-cover bg-jade-300 bg-course-hero py-28">
+            <div className="w-full mx-auto lg:pl-8">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-                <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
+                <div className="max-w-md px-4 mx-auto sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
                   <div className="lg:py-24">
                     <h1
                       data-test="hero-heading"
-                      className="mt-4 text-center text-5xl font-bold leading-tight text-gray-1000 lg:text-left"
+                      className="mt-4 text-5xl font-bold leading-tight text-center text-gray-1000 lg:text-left"
                     >
                       Real World Examples
                     </h1>
@@ -29,7 +29,7 @@ export default function RWEHero() {
                       <Image
                         className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
                         src="/images/home/real-world-app.svg"
-                        alt="Real World Examples Hero Image"
+                        alt="A wireframe of a real world application including a lefthand nav, header, buttons, and list of items"
                         width={667}
                         height={488}
                       />
