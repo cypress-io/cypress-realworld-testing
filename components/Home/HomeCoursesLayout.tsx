@@ -70,7 +70,8 @@ export default function HomeCoursesLayout({
                               <Image
                                 className="w-auto h-8 sm:h-10"
                                 src={`/images/home/course-icons/${course}.svg`}
-                                alt={content[course].title}
+                                alt=""
+                                aria-hidden="true"
                                 height={62}
                                 width={75}
                               />
