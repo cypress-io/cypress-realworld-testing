@@ -70,7 +70,7 @@ export default function HomeCoursesLayout({
                               <Image
                                 className="w-auto h-8 sm:h-10"
                                 src={`/images/home/course-icons/${course}.svg`}
-                                alt="Cypress Logo"
+                                alt={content[course].title}
                                 height={62}
                                 width={75}
                               />
@@ -92,7 +92,8 @@ export default function HomeCoursesLayout({
                           >
                             <img
                               src={`/images/home/course-icons/chevron-right.svg`}
-                              alt=""
+                              alt="Right Arrow"
+                              aria-hidden="true"
                               className="hidden lg:block"
                             />
                           </a>
