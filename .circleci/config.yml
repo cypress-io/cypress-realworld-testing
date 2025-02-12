@@ -25,9 +25,9 @@ workflows:
       - unit-tests
   build-and-cypress-test:
     jobs:
-      
       - cypress/run:
           name: "UI Tests - Chrome"
+          parallelism: 6
           package-manager: "yarn"
           install-browsers: true
           post-install: "yarn cypress info && yarn build"
@@ -45,6 +45,7 @@ workflows:
                 command: "yarn check:links"
       - cypress/run:
           name: "UI Tests - Chrome - Mobile"
+          parallelism: 6
           package-manager: "yarn"
           install-browsers: true
           post-install: "yarn cypress info && yarn build"
