@@ -102,7 +102,10 @@ export default function Header({ content, courses, progressService }: Props) {
   const coursesJsonCourses = Object.keys(coursesJson)
   return (
     <>
-      <nav>
+      <nav
+        role="navigation"
+        aria-label="Main"
+      >
         <Popover className="relative hidden bg-white lg:block">
           <div
             className="absolute inset-0 z-30 shadow pointer-events-none"
@@ -233,7 +236,10 @@ export default function Header({ content, courses, progressService }: Props) {
                               <div className="w-1/2 bg-gray-50" />
                             </div>
                             <div className="relative grid grid-cols-1 mx-auto max-w-7xl lg:grid-cols-2">
-                              <nav className="grid px-4 py-8 bg-white gap-y-10 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
+                              <nav
+                                role="navigation"
+                                aria-label="Cypress Resources"
+                                className="grid px-4 py-8 bg-white gap-y-10 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
                                 <div>
                                   <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
                                     Cypress

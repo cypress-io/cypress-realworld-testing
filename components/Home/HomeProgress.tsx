@@ -29,8 +29,11 @@ export default function HomeProgress({
 }: Props) {
   return (
     <>
-      <nav aria-label="Progress" className="" data-test="course-progress">
-        <div className="what-you-will-learn my-8 rounded bg-jade-50 p-8 lg:mb-8 lg:mt-0">
+      <nav 
+        aria-label="Progress" 
+        className="" 
+        data-test="course-progress">
+        <div className="p-8 my-8 rounded what-you-will-learn bg-jade-50 lg:mb-8 lg:mt-0">
           <img
             src={`/images/home/course-icons/book-icon.svg`}
             alt="book icon"
@@ -43,10 +46,10 @@ export default function HomeProgress({
                 <div key={index} className="relative mb-6">
                   <dt>
                     <CheckIcon
-                      className="absolute h-6 w-6 text-gray-500"
+                      className="absolute w-6 h-6 text-gray-500"
                       aria-hidden="true"
                     />
-                    <p className="ml-9 text-lg font-medium leading-6 text-gray-600">
+                    <p className="text-lg font-medium leading-6 text-gray-600 ml-9">
                       {feature}
                     </p>
                   </dt>
@@ -62,7 +65,7 @@ export default function HomeProgress({
               <a data-test={`lesson-progress-link-${index}`}>
                 <div
                   data-test={`lesson-${index}`}
-                  className="relative mb-6 rounded border py-4 pl-4 lg:py-6"
+                  className="relative py-4 pl-4 mb-6 border rounded lg:py-6"
                 >
                   <div className="relative flex items-center">
                     {isLessonCompleted(
@@ -76,8 +79,8 @@ export default function HomeProgress({
                     ) && <IncompleteLesson index={index} />}
 
                     {/* Lesson Title */}
-                    <span className="ml-2 flex  w-full flex-row lg:ml-4">
-                      <span className="grow font-normal">{lesson.title}</span>
+                    <span className="flex flex-row w-full ml-2 lg:ml-4">
+                      <span className="font-normal grow">{lesson.title}</span>
 
                       <img
                         className="mr-4"
