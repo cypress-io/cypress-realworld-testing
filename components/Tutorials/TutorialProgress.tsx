@@ -4,7 +4,7 @@ export default function TutorialProgress({ content }) {
       role="navigation"
       aria-label="Progress"
       className="mt-12">
-      <p className="mb-8 font-bold text-indigo-400">
+      <p className="mb-8 font-bold text-indigo-500">
         {content?.lessons.length} Lessons
       </p>
 

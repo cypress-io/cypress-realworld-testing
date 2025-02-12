@@ -49,7 +49,7 @@ export default function HomeProgress({
                       className="absolute w-6 h-6 text-gray-500"
                       aria-hidden="true"
                     />
-                    <p className="text-lg font-medium leading-6 text-gray-600 ml-9">
+                    <p className="text-lg font-medium leading-6 text-gray-700 ml-9">
                       {feature}
                     </p>
                   </dt>
