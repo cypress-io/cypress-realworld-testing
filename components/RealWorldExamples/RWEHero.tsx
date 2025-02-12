@@ -4,7 +4,7 @@ export default function RWEHero() {
   return (
     <>
       <div className="relative overflow-hidden">
-        <main>
+        <div>
           <div className="bg-center bg-no-repeat bg-cover bg-jade-300 bg-course-hero py-28">
             <div className="w-full mx-auto lg:pl-8">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8">
@@ -39,7 +39,7 @@ export default function RWEHero() {
               </div>
             </div>
           </div>
-        </main>
+        </div>
       </div>
     </>
   )
