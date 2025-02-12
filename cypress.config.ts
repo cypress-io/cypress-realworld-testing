@@ -1,4 +1,5 @@
 import { defineConfig } from 'cypress'
+import 'dotenv/config'
 
 export default defineConfig({
   projectId: 'a6xq37',
@@ -9,11 +10,12 @@ export default defineConfig({
     mobileViewportWidthBreakpoint: 414,
   },
   e2e: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
-    setupNodeEvents(on, config) {
-      return require('./cypress/plugins/index.ts').default(on, config)
-    },
     baseUrl: 'http://localhost:3000',
+    setupNodeEvents(on, config) {
+      config.env.siteURL = process.env.SITE_URL
+
+      return config
+    },
+    
   },
 })
