@@ -6,8 +6,9 @@ describe('Visit all pages', () => {
       const parser = new DOMParser()
       const xmlDoc = parser.parseFromString(xmlString, 'application/xml')
       const URLs = Array.from(xmlDoc.querySelectorAll('loc')).map((loc) => {
-        return loc.textContent
+        return loc.textContent.replace('https://learn.cypress.io', 'http://localhost:3000')
       })
+
       Cypress._.each(URLs, (URL) => {
         cy.visit(URL)
         cy.contains('All rights reserved').scrollIntoView()
