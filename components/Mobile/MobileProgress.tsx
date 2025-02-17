@@ -18,7 +18,10 @@ export default function MobileProgress({
   progressService,
 }: Props) {
   return (
-    <nav aria-label="Progress" className="mt-4">
+    <nav
+      role="navigation"
+      aria-label="Progress"
+      className="mt-4">
       <ol className="overflow-hidden">
         {content?.lessons.map((lesson, index) => (
           <li
@@ -41,20 +44,20 @@ export default function MobileProgress({
               />
             ) : null}
 
-            <div className="group relative flex items-center">
+            <div className="relative flex items-center group">
               {/* "completed" */}
 
               {isLessonCompleted(
                 progressService,
                 `${course}/${lesson.slug}`
               ) && (
-                <span className="flex h-9 items-center">
+                <span className="flex items-center h-9">
                   <span
                     data-test={`lesson-complete-${index}`}
-                    className="relative z-10 flex h-4 w-4 items-center justify-center rounded-full bg-indigo-600 group-hover:bg-indigo-800"
+                    className="relative z-10 flex items-center justify-center w-4 h-4 bg-indigo-600 rounded-full group-hover:bg-indigo-800"
                   >
                     <CheckIcon
-                      className="h-5 w-5 text-white"
+                      className="w-5 h-5 text-white"
                       aria-hidden="true"
                     />
                   </span>
@@ -66,10 +69,10 @@ export default function MobileProgress({
                 progressService,
                 `${course}/${lesson.slug}`
               ) && (
-                <span className="flex h-9 items-center" aria-hidden="true">
+                <span className="flex items-center h-9" aria-hidden="true">
                   <span
                     data-test={`lesson-upcoming-${index}`}
-                    className="relative z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 border-gray-300 bg-white group-hover:border-gray-400"
+                    className="relative z-10 flex items-center justify-center w-4 h-4 bg-white border-2 border-gray-300 rounded-full group-hover:border-gray-400"
                   >
                     <span className="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300" />
                   </span>
@@ -77,8 +80,8 @@ export default function MobileProgress({
               )}
 
               {/* Lesson Title */}
-              <span className="ml-4 flex min-w-0 flex-col">
-                <span className="text-xs font-semibold uppercase tracking-wide">
+              <span className="flex flex-col min-w-0 ml-4">
+                <span className="text-xs font-semibold tracking-wide uppercase">
                   <a href={`/${course}/${lesson.slug}`}>{lesson.title}</a>
                 </span>
               </span>

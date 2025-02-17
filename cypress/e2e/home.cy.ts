@@ -14,15 +14,15 @@ describe("RWT Home", function () {
       const lessons = coursesJson[course].lessons
 
       if (isMobile()) {
-        cy.getBySel(`mobile-course-${index}`).click()
+        cy.get(`[data-test=mobile-course-${index}]`).click()
       } else {
-        cy.getBySel(`course-${index}`).click()
+        cy.get(`[data-test=course-${index}]`).click()
       }
 
-      cy.getBySel("course-progress").within(() => {
+      cy.get("[data-test=course-progress]").each(() => {
         _.each(lessons, (lesson, index) => {
           const lessonTitle = lessons[index].title
-          cy.getBySel(`lesson-${index}`).contains(lessonTitle)
+          cy.get(`[data-test=lesson-${index}]`).contains(lessonTitle)
         })
       })
     })

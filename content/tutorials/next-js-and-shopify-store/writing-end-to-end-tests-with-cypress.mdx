@@ -317,7 +317,10 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
               <Logo />
             </a>
           </Link>
-          <nav className={s.navMenu}>
+          <nav
+            role="navigation"
+            aria-label="Main Navigation"
+            className={s.navMenu}>
             <Link href="/search">
               <a className={s.link} data-test="nav-link-search">
                 All

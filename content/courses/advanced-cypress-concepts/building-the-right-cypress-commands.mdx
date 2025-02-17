@@ -32,7 +32,7 @@ cy.getBySel("signup-confirmPassword").type("s3cret")
 
 Let's see how to create the custom command `cy.getBySel()`. You can create your own custom commands by placing them inside of **cypress/support/commands.js**.
 
-Here is what the `cy.getBysel()` looks like:
+Here is what the `cy.getBySel()` looks like:
 
 ```js
 Cypress.Commands.add("getBySel", (selector, ...args) => {
