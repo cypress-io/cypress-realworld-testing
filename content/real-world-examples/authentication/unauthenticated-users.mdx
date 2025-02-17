@@ -21,6 +21,6 @@ Finally, we assert that the application redirects users who are not logged in ba
 cy.location("pathname").should("equal", "/signin")
 ```
 
-![](/images/real-world-examples/authentication/unauthenticated-users/Screen_Shot_2021-06-28_at_1.35.44_PM.png)
+![Screenshot of browser with Cypress command log showing passing test, shown as green, with the Real World App login page shown as the application under test.](/images/real-world-examples/authentication/unauthenticated-users/Screen_Shot_2021-06-28_at_1.35.44_PM.png)
 
 This is a straightforward test, but it is testing some critical functionality, as we do not want unauthorized users to gain access to our application. Now we can be confident that any unauthorized users will be automatically redirected to the Sign-in page.

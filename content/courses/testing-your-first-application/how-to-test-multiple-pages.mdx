@@ -142,7 +142,7 @@ context("Courses section", () => {
 
 If we run our test, you will see that Cypress has found four `<a>` tags within the `<div data-test="course-0">` element. In a previous test, we used [eq](https://docs.cypress.io/api/commands/eq) to select a specific element from the returned array. However, using the `eq` method here would lead to a brittle test if a lesson is added or removed from the course.
 
-Instead, we can use the [contains](https://docs.cypress.io/api/commands/contains) method that we also used previously. We can look for the text 'Getting started', which will select the `<a>` tag we want:
+Instead, we can use the [contains](https://docs.cypress.io/api/commands/contains) method that we also used previously. We can look for the text 'Get started', which will select the `<a>` tag we want:
 
 ```jsx
 context("Courses section", () => {

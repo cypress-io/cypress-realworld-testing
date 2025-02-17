@@ -22,9 +22,9 @@ describe("Progress State & Local Storage", () => {
   it("the progress state on the lesson page is preserved upon refresh", () => {
     cy.visit(`/${sectionSlug}/${lessons[0].slug}`)
     cy.get("#answer-2").click()
-    cy.getBySel("next-lesson-button").should("be.visible")
+    cy.get("[data-test=next-lesson-button]").should("be.visible")
     cy.reload()
-    cy.getBySel("next-lesson-button").should("be.visible")
+    cy.get("[data-test=next-lesson-button]").should("be.visible")
   })
 
   it("the lesson page displays the complete lesson button when a lesson is completed and navigates to the homepage after the final lesson is completed", () => {
@@ -53,7 +53,7 @@ describe("Progress State & Local Storage", () => {
       cy.getBySel(`course-2`).click()
     }
 
-    cy.getBySel("course-progress").within(() => {
+    cy.getBySel("course-progress").each(() => {
       _.each(lessons, (lesson, index) => {
         cy.getBySel(`lesson-complete-${index}`).should("exist")
       })

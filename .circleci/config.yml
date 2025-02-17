@@ -10,28 +10,53 @@ jobs:
       - checkout
       - run: yarn install
       - run: yarn update-algolia-index
+  unit-tests:
+    executor: cypress/default
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn types
+      - run: yarn lint
+      - run: yarn test:unit
 
 workflows:
-  build-and-test:
+  run-unit-tests:
+    jobs:
+      - unit-tests
+  build-and-cypress-test:
     jobs:
       - cypress/run:
           name: "UI Tests - Chrome"
+          parallelism: 6
           package-manager: "yarn"
           install-browsers: true
-          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
+          post-install: "yarn cypress info && yarn build"
           start-command: "yarn start"
-          cypress-command: "npx cypress run --browser chrome"
+          cypress-command: |
+            if [[ -v CYPRESS_RECORD_KEY ]]; then
+              # internal PR
+              npx cypress run --browser chrome --parallel --record --key $CYPRESS_RECORD_KEY
+            else
+              npx cypress run --browser chrome
+            fi
           post-steps:
             - run:
                 name: Check for Broken Links
                 command: "yarn check:links"
       - cypress/run:
           name: "UI Tests - Chrome - Mobile"
+          parallelism: 6
           package-manager: "yarn"
           install-browsers: true
-          post-install: "yarn cypress info && yarn types && yarn lint && yarn test:unit && yarn build"
+          post-install: "yarn cypress info && yarn build"
           start-command: "yarn start"
-          cypress-command: "npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667"
+          cypress-command: |
+            if [[ -v CYPRESS_RECORD_KEY ]]; then
+              # internal PR
+              npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667 --parallel --record --key $CYPRESS_RECORD_KEY
+            else
+              npx cypress run --browser chrome
+            fi
           post-steps:
             - run:
                 name: Check for Broken Links
