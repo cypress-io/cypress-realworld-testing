@@ -43,7 +43,7 @@ comments.forEach((comment, index) => {
 })
 ```
 
-![](/images/real-world-examples/transaction-view/comments-on-a-transaction/Screen_Shot_2021-09-16_at_9.20.21_AM.png)
+![Screenshot of Cypress App with the type command highlighted in purple in the Cypress Command Log. The input DOM element is highlighted in the application under test, The Real World App.](/images/real-world-examples/transaction-view/comments-on-a-transaction/Screen_Shot_2021-09-16_at_9.20.21_AM.png)
 
 Finally, we confirm that all of our comments in the `comments` array are displayed within the UI.
 
@@ -53,4 +53,4 @@ cy.getBySelLike("comments-list")
   .should("have.length", comments.length)
 ```
 
-![](/images/real-world-examples/transaction-view/comments-on-a-transaction/Screen_Shot_2021-09-16_at_9.21.02_AM.png)
+![Screenshot of the Cypress App with the 'assert' highlighted in purple in the Cypress Command Log. The passing assertion text says 'expected li.MuiListItem to have a length of 2. There are 2 DOM elements highlighted in the application under text with the content highlighted in blue and the padding highlighted in yellow.'](/images/real-world-examples/transaction-view/comments-on-a-transaction/Screen_Shot_2021-09-16_at_9.21.02_AM.png)
