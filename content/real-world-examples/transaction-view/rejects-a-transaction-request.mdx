@@ -33,9 +33,9 @@ cy.getBySelLike("reject-request").click()
 cy.wait("@updateTransaction").its("response.statusCode").should("equal", 204)
 ```
 
-![](/images/real-world-examples/transaction-view/rejects-a-transaction-request/Screen_Shot_2021-09-16_at_9.24.53_AM.png)
+![Screenshot of Cypress App with a 'click' command highlighted in purple in the Cypress Command Log. A red button with the text 'Reject Request' is highlighted in the application under text, with a red dot indicating the exact point that was clicked, which is in the center of the button.](/images/real-world-examples/transaction-view/rejects-a-transaction-request/Screen_Shot_2021-09-16_at_9.24.53_AM.png)
 
-![](/images/real-world-examples/transaction-view/rejects-a-transaction-request/Screen_Shot_2021-09-16_at_9.25.17_AM.png)
+![Screenshot of Cypress App with an 'assert' highlighted in purple in the Cypress Command Log. The assert text says 'expected 204 to equal 204'. The Dev Tools console is open showing details of the assert command.](/images/real-world-examples/transaction-view/rejects-a-transaction-request/Screen_Shot_2021-09-16_at_9.25.17_AM.png)
 
 Finally, we make sure the reject request button is no longer in the DOM and that the transaction detail header is visible.
 
@@ -44,4 +44,4 @@ cy.getBySelLike("reject-request").should("not.exist")
 cy.getBySel("transaction-detail-header").should("be.visible")
 ```
 
-![](/images/real-world-examples/transaction-view/rejects-a-transaction-request/Screen_Shot_2021-09-16_at_9.25.33_AM.png)
+![Screenshot of Cypress App with the 'assert' highlighted in purple in the Cypress Command Log. The passing assertion text says 'expected h2 to be visible'. The application under test shows the Real World App on the Transaction Detail page where a transaction is visible.](/images/real-world-examples/transaction-view/rejects-a-transaction-request/Screen_Shot_2021-09-16_at_9.25.33_AM.png)

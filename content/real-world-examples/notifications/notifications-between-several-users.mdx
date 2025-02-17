@@ -66,7 +66,7 @@ cy.database("find", "transactions", {
 })
 ```
 
-![](/images/real-world-examples/notifications/notifications-between-several-users/Screen_Shot_2021-09-16_at_9.12.20_AM.png)
+![A screenshot of the Cypress App with the 'Database' command highlighted in purple in the Cypress Command Log. The Dev Tools console is open and shows details about the database command including entity, and query data.](/images/real-world-examples/notifications/notifications-between-several-users/Screen_Shot_2021-09-16_at_9.12.20_AM.png)
 
 Then, we enter a comment on the transaction page and wait on the `@postComment` intercept. Remember, this intercept happens in the `beforeEach()` at the top of this spec file.
 
@@ -76,7 +76,7 @@ cy.getBySelLike("comment-input").type("Thank You{enter}")
 cy.wait("@postComment")
 ```
 
-![](/images/real-world-examples/notifications/notifications-between-several-users/Screen_Shot_2021-09-16_at_9.12.52_AM.png)
+![Screenshot of Cypress App with the 'type' command highlighted in purple in the Cypress Command Log with the text 'Thank You enter'. The input is highlighted in the application under text with a red dot indicating where the click happened before typing.](/images/real-world-examples/notifications/notifications-between-several-users/Screen_Shot_2021-09-16_at_9.12.52_AM.png)
 
 Next, we switch users again, this time logging in a `userA`
 
@@ -84,7 +84,7 @@ Next, we switch users again, this time logging in a `userA`
 cy.switchUserByXstate(ctx.userA.username)
 ```
 
-![](/images/real-world-examples/notifications/notifications-between-several-users/Screen_Shot_2021-09-16_at_9.13.37_AM.png)
+![Screenshot of Cypress App with the 'login by xstate' command highlighted in purple in the Cypress Command Log. The application under test shows a Sign In screen of the Real World App including an email, password, and button. The DevTools Console is open showing details of the loginByXState command.](/images/real-world-examples/notifications/notifications-between-several-users/Screen_Shot_2021-09-16_at_9.13.37_AM.png)
 
 Now that we are logged in as `userA` we click on the notifications button to view `userA`'s notifications. We also wait for the `@getNotifications` intercept. Remember, this intercept happens in the `beforeEach()` at the top of this spec file.
 

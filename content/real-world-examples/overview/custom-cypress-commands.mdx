@@ -550,7 +550,7 @@ return cy.wait("@loginUser").then((loginUser) => {
 
 Once complete, we set our custom log to log the user's information. This information will be logged to the browser's console when we click on this step in the Cypress UI.
 
-![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.47.45_AM.png)
+![Screenshot of Cypress App with the 'Login by Xstate' command highlighted in purple in the Cypress Command Log. The text beside the highlighted command says 'Authenticatin | Katharina...'. The DevTools console is opened with details about the Login by Xstate command including the command name, username, password, and userid.](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.47.45_AM.png)
 
 Finally, we write an assertion to confirm that the "loading skeleton" is no longer in the DOM and take a final DOM snapshot.
 
@@ -686,7 +686,7 @@ const log = Cypress.log({
 })
 ```
 
-![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.32.20_PM.png)
+![Screenshot of Cypress App with the 'Next Transaction Feed Page' command highlighted in purple in the Cypress Command Log. There is a DOM Snapshot that is pinned on the 'after' state of this command where the application under test shows transactions.](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.32.20_PM.png)
 
 Next, we are using <apiLink apiName="window" displayName="cy.window()" /> to grab the window object and take a DOM snapshot with `log.snapshot("before")`. We then send the `FETCH` action to whichever service is passed in along with the page number. We use pagination in the application, so the page number represents which paginated page of transactions we would like to return.
 
@@ -776,7 +776,7 @@ const log = Cypress.log({
 })
 ```
 
-![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.39.52_PM.png)
+![Screenshot of Cypress App displaying the 'pick date range' custom command highlighted in purple in the Cypress Command Log. The text next to the command says 'Sat Feb 01 2024 to Sun Feb 8..'. The application under test shows the Real World App with a list of transactions. The DevTools console is open with the details of the 'pick date range' custom command including the command name, startdate, and enddate.](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.39.52_PM.png)
 
 Next, we create a convenience function called `selectDate`, which gets the date picker and selects the date passed into it.
 
@@ -797,9 +797,9 @@ log.snapshot("before")
 cy.clock(startDate.getTime(), ["Date"])
 ```
 
-![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.43.50_PM.png)
+![Screenshot of Cypress App with the 'wrap' command highlighted in purple in the Cypress Command Log. The text next to the wrap command says '13912308000000'. The application under test shows the Real World App with a list of transactions. The DevTools console is open with details about the 'wrap' command including the yielded subject.](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.43.50_PM.png)
 
-![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.44.16_PM.png)
+![Screenshot of Cypress App with the 'clock' command highlighted in purple in the Cypress Command Log. The application under test shows the Real World App with a list of transactions. The DevTools console is open with details about the 'clock' command including the command name, now datetime, and the methods replaced like Date.](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_2.44.16_PM.png)
 
 Next, we click on the date range picker and assert that it is visible.
 
