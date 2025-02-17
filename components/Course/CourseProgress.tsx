@@ -32,7 +32,11 @@ export default function CourseProgress({
         {lessons.length} Lessons
       </h2>
 
-      <nav aria-label="Progress" className="mt-12" data-test="course-steps">
+      <nav 
+        role="navigation" 
+        aria-label="Progress" 
+        className="mt-12" 
+        data-test="course-steps">
         <ol className="overflow-hidden">
           {lessons.map((lesson, index) => (
             <li
@@ -55,8 +59,8 @@ export default function CourseProgress({
                 ) && <IncompleteLesson index={index} />}
 
                 {/* Lesson Title */}
-                <span className="ml-4 flex min-w-0 flex-col">
-                  <span className="text-xs font-semibold uppercase tracking-wide">
+                <span className="flex flex-col min-w-0 ml-4">
+                  <span className="text-xs font-semibold tracking-wide uppercase">
                     <Link href={`/${course}/${lesson.slug}`}>
                       <a data-test={`lesson-progress-link-${index}`}>
                         {lesson.title}

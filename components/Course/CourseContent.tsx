@@ -20,11 +20,11 @@ export default function CourseContent({
   return (
     <>
       <hr />
-      <div className="overflow-hidden py-16">
-        <div className="mx-auto max-w-7xl space-y-8 px-4 sm:px-6 lg:px-8">
+      <div className="py-16 overflow-hidden">
+        <div className="px-4 mx-auto space-y-8 max-w-7xl sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
             <div className="relative z-10">
-              <div className="mx-auto flex max-w-prose text-base lg:max-w-none">
+              <div className="flex mx-auto text-base max-w-prose lg:max-w-none">
                 <div className="">
                   <h2 className="text-3xl font-bold tracking-tight text-gray-700">
                     What You Will Learn:
@@ -37,10 +37,10 @@ export default function CourseContent({
                         <div key={index} className="relative mb-6">
                           <dt>
                             <CheckIcon
-                              className="absolute h-6 w-6 text-indigo-500"
+                              className="absolute w-6 h-6 text-indigo-500"
                               aria-hidden="true"
                             />
-                            <p className="ml-9 text-lg font-medium leading-6 text-gray-600">
+                            <p className="text-lg font-medium leading-6 text-gray-700 ml-9">
                               {feature}
                             </p>
                           </dt>
@@ -53,8 +53,8 @@ export default function CourseContent({
             </div>
 
             {/* Right Column */}
-            <div className="relative mx-auto mt-12 max-w-prose text-base lg:mt-0 lg:max-w-none">
-              <div className="relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0">
+            <div className="relative mx-auto mt-12 text-base max-w-prose lg:mt-0 lg:max-w-none">
+              <div className="relative max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:px-0">
                 <CourseProgress
                   course={course}
                   lessons={lessons}

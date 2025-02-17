@@ -36,13 +36,14 @@ export default function Layout({
       {/* {bannerService.state.context.displayBanner && (
         <Banner bannerService={bannerService} />
       )} */}
-
       <Header
         content={content}
         courses={courses}
         progressService={progressService}
       />
-      {children}
+      <main>
+        {children}
+      </main>
       <Footer />
     </>
   )

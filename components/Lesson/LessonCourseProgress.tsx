@@ -38,6 +38,7 @@ export default function LessonCourseProgress({
                   <a
                     data-test={`sidebar-toc-link-${index}`}
                     href={`/${course}/${lesson.slug}`}
+                    className="text-gray-700"
                   >
                     {lesson.title}
                   </a>
