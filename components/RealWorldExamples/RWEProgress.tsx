@@ -1,7 +1,10 @@
 export default function RWEProgress({ content }) {
   return (
-    <nav aria-label="Progress" className="mt-12">
-      <p className="mb-8 font-bold text-indigo-400">
+    <nav
+      role="navigation"
+      aria-label="Progress"
+      className="mt-12">
+      <p className="mb-8 font-bold text-indigo-500">
         {content?.lessons.length} Examples
       </p>
 
@@ -13,13 +16,13 @@ export default function RWEProgress({ content }) {
             key={index}
           >
             <li data-test={`lesson-${index}`} className="pb-10">
-              <div className="group relative flex items-start">
-                <span className="flex min-w-0 flex-col">
-                  <p className="mb-2 text-lg font-semibold uppercase tracking-wide text-gray-700">
+              <div className="relative flex items-start group">
+                <span className="flex flex-col min-w-0">
+                  <p className="mb-2 text-lg font-semibold tracking-wide text-gray-700 uppercase">
                     {lesson.title}
                   </p>
 
-                  <span className="text text-gray-500">
+                  <span className="text-gray-500 text">
                     {lesson.description}
                   </span>
                 </span>
@@ -27,7 +30,7 @@ export default function RWEProgress({ content }) {
                 <img
                   src="/images/real-world-examples/icons/right-arrow.svg"
                   alt="right arrow icon"
-                  className="invisible absolute right-2 top-4 md:visible"
+                  className="absolute invisible right-2 top-4 md:visible"
                 />
               </div>
               <div className="mt-4 border" />

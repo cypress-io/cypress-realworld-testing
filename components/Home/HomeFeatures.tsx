@@ -40,18 +40,18 @@ const features = [
 
 export default function HomeFeatures() {
   return (
-    <div className="features relative bg-jade-300 bg-home-features bg-cover bg-center bg-no-repeat py-16 sm:py-24 lg:py-16">
-      <div className="mx-auto max-w-md px-4  sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
-        <p className="mt-2 text-center text-3xl font-extrabold tracking-tight text-gray-50 sm:text-4xl lg:text-left">
+    <div className="relative py-16 bg-center bg-no-repeat bg-cover features bg-jade-300 bg-home-features sm:py-24 lg:py-16">
+      <div className="max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8">
+        <p className="mt-2 text-3xl font-extrabold tracking-tight text-center text-gray-50 sm:text-4xl lg:text-left">
           What you&apos;ll learn
         </p>
         <div className="mt-12">
-          <div className="grid auto-rows-fr grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 auto-rows-fr sm:grid-cols-2 lg:grid-cols-3">
             {features.map((feature) => (
               <div key={feature.name} className="pt-6">
-                <div className="h-full rounded-lg bg-gray-50 px-6 py-8">
+                <div className="h-full px-6 py-8 rounded-lg bg-gray-50">
                   <Image
-                    className="h-8 w-auto sm:h-10"
+                    className="w-auto h-8 sm:h-10"
                     src={`/images/home/course-icons/book-icon.svg`}
                     alt="Cypress Logo"
                     height={62}
@@ -60,7 +60,7 @@ export default function HomeFeatures() {
                   <h3 className="mt-4 text-lg font-medium tracking-tight text-gray-900">
                     {feature.name}
                   </h3>
-                  <p className="mt-5 text-base text-gray-500">
+                  <p className="mt-5 text-base text-gray-700">
                     {feature.description}
                   </p>
                 </div>

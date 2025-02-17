@@ -4,11 +4,11 @@ export default function HomeHero() {
   return (
     <>
       <div className="relative overflow-hidden">
-        <main>
-          <div className="bg-jade-300 bg-course-hero bg-cover bg-center bg-no-repeat pt-14 md:py-28">
-            <div className="mx-auto w-full lg:pl-8">
+        <div>
+          <div className="bg-center bg-no-repeat bg-cover bg-jade-300 bg-course-hero pt-14 md:py-28">
+            <div className="w-full mx-auto lg:pl-8">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-                <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
+                <div className="max-w-md px-4 mx-auto sm:max-w-2xl sm:px-6 sm:text-center lg:flex lg:items-center lg:px-0 lg:text-left">
                   <div className="lg:pb-32">
                     <h1
                       data-test="hero-heading"
@@ -23,7 +23,7 @@ export default function HomeHero() {
 
                     {/* Features */}
                     <div className="mt-8 overflow-hidden">
-                      <dl className="-mx-8 -mt-8 flex flex-wrap">
+                      <dl className="flex flex-wrap -mx-8 -mt-8">
                         <div className="flex flex-col px-8 pt-8">
                           <dt className="order-2 text-base font-normal text-jade-700">
                             Courses
@@ -55,7 +55,7 @@ export default function HomeHero() {
 
                     <div className="mt-10 sm:mt-12">
                       <a
-                        className="inline-flex items-center rounded-md bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-indigo-500 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         href="#courses"
                       >
                         Start Learning
@@ -63,7 +63,7 @@ export default function HomeHero() {
 
                       {/* <button
                         type="button"
-                        className="ml-2 inline-flex items-center rounded-md bg-white px-4 py-2 text-base font-medium text-indigo-500 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:ml-6"
+                        className="inline-flex items-center px-4 py-2 ml-2 text-base font-medium text-indigo-500 bg-white rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:ml-6"
                       >
                         Get Course Updates
                       </button> */}
@@ -74,7 +74,7 @@ export default function HomeHero() {
                 <div className="sm:mx-auto sm:max-w-3xl sm:px-6">
                   <div className="pt-12 sm:relative sm:mt-12 sm:py-16 md:py-12 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
                     <div className="hidden sm:block"></div>
-                    <div className="relative -mr-40 pl-4 sm:mx-auto sm:max-w-3xl sm:px-0 lg:h-full lg:max-w-none lg:pl-12">
+                    <div className="relative pl-4 -mr-40 sm:mx-auto sm:max-w-3xl sm:px-0 lg:h-full lg:max-w-none lg:pl-12">
                       <Image
                         className="w-full rounded-md shadow-xl ring-1 ring-black ring-opacity-5 lg:h-full lg:w-auto lg:max-w-none"
                         src="/images/home/hero/home-rwa-hero.svg"
@@ -88,7 +88,7 @@ export default function HomeHero() {
               </div>
             </div>
           </div>
-        </main>
+        </div>
       </div>
     </>
   )

@@ -3,7 +3,7 @@
 */
 
 .lesson-content h1 {
-  @apply mt-2 block text-center text-3xl font-extrabold leading-8 tracking-tight text-gray-900;
+  @apply block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900;
 }
 
 /*
@@ -134,6 +134,7 @@ input[type="search"]:focus {
 
 /* default for custom types */
 .admonition {
+  color: #646B78;
   background-color: rgba(118, 51, 219, 0.1);
   border-left: 8px solid #7633db;
 }
@@ -164,16 +165,16 @@ input[type="search"]:focus {
 
 .admonition-tip {
   background-color: rgba(46, 204, 113, 0.1);
-  border-left: 8px solid #2ecc71;
+  border-left: 8px solid #25A259;
 }
 
 .admonition-tip h5 {
-  color: #2ecc71;
+  color: #1D8147;
 }
 
 .admonition-tip .admonition-icon svg {
-  stroke: #2ecc71;
-  fill: #2ecc71;
+  stroke: #1D8147;
+  fill: #1D8147;
 }
 
 .admonition-warning {
