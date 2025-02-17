@@ -44,12 +44,12 @@ export default function LessonLayout({
       />
 
       <div className="py-6 pt-16">
-        <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-screen-2xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+        <div className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-screen-2xl lg:grid-cols-12 lg:gap-8 lg:px-8">
           <div className="hidden lg:col-span-3 lg:block xl:col-span-2">
             {/* Course Progress */}
             <div
               aria-label="Sidebar"
-              className="sticky top-6 divide-y divide-gray-300"
+              className="sticky divide-y divide-gray-300 top-6"
             >
               <LessonCourseProgress
                 course={course}
@@ -60,15 +60,15 @@ export default function LessonLayout({
           </div>
 
           {/* Main Content */}
-          <main className="lg:col-span-9 xl:col-span-8">
-            <div className="prose prose-lg prose-indigo mx-auto px-4 text-gray-500 sm:px-0">
+          <div className="lg:col-span-9 xl:col-span-8">
+            <div className="px-4 mx-auto prose prose-lg text-gray-500 prose-indigo sm:px-0">
               <MDXRemote {...source} components={components} />
             </div>
-          </main>
+          </div>
 
           {/* Table of Contents */}
           <aside className="hidden xl:col-span-2 xl:block">
-            <div className="sticky top-6 space-y-4">
+            <div className="sticky space-y-4 top-6">
               <LessonTOC
                 navigation={toc}
                 lessonPath={lessonPath}

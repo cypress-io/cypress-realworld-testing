@@ -20,7 +20,11 @@ export default function LessonTOC({ navigation, lessonPath, section }: Props) {
   return (
     <>
       <p className="mb-4 font-semibold">ON THIS PAGE</p>
-      <nav data-test="toc-sidebar" className="space-y-1" aria-label="Sidebar">
+      <nav
+        role="navigation"
+        data-test="toc-sidebar"
+        className="space-y-1"
+        aria-label="Sidebar">
         {navigation.map((item, index) => (
           <a
             data-test={`toc-link`}
@@ -29,7 +33,7 @@ export default function LessonTOC({ navigation, lessonPath, section }: Props) {
             className={classNames(
               item.current
                 ? "bg-gray-100 text-gray-900"
-                : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
+                : "text-gray-700 hover:bg-gray-50 hover:text-gray-900",
               "group flex items-center rounded-md px-3 py-2 text-sm font-medium"
             )}
             aria-current={item.current ? "page" : undefined}
@@ -48,7 +52,7 @@ export default function LessonTOC({ navigation, lessonPath, section }: Props) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="w-6 h-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

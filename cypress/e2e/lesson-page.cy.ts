@@ -11,12 +11,12 @@ describe("Lesson Pages", () => {
   })
 
   it("displays the lightbox whenever an image is clicked", () => {
-    cy.get(".prose img").its(0).click()
+    cy.get(".prose img").first().click()
     cy.get("#modal").should("be.visible")
   })
 
   it("the lightbox closes when the close button is clicked", () => {
-    cy.get(".prose img").its(0).click()
+    cy.get(".prose img").first().click()
     cy.get("#modal .modal-content .close").click()
     cy.get("#modal").should("not.be.visible")
   })
