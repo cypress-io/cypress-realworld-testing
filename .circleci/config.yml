@@ -35,7 +35,7 @@ workflows:
           cypress-command: |
             if [[ -v CYPRESS_RECORD_KEY ]]; then
               # internal PR
-              npx cypress run --browser chrome --parallel --record --key $CYPRESS_RECORD_KEY
+              npx cypress run --browser chrome --parallel --record --key $CYPRESS_RECORD_KEY --group "Desktop"
             else
               npx cypress run --browser chrome
             fi
@@ -53,9 +53,9 @@ workflows:
           cypress-command: |
             if [[ -v CYPRESS_RECORD_KEY ]]; then
               # internal PR
-              npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667 --parallel --record --key $CYPRESS_RECORD_KEY
+              npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667 --parallel --record --key $CYPRESS_RECORD_KEY --group "Mobile"
             else
-              npx cypress run --browser chrome
+              npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667
             fi
           post-steps:
             - run:
