@@ -50,7 +50,7 @@ cy.getBySel("sidenav-notifications").click()
 cy.location("pathname").should("equal", "/notifications")
 ```
 
-![](/images/real-world-examples/notifications/renders-an-empty-notifications-state/Screen_Shot_2021-09-16_at_9.10.15_AM.png)
+![Screenshot of the Cypress App with the 'click' command highlighted as purple in the Cypress Command Log. An element is highlighted in the application under test on a navigation item with the text 'Notifications'. There is a red dot on the highlighted element indicating the point where the click happened.](/images/real-world-examples/notifications/renders-an-empty-notifications-state/Screen_Shot_2021-09-16_at_9.10.15_AM.png)
 
 Finally, we verify that there are not any notifications in the DOM and that the screen displays the correct text letting the user know there are no notifications.
 

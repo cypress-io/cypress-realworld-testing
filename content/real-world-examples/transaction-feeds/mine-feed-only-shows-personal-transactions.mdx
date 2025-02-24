@@ -41,7 +41,7 @@ Next, we click on the personal feed view tab
 cy.getBySelLike(feedViews.personal.tab).click()
 ```
 
-![](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.31.55_AM.png)
+![Screenshot of Cypress test running in browser. The click command is highlighted in purple in the Cypress command log. The application under test shows the Real World App. There's an overlay on the AUT saying 'Dom Snapshot (pinned) with a before and after button. The before state is showing the state of the AUT before the click command ran.'](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.31.55_AM.png)
 
 Then, we wait upon the `@personalTransactions` intercept, grab the `results` from the body of the response and iterate over each transaction. We then make an assertion to make sure the response only returns transactions associated with our user.
 
@@ -55,7 +55,7 @@ cy.wait("@personalTransactions")
 
 ```
 
-![](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.32.18_AM.png)
+![Cypress Screenshot of Cypress App with the 'its' command highlighted in purple in the Cypress Command Log. There are several assertions in green verifying that the assertions expected certain text. The DevTools console is open displaying the `its` command properties including the details of the array yielded from the command.](/images/real-world-examples/transaction-feeds/mine-feed-only-shows-personal-transactions/Screen_Shot_2021-09-16_at_9.32.18_AM.png)
 
 Finally, we make sure that the loading skeleton does not exist in the DOM.
 
