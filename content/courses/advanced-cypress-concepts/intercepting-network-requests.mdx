@@ -72,7 +72,6 @@ Sometimes you will need to modify a portion of the response data while leaving e
 
 ```js
 cy.intercept("POST", "/bankaccounts", (req) => {
-  const { body } = req
   req.continue((res) => {
     res.body.data.listBankAccount = []
   })
