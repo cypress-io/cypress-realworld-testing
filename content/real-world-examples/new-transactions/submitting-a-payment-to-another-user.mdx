@@ -90,7 +90,7 @@ cy.getBySel("user-list-search-input").type(ctx.contact!.firstName, { force: true
     cy.wait("@usersSearch");
 ```
 
-![](/images/real-world-examples/new-transactions/submitting-a-payment-to-another-user/Screen_Shot_2021-09-14_at_4.01.10_PM.png)
+![Screensot of Cypress App with 'get' command highlighted in purple in the Cypress Command Log. The text next to the get command says 'data-test=user-list-search-input'. The application under test shows an input element highlighted with the text 'Search' above a list of transactions.](/images/real-world-examples/new-transactions/submitting-a-payment-to-another-user/Screen_Shot_2021-09-14_at_4.01.10_PM.png)
 
 We then make an assertion that the user that we just searched for appears in the search results and then we click on that user to make a payment to them.
 
