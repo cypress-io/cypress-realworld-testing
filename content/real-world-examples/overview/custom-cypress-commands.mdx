@@ -564,7 +564,7 @@ return cy
   })
 ```
 
-![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.49.15_AM.png)
+![Screenshot of Cypress App with assert command highlighted in purple in the Cypress Command Log. The assert is showing green, which means passing and shows the text 'expected data-test=list-skeleton not to exist in the DOM'. The application under test shows the Real World App with a list of transactions.](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.49.15_AM.png)
 
 ---
 
@@ -889,7 +889,7 @@ cy.getBySel("transaction-list-filter-amount-range-button")
   .click({ force: true })
 ```
 
-![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.38.19_AM.png)
+![Screenshot of Cypress App of a passing test showing the 'get' command highlighted in purple in the Cypress Command Log. The text beside the 'get' command says 'data-test=filter-amount-range-slider'. The application under test shows the Real World App with an ammount range slider displaying in a popover with a 'clear' button.](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.38.19_AM.png)
 
 We then use the custom Cypress command `cy.reactComponent()` explained above, to set the min and max values of the slider. We are able to do this since the `cy.reactComponent()` command gives us access to the `memoizedProps` on the component which allows us to programmatically trigger the `onChange()` event setting the minimum and maximum values for the slider.
 
@@ -907,7 +907,7 @@ Example usage.
 cy.setTransactionAmountRange(200, 800)
 ```
 
-![](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.39.06_AM.png)
+![Screenshot of Cypress App with passing test with the 'invoke' command highlighted in purple in the Cypress Command Log. The text beside the invoke command says '.onChange' with arguments null, and an array with 20 and 80 as values. The application under test shows the Real World App on a page with transactions. There is a popover with an amount range slider.](/images/real-world-examples/custom-commands/Screen_Shot_2021-09-21_at_10.39.06_AM.png)
 
 ---
 
