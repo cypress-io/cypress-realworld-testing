@@ -128,7 +128,7 @@ Now, we need to get the “Get started” button, however, there is a slight pro
 <div data-test="course-0"></div>
 ```
 
-We are now going to learn a new Cypress command that allows us to narrow down the scope in which Cypress looks for an element. We can tell Cypress to [find](https://docs.cypress.io/api/commands/find) elements that are within this element, ie: the elements direct children.
+We are now going to learn a new Cypress command that allows us to narrow down the scope in which Cypress looks for an element. We can tell Cypress to [find](https://docs.cypress.io/api/commands/find) elements that are nested anywhere within this element, ie: the element's descendants.
 
 ```ts
 context("Courses section", () => {

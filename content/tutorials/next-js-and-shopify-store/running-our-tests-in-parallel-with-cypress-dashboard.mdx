@@ -87,7 +87,7 @@ Save your changes and push them up to GitHub.
 
 ```bash
 git add .
-git commit -m "added Cypress dashboard projectID and env vars to GHA config"
+git commit -m "added Cypress Cloud projectID and env vars to GHA config"
 git push origin github-actions-cypress-tests
 ```
 
@@ -227,7 +227,7 @@ jobs:
           parallel: true
 ```
 
-Notice that we have added `parallel: true`. This tells the dashboard we want our tests to be run in parallel.
+Notice that we have added `parallel: true`. This tells Cypress Cloud we want our tests to be run in parallel.
 
 Finally, we add our environment variables and the entire workflow config should look like the following.
 

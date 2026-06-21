@@ -55,11 +55,11 @@ Cypress should launch and look like this:
 
 ![Screen Shot 2021-12-16 at 10.09.25 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.09.25_AM.png)
 
-Cypress by default creates several example spec files for demonstration purposes. In the blue alert at the top click on the "No thanks, delete example files" link. This will delete all of the default spec files that Cypress installs upon first launching it.
+The first time you open Cypress you will see the Launchpad. Choose **E2E Testing**, and Cypress will scaffold a few configuration files for you. Click **Continue**, then pick a browser to start testing in.
 
 ## Writing Our First Test
 
-Create a new spec file within `cypress/integration` and called it `home.spec.js`
+Create a new spec file within `cypress/e2e` and called it `home.spec.js`
 
 ![Screen Shot 2022-05-09 at 11.00.19 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.00.19_AM.png)
 
@@ -272,7 +272,7 @@ Great all of our products are displaying the correct name and price!
 
 Let's now write some tests for the header of our application. We will write some tests to make sure that the links go to the correct pages and the search bar returns the correct results.
 
-First, create a new spec file in `cypress/integration` called `header.spec.js` and add the following.
+First, create a new spec file in `cypress/e2e` called `header.spec.js` and add the following.
 
 ```jsx
 describe("Header", () => {})
@@ -657,7 +657,7 @@ it.only("the search bar returns the correct search results", () => {
 
 Let's write one more test that confirms that our shopping cart is working.
 
-Create a new file within `cypress/integration` called `shopping-cart.spec.js` and add the following:
+Create a new file within `cypress/e2e` called `shopping-cart.spec.js` and add the following:
 
 ```jsx
 describe("Shopping Cart", () => {
