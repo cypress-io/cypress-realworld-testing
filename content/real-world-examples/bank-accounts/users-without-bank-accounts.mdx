@@ -43,7 +43,7 @@ Next, we use <apiLink apiName="intercept" displayName="cy.intercept()" /> to int
 Then we clear out any `listBankAccount` items that come back by setting this property on the response to an empty array. This is how we manipulate the response data to ensure we "render an empty bank account list," which is necessary for our test.
 
 ```js
-cy.intercept("POST", `${Cypress.env("apiUrl")}/graphql`, (req) => {
+cy.intercept("POST", `${Cypress.expose("apiUrl")}/graphql`, (req) => {
   const { body } = req
   if (
     body.hasOwnProperty("operationName") &&

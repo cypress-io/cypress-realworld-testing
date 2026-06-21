@@ -21,7 +21,7 @@ _.each(feedViews, (feed, feedName) => {
 
         cy.wait(`@${feed.routeAlias}`)
           .its("response.body.results")
-          .should("have.length", Cypress.env("paginationPageSize"));
+          .should("have.length", Cypress.expose("paginationPageSize"));
 // ...
 ```
 

@@ -73,27 +73,29 @@ We also have a utility function called `isMobile()` which determines if our test
 export const isMobile = () => {
   return (
     Cypress.config("viewportWidth") <
-    Cypress.env("mobileViewportWidthBreakpoint")
+    Cypress.expose("mobileViewportWidthBreakpoint")
   )
 }
 ```
 
-The environment variable `mobileViewportWidthBreakpoint` is located within the `cypress.json` config file.
+The configuration value `mobileViewportWidthBreakpoint` is located within the `cypress.config.ts` config file. Because it is non-sensitive, public configuration, the RWA defines it under the `expose` key and reads it in tests with [Cypress.expose()](https://docs.cypress.io/api/cypress-api/expose) (Cypress 15.10.0+). Reserve the `env` key and [cy.env()](https://docs.cypress.io/api/commands/env) for secrets you want to keep out of the browser.
 
-```json
-{
+```ts
+export default defineConfig({
   // ...
 
-  "env": {
-    "apiUrl": "http://localhost:3001",
-    "mobileViewportWidthBreakpoint": 414,
-    "coverage": false,
-    "codeCoverage": {
-      "url": "http://localhost:3001/__coverage__"
-    }
+  expose: {
+    apiUrl: "http://localhost:3001",
+    mobileViewportWidthBreakpoint: 414,
+    coverage: false,
+    codeCoverage: {
+      url: "http://localhost:3001/__coverage__",
+    },
   },
-  "experimentalStudio": true
-}
+  e2e: {
+    experimentalStudio: true,
+  },
+})
 ```
 
 In our tests, we can use this function to determine if the tests are being executed within our mobile viewport and react accordingly using a conditional.
