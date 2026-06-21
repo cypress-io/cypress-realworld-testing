@@ -12,17 +12,21 @@ Give your project a name and select GitHub Actions as the CI provider.
 
 ![screencapture-dashboard-cypress-io-organizations-c11ae021-28cd-4e97-922d-f6bca2ceaf3b-projects-new-2022-05-09-14_35_23.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/screencapture-dashboard-cypress-io-organizations-c11ae021-28cd-4e97-922d-f6bca2ceaf3b-projects-new-2022-05-09-14_35_23.png)
 
-Next, we will need to copy the `projectID` into our `cypress.json` file.
+Next, we will need to copy the `projectID` into our `cypress.config.ts` file.
 
 ![screencapture-dashboard-cypress-io-projects-r5p488-runs-2022-05-09-14_35_47.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/screencapture-dashboard-cypress-io-projects-r5p488-runs-2022-05-09-14_35_47.png)
 
-```json
-{
-  "baseUrl": "http://localhost:3000",
-  "viewportHeight": 1000,
-  "viewportWidth": 1280,
-  "projectId": "r5p488"
-}
+```ts
+import { defineConfig } from "cypress"
+
+export default defineConfig({
+  projectId: "r5p488",
+  viewportHeight: 1000,
+  viewportWidth: 1280,
+  e2e: {
+    baseUrl: "http://localhost:3000",
+  },
+})
 ```
 
 ![Screen Shot 2022-05-09 at 2.36.52 PM.png](/images/tutorials/next-js-and-shopify-store/running-our-tests-in-parallel-with-cypress-dashboard/Screen_Shot_2022-05-09_at_2.36.52_PM.png)

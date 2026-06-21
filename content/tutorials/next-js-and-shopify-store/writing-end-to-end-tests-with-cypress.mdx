@@ -374,12 +374,16 @@ describe("Header", () => {
 
 Instead of having to write `cy.visit('http://localhost:3000')` to tell Cypress to go to the home page, we can tell Cypress our applications `baseUrl` and then simply use `cy.visit('/')` instead.
 
-Within the `cypress.json` file in the root of the repo, add the following:
+Within the `cypress.config.ts` file in the root of the repo, add the following:
 
-```json
-{
-  "baseUrl": "http://localhost:3000"
-}
+```ts
+import { defineConfig } from "cypress"
+
+export default defineConfig({
+  e2e: {
+    baseUrl: "http://localhost:3000",
+  },
+})
 ```
 
 ![Screen Shot 2021-12-16 at 11.16.26 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.16.26_AM.png)
@@ -450,14 +454,18 @@ When we re-run our test we see that it is failing, why?
 
 ![Screen Shot 2021-12-16 at 11.28.45 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.28.45_AM.png)
 
-If we look closely at our application, we can see that those links do not appear in the header. This is because Cypress by default opens the viewport to "1000x660" which is too narrow. One of the breakpoints in our Next.js application is hiding these links when it is 1000px wide. We can modify the default viewport size by adding the following to the `cypress.json` file.
+If we look closely at our application, we can see that those links do not appear in the header. This is because Cypress by default opens the viewport to "1000x660" which is too narrow. One of the breakpoints in our Next.js application is hiding these links when it is 1000px wide. We can modify the default viewport size by adding the following to the `cypress.config.ts` file.
 
-```jsx
-{
-  "baseUrl": "http://localhost:3000",
-  "viewportHeight": 1000,
-  "viewportWidth": 1280
-}
+```ts
+import { defineConfig } from "cypress"
+
+export default defineConfig({
+  viewportHeight: 1000,
+  viewportWidth: 1280,
+  e2e: {
+    baseUrl: "http://localhost:3000",
+  },
+})
 ```
 
 Now our test should be passing
@@ -707,7 +715,7 @@ describe("Shopping Cart", () => {
 
 ## Conclusion
 
-In this lesson, we learned how to install Cypress and how to write several different tests to ensure that our store is working as expected. We also learned how to customize the Cypress test runner within the `cypress.json` file as well has how to use custom Cypress commands.
+In this lesson, we learned how to install Cypress and how to write several different tests to ensure that our store is working as expected. We also learned how to customize the Cypress test runner within the `cypress.config.ts` file as well has how to use custom Cypress commands.
 
 ## Practice
 
