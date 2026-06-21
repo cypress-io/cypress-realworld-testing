@@ -5,10 +5,9 @@ describe("Multiple Choice Challenge", () => {
 
   it("gray's out and strikes through an incorrect answer", () => {
     cy.get("#answer-0").click()
-    cy.get("label[for='answer-0']").should(
-      "have.class",
-      "line-through text-gray-300"
-    )
+    cy.get("label[for='answer-0']")
+      .should("have.class", "line-through")
+      .and("have.class", "text-gray-300")
   })
 
   it("it displays the next lesson button when an answer is correct and updates the progress sidebar", () => {
@@ -38,7 +37,7 @@ describe("Multiple Choice Challenge", () => {
       cy.getBySel("multiple-choice-challenge").should("be.visible")
     })
 
-    it.only("displays the complete lesson button when checked", () => {
+    it("displays the complete lesson button when checked", () => {
       cy.getBySel("skip-challenge-input").click()
       cy.getBySel("complete-lesson-button").should("be.visible")
       cy.getBySel("next-lesson-button").should("not.exist")
