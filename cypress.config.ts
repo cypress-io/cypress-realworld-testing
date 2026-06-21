@@ -11,14 +11,9 @@ export default defineConfig({
   // `cy.env()` only for sensitive values you want to keep out of the browser.
   expose: {
     mobileViewportWidthBreakpoint: 414,
+    siteURL: process.env.SITE_URL,
   },
   e2e: {
     baseUrl: 'http://localhost:3000',
-    setupNodeEvents(on, config) {
-      config.expose.siteURL = process.env.SITE_URL
-
-      return config
-    },
-
   },
 })
