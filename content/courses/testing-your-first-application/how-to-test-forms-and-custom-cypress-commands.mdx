@@ -6,7 +6,7 @@
 
 In the previous lesson, we updated our test to use a `data-test` attribute like so:
 
-```jsx
+```ts
 cy.get("[data-test='hero-heading']")
 ```
 
@@ -18,7 +18,7 @@ For our use case, we want to create a custom Cypress command that will allow us 
 
 By default, this file will contain a bunch of code comments that provide some instructions on how to create a custom command. Add the following to the file:
 
-```jsx
+```ts
 declare namespace Cypress {
   interface Chainable {
     getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>
@@ -34,19 +34,19 @@ Since we are using TypeScript, we must add the type definition for our custom co
 
 After that, we add a custom command called “getByData” which will allow us to pass in the value only of any `data-test` attribute, like so:
 
-```jsx
+```ts
 cy.getByData("hero-heading")
 ```
 
 instead of:
 
-```jsx
+```ts
 cy.get("[data-test='hero-heading']")
 ```
 
 Now that we have created our custom command, let's refactor our `cypress/e2e/home.cy.ts` test to use it and make sure our test is still passing.
 
-```jsx
+```ts
 // home.cy.ts
 
 it("the h1 contains the correct text", () => {
@@ -113,7 +113,7 @@ First, we will write a test that confirms that a user is able to successfully si
 
 Create a new file `cypress/e2e/subscribe.cy.ts` and add the following:
 
-```jsx
+```ts
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
@@ -127,7 +127,7 @@ Notice that right off the bat, we are adding a `beforeEach()` hook which we disc
 
 The first thing we need to do is get the email input field of our form like so:
 
-```jsx
+```ts
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
@@ -151,7 +151,7 @@ Now that we know things are working properly, let's continue writing our test.
 
 We have the email input element, and now we need to type in a valid email. We can do this by chaining the [type](https://docs.cypress.io/api/commands/type) method like so:
 
-```jsx
+```ts
 it("allows users to subscribe to the email list", () => {
   cy.getByData("email-input").type("tom@aol.com")
 })
@@ -173,7 +173,7 @@ After:
 
 Next, we need to get the “Subscribe” button so that we can click on it and submit the email and our form.
 
-```jsx
+```ts
 it("allows users to subscribe to the email list", () => {
   cy.getByData("email-input").type("tom@aol.com")
   cy.getByData("submit-button").click()
@@ -186,7 +186,7 @@ In the Cypress app, we can see a success message displayed to the user letting t
 
 First, let's get the success message element on the page.
 
-```jsx
+```ts
 it("allows users to subscribe to the email list", () => {
   // ...
   cy.getByData("success-message")
@@ -195,7 +195,7 @@ it("allows users to subscribe to the email list", () => {
 
 Then we want to make sure that the success message element “exists” in the DOM, like so:
 
-```jsx
+```ts
 it("allows users to subscribe to the email list", () => {
   // ...
   cy.getByData("success-message").should("exist")
@@ -204,7 +204,7 @@ it("allows users to subscribe to the email list", () => {
 
 Finally, we want to assert that the message contains the email address that was successfully subscribed.
 
-```jsx
+```ts
 it("allows users to subscribe to the email list", () => {
   // ...
   cy.getByData("success-message").should("exist").contains("tom@aol.com")
@@ -213,7 +213,7 @@ it("allows users to subscribe to the email list", () => {
 
 The entire `subscribe.cy.ts` spec file should look like this:
 
-```jsx
+```ts
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
@@ -253,7 +253,7 @@ For our next test, let's write a test for one of the “unhappy paths,” by mak
 
 Add a new test like so:
 
-```jsx
+```ts
 // subscribe.cy.ts
 
 describe("Newsletter Subscribe Form", () => {
@@ -273,7 +273,7 @@ describe("Newsletter Subscribe Form", () => {
 
 We can then copy and paste the contents from our previous test and make a slight modification.
 
-```jsx
+```ts
 it("does NOT allow an invalid email address", () => {
   cy.getByData("email-input").type("tom")
   cy.getByData("submit-button").click()
@@ -301,7 +301,7 @@ If you get stuck, make sure to take a look at the previous two tests we have alr
 
 <Disclosure>
 
-```jsx
+```ts
 it("does NOT allow already subscribed email addresses", () => {
   cy.getByData("email-input").type("john@example.com")
   cy.getByData("submit-button").click()
@@ -317,7 +317,7 @@ it("does NOT allow already subscribed email addresses", () => {
 
 <Disclosure text="Final Spec File Code">
 
-```js
+```ts
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")

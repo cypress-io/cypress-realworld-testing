@@ -223,3 +223,24 @@ input[type="search"]:focus {
 .osano-cm-widget {
   display: none;
 }
+
+/*
+  Prism (prism-tomorrow) TypeScript syntax support
+
+  Our code samples are written in TypeScript and tagged with ```ts. The
+  prism-tomorrow theme loaded in pages/_document.js predates a few of the
+  token types Prism emits for TypeScript/TSX, so type references, component
+  names, and generic call expressions render in the default foreground color
+  instead of being highlighted. These rules color those tokens to match the
+  theme's existing palette so TypeScript is styled consistently with JS.
+*/
+.token.maybe-class-name {
+  /* type/component references, e.g. NavbarProps, Link — match .class-name */
+  color: #f8c555;
+}
+
+.token.generic-function,
+.token.generic .token.function {
+  /* generic call expressions, e.g. useState<string>() — match .function */
+  color: #f08d49;
+}
