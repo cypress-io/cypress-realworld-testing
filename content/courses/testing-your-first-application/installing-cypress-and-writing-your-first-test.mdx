@@ -437,14 +437,14 @@ You can see this in even greater detail by clicking on the step and then opening
 
 ![Screen Shot 2022-06-28 at 2.56.26 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.56.26_PM.png)
 
-We see that an array was returned with three elements in it, all of which are `<dt>` HTML elements.
+We see that a list of three elements was returned, all of which are `<dt>` HTML elements.
 
 So how then do we get just one of these `<dt>` elements? Specifically, we want to get the first one and make sure that the text says “4 Courses”.
 
-Since we are getting back an array, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within an array of elements, which is exactly what we want.
+Since we are getting back a list of elements, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within that list of elements, which is exactly what we want.
 
 :::info
-Remember that arrays start their indexes at 0, so the first element we want is 0 **not** 1.
+Remember that indexes start at 0, so the first element we want is 0 **not** 1.
 :::
 
 Update your test to the following:
@@ -526,7 +526,7 @@ Pay close attention to this line
 cy.get("dt").eq(0).contains("4 Courses")
 ```
 
-You can copy and paste this line with minor tweaks to test for the other features. You will need to reference the correct index in the array and update the text the feature contains.
+You can copy and paste this line with minor tweaks to test for the other features. You will need to reference the correct index in the list and update the text the feature contains.
 
 If you get stuck, the answer is below.
 

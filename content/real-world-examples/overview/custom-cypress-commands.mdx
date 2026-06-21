@@ -183,7 +183,7 @@ return cy
   })
 ```
 
-This task can be found in `cypress/plugins/index.ts` .
+This task is registered in `setupNodeEvents` within the `e2e` block of `cypress.config.ts` .
 
 ```js
 on("task", {
@@ -1030,7 +1030,7 @@ cy.percySnapshot(snapshotTitle, {
 
 ## cy.task("db:seed")
 
-Located in `cypress/plugins/index.ts` .
+Registered in `setupNodeEvents` within the `e2e` block of `cypress.config.ts` .
 
 ```js
 async "db:seed"() {

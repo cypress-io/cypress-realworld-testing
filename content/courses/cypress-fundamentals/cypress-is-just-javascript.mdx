@@ -15,7 +15,7 @@ _.each(feedViews, (feed, feedName) => {
           .click()
           .should("have.class", "Mui-selected")
           .contains(feed.tabLabel, { matchCase: false })
-          .should("have.css", { "text-transform": "uppercase" });
+          .should("have.css", "text-transform", "uppercase");
         cy.getBySel("list-skeleton").should("not.exist");
         cy.visualSnapshot(`Paginate ${feedName}`);
 
