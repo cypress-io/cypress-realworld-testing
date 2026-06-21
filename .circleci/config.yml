@@ -12,30 +12,59 @@ jobs:
       - checkout
       - run: yarn install
       - run: yarn update-algolia-index
+
   unit-tests:
     executor:
       name: cypress/default
       node-version: "22.16.0"
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+            - yarn-cache-
       - run: yarn install
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
       - run: yarn types
       - run: yarn lint
       - run: yarn test:unit
 
-workflows:
-  run-unit-tests:
-    jobs:
-      - unit-tests
-  build-and-cypress-test:
-    jobs:
-      - cypress/run:
-          name: "UI Tests - Chrome"
-          node-version: "22.16.0"
-          parallelism: 6
+  # Build the Next.js site exactly once and share the output (.next + the
+  # next-sitemap output in public) with every downstream job via a workspace.
+  # Previously `yarn build` ran inside every parallel Cypress container
+  # (parallelism 6 x 2 jobs = 12 redundant builds per pipeline).
+  build:
+    executor:
+      name: cypress/default
+      node-version: "22.16.0"
+    steps:
+      - cypress/install:
           package-manager: "yarn"
           install-browsers: true
           post-install: "yarn cypress info && yarn build"
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .next
+            - public
+
+  ui-tests-chrome:
+    executor:
+      name: cypress/default
+      node-version: "22.16.0"
+    parallelism: 6
+    steps:
+      # Restores deps/browsers/Cypress binary from the orb's cache; the build
+      # output is pulled from the workspace instead of rebuilt here.
+      - cypress/install:
+          package-manager: "yarn"
+          install-browsers: true
+      - attach_workspace:
+          at: .
+      - cypress/run-tests:
           start-command: "yarn start"
           cypress-command: |
             if [[ -v CYPRESS_RECORD_KEY ]]; then
@@ -44,17 +73,19 @@ workflows:
             else
               npx cypress run --browser chrome
             fi
-          post-steps:
-            - run:
-                name: Check for Broken Links
-                command: "yarn check:links"
-      - cypress/run:
-          name: "UI Tests - Chrome - Mobile"
-          node-version: "22.16.0"
-          parallelism: 6
+
+  ui-tests-chrome-mobile:
+    executor:
+      name: cypress/default
+      node-version: "22.16.0"
+    parallelism: 6
+    steps:
+      - cypress/install:
           package-manager: "yarn"
           install-browsers: true
-          post-install: "yarn cypress info && yarn build"
+      - attach_workspace:
+          at: .
+      - cypress/run-tests:
           start-command: "yarn start"
           cypress-command: |
             if [[ -v CYPRESS_RECORD_KEY ]]; then
@@ -63,10 +94,65 @@ workflows:
             else
               npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667
             fi
-          post-steps:
-            - run:
-                name: Check for Broken Links
-                command: "yarn check:links"
+
+  # Broken-link checking does not depend on viewport, so it runs once against a
+  # single server instead of inside all 12 Cypress containers.
+  check-links:
+    executor:
+      name: cypress/default
+      node-version: "22.16.0"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ checksum "yarn.lock" }}
+            - yarn-cache-
+      - run: yarn install
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - attach_workspace:
+          at: .
+      - run:
+          name: Start server
+          command: yarn start
+          background: true
+      - run:
+          name: Wait for server
+          command: |
+            for i in $(seq 1 60); do
+              if curl -sSf http://localhost:3000 > /dev/null 2>&1; then
+                echo "Server is up"
+                exit 0
+              fi
+              echo "Waiting for server... ($i)"
+              sleep 2
+            done
+            echo "Server did not start in time"
+            exit 1
+      - run:
+          name: Check for Broken Links
+          command: "yarn check:links"
+
+workflows:
+  run-unit-tests:
+    jobs:
+      - unit-tests
+  build-and-cypress-test:
+    jobs:
+      - build
+      - ui-tests-chrome:
+          name: "UI Tests - Chrome"
+          requires:
+            - build
+      - ui-tests-chrome-mobile:
+          name: "UI Tests - Chrome - Mobile"
+          requires:
+            - build
+      - check-links:
+          requires:
+            - build
 
 nightly:
   triggers:
