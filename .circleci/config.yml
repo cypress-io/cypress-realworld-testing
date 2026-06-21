@@ -95,8 +95,6 @@ jobs:
               npx cypress run --browser chrome --config viewportWidth=375,viewportHeight=667
             fi
 
-  # Broken-link checking does not depend on viewport, so it runs once against a
-  # single server instead of inside all 12 Cypress containers.
   check-links:
     executor:
       name: cypress/default
