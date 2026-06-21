@@ -102,7 +102,7 @@ describe("renders and paginates all transaction feeds", () => {
 
         cy.wait(`@${feed.routeAlias}`)
           .its("response.body.results")
-          .should("have.length", Cypress.env("paginationPageSize"));
+          .should("have.length", Cypress.expose("paginationPageSize"));
 
         // Temporary fix: <https://github.com/cypress-io/cypress-realworld-app/issues/338>
         if (isMobile()) {
@@ -115,7 +115,7 @@ describe("renders and paginates all transaction feeds", () => {
         cy.wait(`@${feed.routeAlias}`)
           .its("response.body")
           .then(({ results, pageData }) => {
-            expect(results).have.length(Cypress.env("paginationPageSize"));
+            expect(results).have.length(Cypress.expose("paginationPageSize"));
             expect(pageData.page).to.equal(2);
             cy.visualSnapshot(`Paginate ${feedName} Next Page`);
             cy.nextTransactionFeedPage(feed.service, pageData.totalPages);
