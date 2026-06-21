@@ -28,7 +28,7 @@ What makes a user journey test so valuable is the fact that you are testing ever
 
 First, let's create a new test called `cypress/e2e/user-journey.cy.ts`
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {})
 })
@@ -36,7 +36,7 @@ describe("User Journey", () => {
 
 First, we need to visit the home page of our application.
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -52,7 +52,7 @@ You can click on the images to enlarge them.
 
 Next, we need to get the “Get started” button of one of our courses
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -65,7 +65,7 @@ describe("User Journey", () => {
 
 Then we will write an assertion that the “Get started” button has navigated the user to the correct course page.
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -77,7 +77,7 @@ describe("User Journey", () => {
 
 Next, we need to get the “Start Course” button and click on it.
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -92,7 +92,7 @@ describe("User Journey", () => {
 
 We will then write another assertion to verify that the “Start Course” button has navigated our user to the correct lesson page.
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -115,7 +115,7 @@ Then we need to complete the quiz at the bottom of the page.
 In this demo application, all of the answers are true.
 :::
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -135,7 +135,7 @@ describe("User Journey", () => {
 
 We then want to assert that the “Next Lesson” button has appeared on the page and then click it.
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -156,7 +156,7 @@ describe("User Journey", () => {
 
 Finally, we write our final assertion that verifies that the “Next Lesson” takes the user to the correct lesson page.
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")
@@ -191,7 +191,7 @@ If you get stuck the answers are provided below.
 
 <Disclosure>
 
-```jsx
+```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
     cy.visit("http://localhost:3000")

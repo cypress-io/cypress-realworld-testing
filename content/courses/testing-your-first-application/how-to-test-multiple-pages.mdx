@@ -22,7 +22,7 @@ Now that we understand how these “Get started” buttons work on the home page
 
 Our spec file up until this point looks like the following:
 
-```jsx
+```ts
 describe("home page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
@@ -48,7 +48,7 @@ Currently, all of the tests within the `home.cy.ts` spec file are related to the
 
 What the context method does is allow us to group related tests together making our spec file easier to read. Here is what our updated spec file looks like when we use context.
 
-```jsx
+```ts
 describe("home page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
@@ -86,7 +86,7 @@ Notice how all of the tests related to the hero section are nested underneath th
 
 Now that we understand how context works, let's create a new context for the courses section of our home page.
 
-```jsx
+```ts
 describe("Home page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
@@ -112,7 +112,7 @@ describe("Home page", () => {
 
 Next, we will create a new test for the first course, “Testing Your First Next.js Application.”
 
-```jsx
+```ts
 // ...
 
 context("Courses section", () => {
@@ -130,7 +130,7 @@ Now, we need to get the “Get started” button, however, there is a slight pro
 
 We are now going to learn a new Cypress command that allows us to narrow down the scope in which Cypress looks for an element. We can tell Cypress to [find](https://docs.cypress.io/api/commands/find) elements that are within this element, ie: the elements direct children.
 
-```jsx
+```ts
 context("Courses section", () => {
   it.only("Course: Testing Your First Next.js Application", () => {
     cy.getByData("course-0").find("a")
@@ -144,7 +144,7 @@ If we run our test, you will see that Cypress has found four `<a>` tags within t
 
 Instead, we can use the [contains](https://docs.cypress.io/api/commands/contains) method that we also used previously. We can look for the text 'Get started', which will select the `<a>` tag we want:
 
-```jsx
+```ts
 context("Courses section", () => {
   it.only("Course: Testing Your First Next.js Application", () => {
     cy.getByData("course-0").find("a").contains("Get started")
@@ -154,7 +154,7 @@ context("Courses section", () => {
 
 Now that we have our button, all that is left to do is to click on it.
 
-```jsx
+```ts
 context("Courses section", () => {
   it.only("Course: Testing Your First Next.js Application", () => {
     cy.getByData("course-0").find("a").contains("Get started").click()
@@ -174,7 +174,7 @@ As you can see we have successfully clicked on our button and navigated to the c
 
 Now that we have successfully clicked on our button and navigated to our course page, let's write an assertion that verifies the button navigates to the correct page. We can do this by writing an assertion that verifies that the URL of our course page is correct like so:
 
-```jsx
+```ts
 context("Courses section", () => {
   it.only("Course: Testing Your First Next.js Application", () => {
     cy.getByData("course-0").find("a").contains("Get started").click()
@@ -195,7 +195,7 @@ Now it is time for you to put what you have just learned into practice. Write tw
 
 Hint: You can copy and paste the test we just wrote:
 
-```jsx
+```ts
 it("Course: Testing Your First Next.js Application", () => {
   cy.getByData("course-0").find("a").contains("Get started").click()
   cy.location("pathname").should("equal", "/testing-your-first-application")
@@ -210,7 +210,7 @@ If you get stuck the answers are provided below.
 
 <Disclosure>
 
-```jsx
+```ts
 context("Courses section", () => {
   it("Course: Testing Your First Next.js Application", () => {
     cy.getByData("course-0").find("a").contains("Get started").click()
@@ -235,7 +235,7 @@ context("Courses section", () => {
 
 <Disclosure text="Final Spec File Code">
 
-```js
+```ts
 describe("Home page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
