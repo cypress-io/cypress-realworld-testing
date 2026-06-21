@@ -34,8 +34,6 @@ jobs:
 
   # Build the Next.js site exactly once and share the output (.next + the
   # next-sitemap output in public) with every downstream job via a workspace.
-  # Previously `yarn build` ran inside every parallel Cypress container
-  # (parallelism 6 x 2 jobs = 12 redundant builds per pipeline).
   build:
     executor:
       name: cypress/default
