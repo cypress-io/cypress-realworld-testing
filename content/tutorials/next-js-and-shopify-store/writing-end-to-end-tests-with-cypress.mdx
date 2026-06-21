@@ -55,11 +55,11 @@ Cypress should launch and look like this:
 
 ![Screen Shot 2021-12-16 at 10.09.25 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_10.09.25_AM.png)
 
-Cypress by default creates several example spec files for demonstration purposes. In the blue alert at the top click on the "No thanks, delete example files" link. This will delete all of the default spec files that Cypress installs upon first launching it.
+The first time you open Cypress you will see the Launchpad. Choose **E2E Testing**, and Cypress will scaffold a few configuration files for you. Click **Continue**, then pick a browser to start testing in.
 
 ## Writing Our First Test
 
-Create a new spec file within `cypress/integration` and called it `home.spec.js`
+Create a new spec file within `cypress/e2e` and called it `home.spec.js`
 
 ![Screen Shot 2022-05-09 at 11.00.19 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2022-05-09_at_11.00.19_AM.png)
 
@@ -272,7 +272,7 @@ Great all of our products are displaying the correct name and price!
 
 Let's now write some tests for the header of our application. We will write some tests to make sure that the links go to the correct pages and the search bar returns the correct results.
 
-First, create a new spec file in `cypress/integration` called `header.spec.js` and add the following.
+First, create a new spec file in `cypress/e2e` called `header.spec.js` and add the following.
 
 ```jsx
 describe("Header", () => {})
@@ -374,12 +374,16 @@ describe("Header", () => {
 
 Instead of having to write `cy.visit('http://localhost:3000')` to tell Cypress to go to the home page, we can tell Cypress our applications `baseUrl` and then simply use `cy.visit('/')` instead.
 
-Within the `cypress.json` file in the root of the repo, add the following:
+Within the `cypress.config.ts` file in the root of the repo, add the following:
 
-```json
-{
-  "baseUrl": "http://localhost:3000"
-}
+```ts
+import { defineConfig } from "cypress"
+
+export default defineConfig({
+  e2e: {
+    baseUrl: "http://localhost:3000",
+  },
+})
 ```
 
 ![Screen Shot 2021-12-16 at 11.16.26 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.16.26_AM.png)
@@ -450,14 +454,18 @@ When we re-run our test we see that it is failing, why?
 
 ![Screen Shot 2021-12-16 at 11.28.45 AM.png](/images/tutorials/next-js-and-shopify-store/writing-end-to-end-tests-with-cypress/Screen_Shot_2021-12-16_at_11.28.45_AM.png)
 
-If we look closely at our application, we can see that those links do not appear in the header. This is because Cypress by default opens the viewport to "1000x660" which is too narrow. One of the breakpoints in our Next.js application is hiding these links when it is 1000px wide. We can modify the default viewport size by adding the following to the `cypress.json` file.
+If we look closely at our application, we can see that those links do not appear in the header. This is because Cypress by default opens the viewport to "1000x660" which is too narrow. One of the breakpoints in our Next.js application is hiding these links when it is 1000px wide. We can modify the default viewport size by adding the following to the `cypress.config.ts` file.
 
-```jsx
-{
-  "baseUrl": "http://localhost:3000",
-  "viewportHeight": 1000,
-  "viewportWidth": 1280
-}
+```ts
+import { defineConfig } from "cypress"
+
+export default defineConfig({
+  viewportHeight: 1000,
+  viewportWidth: 1280,
+  e2e: {
+    baseUrl: "http://localhost:3000",
+  },
+})
 ```
 
 Now our test should be passing
@@ -649,7 +657,7 @@ it.only("the search bar returns the correct search results", () => {
 
 Let's write one more test that confirms that our shopping cart is working.
 
-Create a new file within `cypress/integration` called `shopping-cart.spec.js` and add the following:
+Create a new file within `cypress/e2e` called `shopping-cart.spec.js` and add the following:
 
 ```jsx
 describe("Shopping Cart", () => {
@@ -707,7 +715,7 @@ describe("Shopping Cart", () => {
 
 ## Conclusion
 
-In this lesson, we learned how to install Cypress and how to write several different tests to ensure that our store is working as expected. We also learned how to customize the Cypress test runner within the `cypress.json` file as well has how to use custom Cypress commands.
+In this lesson, we learned how to install Cypress and how to write several different tests to ensure that our store is working as expected. We also learned how to customize the Cypress test runner within the `cypress.config.ts` file as well has how to use custom Cypress commands.
 
 ## Practice
 

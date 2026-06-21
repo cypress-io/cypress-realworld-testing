@@ -23,7 +23,7 @@ Cypress commands are asynchronous and get queued for execution at a later time. 
 
 So if a command does not **return** a subject but instead **yields** it, how can you interact with the subject directly? You can interact with a subject directly by using <apiLink apiName="then" displayName=".then()" />.
 
-`.then()` behaves similarly to Promises in JavaScript. However, <apiLink apiName="then" displayName=".then()" /> is a Cypress command, **not a Promise**. This means you cannot use things like **async/await** within your Cypress tests.
+`.then()` behaves similarly to Promises in JavaScript. However, <apiLink apiName="then" displayName=".then()" /> is a Cypress command, **not a Promise**. This means you cannot use **async/await** to wait on Cypress commands. Use `.then()` to work with what a command yields instead.
 
 Whatever is returned from the callback function becomes the new subject and will flow into the following command (except for `undefined`).
 

@@ -10,6 +10,10 @@ Before we can begin writing Cypress tests, we first need to install it. Within y
 npm install cypress --save-dev
 ```
 
+:::info
+We will be writing our tests in **TypeScript**, which is why our spec files use the `.cy.ts` extension. The course app already includes TypeScript as a dependency (it was installed when you ran `npm install` in the previous lesson), so you don't need to install anything else. If you are following along in your own project, make sure TypeScript is installed first, for example with `npm install typescript --save-dev`.
+:::
+
 Now that we have Cypress installed, we can launch it with:
 
 ```bash
@@ -22,7 +26,7 @@ npx cypress open
 You can click on the images to enlarge them.
 :::
 
-With the Cypress 10 and later, we are now presented with the ability to write E2E or component tests. In this course, we are going to focus solely on E2E tests. Components tests will be covered in another course.
+Cypress gives us the ability to write E2E or component tests. In this course, we are going to focus solely on E2E tests.
 
 Click on the “E2E Testing” button on the left to get started.
 
@@ -72,7 +76,7 @@ Open the `cypress/e2e/home.cy.ts` file in VSCode.
 
 This is the default test that Cypress created when we asked it to create our spec file. We need to update it to run tests against our course application, but before we do that, let's break down the code that is in this file.
 
-```jsx
+```ts
 describe("empty spec", () => {
   it("passes", () => {
     cy.visit("https://example.cypress.io")
@@ -82,13 +86,13 @@ describe("empty spec", () => {
 
 On the first line, we see what is commonly referred to as a “describe block.”
 
-```jsx
+```ts
 describe("empty spec", () => {})
 ```
 
 The `describe()` function takes two arguments. The first is a string which is a description of the tests contained within it. The second is a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function). Since this file is going to contain tests for our home page, let's update this to say “home page.”
 
-```jsx
+```ts
 describe("home page", () => {
   it("passes", () => {
     cy.visit("https://example.cypress.io")
@@ -102,7 +106,7 @@ This is our actual test.
 
 Each time you see `it()` within a given spec file that is a single test. It takes the exact same arguments as the `describe()` function: first a string and then a callback function. Let’s update the string to the following:
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("https://example.cypress.io")
@@ -118,7 +122,7 @@ Finally, we see [cy.visit()](https://docs.cypress.io/api/commands/visit) within 
 
 [visit](https://docs.cypress.io/api/commands/visit) is a command that tells Cypress where to execute our tests. We are going to be running our application locally on [localhost:3000](https://docs.cypress.io/api/commands/visit) so let's update the `cy.visit()` with the correct address.
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("http://localhost:3000")
@@ -131,7 +135,7 @@ Now let's run our test.
 :::info
 Remember, to launch Cypress enter the following in your terminal.
 
-```jsx
+```bash
 npx cypress open
 ```
 
@@ -195,7 +199,7 @@ Typically a page should only have a single `h1` if they are following SEO best p
 
 We will use the [.get()](https://docs.cypress.io/api/commands/get) method from cypress.
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("http://localhost:3000")
@@ -223,7 +227,7 @@ If you click on step 2, you will see that Cypress highlights the `h1` on the rig
 
 Now that we know Cypress has the correct element, we need to write an assertion that the text contained within it is correct. We can do this like so:
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("http://localhost:3000")
@@ -244,7 +248,7 @@ Congratulations! You just wrote your first Cypress E2E test 🎉
 
 Let's briefly discuss what is happening on this line:
 
-```jsx
+```ts
 cy.get("h1").contains("Testing Next.js Applications with Cypress")
 ```
 
@@ -262,7 +266,7 @@ While we are just getting started with writing Cypress tests, we think it is imp
 
 In our first test we are getting the `h1` element by simply passing in the element to cypress, like so:
 
-```jsx
+```ts
 cy.get("h1")
 ```
 
@@ -288,7 +292,7 @@ Now that you have learned about using `data` specific test attributes on element
 
 Currently our test looks like this:
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("http://localhost:3000")
@@ -312,7 +316,7 @@ We are going to replace the `cy.get("h1")` with the `data-test` attribute. If we
 
 This element has a `data-test="hero-heading"` which we will use inside of `cy.get()` like so:
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("http://localhost:3000")
@@ -371,7 +375,7 @@ What is the best approach for getting these elements?
 
 Let's create a new test and add it just below our first test.
 
-```jsx
+```ts
 it("the features on the homepage are correct", () => {
   cy.visit("http://localhost:3000")
 })
@@ -391,7 +395,7 @@ Now that we have two tests, each time we save our file, Cypress is going to re-r
 
 We can tell Cypress to only run a specific test by using `it.only()` like so:
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("http://localhost:3000")
@@ -418,7 +422,7 @@ As you can see only the features test is being executed by Cypress now.
 
 Next, let's use `cy.get()` to get the `<dt>` element and see what happens.
 
-```jsx
+```ts
 it.only("the features on the homepage are correct", () => {
   cy.visit("http://localhost:3000")
   cy.get("dt")
@@ -433,19 +437,19 @@ You can see this in even greater detail by clicking on the step and then opening
 
 ![Screen Shot 2022-06-28 at 2.56.26 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.56.26_PM.png)
 
-We see that an array was returned with three elements in it, all of which are `<dt>` HTML elements.
+We see that a list of three elements was returned, all of which are `<dt>` HTML elements.
 
 So how then do we get just one of these `<dt>` elements? Specifically, we want to get the first one and make sure that the text says “4 Courses”.
 
-Since we are getting back an array, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within an array of elements, which is exactly what we want.
+Since we are getting back a list of elements, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within that list of elements, which is exactly what we want.
 
 :::info
-Remember that arrays start their indexes at 0, so the first element we want is 0 **not** 1.
+Remember that indexes start at 0, so the first element we want is 0 **not** 1.
 :::
 
 Update your test to the following:
 
-```jsx
+```ts
 it.only("the features on the homepage are correct", () => {
   cy.visit("http://localhost:3000")
   cy.get("dt").eq(0)
@@ -456,7 +460,7 @@ it.only("the features on the homepage are correct", () => {
 
 As you can see we are now getting the first `<dt>` element, which is exactly what we want. Now we just need to write our assertion that makes sure it contains the correct text.
 
-```jsx
+```ts
 it.only("the features on the homepage are correct", () => {
   cy.visit("http://localhost:3000")
   cy.get("dt").eq(0).contains("4 courses")
@@ -469,7 +473,7 @@ It looks like we are getting an error. Why?
 
 We did this on purpose to draw your attention to the fact that `contains()` is case-sensitive. If you look closely at our test we have:
 
-```jsx
+```ts
 .contains("4 courses")
 ```
 
@@ -477,7 +481,7 @@ But our site says “4 Courses” where courses is spelled with a capital C.
 
 Update your test to the following to get things passing again:
 
-```jsx
+```ts
 it.only("the features on the homepage are correct", () => {
   cy.visit("http://localhost:3000")
   cy.get("dt").eq(0).contains("4 Courses")
@@ -489,14 +493,14 @@ it.only("the features on the homepage are correct", () => {
 :::tip
 You can also pass regular expressions into the contains method. So if you wanted to make a case insensitive comparison using regex, you could use:
 
-```jsx
+```ts
 cy.get("dt").eq(0).contains(/4 courses/i)
 ```
 :::
 
 Here is our entire spec file so far:
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("http://localhost:3000")
@@ -518,11 +522,11 @@ We still need to write two additional assertions for the remaining two features,
 
 Pay close attention to this line
 
-```jsx
+```ts
 cy.get("dt").eq(0).contains("4 Courses")
 ```
 
-You can copy and paste this line with minor tweaks to test for the other features. You will need to reference the correct index in the array and update the text the feature contains.
+You can copy and paste this line with minor tweaks to test for the other features. You will need to reference the correct index in the list and update the text the feature contains.
 
 If you get stuck, the answer is below.
 
@@ -530,7 +534,7 @@ If you get stuck, the answer is below.
 
 <Disclosure>
 
-```jsx
+```ts
 describe("home page", () => {
   it("the h1 contains the correct text", () => {
     cy.visit("http://localhost:3000")
@@ -554,7 +558,7 @@ describe("home page", () => {
 
 Whew! We have covered a lot of material in this lesson and we are almost done. Before we finish we wanted to introduce to you the concept of hooks. If you take a look at the two tests within our spec file, we are using
 
-```js
+```ts
 cy.visit("http://localhost:3000")
 ```
 
@@ -564,7 +568,7 @@ We can simplify this and put the `cy.visit()` in a single spot called a [beforeE
 
 Update your test to look like the following:
 
-```jsx
+```ts
 describe("home page", () => {
   beforeEach(() => {
     cy.visit("http://localhost:3000")
