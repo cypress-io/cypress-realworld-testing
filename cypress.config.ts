@@ -6,16 +6,16 @@ export default defineConfig({
   viewportHeight: 1000,
   viewportWidth: 1400,
   blockHosts: ['*.osano.com'], // blocking the cookie popup from tests
-  env: {
+  expose: {
     mobileViewportWidthBreakpoint: 414,
   },
   e2e: {
     baseUrl: 'http://localhost:3000',
     setupNodeEvents(on, config) {
-      config.env.siteURL = process.env.SITE_URL
+      config.expose.siteURL = process.env.SITE_URL
 
       return config
     },
-    
+
   },
 })
