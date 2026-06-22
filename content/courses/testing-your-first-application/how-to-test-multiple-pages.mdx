@@ -25,7 +25,7 @@ Our spec file up until this point looks like the following:
 ```ts
 describe("home page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   it("the h1 contains the correct text", () => {
@@ -51,7 +51,7 @@ What the context method does is allow us to group related tests together making 
 ```ts
 describe("home page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   context("Hero section", () => {
@@ -89,7 +89,7 @@ Now that we understand how context works, let's create a new context for the cou
 ```ts
 describe("Home page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   context("Hero section", () => {
@@ -238,7 +238,7 @@ context("Courses section", () => {
 ```ts
 describe("Home page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   context("Hero section", () => {

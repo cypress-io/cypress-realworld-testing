@@ -39,7 +39,7 @@ First, we need to visit the home page of our application.
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 })
 ```
@@ -55,7 +55,7 @@ Next, we need to get the “Get started” button of one of our courses
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
     cy.getByData("course-0").find("a").contains('Get started').click()
   })
 })
@@ -68,7 +68,7 @@ Then we will write an assertion that the “Get started” button has navigated 
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
     cy.getByData("course-0").find("a").contains('Get started').click()
     cy.location("pathname").should("equal", "/testing-your-first-application")
   })
@@ -80,7 +80,7 @@ Next, we need to get the “Start Course” button and click on it.
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
     cy.getByData("course-0").find("a").contains('Get started').click()
     cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
@@ -95,7 +95,7 @@ We will then write another assertion to verify that the “Start Course” butto
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
     cy.getByData("course-0").find("a").contains('Get started').click()
     cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
@@ -118,7 +118,7 @@ In this demo application, all of the answers are true.
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
     cy.getByData("course-0").find("a").contains('Get started').click()
     cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
@@ -138,7 +138,7 @@ We then want to assert that the “Next Lesson” button has appeared on the pag
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
     cy.getByData("course-0").find("a").contains('Get started').click()
     cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
@@ -159,7 +159,7 @@ Finally, we write our final assertion that verifies that the “Next Lesson” t
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
     cy.getByData("course-0").find("a").contains('Get started').click()
     cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
@@ -194,7 +194,7 @@ If you get stuck the answers are provided below.
 ```ts
 describe("User Journey", () => {
   it("a user can find a course on the home page and complete the courses lessons", () => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
     cy.getByData("course-0").find("a").contains('Get started').click()
     cy.location("pathname").should("equal", "/testing-your-first-application")
     cy.getByData("next-lesson-button").click()
