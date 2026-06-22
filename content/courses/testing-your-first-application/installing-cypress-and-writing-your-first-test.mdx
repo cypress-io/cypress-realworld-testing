@@ -614,7 +614,7 @@ export default defineConfig({
 })
 ```
 
-Now that Cypress knows the base address of our application, we can pass a relative path to `cy.visit()` instead of the full URL. To visit the home page, we simply pass `"/"`:
+Now that Cypress knows the base address of our application, we can pass a relative path to `cy.visit()` instead of the full URL. To visit the home page, we pass `"/"`:
 
 ```ts
 describe("home page", () => {
