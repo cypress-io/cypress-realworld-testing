@@ -130,15 +130,20 @@ describe("home page", () => {
 })
 ```
 
+:::info
+Some of the screenshots in this lesson may show `https://localhost:3000`, but the course app runs over plain `http`. Be sure to use `http://localhost:3000` (without the **s**) so your test matches the app.
+:::
+
 Now let's run our test.
 
 :::info
-Remember, to launch Cypress enter the following in your terminal.
+If Cypress is still open from earlier in this lesson, you can keep using that same window—there's no need to launch it again. If you closed it, you can relaunch Cypress by entering the following in your terminal.
 
 ```bash
 npx cypress open
 ```
 
+Cypress can only control a single browser at a time, so avoid running more than one instance of Cypress at once. If a previous test is still running, close it before starting a new one.
 :::
 
 ![Screen Shot 2022-06-28 at 9.21.56 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.21.56_AM.png)
@@ -161,7 +166,11 @@ You should see the following.
 
 ## Debugging our first error
 
-Cypress is throwing an error and says that it cannot load **localhost:3000**. The reason this is happening is that our application's dev server is not running. When running our Cypress tests we always need to have our application's local dev server running. Otherwise, we are going to see this error.
+If your application's dev server is **not** running, Cypress will throw an error and say that it cannot load **localhost:3000**. The reason this happens is that our application's dev server is not running. When running our Cypress tests we always need to have our application's local dev server running. Otherwise, we are going to see this error.
+
+:::info
+If you still have the dev server running from the previous lesson (you started it with `npm run dev`), your test will already be passing and you won't see this error—you can skim this section and continue on. We're still walking through it because a missing dev server is one of the most common errors you'll run into, and it's important to understand why it happens.
+:::
 
 Since Cypress is currently running in our terminal like so:
 
