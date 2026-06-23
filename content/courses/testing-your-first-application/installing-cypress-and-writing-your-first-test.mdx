@@ -595,8 +595,54 @@ We removed `cy.visit()` from each test and placed it inside `beforeEach()` inste
 
 ![Screen Shot 2022-06-28 at 3.14.57 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_3.14.57_PM.png)
 
+## Setting a baseUrl
+
+There is still one thing we can improve. Right now we are hardcoding the full URL `http://localhost:3000` inside of our `cy.visit()`. As our test suite grows, we would have to repeat this URL in every spec file, and if our application ever moved to a different address we would have to update every single one of them.
+
+Cypress lets us set a global `baseUrl` so we only have to define the address of our application in one place. Setting a `baseUrl` is also a [Cypress best practice](https://docs.cypress.io/app/core-concepts/best-practices#Setting-a-Global-baseUrl): in addition to removing the hardcoded URLs, it allows us to easily switch between environments (for example, local development vs. a deployed staging server) and it speeds up the very first command in our tests by removing an initial page reload.
+
+When we set up E2E testing in the previous lesson, Cypress created a `cypress.config.ts` file for us in the root of our project. Open it and add a `baseUrl` to the `e2e` object:
+
+```ts
+// cypress.config.ts
+import { defineConfig } from "cypress"
+
+export default defineConfig({
+  e2e: {
+    baseUrl: "http://localhost:3000",
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
+  },
+})
+```
+
+Now that Cypress knows the base address of our application, we can pass a relative path to `cy.visit()` instead of the full URL. To visit the home page, we pass `"/"`:
+
+```ts
+describe("home page", () => {
+  beforeEach(() => {
+    cy.visit("/")
+  })
+
+  it("the h1 contains the correct text", () => {
+    cy.get("[data-test='hero-heading']").contains(
+      "Testing Next.js Applications with Cypress"
+    )
+  })
+
+  it("the features on the homepage are correct", () => {
+    cy.get("dt").eq(0).contains("4 Courses")
+    cy.get("dt").eq(1).contains("25+ Lessons")
+    cy.get("dt").eq(2).contains("Free and Open Source")
+  })
+})
+```
+
+Cypress will automatically prepend the `baseUrl` to the relative path, so `cy.visit("/")` is the same as visiting `http://localhost:3000/`. If we save our file and run the tests again, everything is still passing—but now our spec files no longer need to know the full address of our application. For the rest of this course, we will use relative paths together with our `baseUrl`.
+
 ## Wrap up
 
-In this lesson you installed Cypress and configured it for E2E testing. You created a spec file, wrote your first tests, and picked up some best practices for getting elements. Finally, you refactored your tests with a `beforeEach` hook to remove duplication.
+In this lesson you installed Cypress and configured it for E2E testing. You created a spec file, wrote your first tests, and picked up some best practices for getting elements. Along the way, you learned some Cypress best practices for getting elements, including setting a global `baseUrl` so you can visit relative paths instead of hardcoding full URLs. Finally, you learned how to refactor and clean up your tests using a beforeEach hook.
 
 In the next lesson, you'll learn how to test forms and how to create and use custom Cypress commands.

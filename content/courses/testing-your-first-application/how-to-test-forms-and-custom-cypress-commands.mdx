@@ -19,9 +19,11 @@ For our use case, we want to create a custom Cypress command that will allow us 
 By default, this file will contain a bunch of code comments that provide some instructions on how to create a custom command. Add the following to the file:
 
 ```ts
-declare namespace Cypress {
-  interface Chainable {
-    getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      getByData(dataTestAttribute: string): Chainable<JQuery<HTMLElement>>
+    }
   }
 }
 
@@ -30,7 +32,7 @@ Cypress.Commands.add("getByData", (selector) => {
 })
 ```
 
-Since we are using TypeScript, we must add the type definition for our custom command. We extend the `Chainable` interface from the `Cypress` namespace, which allows us to use (and provide code completion) for the `getByData()` method off of the `cy` object.
+Since we are using TypeScript, we must add the type definition for our custom command. We wrap the declaration in `declare global` and extend the `Chainable` interface within the `Cypress` namespace. Because `cypress/support/commands.ts` is a module, `declare global` is what makes the type augmentation apply globally, which allows us to use (and provide code completion) for the `getByData()` method off of the `cy` object. This matches the [approach recommended in the Cypress docs](https://docs.cypress.io/api/cypress-api/custom-commands#TypeScript).
 
 After that, we add a custom command called “getByData” which will allow us to pass in the value only of any `data-test` attribute, like so:
 
@@ -116,7 +118,7 @@ Create a new file `cypress/e2e/subscribe.cy.ts` and add the following:
 ```ts
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   it("allows users to subscribe to the email list", () => {})
@@ -130,7 +132,7 @@ The first thing we need to do is get the email input field of our form like so:
 ```ts
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   it("allows users to subscribe to the email list", () => {
@@ -216,7 +218,7 @@ The entire `subscribe.cy.ts` spec file should look like this:
 ```ts
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   it("allows users to subscribe to the email list", () => {
@@ -258,7 +260,7 @@ Add a new test like so:
 
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   it("allows users to subscribe to the email list", () => {
@@ -320,7 +322,7 @@ it("does NOT allow already subscribed email addresses", () => {
 ```ts
 describe("Newsletter Subscribe Form", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000")
+    cy.visit("/")
   })
 
   it("allows users to subscribe to the email list", () => {
