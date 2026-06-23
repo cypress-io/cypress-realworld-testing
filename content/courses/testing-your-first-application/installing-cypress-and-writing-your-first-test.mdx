@@ -444,7 +444,7 @@ A list of three `<dt>` elements is printed to the console as the returned value.
 
 So how do we grab just one of them? Specifically, we want the first one and we want to confirm its text says “4 Courses.”
 
-Since we're getting back a list, we can use the [eq](https://on.cypress.io/eq) command to access a specific index in that list, which is exactly what we need.
+Since we're getting back multiple elements, we can use the [eq](https://on.cypress.io/eq) command to access a specific index among them, which is exactly what we need.
 
 :::info
 Remember that indexes start at 0, so the first element is at index 0, **not** 1.
@@ -529,7 +529,7 @@ Pay close attention to this line:
 cy.get("dt").eq(0).contains("4 Courses")
 ```
 
-You can copy and paste it with minor tweaks to test the other features. Reference the correct index in the list and update the expected text.
+You can copy and paste it with minor tweaks to test the other features. Reference the correct index and update the expected text.
 
 If you get stuck, the answer is below.
 
