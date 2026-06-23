@@ -133,7 +133,7 @@ Some screenshots in this lesson may show `https://localhost:3000`, but the cours
 Now let's run the test.
 
 :::info
-If Cypress is still open from earlier in this lesson, keep using that same window—there's no need to launch it again. If you closed it, relaunch Cypress from your terminal:
+If Cypress is still open from earlier in this lesson, keep using that same window. There's no need to launch it again. If you closed it, relaunch Cypress from your terminal:
 
 ```bash
 npx cypress open
@@ -162,10 +162,10 @@ You should see the following.
 
 ## Debugging our first error
 
-If your application's dev server is **not** running, Cypress can't load **localhost:3000** and throws an error. Cypress always needs your app's local dev server running while your tests execute—otherwise you'll see this error.
+If your application's dev server is **not** running, Cypress can't load **localhost:3000** and throws an error. Cypress always needs your app's local dev server running while your tests execute, otherwise you'll see this error.
 
 :::info
-If the dev server is still running from the previous lesson (you started it with `npm run dev`), your test is already passing and you won't see this error—you can skim this section and continue. We're walking through it anyway because a missing dev server is one of the most common errors you'll run into, and it's worth understanding why it happens.
+If the dev server is still running from the previous lesson (you started it with `npm run dev`), your test is already passing and you won't see this error, so you can skim this section and continue. We're walking through it anyway because a missing dev server is one of the most common errors you'll run into, and it's worth understanding why it happens.
 :::
 
 Cypress is currently running in our terminal:
@@ -198,7 +198,7 @@ You can also press `r` for the same result. Once the test re-runs, it should pas
 
 Now that we understand the basic makeup of a spec file and a test, let's write the test that verifies the `h1` on the home page contains the correct text.
 
-First we need to tell Cypress which element to grab—in this case, the `h1`.
+First we need to tell Cypress which element to grab, which in this case is the `h1`.
 
 A page should only have a single `h1` when following SEO best practices, which is true of our application. That means we can grab it with the [.get()](https://docs.cypress.io/api/commands/get) command:
 
@@ -222,7 +222,7 @@ On the left side of the screen, the Cypress command log shows every step taken d
 - Step 1 is `cy.visit()` loading the application's home page.
 - Step 2 is `cy.get()` grabbing the `h1`.
 
-Click any step to see exactly what Cypress was doing at that moment. This is called “time travel debugging”—you can go back in time and inspect each step.
+Click any step to see exactly what Cypress was doing at that moment. This is called “time travel debugging,” since you can go back in time and inspect each step.
 
 If you click step 2, Cypress highlights the `h1` on the right, showing the element it grabbed.
 
@@ -273,7 +273,7 @@ In our first test, we grab the `h1` by passing the element name directly to Cypr
 cy.get("h1")
 ```
 
-This works—our test is passing—but it isn't ideal.
+This works (our test is passing), but it isn't ideal.
 
 Why?
 
@@ -283,7 +283,7 @@ What do we mean?
 
 Classes and IDs are typically used for styling and for targeting elements with JavaScript, and both tend to change over time. If your tests rely on them, your tests will break when they change.
 
-To avoid this, we recommend using `data` attributes on your elements. In this course we'll use `data-test` attributes specifically—attributes that exist solely for testing. They won't change when your site's design changes, because they aren't tied to class names or IDs.
+To avoid this, we recommend using `data` attributes on your elements. In this course we'll use `data-test` attributes specifically. These are attributes that exist solely for testing. They won't change when your site's design changes, because they aren't tied to class names or IDs.
 
 :::tip
 To learn more, read our best practices on the docs site [here](https://docs.cypress.io/guides/references/best-practices#Selecting-Elements).
@@ -370,7 +370,7 @@ Using dev tools to inspect one of these features reveals the following markup:
 </div>
 ```
 
-There aren't any `data-test` attributes—or anything else specific—we can pass to `cy.get()` to target these elements. We always recommend using `data` attributes when you can, but sometimes you don't control the underlying markup.
+There aren't any `data-test` attributes, or anything else specific, we can pass to `cy.get()` to target these elements. We always recommend using `data` attributes when you can, but sometimes you don't control the underlying markup.
 
 For example, when you use a third-party component library, you usually can't modify its HTML to add custom attributes. So what do you do then?
 
@@ -444,7 +444,7 @@ A list of three `<dt>` elements was returned.
 
 So how do we grab just one of them? Specifically, we want the first one and we want to confirm its text says “4 Courses.”
 
-Since we're getting back a list, we can use the [eq](https://docs.cypress.io/api/commands/eq) command to access a specific index in that list—exactly what we need.
+Since we're getting back a list, we can use the [eq](https://docs.cypress.io/api/commands/eq) command to access a specific index in that list, which is exactly what we need.
 
 :::info
 Remember that indexes start at 0, so the first element is at index 0, **not** 1.
@@ -521,7 +521,7 @@ describe("home page", () => {
 
 ## Practice
 
-We still need assertions for the remaining two features—we'll leave those to you for practice.
+We still need assertions for the remaining two features, so we'll leave those to you for practice.
 
 Pay close attention to this line:
 
@@ -565,7 +565,7 @@ We've covered a lot in this lesson and we're almost done. Before we finish, let'
 cy.visit("http://localhost:3000")
 ```
 
-This isn't a problem with only two tests, but again—what happens when the file has dozens?
+This isn't a problem with only two tests, but again, what happens when the file has dozens?
 
 We can move that duplicated `cy.visit()` into a single [beforeEach() hook](https://mochajs.org/#hooks), a function that runs before each test, which is exactly what we want.
 
@@ -591,7 +591,7 @@ describe("home page", () => {
 })
 ```
 
-We removed `cy.visit()` from each test and placed it inside `beforeEach()` instead. Save the file and run the tests—they should still pass.
+We removed `cy.visit()` from each test and placed it inside `beforeEach()` instead. Save the file and run the tests, and they should still pass.
 
 ![Screen Shot 2022-06-28 at 3.14.57 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_3.14.57_PM.png)
 
