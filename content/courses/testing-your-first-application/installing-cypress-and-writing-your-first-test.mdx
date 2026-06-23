@@ -114,9 +114,9 @@ Our first test will assert that the `h1` on the home page contains the correct t
 
 ![Screen Shot 2022-06-28 at 9.15.48 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.15.48_AM.png)
 
-Finally, inside the `it()` body we have [cy.visit()](https://docs.cypress.io/api/commands/visit).
+Finally, inside the `it()` body we have [cy.visit()](https://on.cypress.io/visit).
 
-[visit](https://docs.cypress.io/api/commands/visit) tells Cypress which URL to load before running the test. We will run our application locally at [localhost:3000](https://docs.cypress.io/api/commands/visit), so update `cy.visit()` with that address.
+[visit](https://on.cypress.io/visit) tells Cypress which URL to load before running the test. We will run our application locally at [localhost:3000](https://on.cypress.io/visit), so update `cy.visit()` with that address.
 
 ```ts
 describe("home page", () => {
@@ -200,7 +200,7 @@ Now that we understand the basic makeup of a spec file and a test, let's write t
 
 First we need to tell Cypress which element to grab, which in this case is the `h1`.
 
-A page should only have a single `h1` when following SEO best practices, which is true of our application. That means we can grab it with the [.get()](https://docs.cypress.io/api/commands/get) command:
+A page should only have a single `h1` when following SEO best practices, which is true of our application. That means we can grab it with the [.get()](https://on.cypress.io/get) command:
 
 ```ts
 describe("home page", () => {
@@ -257,7 +257,7 @@ cy.get("h1").contains("Testing Next.js Applications with Cypress")
 
 First, `cy.get()` grabs the `h1` element on our home page.
 
-Then we [chain](https://learn.cypress.io/cypress-fundamentals/command-chaining) the [contains](https://docs.cypress.io/api/commands/contains) command onto it, passing in the text we expect to find inside the `h1`.
+Then we [chain](https://learn.cypress.io/cypress-fundamentals/command-chaining) the [contains](https://on.cypress.io/contains) command onto it, passing in the text we expect to find inside the `h1`.
 
 Command chaining is calling one command off the result of another. It's incredibly powerful and you'll see it constantly in Cypress tests. We'll use it countless times throughout this course, but we wanted to point it out early.
 
@@ -277,7 +277,7 @@ This works (our test is passing), but it isn't ideal.
 
 Why?
 
-If you read the [get command API documentation](https://docs.cypress.io/api/commands/get), you'll see it accepts many things: HTML elements, classes like `.button`, IDs like `#button`, and more. At Cypress, we believe you should target elements using things that don't change.
+If you read the [get command API documentation](https://on.cypress.io/get), you'll see it accepts many things: HTML elements, classes like `.button`, IDs like `#button`, and more. At Cypress, we believe you should target elements using things that don't change.
 
 What do we mean?
 
@@ -286,7 +286,7 @@ Classes and IDs are typically used for styling and for targeting elements with J
 To avoid this, we recommend using `data` attributes on your elements. In this course we'll use `data-test` attributes specifically. These are attributes that exist solely for testing. They won't change when your site's design changes, because they aren't tied to class names or IDs.
 
 :::tip
-To learn more, read our best practices on the docs site [here](https://docs.cypress.io/guides/references/best-practices#Selecting-Elements).
+To learn more, read our best practices on the docs site [here](https://on.cypress.io/best-practices#Selecting-Elements).
 :::
 
 ## Updating our get selector
@@ -444,7 +444,7 @@ A list of three `<dt>` elements was returned.
 
 So how do we grab just one of them? Specifically, we want the first one and we want to confirm its text says “4 Courses.”
 
-Since we're getting back a list, we can use the [eq](https://docs.cypress.io/api/commands/eq) command to access a specific index in that list, which is exactly what we need.
+Since we're getting back a list, we can use the [eq](https://on.cypress.io/eq) command to access a specific index in that list, which is exactly what we need.
 
 :::info
 Remember that indexes start at 0, so the first element is at index 0, **not** 1.
