@@ -4,17 +4,13 @@
 
 ## Installing Cypress
 
-Before we can begin writing Cypress tests, we first need to install it. Within your terminal type the following:
+Before we can write any tests, we need to add Cypress to our project. From your terminal, run:
 
 ```bash
 npm install cypress --save-dev
 ```
 
-:::info
-We will be writing our tests in **TypeScript**, which is why our spec files use the `.cy.ts` extension. The course app already includes TypeScript as a dependency (it was installed when you ran `npm install` in the previous lesson), so you don't need to install anything else. If you are following along in your own project, make sure TypeScript is installed first, for example with `npm install typescript --save-dev`.
-:::
-
-Now that we have Cypress installed, we can launch it with:
+With Cypress installed, launch it with:
 
 ```bash
 npx cypress open
@@ -26,47 +22,47 @@ npx cypress open
 You can click on the images to enlarge them.
 :::
 
-Cypress gives us the ability to write E2E or component tests. In this course, we are going to focus solely on E2E tests.
+Cypress can run two kinds of tests: end-to-end (E2E) tests and component tests. In this course we will focus exclusively on E2E tests.
 
-Click on the “E2E Testing” button on the left to get started.
+Click the “E2E Testing” button on the left to get started.
 
 ![Configuration files](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/configuration_files.jpg)
 
-Next, Cypress is going to let you know the various files it is going to create for you to get everything properly configured for e2e testing. Click on the “Continue” button at the bottom.
+Cypress will show you the configuration files it is about to create to set up E2E testing. Click the “Continue” button at the bottom.
 
 ![Choose a browser](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/choose_a_browser.jpg)
 
-Next, you will be presented with the “Choose a Browser” screen. You may have different options available depending upon which browsers you have installed on your computer. For this course, we are going to be running all of our tests inside of the “Chrome” browser.
+Next you will see the “Choose a Browser” screen. The options you see depend on which browsers are installed on your computer. For this course we will run all of our tests in Chrome.
 
 :::info
-If you do not see “Chrome” as an option, that means you do not have it installed. You can download it [here](https://www.google.com/chrome/). Once you install it, you will need to re-launch Cypress.
+If you do not see “Chrome” as an option, it isn't installed. You can [download Chrome](https://www.google.com/chrome/), then re-launch Cypress.
 :::
 
-Click on “Chrome” and then the “Start E2E Testing in Chrome” button.
+Click “Chrome,” then click the “Start E2E Testing in Chrome” button.
 
 ![Create your first spec](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/create_your_first_spec.jpg)
 
-Cypress will then launch and ask us to create our first spec since we don't have any test files created yet.
+Since we don't have any test files yet, Cypress prompts us to create our first spec.
 
-Click on the “Create new spec” button.
+Click the “Create new spec” button.
 
 ![Create spec](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/create_spec.jpg)
 
-We are going to be writing tests for the application's home page so let's rename this file to “home.cy.ts”
+We are going to test the application's home page, so rename this file to “home.cy.ts”.
 
 ![Screen Shot 2022-06-28 at 9.03.26 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.03.26_AM.png)
 
-Then click on “Create Spec”
+Then click “Create Spec.”
 
 ![Screen Shot 2022-06-28 at 9.03.44 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.03.44_AM.png)
 
-Then click on the “Okay, run the spec” button.
+Then click the “Okay, run the spec” button.
 
 ![Screen Shot 2022-06-28 at 9.03.51 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.03.51_AM.png)
 
-Cypress will then run our spec against our [Kitchen Sink](https://example.cypress.io/) application.
+Cypress runs the new spec against its [Kitchen Sink](https://example.cypress.io/) application.
 
-Now that we have created our spec file, we need to update it for our course application.
+Now that the spec file exists, let's update it to test our course application instead.
 
 ## Breaking down the home spec file
 
@@ -74,7 +70,7 @@ Open the `cypress/e2e/home.cy.ts` file in VSCode.
 
 ![Screen Shot 2022-06-28 at 9.06.55 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.06.55_AM.png)
 
-This is the default test that Cypress created when we asked it to create our spec file. We need to update it to run tests against our course application, but before we do that, let's break down the code that is in this file.
+This is the default test Cypress generated for us. We will rewrite it to test our course application, but first let's walk through the code that is already here.
 
 ```ts
 describe("empty spec", () => {
@@ -84,13 +80,13 @@ describe("empty spec", () => {
 })
 ```
 
-On the first line, we see what is commonly referred to as a “describe block.”
+The first line is what's commonly called a “describe block.”
 
 ```ts
 describe("empty spec", () => {})
 ```
 
-The `describe()` function takes two arguments. The first is a string which is a description of the tests contained within it. The second is a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function). Since this file is going to contain tests for our home page, let's update this to say “home page.”
+The `describe()` function takes two arguments: a string describing the tests it contains, and a [callback function](https://developer.mozilla.org/en-US/docs/Glossary/Callback_function). Since this file will hold tests for our home page, let's change the description to “home page.”
 
 ```ts
 describe("home page", () => {
@@ -100,11 +96,11 @@ describe("home page", () => {
 })
 ```
 
-Next, within the body of our `describe()` is what is commonly referred to as an “it block.”
+Inside the `describe()` body is an “it block.”
 
 This is our actual test.
 
-Each time you see `it()` within a given spec file that is a single test. It takes the exact same arguments as the `describe()` function: first a string and then a callback function. Let’s update the string to the following:
+Every `it()` in a spec file represents a single test. It takes the same arguments as `describe()`: a string followed by a callback function. Let's update its description:
 
 ```ts
 describe("home page", () => {
@@ -114,13 +110,13 @@ describe("home page", () => {
 })
 ```
 
-For our first test, we are going to be writing a test that asserts that the `h1` on the home page contains the correct text (which is highlighted in the screenshot below).
+Our first test will assert that the `h1` on the home page contains the correct text (highlighted in the screenshot below).
 
 ![Screen Shot 2022-06-28 at 9.15.48 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.15.48_AM.png)
 
-Finally, we see [cy.visit()](https://docs.cypress.io/api/commands/visit) within the body of our `it()` block.
+Finally, inside the `it()` body we have [cy.visit()](https://on.cypress.io/visit).
 
-[visit](https://docs.cypress.io/api/commands/visit) is a command that tells Cypress where to execute our tests. We are going to be running our application locally on [localhost:3000](https://docs.cypress.io/api/commands/visit) so let's update the `cy.visit()` with the correct address.
+[visit](https://on.cypress.io/visit) tells Cypress which URL to load before running the test. We will run our application locally at [localhost:3000](https://on.cypress.io/visit), so update `cy.visit()` with that address.
 
 ```ts
 describe("home page", () => {
@@ -131,32 +127,32 @@ describe("home page", () => {
 ```
 
 :::info
-Some of the screenshots in this lesson may show `https://localhost:3000`, but the course app runs over plain `http`. Be sure to use `http://localhost:3000` (without the **s**) so your test matches the app.
+Some screenshots in this lesson may show `https://localhost:3000`, but the course app runs over plain `http`. Use `http://localhost:3000` (without the **s**) so your test matches the app.
 :::
 
-Now let's run our test.
+Now let's run the test.
 
 :::info
-If Cypress is still open from earlier in this lesson, you can keep using that same window—there's no need to launch it again. If you closed it, you can relaunch Cypress by entering the following in your terminal.
+If Cypress is still open from earlier in this lesson, keep using that same window. There's no need to launch it again. If you closed it, relaunch Cypress from your terminal:
 
 ```bash
 npx cypress open
 ```
 
-Cypress can only control a single browser at a time, so avoid running more than one instance of Cypress at once. If a previous test is still running, close it before starting a new one.
+Cypress can only control one browser at a time, so avoid running more than one instance at once. If a previous run is still open, close it before starting a new one.
 :::
 
 ![Screen Shot 2022-06-28 at 9.21.56 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.21.56_AM.png)
 
-Click on “E2E Testing”
+Click “E2E Testing.”
 
 ![Screen Shot 2022-06-28 at 9.22.20 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.22.20_AM.png)
 
-Then click on “Chrome” and the “Start E2E Testing in Chrome” button.
+Then click “Chrome,” followed by the “Start E2E Testing in Chrome” button.
 
 ![Screen Shot 2022-06-28 at 9.22.30 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.22.30_AM.png)
 
-Next click on the “home.cy.ts” spec file.
+Next, click the “home.cy.ts” spec file.
 
 ![Screen Shot 2022-06-28 at 9.23.00 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.23.00_AM.png)
 
@@ -166,47 +162,45 @@ You should see the following.
 
 ## Debugging our first error
 
-If your application's dev server is **not** running, Cypress will throw an error and say that it cannot load **localhost:3000**. The reason this happens is that our application's dev server is not running. When running our Cypress tests we always need to have our application's local dev server running. Otherwise, we are going to see this error.
+If your application's dev server is **not** running, Cypress can't load **localhost:3000** and throws an error. Cypress always needs your app's local dev server running while your tests execute, otherwise you'll see this error.
 
 :::info
-If you still have the dev server running from the previous lesson (you started it with `npm run dev`), your test will already be passing and you won't see this error—you can skim this section and continue on. We're still walking through it because a missing dev server is one of the most common errors you'll run into, and it's important to understand why it happens.
+If the dev server is still running from the previous lesson (you started it with `npm run dev`), your test is already passing and you won't see this error, so you can skim this section and continue. We're walking through it anyway because a missing dev server is one of the most common errors you'll run into, and it's worth understanding why it happens.
 :::
 
-Since Cypress is currently running in our terminal like so:
+Cypress is currently running in our terminal:
 
 ![Screen Shot 2022-06-28 at 9.25.52 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.25.52_AM.png)
 
-We need to open another terminal window to run our application's dev server. You can do this in VSCode via the Terminal > New Terminal in the menu bar at the top.
+So we need a second terminal window to run the dev server. In VSCode, open one via Terminal > New Terminal in the menu bar.
 
 ![Screen Shot 2022-06-28 at 9.26.20 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.26.20_AM.png)
 
-This will open a new terminal window within VSCode and a small sidebar on the right-hand side. You can navigate between both terminals by clicking on the icons in the right-hand sidebar.
+This opens a new terminal inside VSCode along with a small sidebar on the right. You can switch between terminals by clicking the icons in that sidebar.
 
 ![Screen Shot 2022-06-28 at 9.26.49 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.26.49_AM.png)
 
-Within this new terminal window, type the following to start our applications dev server:
+In the new terminal, start the dev server:
 
 ```bash
 npm run dev
 ```
 
-Then open the Cypress test runner and re-run the test. You can do this by clicking on the “Run all tests” button at the top.
+Then return to the Cypress App and re-run the test by clicking the “Run all tests” button at the top.
 
 ![Screen Shot 2022-06-28 at 9.29.01 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.29.01_AM.png)
 
-Or you can use the keyboard shortcut of `r` and that will do the same thing. Once you re-run the test, it should now be passing.
+You can also press `r` for the same result. Once the test re-runs, it should pass.
 
 ![Screen Shot 2022-06-28 at 9.30.25 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_9.30.25_AM.png)
 
 ## Testing the h1 on the home page
 
-Now that we understand the basic makeup of a spec file and a test, let's write our test that verifies the `h1` on the home page contains the correct text.
+Now that we understand the basic makeup of a spec file and a test, let's write the test that verifies the `h1` on the home page contains the correct text.
 
-The first thing we need to do is tell Cypress which element to get, which in this case is the `h1`.
+First we need to tell Cypress which element to grab, which in this case is the `h1`.
 
-Typically a page should only have a single `h1` if they are following SEO best practices, which is true of our application. This means we can get our `h1` like so.
-
-We will use the [.get()](https://docs.cypress.io/api/commands/get) method from cypress.
+A page should only have a single `h1` when following SEO best practices, which is true of our application. That means we can grab it with the [.get()](https://on.cypress.io/get) command:
 
 ```ts
 describe("home page", () => {
@@ -218,23 +212,23 @@ describe("home page", () => {
 ```
 
 :::tip
-After saving our spec file, Cypress will automatically re-run all of our tests within this file. This allows us to quickly iterate and verify that our tests are working correctly.
+Each time you save your spec file, Cypress automatically re-runs every test in it. This lets you iterate quickly and confirm your tests are working.
 :::
 
 ![Screen Shot 2022-06-28 at 10.07.53 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_10.07.53_AM.png)
 
-You will see on the left-hand side of the Cypress command log all of the steps Cypress is taking during our test.
+On the left side of the screen, the Cypress command log shows every step taken during the test.
 
-- Step 1 is when we use `cy.visit()` to visit the application’s home page.
-- Step 2 is when we use `cy.get()` to get the `h1` on the home page.
+- Step 1 is `cy.visit()` loading the application's home page.
+- Step 2 is `cy.get()` grabbing the `h1`.
 
-If we click on each step, we can see exactly what Cypress is doing. This is also called “time travel debugging” as we can go “back in time” and see exactly what Cypress did for each step.
+Click any step to see exactly what Cypress was doing at that moment. This is called “time travel debugging,” since you can go back in time and inspect each step.
 
-If you click on step 2, you will see that Cypress highlights the `h1` on the right-hand side showing which element it is getting.
+If you click step 2, Cypress highlights the `h1` on the right, showing the element it grabbed.
 
 ![Screen Shot 2022-06-28 at 10.10.34 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_10.10.34_AM.png)
 
-Now that we know Cypress has the correct element, we need to write an assertion that the text contained within it is correct. We can do this like so:
+Now that we have the correct element, we can assert that its text is correct:
 
 ```ts
 describe("home page", () => {
@@ -245,7 +239,7 @@ describe("home page", () => {
 })
 ```
 
-After saving the file, if we open Cypress again, we should see everything still passing.
+Save the file, and the test should still be passing in Cypress.
 
 ![Screen Shot 2022-06-28 at 10.12.36 AM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_10.12.36_AM.png)
 
@@ -255,51 +249,51 @@ Congratulations! You just wrote your first Cypress E2E test 🎉
 
 <YouTube id="WHDvViZazWI" title="Real World Testing with Cypress - Command Chaining"/>
 
-Let's briefly discuss what is happening on this line:
+Let's take a closer look at this line:
 
 ```ts
 cy.get("h1").contains("Testing Next.js Applications with Cypress")
 ```
 
-First, we are using `cy.get()` to get the `h1` element on our home page.
+First, `cy.get()` grabs the `h1` element on our home page.
 
-Next, we are [chaining](https://learn.cypress.io/cypress-fundamentals/command-chaining) another command called [contains](https://docs.cypress.io/api/commands/contains) onto the `cy.get()` which accepts a string. We are passing into the [contains command](https://docs.cypress.io/api/commands/contains) a string of text which we expect to be inside of the `h1` element.
+Then we [chain](https://learn.cypress.io/cypress-fundamentals/command-chaining) the [contains](https://on.cypress.io/contains) command onto it, passing in the text we expect to find inside the `h1`.
 
-Command chaining is when you “chain” multiple commands off of one another. This is incredibly powerful and you will see this a lot in Cypress tests. Throughout this course, you will see countless examples of this, but we wanted to bring it to your attention early on.
+Command chaining means calling one command on the result of another. It's a powerful pattern that appears constantly in Cypress tests, and you'll use it many times throughout this course, so we wanted to point it out early.
 
-If you would like to learn more about command chaining, we have a lesson on that [here](https://learn.cypress.io/cypress-fundamentals/command-chaining).
+To learn more, see our [dedicated lesson on command chaining](https://learn.cypress.io/cypress-fundamentals/command-chaining).
 
 ## Aside: Getting elements best practices
 
-While we are just getting started with writing Cypress tests, we think it is important to help you understand some best practices along the way.
+Even though we're just getting started, it's important to pick up some best practices along the way.
 
-In our first test we are getting the `h1` element by simply passing in the element to cypress, like so:
+In our first test, we grab the `h1` by passing the element name directly to Cypress:
 
 ```ts
 cy.get("h1")
 ```
 
-While this obviously works (because our test is passing), this is not ideal.
+This works (our test is passing), but it isn't ideal.
 
 Why?
 
-If you take a look at the [get command API documentation](https://docs.cypress.io/api/commands/get) you will see it accepts a variety of different things. You can pass in HTML elements, classes like `.button`, or IDs like `#button`. However, at Cypress, we believe it is important to use things that do not change.
+If you read the [get command API documentation](https://on.cypress.io/get), you'll see it accepts many things: HTML elements, classes like `.button`, IDs like `#button`, and more. At Cypress, we believe you should target elements using things that don't change.
 
 What do we mean?
 
-Typically, classes and IDs are used for styling and for targeting elements with JavaScript. Both classes and IDs tend to change over time, which means that if you are using them in your tests, your tests will break.
+Classes and IDs are typically used for styling and for targeting elements with JavaScript, and both tend to change over time. If your tests rely on them, your tests will break when they change.
 
-To prevent this from happening, we recommend using `data` attributes on your elements. In this course, we will be using `data-test` attributes, specifically. This way we have attributes that are used solely for testing purposes. They are not going to change if the design of your site changes in the future since we are not relying upon class names or IDs.
+To avoid this, we recommend using `data` attributes on your elements. In this course we'll use `data-test` attributes specifically. These are attributes that exist solely for testing. They won't change when your site's design changes, because they aren't tied to class names or IDs.
 
 :::tip
-If you would like to learn more about this topic you can read some of our best practices over on our docs site [here](https://docs.cypress.io/guides/references/best-practices#Selecting-Elements).
+To learn more, read our [best practices for selecting elements](https://on.cypress.io/best-practices#Selecting-Elements).
 :::
 
 ## Updating our get selector
 
-Now that you have learned about using `data` specific test attributes on elements, let's now update our test to see how this works in practice.
+Now that you've learned about `data` test attributes, let's update our test to use one in practice.
 
-Currently our test looks like this:
+Our test currently looks like this:
 
 ```ts
 describe("home page", () => {
@@ -310,7 +304,7 @@ describe("home page", () => {
 })
 ```
 
-We are going to replace the `cy.get("h1")` with the `data-test` attribute. If we open up Chrome’s dev tools and inspect the heading we will see it has the following HTML markup.
+We're going to replace `cy.get("h1")` with a `data-test` selector. If we open Chrome's dev tools and inspect the heading, we'll see this markup:
 
 ```html
 <h1
@@ -323,7 +317,7 @@ We are going to replace the `cy.get("h1")` with the `data-test` attribute. If we
 </h1>
 ```
 
-This element has a `data-test="hero-heading"` which we will use inside of `cy.get()` like so:
+The element has `data-test="hero-heading"`, which we can use inside `cy.get()`:
 
 ```ts
 describe("home page", () => {
@@ -336,21 +330,21 @@ describe("home page", () => {
 })
 ```
 
-If we save our test, we should see it is still passing.
+Save the test, and it should still be passing.
 
 ![Screen Shot 2022-06-28 at 2.31.52 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.31.52_PM.png)
 
-Now you may be thinking that `cy.get("[data-test='hero-heading']")` is fairly verbose. This may be ok for now since we only have one test, but imagine if we have hundreds of tests and we are using `cy.get()` hundreds of times.
+You may be thinking that `cy.get("[data-test='hero-heading']")` is pretty verbose. That's fine for now with a single test, but imagine using `cy.get()` like this across hundreds of tests.
 
-We are going to clean this up soon and make it easier to work with `data-test` attributes in the next lesson when we teach you about custom Cypress commands. Hold on tight for a little bit longer!
+We'll clean this up soon and make `data-test` attributes much easier to work with in the next lesson, when we cover custom Cypress commands. Hold on a little longer!
 
 ## Testing the course features
 
-Next, we are going to write one more test in this lesson that verifies the features in the hero of our homepage are correct.
+Next, we'll write one more test in this lesson to verify that the features in our homepage hero are correct.
 
 ![Screen Shot 2022-06-28 at 2.37.45 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.37.45_PM.png)
 
-If we use dev tools to inspect one of these features, we will see the following HTML markup:
+Using dev tools to inspect one of these features reveals the following markup:
 
 ```html
 <div class="relative mb-6">
@@ -376,13 +370,13 @@ If we use dev tools to inspect one of these features, we will see the following 
 </div>
 ```
 
-There doesn’t seem to be any `data-test` attributes or anything very specific we can use within `cy.get()` to get these elements. While we always recommend using `data` attributes whenever possible, sometimes you do not have access to the underlying HTML markup.
+There aren't any `data-test` attributes, or anything else specific, we can pass to `cy.get()` to target these elements. We always recommend using `data` attributes when you can, but sometimes you don't control the underlying markup.
 
-For instance, let’s say you are using a 3rd party component library. Typically you do not have the ability to modify the underlying HTML markup and add custom attributes to the elements. What do you do in that case?
+For example, when you use a third-party component library, you usually can't modify its HTML to add custom attributes. So what do you do then?
 
-What is the best approach for getting these elements?
+What's the best way to grab these elements?
 
-Let's create a new test and add it just below our first test.
+Let's create a new test just below our first one.
 
 ```ts
 it("the features on the homepage are correct", () => {
@@ -391,18 +385,18 @@ it("the features on the homepage are correct", () => {
 ```
 
 :::info
-Notice that within each test, we have to specifically tell Cypress where to navigate to in our application.
+Notice that each test has to tell Cypress where to navigate in our application.
 :::
 
-Let's run our test and make sure everything is passing.
+Run the test and make sure everything passes.
 
 ![Screen Shot 2022-06-28 at 2.49.56 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.49.56_PM.png)
 
 ## Using only to run a single test
 
-Now that we have two tests, each time we save our file, Cypress is going to re-run all of the tests in this file. This is ok when you only have a few tests, but what if we had dozens of tests in this single spec file? Each time we saved we would have to wait until Cypress finished running all of our tests. This is not ideal especially when we are really only concerned with the current test we are writing.
+Now that we have two tests, Cypress re-runs both every time we save. That's fine with a couple of tests, but what about a spec file with dozens of them? Each save would mean waiting for every test to finish, even though we usually only care about the one we're currently writing.
 
-We can tell Cypress to only run a specific test by using `it.only()` like so:
+We can tell Cypress to run a single test using `it.only()`:
 
 ```ts
 describe("home page", () => {
@@ -419,17 +413,17 @@ describe("home page", () => {
 })
 ```
 
-By adding `.only()` after the `it` we are telling Cypress to only run this specific test.
+Adding `.only()` after `it` tells Cypress to run only that test.
 
 :::tip
-You can add `.only()` to multiple tests, and only those tests will run.
+You can add `.only()` to multiple tests, and Cypress will run only those.
 :::
 
 ![Screen Shot 2022-06-28 at 2.52.22 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.52.22_PM.png)
 
-As you can see only the features test is being executed by Cypress now.
+As you can see, only the features test runs now.
 
-Next, let's use `cy.get()` to get the `<dt>` element and see what happens.
+Next, let's use `cy.get()` to grab the `<dt>` element and see what happens.
 
 ```ts
 it.only("the features on the homepage are correct", () => {
@@ -440,23 +434,23 @@ it.only("the features on the homepage are correct", () => {
 
 ![Screen Shot 2022-06-28 at 2.54.16 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.54.16_PM.png)
 
-If you look closely at the get in the Cypress command log you will see a small “3” next to it. This means that Cypress has gotten a total of three elements, since there are three `<dt>` elements on this page.
+Look closely at the get in the Cypress command log and you'll see a small “3” next to it. That means Cypress grabbed three elements, because there are three `<dt>` elements on the page.
 
-You can see this in even greater detail by clicking on the step and then opening the dev tools like so:
+You can see this in more detail by clicking the step and opening the dev tools:
 
 ![Screen Shot 2022-06-28 at 2.56.26 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_2.56.26_PM.png)
 
-We see that a list of three elements was returned, all of which are `<dt>` HTML elements.
+A list of three `<dt>` elements is printed to the console as the returned value.
 
-So how then do we get just one of these `<dt>` elements? Specifically, we want to get the first one and make sure that the text says “4 Courses”.
+So how do we grab just one of them? Specifically, we want the first one and we want to confirm its text says “4 Courses.”
 
-Since we are getting back a list of elements, we can use a Cypress command called [eq](https://docs.cypress.io/api/commands/eq). This command will allow us to access a specific index within that list of elements, which is exactly what we want.
+Since we're getting back multiple elements, we can use the [eq](https://on.cypress.io/eq) command to access a specific index among them, which is exactly what we need.
 
 :::info
-Remember that indexes start at 0, so the first element we want is 0 **not** 1.
+Remember that indexes start at 0, so the first element is at index 0, **not** 1.
 :::
 
-Update your test to the following:
+Update your test:
 
 ```ts
 it.only("the features on the homepage are correct", () => {
@@ -467,7 +461,7 @@ it.only("the features on the homepage are correct", () => {
 
 ![Screen Shot 2022-06-28 at 3.00.52 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_3.00.52_PM.png)
 
-As you can see we are now getting the first `<dt>` element, which is exactly what we want. Now we just need to write our assertion that makes sure it contains the correct text.
+We're now grabbing the first `<dt>` element, which is exactly what we want. Now we just need an assertion that it contains the correct text.
 
 ```ts
 it.only("the features on the homepage are correct", () => {
@@ -478,17 +472,17 @@ it.only("the features on the homepage are correct", () => {
 
 ![Screen Shot 2022-06-28 at 3.02.21 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_3.02.21_PM.png)
 
-It looks like we are getting an error. Why?
+We're getting an error. Why?
 
-We did this on purpose to draw your attention to the fact that `contains()` is case-sensitive. If you look closely at our test we have:
+We did this on purpose to highlight that `contains()` is case-sensitive. Our test has:
 
 ```ts
 .contains("4 courses")
 ```
 
-But our site says “4 Courses” where courses is spelled with a capital C.
+But the site says “4 Courses,” with a capital C.
 
-Update your test to the following to get things passing again:
+Fix it to get things passing again:
 
 ```ts
 it.only("the features on the homepage are correct", () => {
@@ -500,14 +494,14 @@ it.only("the features on the homepage are correct", () => {
 ![Screen Shot 2022-06-28 at 3.04.03 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_3.04.03_PM.png)
 
 :::tip
-You can also pass regular expressions into the contains method. So if you wanted to make a case insensitive comparison using regex, you could use:
+You can also pass a regular expression to `contains()`. To make a case-insensitive comparison, use:
 
 ```ts
 cy.get("dt").eq(0).contains(/4 courses/i)
 ```
 :::
 
-Here is our entire spec file so far:
+Here's our entire spec file so far:
 
 ```ts
 describe("home page", () => {
@@ -527,15 +521,15 @@ describe("home page", () => {
 
 ## Practice
 
-We still need to write two additional assertions for the remaining two features, which we are going to ask you to write for practice.
+We still need assertions for the remaining two features, so we'll leave those to you for practice.
 
-Pay close attention to this line
+Pay close attention to this line:
 
 ```ts
 cy.get("dt").eq(0).contains("4 Courses")
 ```
 
-You can copy and paste this line with minor tweaks to test for the other features. You will need to reference the correct index in the list and update the text the feature contains.
+You can copy and paste it with minor tweaks to test the other features. Reference the correct index and update the expected text.
 
 If you get stuck, the answer is below.
 
@@ -565,17 +559,17 @@ describe("home page", () => {
 
 ## beforeEach hook and refactoring our tests
 
-Whew! We have covered a lot of material in this lesson and we are almost done. Before we finish we wanted to introduce to you the concept of hooks. If you take a look at the two tests within our spec file, we are using
+We've covered a lot in this lesson and we're almost done. Before we finish, let's introduce hooks. Both tests in our spec file use the same line:
 
 ```ts
 cy.visit("http://localhost:3000")
 ```
 
-in both of our tests. This is not a big deal since we only have two tests, but again what happens when you have dozens of tests in this file?
+This isn't a problem with only two tests, but again, what happens when the file has dozens?
 
-We can simplify this and put the `cy.visit()` in a single spot called a [beforeEach() hook](https://mochajs.org/#hooks). This is a function that will get called “before each” test is run, which is exactly what we want.
+We can move that duplicated `cy.visit()` into a single [beforeEach() hook](https://mochajs.org/#hooks), a function that runs before each test, which is exactly what we want.
 
-Update your test to look like the following:
+Update your test to look like this:
 
 ```ts
 describe("home page", () => {
@@ -597,12 +591,12 @@ describe("home page", () => {
 })
 ```
 
-Notice how we have removed the `cy.visit()` from within each test and instead added it inside of the `beforeEach()`. Now if we save this file and run our tests, they should still be passing.
+We removed `cy.visit()` from each test and placed it inside `beforeEach()` instead. Save the file and run the tests, and they should still pass.
 
 ![Screen Shot 2022-06-28 at 3.14.57 PM.png](/images/testing-your-first-application/installing-cypress-and-writing-your-first-test/Screen_Shot_2022-06-28_at_3.14.57_PM.png)
 
 ## Wrap up
 
-In this lesson, you learned how to install Cypress and configure it for E2E testing. You also learned how to create spec files and write Cypress tests. Along the way, you learned some Cypress best practices for getting elements. Finally, you learned how to refactor and clean up your tests using a beforeEach hook.
+In this lesson you installed Cypress and configured it for E2E testing. You created a spec file, wrote your first tests, and picked up some best practices for getting elements. Finally, you refactored your tests with a `beforeEach` hook to remove duplication.
 
-In the next lesson, you will learn how to test forms and how to create and use custom Cypress commands.
+In the next lesson, you'll learn how to test forms and how to create and use custom Cypress commands.
