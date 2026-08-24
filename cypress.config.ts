@@ -3,6 +3,8 @@ import 'dotenv/config'
 
 export default defineConfig({
   projectId: 'a6xq37',
+  // Read public config with `Cypress.expose()` and secrets with `cy.env()`.
+  allowCypressEnv: false,
   viewportHeight: 1000,
   viewportWidth: 1400,
   blockHosts: ['*.osano.com'], // blocking the cookie popup from tests
