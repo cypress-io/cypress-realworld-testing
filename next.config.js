@@ -3,12 +3,8 @@ const withCSS = require("@zeit/next-css")
 module.exports = {
   swcMinify: true,
   images: {
-    domains: [
-      "images.unsplash.com",
-      "source.unsplash.com",
-      "tailwindui.com",
-      "raw.githubusercontent.com",
-    ],
+    // Required by `next export` — a static build has no optimization server.
+    unoptimized: true,
   },
   webpack: function (config) {
     config.module.rules.push({
@@ -23,6 +19,7 @@ module.exports = {
     })
     return config
   },
+  // Applies to `next dev` only. Production reads public/_redirects — keep both in sync.
   async redirects() {
     return [
       {

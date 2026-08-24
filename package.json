@@ -17,9 +17,10 @@
     "generate-content": "ts-node scripts/generateContentFiles.ts",
     "generate-rwe-content": "ts-node scripts/generateRealWorldExamples.ts",
     "lint": "next lint",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && next export",
     "pre-commit": "yarn types && pretty-quick --staged && yarn run lint && yarn run stop-only",
     "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
+    "serve:static": "wrangler pages dev out --port 3000",
     "start": "next start",
     "update-rwe-slugs": "ts-node scripts/updateRWESlugs.ts",
     "update-slugs": "ts-node scripts/updateSlugs.ts",
@@ -44,7 +45,7 @@
     "glob": "^8.0.3",
     "globby": "^13.1.2",
     "linkinator": "^2.14.4",
-    "next": "^12.1.0",
+    "next": "^12.3.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-pro-sidebar": "^0.7.1",
@@ -61,7 +62,7 @@
     "chai": "^4.3.4",
     "cypress": "^15.21.0",
     "eslint": "^7.32.0",
-    "eslint-config-next": "^12.2.5",
+    "eslint-config-next": "^12.3.7",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "gray-matter": "^4.0.3",
@@ -83,6 +84,7 @@
     "typescript": "^5.9.2",
     "unslugify": "^1.0.4",
     "url-loader": "^4.1.1",
-    "vuepress": "^1.9.7"
+    "vuepress": "^1.9.7",
+    "wrangler": "^4.125.0"
   }
 }

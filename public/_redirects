@@ -1,0 +1,10 @@
+# Cloudflare Pages rules for the static export.
+# Mirrors redirects() in next.config.js, which applies to `next dev` only —
+# keep both in sync.
+
+/testing-your-first-application/todomvc-app-install-and-overview /testing-your-first-application/app-install-and-overview 301
+/testing-your-first-application/installing-cypress-and-writing-our-first-test /testing-your-first-application/installing-cypress-and-writing-your-first-test 301
+/testing-your-first-application/setting-up-data-before-each-test /testing-your-first-application 301
+/testing-your-first-application/how-to-use-cypress-commands /testing-your-first-application/how-to-test-forms-and-custom-cypress-commands 301
+/testing-your-first-application/cypress-command-logs-snapshots-and-aliases /testing-your-first-application 301
+/testing-your-first-application/testing-what-isnt-there /testing-your-first-application 301
