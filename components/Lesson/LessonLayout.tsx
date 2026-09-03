@@ -114,6 +114,12 @@ export default function LessonLayout({
           })
         `}
       </Script>
+      <style jsx global>{`
+        .pro-sidebar {
+          z-index: 0 !important;
+          position: relative !important;
+        }
+      `}</style>
     </>
   )
 }
