@@ -20,6 +20,7 @@
     "lint": "next lint",
     "optimize-images": "ts-node scripts/optimizeImages.ts",
     "postbuild": "next-sitemap",
+    "prepare": "husky install",
     "pre-commit": "yarn types && pretty-quick --staged && yarn run lint && yarn run stop-only",
     "prettier": "prettier --write '**/**.{ts,js,tsx}' '*.{json,md,yml}'",
     "start": "next start",
