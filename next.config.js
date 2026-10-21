@@ -4,15 +4,11 @@ module.exports = {
   swcMinify: true,
   images: {
     // `next export` (Cloudflare Pages) can't use the default optimizing
-    // loader; the akamai loader with a "/" path serves files from /public as-is.
+    // loader. The akamai loader with a "/" path serves the original file from
+    // /public, adding an `?imwidth=` query the static host ignores. Only local
+    // `/images/...` sources work; remote URLs would come out as "/https://...".
     loader: "akamai",
     path: "/",
-    domains: [
-      "images.unsplash.com",
-      "source.unsplash.com",
-      "tailwindui.com",
-      "raw.githubusercontent.com",
-    ],
   },
   webpack: function (config) {
     config.module.rules.push({
