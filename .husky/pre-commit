@@ -1,4 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# Shrink any screenshots in this commit and re-stage them
+yarn -s optimize-images --staged
+
 yarn run pre-commit

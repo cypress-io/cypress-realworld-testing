@@ -1,3 +1,4 @@
+import { execFileSync } from "child_process"
 import fs from "fs"
 import path from "path"
 import sharp from "sharp"
@@ -6,8 +7,9 @@ import sharp from "sharp"
 // formats so no content references change. Safe to re-run: a file is only
 // rewritten when the result is meaningfully smaller.
 //
-//   yarn optimize-images            # all of public/images
-//   yarn optimize-images some/dir   # a subfolder or single file
+//   yarn optimize-images               # all of public/images
+//   yarn optimize-images a.png some/dir  # specific files or folders
+//   yarn optimize-images --staged      # images staged in git (pre-commit hook)
 
 // Lessons render images ~800 CSS px wide, and the click-to-zoom modal at 90% of
 // the viewport, so 1920 px keeps screenshots sharp without retina-sized files.
@@ -20,7 +22,27 @@ const MIN_PSNR = 40
 // Skip rewrites that save less than this, so re-runs don't churn files.
 const MIN_SAVINGS = 0.05
 
-const root = path.resolve(process.argv[2] || "public/images")
+const args = process.argv.slice(2)
+const staged = args.includes("--staged")
+
+// Added or modified files under public/images in the git index.
+function stagedFiles(): string[] {
+  return execFileSync(
+    "git",
+    [
+      "diff",
+      "--cached",
+      "--name-only",
+      "--diff-filter=AM",
+      "-z",
+      "--",
+      "public/images",
+    ],
+    { encoding: "utf8" }
+  )
+    .split("\0")
+    .filter(Boolean)
+}
 
 function walk(target: string): string[] {
   if (fs.statSync(target).isFile()) return [target]
@@ -87,10 +109,17 @@ const optimizers: Record<string, (file: string) => Promise<Buffer>> = {
 }
 
 async function main() {
+  const targets = staged
+    ? stagedFiles()
+    : args.length
+    ? args
+    : ["public/images"]
+  const files = targets.flatMap((target) => walk(path.resolve(target)))
+  const rewritten: string[] = []
   let before = 0
   let after = 0
 
-  for (const file of walk(root)) {
+  for (const file of files) {
     const extension = path.extname(file).toLowerCase()
     const relative = path.relative(process.cwd(), file)
     const original = fs.statSync(file).size
@@ -113,6 +142,7 @@ async function main() {
     before += original
     if (optimized.length <= original * (1 - MIN_SAVINGS)) {
       fs.writeFileSync(file, new Uint8Array(optimized))
+      rewritten.push(file)
       after += optimized.length
       console.log(
         `${relative}: ${Math.round(original / 1024)} KB → ${Math.round(
@@ -124,8 +154,15 @@ async function main() {
     }
   }
 
-  const mb = (bytes: number) => (bytes / 1024 / 1024).toFixed(1)
-  console.log(`\nRaster images: ${mb(before)} MB → ${mb(after)} MB`)
+  // Commit the optimized versions rather than the originals.
+  if (staged && rewritten.length) {
+    execFileSync("git", ["add", "--", ...rewritten])
+  }
+
+  if (before) {
+    const mb = (bytes: number) => (bytes / 1024 / 1024).toFixed(1)
+    console.log(`\nRaster images: ${mb(before)} MB → ${mb(after)} MB`)
+  }
 }
 
 main()
