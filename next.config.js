@@ -3,6 +3,10 @@ const withCSS = require("@zeit/next-css")
 module.exports = {
   swcMinify: true,
   images: {
+    // `next export` (Cloudflare Pages) can't use the default optimizing
+    // loader; the akamai loader with a "/" path serves files from /public as-is.
+    loader: "akamai",
+    path: "/",
     domains: [
       "images.unsplash.com",
       "source.unsplash.com",

@@ -12,6 +12,7 @@
     "cypress:run:mobile": "cypress run --config viewportWidth=375,viewportHeight=667",
     "dev": "next dev",
     "dev:watch": "next-remote-watch ./content",
+    "export": "next export",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "generate-content": "ts-node scripts/generateContentFiles.ts",
