@@ -10,6 +10,10 @@ const LessonCourseProgress = dynamic(() => import("./LessonCourseProgress"), {
   ssr: false,
 })
 
+// Lessons can have dozens of screenshots; only fetch them as they scroll near.
+// eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
+const LazyImage = (props) => <img loading="lazy" decoding="async" {...props} />
+
 type Props = {
   toc: LessonTableOfContents[]
   source: MDXRemoteSerializeResult<Record<string, unknown>>
@@ -44,12 +48,12 @@ export default function LessonLayout({
       />
 
       <div className="py-6 pt-16">
-        <div className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-screen-2xl lg:grid-cols-12 lg:gap-8 lg:px-8">
+        <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-screen-2xl lg:grid-cols-12 lg:gap-8 lg:px-8">
           <div className="hidden lg:col-span-3 lg:block xl:col-span-2">
             {/* Course Progress */}
             <div
               aria-label="Sidebar"
-              className="sticky divide-y divide-gray-300 top-6"
+              className="sticky top-6 divide-y divide-gray-300"
             >
               <LessonCourseProgress
                 course={course}
@@ -61,14 +65,17 @@ export default function LessonLayout({
 
           {/* Main Content */}
           <div className="lg:col-span-9 xl:col-span-8">
-            <div className="px-4 mx-auto prose prose-lg text-gray-500 prose-indigo sm:px-0">
-              <MDXRemote {...source} components={components} />
+            <div className="prose prose-lg prose-indigo mx-auto px-4 text-gray-500 sm:px-0">
+              <MDXRemote
+                {...source}
+                components={{ img: LazyImage, ...components }}
+              />
             </div>
           </div>
 
           {/* Table of Contents */}
           <aside className="hidden xl:col-span-2 xl:block">
-            <div className="sticky space-y-4 top-6">
+            <div className="sticky top-6 space-y-4">
               <LessonTOC
                 navigation={toc}
                 lessonPath={lessonPath}
