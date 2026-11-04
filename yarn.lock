@@ -12404,9 +12404,9 @@ svgo@^1.0.0:
     util.promisify "~1.0.0"
 
 systeminformation@^5.31.1:
-  version "5.31.8"
-  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.31.8.tgz#0f6f410b4afdadf9abae6448c87a9d6517e0e17b"
-  integrity sha512-/HGurKdgjYGbfwCPSokoX4WAlasVxuj1SnTukLiIYHPkjbDbN1PMATj8mkHpqkVzUF34y5ZyCY1TMKP32AI9rA==
+  version "5.33.19"
+  resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.33.19.tgz#b956e75ff6d7bdc6019ca4fc13c78b01f47cc415"
+  integrity sha512-Zm7wGeCG7PqfvzegMJIzrxICopWqYCeLATVmvxOOci1isLcNVKgY4Fr0hhYQzvc7cgtK3377jQVChTFAnznOiA==
 
 table@^6.0.9:
   version "6.7.1"
