@@ -1,5 +1,6 @@
 {
   "private": true,
+  "packageManager": "yarn@1.22.22",
   "scripts": {
     "build": "next build",
     "build:profile": "next build --profile",
