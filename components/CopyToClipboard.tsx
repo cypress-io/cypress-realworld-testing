@@ -1,4 +1,12 @@
 import { useState, useRef } from "react"
+import { currentPagePath, trackFullStoryEvent } from "../utils/fullstory"
+
+// The MDX code block renders <pre><code className="language-js">.
+const languageOf = (children): string => {
+  const className: string = children?.props?.className ?? ""
+  const match = className.match(/language-(\S+)/)
+  return match ? match[1] : ""
+}
 
 const Pre = (props) => {
   const textInput = useRef(null)
@@ -14,7 +22,15 @@ const Pre = (props) => {
   }
   const onCopy = () => {
     setCopied(true)
-    navigator.clipboard.writeText(textInput.current.textContent)
+    navigator.clipboard
+      .writeText(textInput.current.textContent)
+      .then(() =>
+        trackFullStoryEvent("Code Block Copied", {
+          language: languageOf(props.children),
+          pagePath: currentPagePath(),
+        })
+      )
+      .catch(() => {})
     setTimeout(() => {
       setCopied(false)
     }, 2000)

@@ -1,10 +1,44 @@
 import Document, { Html, Head, Main, NextScript } from "next/document"
+import {
+  fullStoryConsentGate,
+  fullStorySnippet,
+  osanoFullStoryLabels,
+} from "../utils/fullstorySnippet"
+
+const OSANO_SCRIPT =
+  "https://cmp.osano.com/AzqisZTSBrMdc3qLt/bb12d637-24a5-47ce-8788-92e13ca795cf/osano.js"
+
+// Only production builds with FULLSTORY_ORG_ID get FullStory, so dev-server visits
+// stay out of it and a build without an org ID (CI, a preview) doesn't load fs.js.
+// The value is read at build time, so it must be set where `next build` runs.
+const fullStoryOrgId =
+  process.env.NODE_ENV === "production" ? process.env.FULLSTORY_ORG_ID : ""
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
+          {/*
+            Osano blocks trackers by intercepting scripts added after it, so it must be
+            the first script on every page and load synchronously: never async, defer,
+            or moved into next/head on a single page.
+          */}
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+          <script src={OSANO_SCRIPT} />
+          <script dangerouslySetInnerHTML={{ __html: osanoFullStoryLabels }} />
+          {fullStoryOrgId && (
+            <>
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: fullStorySnippet(fullStoryOrgId),
+                }}
+              />
+              <script
+                dangerouslySetInnerHTML={{ __html: fullStoryConsentGate }}
+              />
+            </>
+          )}
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="twitter:title"
