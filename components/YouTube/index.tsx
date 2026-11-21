@@ -59,6 +59,24 @@ function loadYouTubeApi(): Promise<YouTubeGlobal> {
   return apiReady
 }
 
+// Videos waiting for consent. One Osano listener serves every video on the
+// site, so mounting and unmounting videos during client-side navigation doesn't
+// pile up listeners that are never removed.
+const waitingForConsent = new Set<() => void>()
+let consentListenerAdded = false
+
+function onConsent(attach: () => void): () => void {
+  waitingForConsent.add(attach)
+  if (!consentListenerAdded && window.Osano?.cm?.addEventListener) {
+    consentListenerAdded = true
+    // The consent gate's own listener runs first, since it's registered in <head>.
+    window.Osano.cm.addEventListener("osano-cm-consent-saved", () =>
+      waitingForConsent.forEach((callback) => callback())
+    )
+  }
+  return () => waitingForConsent.delete(attach)
+}
+
 export default function YouTube({ id, title }: YouTubeProps) {
   const iframe = useRef<HTMLIFrameElement>(null)
 
@@ -79,6 +97,7 @@ export default function YouTube({ id, title }: YouTubeProps) {
     const attach = () => {
       if (attached || !active || !isFullStoryCapturing()) return
       attached = true
+      waitingForConsent.delete(attach)
       loadYouTubeApi().then((YT) => {
         if (!active || !iframe.current || !YT?.Player) return
         const player = new YT.Player(iframe.current, {
@@ -109,13 +128,13 @@ export default function YouTube({ id, title }: YouTubeProps) {
     }
 
     attach()
-    // Accepting cookies later on this page starts tracking from then on. The
-    // consent gate's own listener runs first, since it's registered in <head>.
-    window.Osano?.cm?.addEventListener?.("osano-cm-consent-saved", attach)
+    // Accepting cookies later on this page starts tracking from then on.
+    const stopWaiting = attached ? () => {} : onConsent(attach)
 
     return () => {
       active = false
       stopPolling()
+      stopWaiting()
     }
   }, [id])
 

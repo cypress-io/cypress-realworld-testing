@@ -164,6 +164,8 @@ describe("FullStory", () => {
       },
     })
     cy.visit("/", { onBeforeLoad: stubFullStory })
+    // Search is only in the desktop header.
+    cy.viewport(1400, 1000)
     cy.get(".DocSearch-Button").click()
     cy.get(".DocSearch-Input").type("intercept")
     cy.get("@FS").should("have.been.calledWithMatch", "trackEvent", {
@@ -184,6 +186,8 @@ describe("FullStory", () => {
 
   it("masks what people type in search", () => {
     cy.visit("/")
+    // Search is only in the desktop header.
+    cy.viewport(1400, 1000)
     cy.get(".DocSearch-Button").click()
     cy.get(".DocSearch-Input").should("have.class", "fs-mask")
   })
@@ -297,5 +301,16 @@ describe("FullStory", () => {
     cy.get('[data-fs-element="Learn Home - Course Card"]')
       .first()
       .should("have.attr", "data-course-slug")
+  })
+
+  it("labels the mobile menu's course links as header links", () => {
+    cy.viewport(375, 667)
+    cy.visit(lesson)
+    cy.getBySel("mobile-menu-button").click()
+    cy.get('[data-fs-element="Learn Header - Courses - Course"]')
+      .should("have.length.greaterThan", 0)
+      .first()
+      .should("have.attr", "data-course-slug")
+    cy.get('[data-fs-element="Learn Home - Course Card"]').should("not.exist")
   })
 })

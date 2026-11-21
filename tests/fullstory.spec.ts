@@ -14,6 +14,7 @@ import coursesJson from "../data/courses.json"
 import {
   fullStoryConsentGate,
   fullStorySnippet,
+  osanoFullStoryLabels,
 } from "../utils/fullstorySnippet"
 
 describe("FullStory page properties", () => {
@@ -97,12 +98,17 @@ function runHead(osanoConsent?: { ANALYTICS: string }) {
   vm.runInNewContext(fullStoryConsentGate, { window })
   return {
     calls,
+    captureOnStartup: window._fs_capture_on_startup,
     capturing: () => window.__fullStoryCapturing,
     save: (consent) => listeners["osano-cm-consent-saved"](consent),
   }
 }
 
 describe("FullStory consent gate", () => {
+  it("tells fs.js not to capture on startup", () => {
+    expect(runHead().captureOnStartup).to.eq(false)
+  })
+
   it("never starts capture without Osano", () => {
     expect(runHead().calls).not.to.include("start")
   })
@@ -297,5 +303,49 @@ describe("Lesson completion", () => {
       lessonCompletedBy("a/b", [done("a/b")], [done("a/b"), done("a/b")])
     ).to.eq(false)
     expect(lessonCompletedBy("a/b", [], [done("a/c")])).to.eq(false)
+  })
+})
+
+describe("Osano FullStory labels", () => {
+  // A fake DOM with one accept button in each Osano root.
+  function runLabels() {
+    let onUiChanged
+    const buttons: Record<string, Record<string, string>> = {}
+    const root = (name) => ({
+      querySelectorAll: (selector) =>
+        selector === ".osano-cm-button--type_accept"
+          ? [
+              {
+                setAttribute: (key, value) =>
+                  ((buttons[name] = buttons[name] || {})[key] = value),
+                querySelectorAll: () => [],
+              },
+            ]
+          : [],
+    })
+    const roots = {
+      ".osano-cm-dialog": root("dialog"),
+      ".osano-cm-drawer": root("drawer"),
+    }
+    const window = {
+      Osano: {
+        cm: { addEventListener: (name, fn) => (onUiChanged = fn) },
+      },
+    }
+    const document = { querySelector: (selector) => roots[selector] }
+    vm.runInNewContext(osanoFullStoryLabels, { window, document, Array })
+    return { buttons, show: (component) => onUiChanged(component, "show") }
+  }
+
+  it("labels the banner on load and the drawer when it opens", () => {
+    const osano = runLabels()
+    expect(osano.buttons.dialog["data-fs-element"]).to.eq(
+      "Cookie Consent - Accept All"
+    )
+    expect(osano.buttons.drawer).to.eq(undefined)
+    osano.show("drawer")
+    expect(osano.buttons.drawer["data-fs-element"]).to.eq(
+      "Cookie Consent - Accept All"
+    )
   })
 })

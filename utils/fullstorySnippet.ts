@@ -9,11 +9,16 @@ const FULLSTORY_SCRIPT = "edge.fullstory.com/s/fs.js"
 const FULLSTORY_NAMESPACE = "FS"
 
 /**
+ * `_fs_capture_on_startup = false` comes first: it's FullStory's documented way
+ * to hold recording until the consent gate below calls `start`, so capture waits
+ * for consent even if fs.js applies only the snippet's own `init`.
+ *
  * SnippetSrc from @fullstory/snippet@2.1.0, copied verbatim. To upgrade, replace it
  * with the new version's SnippetSrc rather than editing the minified code.
  * JSON.stringify fills the arguments so each value lands as a quoted, escaped string.
  */
 export const fullStorySnippet = (orgId: string): string => `
+window['_fs_capture_on_startup'] = false;
 !function(m,n,e,t,l,o,g,y){var u,a,f=function(h){
 return!(h in m)||(m.console&&m.console.log&&m.console.log("FullStory namespace conflict. Please use a different namespace."),!1)}(l)
 ;f&&(g=m[l]=function(){var b=function(b,d,j,r){r=r||2;var i,c=/Async$/;return c.test(b)&&(b=b.replace(c,""),
@@ -91,11 +96,14 @@ export const osanoFullStoryLabels = `
       });
     });
   }
+  // The banner is the dialog; the footer's Cookie Preferences link opens the
+  // drawer. www.cypress.io labels both.
+  var ROOTS = { dialog: '.osano-cm-dialog', drawer: '.osano-cm-drawer' };
   var cm = window.Osano && window.Osano.cm;
   if (!cm || !cm.addEventListener) return;
   cm.addEventListener('osano-cm-ui-changed', function (component, stateChange) {
-    if (component === 'dialog' && stateChange === 'show') {
-      label(document.querySelector('.osano-cm-dialog'));
+    if (stateChange === 'show' && ROOTS[component]) {
+      label(document.querySelector(ROOTS[component]));
     }
   });
   // The dialog can mount before this listener attaches, so its 'show' event is already gone.
