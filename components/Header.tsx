@@ -26,6 +26,7 @@ import {
   ViewGridIcon,
 } from "@heroicons/react/outline"
 import { ChevronDownIcon } from "@heroicons/react/solid"
+import { fsLabel } from "../utils/fullstory"
 
 const Search = dynamic(() => import("./Search"), {
   ssr: false,
@@ -37,7 +38,11 @@ const company = [
     href: "https://www.cypress.io/",
     icon: InformationCircleIcon,
   },
-  { name: "Careers", href: "https://www.cypress.io/careers/", icon: BriefcaseIcon },
+  {
+    name: "Careers",
+    href: "https://www.cypress.io/careers/",
+    icon: BriefcaseIcon,
+  },
   {
     name: "Blog",
     href: "https://www.cypress.io/blog/",
@@ -102,23 +107,20 @@ export default function Header({ content, courses, progressService }: Props) {
   const coursesJsonCourses = Object.keys(coursesJson)
   return (
     <>
-      <nav
-        role="navigation"
-        aria-label="Main"
-      >
+      <nav role="navigation" aria-label="Main">
         <Popover className="relative hidden bg-white lg:block">
           <div
-            className="absolute inset-0 z-30 shadow pointer-events-none"
+            className="pointer-events-none absolute inset-0 z-30 shadow"
             aria-hidden="true"
           />
           <div className="relative z-20">
-            <div className="flex items-center justify-between px-4 py-5 mx-auto max-w-7xl sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8">
               <div>
                 <Link href="/">
-                  <a className="flex">
+                  <a className="flex" {...fsLabel("Learn Header - Logo")}>
                     <span className="sr-only">Workflow</span>
                     <Image
-                      className="w-auto h-8 sm:h-10"
+                      className="h-8 w-auto sm:h-10"
                       src="/images/logo/logo.svg"
                       alt="Cypress Logo"
                       height={40}
@@ -128,9 +130,9 @@ export default function Header({ content, courses, progressService }: Props) {
                 </Link>
               </div>
               <div className="md:hidden">
-                <Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                   <span className="sr-only">Open menu</span>
-                  <MenuIcon className="w-6 h-6" aria-hidden="true" />
+                  <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
               <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
@@ -165,16 +167,22 @@ export default function Header({ content, courses, progressService }: Props) {
                           leaveTo="opacity-0 translate-y-1"
                         >
                           <Popover.Panel
-                            className="absolute z-10 w-screen max-w-md px-2 mt-3 -ml-4 transform sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2"
+                            className="absolute z-10 mt-3 -ml-4 w-screen max-w-md transform px-2 sm:px-0 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2"
                             data-test="courses-dropdown-menu"
                           >
                             <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                              <div className="relative grid gap-6 px-5 py-6 bg-white sm:gap-8 sm:p-8">
+                              <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                 {coursesJsonCourses.map((course, index) => (
                                   <a
                                     key={coursesJson[course].slug}
                                     href={`/${coursesJson[course].slug}`}
-                                    className="flex items-start p-3 -m-3 rounded-lg hover:bg-gray-50"
+                                    className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
+                                    {...fsLabel(
+                                      "Learn Header - Courses - Course",
+                                      {
+                                        "course-slug": coursesJson[course].slug,
+                                      }
+                                    )}
                                   >
                                     {/* <Image
                                       src={`/images/home/course-icons/${course}.svg`}
@@ -230,18 +238,19 @@ export default function Header({ content, courses, progressService }: Props) {
                           leaveFrom="opacity-100 translate-y-0"
                           leaveTo="opacity-0 -translate-y-1"
                         >
-                          <Popover.Panel className="absolute inset-x-0 z-10 hidden transform shadow-lg top-full md:block">
+                          <Popover.Panel className="absolute inset-x-0 top-full z-10 hidden transform shadow-lg md:block">
                             <div className="absolute inset-0 flex">
                               <div className="w-1/2 bg-white" />
                               <div className="w-1/2 bg-gray-50" />
                             </div>
-                            <div className="relative grid grid-cols-1 mx-auto max-w-7xl lg:grid-cols-2">
+                            <div className="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
                               <nav
                                 role="navigation"
                                 aria-label="Cypress Resources"
-                                className="grid px-4 py-8 bg-white gap-y-10 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12">
+                                className="grid gap-y-10 bg-white px-4 py-8 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12"
+                              >
                                 <div>
-                                  <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
+                                  <h3 className="text-sm font-medium uppercase tracking-wide text-gray-500">
                                     Cypress
                                   </h3>
                                   <ul role="list" className="mt-5 space-y-6">
@@ -249,10 +258,13 @@ export default function Header({ content, courses, progressService }: Props) {
                                       <li key={item.name} className="flow-root">
                                         <a
                                           href={item.href}
-                                          className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 rounded-md hover:bg-gray-50"
+                                          className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                                          {...fsLabel(
+                                            `Learn Header - Resources - ${item.name}`
+                                          )}
                                         >
                                           <item.icon
-                                            className="flex-shrink-0 w-6 h-6 text-indigo-500"
+                                            className="h-6 w-6 flex-shrink-0 text-indigo-500"
                                             aria-hidden="true"
                                           />
                                           <span className="ml-4">
@@ -264,7 +276,7 @@ export default function Header({ content, courses, progressService }: Props) {
                                   </ul>
                                 </div>
                                 <div>
-                                  <h3 className="text-sm font-medium tracking-wide text-gray-500 uppercase">
+                                  <h3 className="text-sm font-medium uppercase tracking-wide text-gray-500">
                                     Resources
                                   </h3>
                                   <ul role="list" className="mt-5 space-y-6">
@@ -272,10 +284,13 @@ export default function Header({ content, courses, progressService }: Props) {
                                       <li key={item.name} className="flow-root">
                                         <a
                                           href={item.href}
-                                          className="flex items-center p-3 -m-3 text-base font-medium text-gray-900 rounded-md hover:bg-gray-50"
+                                          className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                                          {...fsLabel(
+                                            `Learn Header - Resources - ${item.name}`
+                                          )}
                                         >
                                           <item.icon
-                                            className="flex-shrink-0 w-6 h-6 text-indigo-500"
+                                            className="h-6 w-6 flex-shrink-0 text-indigo-500"
                                             aria-hidden="true"
                                           />
                                           <span className="ml-4">
@@ -287,18 +302,21 @@ export default function Header({ content, courses, progressService }: Props) {
                                   </ul>
                                 </div>
                               </nav>
-                              <div className="px-4 py-8 bg-gray-50 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
+                              <div className="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12">
                                 <div>
                                   <ul role="list" className="mt-6 space-y-6">
                                     {updates.map((post) => (
                                       <li key={post.id} className="flow-root">
                                         <a
                                           href={post.href}
-                                          className="flex p-3 -m-3 rounded-lg hover:bg-gray-100"
+                                          className="-m-3 flex rounded-lg p-3 hover:bg-gray-100"
+                                          {...fsLabel(
+                                            `Learn Header - Resources - ${post.name}`
+                                          )}
                                         >
-                                          <div className="flex-shrink-0 hidden sm:block"></div>
-                                          <div className="flex-1 w-0 sm:ml-8">
-                                            <h4 className="text-base font-medium text-gray-900 truncate">
+                                          <div className="hidden flex-shrink-0 sm:block"></div>
+                                          <div className="w-0 flex-1 sm:ml-8">
+                                            <h4 className="truncate text-base font-medium text-gray-900">
                                               {post.name}
                                             </h4>
                                             <p className="mt-1 text-sm text-gray-500">
@@ -318,12 +336,18 @@ export default function Header({ content, courses, progressService }: Props) {
                     )}
                   </Popover>
                   <Link href="/real-world-examples">
-                    <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+                    <a
+                      className="text-base font-medium text-gray-500 hover:text-gray-900"
+                      {...fsLabel("Learn Header - Real World Examples")}
+                    >
                       Real World Examples
                     </a>
                   </Link>
                   <Link href="/tutorials">
-                    <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+                    <a
+                      className="text-base font-medium text-gray-500 hover:text-gray-900"
+                      {...fsLabel("Learn Header - Tutorials")}
+                    >
                       Tutorials
                     </a>
                   </Link>

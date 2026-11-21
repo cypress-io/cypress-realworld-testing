@@ -1,3 +1,5 @@
+import { fsLabel } from "../../utils/fullstory"
+
 type Props = {
   path: string
   isCompleted: boolean
@@ -10,6 +12,9 @@ export default function NextLessonBtn({ path, isCompleted }: Props) {
         href={path ? path : "/"}
         className="rounded-md bg-indigo-500 px-8 py-3 text-base font-medium text-white  md:py-4 md:px-10 md:text-lg"
         data-test="next-lesson-button"
+        {...fsLabel(
+          path ? "Learn Lesson - Next Lesson" : "Learn Lesson - Complete Course"
+        )}
       >
         {path ? "Next Lesson" : "Complete Course"}
       </a>

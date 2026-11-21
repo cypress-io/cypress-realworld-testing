@@ -24,6 +24,7 @@ import { isLessonCompleted } from "../../utils/machineUtils"
 import coursesJson from "../../data/courses.json"
 import { useActor } from "@xstate/react"
 import CopyToClipboard from "@/components/CopyToClipboard"
+import ContentLink from "@/components/Markdown/ContentLink"
 import Disclosure from "@/components/Disclosure"
 import YouTube from "@/components/YouTube"
 
@@ -46,7 +47,7 @@ const SkipChallenge = dynamic(
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
-  //a: CustomLink,
+  a: ContentLink,
   // It also works with dynamically-imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.

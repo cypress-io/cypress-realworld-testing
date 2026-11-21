@@ -45,3 +45,38 @@ export const isLessonCompleted = (progressService, lessonPath) => {
 export const isSectionCompleted = (sectionsCompleted, sectionSlug) => {
   return sectionsCompleted.includes(sectionSlug)
 }
+
+type ProgressLesson = { id: string; status: string }
+
+const isCourseDone = (
+  coursesJson: object,
+  courseSlug: string,
+  lessons: ProgressLesson[] = []
+) => {
+  const course = coursesJson[courseSlug]
+  if (!course?.lessons?.length) return false
+  const done = new Set(
+    lessons.filter((l) => l.status === "completed").map((l) => l.id)
+  )
+  return course.lessons.every((lesson) =>
+    done.has(`${courseSlug}/${lesson.slug}`)
+  )
+}
+
+/**
+ * The slug of the course that `lessonPath`'s transition just finished: every
+ * lesson in it is complete now, and wasn't before. Undefined otherwise.
+ */
+export const courseCompletedBy = (
+  coursesJson: object,
+  lessonPath: string,
+  previousLessons: ProgressLesson[] = [],
+  nextLessons: ProgressLesson[] = []
+): string | undefined => {
+  const [courseSlug] = (lessonPath ?? "").split("/")
+  if (!courseSlug) return undefined
+  return isCourseDone(coursesJson, courseSlug, nextLessons) &&
+    !isCourseDone(coursesJson, courseSlug, previousLessons)
+    ? courseSlug
+    : undefined
+}

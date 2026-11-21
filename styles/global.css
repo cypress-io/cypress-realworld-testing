@@ -3,7 +3,7 @@
 */
 
 .lesson-content h1 {
-  @apply block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900;
+  @apply mt-2 block text-center text-3xl font-extrabold leading-8 tracking-tight text-gray-900;
 }
 
 /*
@@ -134,7 +134,7 @@ input[type="search"]:focus {
 
 /* default for custom types */
 .admonition {
-  color: #646B78;
+  color: #646b78;
   background-color: rgba(118, 51, 219, 0.1);
   border-left: 8px solid #7633db;
 }
@@ -165,16 +165,16 @@ input[type="search"]:focus {
 
 .admonition-tip {
   background-color: rgba(46, 204, 113, 0.1);
-  border-left: 8px solid #25A259;
+  border-left: 8px solid #25a259;
 }
 
 .admonition-tip h5 {
-  color: #1D8147;
+  color: #1d8147;
 }
 
 .admonition-tip .admonition-icon svg {
-  stroke: #1D8147;
-  fill: #1D8147;
+  stroke: #1d8147;
+  fill: #1d8147;
 }
 
 .admonition-warning {
@@ -243,4 +243,12 @@ input[type="search"]:focus {
 .token.generic .token.function {
   /* generic call expressions, e.g. useState<string>() — match .function */
   color: #f08d49;
+}
+
+/* FullStory reports a click on a nested <span>, <img>, or <svg> by its own CSS
+   path instead of the labeled ancestor's data-fs-element, so clicks inside labeled
+   links and buttons land on the labeled element itself. See utils/fullstory.ts. */
+a[data-fs-element] *,
+button[data-fs-element] * {
+  pointer-events: none;
 }

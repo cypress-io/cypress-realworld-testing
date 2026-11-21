@@ -1,6 +1,15 @@
 import { expect } from "chai"
 import vm from "vm"
-import { PAGE_NAME_MAX, pageProperties } from "../utils/fullstory"
+import {
+  PAGE_NAME_MAX,
+  contentLinkLabel,
+  createSearchTracker,
+  createVideoTracker,
+  fsLabel,
+  pageProperties,
+} from "../utils/fullstory"
+import { courseCompletedBy } from "../utils/machineUtils"
+import coursesJson from "../data/courses.json"
 import {
   fullStoryConsentGate,
   fullStorySnippet,
@@ -108,5 +117,134 @@ describe("FullStory consent gate", () => {
     head.save({ ANALYTICS: "DENY" })
     head.save({ ANALYTICS: "ACCEPT" })
     expect(head.calls.slice(-3)).to.deep.eq(["start", "shutdown", "restart"])
+  })
+})
+
+// trackFullStoryEvent reads window.FS, so these give Node a window that records calls.
+function withFullStory(test: (events: any[]) => void | Promise<void>) {
+  return async () => {
+    const events: any[] = []
+    const g = global as any
+    g.window = {
+      FS: (method, options) => method === "trackEvent" && events.push(options),
+      location: { pathname: "/course/lesson" },
+      addEventListener: () => {},
+    }
+    try {
+      await test(events)
+    } finally {
+      delete g.window
+    }
+  }
+}
+
+describe("FullStory labels", () => {
+  it("declares label properties in the schema", () => {
+    expect(
+      fsLabel("Learn Home - Course Card", { "course-slug": "x" })
+    ).to.deep.eq({
+      "data-fs-element": "Learn Home - Course Card",
+      "data-course-slug": "x",
+      "data-fs-properties-schema": '{"data-course-slug":"str"}',
+    })
+    expect(fsLabel("Learn Header - Logo")).to.deep.eq({
+      "data-fs-element": "Learn Header - Logo",
+    })
+  })
+
+  it("labels only links toward Cypress sites", () => {
+    expect(contentLinkLabel("https://docs.cypress.io/api/commands/get")).to.eq(
+      "Learn Content - Docs Link"
+    )
+    expect(contentLinkLabel("https://on.cypress.io/chat")).to.eq(
+      "Learn Content - Docs Link"
+    )
+    expect(contentLinkLabel("https://www.cypress.io/cloud")).to.eq(
+      "Learn Content - Cypress.io Link"
+    )
+    expect(contentLinkLabel("https://github.com/cypress-io")).to.eq(undefined)
+    expect(contentLinkLabel("/cypress-fundamentals")).to.eq(undefined)
+    expect(contentLinkLabel("#heading")).to.eq(undefined)
+  })
+})
+
+describe("FullStory video tracker", () => {
+  it(
+    "sends each event at most once",
+    withFullStory((events) => {
+      const video = createVideoTracker("abc")
+      video.progressed(50, 100) // before play: nothing
+      video.played()
+      video.played()
+      video.progressed(30, 100)
+      video.progressed(80, 100) // a seek past 50 and 75
+      video.progressed(90, 100)
+      video.ended()
+      video.ended()
+      expect(events.map((e) => [e.name, e.properties.percent])).to.deep.eq([
+        ["Video Started", undefined],
+        ["Video Progressed", 25],
+        ["Video Progressed", 50],
+        ["Video Progressed", 75],
+        ["Video Completed", undefined],
+      ])
+      expect(events[0].properties).to.deep.eq({
+        videoId: "abc",
+        pagePath: "/course/lesson",
+      })
+    })
+  )
+})
+
+describe("FullStory search tracker", () => {
+  const settle = () => new Promise((resolve) => setTimeout(resolve, 20))
+
+  it(
+    "sends one event per settled query and skips repeats",
+    withFullStory(async (events) => {
+      const search = createSearchTracker(10)
+      search.onResults("c", 40)
+      search.onResults("cy.get", 3)
+      await settle()
+      search.onResults("cy.get ", 3) // same query
+      await settle()
+      search.onResults("   ", 0) // empty
+      search.onResults("intercept", 0)
+      search.flush() // leaving the page sends it at once
+      expect(events).to.deep.eq([
+        {
+          name: "Site Search Performed",
+          properties: { index: "real_world_testing", resultCount: 3 },
+        },
+        {
+          name: "Site Search Performed",
+          properties: { index: "real_world_testing", resultCount: 0 },
+        },
+      ])
+    })
+  )
+})
+
+describe("Course completion", () => {
+  const course = "testing-your-first-application"
+  const all = coursesJson[course].lessons.map((lesson) => ({
+    id: `${course}/${lesson.slug}`,
+    status: "completed",
+  }))
+  const last = all[all.length - 1].id
+
+  it("names the course the last lesson finished", () => {
+    expect(courseCompletedBy(coursesJson, last, all.slice(0, -1), all)).to.eq(
+      course
+    )
+  })
+
+  it("ignores an already-finished course and an unfinished one", () => {
+    expect(courseCompletedBy(coursesJson, last, all, [...all, all[0]])).to.eq(
+      undefined
+    )
+    expect(courseCompletedBy(coursesJson, last, [], all.slice(0, -1))).to.eq(
+      undefined
+    )
   })
 })

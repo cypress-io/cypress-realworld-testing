@@ -1,4 +1,5 @@
 import { useActor } from "@xstate/react"
+import { trackFullStoryEvent } from "../../utils/fullstory"
 
 type Props = {
   progressService: any
@@ -15,6 +16,10 @@ export default function LessonChallenge({ progressService }: Props) {
       type: "DISABLE_CHALLENGES",
       value,
     })
+    trackFullStoryEvent(
+      value ? "Challenges Disabled" : "Challenges Enabled",
+      {}
+    )
   }
 
   return (
@@ -26,11 +31,14 @@ export default function LessonChallenge({ progressService }: Props) {
           data-test="skip-challenge-input"
           name="answer"
           type="checkbox"
-          className="w-4 h-4 text-gray-500 border-gray-300 rounded focus:ring-indigo-500"
+          className="h-4 w-4 rounded border-gray-300 text-gray-500 focus:ring-indigo-500"
           checked={progressService.state.context.disableChallenges}
           onChange={handleInputChange}
         />
-        <label htmlFor="skip-challenge" className="ml-4 leading-6 text-gray-700">
+        <label
+          htmlFor="skip-challenge"
+          className="ml-4 leading-6 text-gray-700"
+        >
           Disable questions on upcoming lessons
         </label>
       </div>

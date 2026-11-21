@@ -4,6 +4,7 @@ import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import MobileCourses from "./MobileCourses"
 import { XIcon } from "@heroicons/react/outline"
+import { fsLabel } from "../../utils/fullstory"
 
 type Props = {
   content: object
@@ -22,7 +23,7 @@ export default function MobileProgressMenu({
         <div className="flex items-center justify-between border-b-2 border-gray-100 py-6 md:space-x-10 lg:justify-start">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/">
-              <a className="flex">
+              <a className="flex" {...fsLabel("Learn Header - Logo")}>
                 <span className="sr-only">Workflow</span>
                 <Image
                   className="h-8 w-auto sm:h-10"
@@ -111,13 +112,19 @@ export default function MobileProgressMenu({
 
               <div className="">
                 <Link href="/real-world-examples">
-                  <a className="block pb-4 text-base font-medium text-gray-900 hover:text-gray-700">
+                  <a
+                    className="block pb-4 text-base font-medium text-gray-900 hover:text-gray-700"
+                    {...fsLabel("Learn Header - Real World Examples")}
+                  >
                     Real World Examples
                   </a>
                 </Link>
 
                 <Link href="/tutorials">
-                  <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                  <a
+                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    {...fsLabel("Learn Header - Tutorials")}
+                  >
                     Tutorials
                   </a>
                 </Link>

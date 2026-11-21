@@ -1,5 +1,8 @@
 import { useActor } from "@xstate/react"
-import { trackFullStoryEventBeforeNavigating } from "../../utils/fullstory"
+import {
+  fsLabel,
+  trackFullStoryEventBeforeNavigating,
+} from "../../utils/fullstory"
 
 type Props = {
   nextLessonPath: string
@@ -18,6 +21,11 @@ export default function NextLessonBtn({
     <div data-test="complete-lesson-button" className="py-20 px-4">
       <a
         href={nextLessonPath ? nextLessonPath : "/"}
+        {...fsLabel(
+          nextLessonPath
+            ? "Learn Lesson - Complete Lesson - Next Lesson"
+            : "Learn Lesson - Complete Lesson - Finish"
+        )}
         className="mx-auto flex max-w-xl items-center justify-center rounded-md bg-indigo-500 px-8 py-3 text-base font-medium text-white  md:py-4 md:px-10 md:text-lg"
         onClick={(event) => {
           progressSend({

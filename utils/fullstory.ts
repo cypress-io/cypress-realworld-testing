@@ -22,9 +22,68 @@ export interface FullStoryEvents {
     attemptNumber: number
   }
   "Lesson Completed": { lessonId: string }
+  /** Every lesson in the course is now complete. Sent once, on the lesson that finished it. */
+  "Course Completed": { courseSlug: string }
+  /** The visitor turned on "Disable questions on upcoming lessons". */
+  "Challenges Disabled": Record<string, never>
+  /** The visitor turned that setting back off. */
+  "Challenges Enabled": Record<string, never>
+  "Video Started": { videoId: string; pagePath: string }
+  "Video Progressed": {
+    videoId: string
+    pagePath: string
+    percent: VideoMilestone
+  }
+  "Video Completed": { videoId: string; pagePath: string }
+  /** Same name and shape as www.cypress.io's, so one report covers both sites. */
+  "Site Search Performed": { index: string; resultCount: number }
 }
 
+export type VideoMilestone = 25 | 50 | 75
+
 export type FullStoryEventName = keyof FullStoryEvents
+
+/**
+ * The attributes that name a clickable element in FullStory. Labels follow the
+ * shared "Surface - Sub-scope - Action" convention, with every surface prefixed
+ * "Learn" (docs.cypress.io uses "Docs") so they stay apart in the shared org.
+ * `properties` become `data-*` attributes, declared in
+ * `data-fs-properties-schema` so FullStory records them with the click. Nested
+ * elements don't reliably inherit a label, so styles/global.css turns off
+ * pointer events inside labeled links and buttons.
+ */
+export function fsLabel(
+  name: string,
+  properties: Record<string, string> = {}
+): Record<string, string> {
+  const attributes: Record<string, string> = { "data-fs-element": name }
+  const keys = Object.keys(properties)
+  if (!keys.length) return attributes
+  const schema: Record<string, "str"> = {}
+  for (const key of keys) {
+    attributes[`data-${key}`] = properties[key]
+    schema[`data-${key}`] = "str"
+  }
+  attributes["data-fs-properties-schema"] = JSON.stringify(schema)
+  return attributes
+}
+
+const DOCS_HOSTS = ["docs.cypress.io", "on.cypress.io"]
+const WWW_HOSTS = ["www.cypress.io", "cypress.io"]
+
+/** The label for a link in lesson content, or undefined for one that needs none. */
+export function contentLinkLabel(href: string | undefined): string | undefined {
+  if (!href) return undefined
+  let host: string
+  try {
+    host = new URL(href).hostname
+  } catch {
+    return undefined // relative and in-page links
+  }
+  if (DOCS_HOSTS.includes(host)) return "Learn Content - Docs Link"
+  if (WWW_HOSTS.includes(host)) return "Learn Content - Cypress.io Link"
+  return undefined
+}
 
 type FullStory = (method: string, options?: unknown) => unknown
 
@@ -217,4 +276,121 @@ export function maskSearchInput(): () => void {
   observer.observe(document.body, { childList: true, subtree: true })
   mask()
   return () => observer.disconnect()
+}
+
+// ---------------------------------------------------------------------------
+// Site search
+// ---------------------------------------------------------------------------
+
+export const SEARCH_INDEX = "real_world_testing"
+
+// How long typing has to pause before a search counts as one search.
+const SEARCH_SETTLE_MS = 1000
+
+/**
+ * Wraps DocSearch's Algolia client so a settled search sends `Site Search
+ * Performed`, as www.cypress.io's search does: once typing pauses for a second,
+ * or at once if the visitor leaves the page first (picking a hit). A repeat of
+ * the last sent query, or an empty one, sends nothing. The query is kept only to
+ * compare; it's never sent.
+ */
+export function createSearchTracker(settleMs = SEARCH_SETTLE_MS) {
+  let pending: { query: string; resultCount: number } | undefined
+  let lastSent: string | undefined
+  let timer: ReturnType<typeof setTimeout> | undefined
+
+  const flush = () => {
+    if (timer) clearTimeout(timer)
+    timer = undefined
+    if (!pending) return
+    const { query, resultCount } = pending
+    pending = undefined
+    if (query === lastSent) return
+    lastSent = query
+    trackFullStoryEvent("Site Search Performed", {
+      index: SEARCH_INDEX,
+      resultCount,
+    })
+  }
+
+  let listening = false
+  const onResults = (query: string, resultCount: number) => {
+    const trimmed = query.trim()
+    if (!trimmed) return
+    if (!listening && typeof window !== "undefined") {
+      window.addEventListener("pagehide", flush)
+      listening = true
+    }
+    pending = { query: trimmed, resultCount }
+    if (timer) clearTimeout(timer)
+    timer = setTimeout(flush, settleMs)
+  }
+
+  return { onResults, flush }
+}
+
+type SearchRequest = { query?: string; params?: { query?: string } }
+type SearchResponse = { results?: Array<{ nbHits?: number }> }
+
+const searchTracker = createSearchTracker()
+
+/** For DocSearch's `transformSearchClient`. Keep it module-level: DocSearch rebuilds its client when the function changes. */
+export function trackSearchClient<Client>(client: Client): Client {
+  const search = (client as any).search.bind(client)
+  return {
+    ...client,
+    search: (requests: SearchRequest[], ...rest: unknown[]) =>
+      search(requests, ...rest).then((response: SearchResponse) => {
+        try {
+          const request = requests[0]
+          const query = request?.query ?? request?.params?.query ?? ""
+          searchTracker.onResults(query, response?.results?.[0]?.nbHits ?? 0)
+        } catch {}
+        return response
+      }),
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Video
+// ---------------------------------------------------------------------------
+
+export const VIDEO_MILESTONES: VideoMilestone[] = [25, 50, 75]
+
+/**
+ * Turns a video's playback into Video Started, Video Progressed, and Video
+ * Completed, each at most once per video per page view. Seeking past a milestone
+ * counts as reaching it.
+ */
+export function createVideoTracker(videoId: string) {
+  let started = false
+  let completed = false
+  const reached = new Set<VideoMilestone>()
+  const props = () => ({ videoId, pagePath: currentPagePath() })
+
+  return {
+    played() {
+      if (started) return
+      started = true
+      trackFullStoryEvent("Video Started", props())
+    },
+    progressed(currentTime: number, duration: number) {
+      if (!started || !(duration > 0)) return
+      const percent = (currentTime / duration) * 100
+      for (const milestone of VIDEO_MILESTONES) {
+        if (percent >= milestone && !reached.has(milestone)) {
+          reached.add(milestone)
+          trackFullStoryEvent("Video Progressed", {
+            ...props(),
+            percent: milestone,
+          })
+        }
+      }
+    },
+    ended() {
+      if (completed) return
+      completed = true
+      trackFullStoryEvent("Video Completed", props())
+    },
+  }
 }
