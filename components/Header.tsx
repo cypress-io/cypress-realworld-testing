@@ -260,7 +260,7 @@ export default function Header({ content, courses, progressService }: Props) {
                                           href={item.href}
                                           className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
                                           {...fsLabel(
-                                            `Learn Header - Resources - ${item.name}`
+                                            `Learn Header - Cypress - ${item.name}`
                                           )}
                                         >
                                           <item.icon
@@ -311,7 +311,10 @@ export default function Header({ content, courses, progressService }: Props) {
                                           href={post.href}
                                           className="-m-3 flex rounded-lg p-3 hover:bg-gray-100"
                                           {...fsLabel(
-                                            `Learn Header - Resources - ${post.name}`
+                                            "Learn Header - Updates - Post",
+                                            {
+                                              "post-id": String(post.id),
+                                            }
                                           )}
                                         >
                                           <div className="hidden flex-shrink-0 sm:block"></div>

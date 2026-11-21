@@ -37,7 +37,8 @@ return g._w[u].apply(this,arguments)}),g("init",{env:{orgId:o,host:e,script:t}})
 // mid-session: Osano's own script blocking only takes effect on the next page load,
 // so without this, fs.js keeps recording after a visitor declines. When osano.js is
 // blocked (by an ad blocker, for example) there's no consent to read, so capture
-// never starts.
+// never starts. The gate also keeps window.__fullStoryCapturing in step, which
+// isFullStoryCapturing() in utils/fullstory.ts reads.
 export const fullStoryConsentGate = `
 (function () {
   var fs = window[${JSON.stringify(FULLSTORY_NAMESPACE)}];
@@ -60,6 +61,7 @@ export const fullStoryConsentGate = `
       fs('shutdown');
       state = 'stopped';
     }
+    window.__fullStoryCapturing = state === 'capturing';
   }
   cm.addEventListener('osano-cm-consent-saved', apply);
   apply(cm.getConsent());

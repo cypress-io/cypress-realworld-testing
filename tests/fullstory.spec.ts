@@ -6,9 +6,10 @@ import {
   createSearchTracker,
   createVideoTracker,
   fsLabel,
+  trackFullStoryEventBeforeNavigating,
   pageProperties,
 } from "../utils/fullstory"
-import { courseCompletedBy } from "../utils/machineUtils"
+import { courseCompletedBy, lessonCompletedBy } from "../utils/machineUtils"
 import coursesJson from "../data/courses.json"
 import {
   fullStoryConsentGate,
@@ -96,6 +97,7 @@ function runHead(osanoConsent?: { ANALYTICS: string }) {
   vm.runInNewContext(fullStoryConsentGate, { window })
   return {
     calls,
+    capturing: () => window.__fullStoryCapturing,
     save: (consent) => listeners["osano-cm-consent-saved"](consent),
   }
 }
@@ -108,25 +110,37 @@ describe("FullStory consent gate", () => {
   it("waits for Analytics consent", () => {
     const head = runHead({ ANALYTICS: "DENY" })
     expect(head.calls).not.to.include("start")
+    expect(head.capturing()).to.eq(false)
     head.save({ ANALYTICS: "ACCEPT" })
     expect(head.calls).to.include("start")
+    expect(head.capturing()).to.eq(true)
   })
 
   it("shuts down and restarts as consent changes", () => {
     const head = runHead({ ANALYTICS: "ACCEPT" })
     head.save({ ANALYTICS: "DENY" })
+    expect(head.capturing()).to.eq(false)
     head.save({ ANALYTICS: "ACCEPT" })
+    expect(head.capturing()).to.eq(true)
     expect(head.calls.slice(-3)).to.deep.eq(["start", "shutdown", "restart"])
   })
 })
 
 // trackFullStoryEvent reads window.FS, so these give Node a window that records calls.
-function withFullStory(test: (events: any[]) => void | Promise<void>) {
+function withFullStory(
+  test: (events: any[]) => void | Promise<void>,
+  capturing = true
+) {
   return async () => {
     const events: any[] = []
     const g = global as any
     g.window = {
-      FS: (method, options) => method === "trackEvent" && events.push(options),
+      FS: (method, options) => {
+        if (method === "trackEvent") events.push(options)
+        // Like FullStory before capture starts, the async call never settles.
+        if (method === "trackEventAsync") return new Promise(() => {})
+      },
+      __fullStoryCapturing: capturing,
       location: { pathname: "/course/lesson" },
       addEventListener: () => {},
     }
@@ -246,5 +260,42 @@ describe("Course completion", () => {
     expect(courseCompletedBy(coursesJson, last, [], all.slice(0, -1))).to.eq(
       undefined
     )
+  })
+})
+
+describe("FullStory before navigating", () => {
+  it(
+    "doesn't wait when FullStory isn't recording",
+    withFullStory(async (events) => {
+      const started = Date.now()
+      await trackFullStoryEventBeforeNavigating("Lesson Completed", {
+        lessonId: "a/b",
+      })
+      expect(Date.now() - started).to.be.below(100)
+      expect(events.map((e) => e.name)).to.deep.eq(["Lesson Completed"])
+    }, false)
+  )
+
+  it(
+    "waits for FullStory, up to the cap, while recording",
+    withFullStory(async () => {
+      const started = Date.now()
+      await trackFullStoryEventBeforeNavigating("Lesson Completed", {
+        lessonId: "a/b",
+      })
+      expect(Date.now() - started).to.be.within(450, 1000)
+    })
+  )
+})
+
+describe("Lesson completion", () => {
+  const done = (id) => ({ id, status: "completed" })
+
+  it("is new only the first time a lesson is completed", () => {
+    expect(lessonCompletedBy("a/b", [], [done("a/b")])).to.eq(true)
+    expect(
+      lessonCompletedBy("a/b", [done("a/b")], [done("a/b"), done("a/b")])
+    ).to.eq(false)
+    expect(lessonCompletedBy("a/b", [], [done("a/c")])).to.eq(false)
   })
 })

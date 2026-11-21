@@ -1,11 +1,18 @@
 // fs.js is blocked (cypress.config.ts → blockHosts), so each test stubs window.FS
 // before the page loads. The snippet backs off when FS already exists, so the stub
-// sees every call the site makes.
-const stubFullStory = (win) => {
+// sees every call the site makes. `capturing` stands in for the consent gate's
+// flag: true is a visitor who accepted Analytics cookies.
+const stubFullStory = (win, { capturing = true } = {}) => {
   const fs = cy.stub().as("FS")
   win.FS = fs
+  win.__fullStoryCapturing = capturing
   return fs
 }
+
+const eventNames = (calls) =>
+  calls
+    .filter((args) => args[0] === "trackEvent" || args[0] === "trackEventAsync")
+    .map((args) => args[1].name)
 
 const lesson = "/cypress-fundamentals/how-to-write-a-test"
 
@@ -63,6 +70,11 @@ describe("FullStory", () => {
       name: "Challenge Answered",
       properties: { isCorrect: true, attemptNumber: 2 },
     })
+    // A correct answer completes the lesson, with no Complete button involved.
+    cy.get("@FS").should("have.been.calledWithMatch", "trackEventAsync", {
+      name: "Lesson Completed",
+      properties: { lessonId: "testing-foundations/testing-is-a-mindset" },
+    })
   })
 
   it("sends Lesson Completed, then navigates", () => {
@@ -85,6 +97,89 @@ describe("FullStory", () => {
       "eq",
       "/testing-your-first-application/installing-cypress-and-writing-your-first-test"
     )
+  })
+
+  it("doesn't hold the navigation without consent", () => {
+    cy.visit("/testing-your-first-application/app-install-and-overview", {
+      onBeforeLoad(win) {
+        // A stalled FullStory would hold the click for the full cap.
+        stubFullStory(win, { capturing: false })
+          .withArgs("trackEventAsync")
+          .returns(new Promise(() => {}))
+      },
+    })
+    cy.getBySel("complete-lesson-button").find("a").click()
+    cy.location("pathname", { timeout: 400 }).should(
+      "eq",
+      "/testing-your-first-application/installing-cypress-and-writing-your-first-test"
+    )
+    cy.get("@FS").should("not.have.been.calledWith", "trackEventAsync")
+  })
+
+  it("sends Course Completed once, for the lesson that finished the course", () => {
+    const calls = []
+    cy.on("window:before:load", (win: any) => {
+      win.__fullStoryCapturing = true
+      win.FS = (...args) => calls.push(args)
+    })
+    cy.visit("/testing-your-first-application/app-install-and-overview")
+    // Click through every lesson. The last one's button goes home.
+    const next = () =>
+      cy.location("pathname").then((path) => {
+        if (path === "/") return
+        cy.getBySel("complete-lesson-button").find("a").click()
+        cy.location("pathname").should("not.eq", path)
+        next()
+      })
+    next()
+    // Coming back must not send it again: the restored progress isn't a new completion.
+    cy.visit("/testing-your-first-application")
+    cy.reload()
+    cy.wrap(calls).should(() => {
+      const names = eventNames(calls)
+      expect(names.filter((n) => n === "Lesson Completed")).to.have.length(5)
+      expect(names.filter((n) => n === "Course Completed")).to.have.length(1)
+      const course = calls.find((args) => args[1]?.name === "Course Completed")
+      expect(course[1].properties).to.deep.eq({
+        courseSlug: "testing-your-first-application",
+      })
+    })
+  })
+
+  it("sends Site Search Performed once typing settles, without the query", () => {
+    cy.intercept("POST", "**/1/indexes/*/queries*", {
+      body: {
+        results: [
+          {
+            hits: [],
+            nbHits: 7,
+            page: 0,
+            nbPages: 0,
+            hitsPerPage: 20,
+            processingTimeMS: 1,
+            query: "",
+            params: "",
+          },
+        ],
+      },
+    })
+    cy.visit("/", { onBeforeLoad: stubFullStory })
+    cy.get(".DocSearch-Button").click()
+    cy.get(".DocSearch-Input").type("intercept")
+    cy.get("@FS").should("have.been.calledWithMatch", "trackEvent", {
+      name: "Site Search Performed",
+      properties: { index: "real_world_testing", resultCount: 7 },
+    })
+    cy.get("@FS")
+      .invoke("getCalls")
+      .then((stubCalls) => {
+        const all = stubCalls.map((call) => call.args)
+        const searches = eventNames(all).filter(
+          (n) => n === "Site Search Performed"
+        )
+        expect(searches).to.have.length(1)
+        expect(JSON.stringify(all)).not.to.contain("intercept")
+      })
   })
 
   it("masks what people type in search", () => {
@@ -144,6 +239,32 @@ describe("FullStory", () => {
           .map((call) => call.args[1].name)
         expect(names.filter((n) => n === "Video Started")).to.have.length(1)
       })
+  })
+
+  it("loads the YouTube player API only after consent", () => {
+    const listeners = {}
+    cy.visit("/testing-your-first-application/app-install-and-overview", {
+      onBeforeLoad(win: any) {
+        stubFullStory(win, { capturing: false })
+        win.Osano = {
+          cm: { addEventListener: (name, fn) => (listeners[name] = fn) },
+        }
+        win.__players = []
+        win.YT = {
+          Player: function () {
+            win.__players.push(this)
+          },
+        }
+      },
+    })
+    cy.get('iframe[src*="youtube-nocookie.com/embed/"]').should("exist")
+    cy.wait(300)
+    cy.window().its("__players").should("have.length", 0)
+    cy.window().then((win: any) => {
+      win.__fullStoryCapturing = true
+      listeners["osano-cm-consent-saved"]()
+    })
+    cy.window().its("__players").should("have.length", 1)
   })
 
   it("sends Challenges Disabled and Challenges Enabled", () => {

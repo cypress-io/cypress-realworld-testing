@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 import s from "./style.module.css"
 import { YouTubeProps } from "./types"
-import { createVideoTracker } from "../../utils/fullstory"
+import { createVideoTracker, isFullStoryCapturing } from "../../utils/fullstory"
 
 // youtube-nocookie.com doesn't set YouTube's cookies until the visitor plays the
 // video. enablejsapi lets the IFrame Player API below read playback state.
@@ -30,6 +30,11 @@ declare global {
   interface Window {
     YT?: YouTubeGlobal
     onYouTubeIframeAPIReady?: () => void
+    Osano?: {
+      cm?: {
+        addEventListener?: (event: string, callback: () => void) => void
+      }
+    }
   }
 }
 
@@ -58,41 +63,55 @@ export default function YouTube({ id, title }: YouTubeProps) {
   const iframe = useRef<HTMLIFrameElement>(null)
 
   useEffect(() => {
-    // The player API is only here for FullStory, so it isn't loaded when
-    // FullStory isn't (dev builds, no org ID, an ad blocker).
-    if (typeof window.FS !== "function" || !iframe.current) return
+    // The player API is only here for FullStory, so it loads only once FullStory
+    // is recording: never in dev builds, without an org ID, behind an ad blocker,
+    // or before the visitor accepts Analytics cookies.
+    if (!iframe.current) return
     const tracker = createVideoTracker(id)
     let active = true
+    let attached = false
     let poll: ReturnType<typeof setInterval> | undefined
     const stopPolling = () => {
       if (poll) clearInterval(poll)
       poll = undefined
     }
 
-    loadYouTubeApi().then((YT) => {
-      if (!active || !iframe.current || !YT?.Player) return
-      const player = new YT.Player(iframe.current, {
-        events: {
-          onStateChange: ({ data }) => {
-            if (!active) return
-            const check = () =>
-              tracker.progressed(player.getCurrentTime(), player.getDuration())
-            if (data === PLAYING) {
-              tracker.played()
-              check()
-              stopPolling()
-              poll = setInterval(check, PROGRESS_POLL_MS)
-            } else {
-              stopPolling()
-              if (data === ENDED) {
+    const attach = () => {
+      if (attached || !active || !isFullStoryCapturing()) return
+      attached = true
+      loadYouTubeApi().then((YT) => {
+        if (!active || !iframe.current || !YT?.Player) return
+        const player = new YT.Player(iframe.current, {
+          events: {
+            onStateChange: ({ data }) => {
+              if (!active) return
+              const check = () =>
+                tracker.progressed(
+                  player.getCurrentTime(),
+                  player.getDuration()
+                )
+              if (data === PLAYING) {
+                tracker.played()
                 check()
-                tracker.ended()
+                stopPolling()
+                poll = setInterval(check, PROGRESS_POLL_MS)
+              } else {
+                stopPolling()
+                if (data === ENDED) {
+                  check()
+                  tracker.ended()
+                }
               }
-            }
+            },
           },
-        },
+        })
       })
-    })
+    }
+
+    attach()
+    // Accepting cookies later on this page starts tracking from then on. The
+    // consent gate's own listener runs first, since it's registered in <head>.
+    window.Osano?.cm?.addEventListener?.("osano-cm-consent-saved", attach)
 
     return () => {
       active = false

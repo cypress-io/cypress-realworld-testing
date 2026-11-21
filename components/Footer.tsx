@@ -1,3 +1,5 @@
+import { fsLabel } from "../utils/fullstory"
+
 const navigation = {
   main: [
     { name: "Docs", href: "https://docs.cypress.io/" },
@@ -77,7 +79,7 @@ export default function Footer() {
             <div className="px-5 py-2">
               <a
                 className="cursor-pointer text-base text-gray-50 hover:text-gray-900"
-                data-fs-element="Cookie Consent - Open Preferences"
+                {...fsLabel("Cookie Consent - Open Preferences")}
                 onClick={() =>
                   // Osano is missing when an ad blocker stops osano.js.
                   (window as any).Osano?.cm?.showDrawer?.(

@@ -80,3 +80,14 @@ export const courseCompletedBy = (
     ? courseSlug
     : undefined
 }
+
+/** True when `lessonPath` is complete in `nextLessons` and wasn't in `previousLessons`. */
+export const lessonCompletedBy = (
+  lessonPath: string,
+  previousLessons: ProgressLesson[] = [],
+  nextLessons: ProgressLesson[] = []
+): boolean => {
+  const done = (lessons: ProgressLesson[]) =>
+    lessons.some((l) => l.id === lessonPath && l.status === "completed")
+  return !!lessonPath && done(nextLessons) && !done(previousLessons)
+}

@@ -90,8 +90,18 @@ type FullStory = (method: string, options?: unknown) => unknown
 declare global {
   interface Window {
     FS?: FullStory
+    /** Set by the consent gate in utils/fullstorySnippet.ts. */
+    __fullStoryCapturing?: boolean
   }
 }
+
+/**
+ * True once FullStory is recording: loaded, and the visitor accepted Analytics.
+ * `window.FS` alone isn't enough, since the snippet defines it on every
+ * production page before anyone has consented.
+ */
+export const isFullStoryCapturing = (): boolean =>
+  getFullStory() !== undefined && window.__fullStoryCapturing === true
 
 const getFullStory = (): FullStory | undefined =>
   typeof window === "undefined" || typeof window.FS !== "function"
@@ -128,6 +138,12 @@ export function trackFullStoryEventBeforeNavigating<
 >(name: Name, properties: FullStoryEvents[Name]): Promise<void> {
   const fs = getFullStory()
   if (!fs) return Promise.resolve()
+  // Without capture, FullStory never confirms, so waiting would only stall the
+  // navigation for the full cap.
+  if (!isFullStoryCapturing()) {
+    trackFullStoryEvent(name, properties)
+    return Promise.resolve()
+  }
 
   const sent = new Promise((resolve) =>
     resolve(fs("trackEventAsync", { name, properties }))
