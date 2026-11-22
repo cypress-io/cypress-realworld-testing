@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic"
 import Link from "next/link"
+import { fsLabel } from "../../utils/fullstory"
 
 const MobileProgress = dynamic(() => import("./MobileProgress"), {
   ssr: false,
@@ -24,6 +25,9 @@ export default function Courses({ courses, content, progressService }: Props) {
                     <Link href={`/${content[course].slug}`}>
                       <a
                         data-test={`course-title`}
+                        {...fsLabel("Learn Header - Courses - Course", {
+                          "course-slug": content[course].slug,
+                        })}
                         className="text-base font-extrabold tracking-tight text-gray-900"
                       >
                         {content[course].title}

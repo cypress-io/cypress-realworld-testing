@@ -2,6 +2,7 @@ import { useState } from "react"
 import { RadioGroup } from "@headlessui/react"
 import Image from "next/image"
 import dynamic from "next/dynamic"
+import { fsLabel } from "../../utils/fullstory"
 
 const HomeProgress = dynamic(() => import("./HomeProgress"), {})
 
@@ -25,15 +26,15 @@ export default function HomeCoursesLayout({
   return (
     <div
       id="courses"
-      className="hidden w-full px-8 mx-auto features lg:block xl:py-28 xl:px-44"
+      className="features mx-auto hidden w-full px-8 lg:block xl:py-28 xl:px-44"
     >
-      <div className="max-w-md px-4 mx-auto sm:max-w-3xl sm:px-6 lg:max-w-full lg:px-8">
-        <h3 className="py-8 mt-2 text-3xl font-bold tracking-tight text-center text-gray-900 sm:text-5xl lg:py-12 xl:mb-24">
+      <div className="mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-full lg:px-8">
+        <h3 className="mt-2 py-8 text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:py-12 xl:mb-24">
           Courses
         </h3>
       </div>
 
-      <div className="max-w-3xl mx-auto sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
+      <div className="mx-auto max-w-3xl sm:px-6 lg:grid lg:max-w-full lg:grid-cols-12 lg:gap-8 lg:px-8">
         {/* Course Selector */}
         <div className="course-selector lg:col-span-6 lg:block">
           <div className="sticky top-2">
@@ -68,7 +69,7 @@ export default function HomeCoursesLayout({
                               }
                             >
                               <Image
-                                className="w-auto h-8 sm:h-10"
+                                className="h-8 w-auto sm:h-10"
                                 src={`/images/home/course-icons/${course}.svg`}
                                 alt=""
                                 aria-hidden="true"
@@ -85,10 +86,13 @@ export default function HomeCoursesLayout({
                         </div>
                         <RadioGroup.Description
                           as="div"
-                          className="flex mt-2 text-sm sm:mt-0 sm:ml-4 sm:block sm:text-right"
+                          className="mt-2 flex text-sm sm:mt-0 sm:ml-4 sm:block sm:text-right"
                         >
                           <a
                             href={`/${content[course].slug}`}
+                            {...fsLabel("Learn Home - Course Card", {
+                              "course-slug": content[course].slug,
+                            })}
                             className="inline-flex px-4 py-2 text-base font-medium text-white"
                           >
                             <img

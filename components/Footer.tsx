@@ -1,3 +1,5 @@
+import { fsLabel } from "../utils/fullstory"
+
 const navigation = {
   main: [
     { name: "Docs", href: "https://docs.cypress.io/" },
@@ -24,7 +26,7 @@ export default function Footer() {
   return (
     <>
       <hr />
-      <footer className="p-4 bg-indigo-500 md:p-0">
+      <footer className="bg-indigo-500 p-4 md:p-0">
         {/* Email Subscription */}
         {/* <div className="py-8 lg:mx-auto lg:flex lg:max-w-7xl lg:items-center lg:justify-center xl:mt-0">
           <div>
@@ -58,10 +60,10 @@ export default function Footer() {
 
         <hr />
 
-        <div className="px-4 py-12 mx-auto overflow-hidden max-w-7xl sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl overflow-hidden px-4 py-12 sm:px-6 lg:px-8">
           <nav
             role="navigation"
-            className="flex flex-wrap justify-center -mx-5 -my-2"
+            className="-mx-5 -my-2 flex flex-wrap justify-center"
             aria-label="Footer"
           >
             {navigation.main.map((item) => (
@@ -76,9 +78,11 @@ export default function Footer() {
             ))}
             <div className="px-5 py-2">
               <a
-                className="text-base cursor-pointer text-gray-50 hover:text-gray-900"
+                className="cursor-pointer text-base text-gray-50 hover:text-gray-900"
+                {...fsLabel("Cookie Consent - Open Preferences")}
                 onClick={() =>
-                  (window as any).Osano.cm.showDrawer(
+                  // Osano is missing when an ad blocker stops osano.js.
+                  (window as any).Osano?.cm?.showDrawer?.(
                     "osano-cm-dom-info-dialog-open"
                   )
                 }
@@ -87,7 +91,7 @@ export default function Footer() {
               </a>
             </div>
           </nav>
-          <p className="mt-8 text-base text-center text-gray-50">
+          <p className="mt-8 text-center text-base text-gray-50">
             &copy; {`${new Date().getFullYear()}`} Cypress. All rights reserved.
           </p>
         </div>

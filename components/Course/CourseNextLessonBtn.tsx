@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { isLessonCompleted } from "../../utils/machineUtils"
 import { Lesson } from "common"
+import { fsLabel } from "../../utils/fullstory"
 
 type Props = {
   lessons: Lesson[]
@@ -46,6 +47,7 @@ export default function CourseNextLessonBtn({
     <Link href={buttonURL()}>
       <a
         data-test="next-lesson-button"
+        {...fsLabel(`Learn Course - ${buttonText()}`)}
         className="inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
       >
         {incompleteLessons.length === lessons.length && (

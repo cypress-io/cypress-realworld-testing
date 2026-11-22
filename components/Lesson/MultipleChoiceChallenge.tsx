@@ -2,6 +2,7 @@ import { useActor } from "@xstate/react"
 import { useState } from "react"
 import dynamic from "next/dynamic"
 import { Lesson } from "common"
+import { trackFullStoryEvent } from "../../utils/fullstory"
 
 const NextLessonBtn = dynamic(() => import("./NextLessonBtn"), {
   ssr: false,
@@ -66,6 +67,15 @@ export default function LessonChallenge({
                                 : ""
                             } h-8 w-8 rounded border-gray-300 text-indigo-500 focus:ring-indigo-500`}
                             onClick={() => {
+                              if (!answerIndicies.includes(index)) {
+                                trackFullStoryEvent("Challenge Answered", {
+                                  lessonId: lessonPath,
+                                  isCorrect:
+                                    lessonData.challenges[0]
+                                      .correctAnswerIndex === index,
+                                  attemptNumber: answerIndicies.length + 1,
+                                })
+                              }
                               setAnswerChecked((prev) => [...prev, index])
                               progressSend({
                                 type: "SUBMIT_ANSWER",

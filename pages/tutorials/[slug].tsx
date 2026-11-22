@@ -23,6 +23,7 @@ import {
 } from "../../utils/mdxUtils"
 import tutorialsJson from "../../data/tutorials.json"
 import CopyToClipboard from "@/components/CopyToClipboard"
+import ContentLink from "@/components/Markdown/ContentLink"
 
 const CompleteLessonBtn = dynamic(
   () => import("../../components/Lesson/CompleteLessonBtn"),
@@ -36,7 +37,7 @@ const CompleteLessonBtn = dynamic(
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
-  //a: CustomLink,
+  a: ContentLink,
   // It also works with dynamically-imported components, which is especially
   // useful for conditionally loading components for certain routes.
   // See the notes in README.md for more details.

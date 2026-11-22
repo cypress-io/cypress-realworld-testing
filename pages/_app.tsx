@@ -3,6 +3,10 @@ import "../styles/global.css"
 import { useEffect } from "react"
 import { useRouter } from "next/router"
 import * as ga from "../utils/googleAnalytics"
+import {
+  maskSearchInput,
+  sendFullStoryPageProperties,
+} from "../utils/fullstory"
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter()
@@ -21,6 +25,14 @@ function MyApp({ Component, pageProps }) {
       router.events.off("routeChangeComplete", handleRouteChange)
     }
   }, [router.events])
+
+  // FullStory page properties for the first page, then for each client-side
+  // navigation. router.pathname is the route pattern, such as /[course]/[slug].
+  useEffect(() => {
+    sendFullStoryPageProperties(router.pathname)
+  }, [router.pathname, router.asPath])
+
+  useEffect(() => maskSearchInput(), [])
 
   return (
     <>
