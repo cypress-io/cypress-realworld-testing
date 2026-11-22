@@ -3,10 +3,16 @@ import s from "./style.module.css"
 import { YouTubeProps } from "./types"
 import { createVideoTracker, isFullStoryCapturing } from "../../utils/fullstory"
 
-// youtube-nocookie.com doesn't set YouTube's cookies until the visitor plays the
-// video. enablejsapi lets the IFrame Player API below read playback state.
-const embedUrl = (id: string) =>
-  `https://www.youtube-nocookie.com/embed/${id}?enablejsapi=1`
+// The plain embed, unchanged from before FullStory. The IFrame Player API needs
+// enablejsapi=1, and with it the player posts messages to this page, so it's only
+// switched on once FullStory is recording (attach() below), with an explicit
+// origin so those messages aren't sent to "*".
+const embedUrl = (id: string) => `https://www.youtube.com/embed/${id}`
+
+const apiEmbedUrl = (id: string) =>
+  `${embedUrl(id)}?enablejsapi=1&origin=${encodeURIComponent(
+    window.location.origin
+  )}`
 
 // The IFrame Player API's states (YT.PlayerState).
 const PLAYING = 1
@@ -98,6 +104,9 @@ export default function YouTube({ id, title }: YouTubeProps) {
       if (attached || !active || !isFullStoryCapturing()) return
       attached = true
       waitingForConsent.delete(attach)
+      // Reloads the embed with the player API on. Consent normally comes before
+      // anyone presses play, so this rarely interrupts a video.
+      if (iframe.current) iframe.current.src = apiEmbedUrl(id)
       loadYouTubeApi().then((YT) => {
         if (!active || !iframe.current || !YT?.Player) return
         const player = new YT.Player(iframe.current, {

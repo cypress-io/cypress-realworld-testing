@@ -243,7 +243,10 @@ describe("FullStory", () => {
         }
       },
     })
-    cy.get('iframe[src*="youtube-nocookie.com/embed/"]').should("exist")
+    cy.get('iframe[src*="youtube.com/embed/"]')
+      .should("have.attr", "src")
+      .and("include", "enablejsapi=1")
+      .and("include", "origin=")
     cy.window()
       .its("__players.0")
       .then((player: any) => {
@@ -291,7 +294,9 @@ describe("FullStory", () => {
         }
       },
     })
-    cy.get('iframe[src*="youtube-nocookie.com/embed/"]').should("exist")
+    cy.get('iframe[src*="youtube.com/embed/"]')
+      .should("have.attr", "src")
+      .and("not.include", "enablejsapi")
     cy.wait(300)
     cy.window().its("__players").should("have.length", 0)
     cy.window().then((win: any) => {
