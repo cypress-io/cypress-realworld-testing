@@ -1,4 +1,4 @@
-// fs.js is blocked (cypress.config.ts → blockHosts), so each test stubs window.FS
+// fs.js is stubbed (cypress/support/e2e.ts), so each test stubs window.FS
 // before the page loads. The snippet backs off when FS already exists, so the stub
 // sees every call the site makes. `capturing` stands in for the consent gate's
 // flag: true is a visitor who accepted Analytics cookies.
@@ -96,6 +96,31 @@ describe("FullStory", () => {
     cy.location("pathname").should(
       "eq",
       "/testing-your-first-application/installing-cypress-and-writing-your-first-test"
+    )
+  })
+
+  it("waits for Lesson Completed before Next Lesson leaves a challenge", () => {
+    cy.visit("/testing-foundations/testing-is-a-mindset", {
+      onBeforeLoad(win) {
+        // FullStory never confirms, so the link waits out the 500ms cap.
+        stubFullStory(win)
+          .withArgs("trackEventAsync")
+          .returns(new Promise(() => {}))
+      },
+    })
+    cy.get("#answer-1").click()
+    cy.getBySel("next-lesson-button").click()
+    // Still on the lesson while FullStory has the event in hand.
+    cy.location("pathname").should(
+      "eq",
+      "/testing-foundations/testing-is-a-mindset"
+    )
+    cy.get("@FS").should("have.been.calledWithMatch", "trackEventAsync", {
+      name: "Lesson Completed",
+    })
+    cy.location("pathname").should(
+      "not.eq",
+      "/testing-foundations/testing-is-a-mindset"
     )
   })
 

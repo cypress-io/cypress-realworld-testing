@@ -1,6 +1,6 @@
 import { useActor } from "@xstate/react"
 import { fsLabel } from "../../utils/fullstory"
-import { progressEventsSent } from "../../machines/progressService"
+import { navigateAfterProgressEvents } from "./navigateAfterProgressEvents"
 
 type Props = {
   nextLessonPath: string
@@ -30,22 +30,7 @@ export default function NextLessonBtn({
             type: "COMPLETE_LESSON",
             id: lessonPath,
           })
-          // The progress service sends Lesson Completed (and Course Completed)
-          // when this saves a new completion. A plain click navigates away, which
-          // can drop a queued event, so hold the navigation until FullStory has
-          // them (capped at 500ms, and only while it's recording). A modifier
-          // click opens a new tab and leaves this page alone.
-          const tracked = progressEventsSent()
-          const isPlainClick =
-            event.button === 0 &&
-            !event.metaKey &&
-            !event.ctrlKey &&
-            !event.shiftKey &&
-            !event.altKey
-          if (!isPlainClick) return
-          event.preventDefault()
-          const href = event.currentTarget.href
-          tracked.then(() => window.location.assign(href))
+          navigateAfterProgressEvents(event)
         }}
       >
         {nextLessonPath ? "Next Lesson" : "Complete"}
