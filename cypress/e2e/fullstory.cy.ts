@@ -9,6 +9,11 @@ const stubFullStory = (win, { capturing = true } = {}) => {
   return fs
 }
 
+// A DOM click, not cy.click(), for links that navigate from JavaScript after a
+// short wait (FullStory recording). cy.click() checks its subject after the click,
+// and in CI that check can land as the page unloads.
+const clickAndLeave = ($link) => $link[0].click()
+
 const eventNames = (calls) =>
   calls
     .filter((args) => args[0] === "trackEvent" || args[0] === "trackEventAsync")
@@ -86,7 +91,7 @@ describe("FullStory", () => {
           .returns(new Promise(() => {}))
       },
     })
-    cy.getBySel("complete-lesson-button").find("a").click()
+    cy.getBySel("complete-lesson-button").find("a").then(clickAndLeave)
     cy.get("@FS").should("have.been.calledWithMatch", "trackEventAsync", {
       name: "Lesson Completed",
       properties: {
@@ -109,7 +114,7 @@ describe("FullStory", () => {
       },
     })
     cy.get("#answer-1").click()
-    cy.getBySel("next-lesson-button").click()
+    cy.getBySel("next-lesson-button").then(clickAndLeave)
     // Still on the lesson while FullStory has the event in hand.
     cy.location("pathname").should(
       "eq",
@@ -152,7 +157,7 @@ describe("FullStory", () => {
     const next = () =>
       cy.location("pathname").then((path) => {
         if (path === "/") return
-        cy.getBySel("complete-lesson-button").find("a").click()
+        cy.getBySel("complete-lesson-button").find("a").then(clickAndLeave)
         cy.location("pathname").should("not.eq", path)
         next()
       })
