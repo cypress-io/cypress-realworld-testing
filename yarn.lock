@@ -4552,10 +4552,10 @@ cyclist@^1.0.1:
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
-cypress@^15.21.0:
-  version "15.21.0"
-  resolved "https://registry.yarnpkg.com/cypress/-/cypress-15.21.0.tgz#61017bb85ae2886fefcd2b9b4c21b47cb62a1b6b"
-  integrity sha512-6uPy5GUjao97t/QDIwlPyJz4JUqPpFIPq5lNazN95LSA3ynJoYC1sHZ3W+aj4f+K1OFGbMfno0+OX2Gx0OmlPA==
+cypress@^15.21.2:
+  version "15.21.2"
+  resolved "https://registry.yarnpkg.com/cypress/-/cypress-15.21.2.tgz#83674deec636145f348e3edf95e2a1d5322dff71"
+  integrity sha512-LcO9+YBGT0zlLd9+mD6/O30S1GcvJqBFTOCQ+uTd3nwFi+fTvogSskE3W/BWgDd/iHFkJzuIun5fcDl1aVLKRQ==
   dependencies:
     "@cypress/request" "^4.0.0"
     "@cypress/xvfb" "^1.2.4"
