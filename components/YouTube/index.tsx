@@ -104,10 +104,19 @@ export default function YouTube({ id, title }: YouTubeProps) {
       if (attached || !active || !isFullStoryCapturing()) return
       attached = true
       waitingForConsent.delete(attach)
+      const frame = iframe.current
+      if (!frame) return
       // Reloads the embed with the player API on. Consent normally comes before
-      // anyone presses play, so this rarely interrupts a video.
-      if (iframe.current) iframe.current.src = apiEmbedUrl(id)
-      loadYouTubeApi().then((YT) => {
+      // anyone presses play, so this rarely interrupts a video. The player is
+      // built only once the reloaded embed has loaded: when the API script is
+      // already on the page (a second video, or client-side navigation from
+      // another lesson), it resolves at once and would otherwise wrap the old
+      // embed, which has no API to answer it.
+      const reloaded = new Promise<void>((resolve) =>
+        frame.addEventListener("load", () => resolve(), { once: true })
+      )
+      frame.src = apiEmbedUrl(id)
+      Promise.all([loadYouTubeApi(), reloaded]).then(([YT]) => {
         if (!active || !iframe.current || !YT?.Player) return
         const player = new YT.Player(iframe.current, {
           events: {
