@@ -8,13 +8,6 @@ import {
 const OSANO_SCRIPT =
   "https://cmp.osano.com/AzqisZTSBrMdc3qLt/bb12d637-24a5-47ce-8788-92e13ca795cf/osano.js"
 
-// CircleCI builds exist only for the e2e suite. There, a synchronous third-party
-// script on every page load broke Cypress's navigation tracking in recorded runs,
-// so they leave Osano out (www.cypress.io also loads it only in production and
-// staging). Every other build, including production and the Vercel and Cloudflare
-// Pages previews, renders it. CIRCLECI is read at build time.
-const loadOsano = !process.env.CIRCLECI
-
 // Only production builds with FULLSTORY_ORG_ID get FullStory, so dev-server visits
 // stay out of it and a build without an org ID (CI, a preview) doesn't load fs.js.
 // The value is read at build time, so it must be set where `next build` runs.
@@ -31,15 +24,9 @@ class MyDocument extends Document {
             the first script on every page and load synchronously: never async, defer,
             or moved into next/head on a single page.
           */}
-          {loadOsano && (
-            <>
-              {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-              <script src={OSANO_SCRIPT} />
-              <script
-                dangerouslySetInnerHTML={{ __html: osanoFullStoryLabels }}
-              />
-            </>
-          )}
+          {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+          <script src={OSANO_SCRIPT} />
+          <script dangerouslySetInnerHTML={{ __html: osanoFullStoryLabels }} />
           {fullStoryOrgId && (
             <>
               <script

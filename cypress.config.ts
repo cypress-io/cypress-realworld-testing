@@ -7,9 +7,8 @@ export default defineConfig({
   allowCypressEnv: false,
   viewportHeight: 1000,
   viewportWidth: 1400,
-  // Osano and FullStory are stubbed with cy.intercept in cypress/support/e2e.ts,
-  // not blockHosts. GA4 is not intercepted: blocking or stubbing requests during
-  // page loads broke link navigation in recorded CI runs.
+  // Osano and FullStory are stubbed with cy.intercept in cypress/support/e2e.ts.
+  // GA4 loads as it did before FullStory was added.
   // Non-sensitive, public configuration belongs in `expose` and is read in
   // tests with `Cypress.expose()` (Cypress 15.10.0+). Use the `env` key plus
   // `cy.env()` only for sensitive values you want to keep out of the browser.
